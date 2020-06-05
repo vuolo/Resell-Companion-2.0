@@ -1,6 +1,6 @@
 // imports
 const auth = require('../../../utils/auth.js');
-const memory = require('../../../utils/memory.js');
+window.memory = require('../../../utils/memory.js');
 window.electron = require('electron');
 window.path = require('path');
 

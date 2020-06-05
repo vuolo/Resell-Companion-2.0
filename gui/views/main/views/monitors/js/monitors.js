@@ -6,6 +6,7 @@
 
 window.products = [];
 window.categories = window.parent.require("../../../utils/json/categories.json").categories;
+let displayedProducts = [];
 
 const categoryImages = {
   "Shopify": "./images/Shopify_Icon@2x.png",
@@ -17,7 +18,7 @@ const monitorsApp = new Vue({
   el: "#Rewrite___Monitors",
   data: {
     shouldOpenExternal: false,
-    products: window.products,
+    products: displayedProducts,
     categories: window.categories,
     companionSettings: window.parent.companionSettings
   },
@@ -27,6 +28,16 @@ const monitorsApp = new Vue({
     tryApplyDarkMode: window.parent.tryApplyDarkMode,
     openInternal: window.parent.openInternal,
     openExternal: window.parent.openExternal,
+    setStoreActive: function(category, storeIndex) {
+      if (category.activeIndex == storeIndex) {
+        return;
+      }
+      for (var curCategory of this.categories) {
+        curCategory.activeIndex = -1;
+      }
+      category.activeIndex = storeIndex;
+      refreshDisplayedProducts();
+    },
     getCategoryTop: function(categoryIndex) {
       let storeOffset = 0;
       for (var i = 0; i < categories.length; i++) {
@@ -110,7 +121,7 @@ const monitorsApp = new Vue({
     getLongestVariantNameWidth: function(variants) {
       let longestVariantNameWidth = 0;
       for (var variant of variants) {
-        let variantNameWidth = window.parent.getTextWidth(variant.Name, 'bold 13px \'SF Pro Text\'');
+        let variantNameWidth = window.parent.getTextWidth(this.tryTranslate(variant.Name), 'bold 13px \'SF Pro Text\'');
         if (variantNameWidth > longestVariantNameWidth) {
           longestVariantNameWidth = variantNameWidth;
         }
@@ -140,9 +151,56 @@ const monitorsApp = new Vue({
   }
 });
 
+function refreshDisplayedProducts() {
+  while (displayedProducts.length > 0) {
+    displayedProducts.pop();
+  }
+  let displayedCount = 0;
+  for (var product of window.products) {
+    if (tryDisplayProduct(product)) {
+      displayedCount++;
+      if (displayedCount >= 75) {
+        break;
+      }
+    }
+  }
+}
+
+function addDisplayProduct(product) {
+  displayedProducts.unshift(product);
+  if (displayedProducts.length > 75) {
+    displayedProducts.pop();
+  }
+  return true;
+}
+
+function tryDisplayProduct(product) {
+  for (var category of window.categories) {
+    if (category.activeIndex != -1) {
+      let store = category.stores[category.activeIndex];
+      if (store.urls.length > 0) {
+        if (store.urls.includes(product.Store) && store.identifier == product.Identifier) {
+          return addDisplayProduct(product);
+        }
+      } else {
+        if (store.identifier == product.Identifier) {
+          return addDisplayProduct(product);
+        }
+      }
+    }
+  }
+  return false;
+};
+
+function addNewProduct(product) {
+  window.products.unshift(product);
+  displayedProducts.unshift(product);
+  // tryDisplayProduct(product);
+}
+
 window.addTestProduct = () => {
   const testProduct = {
-    "Store": "feature.com",
+    "Store": "kith.com",
     "StoreName": "Feature",
     "Name": "Common Projects Soft Leather Toiletry Bag - Warm Grey",
     "URL": "https://feature.com/products/common-projects-soft-leather-toiletry-bag-soft-leather-warm-grey",
@@ -333,12 +391,16 @@ window.addTestProduct = () => {
     "Timestamp": new Date().getTime(),
     "isDisplayingMoreInfo": false
   };
-  window.products.push(testProduct);
+  addNewProduct(testProduct);
 };
 
 window.sortStores = (categoryIndex = -1) => {
   if (categoryIndex == -1) {
     for (var category of window.categories) {
+      let previousActiveStoreName = category.activeIndex != -1 ? category.stores[category.activeIndex].name : undefined; // remember previous active store name to update activeIndex after sort
+      // quick sort alphabetically first
+      category.stores.quick_sort(function(a,b) { return a.name < b.name }); // descending
+      // then put favorites on top
       let favoritedStores = [];
       let unfavoritedStores = [];
       for (var i = 0; i < category.stores.length; i++) {
@@ -348,21 +410,93 @@ window.sortStores = (categoryIndex = -1) => {
           unfavoritedStores.push(category.stores[i]);
         }
       }
+      if (previousActiveStoreName) {
+        let foundActiveStoreInFavorites = false;
+        for (var i = 0; i < favoritedStores.length; i++) {
+          if (previousActiveStoreName == favoritedStores[i].name) {
+            category.activeIndex = i;
+            foundActiveStoreInFavorites = true;
+            break;
+          }
+        }
+        if (!foundActiveStoreInFavorites) {
+          category.activeIndex = favoritedStores.length == 0 ? -1 : 0;
+        }
+      }
       window.parent.memory.syncObjects(category.stores, favoritedStores.concat(unfavoritedStores));
     }
   } else {
+    let previousActiveStoreName = window.categories[categoryIndex].activeIndex != -1 ? window.categories[categoryIndex].stores[window.categories[categoryIndex].activeIndex].name : undefined; // remember previous active store name to update activeIndex after sort
+    // quick sort alphabetically first
+    window.categories[categoryIndex].stores.quick_sort(function(a,b) { return a.name < b.name }); // descending
+    // then put favorites on top
     let favoritedStores = [];
     let unfavoritedStores = [];
     for (var i = 0; i < window.categories[categoryIndex].stores.length; i++) {
+      if (previousActiveStoreName && previousActiveStoreName == window.categories[categoryIndex].stores[i].name) {
+        window.categories[categoryIndex].activeIndex = i;
+      }
       if (window.categories[categoryIndex].stores[i].favorited) {
         favoritedStores.push(window.categories[categoryIndex].stores[i]);
       } else {
         unfavoritedStores.push(window.categories[categoryIndex].stores[i]);
       }
     }
+    if (previousActiveStoreName) {
+      let foundActiveStoreInFavorites = false;
+      for (var i = 0; i < favoritedStores.length; i++) {
+        if (previousActiveStoreName == favoritedStores[i].name) {
+          window.categories[categoryIndex].activeIndex = i;
+          foundActiveStoreInFavorites = true;
+          break;
+        }
+      }
+      if (!foundActiveStoreInFavorites) {
+        window.categories[categoryIndex].activeIndex = favoritedStores.length == 0 ? -1 : 0;
+      }
+    }
     window.parent.memory.syncObjects(window.categories[categoryIndex].stores, favoritedStores.concat(unfavoritedStores));
   }
 };
+
+Array.prototype.swap = function(a, b) {
+  var tmp = this[a];
+  this[a] = this[b];
+  this[b] = tmp;
+};
+
+Array.prototype.quick_sort = function(compareFunction) {
+
+  function partition(array, compareFunction, begin, end, pivot) {
+    var piv = array[pivot];
+    array.swap(pivot, end-1);
+    var store = begin;
+    for (var ix = begin; ix < end-1; ++ix) {
+      if ( compareFunction(array[ix], piv) ) {
+        array.swap(store, ix);
+        ++store;
+      }
+    }
+    array.swap(end-1, store);
+    return store;
+  }
+
+  function qsort(array, compareFunction, begin, end) {
+    if ( end-1 > begin ) {
+      var pivot = begin + Math.floor(Math.random() * (end-begin));
+      pivot = partition(array, compareFunction, begin, end, pivot);
+      qsort(array, compareFunction, begin, pivot);
+      qsort(array, compareFunction, pivot+1, end);
+    }
+  }
+
+  if (compareFunction == null) {
+    compareFunction = function(a,b) { return a <= b; };
+  }
+  qsort(this, compareFunction, 0, this.length);
+};
+
+window.sortStores();
 
 window.addTestProduct();
 window.addTestProduct();

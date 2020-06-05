@@ -25,7 +25,7 @@
 			</svg>
 			<div class="Category_Buttons_Class" v-bind:class="{ 'dark-scrollbar': companionSettings.isDarkModeEnabled }">
 
-				<div class="Filtered_Button_Class">
+				<div class="Filtered_Button_Class clickable hover-opacity">
 					<svg class="Filtered_Rectangle">
 						<rect v-bind:fill="tryApplyDarkMode('rgba(242,242,242,1)')" class="Filtered_Rectangle_Class" rx="10" ry="10" x="0" y="0" width="176" height="47">
 						</rect>
@@ -56,9 +56,9 @@
 					<div class="Store_Dropdown_Class" v-if="category.opened">
 
 						<template v-for="(store, storeIndex) in category.stores">
-							<div v-if="store.favorited" class="Store_Class clickable hover-opacity" v-bind:style="{ top: (getCategoryTop(categoryIndex) - 66 - 6) + (storeIndex * (20 + 3)) + 5 + 'px' }">
+							<div v-if="store.favorited" class="Store_Class clickable hover-opacity" v-on:click="setStoreActive(category, storeIndex)" v-bind:style="{ top: (getCategoryTop(categoryIndex) - 66 - 6) + (storeIndex * (20 + 3)) + 5 + 'px' }">
 								<svg class="Shopify_Rectangle">
-									<rect v-bind:fill="storeIndex % 2 == 0 ? tryApplyDarkMode('rgba(247,247,247,1)') : tryApplyDarkMode('rgba(255,255,255,1)')" class="Shopify_Rectangle_Class" rx="5" ry="5" x="0" y="0" width="176" height="20">
+									<rect v-bind:fill="category.activeIndex == storeIndex ? tryApplyDarkMode('rgba(242,242,242,1)') : (storeIndex % 2 == 0 ? tryApplyDarkMode('rgba(247,247,247,1)') : tryApplyDarkMode('rgba(255,255,255,1)'))" class="Shopify_Rectangle_Class" rx="5" ry="5" x="0" y="0" width="176" height="20">
 									</rect>
 								</svg>
 								<img v-if="store.checkpoint_enabled != undefined" class="reCaptcha_Class" src="./images/reCaptcha@2x.png" v-bind:style="{ mixBlendMode: store.checkpoint_enabled ? 'normal' : 'luminosity' }">
@@ -66,7 +66,7 @@
 									<path fill="rgba(253,53,53,1)" class="Lock_Icon_Class" d="M 6.426767826080322 15.85606861114502 L 6.426767826080322 9.235378265380859 L 7.668127059936523 9.235378265380859 L 7.668127059936523 7.166413307189941 C 7.668127059936523 5.338274478912354 9.149894714355469 3.856067657470703 10.97841644287109 3.856067657470703 L 11.39220237731934 3.856067657470703 C 13.22031021118164 3.856067657470703 14.70249366760254 5.338274478912354 14.70249366760254 7.166413307189941 L 14.70249366760254 9.235378265380859 L 15.9438533782959 9.235378265380859 L 15.9438533782959 15.85606861114502 L 6.426767826080322 15.85606861114502 Z M 10.87248802185059 12.45758438110352 L 10.56463050842285 14.61468696594238 L 11.80599021911621 14.61468696594238 L 11.49771881103516 12.45758438110352 C 11.79936981201172 12.33427333831787 12.01288223266602 12.03841114044189 12.01288223266602 11.69206714630127 C 12.01288223266602 11.2352409362793 11.64213180541992 10.86448192596436 11.18531036376953 10.86448192596436 C 10.72807693481445 10.86448192596436 10.35773849487305 11.23523902893066 10.35773849487305 11.69206714630127 C 10.35773849487305 12.03841400146484 10.57083892822266 12.33427429199219 10.87248802185059 12.45758438110352 Z M 13.46113586425781 7.37330961227417 C 13.46113586425781 6.116206169128418 12.44198036193848 5.097446441650391 11.18531036376953 5.097446441650391 C 9.928227424621582 5.097446441650391 8.90948486328125 6.116206169128418 8.90948486328125 7.37330961227417 L 8.90948486328125 9.235378265380859 L 13.46113586425781 9.235378265380859 L 13.46113586425781 7.37330961227417 Z">
 									</path>
 								</svg>
-								<div class="Billionare_Boys_Club_Class" v-bind:style="{ color: tryApplyDarkMode('rgba(29,29,29,1)') }">
+								<div class="Billionare_Boys_Club_Class" v-bind:style="{ color: tryApplyDarkMode('rgba(29,29,29,1)'), fontWeight: category.activeIndex == storeIndex ? 'bold' : '500' }">
 									<span v-bind:style="{ textDecoration: store.name == 'Unfiltered' ? 'underline' : 'none' }">{{store.name}}</span>
 								</div>
 								<img class="USA_1_Class" v-bind:src="'../../../../images/regions/' + store.region + '.png'" v-bind:style="{ top: (store.region == 'Global' ? 1.5 : 4) + 'px' }">
@@ -75,58 +75,6 @@
 
 					</div>
 				</template>
-
-				<!-- <div class="SNKRS_Button_Class">
-					<svg class="SNKRS_Rectangle">
-						<rect v-bind:fill="tryApplyDarkMode('rgba(247,247,247,1)')" class="SNKRS_Rectangle_Class" rx="10" ry="10" x="0" y="0" width="176" height="47">
-						</rect>
-					</svg>
-					<div class="SNKRS_Minimize_Maximize_Button_Class">
-						<span>+</span>
-					</div>
-					<img class="SNKRS_Icon_Class" src="./images/SNKRS_Icon.png" srcset="./images/SNKRS_Icon.png 1x, ./images/SNKRS_Icon@2x.png 2x">
-					<div class="SNKRS_Class" v-bind:style="{ color: tryApplyDarkMode('rgba(29,29,29,1)') }">
-						<span>SNKRS</span>
-					</div>
-				</div>
-				<div class="Adidas_Button_Class">
-					<svg class="Spent_Rectangle">
-						<rect v-bind:fill="tryApplyDarkMode('rgba(247,247,247,1)')" class="Spent_Rectangle_Class" rx="10" ry="10" x="0" y="0" width="176" height="47">
-						</rect>
-					</svg>
-					<div class="Adidas_Minimize_Maximize_Butto_Class">
-						<span>+</span>
-					</div>
-					<img class="Adidas_Icon_Class" src="./images/Adidas_Icon.png" srcset="./images/Adidas_Icon.png 1x, ./images/Adidas_Icon@2x.png 2x">
-					<div class="adidas_Class" v-bind:style="{ color: tryApplyDarkMode('rgba(29,29,29,1)') }">
-						<span>adidas</span>
-					</div>
-				</div>
-				<div class="Supreme_Button_Class">
-					<svg class="Supreme_Rectangle">
-						<rect v-bind:fill="tryApplyDarkMode('rgba(247,247,247,1)')" class="Supreme_Rectangle_Class" rx="10" ry="10" x="0" y="0" width="176" height="47">
-						</rect>
-					</svg>
-					<div class="Supreme_Minimize_Maximize_Butt_Class">
-						<span>+</span>
-					</div>
-					<div class="Supreme_Class" v-bind:style="{ color: tryApplyDarkMode('rgba(29,29,29,1)') }">
-						<span>Supreme</span>
-					</div>
-				</div>
-				<div class="Misc_Button_Class">
-					<svg class="Misc_Rectangle">
-						<rect v-bind:fill="tryApplyDarkMode('rgba(247,247,247,1)')" class="Misc_Rectangle_Class" rx="10" ry="10" x="0" y="0" width="176" height="47">
-						</rect>
-					</svg>
-					<div class="Misc_Minimize_Maximize_Button_Class">
-						<span>+</span>
-					</div>
-					<div class="Misc_Class" v-bind:style="{ color: tryApplyDarkMode('rgba(29,29,29,1)') }">
-						<span>Misc</span>
-					</div>
-				</div> -->
-
 
 			</div>
 		</div>
