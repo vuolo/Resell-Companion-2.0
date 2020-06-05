@@ -1,0 +1,2512 @@
+{
+  "categories": [
+    {
+      "name": "Shopify",
+      "opened": true,
+      "activeIndex": 8,
+      "stores": [
+        {
+          "name": "Kith",
+          "identifier": "shopify",
+          "urls": [
+            "kith.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": true,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Bape",
+          "identifier": "shopify",
+          "urls": [
+            "us.bape.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": true,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Undefeated",
+          "identifier": "shopify",
+          "urls": [
+            "undefeated.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": true,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Bodega",
+          "identifier": "shopify",
+          "urls": [
+            "bdgastore.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": true,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Travis Scott",
+          "identifier": "shopify",
+          "urls": [
+            "travis-scott-secure.myshopify.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": true,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "DSM (E-Flash)",
+          "identifier": "shopify",
+          "urls": [
+            "eflash-jp.doverstreetmarket.com",
+            "eflash-sg.doverstreetmarket.com",
+            "eflash-us.doverstreetmarket.com",
+            "eflash.doverstreetmarket.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": true,
+          "region": "Global",
+          "taskLaunchable": true
+        },
+        {
+          "name": "CPFM",
+          "identifier": "cpfm",
+          "urls": [
+            "cactusplantfleamarket.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": true,
+          "region": "Global",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Funko",
+          "identifier": "shopify",
+          "urls": [
+            "funko-shop.com",
+            "bigpopshop.com",
+            "bungiestore.com",
+            "galactictoys.com",
+            "www.fugitivetoys.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": true,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Unfiltered",
+          "identifier": "shopify",
+          "urls": [],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": true,
+          "region": "Global",
+          "taskLaunchable": true
+        },
+        {
+          "name": "50-50 Skate Shop",
+          "identifier": "shopify",
+          "urls": [
+            "50-50.com.au"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Australia",
+          "taskLaunchable": true
+        },
+        {
+          "name": "6PM",
+          "identifier": "shopify",
+          "urls": [
+            "www.6pmseason.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Germany",
+          "taskLaunchable": true
+        },
+        {
+          "name": "A-COLD-WALL*",
+          "identifier": "shopify",
+          "urls": [
+            "a-cold-wall.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-Kingdom",
+          "taskLaunchable": true
+        },
+        {
+          "name": "A Ma Maniere",
+          "identifier": "shopify",
+          "urls": [
+            "a-ma-maniere.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Alife®",
+          "identifier": "shopify",
+          "urls": [
+            "alifenewyork.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Alumni of NY",
+          "identifier": "shopify",
+          "urls": [
+            "alumniofny.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Amigos Skate Shop",
+          "identifier": "shopify",
+          "urls": [
+            "amigoskateshop.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Spain",
+          "taskLaunchable": true
+        },
+        {
+          "name": "AntiSocialSocialClub",
+          "identifier": "shopify",
+          "urls": [
+            "antisocialsocialclub.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Carrots By Anwar Carrots",
+          "identifier": "shopify",
+          "urls": [
+            "anwarcarrots.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "CasablancaParis",
+          "identifier": "shopify",
+          "urls": [
+            "casablancaparis.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "France",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Area 51",
+          "identifier": "shopify",
+          "urls": [
+            "area51store.co.nz"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "New-Zealand",
+          "taskLaunchable": true
+        },
+        {
+          "name": "BB Branded Boutique",
+          "identifier": "shopify",
+          "urls": [
+            "bbbranded.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Canada",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Billionaire Boys Club",
+          "identifier": "shopify",
+          "urls": [
+            "bbcicecream.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Black Sheep Skate Shop",
+          "identifier": "shopify",
+          "urls": [
+            "blacksheepskateshop.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "BLENDS",
+          "identifier": "shopify",
+          "urls": [
+            "blendsus.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Bows and Arrows",
+          "identifier": "shopify",
+          "urls": [
+            "bowsandarrowsberkeley.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "BT21CLUB",
+          "identifier": "shopify",
+          "urls": [
+            "bt21club.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Burn Rubber",
+          "identifier": "shopify",
+          "urls": [
+            "burnrubbersneakers.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Finalmouse CA",
+          "identifier": "shopify",
+          "urls": [
+            "canada.finalmouse.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Canada",
+          "taskLaunchable": true
+        },
+        {
+          "name": "The Berrics Canteen",
+          "identifier": "shopify",
+          "urls": [
+            "canteen.theberrics.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Concepts DXB",
+          "identifier": "shopify",
+          "urls": [
+            "cncpts.ae"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-Arab-Emirates",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Concepts INTL",
+          "identifier": "shopify",
+          "urls": [
+            "cncpts.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Global",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Commonwealth",
+          "identifier": "shopify",
+          "urls": [
+            "commonwealth-ftgg.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Concrete",
+          "identifier": "shopify",
+          "urls": [
+            "concrete.nl"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Netherlands",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Creme321",
+          "identifier": "shopify",
+          "urls": [
+            "creme321.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "CROSSOVER ONLINE",
+          "identifier": "shopify",
+          "urls": [
+            "crossoverconceptstore.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Malaysia",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Crusoeandsons",
+          "identifier": "shopify",
+          "urls": [
+            "crusoeandsons.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Culture Kings US",
+          "identifier": "shopify",
+          "urls": [
+            "culturekings.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "New-Zealand",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Culture Kings AU",
+          "identifier": "shopify",
+          "urls": [
+            "culturekings.com.au"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Australia",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Deadstock.ca",
+          "identifier": "shopify",
+          "urls": [
+            "deadstock.ca"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Canada",
+          "taskLaunchable": true
+        },
+        {
+          "name": "DEFCON GROUP",
+          "identifier": "shopify",
+          "urls": [
+            "defcongroup.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Ding Dong Takuhaibin",
+          "identifier": "shopify",
+          "urls": [
+            "dingdongtakuhaibin.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "China",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Dope Factory",
+          "identifier": "shopify",
+          "urls": [
+            "dope-factory.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Italy",
+          "taskLaunchable": true
+        },
+        {
+          "name": "dropout",
+          "identifier": "shopify",
+          "urls": [
+            "dropoutmilano.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Italy",
+          "taskLaunchable": true
+        },
+        {
+          "name": "DROPS.AU",
+          "identifier": "shopify",
+          "urls": [
+            "dropsau.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Australia",
+          "taskLaunchable": true
+        },
+        {
+          "name": "DTLR",
+          "identifier": "shopify",
+          "urls": [
+            "dtlr.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Empire Skate",
+          "identifier": "shopify",
+          "urls": [
+            "empireskate.co.nz"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "New-Zealand",
+          "taskLaunchable": true
+        },
+        {
+          "name": "One Block Down EU",
+          "identifier": "shopify",
+          "urls": [
+            "eu.oneblockdown.it"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Europe",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Eve Robotics",
+          "identifier": "shopify",
+          "urls": [
+            "everoboticsinc.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Exotic Pop",
+          "identifier": "shopify",
+          "urls": [
+            "exoticpop.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "F3ATHER I/O",
+          "identifier": "shopify",
+          "urls": [
+            "f3ather.io"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Fear of God",
+          "identifier": "shopify",
+          "urls": [
+            "fearofgod.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Feature",
+          "identifier": "shopify",
+          "urls": [
+            "feature.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "ficegallery",
+          "identifier": "shopify",
+          "urls": [
+            "ficegallery.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Finalmouse",
+          "identifier": "shopify",
+          "urls": [
+            "finalmouse.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Fresh Rags FL",
+          "identifier": "shopify",
+          "urls": [
+            "freshragsfl.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Full Send by Nelk Boys",
+          "identifier": "shopify",
+          "urls": [
+            "fullsend.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "HannibalStore",
+          "identifier": "shopify",
+          "urls": [
+            "hannibalstore.it"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Italy",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Hanon",
+          "identifier": "shopify",
+          "urls": [
+            "hanon-shop.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-Kingdom",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Highs and Low",
+          "identifier": "shopify",
+          "urls": [
+            "highsandlows.net.au"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Australia",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Hoops Heaven",
+          "identifier": "shopify",
+          "urls": [
+            "hoopsheaven.com.au"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Australia",
+          "taskLaunchable": true
+        },
+        {
+          "name": "HUMAN MADE ONLINE STORE",
+          "identifier": "shopify",
+          "urls": [
+            "humanmade.jp"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Japan",
+          "taskLaunchable": true
+        },
+        {
+          "name": "One Block Down IT",
+          "identifier": "shopify",
+          "urls": [
+            "it.oneblockdown.it"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Italy",
+          "taskLaunchable": true
+        },
+        {
+          "name": "John Geiger",
+          "identifier": "shopify",
+          "urls": [
+            "johngeigerco.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "JUICESTORE",
+          "identifier": "shopify",
+          "urls": [
+            "juicestore.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "China",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Just Don",
+          "identifier": "shopify",
+          "urls": [
+            "justdon.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "KAWSNGV",
+          "identifier": "shopify",
+          "urls": [
+            "kawsngv.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Australia",
+          "taskLaunchable": true
+        },
+        {
+          "name": "KAWSONE",
+          "identifier": "shopify",
+          "urls": [
+            "kawsone.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Laced",
+          "identifier": "shopify",
+          "urls": [
+            "laced.com.au"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Australia",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Lace Up NYC",
+          "identifier": "shopify",
+          "urls": [
+            "laceupnyc.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Lapstone & Hammer",
+          "identifier": "shopify",
+          "urls": [
+            "lapstoneandhammer.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "LESS 17",
+          "identifier": "shopify",
+          "urls": [
+            "lessoneseven.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Canada",
+          "taskLaunchable": true
+        },
+        {
+          "name": "LIKELIHOOD",
+          "identifier": "shopify",
+          "urls": [
+            "likelihood.us"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Limited Edt",
+          "identifier": "shopify",
+          "urls": [
+            "limitededt.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Singapore",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Menu Skateboard Shop",
+          "identifier": "shopify",
+          "urls": [
+            "menuskateshop.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Canada",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Mondo",
+          "identifier": "shopify",
+          "urls": [
+            "mondotees.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "mrcnoir",
+          "identifier": "shopify",
+          "urls": [
+            "mrcnoir.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-Kingdom",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Nohble",
+          "identifier": "shopify",
+          "urls": [
+            "nohble.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Notre",
+          "identifier": "shopify",
+          "urls": [
+            "notre-shop.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "NRML",
+          "identifier": "shopify",
+          "urls": [
+            "nrml.ca"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Canada",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Off The Hook",
+          "identifier": "shopify",
+          "urls": [
+            "offthehook.ca"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Canada",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Oneness Boutique",
+          "identifier": "shopify",
+          "urls": [
+            "onenessboutique.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Oqium",
+          "identifier": "shopify",
+          "urls": [
+            "oqium.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Netherlands",
+          "taskLaunchable": true
+        },
+        {
+          "name": "PACKER SHOES",
+          "identifier": "shopify",
+          "urls": [
+            "packershoes.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Palace Skateboards USA",
+          "identifier": "shopify",
+          "urls": [
+            "shop-usa.palaceskateboards.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Pam Pam",
+          "identifier": "shopify",
+          "urls": [
+            "pampamlondon.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-Kingdom",
+          "taskLaunchable": true
+        },
+        {
+          "name": "PESOCLO",
+          "identifier": "shopify",
+          "urls": [
+            "pesoclo.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Germany",
+          "taskLaunchable": true
+        },
+        {
+          "name": "WALLSNEAKERS",
+          "identifier": "shopify",
+          "urls": [
+            "par5-milano-yeezy.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-Kingdom",
+          "taskLaunchable": true
+        },
+        {
+          "name": "PLEASURES",
+          "identifier": "shopify",
+          "urls": [
+            "pleasuresnow.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Prime",
+          "identifier": "shopify",
+          "urls": [
+            "primeonline.com.au"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Australia",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Proper",
+          "identifier": "shopify",
+          "urls": [
+            "properlbc.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "prosper",
+          "identifier": "shopify",
+          "urls": [
+            "prosperlosangeles.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Spectre Bots",
+          "identifier": "shopify",
+          "urls": [
+            "purchase.spectrebots.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Renarts",
+          "identifier": "shopify",
+          "urls": [
+            "renarts.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "R H U D E",
+          "identifier": "shopify",
+          "urls": [
+            "rh-ude.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Rock City Kicks",
+          "identifier": "shopify",
+          "urls": [
+            "rockcitykicks.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "One Block Down ROW",
+          "identifier": "shopify",
+          "urls": [
+            "row.oneblockdown.it"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Global",
+          "taskLaunchable": true
+        },
+        {
+          "name": "RSVP Gallery",
+          "identifier": "shopify",
+          "urls": [
+            "rsvpgallery.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Saint Alfred",
+          "identifier": "shopify",
+          "urls": [
+            "saintalfred.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Shoe Gallery Inc",
+          "identifier": "shopify",
+          "urls": [
+            "shoegallerymiami.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "100 Thieves",
+          "identifier": "shopify",
+          "urls": [
+            "shop.100thieves.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Atlas",
+          "identifier": "shopify",
+          "urls": [
+            "shop.atlasskateboarding.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "balkobot",
+          "identifier": "shopify",
+          "urls": [
+            "shop.balkobot.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Dover Street Market JP",
+          "identifier": "shopify",
+          "urls": [
+            "eflash-jp.doverstreetmarket.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Japan",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Dover Street Market SG",
+          "identifier": "shopify",
+          "urls": [
+            "eflash-sg.doverstreetmarket.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Singapore",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Dover Street Market US",
+          "identifier": "shopify",
+          "urls": [
+            "eflash-us.doverstreetmarket.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Dover Street Market London",
+          "identifier": "shopify",
+          "urls": [
+            "eflash.doverstreetmarket.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-Kingdom",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Destroyer Shop",
+          "identifier": "shopify",
+          "urls": [
+            "shop.destroyerbots.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "EXCLUCITYLIFE",
+          "identifier": "shopify",
+          "urls": [
+            "shop.exclucitylife.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Canada",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Extra Butter New York",
+          "identifier": "shopify",
+          "urls": [
+            "shop.extrabutterny.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Ghost AIO",
+          "identifier": "shopify",
+          "urls": [
+            "shop.ghostaio.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Good As Gold",
+          "identifier": "shopify",
+          "urls": [
+            "shop.goodasgoldshop.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "New-Zealand",
+          "taskLaunchable": true
+        },
+        {
+          "name": "HAVEN",
+          "identifier": "shopify",
+          "urls": [
+            "shop.havenshop.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Canada",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Marathon Sports",
+          "identifier": "shopify",
+          "urls": [
+            "shop.marathonsports.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Reigning Champ US",
+          "identifier": "shopify",
+          "urls": [
+            "shop.reigningchamp.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "ShopNiceKicks.com",
+          "identifier": "shopify",
+          "urls": [
+            "shopnicekicks.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "VLONE",
+          "identifier": "shopify",
+          "urls": [
+            "shopvlone.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Sneaker Politics",
+          "identifier": "shopify",
+          "urls": [
+            "sneakerpolitics.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Sneakerworld",
+          "identifier": "shopify",
+          "urls": [
+            "sneakerworldshop.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Italy",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Social Status",
+          "identifier": "shopify",
+          "urls": [
+            "socialstatuspgh.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Sole AIO",
+          "identifier": "shopify",
+          "urls": [
+            "soleaio.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-Kingdom",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Sole Classics",
+          "identifier": "shopify",
+          "urls": [
+            "soleclassics.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "SOLE FINESS",
+          "identifier": "shopify",
+          "urls": [
+            "solefiness.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Australia",
+          "taskLaunchable": true
+        },
+        {
+          "name": "SoleFly",
+          "identifier": "shopify",
+          "urls": [
+            "solefly.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Solestop",
+          "identifier": "shopify",
+          "urls": [
+            "solestop.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Canada",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Soulland",
+          "identifier": "shopify",
+          "urls": [
+            "soulland.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Denmark",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Stray Rats Archive",
+          "identifier": "shopify",
+          "urls": [
+            "srarchive.myshopify.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "STASHED",
+          "identifier": "shopify",
+          "urls": [
+            "stashedsf.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "ROOTED",
+          "identifier": "shopify",
+          "urls": [
+            "stay-rooted.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Stray Rats",
+          "identifier": "shopify",
+          "urls": [
+            "store.strayrats.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Tom Sachs Store",
+          "identifier": "shopify",
+          "urls": [
+            "store.tomsachs.org"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "UNION LOS ANGELES",
+          "identifier": "shopify",
+          "urls": [
+            "store.unionlosangeles.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "SUEDE Store",
+          "identifier": "shopify",
+          "urls": [
+            "suede-store.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Italy",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Chinatown Market",
+          "identifier": "shopify",
+          "urls": [
+            "thechinatownmarket.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "The Closet Inc.",
+          "identifier": "shopify",
+          "urls": [
+            "theclosetinc.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Canada",
+          "taskLaunchable": true
+        },
+        {
+          "name": "The Darkside Initiative",
+          "identifier": "shopify",
+          "urls": [
+            "thedarksideinitiative.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "MBot",
+          "identifier": "shopify",
+          "urls": [
+            "themobilebot.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "THE NEXT DOOR",
+          "identifier": "shopify",
+          "urls": [
+            "thenextdoor.fr"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "France",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Premier",
+          "identifier": "shopify",
+          "urls": [
+            "thepremierstore.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "trainers",
+          "identifier": "shopify",
+          "urls": [
+            "trainers-store.com.au"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Australia",
+          "taskLaunchable": true
+        },
+        {
+          "name": "TROPHY ROOM STORE",
+          "identifier": "shopify",
+          "urls": [
+            "trophyroomstore.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Unheardof Brand",
+          "identifier": "shopify",
+          "urls": [
+            "unheardofbrand.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "U.P.S.",
+          "identifier": "shopify",
+          "urls": [
+            "upsskateshop.com.au"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Australia",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Urban Industry",
+          "identifier": "shopify",
+          "urls": [
+            "urbanindustry.co.uk"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-Kingdom",
+          "taskLaunchable": true
+        },
+        {
+          "name": "October's Very Own",
+          "identifier": "shopify",
+          "urls": [
+            "us.octobersveryown.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Global",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Urban Street Gear",
+          "identifier": "shopify",
+          "urls": [
+            "usgstore.com.au"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Australia",
+          "taskLaunchable": true
+        },
+        {
+          "name": "WARREN LOTAS",
+          "identifier": "shopify",
+          "urls": [
+            "warrenlotas.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Brain Dead",
+          "identifier": "shopify",
+          "urls": [
+            "wearebraindead.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Welcome Skate Store",
+          "identifier": "shopify",
+          "urls": [
+            "welcomeleeds.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-Kingdom",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Wish Atlanta",
+          "identifier": "shopify",
+          "urls": [
+            "wishatl.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "ADDICT Miami",
+          "identifier": "shopify",
+          "urls": [
+            "www.addictmiami.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Aimé Leon Dore",
+          "identifier": "shopify",
+          "urls": [
+            "www.aimeleondore.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "amongst few",
+          "identifier": "shopify",
+          "urls": [
+            "www.amongstfew.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-Arab-Emirates",
+          "taskLaunchable": true
+        },
+        {
+          "name": "APB Store",
+          "identifier": "shopify",
+          "urls": [
+            "www.apbstore.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Capsule Online",
+          "identifier": "shopify",
+          "urls": [
+            "www.capsuletoronto.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Canada",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Centre",
+          "identifier": "shopify",
+          "urls": [
+            "www.centretx.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "City Blue",
+          "identifier": "shopify",
+          "urls": [
+            "www.cityblueshop.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Diamond Supply Co.",
+          "identifier": "shopify",
+          "urls": [
+            "www.diamondsupplyco.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Flatspot",
+          "identifier": "shopify",
+          "urls": [
+            "www.flatspot.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-Kingdom",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Hombre Official",
+          "identifier": "shopify",
+          "urls": [
+            "www.hombreofficial.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Netherlands",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Invincible Jakarta Indonesia",
+          "identifier": "shopify",
+          "urls": [
+            "www.invincible.id"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Indonesia",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Jimmy Jazz",
+          "identifier": "shopify",
+          "urls": [
+            "www.jimmyjazz.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United States",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Kong Online",
+          "identifier": "shopify",
+          "urls": [
+            "www.kongonline.co.uk"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-Kingdom",
+          "taskLaunchable": true
+        },
+        {
+          "name": "LACES ONLINE",
+          "identifier": "shopify",
+          "urls": [
+            "www.laces.mx"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Mexico",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Leaders 1354",
+          "identifier": "shopify",
+          "urls": [
+            "www.ldrs1354.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "MACHUS",
+          "identifier": "shopify",
+          "urls": [
+            "www.machusonline.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Manor.",
+          "identifier": "shopify",
+          "urls": [
+            "www.manorphx.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "NEIGHBORHOOD ONLINE STORE",
+          "identifier": "shopify",
+          "urls": [
+            "www.neighborhood.jp"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Japan",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Nocturnal Skate Shop",
+          "identifier": "shopify",
+          "urls": [
+            "www.nocturnalskateshop.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "NOIRFONCE",
+          "identifier": "shopify",
+          "urls": [
+            "www.noirfonce.eu"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Spain",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Oi Polloi",
+          "identifier": "shopify",
+          "urls": [
+            "www.oipolloi.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-Kingdom",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Patta",
+          "identifier": "shopify",
+          "urls": [
+            "www.patta.nl"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Global",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Philip Browne Menswear",
+          "identifier": "shopify",
+          "urls": [
+            "www.philipbrownemenswear.co.uk"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-Kingdom",
+          "taskLaunchable": true
+        },
+        {
+          "name": "RIME",
+          "identifier": "shopify",
+          "urls": [
+            "www.rimenyc.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Rooney",
+          "identifier": "shopify",
+          "urls": [
+            "www.rooneyshop.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Canada",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Slam City Skates",
+          "identifier": "shopify",
+          "urls": [
+            "www.slamcity.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-Kingdom",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Space23",
+          "identifier": "shopify",
+          "urls": [
+            "www.space23.it"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Italy",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Staple Pigeon",
+          "identifier": "shopify",
+          "urls": [
+            "www.staplepigeon.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Stone Island UK",
+          "identifier": "shopify",
+          "urls": [
+            "www.stoneisland.co.uk"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-Kingdom",
+          "taskLaunchable": true
+        },
+        {
+          "name": "STREETART.FR",
+          "identifier": "shopify",
+          "urls": [
+            "www.streetart.fr"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "France",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Stussy US",
+          "identifier": "shopify",
+          "urls": [
+            "www.stussy.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Stussy UK",
+          "identifier": "shopify",
+          "urls": [
+            "www.stussy.co.uk"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-Kingdom",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Sukamii",
+          "identifier": "shopify",
+          "urls": [
+            "www.sukamii.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "UNKNWN",
+          "identifier": "shopify",
+          "urls": [
+            "www.unknwn.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Victor Braun Studios",
+          "identifier": "shopify",
+          "urls": [
+            "www.victorbraunstudios.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Germany",
+          "taskLaunchable": true
+        },
+        {
+          "name": "West NYC",
+          "identifier": "shopify",
+          "urls": [
+            "www.westnyc.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "XHIBITION",
+          "identifier": "shopify",
+          "urls": [
+            "xhibition.co"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        }
+      ]
+    },
+    {
+      "name": "SNKRS",
+      "opened": false,
+      "activeIndex": -1,
+      "stores": [
+        {
+          "name": "United States",
+          "identifier": "snkrs",
+          "urls": [
+            "nike.com/us/launch"
+          ],
+          "favorited": true,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Japan",
+          "identifier": "snkrs",
+          "urls": [
+            "nike.com/jp/launch"
+          ],
+          "favorited": true,
+          "region": "Japan",
+          "taskLaunchable": true
+        },
+        {
+          "name": "China",
+          "identifier": "snkrs",
+          "urls": [
+            "nike.com/cn/launch"
+          ],
+          "favorited": true,
+          "region": "China",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Singapore",
+          "identifier": "snkrs",
+          "urls": [
+            "nike.com/sg/launch"
+          ],
+          "favorited": true,
+          "region": "Singapore",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Canada",
+          "identifier": "snkrs",
+          "urls": [
+            "nike.com/ca/launch"
+          ],
+          "favorited": true,
+          "region": "Canada",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Germany",
+          "identifier": "snkrs",
+          "urls": [
+            "nike.com/de/launch"
+          ],
+          "favorited": true,
+          "region": "Germany",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Russia",
+          "identifier": "snkrs",
+          "urls": [
+            "nike.com/ru/launch"
+          ],
+          "favorited": true,
+          "region": "Russia",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Italy",
+          "identifier": "snkrs",
+          "urls": [
+            "nike.com/it/launch"
+          ],
+          "favorited": true,
+          "region": "Italy",
+          "taskLaunchable": true
+        }
+      ]
+    },
+    {
+      "name": "adidas",
+      "opened": false,
+      "activeIndex": -1,
+      "stores": [
+        {
+          "name": "United States",
+          "identifier": "adidas",
+          "urls": [
+            "adidas.com"
+          ],
+          "favorited": true,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "United Kingdom",
+          "identifier": "adidas",
+          "urls": [
+            "adidas.co.uk"
+          ],
+          "favorited": true,
+          "region": "United-Kingdom",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Canada",
+          "identifier": "adidas",
+          "urls": [
+            "adidas.ca"
+          ],
+          "favorited": true,
+          "region": "Canada",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Australia",
+          "identifier": "adidas",
+          "urls": [
+            "adidas.com.au"
+          ],
+          "favorited": true,
+          "region": "Australia",
+          "taskLaunchable": true
+        }
+      ]
+    },
+    {
+      "name": "Supreme",
+      "opened": false,
+      "activeIndex": -1,
+      "stores": [
+        {
+          "name": "United States",
+          "identifier": "supreme_us",
+          "urls": [],
+          "favorited": true,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Europe",
+          "identifier": "supreme_eu",
+          "urls": [],
+          "favorited": true,
+          "region": "Europe",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Japan",
+          "identifier": "supreme_jp",
+          "urls": [],
+          "favorited": true,
+          "region": "Japan",
+          "taskLaunchable": true
+        }
+      ]
+    },
+    {
+      "name": "Misc",
+      "opened": false,
+      "activeIndex": -1,
+      "stores": [
+        {
+          "name": "Off-White",
+          "identifier": "offwhite",
+          "urls": [],
+          "favorited": true,
+          "region": "Global",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Yeezy Supply",
+          "identifier": "yeezysupply",
+          "urls": [
+            "yeezysupply.com"
+          ],
+          "favorited": true,
+          "region": "Global",
+          "taskLaunchable": true
+        },
+        {
+          "name": "solebox",
+          "identifier": "solebox",
+          "urls": [
+            "solebox.com"
+          ],
+          "favorited": true,
+          "region": "Europe",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Mesh",
+          "identifier": "mesh",
+          "urls": [
+            "footpatrol.com",
+            "size.co.uk",
+            "jdsports.co.uk",
+            "thehipstore.co.uk"
+          ],
+          "favorited": true,
+          "region": "Europe",
+          "taskLaunchable": true
+        },
+        {
+          "name": "END.",
+          "identifier": "end",
+          "urls": [
+            "endclothing.com/us"
+          ],
+          "favorited": true,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Footsites",
+          "identifier": "footsites",
+          "urls": [
+            "footlocker.com",
+            "footaction.com",
+            "eastbay.com",
+            "champssports.com"
+          ],
+          "favorited": true,
+          "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Nike Desktop",
+          "identifier": "nike_desktop",
+          "urls": [
+            "nike.com/w"
+          ],
+          "favorited": true,
+          "region": "Global",
+          "taskLaunchable": true
+        },
+        {
+          "name": "DSM (E-Shop)",
+          "identifier": "dsm_eshop",
+          "urls": [],
+          "favorited": true,
+          "region": "Global",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Offspring",
+          "identifier": "offspring",
+          "urls": [
+            "offspring.co.uk"
+          ],
+          "favorited": true,
+          "region": "United-Kingdom",
+          "taskLaunchable": true
+        }
+      ]
+    }
+  ]
+}

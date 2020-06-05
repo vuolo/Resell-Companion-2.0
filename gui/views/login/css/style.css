@@ -1,0 +1,157 @@
+body {
+  font-family: "SF Pro Text", san-serif;
+  user-select: none;
+  overflow: hidden;
+}
+
+.mediaViewInfo {
+	--web-view-name: Login;
+	--web-view-id: Login;
+	--web-scale-on-resize: true;
+	--web-enable-deep-linking: true;
+}
+:root {
+	--web-view-ids: Login;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	border: none;
+}
+#Login {
+	position: absolute;
+	width: 717px;
+	height: 483px;
+	background-color: rgba(251,247,241,1);
+	overflow: hidden;
+	--web-view-name: Login;
+	--web-view-id: Login;
+	--web-scale-on-resize: true;
+	--web-enable-deep-linking: true;
+}
+#Background {
+	position: absolute;
+	width: 1541px;
+	height: 867px;
+	left: -752px;
+	top: -180px;
+	overflow: visible;
+}
+#Login_Button:hover {
+	cursor: pointer;
+	opacity: 0.9;
+}
+#Login_Button {
+	position: absolute;
+	width: 265px;
+	height: 50px;
+	left: 225.504px;
+	top: 216.154px;
+	overflow: visible;
+}
+.Login_Button_Rectangle {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 283px;
+	height: 68px;
+	left: 0px;
+	top: 0px;
+}
+#Login_With_Discord_Text {
+	position: absolute;
+	left: 76px;
+	top: 16px;
+	overflow: visible;
+	width: 163px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 17px;
+	color: rgba(255,255,255,1);
+}
+#Discord_Icon {
+	position: absolute;
+	width: 36px;
+	height: 25px;
+	left: 27px;
+	top: 13px;
+	overflow: visible;
+}
+#Title {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	left: 179px;
+	top: 54px;
+	overflow: visible;
+	width: 361px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -1px;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 40px;
+	color: rgba(255,255,255,1);
+}
+
+
+
+.Header_Background {
+  filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.1));
+  -webkit-user-select: none;
+  -webkit-app-region: drag;
+	position: absolute;
+	overflow: visible;
+	width: 717px;
+	height: 30px;
+	left: 0px;
+	top: 0px;
+  z-index: 998;
+}
+
+
+#Window_Buttons {
+	position: absolute;
+	width: 51.111px;
+	height: 20px;
+	right: 10px;
+	top: 7.5px;
+	overflow: visible;
+}
+.Close_Icon:hover {
+  fill: #d72c2e;
+  cursor: pointer;
+  opacity: 0.85;
+}
+.Close_Icon {
+  -webkit-app-region: no-drag;
+	overflow: visible;
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	left: 31.11px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+  z-index: 999;
+}
+.Minimize_Icon:hover {
+  fill: #db8f44;
+  cursor: pointer;
+  opacity: 0.85;
+}
+.Minimize_Icon {
+  -webkit-app-region: no-drag;
+	overflow: visible;
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	left: 0px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+  z-index: 999;
+}

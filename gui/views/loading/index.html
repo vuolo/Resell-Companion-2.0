@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Resell Companion — Loading</title>
+
+	<link rel="stylesheet" type="text/css" id="applicationStylesheet" href="./css/style.css"/>
+	<link rel="stylesheet" type="text/css" id="applicationStylesheet" href="../../css/fonts.css"/>
+
+</head>
+
+<body>
+
+	<div id="Loading_Screen">
+		<img id="Background" src="./images/Background@2x.png">
+		<div id="Title">
+			<span id="LoadingText">Loading...</span>
+		</div>
+		<div id="Title_bq">
+			<span id="StatusText"></span>
+		</div>
+		<img id="Sleepy__animated___cloud_" src="../../images/emoticons/Sleepy (animated - cloud).gif">
+	</div>
+	<div class="draggable" style="position: absolute; left: 0px; top: 0px; height: 100%; width: 100%; z-index: 1000"></div>
+
+	<script>
+
+	const ipcRenderer = require('electron').ipcRenderer;
+
+	const loadingText = document.querySelector('#LoadingText');
+	var timesFinished = 0;
+	setInterval(function() {
+		if (loadingText.innerHTML.replace('Loading', '') == '') {
+			loadingText.innerHTML = 'Loading' + '.';
+		} else if (loadingText.innerHTML.replace('Loading', '') == '.') {
+			loadingText.innerHTML = 'Loading' + '..';
+		} else if (loadingText.innerHTML.replace('Loading', '') == '..') {
+			loadingText.innerHTML = 'Loading' + '...';
+		} else if (loadingText.innerHTML.replace('Loading', '') == '...') {
+			timesFinished++;
+			if (timesFinished == 2) {
+				timesFinished = 0;
+				loadingText.innerHTML = 'Loading' + '';
+			}
+		}
+	}, 560);
+
+	var statusMessages = [
+		'',
+		'Connecting to monitors',
+		'Fetching relevant sneaker releases',
+		'Feeding Kuri dragon fruit',
+		'Solving complex algorithms',
+		'Helping out the sneaker community'
+	];
+	var curStatusMessageIndex = 0;
+
+	const statusText = document.querySelector('#StatusText');
+
+	setStatusText();
+	function setStatusText() {
+		if (curStatusMessageIndex >= statusMessages.length) {
+			curStatusMessageIndex = 0;
+		}
+		statusText.innerHTML = statusMessages[curStatusMessageIndex];
+		curStatusMessageIndex++;
+	}
+	setInterval(function() {
+		setStatusText();
+	}, 2300);
+
+	let forcingMainWindow = false;
+	ipcRenderer.on('user-transfer', function(event, user) {
+		statusMessages[0] = `Welcome${!user.firstLogin ? ' back' : ''} ${user.discord.username}`;
+		curStatusMessageIndex = 0;
+		setStatusText();
+		if (user.discord.id == "344672338744442880") { // is developer incognito
+			document.onkeyup = function(e) {
+				if (e.ctrlKey && e.altKey && e.shiftKey && e.which == 88) {
+					console.log("Ctrl + Alt + Shift + X shortcut combination was pressed - Force Toggling Main Window Visibility");
+					ipcRenderer.sendSync('toggleMainWindowVisibility', !forcingMainWindow);
+					forcingMainWindow = !forcingMainWindow;
+				}
+			};
+		}
+	});
+
+	</script>
+
+	<script>
+
+	// bounce kuri script
+	const kuri = document.querySelector('#Sleepy__animated___cloud_');
+	function bounceKuri() {
+		kuri.style.top = "28px";
+		setTimeout(function() { kuri.style.top = "28px"; }, 200);
+		setTimeout(function() { kuri.style.top = "26px"; }, 200 * 3);
+		setTimeout(function() { kuri.style.top = "24px"; }, 200 * 4);
+		setTimeout(function() { kuri.style.top = "26px"; }, 200 * 5);
+	}
+	setInterval(function() {
+		bounceKuri();
+	}, 200 * 7);
+
+	</script>
+
+</body>
+</html>

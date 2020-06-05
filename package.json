@@ -1,0 +1,27 @@
+{
+  "name": "Resell-Companion",
+  "version": "2.0.0",
+  "description": "Resell Companion by Resell Monster (https://resell.monster)",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "keywords": [
+    "Resell",
+    "Monster",
+    "companion",
+    "bot",
+    "checkout"
+  ],
+  "author": "Resell Monster",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "discord-rpc": "^3.1.1",
+    "nedb": "^1.8.0",
+    "open": "^7.0.4",
+    "request-promise": "^4.2.5"
+  },
+  "devDependencies": {
+    "electron": "^9.0.2"
+  }
+}

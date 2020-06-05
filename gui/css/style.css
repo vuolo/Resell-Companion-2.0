@@ -1,0 +1,125 @@
+#pageContent {
+	width: 1275px;
+	height: 795px;
+	background-color: rgba(251,247,241,1);
+	top: 50px;
+	position: absolute;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	border: none;
+	user-select: none;
+}
+
+.text-selectable {
+  user-select: text;
+}
+.transparentify {
+  mix-blend-mode: multiply;
+}
+
+.hover-opacity:hover {
+  opacity: 0.75;
+}
+.hover-underline:hover {
+  text-decoration: underline;
+}
+.clickable:hover {
+  cursor: pointer;
+}
+.unclickable:hover {
+  cursor: not-allowed;
+}
+
+body {
+  font-family: "SF Pro Text", san-serif;
+  user-select: none;
+  overflow: hidden;
+}
+
+/* Removes the clear button from date inputs */
+input[type="date"]::-webkit-clear-button {
+    display: none;
+}
+
+/* Removes the spin button */
+input[type="date"]::-webkit-inner-spin-button {
+    display: none;
+}
+
+.use_transitions {
+  transition: 0.05s all ease-out;
+}
+
+[v-cloak] {
+   display: none;
+}
+
+.clearAll:hover {
+  cursor: pointer;
+  opacity: 0.85;
+}
+
+.clipGroup {
+  overflow: hidden;
+  width: 107px;
+  height: 36px;
+  transition: 0.5s all ease-out;
+  clip-path: inset(0px round 20px);
+}
+
+.Back_Transitioner {
+  overflow: visible;
+  position: absolute;
+  width: 137.6px;
+  height: 34.565px;
+  transform: scaleY(1);
+  transition: 0.5s all ease-out;
+}
+.Front_Transitioner {
+  overflow: visible;
+  position: absolute;
+  width: 137.6px;
+  height: 26.969px;
+  transform: scaleY(1);
+  transition: 0.5s all ease-out;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  /* border: 1px solid rgba(243,224,185,1); */
+  /* border-radius: 10px; */
+
+  /* background: #fbf7f1; */
+  background: transparent;
+}
+
+/* <rect fill="rgba(243,224,185,1)" id="Monitors_Scroll_Bar" rx="4" ry="4" x="0" y="0" width="150" height="8"> */
+
+::-webkit-scrollbar-thumb {
+  background: rgba(243,224,185,1);
+  filter: drop-shadow(0px 2px 6px rgba(0, 0, 0, 0.161));
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #dfcfac;
+}
+
+.dark-scrollbar::-webkit-scrollbar-thumb {
+  background: #755277;
+  filter: drop-shadow(0px 2px 6px rgba(0, 0, 0, 0.161));
+  border-radius: 10px;
+}
+
+.dark-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #836685;
+}

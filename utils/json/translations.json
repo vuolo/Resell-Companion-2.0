@@ -1,0 +1,82 @@
+{
+  "translations": {
+    "Analytics": {
+      "languages": {
+        "en": "Analytics",
+        "es": "Analíticos"
+      }
+    },
+    "Browser": {
+      "languages": {
+        "en": "Browser",
+        "es": "Navegador"
+      }
+    },
+    "Collection": {
+      "languages": {
+        "en": "Collection",
+        "es": "Colección"
+      }
+    },
+    "Filtered": {
+      "languages": {
+        "en": "Filtered",
+        "es": "Filtrado"
+      }
+    },
+    "Home": {
+      "languages": {
+        "en": "Home",
+        "es": "Inicio"
+      }
+    },
+    "Initial Pickup": {
+      "languages": {
+        "en": "Initial Pickup",
+        "es": "Recogida Inicial"
+      }
+    },
+    "Launch Date": {
+      "languages": {
+        "en": "Launch Date",
+        "es": "Fecha de Lanzamiento"
+      }
+    },
+    "Misc": {
+      "languages": {
+        "en": "Misc",
+        "es": "Misc"
+      }
+    },
+    "Monitors": {
+      "languages": {
+        "en": "Monitors",
+        "es": "Observadores"
+      }
+    },
+    "One Size": {
+      "languages": {
+        "en": "One Size",
+        "es": "Una Talla"
+      }
+    },
+    "Search": {
+      "languages": {
+        "en": "Search",
+        "es": "Buscar"
+      }
+    },
+    "Spoof": {
+      "languages": {
+        "en": "Spoof",
+        "es": "Bromear"
+      }
+    },
+    "Tasks": {
+      "languages": {
+        "en": "Tasks",
+        "es": "Tareas"
+      }
+    }
+  }
+}

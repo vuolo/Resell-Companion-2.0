@@ -1,0 +1,90 @@
+{
+  "regions": [
+    {
+      "regionName": "Global",
+      "countries": [
+        "Global"
+      ]
+    },
+    {
+      "regionName": "United States of America",
+      "countries": [
+        "United-States-of-America"
+      ]
+    },
+    {
+      "regionName": "Canada",
+      "countries": [
+        "Canada"
+      ]
+    },
+    {
+      "regionName": "Europe",
+      "countries": [
+        "Europe",
+        "Russia",
+        "Germany",
+        "United-Kingdom",
+        "France",
+        "Italy",
+        "Spain",
+        "Ukraine",
+        "Poland",
+        "Romania",
+        "Netherlands",
+        "Belgium",
+        "Czech-Republic",
+        "Greece",
+        "Sweden",
+        "Hungary",
+        "Belarus",
+        "Austria",
+        "Serbia",
+        "Switzerland",
+        "Bulgaria",
+        "Denmark",
+        "Finland",
+        "Slovakia",
+        "Norway",
+        "Ireland",
+        "Croatia",
+        "Moldova",
+        "Bosnia-and-Herzegovina",
+        "Albania",
+        "Lithuania",
+        "North-Macedonia",
+        "Slovenia",
+        "Latvia",
+        "Estonia",
+        "Montenegro",
+        "Luxembourg",
+        "Malta",
+        "Iceland",
+        "Andorra",
+        "Monaco",
+        "Liechtenstein",
+        "San-Marino",
+        "Holy-See"
+      ]
+    },
+    {
+      "regionName": "China",
+      "countries": [
+        "China"
+      ]
+    },
+    {
+      "regionName": "Japan",
+      "countries": [
+        "Japan"
+      ]
+    },
+    {
+      "regionName": "Australia",
+      "countries": [
+        "Australia",
+        "New-Zealand"
+      ]
+    }
+  ]
+}

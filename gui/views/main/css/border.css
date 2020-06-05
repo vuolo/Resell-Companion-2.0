@@ -1,0 +1,335 @@
+.mediaViewInfo {
+	--web-view-name: Rewrite – Application Border;
+	--web-view-id: Rewrite___Application_Border;
+	--web-enable-deep-linking: true;
+}
+:root {
+	--web-view-ids: Rewrite___Application_Border;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	border: none;
+}
+.Rewrite___Application_Border_Class {
+	position: absolute;
+	width: 1287px;
+	height: 867px;
+	/* background-color: rgba(251,247,241,1); */
+	background-color: transparent;
+	overflow: hidden;
+	--web-view-name: Rewrite – Application Border;
+	--web-view-id: Rewrite___Application_Border;
+	--web-enable-deep-linking: true;
+}
+.Footer_Class {
+	position: absolute;
+	width: 1275px;
+	height: 22px;
+	left: 0px;
+	top: 845px;
+	overflow: visible;
+}
+.Footer_Background_Rectangle {
+	position: absolute;
+	overflow: visible;
+	width: 1287px;
+	height: 22px;
+	left: 0px;
+	top: 0px;
+}
+.Footer_Text_Class {
+	position: absolute;
+	right: 10px;
+	top: 4px;
+	overflow: visible;
+	width: 203px;
+	white-space: nowrap;
+	text-align: right;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	color: rgba(29,29,29,1);
+}
+.Header_Class {
+	z-index: 1;
+	position: absolute;
+	width: 1287px;
+	height: 52px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+.Header_Background {
+	-webkit-app-region: drag;
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 1035px;
+	height: 50px;
+	left: 0px;
+	top: 0px;
+}
+.Active_Bar {
+	transition: all 0.2s ease-out;
+	-webkit-app-region: no-drag;
+	position: absolute;
+	overflow: visible;
+	width: 100px;
+	height: 4px;
+	left: 79px;
+	top: 48px;
+}
+.User_Bar_Class {
+	-webkit-app-region: drag;
+	position: absolute;
+	width: 267px;
+	height: 60px;
+	left: 1020px;
+	top: 0px;
+	overflow: visible;
+}
+.User_Background {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 285px;
+	height: 68px;
+	left: 0px;
+	top: 0px;
+}
+.User_Profile_Picture_Class {
+	border-radius: 50%;
+	position: absolute;
+	width: 37.526px;
+	height: 36.872px;
+	left: 14px;
+	top: 13px;
+	overflow: visible;
+}
+.User_Status_Circle {
+	overflow: visible;
+	position: absolute;
+	width: 44.284px;
+	height: 43.581px;
+	left: 11.158px;
+	top: 9.62px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Username_Class {
+	position: absolute;
+	left: 65px;
+	top: 21px;
+	overflow: visible;
+	width: 48px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Window_Buttons_Class {
+	position: absolute;
+	width: 51.111px;
+	height: 20px;
+	left: 200px;
+	top: 20px;
+	overflow: visible;
+}
+.Close_Icon {
+	-webkit-app-region: no-drag;
+	overflow: visible;
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	left: 31.11px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Minimize_Icon {
+	-webkit-app-region: no-drag;
+	overflow: visible;
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	left: 0px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Settings_Icon_Class {
+	-webkit-app-region: no-drag;
+	opacity: 0.66;
+	position: absolute;
+	width: 24px;
+	height: 24px;
+	left: 980px;
+	top: 14px;
+	overflow: visible;
+}
+.Bell_Area_Class {
+	position: absolute;
+	width: 28.565px;
+	height: 28.385px;
+	left: 944.436px;
+	top: 9px;
+	overflow: visible;
+}
+.Bell_Icon {
+	opacity: 0.66;
+	-webkit-app-region: no-drag;
+	overflow: visible;
+	position: absolute;
+	width: 19.929px;
+	height: 22.776px;
+	left: 0px;
+	top: 5.609px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Notification_Circle {
+	-webkit-app-region: no-drag;
+	position: absolute;
+	overflow: visible;
+	width: 17px;
+	height: 17px;
+	left: 11.564px;
+	top: 0px;
+}
+.ID13_Class {
+	position: absolute;
+	left: 14.564px;
+	top: 3px;
+	overflow: visible;
+	width: 11px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 9px;
+	color: rgba(255,255,255,1);
+}
+.Home_Class {
+	-webkit-app-region: no-drag;
+	position: absolute;
+	left: 79px;
+	top: 16px;
+	overflow: visible;
+	width: 100px;
+	height: 19px;
+	line-height: 19px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Kuri_Class {
+	position: absolute;
+	width: 42px;
+	height: 42px;
+	left: 19px;
+	top: 4px;
+	overflow: visible;
+}
+.Monitors_Class {
+	-webkit-app-region: no-drag;
+	opacity: 0.75;
+	position: absolute;
+	left: 193px;
+	top: 16px;
+	overflow: visible;
+	width: 73px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Tasks_Class {
+	-webkit-app-region: no-drag;
+	opacity: 0.75;
+	position: absolute;
+	left: 306px;
+	top: 16px;
+	overflow: visible;
+	width: 47px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Spoof_Class {
+	-webkit-app-region: no-drag;
+	opacity: 0.75;
+	position: absolute;
+	left: 405px;
+	top: 16px;
+	overflow: visible;
+	width: 49px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Browser_Class {
+	-webkit-app-region: no-drag;
+	opacity: 0.75;
+	position: absolute;
+	left: 496px;
+	top: 16px;
+	overflow: visible;
+	width: 67px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Analytics_Class {
+	-webkit-app-region: no-drag;
+	opacity: 0.75;
+	position: absolute;
+	left: 591px;
+	top: 16px;
+	overflow: visible;
+	width: 77px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Social__Class {
+	-webkit-app-region: no-drag;
+	opacity: 0.75;
+	position: absolute;
+	left: 699px;
+	top: 16px;
+	overflow: visible;
+	width: 61px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}

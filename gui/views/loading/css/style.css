@@ -1,0 +1,90 @@
+body {
+  font-family: "SF Pro Text", san-serif;
+  user-select: none;
+  overflow: hidden;
+  -webkit-app-region: drag;
+}
+
+.mediaViewInfo {
+	--web-view-name: Loading Screen;
+	--web-view-id: Loading_Screen;
+	--web-scale-on-resize: true;
+	--web-enable-deep-linking: true;
+}
+:root {
+	--web-view-ids: Loading_Screen;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	border: none;
+}
+.draggable {
+  -webkit-app-region: drag;
+}
+#Loading_Screen {
+  -webkit-app-region: drag;
+	position: absolute;
+	width: 511px;
+	height: 345px;
+	/* background-color: rgba(251,247,241,1); */
+  background-color: transparent;
+  border-radius: 25px;
+	overflow: hidden;
+	--web-view-name: Loading Screen;
+	--web-view-id: Loading_Screen;
+	--web-scale-on-resize: true;
+	--web-enable-deep-linking: true;
+}
+#Background {
+	position: absolute;
+	width: 1541px;
+	height: 867px;
+	left: -371px;
+	top: 0px;
+	overflow: visible;
+}
+#Title {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	left: 256px;
+	top: 168px;
+	overflow: visible;
+	width: 202px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -1px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 40px;
+	color: rgba(255,255,255,1);
+}
+#Title_bq {
+    filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+    position: absolute;
+    left: 234px;
+    top: 224px;
+    overflow: visible;
+    width: 228px;
+    /* white-space: nowrap; */
+    line-height: 21px;
+    margin-top: -11px;
+    text-align: center;
+    font-family: SF Pro Text;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    color: rgba(255,255,255,1);
+}
+#Sleepy__animated___cloud_ {
+	position: absolute;
+	width: 280px;
+	/* height: 314px; */
+	left: -10px;
+	top: 26px;
+	overflow: visible;
+  transition: 200ms top;
+}
