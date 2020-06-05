@@ -23,6 +23,7 @@ const monitorsApp = new Vue({
     companionSettings: window.parent.companionSettings
   },
   methods: {
+    confineTextWidth: window.parent.confineTextWidth,
     tryTranslate: window.parent.tryTranslate,
     formatTimestamp: window.parent.formatTimestamp,
     tryApplyDarkMode: window.parent.tryApplyDarkMode,
@@ -151,13 +152,28 @@ const monitorsApp = new Vue({
   }
 });
 
+window.updateProduct = (product) => {
+  let foundProduct = false;
+  for (var i = 0; i < window.products.length; i++) {
+    if (window.products[i].URL == product.URL) {
+      window.parent.memory.syncObject(window.products[i], product);
+      tryDisplayProduct(window.products[i], false, i);
+      foundProduct = true;
+      break;
+    }
+  }
+  if (!foundProduct) {
+    addNewProduct(product);
+  }
+};
+
 function refreshDisplayedProducts() {
   while (displayedProducts.length > 0) {
     displayedProducts.pop();
   }
   let displayedCount = 0;
   for (var product of window.products) {
-    if (tryDisplayProduct(product)) {
+    if (tryDisplayProduct(product, true)) {
       displayedCount++;
       if (displayedCount >= 75) {
         break;
@@ -166,25 +182,72 @@ function refreshDisplayedProducts() {
   }
 }
 
-function addDisplayProduct(product) {
+function updateDisplayedProduct(product, displayedProductIndex = -1, productIndex = -1) {
+  console.log("updating already displayed product");
+  if (displayedProductIndex == -1) {
+    for (var i = 0; i < displayedProducts.length; i++) {
+      if (displayedProducts[i].URL == product.URL) {
+        displayedProductIndex = i;
+        break;
+      }
+    }
+  }
+  console.log(displayedProductIndex);
+  displayedProducts.splice(displayedProductIndex, 1);
   displayedProducts.unshift(product);
+  if (productIndex == -1) {
+    for (var i = 0; i < window.products.length; i++) {
+      if (window.products[i].URL == product.URL) {
+        productIndex = i;
+        break;
+      }
+    }
+  }
+  console.log(productIndex);
+  window.products.splice(productIndex, 1);
+  window.products.unshift(product);
+  return true;
+}
+
+function addDisplayProduct(product, addToEnd = false, productIndex = -1) {
+  if (productIndex != -1) {
+    for (var i = 0; i < displayedProducts.length; i++) {
+      if (displayedProducts[i].URL == product.URL) {
+        displayedProductIndex = i;
+        break;
+      }
+    }
+    if (displayedProductIndex != -1) {
+      updateDisplayedProduct(product, displayedProductIndex, productIndex);
+      return true;
+    }
+  }
+  if (!addToEnd) {
+    displayedProducts.unshift(product);
+  } else {
+    displayedProducts.push(product);
+  }
   if (displayedProducts.length > 75) {
-    displayedProducts.pop();
+    if (!addToEnd) {
+      displayedProducts.pop(product);
+    } else {
+      displayedProducts.shift(product);
+    }
   }
   return true;
 }
 
-function tryDisplayProduct(product) {
+function tryDisplayProduct(product, addToEnd = false, productIndex = -1) {
   for (var category of window.categories) {
     if (category.activeIndex != -1) {
       let store = category.stores[category.activeIndex];
       if (store.urls.length > 0) {
         if (store.urls.includes(product.Store) && store.identifier == product.Identifier) {
-          return addDisplayProduct(product);
+          return addDisplayProduct(product, addToEnd, productIndex);
         }
       } else {
         if (store.identifier == product.Identifier) {
-          return addDisplayProduct(product);
+          return addDisplayProduct(product, addToEnd, productIndex);
         }
       }
     }
@@ -192,18 +255,22 @@ function tryDisplayProduct(product) {
   return false;
 };
 
-function addNewProduct(product) {
+window.addNewProduct = (product) => {
+  product.isDisplayingMoreInfo = false;
+  product.Timestamp = new Date().getTime();
   window.products.unshift(product);
-  displayedProducts.unshift(product);
-  // tryDisplayProduct(product);
-}
+  tryDisplayProduct(product);
+  if (window.products.length > 2500) { // random number that is large that becomes the largest # of products loaded in memory
+    window.products.pop(product);
+  }
+};
 
 window.addTestProduct = () => {
   const testProduct = {
-    "Store": "kith.com",
+    "Store": "feature.com",
     "StoreName": "Feature",
-    "Name": "Common Projects Soft Leather Toiletry Bag - Warm Grey",
-    "URL": "https://feature.com/products/common-projects-soft-leather-toiletry-bag-soft-leather-warm-grey",
+    "Name": "Common Projects Soft Leather Toiletry Bag - Warm Grey [TEST - " + window.products.length + "]",
+    "URL": "https://feature.com/products/common-projects-soft-leather-toiletry-bag-soft-leather-warm-grey#" + window.products.length,
     "Price": "$395.00",
     "ImageURL": "https://cdn.shopify.com/s/files/1/0408/9909/products/Common_Projects_Soft_Leather_Zip_Coin_Case_-_Warm_Grey_9121-Warm_Grey_-_March_28_2019-4_5cd6bfc7-6f43-4c77-901a-fb2002fdd51f.jpg?v=1588037268",
     "Description": "<meta charset=\"utf-8\">\n<p><span>Founded by Prathan Poopat and Flavio Girolami in 2004, Common Projects are best known for their signature gold stamp at the heel highlighting style and size. Assembled in Italy using the highest-quality materials, Common Projects pushes the standard in luxury. Pictured is the </span>Common Projects Soft Leather Toiletry Bag in Warm Grey.</p>\n<meta charset=\"utf-8\">\n<ul>\n<li>Leather construction</li>\n<li>Interior zipper pocket</li>\n<li>Carry handle</li>\n<li>Gold Foil branding</li>\n<li>Made in Italy</li>\n<li><span>Style no: 9126</span></li>\n</ul>\n<ul></ul>",
@@ -387,9 +454,7 @@ window.addTestProduct = () => {
       "Wallets"
     ],
     "OverrideURL": "",
-    "MD5": "389430269c82918eced7a4fb04c01046",
-    "Timestamp": new Date().getTime(),
-    "isDisplayingMoreInfo": false
+    "MD5": "389430269c82918eced7a4fb04c01046"
   };
   addNewProduct(testProduct);
 };
@@ -403,13 +468,19 @@ window.sortStores = (categoryIndex = -1) => {
       // then put favorites on top
       let favoritedStores = [];
       let unfavoritedStores = [];
+      let unfilteredStore;
       for (var i = 0; i < category.stores.length; i++) {
+        if (category.stores[i].name == "Unfiltered") {
+          unfilteredStore = category.stores[i];
+          continue;
+        }
         if (category.stores[i].favorited) {
           favoritedStores.push(category.stores[i]);
         } else {
           unfavoritedStores.push(category.stores[i]);
         }
       }
+      if (unfilteredStore) favoritedStores.push(unfilteredStore);
       if (previousActiveStoreName) {
         let foundActiveStoreInFavorites = false;
         for (var i = 0; i < favoritedStores.length; i++) {
@@ -421,6 +492,7 @@ window.sortStores = (categoryIndex = -1) => {
         }
         if (!foundActiveStoreInFavorites) {
           category.activeIndex = favoritedStores.length == 0 ? -1 : 0;
+          refreshDisplayedProducts();
         }
       }
       window.parent.memory.syncObjects(category.stores, favoritedStores.concat(unfavoritedStores));
@@ -433,8 +505,9 @@ window.sortStores = (categoryIndex = -1) => {
     let favoritedStores = [];
     let unfavoritedStores = [];
     for (var i = 0; i < window.categories[categoryIndex].stores.length; i++) {
-      if (previousActiveStoreName && previousActiveStoreName == window.categories[categoryIndex].stores[i].name) {
-        window.categories[categoryIndex].activeIndex = i;
+      if (category.stores[i].name == "Unfiltered") {
+        unfilteredStore = window.categories[categoryIndex].stores[i];
+        continue;
       }
       if (window.categories[categoryIndex].stores[i].favorited) {
         favoritedStores.push(window.categories[categoryIndex].stores[i]);
@@ -442,6 +515,7 @@ window.sortStores = (categoryIndex = -1) => {
         unfavoritedStores.push(window.categories[categoryIndex].stores[i]);
       }
     }
+    if (unfilteredStore) favoritedStores.push(unfilteredStore);
     if (previousActiveStoreName) {
       let foundActiveStoreInFavorites = false;
       for (var i = 0; i < favoritedStores.length; i++) {
@@ -453,6 +527,7 @@ window.sortStores = (categoryIndex = -1) => {
       }
       if (!foundActiveStoreInFavorites) {
         window.categories[categoryIndex].activeIndex = favoritedStores.length == 0 ? -1 : 0;
+        refreshDisplayedProducts();
       }
     }
     window.parent.memory.syncObjects(window.categories[categoryIndex].stores, favoritedStores.concat(unfavoritedStores));

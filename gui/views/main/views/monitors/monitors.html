@@ -66,7 +66,7 @@
 									<path fill="rgba(253,53,53,1)" class="Lock_Icon_Class" d="M 6.426767826080322 15.85606861114502 L 6.426767826080322 9.235378265380859 L 7.668127059936523 9.235378265380859 L 7.668127059936523 7.166413307189941 C 7.668127059936523 5.338274478912354 9.149894714355469 3.856067657470703 10.97841644287109 3.856067657470703 L 11.39220237731934 3.856067657470703 C 13.22031021118164 3.856067657470703 14.70249366760254 5.338274478912354 14.70249366760254 7.166413307189941 L 14.70249366760254 9.235378265380859 L 15.9438533782959 9.235378265380859 L 15.9438533782959 15.85606861114502 L 6.426767826080322 15.85606861114502 Z M 10.87248802185059 12.45758438110352 L 10.56463050842285 14.61468696594238 L 11.80599021911621 14.61468696594238 L 11.49771881103516 12.45758438110352 C 11.79936981201172 12.33427333831787 12.01288223266602 12.03841114044189 12.01288223266602 11.69206714630127 C 12.01288223266602 11.2352409362793 11.64213180541992 10.86448192596436 11.18531036376953 10.86448192596436 C 10.72807693481445 10.86448192596436 10.35773849487305 11.23523902893066 10.35773849487305 11.69206714630127 C 10.35773849487305 12.03841400146484 10.57083892822266 12.33427429199219 10.87248802185059 12.45758438110352 Z M 13.46113586425781 7.37330961227417 C 13.46113586425781 6.116206169128418 12.44198036193848 5.097446441650391 11.18531036376953 5.097446441650391 C 9.928227424621582 5.097446441650391 8.90948486328125 6.116206169128418 8.90948486328125 7.37330961227417 L 8.90948486328125 9.235378265380859 L 13.46113586425781 9.235378265380859 L 13.46113586425781 7.37330961227417 Z">
 									</path>
 								</svg>
-								<div class="Billionare_Boys_Club_Class" v-bind:style="{ color: tryApplyDarkMode('rgba(29,29,29,1)'), fontWeight: category.activeIndex == storeIndex ? 'bold' : '500' }">
+								<div class="Billionare_Boys_Club_Class" v-bind:style="{ color: tryApplyDarkMode('rgba(29,29,29,1)'), fontWeight: category.activeIndex == storeIndex ? 'bold' : '500', fontSize: confineTextWidth(116, store.name, 12, 'px', category.activeIndex == storeIndex ? 'bold' : '500', 'SF Pro Text') }">
 									<span v-bind:style="{ textDecoration: store.name == 'Unfiltered' ? 'underline' : 'none' }">{{store.name}}</span>
 								</div>
 								<img class="USA_1_Class" v-bind:src="'../../../../images/regions/' + store.region + '.png'" v-bind:style="{ top: (store.region == 'Global' ? 1.5 : 4) + 'px' }">
@@ -82,7 +82,7 @@
 		<div class="Product_Card_Table" v-bind:class="{ 'dark-scrollbar': companionSettings.isDarkModeEnabled }">
 
 			<template v-for="(product, productIndex) in products">
-				<div class="Product_Card_1_Class" v-bind:style="{ top: ( (getProductRowNumber(productIndex)-1) * (228 - 5) ) + 8 + 'px', left: ( (getProductColumnNumber(productIndex)-1) * (473 + 15) ) + 10 + 'px', width: getProductCardWidth(product) + 'px' }"> <!-- TODO?: replace 473 with getProductCardWidth(product) -->
+				<div class="Product_Card_1_Class" v-bind:key="product.URL + '?md5=' + product.MD5 + '&isDisplayingMoreInfo=' + (product.isDisplayingMoreInfo ? 'true' : 'false')" v-bind:style="{ top: ( (getProductRowNumber(productIndex)-1) * (228 - 5) ) + 8 + 'px', left: ( (getProductColumnNumber(productIndex)-1) * (473 + 15) ) + 10 + 'px', width: getProductCardWidth(product) + 'px' }"> <!-- TODO?: replace 473 with getProductCardWidth(product) -->
 					<div class="Product_Card_Rectangles_fc_Class">
 						<svg class="Product_Card_Rectangle_2_fd">
 							<rect v-bind:fill="tryApplyDarkMode('rgba(255,255,255,1)')" class="Product_Card_Rectangle_2_fd_Class" rx="20" ry="20" x="0" y="0" v-bind:width="getProductCardWidth(product)" height="210">
@@ -123,7 +123,9 @@
 						<span class="text-selectable">{{product.Price}}</span>
 					</div>
 
-					<img class="Product_Image_Class clickable hover-opacity" v-bind:class="{ transparentify: !companionSettings.isDarkModeEnabled }" v-bind:style="{ display: product.isDisplayingMoreInfo ? 'none' : 'block' }" v-bind:src="product.ImageURL" v-on:click="shouldOpenExternal ? openExternal(product.URL) : openInternal(product.URL, { title: 'Resell Companion — ' + product.Name });" onerror="this.src='../../../../images/unknownImage.png'">
+					<div class="Product_Image_Class">
+						<img class="clickable hover-opacity" style="display: table-cell; vertical-align: middle; max-width: 156px; max-height: 143px; border-radius: 20px; margin-left: auto; margin-right: auto;" v-bind:class="{ transparentify: !companionSettings.isDarkModeEnabled }" v-bind:style="{ display: product.isDisplayingMoreInfo ? 'none' : 'block' }" v-bind:src="product.ImageURL" v-on:click="shouldOpenExternal ? openExternal(product.URL) : openInternal(product.URL, { title: 'Resell Companion — ' + product.Name });" onerror="this.src='../../../../images/unknownImage.png'">
+					</div>
 
 					<!-- <div class="Info_Icon_gf_Class hover-opacity" @mouseover="product.isDisplayingMoreInfo = true" @mouseleave="product.isDisplayingMoreInfo = false"> -->
 					<div class="Info_Icon_gf_Class hover-opacity" v-on:click="product.isDisplayingMoreInfo = !product.isDisplayingMoreInfo">
@@ -177,7 +179,7 @@
 						</div>
 					</div>
 
-					<div class="Product_Title_gj_Class" v-bind:style="{ color: tryApplyDarkMode('rgba(29,29,29,1)') }">
+					<div class="Product_Title_gj_Class" v-bind:style="{ color: tryApplyDarkMode('rgba(29,29,29,1)'), fontSize: confineTextWidth(getProductCardWidth(product) - (473-415), product.Name, 14, 'px', 'bold', 'SF Pro Text') }">
 						<span class="clickable hover-underline text-selectable" v-on:click="shouldOpenExternal ? openExternal(product.URL) : openInternal(product.URL, { title: 'Resell Companion — ' + product.Name });">{{product.Name}}</span>
 					</div>
 				</div>

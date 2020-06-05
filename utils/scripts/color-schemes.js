@@ -37,7 +37,7 @@ const colorSchemes = [
   },
   {
     light: 'rgba(30,65,166,1)', // blue text
-    dark: '#aa95a0'
+    dark: '#b89d96'
   }
 ];
 

@@ -1,24 +1,31 @@
 let pages = [
   {
-    name: "Home"
+    name: "Home",
+    state: "Examining the release calendar..."
   },
   {
-    name: "Monitors"
+    name: "Monitors",
+    state: "Watching monitors..."
   },
   {
-    name: "Tasks"
+    name: "Tasks",
+    state: "Setting up tasks..."
   },
   {
-    name: "Spoof"
+    name: "Spoof",
+    state: "Spoofing device locations..."
   },
   {
-    name: "Browser"
+    name: "Browser",
+    state: "Watching browsers..."
   },
   {
-    name: "Analytics"
+    name: "Analytics",
+    state: "Analyzing product data..."
   },
   {
-    name: "Social+"
+    name: "Social+",
+    state: "Watching Social+ monitors..."
   }
 ];
 
@@ -40,6 +47,7 @@ const borderApp = new Vue({
     switchToPage: function(pageIndex) {
       this.activePageIndex = pageIndex;
       try { contentApp.activePageIndex = pageIndex; } catch(err) { console.log(err); }
+      curAwaitState = pages[this.activePageIndex];
     }
   }
 });
