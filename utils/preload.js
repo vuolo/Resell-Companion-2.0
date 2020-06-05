@@ -1,4 +1,4 @@
-const debugPreload = false;
+const debugPreload = true;
 
 falseNavigator = {
   vendorSub: "",
@@ -21,15 +21,27 @@ falseNavigator = {
   deviceMemory: 8
 }
 
+// ############################################### FALSIFY NAVIGATOR
+
 if (debugPreload) console.log("Setting up false navigator...");
 setupFalseNavigator(falseNavigator);
 if (debugPreload) console.log("~False navigator setup!");
+
+// ############################################### HEADCHR_IFRAME TEST
+
+// if (debugPreload) console.log("Overwriting IFrame prototype to pass headless chrome iframe test...");
+// // Pass the Headless Chrome IFrame Test.
+// Object.defineProperty(HTMLIFrameElement.prototype, 'contentWindow', {
+//   get: function () {
+//     return window;
+//   }
+// });
+// if (debugPreload) console.log("~IFrame prototype overwritten!");
 
 // ############################################### LANGUAGES TEST
 
 if (debugPreload) console.log("Overwriting languages to pass languages test...");
 // Pass the Languages Test.
-// Overwrite the `plugins` property to use a custom getter.
 Object.defineProperty(navigator, 'languages', {
   get: () => ['en-US', 'en'],
 });
@@ -40,59 +52,107 @@ if (debugPreload) console.log("~Languages overwritten!");
 if (debugPreload) console.log("Overwriting permissions to pass permissions test...");
 // Pass the Permissions Test.
 const originalQuery = window.navigator.permissions.query;
-window.navigator.permissions.query = (parameters) => (
-  parameters.name === 'notifications' ?
-    Promise.resolve({ state: Notification.permission }) :
-    originalQuery(parameters)
+window.navigator.permissions.__proto__.query = parameters =>
+  parameters.name === 'notifications'
+    ? Promise.resolve({ state: Notification.permission }) //eslint-disable-line
+    : originalQuery(parameters);
+
+// Inspired by: https://github.com/ikarienator/phantomjs_hide_and_seek/blob/master/5.spoofFunctionBind.js
+const oldCall = Function.prototype.call;
+function call() {
+  return oldCall.apply(this, arguments);
+}
+Function.prototype.call = call;
+
+const nativeToStringFunctionString = Error.toString().replace(
+  /Error/g,
+  'toString'
 );
+const oldToString = Function.prototype.toString;
+
+function functionToString() {
+  if (this === window.navigator.permissions.query) {
+    return 'function query() { [native code] }';
+  }
+  if (this === functionToString) {
+    return nativeToStringFunctionString;
+  }
+  return oldCall.call(oldToString, this);
+}
+// eslint-disable-next-line
+Function.prototype.toString = functionToString;
 if (debugPreload) console.log("~Permissions overwritten!");
 
 // ############################################### CHROME TEST
 
 if (debugPreload) console.log("Overwriting window.chrome to pass Chrome test...");
 // Pass the Chrome Test.
+const installer = { install() {} }
 window.chrome = {
-  app: { isInstalled: false, InstallState: { DISABLED: "disabled", INSTALLED: "installed", NOT_INSTALLED: "not_installed" }, RunningState: { CANNOT_RUN: "cannot_run", READY_TO_RUN: "ready_to_run", RUNNING: "running" } },
+  app: {
+    isInstalled: false,
+    InstallState: {
+      DISABLED: 'disabled',
+      INSTALLED: 'installed',
+      NOT_INSTALLED: 'not_installed'
+    },
+    RunningState: {
+      CANNOT_RUN: 'cannot_run',
+      READY_TO_RUN: 'ready_to_run',
+      RUNNING: 'running'
+    }
+  },
+  csi() {},
+  loadTimes() {},
   webstore: {
-   onInstallStageChanged: {},
-   onDownloadProgress: {},
- },
- runtime: {
-   PlatformOs: {
-     MAC: 'mac',
-     WIN: 'win',
-     ANDROID: 'android',
-     CROS: 'cros',
-     LINUX: 'linux',
-     OPENBSD: 'openbsd',
-   },
-   PlatformArch: {
-     ARM: 'arm',
-     X86_32: 'x86-32',
-     X86_64: 'x86-64',
-   },
-   PlatformNaclArch: {
-     ARM: 'arm',
-     X86_32: 'x86-32',
-     X86_64: 'x86-64',
-   },
-   RequestUpdateCheckStatus: {
-     THROTTLED: 'throttled',
-     NO_UPDATE: 'no_update',
-     UPDATE_AVAILABLE: 'update_available',
-   },
-   OnInstalledReason: {
-     INSTALL: 'install',
-     UPDATE: 'update',
-     CHROME_UPDATE: 'chrome_update',
-     SHARED_MODULE_UPDATE: 'shared_module_update',
-   },
-   OnRestartRequiredReason: {
-     APP_UPDATE: 'app_update',
-     OS_UPDATE: 'os_update',
-     PERIODIC: 'periodic',
-   }
- }
+    onInstallStageChanged: {},
+    onDownloadProgress: {},
+    install(url, onSuccess, onFailure) {
+      installer.install(url, onSuccess, onFailure)
+    }
+  },
+  runtime: {
+    OnInstalledReason: {
+      CHROME_UPDATE: 'chrome_update',
+      INSTALL: 'install',
+      SHARED_MODULE_UPDATE: 'shared_module_update',
+      UPDATE: 'update'
+    },
+    OnRestartRequiredReason: {
+      APP_UPDATE: 'app_update',
+      OS_UPDATE: 'os_update',
+      PERIODIC: 'periodic'
+    },
+    PlatformArch: {
+      ARM: 'arm',
+      MIPS: 'mips',
+      MIPS64: 'mips64',
+      X86_32: 'x86-32',
+      X86_64: 'x86-64'
+    },
+    PlatformNaclArch: {
+      ARM: 'arm',
+      MIPS: 'mips',
+      MIPS64: 'mips64',
+      X86_32: 'x86-32',
+      X86_64: 'x86-64'
+    },
+    PlatformOs: {
+      ANDROID: 'android',
+      CROS: 'cros',
+      LINUX: 'linux',
+      MAC: 'mac',
+      OPENBSD: 'openbsd',
+      WIN: 'win'
+    },
+    RequestUpdateCheckStatus: {
+      NO_UPDATE: 'no_update',
+      THROTTLED: 'throttled',
+      UPDATE_AVAILABLE: 'update_available'
+    },
+    connect: function() {}.bind(function() {}), // eslint-disable-line
+    sendMessage: function() {}.bind(function() {}) // eslint-disable-line
+  }
 };
 if (debugPreload) console.log("~Chrome overwritten!");
 
@@ -100,6 +160,7 @@ if (debugPreload) console.log("~Chrome overwritten!");
 
 if (debugPreload) console.log("Overwriting Plugins and Mimetypes to pass Plugins / Mimetypes test...");
 // Pass the Plugins/Mimetypes Test.
+// Overwrite the `plugins` property to use a custom getter.
 function mockPluginsAndMimeTypes() {
   /* global MimeType MimeTypeArray PluginArray */
 

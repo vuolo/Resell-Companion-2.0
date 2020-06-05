@@ -61,7 +61,7 @@ const monitorsApp = new Vue({
     },
     getStockColor: function(product) {
       let stockPercentage = this.getStockPercentage(product);
-      return stockPercentage >= 50 ? 'rgba(53,178,57,1)' /*greem*/ : (stockPercentage > 0 ? 'rgba(253,213,53,1)' /*yellow*/ : 'rgba(253,53,53,1)' /*red*/) ;
+      return stockPercentage > 50 ? 'rgba(53,178,57,1)' /*greem*/ : (stockPercentage > 0 ? 'rgba(253,213,53,1)' /*yellow*/ : 'rgba(253,53,53,1)' /*red*/) ;
     },
     getStockPercentage: function(product) {
       let inStockCount = 0;;
@@ -183,7 +183,6 @@ function refreshDisplayedProducts() {
 }
 
 function updateDisplayedProduct(product, displayedProductIndex = -1, productIndex = -1) {
-  console.log("updating already displayed product");
   if (displayedProductIndex == -1) {
     for (var i = 0; i < displayedProducts.length; i++) {
       if (displayedProducts[i].URL == product.URL) {
@@ -192,7 +191,6 @@ function updateDisplayedProduct(product, displayedProductIndex = -1, productInde
       }
     }
   }
-  console.log(displayedProductIndex);
   displayedProducts.splice(displayedProductIndex, 1);
   displayedProducts.unshift(product);
   if (productIndex == -1) {
@@ -203,7 +201,6 @@ function updateDisplayedProduct(product, displayedProductIndex = -1, productInde
       }
     }
   }
-  console.log(productIndex);
   window.products.splice(productIndex, 1);
   window.products.unshift(product);
   return true;
@@ -572,12 +569,3 @@ Array.prototype.quick_sort = function(compareFunction) {
 };
 
 window.sortStores();
-
-window.addTestProduct();
-window.addTestProduct();
-window.addTestProduct();
-window.addTestProduct();
-window.addTestProduct();
-window.addTestProduct();
-window.addTestProduct();
-window.addTestProduct();
