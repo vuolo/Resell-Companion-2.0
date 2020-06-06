@@ -43,7 +43,7 @@ const borderApp = new Vue({
   methods: {
     confineTextWidth: confineTextWidth,
     tryTranslate: window.tryTranslate,
-    tryApplyDarkMode: window.tryApplyDarkMode,
+    getThemeColor: window.getThemeColor,
     switchToPage: function(pageIndex) {
       this.activePageIndex = pageIndex;
       try { contentApp.activePageIndex = pageIndex; } catch(err) { console.log(err); }

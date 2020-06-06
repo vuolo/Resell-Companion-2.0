@@ -9,10 +9,12 @@ window.categories = window.parent.require("../../../utils/json/categories.json")
 let displayedProducts = [];
 
 const categoryImages = {
-  "Shopify": "./images/Shopify_Icon@2x.png",
-  "SNKRS": "./images/SNKRS_Icon@2x.png",
-  "adidas": "./images/Adidas_Icon@2x.png",
-}
+  "Shopify": "../../../../images/stores/Shopify.png",
+  "SNKRS": "../../../../images/stores/Nike.png",
+  "SNKRS-white": "../../../../images/stores/Nike-white.png",
+  "adidas": "../../../../images/stores/adidas.png",
+  "adidas-white": "../../../../images/stores/adidas-white.png"
+};
 
 const monitorsApp = new Vue({
   el: "#Rewrite___Monitors",
@@ -20,13 +22,16 @@ const monitorsApp = new Vue({
     shouldOpenExternal: false,
     products: displayedProducts,
     categories: window.categories,
-    companionSettings: window.parent.companionSettings
+    companionSettings: window.parent.companionSettings,
+    searchTerm: "",
+    rememberedBags: rememberedBags,
+    isShoppingBagOpened: true
   },
   methods: {
     confineTextWidth: window.parent.confineTextWidth,
     tryTranslate: window.parent.tryTranslate,
     formatTimestamp: window.parent.formatTimestamp,
-    tryApplyDarkMode: window.parent.tryApplyDarkMode,
+    getThemeColor: window.parent.getThemeColor,
     openInternal: window.parent.openInternal,
     openExternal: window.parent.openExternal,
     setStoreActive: function(category, storeIndex) {
@@ -57,7 +62,7 @@ const monitorsApp = new Vue({
       return (categoryIndex * (47 + 5)) + (storeOffset + 6) + 66 - 6
     },
     getCategoryImage: function(category) {
-      return categoryImages[category];
+      return categoryImages[category + (window.parent.companionSettings.theme == "dark" ? "-white" : "")];
     },
     getStockColor: function(product) {
       let stockPercentage = this.getStockPercentage(product);
@@ -157,7 +162,9 @@ window.updateProduct = (product) => {
   for (var i = 0; i < window.products.length; i++) {
     if (window.products[i].URL == product.URL) {
       window.parent.memory.syncObject(window.products[i], product);
-      tryDisplayProduct(window.products[i], false, i);
+      if (product.Available) { // only move available products to the top
+        tryDisplayProduct(window.products[i], false, i);
+      }
       foundProduct = true;
       break;
     }
@@ -235,6 +242,9 @@ function addDisplayProduct(product, addToEnd = false, productIndex = -1) {
 }
 
 function tryDisplayProduct(product, addToEnd = false, productIndex = -1) {
+  if (monitorsApp.searchTerm.length > 0 && !product.Name.toLowerCase().includes(monitorsApp.searchTerm.toLowerCase())) {
+    return false;
+  }
   for (var category of window.categories) {
     if (category.activeIndex != -1) {
       let store = category.stores[category.activeIndex];
@@ -531,41 +541,8 @@ window.sortStores = (categoryIndex = -1) => {
   }
 };
 
-Array.prototype.swap = function(a, b) {
-  var tmp = this[a];
-  this[a] = this[b];
-  this[b] = tmp;
-};
-
-Array.prototype.quick_sort = function(compareFunction) {
-
-  function partition(array, compareFunction, begin, end, pivot) {
-    var piv = array[pivot];
-    array.swap(pivot, end-1);
-    var store = begin;
-    for (var ix = begin; ix < end-1; ++ix) {
-      if ( compareFunction(array[ix], piv) ) {
-        array.swap(store, ix);
-        ++store;
-      }
-    }
-    array.swap(end-1, store);
-    return store;
-  }
-
-  function qsort(array, compareFunction, begin, end) {
-    if ( end-1 > begin ) {
-      var pivot = begin + Math.floor(Math.random() * (end-begin));
-      pivot = partition(array, compareFunction, begin, end, pivot);
-      qsort(array, compareFunction, begin, pivot);
-      qsort(array, compareFunction, pivot+1, end);
-    }
-  }
-
-  if (compareFunction == null) {
-    compareFunction = function(a,b) { return a <= b; };
-  }
-  qsort(this, compareFunction, 0, this.length);
-};
+$(".Search_Bar_Class").on('change keydown paste input', function() {
+  refreshDisplayedProducts();
+});
 
 window.sortStores();

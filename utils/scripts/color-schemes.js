@@ -41,13 +41,19 @@ const colorSchemes = [
   }
 ];
 
-window.tryApplyDarkMode = (incomingLightColor) => {
-  if (companionSettings.isDarkModeEnabled) {
+window.setTheme = (theme) => {
+  companionSettings.theme = theme;
+};
+
+window.getThemeColor = (incomingLightColor) => {
+  if (companionSettings.theme != "light" && colorSchemes[0][companionSettings.theme]) { // validate it needs to look for color
     for (var colorScheme of colorSchemes) {
       if (colorScheme.light == incomingLightColor) {
-        return colorScheme.dark;
+        return colorScheme[companionSettings.theme];
       }
     }
   }
   return incomingLightColor;
-}
+};
+
+window.setTheme(companionSettings.theme);

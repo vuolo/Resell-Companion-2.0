@@ -6,6 +6,16 @@
 	position: absolute;
 }
 
+.special-focus {
+	outline: none;
+}
+.special-focus:focus {
+	box-shadow: 0 0 4px rgba(30,65,166,1);
+}
+.special-focus-dark:focus {
+	box-shadow: 0 0 4px #b89d96;
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -86,6 +96,37 @@ input[type="date"]::-webkit-inner-spin-button {
   height: 26.969px;
   transform: scaleY(1);
   transition: 0.5s all ease-out;
+}
+
+.Search_Bar_Class {
+	border-radius: 20px;
+	padding-left: 40px;
+	padding-right: 20px;
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	width: 474px;
+	height: 36px;
+	left: 473.217px;
+	top: 5.876px;
+	overflow: visible;
+
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Magnifying_Glass_Icon {
+	opacity: 0.66;
+	overflow: visible;
+	position: absolute;
+	width: 17.337px;
+	height: 17.337px;
+	left: 487px;
+	top: 15px;
+	transform: matrix(1,0,0,1,0,0);
 }
 
 /* Scrollbar styles */

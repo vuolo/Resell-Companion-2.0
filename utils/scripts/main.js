@@ -7,7 +7,8 @@ window.path = require('path');
 // variables
 window.companionSettings = {
   language: "es",
-  isDarkModeEnabled: true
+  // theme: "light",
+  theme: "dark",
 };
 
 const USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.106 Safari/537.36';
@@ -27,9 +28,6 @@ window.DEFAULT_OPEN_INTERNAL_OPTIONS = {
     preload: path.join(__dirname, "../../../utils/preload.js")
   }
 };
-
-// TODO: add jquery
-// window.$ = window.jQuery = require('../../JS/downloaded/jquery.js');
 
 const appVersion = electron.remote.app.getVersion();
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';

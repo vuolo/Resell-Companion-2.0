@@ -563,7 +563,8 @@ function tryInjectTopBar() {
           /* border-radius: 10px; */
 
           /* background: #fbf7f1; */
-          background: transparent;
+          /* background: transparent; */
+          background: rgba(251,247,241,1);
         }
 
         /* <rect fill="rgba(243,224,185,1)" id="Monitors_Scroll_Bar" rx="4" ry="4" x="0" y="0" width="150" height="8"> */

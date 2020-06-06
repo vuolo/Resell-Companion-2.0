@@ -5,6 +5,6 @@ const contentApp = new Vue({
     activePageIndex: window.activePageIndex
   },
   methods: {
-    tryApplyDarkMode: window.tryApplyDarkMode
+    getThemeColor: window.getThemeColor
   }
 });

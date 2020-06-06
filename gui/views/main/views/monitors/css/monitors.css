@@ -1568,50 +1568,6 @@
 	top: 5.876px;
 	overflow: visible;
 }
-.Search_Bar_Class {
-	position: absolute;
-	width: 474px;
-	height: 36px;
-	left: 473.217px;
-	top: 5.876px;
-	overflow: visible;
-}
-.Search_Bar_Rectangle {
-	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
-	position: absolute;
-	overflow: visible;
-	width: 492px;
-	height: 54px;
-	left: 0px;
-	top: 0px;
-}
-.Search_Text_Class {
-	opacity: 0.66;
-	position: absolute;
-	left: 45px;
-	top: 8px;
-	overflow: visible;
-	width: 55px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: SF Pro Text;
-	font-style: normal;
-	font-weight: 600;
-	font-size: 16px;
-	color: rgba(29,29,29,1);
-}
-.Magnifying_Glass_Icon_Class {
-	opacity: 0.66;
-}
-.Magnifying_Glass_Icon {
-	overflow: visible;
-	position: absolute;
-	width: 17.337px;
-	height: 17.337px;
-	left: 18.535px;
-	top: 9.123px;
-	transform: matrix(1,0,0,1,0,0);
-}
 .Monitors_Class {
 	position: absolute;
 	left: 0px;
@@ -1627,4 +1583,258 @@
 	font-weight: 900;
 	font-size: 40px;
 	color: rgba(29,29,29,1);
+}
+
+.Shopping_Bag_Area_Class {
+	position: absolute;
+	width: 300px;
+	height: 480px;
+	left: 952px;
+	top: 95px;
+	overflow: visible;
+}
+.Shopping_Bag_Rectangle {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 300px;
+	height: 480px;
+	left: 1px;
+	top: -10px;
+}
+.Checkout_Button_Class {
+	position: absolute;
+	width: 276px;
+	height: 41px;
+	left: 12px;
+	top: 427px;
+	overflow: visible;
+}
+.Checkout_Rectangle {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 276px;
+	height: 41px;
+	left: 0px;
+	top: 0px;
+}
+.Checkout_Class {
+	position: absolute;
+	left: 0px;
+	top: 13px;
+	overflow: visible;
+	width: 273px;
+	white-space: nowrap;
+	line-height: 28px;
+	margin-top: -6px;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	color: rgba(239,239,239,1);
+}
+.Shopping_Bag_Table_Class {
+	position: absolute;
+	width: 277.175px;
+	height: 98.651px;
+	left: 11.5px;
+	top: 88.849px;
+	overflow: hidden;
+}
+.Group_236_Class {
+	position: absolute;
+	width: 277.175px;
+	height: 93.651px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+.Separator {
+	width: 217px;
+	height: 2px;
+	position: absolute;
+	overflow: visible;
+	transform: translate(-907.5px, -166.849px) matrix(1,0,0,1,937.5,258.5) rotate(0deg);
+	transform-origin: center;
+}
+.Close_Icon {
+	mix-blend-mode: luminosity;
+	overflow: visible;
+	position: absolute;
+	width: 14.302px;
+	height: 14.302px;
+	left: 262.873px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Product_Image_gu_Class {
+	border-radius: 20px;
+	position: absolute;
+	width: 80px;
+	height: 80px;
+	left: 0px;
+	top: 0.298px;
+	overflow: visible;
+}
+.Product_Title_gv_Class {
+	position: absolute;
+	left: 91.5px;
+	top: 0.151px;
+	overflow: visible;
+	width: 159px;
+	white-space: nowrap;
+	line-height: 13px;
+	margin-top: -1px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 11px;
+	color: rgba(29,29,29,1);
+}
+.Product_Price_gw_Class {
+	position: absolute;
+	left: 247.902px;
+	top: 67.151px;
+	overflow: visible;
+	width: 30px;
+	white-space: nowrap;
+	line-height: 20px;
+	margin-top: -4.5px;
+	text-align: right;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 11px;
+	color: rgba(29,29,29,1);
+}
+.Product_Quantity_Class {
+	position: absolute;
+	left: 91.5px;
+	top: 67.151px;
+	overflow: visible;
+	width: 31px;
+	white-space: nowrap;
+	line-height: 20px;
+	margin-top: -4.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 11px;
+	color: rgba(29,29,29,1);
+}
+.Separator_gy {
+	width: 275px;
+	height: 2px;
+	position: absolute;
+	overflow: visible;
+	transform: translate(-285px, -119px) matrix(1,0,0,1,297.5,187.5) rotate(0deg);
+	transform-origin: center;
+}
+.Product_Site_gz_Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 0px;
+	top: 42px;
+	overflow: visible;
+	width: 300px;
+	white-space: nowrap;
+	line-height: 15px;
+	margin-top: -2.5px;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 10px;
+	color: rgba(29,29,29,1);
+}
+.Green_Bar {
+	position: absolute;
+	overflow: visible;
+	width: 64px;
+	height: 3px;
+	left: 77px;
+	top: 30px;
+}
+.Shopping_Bag_Class {
+	position: absolute;
+	left: 0px;
+	top: 8.124px;
+	overflow: visible;
+	width: 300px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -9px;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 24px;
+	color: rgba(29,29,29,1);
+}
+.Header_Class {
+	position: absolute;
+	width: 1228.217px;
+	height: 48px;
+	left: 26.783px;
+	top: 18.124px;
+	overflow: visible;
+}
+.Settings_Icon_Class {
+	position: absolute;
+	width: 36px;
+	height: 36px;
+	left: 1192.217px;
+	top: 5.876px;
+	overflow: visible;
+}
+.Shopping_Bag_g_Class {
+	position: absolute;
+	width: 35.841px;
+	height: 40.279px;
+	left: 1140.376px;
+	top: 5.597px;
+	overflow: visible;
+}
+.Shopping_Bag_Icon {
+	overflow: visible;
+	position: absolute;
+	width: 31.5px;
+	height: 36px;
+	left: 0px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Shopping_Bag_Number_Class {
+	position: absolute;
+	width: 17px;
+	height: 17px;
+	left: 18.841px;
+	top: 23.279px;
+	overflow: visible;
+}
+.Shopping_Number_Circle {
+	position: absolute;
+	overflow: visible;
+	width: 17px;
+	height: 17px;
+	left: 0px;
+	top: 0px;
+}
+.ID13_g_Class {
+	position: absolute;
+	left: 3px;
+	top: 3px;
+	overflow: visible;
+	width: 11px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 9px;
+	color: rgba(255,255,255,1);
 }
