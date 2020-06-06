@@ -25,15 +25,30 @@ const monitorsApp = new Vue({
     companionSettings: window.parent.companionSettings,
     searchTerm: "",
     rememberedBags: rememberedBags,
-    isShoppingBagOpened: true
+    rememberedBagIndex: -1,
+    isShoppingBagOpened: false
   },
   methods: {
+    getTotalBagQuantity: getTotalBagQuantity,
+    getTotalBagValue: getTotalBagValue,
+    getBagVariantValue: getBagVariantValue,
+    tryGenerateRememberedBag: tryGenerateRememberedBag,
+    addVariantToRememberedBags: addVariantToRememberedBags,
     confineTextWidth: window.parent.confineTextWidth,
+    calculateUnderlineWidth: window.parent.calculateUnderlineWidth,
+    calculateUnderlineLeftOffset: window.parent.calculateUnderlineLeftOffset,
     tryTranslate: window.parent.tryTranslate,
     formatTimestamp: window.parent.formatTimestamp,
     getThemeColor: window.parent.getThemeColor,
     openInternal: window.parent.openInternal,
     openExternal: window.parent.openExternal,
+    getKeyOnCurPlatform: window.parent.getKeyOnCurPlatform,
+    handleVariantClick: function(e, product, variant) {
+      if (e.ctrlKey || e.metaKey) addVariantToRememberedBags(product, variant, 1)
+      else if (e.altKey) addVariantToRememberedBags(product, variant, -1)
+      else if (e.shiftKey) this.launchVariantCheckout(product, variant, true)
+      else this.launchVariantCheckout(product, variant)
+    },
     setStoreActive: function(category, storeIndex) {
       if (category.activeIndex == storeIndex) {
         return;
@@ -42,6 +57,7 @@ const monitorsApp = new Vue({
         curCategory.activeIndex = -1;
       }
       category.activeIndex = storeIndex;
+      this.rememberedBagIndex = category.stores[storeIndex].urls.length == 1 ? tryAddEmptyRememberedBag(category.stores[storeIndex].urls[0], category.stores[storeIndex].name) : -1;
       refreshDisplayedProducts();
     },
     getCategoryTop: function(categoryIndex) {
@@ -150,9 +166,13 @@ const monitorsApp = new Vue({
       outRow -= Math.floor(variantIndex/9) * 9;
       return outRow;
     },
-    launchVariantCheckout: function(product, variant) {
-      let checkoutURL = "https://" + product.Store + "/cart/" + variant.ID + ":1";
-      this.shouldOpenExternal ? this.openExternal(checkoutURL) : this.openInternal(checkoutURL, { title: 'Resell Companion — ' + product.Name + " Checkout" })
+    launchVariantCheckout: function(product, variant, useConnectedBots = false) {
+      if (!useConnectedBots) {
+        let checkoutURL = "https://" + product.Store + "/cart/" + variant.ID + ":1";
+        this.shouldOpenExternal ? this.openExternal(checkoutURL) : this.openInternal(checkoutURL, { title: 'Resell Companion — ' + product.Name + " Checkout" });
+        return;
+      }
+      // TODO: launch with connected bots
     }
   }
 });
@@ -543,6 +563,16 @@ window.sortStores = (categoryIndex = -1) => {
 
 $(".Search_Bar_Class").on('change keydown paste input', function() {
   refreshDisplayedProducts();
+});
+
+const shoppingBagArea = document.querySelector('.Shopping_Bag_Area_Class');
+const shoppingBagIcon = document.querySelector('.Shopping_Bag_g_Class');
+
+// Listen for click events on body
+document.body.addEventListener('click', function (event) {
+  if (!shoppingBagArea.contains(event.target) && !shoppingBagIcon.contains(event.target)) {
+    monitorsApp.isShoppingBagOpened = false;
+  }
 });
 
 window.sortStores();

@@ -79,6 +79,13 @@ window.openInternal = (url, options = {}, combineOptions = true) => {
   return win;
 };
 
+window.getKeyOnCurPlatform = (key) => {
+  if (key.toLowerCase() == "ctrl" || key.toLowerCase() == "control" || key.toLowerCase() == "cmd" || key.toLowerCase() == "command") {
+    return window.parent.process.platform == "win32" ? "Ctrl" : "Command";
+  }
+  return key;
+};
+
 window.curLogin = auth.getLoginTemplate();
 electron.ipcRenderer.on('user-transfer', function(event, inLogin) {
   memory.syncObject(window.curLogin, inLogin);
@@ -122,10 +129,24 @@ window.getTextWidth = (text, font) => {
   return metrics.width;
 };
 
-window.confineTextWidth = (maxWidth, text, incomingFontSize, incomingFontSizeType, incomingFontStyle, incomingFont) => {
+window.confineTextWidth = (maxWidth, text, incomingFontSize, incomingFontSizeType, incomingFontStyle, incomingFont, includeFontSizeType = true) => {
   var outFontSize = incomingFontSize;
   while (getTextWidth(text, `${incomingFontStyle} ${outFontSize + incomingFontSizeType} ${incomingFont}`) >= maxWidth) {
     outFontSize -= 0.5;
   }
-  return outFontSize + incomingFontSizeType;
+  return includeFontSizeType ? (outFontSize + incomingFontSizeType) : outFontSize;
+};
+
+window.calculateUnderlineWidth = (maxWidth, text, incomingFontSize, incomingFontSizeType, incomingFontStyle, incomingFont, multiplier = 0.25) => {
+  let textWidth = getTextWidth(text, `${incomingFontStyle} ${confineTextWidth(maxWidth, text, incomingFontSize, incomingFontSizeType, incomingFontStyle, incomingFont)} ${incomingFont}`);
+  return Math.floor(textWidth * multiplier);
+};
+
+window.calculateUnderlineLeftOffset = (maxWidth, text, incomingFontSize, incomingFontSizeType, incomingFontStyle, incomingFont, multiplier = 0.10) => {
+  let textWidth = getTextWidth(text, `${incomingFontStyle} ${confineTextWidth(maxWidth, text, incomingFontSize, incomingFontSizeType, incomingFontStyle, incomingFont)} ${incomingFont}`);
+  return Math.floor(((maxWidth - textWidth) / 2) + (textWidth * multiplier));
+};
+
+window.numberWithCommas = (x) => {
+  return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 };

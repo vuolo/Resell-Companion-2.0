@@ -6,6 +6,23 @@
 	position: absolute;
 }
 
+.center-contents {
+	display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.centered-content {
+	text-align: center;
+	padding-left: 25px;
+	padding-right: 50px;
+	padding-bottom: 50%;
+
+	font-size: 0.9em;
+	font-weight: normal;
+	opacity: 0.9;
+	color: rgb(239, 239, 239);
+}
+
 .special-focus {
 	outline: none;
 }

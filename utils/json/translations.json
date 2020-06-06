@@ -42,6 +42,12 @@
         "es": "Fecha de Lanzamiento"
       }
     },
+    "Left Click": {
+      "languages": {
+        "en": "Left Click",
+        "es": "Clic Izquierdo"
+      }
+    },
     "Misc": {
       "languages": {
         "en": "Misc",
@@ -54,16 +60,40 @@
         "es": "Observadores"
       }
     },
+    "on a product's size to add it to your shopping bag": {
+      "languages": {
+        "en": "on a product's size to add it to your shopping bag",
+        "es": "en el tamaño de un artículo para agregarlo a su bolsa de la compra"
+      }
+    },
     "One Size": {
       "languages": {
         "en": "One Size",
         "es": "Una Talla"
       }
     },
+    "Pay": {
+      "languages": {
+        "en": "Pay",
+        "es": "Pagar"
+      }
+    },
+    "Press": {
+      "languages": {
+        "en": "Press",
+        "es": "Pulse"
+      }
+    },
     "Search": {
       "languages": {
         "en": "Search",
         "es": "Buscar"
+      }
+    },
+    "Shopping Bag": {
+      "languages": {
+        "en": "Shopping Bag",
+        "es": "Bolsa de la Compra"
       }
     },
     "Spoof": {
@@ -76,6 +106,24 @@
       "languages": {
         "en": "Tasks",
         "es": "Tareas"
+      }
+    },
+    "This store is currently unsupported": {
+      "languages": {
+        "en": "This store is currently unsupported",
+        "es": "Esta tienda no es compatible actualmente"
+      }
+    },
+    "You must select a supported store to add an item to your shopping bag": {
+      "languages": {
+        "en": "You must select a supported store to add an item to your shopping bag",
+        "es": "Debe seleccionar una tienda compatible para agregar un artículo a su bolsa de la compra"
+      }
+    },
+    "Your shopping bag is empty": {
+      "languages": {
+        "en": "Your shopping bag is empty",
+        "es": "Su bolsa de la compra está vacía"
       }
     }
   }

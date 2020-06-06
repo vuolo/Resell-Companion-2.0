@@ -66,18 +66,15 @@
           "taskLaunchable": true
         },
         {
-          "name": "DSM (E-Flash)",
+          "name": "Dover Street Market US",
           "identifier": "shopify",
           "urls": [
-            "eflash-jp.doverstreetmarket.com",
-            "eflash-sg.doverstreetmarket.com",
-            "eflash-us.doverstreetmarket.com",
-            "eflash.doverstreetmarket.com"
+            "eflash-us.doverstreetmarket.com"
           ],
           "checkpoint_enabled": false,
           "password_enabled": false,
           "favorited": true,
-          "region": "Global",
+          "region": "United-States-of-America",
           "taskLaunchable": true
         },
         {
@@ -630,7 +627,7 @@
           ],
           "checkpoint_enabled": false,
           "password_enabled": false,
-          "favorited": false,
+          "favorited": true,
           "region": "United-States-of-America",
           "taskLaunchable": true
         },
@@ -1259,18 +1256,6 @@
           "taskLaunchable": true
         },
         {
-          "name": "Dover Street Market US",
-          "identifier": "shopify",
-          "urls": [
-            "eflash-us.doverstreetmarket.com"
-          ],
-          "checkpoint_enabled": false,
-          "password_enabled": false,
-          "favorited": false,
-          "region": "United-States-of-America",
-          "taskLaunchable": true
-        },
-        {
           "name": "Dover Street Market London",
           "identifier": "shopify",
           "urls": [
@@ -1722,7 +1707,7 @@
           ],
           "checkpoint_enabled": false,
           "password_enabled": false,
-          "favorited": false,
+          "favorited": true,
           "region": "United-Kingdom",
           "taskLaunchable": true
         },
