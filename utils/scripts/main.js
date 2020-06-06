@@ -6,9 +6,10 @@ window.path = require('path');
 
 // variables
 window.companionSettings = {
-  language: "es",
-  // theme: "light",
-  theme: "dark",
+  language: "en",
+  // language: "es",
+  theme: "light",
+  // theme: "dark",
 };
 
 const USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.106 Safari/537.36';
