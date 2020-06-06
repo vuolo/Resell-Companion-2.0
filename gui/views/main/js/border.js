@@ -34,11 +34,11 @@ window.activePageIndex = 1;
 const borderApp = new Vue({
   el: "#Rewrite___Application_Border",
   data: {
+    companionSettings: window.companionSettings,
     curLogin: curLogin,
     pages: pages,
     activePageIndex: window.activePageIndex,
-    appVersion: appVersion,
-    companionSettings: window.companionSettings
+    appVersion: appVersion
   },
   methods: {
     confineTextWidth: confineTextWidth,

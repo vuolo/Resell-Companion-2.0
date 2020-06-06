@@ -19,21 +19,16 @@ const categoryImages = {
 const monitorsApp = new Vue({
   el: "#Rewrite___Monitors",
   data: {
+    companionSettings: window.parent.companionSettings,
     shouldOpenExternal: false,
     products: displayedProducts,
     categories: window.categories,
-    companionSettings: window.parent.companionSettings,
     searchTerm: "",
-    rememberedBags: rememberedBags,
-    rememberedBagIndex: -1,
+    shoppingBags: shoppingBags,
+    shoppingBagIndex: -1,
     isShoppingBagOpened: false
   },
   methods: {
-    getTotalBagQuantity: getTotalBagQuantity,
-    getTotalBagValue: getTotalBagValue,
-    getBagVariantValue: getBagVariantValue,
-    tryGenerateRememberedBag: tryGenerateRememberedBag,
-    addVariantToRememberedBags: addVariantToRememberedBags,
     confineTextWidth: window.parent.confineTextWidth,
     calculateUnderlineWidth: window.parent.calculateUnderlineWidth,
     calculateUnderlineLeftOffset: window.parent.calculateUnderlineLeftOffset,
@@ -43,9 +38,14 @@ const monitorsApp = new Vue({
     openInternal: window.parent.openInternal,
     openExternal: window.parent.openExternal,
     getKeyOnCurPlatform: window.parent.getKeyOnCurPlatform,
+    getTotalBagQuantity: getTotalBagQuantity,
+    getTotalBagValue: getTotalBagValue,
+    getBagVariantValue: getBagVariantValue,
+    tryGenerateShoppingBag: tryGenerateShoppingBag,
+    addVariantToShoppingBags: addVariantToShoppingBags,
     handleVariantClick: function(e, product, variant) {
-      if (e.ctrlKey || e.metaKey) addVariantToRememberedBags(product, variant, 1)
-      else if (e.altKey) addVariantToRememberedBags(product, variant, -1)
+      if (e.ctrlKey || e.metaKey) addVariantToShoppingBags(product, variant, 1)
+      else if (e.altKey) addVariantToShoppingBags(product, variant, -1)
       else if (e.shiftKey) this.launchVariantCheckout(product, variant, true)
       else this.launchVariantCheckout(product, variant)
     },
@@ -57,7 +57,7 @@ const monitorsApp = new Vue({
         curCategory.activeIndex = -1;
       }
       category.activeIndex = storeIndex;
-      this.rememberedBagIndex = category.stores[storeIndex].urls.length == 1 ? tryAddEmptyRememberedBag(category.stores[storeIndex].urls[0], category.stores[storeIndex].name) : -1;
+      this.shoppingBagIndex = category.stores[storeIndex].urls.length == 1 ? tryAddEmptyShoppingBag(category.stores[storeIndex].urls[0], category.stores[storeIndex].name) : -1;
       refreshDisplayedProducts();
     },
     getCategoryTop: function(categoryIndex) {
