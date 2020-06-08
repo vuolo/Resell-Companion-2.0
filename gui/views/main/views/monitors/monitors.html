@@ -143,7 +143,7 @@
 					</div>
 
 					<div class="Product_Site_ff_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), width: getProductCardWidth(product) + 'px' }">
-						<span class="clickable hover-underline text-selectable" v-on:click="configureModal.preferences.useDefaultBrowser ? openExternal(product.Store) : openInternal(product.Store, { title: 'Resell Companion — ' + product.StoreName })">{{product.Store}}</span>
+						<span class="clickable hover-underline text-selectable" v-on:click="openURL(product.Store, configureModal.preferences.useDefaultBrowser, { title: 'Resell Companion — ' + product.StoreName });">{{product.Store}}</span>
 					</div>
 
 					<div class="Sizes_Table_Class" v-show="!product.isDisplayingMoreInfo">
@@ -172,7 +172,7 @@
 					</div>
 
 					<div class="Product_Image_Class">
-						<img class="clickable hover-opacity" style="display: table-cell; vertical-align: middle; max-width: 156px; max-height: 143px; border-radius: 20px; margin-left: auto; margin-right: auto;" v-bind:class="{ transparentify: companionSettings.theme == 'light' }" v-show="!product.isDisplayingMoreInfo" v-bind:src="product.ImageURL" v-on:click="configureModal.preferences.useDefaultBrowser ? openExternal(product.URL) : openInternal(product.URL, { title: 'Resell Companion — ' + product.Name });" onerror="this.src='../../../../images/unknownImage.png'">
+						<img class="clickable hover-opacity" style="display: table-cell; vertical-align: middle; max-width: 156px; max-height: 143px; border-radius: 20px; margin-left: auto; margin-right: auto;" v-bind:class="{ transparentify: companionSettings.theme == 'light' }" v-show="!product.isDisplayingMoreInfo" v-bind:src="product.ImageURL" v-on:click="openURL(product.URL, configureModal.preferences.useDefaultBrowser, { title: 'Resell Companion — ' + product.Name });" onerror="this.src='../../../../images/unknownImage.png'">
 					</div>
 
 					<!-- <div class="Info_Icon_gf_Class hover-opacity" @mouseover="product.isDisplayingMoreInfo = true" @mouseleave="product.isDisplayingMoreInfo = false"> -->
@@ -228,7 +228,7 @@
 					</div>
 
 					<div class="Product_Title_gj_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(getProductCardWidth(product) - (473-415), product.Name, 14, 'px', 'bold', 'SF Pro Text') }">
-						<span class="clickable hover-underline text-selectable" v-on:click="configureModal.preferences.useDefaultBrowser ? openExternal(product.URL) : openInternal(product.URL, { title: 'Resell Companion — ' + product.Name });">{{product.Name}}</span>
+						<span class="clickable hover-underline text-selectable" v-on:click="openURL(product.URL, configureModal.preferences.useDefaultBrowser, { title: 'Resell Companion — ' + product.Name });">{{product.Name}}</span>
 					</div>
 				</div>
 			</template>
@@ -253,7 +253,7 @@
 			</svg>
 
 			<template v-if="shoppingBagIndex != -1">
-				<div v-if="shoppingBags[shoppingBagIndex].variants.length > 0" class="Checkout_Button_Class clickable hover-opacity" v-on:click="configureModal.preferences.useDefaultBrowser ? openExternal(tryGenerateShoppingBag(shoppingBags[shoppingBagIndex].store_url, true)) : openInternal(tryGenerateShoppingBag(shoppingBags[shoppingBagIndex].store_url, true), { title: 'Resell Companion — ' + shoppingBags[shoppingBagIndex].store_name + ' Checkout' })">
+				<div v-if="shoppingBags[shoppingBagIndex].variants.length > 0" class="Checkout_Button_Class clickable hover-opacity" v-on:click="openURL(tryGenerateShoppingBag(shoppingBags[shoppingBagIndex].store_url, true), configureModal.preferences.useDefaultBrowser, { title: 'Resell Companion — ' + shoppingBags[shoppingBagIndex].store_name + ' Checkout' });">
 					<svg class="Checkout_Rectangle">
 						<rect fill="rgba(53,178,57,1)" class="Checkout_Rectangle_Class" rx="10" ry="10" x="0" y="0" width="276" height="41">
 						</rect>
@@ -284,9 +284,9 @@
 							<path fill="rgba(253,53,53,1)" class="Close_Icon_Class" d="M 10.52589511871338 3.375 C 6.575713157653809 3.375 3.375 6.575713157653809 3.375 10.52589511871338 C 3.375 14.47607803344727 6.575713157653809 17.67679023742676 10.52589511871338 17.67679023742676 C 14.47607803344727 17.67679023742676 17.67679023742676 14.47607803344727 17.67679023742676 10.52589511871338 C 17.67679023742676 6.575713157653809 14.47607803344727 3.375 10.52589511871338 3.375 Z M 12.33768463134766 13.11465740203857 L 10.52589511871338 11.30286502838135 L 8.714105606079102 13.11465740203857 C 8.500953674316406 13.32780933380127 8.150283813476563 13.32780933380127 7.9371337890625 13.11465740203857 C 7.830556869506836 13.00808048248291 7.775550842285156 12.86712551116943 7.775550842285156 12.72616863250732 C 7.775550842285156 12.58521556854248 7.830556869506836 12.44425964355469 7.9371337890625 12.33768463134766 L 9.748922348022461 10.52589511871338 L 7.9371337890625 8.714105606079102 C 7.830556869506836 8.607528686523438 7.775548934936523 8.466575622558594 7.775548934936523 8.325619697570801 C 7.775548934936523 8.184663772583008 7.830556869506836 8.043708801269531 7.9371337890625 7.937134742736816 C 8.150283813476563 7.723981857299805 8.50095272064209 7.723981857299805 8.714105606079102 7.937134742736816 L 10.52589321136475 9.748922348022461 L 12.33768463134766 7.937134742736816 C 12.55083560943604 7.723981857299805 12.90150451660156 7.723981857299805 13.11465549468994 7.937134742736816 C 13.32780838012695 8.150284767150879 13.32780838012695 8.500954627990723 13.11465549468994 8.714105606079102 L 11.30286502838135 10.52589511871338 L 13.11465740203857 12.33768463134766 C 13.32780933380127 12.55083560943604 13.32780933380127 12.90150451660156 13.11465740203857 13.11465740203857 C 12.90150451660156 13.33124542236328 12.55083560943604 13.33124542236328 12.33768463134766 13.11465740203857 Z">
 							</path>
 						</svg>
-						<img class="Product_Image_gu_Class clickable hover-opacity" v-bind:src="shoppingBagVariant.parent.ImageURL" v-on:click="configureModal.preferences.useDefaultBrowser ? openExternal(shoppingBagVariant.parent.URL) : openInternal(shoppingBagVariant.parent.URL, { title: 'Resell Companion — ' + shoppingBagVariant.parent.Name })">
+						<img class="Product_Image_gu_Class clickable hover-opacity" v-bind:src="shoppingBagVariant.parent.ImageURL" v-on:click="openURL(shoppingBagVariant.parent.URL, configureModal.preferences.useDefaultBrowser, { title: 'Resell Companion — ' + shoppingBagVariant.parent.Name });">
 						<div class="Product_Title_gv_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-							<span class="clickable hover-opacity hover-underline" v-on:click="configureModal.preferences.useDefaultBrowser ? openExternal(shoppingBagVariant.parent.URL) : openInternal(shoppingBagVariant.parent.URL, { title: 'Resell Companion — ' + shoppingBagVariant.parent.Name })">{{shoppingBagVariant.parent.Name}}</span><br><span style="font-style:normal;font-weight:normal;">{{tryTranslate(shoppingBagVariant.variant.Name)}}</span>
+							<span class="clickable hover-opacity hover-underline" v-on:click="openURL(shoppingBagVariant.parent.URL, configureModal.preferences.useDefaultBrowser, { title: 'Resell Companion — ' + shoppingBagVariant.parent.Name });">{{shoppingBagVariant.parent.Name}}</span><br><span style="font-style:normal;font-weight:normal;">{{tryTranslate(shoppingBagVariant.variant.Name)}}</span>
 						</div>
 						<div class="Product_Price_gw_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
 							<span>{{getBagVariantValue(shoppingBagVariant, true, true)}}</span>
@@ -310,7 +310,7 @@
 
 			<template v-if="shoppingBagIndex != -1">
 				<div class="Product_Site_gz_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-					<span class="clickable hover-underline" v-on:click="configureModal.preferences.useDefaultBrowser ? openExternal('https://' + shoppingBags[shoppingBagIndex].store_url) : openInternal('https://' + shoppingBags[shoppingBagIndex].store_url, { title: 'Resell Companion — ' + shoppingBags[shoppingBagIndex].store_name })">{{shoppingBags[shoppingBagIndex].store_url}}</span>
+					<span class="clickable hover-underline" v-on:click="openURL('https://' + shoppingBags[shoppingBagIndex].store_url, configureModal.preferences.useDefaultBrowser, { title: 'Resell Companion — ' + shoppingBags[shoppingBagIndex].store_name });">{{shoppingBags[shoppingBagIndex].store_url}}</span>
 				</div>
 			</template>
 			<template v-else>

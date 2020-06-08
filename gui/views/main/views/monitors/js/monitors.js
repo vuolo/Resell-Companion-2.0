@@ -33,7 +33,8 @@ window.openModal = (modalName) => {
 
 window.modalLoadedCallback = (modalName) => {
   if (modalName == 'configure') {
-    window.parent.memory.syncObject(monitorsApp.configureModal, window.frames['configure-modal'].modalOptions);
+    monitorsApp.configureModal = window.frames['configure-modal'].modalOptions;
+    // window.parent.memory.syncObject(monitorsApp.configureModal, window.frames['configure-modal'].modalOptions);
   }
 }
 
@@ -59,8 +60,7 @@ const monitorsApp = new Vue({
     tryTranslate: window.parent.tryTranslate,
     formatTimestamp: window.parent.formatTimestamp,
     getThemeColor: window.parent.getThemeColor,
-    openInternal: window.parent.openInternal,
-    openExternal: window.parent.openExternal,
+    openURL: window.parent.openURL,
     getKeyOnCurPlatform: window.parent.getKeyOnCurPlatform,
     openModal: window.openModal,
     refreshVisualizedProducts: refreshVisualizedProducts,
@@ -212,7 +212,7 @@ const monitorsApp = new Vue({
     launchVariantCheckout: function(product, variant, useConnectedBots = false) {
       if (!useConnectedBots) {
         let checkoutURL = "https://" + product.Store + "/cart/" + variant.ID + ":1";
-        this.shouldOpenExternal ? this.openExternal(checkoutURL) : this.openInternal(checkoutURL, { title: 'Resell Companion — ' + product.Name + " Checkout" });
+        this.openURL(checkoutURL, this.configureModal.preferences.useDefaultBrowser, { title: 'Resell Companion — ' + product.Name + " Checkout" });
         return;
       }
       // TODO: launch with connected bots

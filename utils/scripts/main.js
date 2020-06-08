@@ -46,7 +46,6 @@ const sleep = (ms) => {
 // window.frames['monitors-frame'].pokemon
 
 // functions
-
 window.openExternal = (url) => {
   if (!url.includes("://")) {
     url = "http://" + url;
@@ -79,6 +78,14 @@ window.openInternal = (url, options = {}, combineOptions = true) => {
   });
   return win;
 };
+
+window.openURL = (url, useDefaultBrowser, options) => {
+  if (useDefaultBrowser) {
+    window.openExternal(url);
+  } else {
+    window.openInternal(url, options);
+  }
+}
 
 window.getKeyOnCurPlatform = (key) => {
   if (key.toLowerCase() == "ctrl" || key.toLowerCase() == "control" || key.toLowerCase() == "cmd" || key.toLowerCase() == "command") {
