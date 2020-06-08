@@ -6,6 +6,24 @@
         "es": "Analíticos"
       }
     },
+    "and set Chrome as your default browser": {
+      "languages": {
+        "en": "and set Chrome as your default browser",
+        "es": "y establezca Chrome como su navegador predeterminado"
+      }
+    },
+    "Automatically Checkout": {
+      "languages": {
+        "en": "Automatically Checkout",
+        "es": "Pago Automático"
+      }
+    },
+    "Automatically checkout using your favorited billing profile": {
+      "languages": {
+        "en": "Automatically checkout using your favorited billing profile",
+        "es": "Pago automático con tu perfil de facturación favorito"
+      }
+    },
     "Browser": {
       "languages": {
         "en": "Browser",
@@ -34,6 +52,12 @@
       "languages": {
         "en": "Filtered",
         "es": "Filtrado"
+      }
+    },
+    "here": {
+      "languages": {
+        "en": "here",
+        "es": "aquí"
       }
     },
     "Home": {
@@ -84,6 +108,18 @@
         "es": "Una Talla"
       }
     },
+    "Open in Default Browser": {
+      "languages": {
+        "en": "Open in Default Browser",
+        "es": "Abrir en el Navegador Predeterminado"
+      }
+    },
+    "Open websites using your computer's default browser": {
+      "languages": {
+        "en": "Open websites using your computer's default browser",
+        "es": "Abrir sitios web con el navegador predeterminado de tu ordenador"
+      }
+    },
     "Pay": {
       "languages": {
         "en": "Pay",
@@ -132,6 +168,12 @@
         "es": "Tareas"
       }
     },
+    "To automatically checkout using your default browser, download our Chrome extension": {
+      "languages": {
+        "en": "To automatically checkout using your default browser, download our Chrome extension",
+        "es": "Para pagar automáticamente con su navegador predeterminado, descargue nuestra extensión de Chrome"
+      }
+    },
     "This store is currently unsupported": {
       "languages": {
         "en": "This store is currently unsupported",
@@ -142,6 +184,12 @@
       "languages": {
         "en": "Try using other keywords",
         "es": "Intenta usar otras palabras clave"
+      }
+    },
+    "Use Favorited Stores Only": {
+      "languages": {
+        "en": "Use Favorited Stores Only",
+        "es": "Usar Solo Tiendas Favoritas"
       }
     },
     "You must select a supported store to add an item to your shopping bag": {
