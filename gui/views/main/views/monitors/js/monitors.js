@@ -4,9 +4,14 @@
 // to access a variable from parent
 // window.parent.out_var
 
+// imports
+const monitorsAPI = window.parent.require('../../../utils/api/monitors.js');
+
+// variables
 window.products = [];
-window.categories = window.parent.require("../../../utils/json/categories.json").categories;
 let displayedProducts = [];
+let visualizedProducts = [];
+window.categories = window.parent.require("../../../utils/json/categories.json").categories;
 
 const categoryImages = {
   "Shopify": "../../../../images/stores/Shopify.png",
@@ -16,12 +21,31 @@ const categoryImages = {
   "adidas-white": "../../../../images/stores/adidas-white.png"
 };
 
+window.modals = {
+  'configure': {
+    visible: false
+  }
+}
+
+window.openModal = (modalName) => {
+  window.modals[modalName].visible = true;
+}
+
+window.modalLoadedCallback = (modalName) => {
+  if (modalName == 'configure') {
+    window.parent.memory.syncObject(monitorsApp.configureModal, window.frames['configure-modal'].modalOptions);
+  }
+}
+
 const monitorsApp = new Vue({
   el: "#Rewrite___Monitors",
   data: {
     companionSettings: window.parent.companionSettings,
-    shouldOpenExternal: false,
-    products: displayedProducts,
+    modals: window.modals,
+    configureModal: {},
+    productsInitiallySetup: false,
+    products: visualizedProducts,
+    productPage: 0,
     categories: window.categories,
     searchTerm: "",
     shoppingBags: shoppingBags,
@@ -38,11 +62,30 @@ const monitorsApp = new Vue({
     openInternal: window.parent.openInternal,
     openExternal: window.parent.openExternal,
     getKeyOnCurPlatform: window.parent.getKeyOnCurPlatform,
+    openModal: window.openModal,
+    refreshVisualizedProducts: refreshVisualizedProducts,
     getTotalBagQuantity: getTotalBagQuantity,
     getTotalBagValue: getTotalBagValue,
     getBagVariantValue: getBagVariantValue,
     tryGenerateShoppingBag: tryGenerateShoppingBag,
     addVariantToShoppingBags: addVariantToShoppingBags,
+    shouldDisplayModals: function() {
+      for (var modal in modals) {
+        if (modals[modal].visible) return true;
+      }
+      return false;
+    },
+    getMaxProductPage: function() {
+      return Math.ceil(displayedProducts.length/16);
+    },
+    validateProductPage: function() {
+      if (this.productPage >= this.getMaxProductPage()) {
+        this.productPage = this.getMaxProductPage() - 1;
+        if (this.productPage < 0) {
+          this.productPage = 0;
+        }
+      }
+    },
     handleVariantClick: function(e, product, variant) {
       if (e.ctrlKey || e.metaKey) addVariantToShoppingBags(product, variant, 1)
       else if (e.altKey) addVariantToShoppingBags(product, variant, -1)
@@ -194,6 +237,20 @@ window.updateProduct = (product) => {
   }
 };
 
+const MAX_PRODUCTS_PER_PAGE = 16;
+
+function refreshVisualizedProducts() {
+  while(visualizedProducts.length > 0) {
+    visualizedProducts.pop();
+  }
+  for (var i = 0; i < displayedProducts.length; i++) {
+    if (Math.ceil((i+1)/MAX_PRODUCTS_PER_PAGE-1) == monitorsApp.productPage) {
+      visualizedProducts.push(displayedProducts[i]);
+    }
+  }
+  monitorsApp.validateProductPage();
+}
+
 function refreshDisplayedProducts() {
   while (displayedProducts.length > 0) {
     displayedProducts.pop();
@@ -202,11 +259,12 @@ function refreshDisplayedProducts() {
   for (var product of window.products) {
     if (tryDisplayProduct(product, true)) {
       displayedCount++;
-      if (displayedCount >= 75) {
+      if (displayedCount >= 16 * 25) {
         break;
       }
     }
   }
+  refreshVisualizedProducts();
 }
 
 function updateDisplayedProduct(product, displayedProductIndex = -1, productIndex = -1) {
@@ -235,6 +293,7 @@ function updateDisplayedProduct(product, displayedProductIndex = -1, productInde
 
 function addDisplayProduct(product, addToEnd = false, productIndex = -1) {
   if (productIndex != -1) {
+    let displayedProductIndex = -1;
     for (var i = 0; i < displayedProducts.length; i++) {
       if (displayedProducts[i].URL == product.URL) {
         displayedProductIndex = i;
@@ -246,18 +305,15 @@ function addDisplayProduct(product, addToEnd = false, productIndex = -1) {
       return true;
     }
   }
+  if (displayedProducts.length + 1 >= 16 * 25) {
+    return false;
+  }
   if (!addToEnd) {
     displayedProducts.unshift(product);
   } else {
     displayedProducts.push(product);
   }
-  if (displayedProducts.length > 75) {
-    if (!addToEnd) {
-      displayedProducts.pop(product);
-    } else {
-      displayedProducts.shift(product);
-    }
-  }
+  refreshVisualizedProducts();
   return true;
 }
 
@@ -293,7 +349,7 @@ window.addNewProduct = (product) => {
 };
 
 window.addTestProduct = () => {
-  const testProduct = {
+  var testProduct = {
     "Store": "feature.com",
     "StoreName": "Feature",
     "Name": "Common Projects Soft Leather Toiletry Bag - Warm Grey [TEST - " + window.products.length + "]",
@@ -481,7 +537,7 @@ window.addTestProduct = () => {
       "Wallets"
     ],
     "OverrideURL": "",
-    "MD5": "389430269c82918eced7a4fb04c01046"
+    "MD5": "389430269c82918eced7a4fb04c01046_" + String(window.products.length)
   };
   addNewProduct(testProduct);
 };
@@ -491,7 +547,7 @@ window.sortStores = (categoryIndex = -1) => {
     for (var category of window.categories) {
       let previousActiveStoreName = category.activeIndex != -1 ? category.stores[category.activeIndex].name : undefined; // remember previous active store name to update activeIndex after sort
       // quick sort alphabetically first
-      category.stores.quick_sort(function(a,b) { return a.name < b.name }); // descending
+      category.stores.quick_sort(function(a,b) { return a.name.toLowerCase() < b.name.toLowerCase() }); // descending
       // then put favorites on top
       let favoritedStores = [];
       let unfavoritedStores = [];
@@ -527,7 +583,7 @@ window.sortStores = (categoryIndex = -1) => {
   } else {
     let previousActiveStoreName = window.categories[categoryIndex].activeIndex != -1 ? window.categories[categoryIndex].stores[window.categories[categoryIndex].activeIndex].name : undefined; // remember previous active store name to update activeIndex after sort
     // quick sort alphabetically first
-    window.categories[categoryIndex].stores.quick_sort(function(a,b) { return a.name < b.name }); // descending
+    window.categories[categoryIndex].stores.quick_sort(function(a,b) { return a.name.toLowerCase() < b.name.toLowerCase() }); // descending
     // then put favorites on top
     let favoritedStores = [];
     let unfavoritedStores = [];
@@ -561,9 +617,68 @@ window.sortStores = (categoryIndex = -1) => {
   }
 };
 
+// you can either stringify products here or loop through each product, making an additional formatted key, then set unformatted key to undefined (whichever is faster - i have yet to report back here so the stringify method seems to do just fine)
+function formatProducts(products) {
+  let rawProducts = JSON.stringify(products);
+  rawProducts = rawProducts
+  .replace(new RegExp('"store"', 'g'), '"Store"')
+  .replace(new RegExp('"storename"', 'g'), '"StoreName"')
+  .replace(new RegExp('"name"', 'g'), '"Name"')
+  .replace(new RegExp('"url"', 'g'), '"URL"')
+  .replace(new RegExp('"price"', 'g'), '"Price"')
+  .replace(new RegExp('"imageurl"', 'g'), '"ImageURL"')
+  .replace(new RegExp('"description"', 'g'), '"Description"')
+  .replace(new RegExp('"available"', 'g'), '"Available"')
+  .replace(new RegExp('"variants"', 'g'), '"Variants"')
+  .replace(new RegExp('"id"', 'g'), '"ID"')
+  .replace(new RegExp('"quantity"', 'g'), '"Quantity"')
+  .replace(new RegExp('"identifier"', 'g'), '"Identifier"')
+  .replace(new RegExp('"launchdate"', 'g'), '"LaunchDate"')
+  .replace(new RegExp('"collection"', 'g'), '"Collection"')
+  .replace(new RegExp('"keywords"', 'g'), '"Keywords"')
+  .replace(new RegExp('"tags"', 'g'), '"Tags"')
+  .replace(new RegExp('"overrideurl"', 'g'), '"OverrideURL"')
+  .replace(new RegExp('"md5"', 'g'), '"isDisplayingMoreInfo": false, "Timestamp":' + new Date().getTime() +  ', "MD5"')
+  .replace(new RegExp('Default Title', 'g'), 'One Size');
+  return JSON.parse(rawProducts);
+}
+
+async function initialProductsSetup() {
+  let fetchedProducts = await monitorsAPI.fetchProducts(categories);
+  if (fetchedProducts) {
+    fetchedProducts = formatProducts(fetchedProducts);
+    window.parent.memory.syncObjects(window.products, fetchedProducts);
+    refreshDisplayedProducts();
+    monitorsApp.productsInitiallySetup = true;
+  }
+}
+
+let searchIntv;
+let previousSearchTerm;
 $(".Search_Bar_Class").on('change keydown paste input', function() {
-  refreshDisplayedProducts();
+  if (previousSearchTerm && previousSearchTerm.length > 0 && monitorsApp.searchTerm.length == 0) {
+    previousSearchTerm = monitorsApp.searchTerm;
+    searchForProducts();
+  }
+  if (!searchIntv) {
+    searchIntv = setInterval(function() {
+      if (monitorsApp.searchTerm != previousSearchTerm) {
+        previousSearchTerm = monitorsApp.searchTerm;
+      } else {
+        previousSearchTerm = monitorsApp.searchTerm;
+        searchForProducts();
+      }
+    }, 333);
+  }
 });
+
+function searchForProducts() {
+  refreshDisplayedProducts();
+  // monitorsApp.validateProductPage();
+  monitorsApp.productPage = 0;
+  try { clearInterval(searchIntv); } catch(err) { console.log(err); }
+  searchIntv = null;
+}
 
 const shoppingBagArea = document.querySelector('.Shopping_Bag_Area_Class');
 const shoppingBagIcon = document.querySelector('.Shopping_Bag_g_Class');
@@ -576,3 +691,9 @@ document.body.addEventListener('click', function (event) {
 });
 
 window.sortStores();
+window.onload = refreshVisualizedProducts;
+initialProductsSetup();
+
+// for (var i = 0; i < 100; i++) {
+//   window.addTestProduct();
+// }

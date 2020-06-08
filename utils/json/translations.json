@@ -18,6 +18,18 @@
         "es": "Colección"
       }
     },
+    "Configure Monitors": {
+      "languages": {
+        "en": "Configure Monitors",
+        "es": "Configurar Observadores"
+      }
+    },
+    "Could not find any products": {
+      "languages": {
+        "en": "Could not find any products",
+        "es": "No se encontraron productos"
+      }
+    },
     "Filtered": {
       "languages": {
         "en": "Filtered",
@@ -78,10 +90,22 @@
         "es": "Pagar"
       }
     },
+    "Please wait while we search for products...": {
+      "languages": {
+        "en": "Please wait while we search for products...",
+        "es": "Por favor, espere mientras buscamos productos..."
+      }
+    },
+    "Preferences": {
+      "languages": {
+        "en": "Preferences",
+        "es": "Preferencias"
+      }
+    },
     "Press": {
       "languages": {
         "en": "Press",
-        "es": "Pulse"
+        "es": "Pulsa"
       }
     },
     "Search": {
@@ -112,6 +136,12 @@
       "languages": {
         "en": "This store is currently unsupported",
         "es": "Esta tienda no es compatible actualmente"
+      }
+    },
+    "Try using other keywords": {
+      "languages": {
+        "en": "Try using other keywords",
+        "es": "Intenta usar otras palabras clave"
       }
     },
     "You must select a supported store to add an item to your shopping bag": {

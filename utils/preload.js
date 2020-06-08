@@ -554,8 +554,8 @@ function tryInjectTopBar() {
 
         /* Scrollbar styles */
         ::-webkit-scrollbar {
-          width: 12px;
-          height: 12px;
+          width: 8px;
+          height: 8px;
         }
 
         ::-webkit-scrollbar-track {
@@ -567,7 +567,9 @@ function tryInjectTopBar() {
           background: rgba(251,247,241,1);
         }
 
-        /* <rect fill="rgba(243,224,185,1)" id="Monitors_Scroll_Bar" rx="4" ry="4" x="0" y="0" width="150" height="8"> */
+        ::-webkit-scrollbar-corner {
+          background: rgba(0,0,0,0);
+        }
 
         ::-webkit-scrollbar-thumb {
           background: rgba(243,224,185,1);

@@ -18,7 +18,7 @@ let loadingWindow
 let mainWindow;
 
 // imports
-const auth = require('./utils/auth');
+const authAPI = require('./utils/api/auth');
 
 // consts
 const ICON_PATH = process.platform == "win32" ? path.resolve(__dirname, './build-assets/icons/win-icon.ico') : undefined; // not needed for mac
@@ -35,14 +35,14 @@ var loadingFinished = false;
 
 // functions
 async function tryStartCompanion() {
-  // await auth.logout(); // force logout
-  curLogin = await auth.getCurLogin();
+  // await authAPI.logout(); // force logout
+  curLogin = await authAPI.getCurLogin();
   curLogin.firstLogin = false;
   if (process.env.NODE_ENV === 'development') console.log(curLogin);
-  if (await auth.isLoginValid(curLogin)) {
+  if (await authAPI.isLoginValid(curLogin)) {
     startMain();
   } else {
-    auth.logout(); // no need for await since it will finish while login is loading anyway
+    authAPI.logout(); // no need for await since it will finish while login is loading anyway
     startLogin();
   }
 }
@@ -114,7 +114,7 @@ function startMain() {
 
   mainWindow.webContents.on('did-finish-load', async function() {
     loadingFinished = true;
-    try { mainWindow.webContents.send('user-transfer', curLogin); } catch(err) { if (process.env.NODE_ENV === 'development') console.log(err); await auth.logout(); closeApp(); }
+    try { mainWindow.webContents.send('user-transfer', curLogin); } catch(err) { if (process.env.NODE_ENV === 'development') console.log(err); await authAPI.logout(); closeApp(); }
     try { loadingWindow.close(); } catch(err) { if (process.env.NODE_ENV === 'development') console.log(err); } // hide loading screen
     try { mainWindow.show(); } catch(err) { if (process.env.NODE_ENV === 'development') console.log(err); } // show main application
   });
@@ -312,7 +312,7 @@ electron.ipcMain.on('resize', (e, coords) => {
 electron.ipcMain.on('loginFinished', async (event, code) => {
   curLogin.code = code;
   curLogin.firstLogin = true;
-  curLogin = await auth.isLoginValid(curLogin);
+  curLogin = await authAPI.isLoginValid(curLogin);
   if (curLogin) {
     if (process.env.NODE_ENV === 'development') console.log(curLogin);
     try { startMain(); loginWindow.close(); } catch(err) { if (process.env.NODE_ENV === 'development') console.log(err); }

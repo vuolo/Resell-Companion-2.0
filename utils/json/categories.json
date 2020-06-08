@@ -2242,7 +2242,7 @@
           ],
           "favorited": true,
           "region": "United-States-of-America",
-          "taskLaunchable": true
+          "taskLaunchable": null
         },
         {
           "name": "Japan",
@@ -2252,7 +2252,7 @@
           ],
           "favorited": true,
           "region": "Japan",
-          "taskLaunchable": true
+          "taskLaunchable": null
         },
         {
           "name": "China",
@@ -2262,7 +2262,7 @@
           ],
           "favorited": true,
           "region": "China",
-          "taskLaunchable": true
+          "taskLaunchable": null
         },
         {
           "name": "Singapore",
@@ -2272,7 +2272,7 @@
           ],
           "favorited": true,
           "region": "Singapore",
-          "taskLaunchable": true
+          "taskLaunchable": null
         },
         {
           "name": "Canada",
@@ -2282,7 +2282,7 @@
           ],
           "favorited": true,
           "region": "Canada",
-          "taskLaunchable": true
+          "taskLaunchable": null
         },
         {
           "name": "Germany",
@@ -2292,7 +2292,7 @@
           ],
           "favorited": true,
           "region": "Germany",
-          "taskLaunchable": true
+          "taskLaunchable": null
         },
         {
           "name": "Russia",
@@ -2302,7 +2302,7 @@
           ],
           "favorited": true,
           "region": "Russia",
-          "taskLaunchable": true
+          "taskLaunchable": null
         },
         {
           "name": "Italy",
@@ -2312,7 +2312,7 @@
           ],
           "favorited": true,
           "region": "Italy",
-          "taskLaunchable": true
+          "taskLaunchable": null
         }
       ]
     },
@@ -2329,7 +2329,7 @@
           ],
           "favorited": true,
           "region": "United-States-of-America",
-          "taskLaunchable": true
+          "taskLaunchable": null
         },
         {
           "name": "United Kingdom",
@@ -2339,7 +2339,7 @@
           ],
           "favorited": true,
           "region": "United-Kingdom",
-          "taskLaunchable": true
+          "taskLaunchable": null
         },
         {
           "name": "Canada",
@@ -2349,7 +2349,7 @@
           ],
           "favorited": true,
           "region": "Canada",
-          "taskLaunchable": true
+          "taskLaunchable": null
         },
         {
           "name": "Australia",
@@ -2359,7 +2359,7 @@
           ],
           "favorited": true,
           "region": "Australia",
-          "taskLaunchable": true
+          "taskLaunchable": null
         }
       ]
     },
@@ -2415,7 +2415,7 @@
           ],
           "favorited": true,
           "region": "Global",
-          "taskLaunchable": true
+          "taskLaunchable": null
         },
         {
           "name": "solebox",
@@ -2425,7 +2425,7 @@
           ],
           "favorited": true,
           "region": "Europe",
-          "taskLaunchable": true
+          "taskLaunchable": null
         },
         {
           "name": "Mesh",
@@ -2438,7 +2438,7 @@
           ],
           "favorited": true,
           "region": "Europe",
-          "taskLaunchable": true
+          "taskLaunchable": null
         },
         {
           "name": "END.",
@@ -2448,7 +2448,7 @@
           ],
           "favorited": true,
           "region": "United-States-of-America",
-          "taskLaunchable": true
+          "taskLaunchable": null
         },
         {
           "name": "Footsites",
@@ -2461,7 +2461,7 @@
           ],
           "favorited": true,
           "region": "United-States-of-America",
-          "taskLaunchable": true
+          "taskLaunchable": null
         },
         {
           "name": "Nike Desktop",
@@ -2471,7 +2471,7 @@
           ],
           "favorited": true,
           "region": "Global",
-          "taskLaunchable": true
+          "taskLaunchable": null
         },
         {
           "name": "DSM (E-Shop)",
@@ -2479,7 +2479,7 @@
           "urls": [],
           "favorited": true,
           "region": "Global",
-          "taskLaunchable": true
+          "taskLaunchable": null
         },
         {
           "name": "Offspring",
@@ -2489,7 +2489,7 @@
           ],
           "favorited": true,
           "region": "United-Kingdom",
-          "taskLaunchable": true
+          "taskLaunchable": null
         }
       ]
     }

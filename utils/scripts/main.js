@@ -1,15 +1,15 @@
 // imports
-const auth = require('../../../utils/auth.js');
+const authAPI = require('../../../utils/api/auth.js');
 window.memory = require('../../../utils/memory.js');
 window.electron = require('electron');
 window.path = require('path');
 
 // variables
 window.companionSettings = {
-  language: "en",
-  // language: "es",
-  theme: "light",
-  // theme: "dark",
+  // language: "en",
+  language: "es",
+  // theme: "light",
+  theme: "dark",
 };
 
 const USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.106 Safari/537.36';
@@ -87,17 +87,14 @@ window.getKeyOnCurPlatform = (key) => {
   return key;
 };
 
-window.curLogin = auth.getLoginTemplate();
+window.curLogin = authAPI.getLoginTemplate();
 electron.ipcRenderer.on('user-transfer', function(event, inLogin) {
   memory.syncObject(window.curLogin, inLogin);
   // login ready to be used
 });
 
-window.formatTimestamp = (timestamp) => {
-  if (!timestamp) {
-    return '';
-  }
-  curDate = new Date(timestamp),
+window.formatTimestamp = (timestamp) => { // TODO: add option to use 12/24 hour and also translate...
+  curDate = new Date(timestamp || undefined),
   weekday = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'),
   dayOfWeek = weekday[curDate.getDay()],
   domEnder = function() { var a = curDate; if (/1/.test(parseInt((a + "").charAt(0)))) return "th"; a = parseInt((a + "").charAt(1)); return 1 == curDate.getDate() ? "st" : 2 == curDate.getDate() ? "nd" : 3 == curDate.getDate() ? "rd" : "th" }(),
@@ -143,9 +140,9 @@ window.calculateUnderlineWidth = (maxWidth, text, incomingFontSize, incomingFont
   return Math.floor(textWidth * multiplier);
 };
 
-window.calculateUnderlineLeftOffset = (maxWidth, text, incomingFontSize, incomingFontSizeType, incomingFontStyle, incomingFont, multiplier = 0.10) => {
+window.calculateUnderlineLeftOffset = (maxWidth, text, incomingFontSize, incomingFontSizeType, incomingFontStyle, incomingFont, isCentered = true, multiplier = 0.10) => {
   let textWidth = getTextWidth(text, `${incomingFontStyle} ${confineTextWidth(maxWidth, text, incomingFontSize, incomingFontSizeType, incomingFontStyle, incomingFont)} ${incomingFont}`);
-  return Math.floor(((maxWidth - textWidth) / 2) + (textWidth * multiplier));
+  return Math.floor((isCentered ? ((maxWidth - textWidth) / 2) : 0) + (textWidth * multiplier));
 };
 
 window.numberWithCommas = (x) => {

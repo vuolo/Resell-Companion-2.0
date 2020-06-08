@@ -47,7 +47,7 @@ const borderApp = new Vue({
     switchToPage: function(pageIndex) {
       this.activePageIndex = pageIndex;
       try { contentApp.activePageIndex = pageIndex; } catch(err) { console.log(err); }
-      curAwaitState = pages[this.activePageIndex];
+      curAwaitState = pages[this.activePageIndex].state;
     }
   }
 });
