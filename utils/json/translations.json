@@ -1,5 +1,11 @@
 {
   "translations": {
+    "Actions": {
+      "languages": {
+        "en": "Actions",
+        "es": "Acciones"
+      }
+    },
     "Analytics": {
       "languages": {
         "en": "Analytics",
@@ -54,6 +60,12 @@
         "es": "Filtrado"
       }
     },
+    "Filters": {
+      "languages": {
+        "en": "Filters",
+        "es": "Filtros"
+      }
+    },
     "here": {
       "languages": {
         "en": "here",
@@ -70,6 +82,18 @@
       "languages": {
         "en": "Initial Pickup",
         "es": "Recogida Inicial"
+      }
+    },
+    "Keywords": {
+      "languages": {
+        "en": "Keywords",
+        "es": "Palabras Clave"
+      }
+    },
+    "Keywords (ex: +yeezy, -380)": {
+      "languages": {
+        "en": "Keywords (ex: +yeezy, -380)",
+        "es": "Palabras Clave (ej: +yeezy, -380)"
       }
     },
     "Launch Date": {
@@ -94,6 +118,12 @@
       "languages": {
         "en": "Monitors",
         "es": "Observadores"
+      }
+    },
+    "No keywords specified": {
+      "languages": {
+        "en": "No keywords specified",
+        "es": "No se especifican palabras clave"
       }
     },
     "on a product's size to add it to your shopping bag": {

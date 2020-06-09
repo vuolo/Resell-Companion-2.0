@@ -12,6 +12,13 @@
 	position: absolute;
 }
 
+.resizable-switch-area {
+	position: absolute;
+	width: 415px;
+	height: 25px;
+	line-height: 26px;
+}
+
 .center-contents {
 	display: flex;
   justify-content: center;
