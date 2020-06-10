@@ -12,10 +12,22 @@
         "es": "Analíticos"
       }
     },
+    "April": {
+      "languages": {
+        "en": "April",
+        "es": "Abril"
+      }
+    },
     "and set Chrome as your default browser": {
       "languages": {
         "en": "and set Chrome as your default browser",
         "es": "y establezca Chrome como su navegador predeterminado"
+      }
+    },
+    "August": {
+      "languages": {
+        "en": "August",
+        "es": "Agosto"
       }
     },
     "Automatically Checkout": {
@@ -54,6 +66,18 @@
         "es": "No se encontraron productos"
       }
     },
+    "December": {
+      "languages": {
+        "en": "December",
+        "es": "Diciembre"
+      }
+    },
+    "February": {
+      "languages": {
+        "en": "February",
+        "es": "Febrero"
+      }
+    },
     "Filtered": {
       "languages": {
         "en": "Filtered",
@@ -64,6 +88,18 @@
       "languages": {
         "en": "Filters",
         "es": "Filtros"
+      }
+    },
+    "Friday": {
+      "languages": {
+        "en": "Friday",
+        "es": "Viernes"
+      }
+    },
+    "Fri": {
+      "languages": {
+        "en": "Fri",
+        "es": "Vie"
       }
     },
     "here": {
@@ -82,6 +118,24 @@
       "languages": {
         "en": "Initial Pickup",
         "es": "Recogida Inicial"
+      }
+    },
+    "January": {
+      "languages": {
+        "en": "January",
+        "es": "Enero"
+      }
+    },
+    "July": {
+      "languages": {
+        "en": "July",
+        "es": "Julio"
+      }
+    },
+    "June": {
+      "languages": {
+        "en": "June",
+        "es": "Junio"
       }
     },
     "Keywords": {
@@ -108,10 +162,34 @@
         "es": "Clic Izquierdo"
       }
     },
+    "March": {
+      "languages": {
+        "en": "March",
+        "es": "Marzo"
+      }
+    },
+    "May": {
+      "languages": {
+        "en": "May",
+        "es": "Mayo"
+      }
+    },
     "Misc": {
       "languages": {
         "en": "Misc",
         "es": "Misc"
+      }
+    },
+    "Monday": {
+      "languages": {
+        "en": "Monday",
+        "es": "Lunes"
+      }
+    },
+    "Mon": {
+      "languages": {
+        "en": "Mon",
+        "es": "Lun"
       }
     },
     "Monitors": {
@@ -120,10 +198,28 @@
         "es": "Observadores"
       }
     },
+    "nd": {
+      "languages": {
+        "en": "nd",
+        "es": "do"
+      }
+    },
     "No keywords specified": {
       "languages": {
         "en": "No keywords specified",
         "es": "No se especifican palabras clave"
+      }
+    },
+    "November": {
+      "languages": {
+        "en": "November",
+        "es": "Noviembre"
+      }
+    },
+    "October": {
+      "languages": {
+        "en": "October",
+        "es": "Octubre"
       }
     },
     "on a product's size to add it to your shopping bag": {
@@ -174,10 +270,34 @@
         "es": "Pulsa"
       }
     },
+    "rd": {
+      "languages": {
+        "en": "rd",
+        "es": "ro"
+      }
+    },
+    "Saturday": {
+      "languages": {
+        "en": "Saturday",
+        "es": "Sábado"
+      }
+    },
+    "Sat": {
+      "languages": {
+        "en": "Sat",
+        "es": "Sáb"
+      }
+    },
     "Search": {
       "languages": {
         "en": "Search",
         "es": "Buscar"
+      }
+    },
+    "September": {
+      "languages": {
+        "en": "September",
+        "es": "Septiembre"
       }
     },
     "Shopping Bag": {
@@ -190,6 +310,24 @@
       "languages": {
         "en": "Spoof",
         "es": "Bromear"
+      }
+    },
+    "st": {
+      "languages": {
+        "en": "st",
+        "es": ""
+      }
+    },
+    "Sunday": {
+      "languages": {
+        "en": "Sunday",
+        "es": "Domingo"
+      }
+    },
+    "Sun": {
+      "languages": {
+        "en": "Sun",
+        "es": "Dom"
       }
     },
     "Tasks": {
@@ -210,16 +348,52 @@
         "es": "Esta tienda no es compatible actualmente"
       }
     },
+    "Thursday": {
+      "languages": {
+        "en": "Thursday",
+        "es": "Jueves"
+      }
+    },
+    "Thu": {
+      "languages": {
+        "en": "Thu",
+        "es": "Jue"
+      }
+    },
     "Try using other keywords": {
       "languages": {
         "en": "Try using other keywords",
         "es": "Intenta usar otras palabras clave"
       }
     },
+    "Tuesday": {
+      "languages": {
+        "en": "Tuesday",
+        "es": "Martes"
+      }
+    },
+    "Tue": {
+      "languages": {
+        "en": "Tue",
+        "es": "Mar"
+      }
+    },
     "Use Favorited Stores Only": {
       "languages": {
         "en": "Use Favorited Stores Only",
         "es": "Usar Solo Tiendas Favoritas"
+      }
+    },
+    "Wednesday": {
+      "languages": {
+        "en": "Wednesday",
+        "es": "Miércoles"
+      }
+    },
+    "Wed": {
+      "languages": {
+        "en": "Wed",
+        "es": "Mié"
       }
     },
     "You must select a supported store to add an item to your shopping bag": {

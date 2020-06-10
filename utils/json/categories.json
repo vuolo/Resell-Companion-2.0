@@ -363,7 +363,7 @@
           ],
           "checkpoint_enabled": false,
           "password_enabled": false,
-          "favorited": false,
+          "favorited": true,
           "region": "United-Arab-Emirates",
           "taskLaunchable": true
         },
@@ -375,7 +375,7 @@
           ],
           "checkpoint_enabled": false,
           "password_enabled": false,
-          "favorited": false,
+          "favorited": true,
           "region": "Global",
           "taskLaunchable": true
         },
