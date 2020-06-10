@@ -198,6 +198,14 @@
         "es": "Observadores"
       }
     },
+    "N/A": {
+      "languages": {
+        "en": "N/A",
+        "es": "N/A",
+        "fr": "N/A",
+        "de": "N/V"
+      }
+    },
     "nd": {
       "languages": {
         "en": "nd",
@@ -376,6 +384,12 @@
       "languages": {
         "en": "Tue",
         "es": "Mar"
+      }
+    },
+    "Unknown Product": {
+      "languages": {
+        "en": "Unknown Product",
+        "es": "Producto Desconocido"
       }
     },
     "Use Favorited Stores Only": {

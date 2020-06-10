@@ -41,7 +41,7 @@ const borderApp = new Vue({
     appVersion: appVersion
   },
   methods: {
-    confineTextWidth: confineTextWidth,
+    confineTextWidth: window.confineTextWidth,
     tryTranslate: window.tryTranslate,
     getThemeColor: window.getThemeColor,
     switchToPage: function(pageIndex) {

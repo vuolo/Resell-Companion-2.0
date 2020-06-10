@@ -5,6 +5,7 @@ const contentApp = new Vue({
     activePageIndex: window.activePageIndex
   },
   methods: {
-    getThemeColor: window.getThemeColor
+    getThemeColor: window.getThemeColor,
+    tryTranslate: window.tryTranslate
   }
 });
