@@ -3,6 +3,7 @@ const authAPI = require('../../../utils/api/auth.js');
 window.memory = require('../../../utils/memory.js');
 window.electron = require('electron');
 window.path = require('path');
+window.translate = window.parent.require('translate');
 
 // variables
 window.companionSettings = {
@@ -10,6 +11,11 @@ window.companionSettings = {
   language: "es",
   // theme: "light",
   theme: "dark"
+};
+
+window.parent.setLanguage = (language) => {
+  window.companionSettings.language = language;
+  window.frames["home-frame"].tryTranslateAlertMessages();
 };
 
 const USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.106 Safari/537.36';

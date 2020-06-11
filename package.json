@@ -21,7 +21,8 @@
     "nedb": "^1.8.0",
     "open": "^7.0.4",
     "pusher-js": "^6.0.3",
-    "request-promise": "^4.2.5"
+    "request-promise": "^4.2.5",
+    "translate": "^1.1.2"
   },
   "devDependencies": {
     "electron": "^9.0.2"
