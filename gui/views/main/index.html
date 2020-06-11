@@ -103,10 +103,10 @@
   <script src="./js/border.js" type="text/javascript"></script>
 
   <div id="pageContent" v-bind:style="{ backgroundColor: getThemeColor('rgba(251,247,241,1)') }">
+    <!-- ############################ LOAD HOME PAGE ############################ -->
+    <iframe name="home-frame" class="pageFrame" style="display: list-item;" v-bind:style="{ visibility: pages[activePageIndex].name == 'Home' ? 'visible' : 'hidden' }" src="./pages/home/home.html" v-bind:width="pages[activePageIndex].name == 'Home' ? 1275 : 0" v-bind:height="pages[activePageIndex].name == 'Home' ? 795 : 0" frameborder="0"></iframe>
     <!-- ############################ LOAD MONITORS PAGE ############################ -->
     <iframe name="monitors-frame" class="pageFrame" v-show="pages[activePageIndex].name == 'Monitors'" src="./pages/monitors/monitors.html" width="1275" height="795" frameborder="0"></iframe>
-    <!-- ############################ LOAD HOME PAGE ############################ -->
-    <iframe name="home-frame" class="pageFrame" v-show="pages[activePageIndex].name == 'Home'" src="./pages/home/home.html" width="1275" height="795" frameborder="0"></iframe>
   </div>
 
   <script src="./js/page-content.js" type="text/javascript"></script>

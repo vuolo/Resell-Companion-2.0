@@ -33,7 +33,7 @@ window.DEFAULT_OPEN_INTERNAL_OPTIONS = {
 const appVersion = electron.remote.app.getVersion();
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
-const sleep = (ms) => {
+window.sleep = (ms) => {
   return new Promise(resolve => setTimeout(resolve, ms));
 };
 

@@ -39,11 +39,16 @@ async function tryStartCompanion() {
   curLogin = await authAPI.getCurLogin();
   curLogin.firstLogin = false;
   if (process.env.NODE_ENV === 'development') console.log(curLogin);
-  if (await authAPI.isLoginValid(curLogin)) {
-    startMain();
-  } else {
-    authAPI.logout(); // no need for await since it will finish while login is loading anyway
-    startLogin();
+  try {
+    if (await authAPI.isLoginValid(curLogin)) {
+      startMain();
+    } else {
+      authAPI.logout(); // no need for await since it will finish while login is loading anyway
+      startLogin();
+    }
+  } catch(err) { // auth api connection errored / probably no internet connection or someone trying to break in
+    // console.log(err)
+    closeApplication();
   }
 }
 
@@ -114,7 +119,7 @@ function startMain() {
 
   mainWindow.webContents.on('did-finish-load', async function() {
     loadingFinished = true;
-    try { mainWindow.webContents.send('user-transfer', curLogin); } catch(err) { if (process.env.NODE_ENV === 'development') console.log(err); await authAPI.logout(); closeApp(); }
+    try { mainWindow.webContents.send('user-transfer', curLogin); } catch(err) { if (process.env.NODE_ENV === 'development') console.log(err); await authAPI.logout(); closeApplication(); }
     try { loadingWindow.close(); } catch(err) { if (process.env.NODE_ENV === 'development') console.log(err); } // hide loading screen
     try { mainWindow.show(); } catch(err) { if (process.env.NODE_ENV === 'development') console.log(err); } // show main application
   });
@@ -173,7 +178,7 @@ function startLoading() {
     // when you should delete the corresponding element.
     loadingWindow = null;
     if (!loadingFinished) {
-      closeApp();
+      closeApplication();
     }
   });
 
@@ -367,7 +372,7 @@ app.setAppUserModelId(process.execPath);
 
 // close if app is already opened
 if (!app.requestSingleInstanceLock()) {
-  closeApp();
+  closeApplication();
 }
 // put main window on top if trying to open whilst already open
 app.on('second-instance', (event, commandLine, workingDirectory) => {
@@ -383,11 +388,11 @@ app.on('window-all-closed', function () {
   // On OS X it is common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q
   if (process.platform !== 'darwin') {
-    closeApp();
+    closeApplication();
   }
 });
 
-function closeApp() {
+function closeApplication() {
   try { app.quit(); } catch(err) { if (process.env.NODE_ENV === 'development') console.log(err); }
   try { app.exit(); } catch(err) { if (process.env.NODE_ENV === 'development') console.log(err); }
 }

@@ -54,6 +54,12 @@
         "es": "Colección"
       }
     },
+    "Color": {
+      "languages": {
+        "en": "Color",
+        "es": "Color"
+      }
+    },
     "Configure Monitors": {
       "languages": {
         "en": "Configure Monitors",
@@ -100,6 +106,12 @@
       "languages": {
         "en": "Fri",
         "es": "Vie"
+      }
+    },
+    "Guides": {
+      "languages": {
+        "en": "Guides",
+        "es": "Guías"
       }
     },
     "here": {
@@ -266,6 +278,18 @@
         "es": "Por favor, espere mientras buscamos productos..."
       }
     },
+    "Please wait while we search for products...": {
+      "languages": {
+        "en": "Please wait while we search for products...",
+        "es": "Por favor, espere mientras buscamos productos..."
+      }
+    },
+    "Possible": {
+      "languages": {
+        "en": "Possible",
+        "es": "Posible"
+      }
+    },
     "Preferences": {
       "languages": {
         "en": "Preferences",
@@ -282,6 +306,12 @@
       "languages": {
         "en": "rd",
         "es": "ro"
+      }
+    },
+    "Resell Prediction": {
+      "languages": {
+        "en": "Resell Prediction",
+        "es": "Predicción de Reventa"
       }
     },
     "Saturday": {
@@ -326,6 +356,18 @@
         "es": ""
       }
     },
+    "Stores": {
+      "languages": {
+        "en": "Stores",
+        "es": "Tiendas"
+      }
+    },
+    "Style Code": {
+      "languages": {
+        "en": "Style Code",
+        "es": "Código de Estilo"
+      }
+    },
     "Sunday": {
       "languages": {
         "en": "Sunday",
@@ -348,6 +390,12 @@
       "languages": {
         "en": "To automatically checkout using your default browser, download our Chrome extension",
         "es": "Para pagar automáticamente con su navegador predeterminado, descargue nuestra extensión de Chrome"
+      }
+    },
+    "There are not any important releases today": {
+      "languages": {
+        "en": "There are not any important releases today",
+        "es": "Hoy no hay lanzamientos importantes"
       }
     },
     "This store is currently unsupported": {
