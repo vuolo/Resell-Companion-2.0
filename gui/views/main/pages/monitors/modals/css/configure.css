@@ -1,0 +1,660 @@
+.mediaViewInfo {
+	--web-view-name: Rewrite – Monitors Modal;
+	--web-view-id: Rewrite___Monitors_Modal;
+	--web-enable-deep-linking: true;
+}
+:root {
+	--web-view-ids: Rewrite___Monitors_Modal;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	border: none;
+}
+
+body {
+	overflow: hidden;
+}
+
+.Rewrite___Monitors_Modal_Class {
+	position: absolute;
+	width: 1287px;
+	height: 795px;
+	/* background-color: rgba(255,255,255,1); */
+	overflow: hidden;
+	--web-view-name: Rewrite – Monitors Modal;
+	--web-view-id: Rewrite___Monitors_Modal;
+	--web-enable-deep-linking: true;
+}
+.Modal_Class {
+	position: absolute;
+	width: 1287px;
+	height: 795px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+.Modal_Shader {
+	position: absolute;
+	overflow: visible;
+	width: 1287px;
+	height: 795px;
+	left: 0px;
+	top: 0px;
+}
+.Modal_Rectangle {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 952px;
+	height: 608px;
+	left: 168px;
+	top: 96px;
+}
+.Done_Button_Class {
+	position: absolute;
+	width: 107px;
+	height: 36px;
+	left: 986px;
+	top: 639px;
+	overflow: visible;
+}
+.Done_Rectangle {
+	position: absolute;
+	overflow: visible;
+	width: 107px;
+	height: 36px;
+	left: 0px;
+	top: 0px;
+}
+.Done_Class {
+	position: absolute;
+  left: 0;
+  top: 8.592px;
+  overflow: visible;
+  width: 107px;
+  white-space: nowrap;
+  text-align: center;
+  font-family: SF Pro Text;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 15px;
+  color: rgba(91,182,187,1);
+}
+.Preferences_Area_Class {
+	position: absolute;
+	width: 303px;
+	height: 262px;
+	left: 731px;
+	top: 216px;
+	overflow: visible;
+}
+.Open_in_Default_Browser_Area_Class {
+	position: absolute;
+	width: 303px;
+	height: 68px;
+	left: 0px;
+	top: 99px;
+	overflow: visible;
+}
+.Decide_whether_you_want_to_ope_Class {
+	position: absolute;
+	left: 7px;
+	top: 36px;
+	overflow: visible;
+	width: 291px;
+	white-space: pre-wrap;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	color: rgba(29,29,29,1);
+}
+.Open_in_Default_Browser_Class {
+	position: absolute;
+	left: 60px;
+	top: 1px;
+	overflow: visible;
+	width: 415px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Switch_1_Class {
+	position: absolute;
+	width: 45px;
+	height: 25px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+.Switch_Rectangle_1 {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 45px;
+	height: 25px;
+	left: 0px;
+	top: 0px;
+}
+.Browser_Icon {
+	overflow: visible;
+	position: absolute;
+	width: 19.125px;
+	height: 17px;
+	left: 12.213px;
+	top: 4.125px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Switch_Circle_1 {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 20px;
+	height: 21px;
+	left: 22px;
+	top: 2px;
+}
+.Automatically_Checkout_Area_Class {
+	position: absolute;
+	width: 300px;
+	height: 68px;
+	left: 0px;
+	top: 194px;
+	overflow: visible;
+}
+.Automatically_checkout_using_y_Class {
+	position: absolute;
+	left: 34px;
+	top: 36px;
+	overflow: visible;
+	width: 233px;
+	white-space: pre-wrap;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	color: rgba(29,29,29,1);
+}
+.Automatically_Checkout_Class {
+	position: absolute;
+	left: 60px;
+	top: 1px;
+	overflow: visible;
+	width: 415px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Switch_1_dp_Class {
+	position: absolute;
+	width: 45px;
+	height: 25px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+.Switch_Rectangle_1_dq {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 45px;
+	height: 25px;
+	left: 0px;
+	top: 0px;
+}
+.Shopping_Bag_Icon {
+	overflow: visible;
+	position: absolute;
+	width: 14.875px;
+	height: 17px;
+	left: 14.099px;
+	top: 4.081px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Switch_Circle_1_ds {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 20px;
+	height: 21px;
+	left: 22px;
+	top: 2px;
+}
+.Green_Bar {
+	position: absolute;
+	overflow: visible;
+	width: 117px;
+	height: 3px;
+	left: 60px;
+	top: 42px;
+}
+.Preferences_Class {
+	position: absolute;
+	left: -58px;
+	top: 0px;
+	overflow: visible;
+	width: 415px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 40px;
+	color: rgba(29,29,29,1);
+}
+.Separator {
+	width: 413px;
+	height: 3px;
+	position: absolute;
+	overflow: visible;
+	transform: translate(0px, 0px) matrix(1,0,0,1,437.5,398.5) rotate(90deg);
+	transform-origin: center;
+}
+.Scroll_Bar {
+	filter: drop-shadow(0px 2px 6px rgba(0, 0, 0, 0.161));
+	width: 65px;
+	height: 8px;
+	position: absolute;
+	overflow: visible;
+	transform: translate(0px, 0px) matrix(1,0,0,1,583.5,434.5) rotate(90deg);
+	transform-origin: center;
+}
+.Filters_Area_Class {
+	position: absolute;
+	width: 415.929px;
+	height: 251.673px;
+	left: 195.345px;
+	top: 217px;
+	overflow: visible;
+}
+.Keywords_Edit_Fields_Class {
+	position: absolute;
+	width: 415.929px;
+	height: 94.549px;
+	left: 0px;
+	top: 157.124px;
+	overflow: visible;
+}
+.Filtered_Table_Class {
+	position: absolute;
+	width: 429px;
+	height: 219px;
+	left: 0px;
+	top: 25.974px;
+	overflow: auto;
+	overflow-x; hidden;
+}
+.Row_1_d_Class {
+	position: absolute;
+	width: 397.929px;
+	height: 50.575px;
+	left: 9px;
+	top: 6px;
+	overflow: visible;
+}
+.Row_1_Rectangle {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.149));
+	position: absolute;
+	overflow: visible;
+	width: 379.929;
+	height: 50.575px;
+	left: 0px;
+	top: 0px;
+}
+.Action_Row_1_Class {
+	position: absolute;
+	width: 129px;
+	height: 33px;
+	left: 246.655px;
+	top: 7.902px;
+	overflow: visible;
+}
+.Trash_1_Class {
+	position: absolute;
+	width: 32px;
+	height: 32px;
+	left: 96.999px;
+	top: 0px;
+	overflow: visible;
+}
+.Trash_Can_Circle_1 {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 32px;
+	height: 32px;
+	left: 0px;
+	top: 0px;
+}
+.Trash_Can_Icon_1 {
+	overflow: visible;
+  position: absolute;
+  width: 14.954px;
+  height: 17.091px;
+  left: 9px;
+  top: 7px;
+  transform: matrix(1,0,0,1,-.5,0.2);
+}
+.Pencil_1_Class {
+	position: absolute;
+	width: 32px;
+	height: 32px;
+	left: 54px;
+	top: 1px;
+	overflow: visible;
+}
+.Pencil_Circle_1 {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 32px;
+	height: 32px;
+	left: 0px;
+	top: 0px;
+}
+.Pencil_Icon_1 {
+	overflow: visible;
+	position: absolute;
+	width: 15.74px;
+	height: 15.682px;
+	left: 8px;
+	top: 7.81px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Switch_1_d_Class {
+	position: absolute;
+	width: 43px;
+	height: 25px;
+	left: 0px;
+	top: 4px;
+	overflow: visible;
+}
+.Switch_rectangle_1 {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 43px;
+	height: 25px;
+	left: 0px;
+	top: 0px;
+}
+.Switch_Circle_1_eb {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 19px;
+	height: 21px;
+	left: 21px;
+	top: 2px;
+}
+.Keywords_Row_1_Class {
+	position: absolute;
+	width: 0px;
+	height: 23px;
+	left: 22.655px;
+	top: 13.902px;
+	overflow: visible;
+}
+.Keywords_Row_1_Rectangle_2 {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 86px;
+	height: 41px;
+	left: 51px;
+	top: 0px;
+}
+.Keywords_Row_1_Rectangle_1 {
+	position: absolute;
+	overflow: visible;
+	width: 46px;
+	height: 23px;
+	left: 0px;
+	top: 0px;
+}
+.Keywords_Row_1_Text_Class {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	left: 0px;
+	top: 12px;
+	overflow: visible;
+	width: 46px;
+	height: 25px;
+	white-space: nowrap;
+	line-height: 25px;
+	margin-top: -12.5px;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	color: rgba(255,255,255,1);
+}
+.Keywords_Header_Class {
+	position: absolute;
+	width: 330.213px;
+	height: 24px;
+	left: 34.938px;
+	top: 0px;
+	overflow: visible;
+}
+.Actions_Class {
+	position: absolute;
+	left: 220px;
+	top: 0px;
+	overflow: visible;
+	width: 132px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -11px;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Keywords_Class {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+	width: 100px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -11px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Add_Button_Class {
+	position: absolute;
+	width: 107px;
+	height: 36px;
+	left: 300.655px;
+	top: 96px;
+	overflow: visible;
+}
+.Add_Rectangle {
+	position: absolute;
+	overflow: visible;
+	width: 107px;
+	height: 36px;
+	left: 0px;
+	top: 0px;
+}
+.Add_Class {
+	position: absolute;
+  left: 0;
+  top: 8.592px;
+  overflow: visible;
+  width: 107px;
+  white-space: nowrap;
+  text-align: center;
+  font-family: SF Pro Text;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 15px;
+  color: rgba(91,182,187,1);
+}
+.Keyword_Input_Area_Class {
+	position: absolute;
+	width: 279px;
+	height: 63px;
+	left: 8.655px;
+	top: 70px;
+	overflow: visible;
+}
+.Keyword_Input_Rectangle {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 279px;
+	height: 36px;
+	left: 0px;
+	top: 27px;
+}
+._chicken___apple___slices_Class {
+	position: absolute;
+	left: 15px;
+	top: 36px;
+	overflow: visible;
+	width: 195px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Keywords_ep_Class {
+	position: absolute;
+	left: 15px;
+	top: 0px;
+	overflow: visible;
+	width: 85px;
+	white-space: nowrap;
+	line-height: 28px;
+	margin-top: -5.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 17px;
+	color: rgba(29,29,29,1);
+}
+.Orange_Bar {
+	position: absolute;
+	overflow: visible;
+	width: 46px;
+	height: 3px;
+	left: 156.655px;
+	top: 42px;
+}
+.Filters_Class {
+	position: absolute;
+	left: 0;
+	top: 0px;
+	overflow: visible;
+	width: 415px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 40px;
+	color: rgba(29,29,29,1);
+}
+.Header_Class {
+	position: absolute;
+	width: 907.769px;
+	height: 49.572px;
+	left: 194.783px;
+	top: 110.552px;
+	overflow: visible;
+}
+.Browser_Close_Button {
+	overflow: visible;
+	position: absolute;
+	width: 21px;
+	height: 20px;
+	left: 886.769px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Green_Bar_eu {
+	position: absolute;
+	overflow: visible;
+	width: 117px;
+	height: 3px;
+	left: 25.217px;
+	top: 41px;
+}
+.Configure_Monitors_Class {
+	position: absolute;
+	left: 0px;
+	top: 1.572px;
+	overflow: visible;
+	width: 403px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -1px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: 900;
+	font-size: 40px;
+	color: rgba(29,29,29,1);
+}
+
+.Warning_Area_Class {
+	position: absolute;
+	width: 395.422px;
+	height: 63.74px;
+	left: -50px;
+	top: 289px;
+	overflow: visible;
+}
+.To_automatically_checkout_usin_Class {
+	position: absolute;
+	left: 74.422px;
+	top: 7.74px;
+	overflow: visible;
+	width: 322px;
+	white-space: pre-wrap;
+	line-height: 16px;
+	margin-top: -1px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	color: rgba(0,0,0,1);
+}
+.Warning_Icon {
+	overflow: visible;
+	position: absolute;
+	width: 63.739px;
+	height: 63.74px;
+	left: -0.001px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}

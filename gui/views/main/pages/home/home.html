@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Resell Companion — Home</title>
+
+	<link rel="stylesheet" type="text/css" href="../../../../css/style.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../css/fonts-alt-path.css"/>
+
+	<link rel="stylesheet" type="text/css" href="./css/home.css"/>
+
+	<script src="../../../../../utils/downloaded/vue.js" type="text/javascript"></script>
+	<script src="../../../../../utils/downloaded/jquery.js" type="text/javascript"></script>
+
+</head>
+<body>
+
+	<div id="Rewrite___Home" class="Rewrite___Home_Class" v-bind:style="{ backgroundColor: getThemeColor('rgba(251,247,241,1)') }">
+
+		<div v-show="curAlertMessageIndex != -1" class="Scrolling_Information_Banner_Class">
+			<svg class="Scrolling_Information_Rectangl">
+				<rect class="transition-colors" v-bind:fill="curAlertMessageIndex != -1 ? getMessageSeverityColor(alertMessages[curAlertMessageIndex].severityLevel) : getMessageSeverityColor('MEDIUM')" class="Scrolling_Information_Rectangl_Class" rx="0" ry="0" x="0" y="0" width="1287" height="31">
+				</rect>
+			</svg>
+			<div id="alertMessage" class="_Atencion__Las_tiendas_de_los__Class" v-bind:style="{ color: curAlertMessageIndex != -1 ? (alertMessages[curAlertMessageIndex].severityLevel == 'HIGH' ? '#efefef' : 'rgba(29,29,29,1)') : 'rgba(29,29,29,1)' }">
+				<span class="scrollable" style="left: 1210px; position: absolute;">{{curAlertMessageIndex != -1 ? alertMessages[curAlertMessageIndex].message : ''}}</span>
+			</div>
+			<svg class="Warning_Icon transition-colors" viewBox="2.571 1.928 21.294 21.294" v-bind:style="{ backgroundColor: curAlertMessageIndex != -1 ? getMessageSeverityColor(alertMessages[curAlertMessageIndex].severityLevel) : getMessageSeverityColor('MEDIUM') }">
+				<path v-bind:fill="curAlertMessageIndex != -1 ? (alertMessages[curAlertMessageIndex].severityLevel == 'HIGH' ? '#efefef' : 'rgba(29,29,29,1)') : 'rgba(29,29,29,1)'" class="Warning_Icon_Class" d="M 13.21767330169678 3.857257604598999 L 22.14079856872559 21.64157676696777 L 4.294530391693115 21.64157676696777 L 13.21769428253174 3.857258558273315 Z M 13.21767330169678 1.928033590316772 C 12.75872993469238 1.928033590316772 12.29978847503662 2.237502813339233 11.95159912109375 2.856483459472656 L 2.862699508666992 20.97114944458008 C 2.166362285614014 22.20911026000977 2.758724927902222 23.22198677062988 4.179098606109619 23.22198677062988 L 22.25625228881836 23.22198677062988 C 23.67654037475586 23.22198677062988 24.26902961730957 22.20911026000977 23.57256698608398 20.97114944458008 L 23.57260894775391 20.97114944458008 L 14.4837064743042 2.856482982635498 C 14.13555908203125 2.237502813339233 13.67661762237549 1.928033590316772 13.21767330169678 1.928033590316772 Z M 14.54854679107666 19.22937202453613 C 14.54854679107666 19.96438789367676 13.9526891708374 20.56024360656738 13.21767330169678 20.56024360656738 C 12.48265743255615 20.56024360656738 11.88680171966553 19.96438789367676 11.88680171966553 19.22937202453613 C 11.88680171966553 18.49435424804688 12.48265743255615 17.89849853515625 13.21767330169678 17.89849853515625 C 13.9526891708374 17.89849853515625 14.54854679107666 18.49435424804688 14.54854679107666 19.22937202453613 Z M 13.21767330169678 16.567626953125 C 12.48265743255615 16.567626953125 11.88680171966553 15.97177028656006 11.88680171966553 15.23675441741943 L 11.88680171966553 11.24413776397705 C 11.88680171966553 10.50912189483643 12.48265743255615 9.913266181945801 13.21767330169678 9.913266181945801 C 13.9526891708374 9.913266181945801 14.54854679107666 10.50912189483643 14.54854679107666 11.24413776397705 L 14.54854679107666 15.23675441741943 C 14.54854679107666 15.97177028656006 13.9526891708374 16.567626953125 13.21767330169678 16.567626953125 Z">
+				</path>
+			</svg>
+		</div>
+
+		<div class="resizable-switch-area" style="left: 796px; width: 415px; top: 100px;">
+			<svg class="Blue_Bar" v-bind:style="{ left: calculateUnderlineLeftOffset(415-(30+5), formatScheduleDate(informationSchedules[curScheduleIndex] ? informationSchedules[curScheduleIndex].date : undefined), 27, 'px', 'bold', 'SF Pro Text') + 70 + 'px' }">
+				<rect fill="rgba(255,167,78,1)" class="Blue_Bar_Class" rx="1.5" ry="1.5" x="0" y="0" v-bind:width="calculateUnderlineWidth(415-(30+5), formatScheduleDate(informationSchedules[curScheduleIndex] ? informationSchedules[curScheduleIndex].date : undefined), 27, 'px', 'bold', 'SF Pro Text')" height="3">
+				</rect>
+			</svg>
+			<div class="January_28th_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), left: getTitleCalendarLeft(415-(30+5), formatScheduleDate(informationSchedules[curScheduleIndex] ? informationSchedules[curScheduleIndex].date : undefined)) + (30 + 5) + 'px', fontSize: confineTextWidth(415-(30+5), formatScheduleDate(informationSchedules[curScheduleIndex] ? informationSchedules[curScheduleIndex].date : undefined), 27, 'px', 'bold', 'SF Pro Text') }">
+				<span>{{formatScheduleDate(informationSchedules[curScheduleIndex] ? informationSchedules[curScheduleIndex].date : undefined)}}</span>
+			</div>
+			<svg class="Schedule_Icon" v-bind:style="{ left: getTitleCalendarLeft(415-(30+5), formatScheduleDate(informationSchedules[curScheduleIndex] ? informationSchedules[curScheduleIndex].date : undefined)) + 'px' }" viewBox="0 0 25.593 29.25">
+				<path v-bind:fill="getThemeColor('rgba(29,29,29,1)')" class="Schedule_Icon_Class" d="M -2.030718704304491e-08 26.50753784179688 C -2.030718704304491e-08 28.02143859863281 1.228258967399597 29.24969863891602 2.742159605026245 29.24969863891602 L 22.85132789611816 29.24969863891602 C 24.36523056030273 29.24969863891602 25.59348678588867 28.02143859863281 25.59348678588867 26.50753784179688 L 25.59348678588867 10.96863842010498 L -2.030718704304491e-08 10.96863842010498 L -2.030718704304491e-08 26.50753784179688 Z M 18.28106498718262 15.31038951873779 C 18.28106498718262 14.93334102630615 18.58955955505371 14.62484931945801 18.96660232543945 14.62484931945801 L 21.25173759460449 14.62484931945801 C 21.62878227233887 14.62484931945801 21.93727684020996 14.93334102630615 21.93727684020996 15.31038951873779 L 21.93727684020996 17.59552192687988 C 21.93727684020996 17.97256660461426 21.62878227233887 18.28106498718262 21.25173759460449 18.28106498718262 L 18.96660232543945 18.28106498718262 C 18.58955955505371 18.28106498718262 18.28106498718262 17.97256660461426 18.28106498718262 17.59552192687988 L 18.28106498718262 15.31038951873779 Z M 18.28106498718262 22.62281227111816 C 18.28106498718262 22.24576759338379 18.58955955505371 21.93727684020996 18.96660232543945 21.93727684020996 L 21.25173759460449 21.93727684020996 C 21.62878227233887 21.93727684020996 21.93727684020996 22.24576759338379 21.93727684020996 22.62281227111816 L 21.93727684020996 24.9079475402832 C 21.93727684020996 25.28499221801758 21.62878227233887 25.59348678588867 21.25173759460449 25.59348678588867 L 18.96660232543945 25.59348678588867 C 18.58955955505371 25.59348678588867 18.28106498718262 25.28499221801758 18.28106498718262 24.9079475402832 L 18.28106498718262 22.62281227111816 Z M 10.96863842010498 15.31038951873779 C 10.96863842010498 14.93334102630615 11.27713108062744 14.62484931945801 11.65417671203613 14.62484931945801 L 13.93931007385254 14.62484931945801 C 14.31635761260986 14.62484931945801 14.62484931945801 14.93334102630615 14.62484931945801 15.31038951873779 L 14.62484931945801 17.59552192687988 C 14.62484931945801 17.97256660461426 14.31635761260986 18.28106498718262 13.93931007385254 18.28106498718262 L 11.65417671203613 18.28106498718262 C 11.27713108062744 18.28106498718262 10.96863842010498 17.97256660461426 10.96863842010498 17.59552192687988 L 10.96863842010498 15.31038951873779 Z M 10.96863842010498 22.62281227111816 C 10.96863842010498 22.24576759338379 11.27713108062744 21.93727684020996 11.65417671203613 21.93727684020996 L 13.93931007385254 21.93727684020996 C 14.31635761260986 21.93727684020996 14.62484931945801 22.24576759338379 14.62484931945801 22.62281227111816 L 14.62484931945801 24.9079475402832 C 14.62484931945801 25.28499221801758 14.31635761260986 25.59348678588867 13.93931007385254 25.59348678588867 L 11.65417671203613 25.59348678588867 C 11.27713108062744 25.59348678588867 10.96863842010498 25.28499221801758 10.96863842010498 24.9079475402832 L 10.96863842010498 22.62281227111816 Z M 3.656212329864502 15.31038951873779 C 3.656212329864502 14.93334102630615 3.9647057056427 14.62484931945801 4.341752529144287 14.62484931945801 L 6.626885890960693 14.62484931945801 C 7.003932952880859 14.62484931945801 7.312424659729004 14.93334102630615 7.312424659729004 15.31038951873779 L 7.312424659729004 17.59552192687988 C 7.312424659729004 17.97256660461426 7.003932952880859 18.28106498718262 6.626885890960693 18.28106498718262 L 4.341752529144287 18.28106498718262 C 3.9647057056427 18.28106498718262 3.656212329864502 17.97256660461426 3.656212329864502 17.59552192687988 L 3.656212329864502 15.31038951873779 Z M 3.656212329864502 22.62281227111816 C 3.656212329864502 22.24576759338379 3.9647057056427 21.93727684020996 4.341752529144287 21.93727684020996 L 6.626885890960693 21.93727684020996 C 7.003932952880859 21.93727684020996 7.312424659729004 22.24576759338379 7.312424659729004 22.62281227111816 L 7.312424659729004 24.9079475402832 C 7.312424659729004 25.28499221801758 7.003932952880859 25.59348678588867 6.626885890960693 25.59348678588867 L 4.341752529144287 25.59348678588867 C 3.9647057056427 25.59348678588867 3.656212329864502 25.28499221801758 3.656212329864502 24.9079475402832 L 3.656212329864502 22.62281227111816 Z M 22.85132789611816 3.656212329864502 L 20.10916900634766 3.656212329864502 L 20.10916900634766 0.9140530824661255 C 20.10916900634766 0.4113239347934723 19.69784736633301 0 19.19511795043945 0 L 17.36701011657715 0 C 16.86427879333496 0 16.45295524597168 0.4113239347934723 16.45295524597168 0.9140530824661255 L 16.45295524597168 3.656212329864502 L 9.140532493591309 3.656212329864502 L 9.140532493591309 0.9140530824661255 C 9.140532493591309 0.4113239347934723 8.729208946228027 0 8.22647762298584 0 L 6.398371696472168 0 C 5.895642280578613 0 5.48431921005249 0.4113239347934723 5.48431921005249 0.9140530824661255 L 5.48431921005249 3.656212329864502 L 2.742159605026245 3.656212329864502 C 1.228258967399597 3.656212329864502 -2.030718704304491e-08 4.88447093963623 -2.030718704304491e-08 6.398371696472168 L -2.030718704304491e-08 9.140532493591309 L 25.59348678588867 9.140532493591309 L 25.59348678588867 6.398371696472168 C 25.59348678588867 4.88447093963623 24.36523056030273 3.656212329864502 22.85132789611816 3.656212329864502 Z">
+				</path>
+			</svg>
+		</div>
+
+		<div class="Todays_Schedule_Class center-contents" v-bind:class="{ 'dark-scrollbar': companionSettings.theme == 'dark' }">
+
+			<template v-if="curScheduleIndex != -1 && curReleaseIndex == -1">
+				<div v-for="(release, releaseIndex) in informationSchedules[curScheduleIndex].releases" class="Product_Card_Class" v-bind:style="{ top: (releaseIndex * (160 + 8)) + 'px', height: (curReleaseIndex == -1 ? 159 : 440) + 'px' }">
+					<div class="Product_Card_ds_Class" v-bind:class="{ 'hover-opacity': curReleaseIndex == -1 }" v-bind:style="{ height: (curReleaseIndex == -1 ? 159 : 440) + 'px' }">
+
+						<svg class="Product_Card_Rectangle" v-on:click="curReleaseIndex = releaseIndex; siteListVisible = false;" onclick="setTimeout(function() { applyButtonTransitions(); }, 50)">
+							<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Product_Card_Rectangle_Class" rx="20" ry="20" x="0" y="0" width="398" v-bind:height="curReleaseIndex == -1 ? 159 : 440">
+							</rect>
+						</svg>
+
+						<div class="Play_Button" v-bind:class="{ 'clickable': release.possibleKeywords.length > 0, 'unclickable': release.possibleKeywords.length == 0, 'hover-opacity': release.possibleKeywords.length > 0 }" v-on:click="() => { if (release.possibleKeywords.length > 0) createOneClickTask(release); }" viewBox="3 3 30 30">
+							<svg class="Resume_Button_Circle" viewBox="3.375 3.375 30.423 30.423">
+								<path v-bind:fill="release.possibleKeywords.length > 0 ? 'rgba(53,178,57,1)' : 'rgba(131,127,121,1)'" d="M 18.58656883239746 3.374999523162842 C 10.18363857269287 3.374999523162842 3.375 10.18370342254639 3.375 18.58670806884766 C 3.375 26.98971939086914 10.18363857269287 33.79841613769531 18.58656883239746 33.79841613769531 C 26.98949813842773 33.79841613769531 33.79813385009766 26.98971939086914 33.79813385009766 18.58670806884766 C 33.79813385009766 10.18370342254639 26.98949813842773 3.374999523162842 18.58656883239746 3.374999523162842 Z">
+								</path>
+							</svg>
+							<svg class="Resume_Button_Triangle" style="top: 2px; position: absolute; left: 2px; transform: rotate(90deg) scale(0.5);" viewBox="0 0 12 11">
+								<path fill="rgba(255,255,255,1)" d="M 5.561052322387695 0.8047375679016113 C 5.750560760498047 0.4573056697845459 6.249439716339111 0.4573056697845459 6.438947677612305 0.8047375679016113 L 11.59667682647705 10.260573387146 C 11.77841472625732 10.5937614440918 11.53725814819336 11 11.15772914886475 11 L 0.842271089553833 11 C 0.462741494178772 11 0.221584752202034 10.5937614440918 0.4033232927322388 10.260573387146 Z">
+								</path>
+							</svg>
+						</div>
+
+						<div class="_220_Class" v-on:click="curReleaseIndex = releaseIndex; siteListVisible = false;" onclick="setTimeout(function() { applyButtonTransitions(); }, 50)" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+							<span>{{release.retailPrice.length > 0 && release.retailPrice.toLowerCase() != "n/a" && release.retailPrice.toLowerCase() != "tbd" ? release.retailPrice : '' }}</span>
+						</div>
+
+						<div class="Ronnie_Fieg_x_New_Balance_1700_Class" v-on:click="curReleaseIndex = releaseIndex; siteListVisible = false;" onclick="setTimeout(function() { applyButtonTransitions(); }, 50)" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+							<span>{{release.name}}<br/><span style="font-weight: normal">{{release.styleCode.length > 0 && release.styleCode.toLowerCase() != "n/a" && release.styleCode.toLowerCase() != "tbd" ? release.styleCode : '' }}</span>
+						</div>
+
+						<div class="Product_Card_Image_Class" v-on:click="curReleaseIndex = releaseIndex; siteListVisible = false;" onclick="setTimeout(function() { applyButtonTransitions(); }, 50)">
+							<img style="display: table-cell; vertical-align: middle; max-width: 131px; max-height: 131px; border-radius: 20px; margin-left: auto; margin-right: auto;" v-bind:class="{ transparentify: companionSettings.theme == 'light' }" v-bind:src="release.imageURL" onerror="this.src='../../../../images/unknownImage.png'">
+						</div>
+
+					</div>
+				</div>
+			</template>
+			<template v-else-if="curScheduleIndex != -1 && curReleaseIndex != -1">
+				<div class="Product_Card_ds_Class" v-bind:class="{ 'hover-opacity': curReleaseIndex == -1 }" v-bind:style="{ height: (curReleaseIndex == -1 ? 159 : 440) + 'px' }">
+
+					<svg class="Product_Card_Rectangle" v-on:click="() => { if (siteListVisible) { siteListVisible = false; } else { curReleaseIndex = -1; } }">
+						<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Product_Card_Rectangle_Class" rx="20" ry="20" x="0" y="0" width="398" v-bind:height="curReleaseIndex == -1 ? 159 : 440">
+						</rect>
+					</svg>
+
+					<div v-if="curScheduleIndex != 1 && curReleaseIndex != -1" class="Fields_Class" v-bind:class="{ 'dark-scrollbar': companionSettings.theme == 'dark' }" v-on:click="() => { if (siteListVisible) { siteListVisible = false; } else { curReleaseIndex = -1; } }">
+						<template v-if="!siteListVisible">
+							<div class="Initial_Pickup_Area_Class" v-on:click.stop>
+								<svg class="Initial_Pickup_Rectangle">
+									<rect v-bind:fill="getThemeColor('rgba(242,242,242,1)')" class="Initial_Pickup_Rectangle_Class" rx="10" ry="10" x="0" y="0" width="369" height="21">
+									</rect>
+								</svg>
+								<input v-on:click.stop class="ID5_26_2020___10_00_02_PM_Class" disabled placeholder="N/A" v-model="informationSchedules[curScheduleIndex].releases[curReleaseIndex].resellPrediction" style="background-color: transparent; width: 350px" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }"></input>
+								<div class="Resell_Prediction_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+									<span>{{tryTranslate('Resell Prediction')}}</span>
+								</div>
+							</div>
+							<div class="Launch_Date_Area_Class" v-on:click.stop>
+								<svg class="Launch_Date_Rectangle">
+									<rect v-bind:fill="getThemeColor('rgba(242,242,242,1)')" class="Launch_Date_Rectangle_Class" rx="10" ry="10" x="0" y="0" width="369" height="21">
+									</rect>
+								</svg>
+								<input class="ID5_26_2020___10_00_02_PM_d_Class" disabled placeholder="N/A" v-model="informationSchedules[curScheduleIndex].releases[curReleaseIndex].color" style="background-color: transparent; width: 350px" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }"></input>
+								<div class="Color_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+									<span>{{tryTranslate('Color')}}</span>
+								</div>
+							</div>
+							<div class="Collection_Area_Class" v-on:click.stop>
+								<svg class="Collection_Rectangle">
+									<rect v-bind:fill="getThemeColor('rgba(242,242,242,1)')" class="Collection_Rectangle_Class" rx="10" ry="10" x="0" y="0" width="369" height="21">
+									</rect>
+								</svg>
+								<input v-on:click.stop class="Ronnies_Kid_Collection_Class" disabled placeholder="N/A" v-model="informationSchedules[curScheduleIndex].releases[curReleaseIndex].styleCode" style="background-color: transparent; width: 350px" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }"></input>
+								<div class="Style_Code_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+									<span>{{tryTranslate('Style Code')}}</span>
+								</div>
+							</div>
+							<div class="Initial_Pickup_Area_d_Class" v-if="informationSchedules[curScheduleIndex].releases[curReleaseIndex].possibleKeywords.length > 0">
+								<div class="Repeat_Grid_5_Class">
+									<div class="Group_240_Class" v-on:click.stop v-for="(possibleKeywordSet, possibleKeywordSetIndex) in informationSchedules[curScheduleIndex].releases[curReleaseIndex].possibleKeywords" v-bind:style="{ top: (possibleKeywordSetIndex * (21+5)) + 6 + 'px' }">
+										<svg class="Initial_Pickup_Rectangle_d">
+											<rect v-bind:fill="getThemeColor('rgba(242,242,242,1)')" class="Initial_Pickup_Rectangle_d_Class text-selectable" rx="10" ry="10" x="0" y="0" width="350" height="21">
+											</rect>
+										</svg>
+										<input class="_kith___new___balance___1700k__Class" disabled placeholder="N/A" v-model="informationSchedules[curScheduleIndex].releases[curReleaseIndex].possibleKeywords[possibleKeywordSetIndex]" style="background-color: transparent; width: 335px" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }"></input>
+										<div class="Play_Button clickable hover-opacity" style="transform: scale(0.66); left: 352px; top: -5px;" v-on:click="createOneClickTask(informationSchedules[curScheduleIndex].releases[curReleaseIndex], possibleKeywordSetIndex)" viewBox="3 3 30 30">
+											<svg class="Resume_Button_Circle" viewBox="3.375 3.375 30.423 30.423">
+												<path v-bind:fill="informationSchedules[curScheduleIndex].releases[curReleaseIndex].possibleKeywords.length > 0 ? 'rgba(53,178,57,1)' : 'rgba(253,53,53,1)'" d="M 18.58656883239746 3.374999523162842 C 10.18363857269287 3.374999523162842 3.375 10.18370342254639 3.375 18.58670806884766 C 3.375 26.98971939086914 10.18363857269287 33.79841613769531 18.58656883239746 33.79841613769531 C 26.98949813842773 33.79841613769531 33.79813385009766 26.98971939086914 33.79813385009766 18.58670806884766 C 33.79813385009766 10.18370342254639 26.98949813842773 3.374999523162842 18.58656883239746 3.374999523162842 Z">
+												</path>
+											</svg>
+											<svg class="Resume_Button_Triangle" style="top: 2px; position: absolute; left: 2px; transform: rotate(90deg) scale(0.5);" viewBox="0 0 12 11">
+												<path fill="rgba(255,255,255,1)" d="M 5.561052322387695 0.8047375679016113 C 5.750560760498047 0.4573056697845459 6.249439716339111 0.4573056697845459 6.438947677612305 0.8047375679016113 L 11.59667682647705 10.260573387146 C 11.77841472625732 10.5937614440918 11.53725814819336 11 11.15772914886475 11 L 0.842271089553833 11 C 0.462741494178772 11 0.221584752202034 10.5937614440918 0.4033232927322388 10.260573387146 Z">
+												</path>
+											</svg>
+										</div>
+									</div>
+								</div>
+								<div class="Keywords__4_Possible__Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+									<span>{{tryTranslate('Keywords')}}</span><span v-if="informationSchedules[curScheduleIndex].releases[curReleaseIndex].possibleKeywords.length > 0" style="font-weight: normal"> ({{informationSchedules[curScheduleIndex].releases[curReleaseIndex].possibleKeywords.length}} {{tryTranslate('Possible')}})</span>
+								</div>
+							</div>
+						</template>
+						<template v-else>
+							<div class="Fields_du_Class">
+
+								<div v-on:click.stop class="Collection_Area_Class" v-for="(site, siteIndex) in informationSchedules[curScheduleIndex].releases[curReleaseIndex].siteList" v-bind:style="{ top: (siteIndex * (37+8)) + 'px' }">
+									<svg class="Collection_Rectangle">
+										<rect v-bind:fill="getThemeColor('rgba(242,242,242,1)')" class="Collection_Rectangle_Class" rx="10" ry="10" x="0" y="0" width="310" height="21">
+										</rect>
+									</svg>
+									<input class="Ronnies_Kid_Collection_Class" disabled placeholder="N/A" v-model="informationSchedules[curScheduleIndex].releases[curReleaseIndex].siteList[siteIndex].URL" style="background-color: transparent; width: 294px" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }"></input>
+									<div class="SNKRS_EU_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+										<span>{{site.store}}</span>
+									</div>
+									<div class="ID1_AM_EST__Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+										<span>{{site.releaseTime}}</span>
+									</div>
+
+									<div class="Clip_Board_3_Class hover-opacity clickable" style="transform: scale(0.9); top: 15px;" v-bind:class="['clipboard_' + siteIndex]" v-on:click="copyText(site.URL); animateClipboard(siteIndex)">
+										<svg class="Path_441" viewBox="6 6 14.189 15.963">
+											<path fill="transparent" v-bind:stroke="getThemeColor('rgba(29,29,29,1)')" stroke-width="1.7999999523162842px" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" shape-rendering="auto" class="Path_441_Class" d="M 16.64152336120605 6 L 18.41511344909668 6 C 19.39463806152344 6 20.18870162963867 6.79407787322998 20.18870162963867 7.773623466491699 L 20.18870162963867 20.18898773193359 C 20.18870162963867 21.16853332519531 19.39463806152344 21.96261024475098 18.41511344909668 21.96261024475098 L 7.773587226867676 21.96261024475098 C 6.794061660766602 21.96261024475098 6 21.16853332519531 6 20.18898773193359 L 6 7.773623466491699 C 6 6.79407787322998 6.794062614440918 6 7.773588180541992 6 L 9.547175407409668 6">
+											</path>
+										</svg>
+										<svg class="Path_442" viewBox="12 3 7.094 3.547">
+											<path fill="transparent" v-bind:stroke="getThemeColor('rgba(29,29,29,1)')" stroke-width="1.7999999523162842px" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" shape-rendering="auto" class="Path_442_Class" d="M 12.88679313659668 3 L 18.20755767822266 3 C 18.69731903076172 3 19.09435081481934 3.39703893661499 19.09435081481934 3.88681173324585 L 19.09435081481934 5.660435676574707 C 19.09435081481934 6.150208473205566 18.69731903076172 6.547247409820557 18.20755767822266 6.547247409820557 L 12.88679313659668 6.547247409820557 C 12.39702987670898 6.547247409820557 12 6.150208473205566 12 5.660435676574707 L 12 3.88681173324585 C 12 3.39703893661499 12.39702987670898 3 12.88679313659668 3 Z">
+											</path>
+										</svg>
+									</div>
+
+									<div class="Home_Check_Mark_Icon" style="transform: scale(0); margin-left: 287px; margin-top: -17px;" v-bind:class="['check_' + siteIndex]">
+										<svg viewBox="0.563 0.563 22.726 22.726">
+											<path fill="rgba(53,178,57,1)" class="Check_Mark_Icon" d="M 23.2880859375 11.92529201507568 C 23.2880859375 18.20080947875977 18.20080947875977 23.2880859375 11.92529201507568 23.2880859375 C 5.649777412414551 23.2880859375 0.5625 18.20080757141113 0.5625 11.92529201507568 C 0.5625 5.649778366088867 5.649777889251709 0.5625 11.92529201507568 0.5625 C 18.20080947875977 0.5625 23.2880859375 5.649777889251709 23.2880859375 11.92529201507568 Z M 10.61096572875977 17.94180107116699 L 19.04142570495605 9.511340141296387 C 19.32769584655762 9.225070953369141 19.32769584655762 8.760891914367676 19.04142570495605 8.47462272644043 L 18.00470924377441 7.437904834747314 C 17.71843910217285 7.151589870452881 17.2542610168457 7.151589870452881 16.96794509887695 7.437904834747314 L 10.09258365631104 14.31322002410889 L 6.882640838623047 11.1032772064209 C 6.596371650695801 10.81700801849365 6.132192611694336 10.81700801849365 5.845877647399902 11.1032772064209 L 4.809160232543945 12.13999462127686 C 4.522891521453857 12.4262638092041 4.522891521453857 12.89044284820557 4.809160232543945 13.17671203613281 L 9.574202537536621 17.9417552947998 C 9.860517501831055 18.22806930541992 10.32465076446533 18.22806930541992 10.61096572875977 17.94180107116699 Z">
+											</path>
+										</svg>
+									</div>
+
+									<div class="Pop_Out_3_Class hover-opacity clickable" style="top: 15px;" v-on:click="openExternal(site.URL)">
+										<svg class="Path" viewBox="40.02 9.5 11.431 11.363">
+											<path v-bind:fill="getThemeColor('rgba(29,29,29,1)')" class="Path_Class" d="M 51.42752456665039 10.1753044128418 L 51.42752456665039 10.01773452758789 L 51.38249969482422 9.927692413330078 L 51.33749389648438 9.860162734985352 L 51.22494125366211 9.725101470947266 L 51.22494125366211 9.725101470947266 L 51.04486083984375 9.59004020690918 L 50.97732925415039 9.545021057128906 L 50.88729476928711 9.5 L 45.66504287719727 9.5 C 45.16777420043945 9.5 44.76465225219727 9.903125762939453 44.76465225219727 10.40040588378906 C 44.76465225219727 10.8976879119873 45.16777420043945 11.30081367492676 45.66504287719727 11.30081367492676 L 48.36620712280273 11.30081367492676 L 40.28522491455078 19.31442832946777 C 39.93092346191406 19.66874122619629 39.93092346191406 20.24319648742676 40.28522491455078 20.59751129150391 C 40.6395263671875 20.95182037353516 41.21397399902344 20.95182037353516 41.56827545166016 20.59750556945801 L 49.64925765991211 12.5163631439209 L 49.64925765991211 15.21758270263672 C 49.64925765991211 15.71486282348633 50.05237579345703 16.11798667907715 50.54964828491211 16.11798667907715 C 51.04691696166992 16.11798667907715 51.45003128051758 15.7148609161377 51.45003128051758 15.21758270263672 L 51.45003128051758 10.33287620544434 L 51.45003128051758 10.33287620544434 C 51.44719696044922 10.2797908782959 51.43965911865234 10.22706031799316 51.42752456665039 10.1753044128418 Z">
+											</path>
+										</svg>
+										<svg class="Path_d" viewBox="9.2 19.4 16.072 16.508">
+											<path v-bind:fill="getThemeColor('rgba(29,29,29,1)')" class="Path_d_Class" d="M 11.90116500854492 35.90755844116211 L 22.57076454162598 35.90755844116211 C 24.06257438659668 35.90755844116211 25.27192878723145 34.66542434692383 25.27192878723145 33.13317489624023 L 25.27192878723145 26.59026527404785 C 25.27192878723145 26.07951736450195 24.86880874633789 25.66547203063965 24.37154197692871 25.66547203063965 C 23.87426948547363 25.66547203063965 23.47115325927734 26.07951736450195 23.47115325927734 26.59026527404785 L 23.47115325927734 33.13317489624023 C 23.47115325927734 33.64392471313477 23.06803703308105 34.0579719543457 22.57076454162598 34.0579719543457 L 11.90116500854492 34.0579719543457 C 11.40389347076416 34.0579719543457 11.00077629089355 33.64392471313477 11.00077629089355 33.13317489624023 L 11.00077629089355 22.17438125610352 C 11.00077629089355 21.66363143920898 11.40389347076416 21.24958801269531 11.90116500854492 21.24958801269531 L 18.27140998840332 21.24958801269531 C 18.7686824798584 21.24958801269531 19.17180061340332 20.83554458618164 19.17180061340332 20.32479095458984 C 19.17180061340332 19.81404685974121 18.76868057250977 19.39999961853027 18.27140998840332 19.39999961853027 L 11.90116500854492 19.39999961853027 C 10.40935230255127 19.39999961853027 9.199999809265137 20.64213180541992 9.199999809265137 22.17438125610352 L 9.199999809265137 33.13317489624023 C 9.199999809265137 34.66542434692383 10.40935230255127 35.90755844116211 11.90116500854492 35.90755844116211 Z">
+											</path>
+										</svg>
+									</div>
+								</div>
+
+							</div>
+						</template>
+					</div>
+
+					<div class="Play_Button" v-bind:class="{ 'clickable': informationSchedules[curScheduleIndex].releases[curReleaseIndex].possibleKeywords.length > 0, 'unclickable': informationSchedules[curScheduleIndex].releases[curReleaseIndex].possibleKeywords.length == 0, 'hover-opacity': informationSchedules[curScheduleIndex].releases[curReleaseIndex].possibleKeywords.length > 0 }" v-on:click="" viewBox="3 3 30 30">
+						<svg class="Resume_Button_Circle" viewBox="3.375 3.375 30.423 30.423">
+							<path v-bind:fill="informationSchedules[curScheduleIndex].releases[curReleaseIndex].possibleKeywords.length > 0 ? 'rgba(53,178,57,1)' : 'rgba(253,53,53,1)'" d="M 18.58656883239746 3.374999523162842 C 10.18363857269287 3.374999523162842 3.375 10.18370342254639 3.375 18.58670806884766 C 3.375 26.98971939086914 10.18363857269287 33.79841613769531 18.58656883239746 33.79841613769531 C 26.98949813842773 33.79841613769531 33.79813385009766 26.98971939086914 33.79813385009766 18.58670806884766 C 33.79813385009766 10.18370342254639 26.98949813842773 3.374999523162842 18.58656883239746 3.374999523162842 Z">
+							</path>
+						</svg>
+						<svg class="Resume_Button_Triangle" style="top: 2px; position: absolute; left: 2px; transform: rotate(90deg) scale(0.5);" viewBox="0 0 12 11">
+							<path fill="rgba(255,255,255,1)" d="M 5.561052322387695 0.8047375679016113 C 5.750560760498047 0.4573056697845459 6.249439716339111 0.4573056697845459 6.438947677612305 0.8047375679016113 L 11.59667682647705 10.260573387146 C 11.77841472625732 10.5937614440918 11.53725814819336 11 11.15772914886475 11 L 0.842271089553833 11 C 0.462741494178772 11 0.221584752202034 10.5937614440918 0.4033232927322388 10.260573387146 Z">
+							</path>
+						</svg>
+					</div>
+
+					<div class="_220_Class text-selectable" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(85, informationSchedules[curScheduleIndex].releases[curReleaseIndex].retailPrice.length > 0 && informationSchedules[curScheduleIndex].releases[curReleaseIndex].retailPrice.toLowerCase() != 'n/a' && informationSchedules[curScheduleIndex].releases[curReleaseIndex].retailPrice.toLowerCase() != 'tbd' ? informationSchedules[curScheduleIndex].releases[curReleaseIndex].retailPrice : '', 18, 'px', 'bold', 'SF Pro Text') }" v-on:click="() => { if (siteListVisible) { siteListVisible = false; } else { curReleaseIndex = -1; } }">
+						<span>{{informationSchedules[curScheduleIndex].releases[curReleaseIndex].retailPrice.length > 0 && informationSchedules[curScheduleIndex].releases[curReleaseIndex].retailPrice.toLowerCase() != "n/a" && informationSchedules[curScheduleIndex].releases[curReleaseIndex].retailPrice.toLowerCase() != "tbd" ? informationSchedules[curScheduleIndex].releases[curReleaseIndex].retailPrice : '' }}</span>
+					</div>
+
+					<div class="Ronnie_Fieg_x_New_Balance_1700_Class text-selectable" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }" v-on:click="() => { if (siteListVisible) { siteListVisible = false; } else { curReleaseIndex = -1; } }">
+						<span>{{informationSchedules[curScheduleIndex].releases[curReleaseIndex].name}}<br/><span style="font-weight: normal">{{informationSchedules[curScheduleIndex].releases[curReleaseIndex].styleCode.length > 0 && informationSchedules[curScheduleIndex].releases[curReleaseIndex].styleCode.toLowerCase() != "n/a" && informationSchedules[curScheduleIndex].releases[curReleaseIndex].styleCode.toLowerCase() != "tbd" ? informationSchedules[curScheduleIndex].releases[curReleaseIndex].styleCode : '' }}</span>
+					</div>
+
+					<div class="Product_Card_Image_Class" v-on:click="() => { if (siteListVisible) { siteListVisible = false; } else { curReleaseIndex = -1; } }">
+						<img style="display: table-cell; vertical-align: middle; max-width: 131px; max-height: 131px; border-radius: 20px; margin-left: auto; margin-right: auto;" v-bind:class="{ transparentify: companionSettings.theme == 'light' }" v-bind:src="informationSchedules[curScheduleIndex].releases[curReleaseIndex].imageURL" onerror="this.src='../../../../images/unknownImage.png'">
+					</div>
+
+					<div v-if="informationSchedules[curScheduleIndex].releases[curReleaseIndex].siteList.length > 0" class="Guides_Button_Class clipButton clickable" v-bind:class="{ 'activeButton': siteListVisible }" style="top: 113px; left: 145px; transform: scale(0.7);" v-on:click="siteListVisible = !siteListVisible;">
+						<div class="clipGroup" style="width: 118px; transform: scale(0.99);">
+							<svg class="Back_Transitioner" style="bottom: -25px;" viewBox="4631.671 2118.361 137.6 34.565">
+								<path fill="rgba(36,39,37,1)" id="Back_Transitioner" d="M 4631.67138671875 2136.780029296875 C 4631.67138671875 2136.780029296875 4649.8212890625 2127.950439453125 4669.78759765625 2136.780029296875 C 4689.75244140625 2145.610595703125 4680.9365234375 2141.826416015625 4680.9365234375 2141.826416015625 C 4680.9365234375 2141.826416015625 4699.80859375 2134.79638671875 4711.21826171875 2141.229248046875 C 4722.626953125 2147.663330078125 4712.8291015625 2141.229248046875 4712.8291015625 2141.229248046875 C 4712.8291015625 2141.229248046875 4737.462890625 2118.742431640625 4759.2421875 2118.3642578125 C 4781.0234375 2117.985107421875 4760.5390625 2152.92626953125 4760.5390625 2152.92626953125 L 4631.67138671875 2152.92626953125 L 4631.67138671875 2136.780029296875 Z">
+								</path>
+							</svg>
+							<svg class="Front_Transitioner" style="bottom: -30px;" viewBox="4631.671 2118.361 137.6 26.969">
+								<path fill="rgba(91,182,187,1)" id="Front_Transitioner" d="M 4631.67138671875 2132.73193359375 C 4631.67138671875 2132.73193359375 4649.82177734375 2125.843017578125 4669.78759765625 2132.73193359375 C 4689.7529296875 2139.621826171875 4680.93701171875 2136.66943359375 4680.93701171875 2136.66943359375 C 4680.93701171875 2136.66943359375 4699.80908203125 2131.184326171875 4711.21875 2136.203369140625 C 4722.62744140625 2141.2236328125 4712.82958984375 2136.203369140625 4712.82958984375 2136.203369140625 C 4712.82958984375 2136.203369140625 4737.462890625 2118.658447265625 4759.24267578125 2118.363525390625 C 4781.0234375 2118.0673828125 4760.5390625 2145.329833984375 4760.5390625 2145.329833984375 L 4631.67138671875 2145.329833984375 L 4631.67138671875 2132.73193359375 Z">
+								</path>
+							</svg>
+						</div>
+						<svg class="Guides_Rectangle">
+							<rect fill="transparent" stroke="rgba(91,182,187,1)" stroke-width="2px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Guides_Rectangle_Class" rx="18" ry="18" x="0" y="0" width="118" height="36">
+							</rect>
+						</svg>
+						<div class="Guides_Class"  v-bind:style="{ fontSize: confineTextWidth(56, tryTranslate('Stores'), 15, 'px', 'bold', 'SF Pro Text') }">
+							<span>{{tryTranslate('Stores')}}</span>
+						</div>
+						<svg class="Guide_Icon" style="transform: scale(1.34); top: 13.3px; left: 26px;" viewBox="3 3 17.874 17.874">
+							<path fill="rgba(91,182,187,1)" class="Site_List_Icon_Class buttonIcon" d="M 1.195030450820923 3.375 C 0.5350333452224731 3.375 0 3.910033226013184 0 4.57003116607666 C 0 5.23002815246582 0.5350334048271179 5.765061378479004 1.195030570030212 5.765061378479004 C 1.855027437210083 5.765061378479004 2.390060901641846 5.23002815246582 2.390060901641846 4.57003116607666 C 2.390060901641846 3.910033226013184 1.855027437210083 3.375 1.195030212402344 3.375 Z M 1.195030450820923 7.358434200286865 C 0.5350333452224731 7.358434200286865 0 7.893468379974365 0 8.553465843200684 C 0 9.213461875915527 0.5350334048271179 9.748495101928711 1.195030570030212 9.748495101928711 C 1.855027437210083 9.748495101928711 2.390060901641846 9.213461875915527 2.390060901641846 8.553465843200684 C 2.390060901641846 7.893468379974365 1.855027437210083 7.358434200286865 1.195030212402344 7.358434200286865 Z M 1.195030450820923 11.34186935424805 C 0.5350333452224731 11.34187030792236 0 11.87690258026123 0 12.53689956665039 C 0 13.19689655303955 0.5350334048271179 13.73192882537842 1.195030570030212 13.73192882537842 C 1.855027437210083 13.73192882537842 2.390060901641846 13.19689655303955 2.390060901641846 12.53689956665039 C 2.390060901641846 11.87690258026123 1.855027437210083 11.34187030792236 1.195030212402344 11.34187030792236 Z M 12.34864807128906 11.74021244049072 L 4.381778240203857 11.74021244049072 C 4.161778926849365 11.74021244049072 3.983434915542603 11.91855716705322 3.983434915542603 12.13855648040771 L 3.983434915542603 12.93524265289307 C 3.983434915542603 13.15524101257324 4.161778926849365 13.33358669281006 4.381778240203857 13.33358669281006 L 12.34864807128906 13.33358669281006 C 12.56864643096924 13.33358669281006 12.74699020385742 13.15524101257324 12.74699020385742 12.93524265289307 L 12.74699020385742 12.13855648040771 C 12.74699020385742 11.91855716705322 12.56864643096924 11.74021244049072 12.34864807128906 11.74021244049072 Z M 12.34864807128906 3.773343563079834 L 4.381778240203857 3.773343563079834 C 4.161778926849365 3.773343563079834 3.983434915542603 3.951688051223755 3.983434915542603 4.171687126159668 L 3.983434915542603 4.968374252319336 C 3.983434915542603 5.188373565673828 4.161778926849365 5.36671781539917 4.381778240203857 5.36671781539917 L 12.34864807128906 5.36671781539917 C 12.56864643096924 5.36671781539917 12.74699020385742 5.188373565673828 12.74699020385742 4.968374252319336 L 12.74699020385742 4.171687126159668 C 12.74699020385742 3.951688051223755 12.56864643096924 3.773343563079834 12.34864807128906 3.773343563079834 Z M 12.34864807128906 7.756778240203857 L 4.381778240203857 7.756778240203857 C 4.161778926849365 7.756778240203857 3.983434915542603 7.935122966766357 3.983434915542603 8.155120849609375 L 3.983434915542603 8.951808929443359 C 3.983434915542603 9.171808242797852 4.161778926849365 9.350152015686035 4.381778240203857 9.350152015686035 L 12.34864807128906 9.350152015686035 C 12.56864643096924 9.350152015686035 12.74699020385742 9.171808242797852 12.74699020385742 8.951808929443359 L 12.74699020385742 8.155120849609375 C 12.74699020385742 7.935122966766357 12.56864643096924 7.756778240203857 12.34864807128906 7.756778240203857 Z">
+						</svg>
+					</div>
+
+				</div>
+			</template>
+
+			<!-- display message if there are no items -->
+			<template v-if="curScheduleIndex == -1 || (curScheduleIndex != -1 && informationSchedules[curScheduleIndex].releases.length == 0)">
+				<div class="centered-content" style="font-size: 1.1em; padding-bottom: 25%; padding-left: 50px;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+					<span>{{tryTranslate('There are not any important releases today')}}</span>
+				</div>
+			</template>
+		</div>
+
+		<div class="Calendar_Class">
+			<svg class="Calendar_Blue_Rectangle">
+				<!-- <rect fill="rgba(91,182,187,1)" class="Calendar_Blue_Rectangle" rx="20" ry="20" x="0" y="0" width="236" height="439">
+				</rect> -->
+				<path class="Calendar_Blue_Rectangle-2" fill="rgba(91,182,187,1)" data-name="Calendar Blue Rectangle" d="M20,0H237a0,0,0,0,1,0,0V439a0,0,0,0,1,0,0H20A20,20,0,0,1,0,419V20A20,20,0,0,1,20,0Z"/>
+			</svg>
+			<svg class="Calendar_White_Rectangle">
+				<!-- <rect fill="rgba(255,255,255,1)" class="Calendar_White_Rectangle" rx="20" ry="20" x="0" y="0" width="471" height="439">
+				</rect> -->
+				<path class="Calendar_White_Rectangle-2" v-bind:fill="getThemeColor('rgba(255,255,255,1)')" data-name="Calendar White Rectangle" d="M0,0H451a20,20,0,0,1,20,20V419a20,20,0,0,1-20,20H0a0,0,0,0,1,0,0V0A0,0,0,0,1,0,0Z"/>
+			</svg>
+			<div class="Left_Side_Calendar_Class">
+				<img class="Shocked_Class" v-bind:src="grabTodayKuri().imageURL">
+				<div class="Thursday_Class" v-bind:style="{ color: getThemeColor('rgba(255,255,255,1)') }">
+					<span v-cloak>{{tryTranslate(curCalendarDate.day)}}</span>
+				</div>
+				<div class="ID27_Class" v-bind:style="{ color: getThemeColor('rgba(255,255,255,1)') }">
+					<span v-cloak>{{curCalendarDate.dayNumber}}</span>
+				</div>
+			</div>
+			<div class="Right_Side_Calendar_Class">
+				<div class="Calendar_Days_Class">
+					<template v-for="dayNumber in 42">
+						<template v-if="isDayClickable(dayNumber-1)">
+							<svg class="Ellipse_337" v-bind:style="{ left: calculateCalendarDayLeft(dayNumber-1) - 3 + 'px', top: (Math.floor((dayNumber-1)/7)*37) - 5 + 'px', opacity: isCurrentMonth(dayNumber-1)}">
+								<ellipse v-bind:fill="(getCalendarDay(dayNumber-1) == new Date().getDate() && months.indexOf(curCalendarDate.month) == new Date().getMonth() && isCurrentMonth(dayNumber-1) == 0.85) ? 'rgba(206,140,229,1)' : (dayIsSelected(dayNumber-1, curCalendarDate.month, getCalendarDay(dayNumber-1), curCalendarDate.year) ? 'rgba(255, 167, 78, 1)' : 'rgba(91,182,187,1)')" class="Ellipse_337_Class" rx="16" ry="16" cx="16" cy="16">
+								</ellipse>
+							</svg>
+						</template>
+						<div :key="dayNumber" v-on:click="findAndSetCurScheduleIndexFrom(dayNumber, curCalendarDate.month, getCalendarDay(dayNumber-1), curCalendarDate.year);" v-bind:class="[isDayClickable(dayNumber-1) ? 'CalendarDayClickable' : '']" class="ID26_Class" v-bind:style="{ opacity: isDayClickable(dayNumber-1) ? 1 : isCurrentMonth(dayNumber-1), color: isDayClickable(dayNumber-1) ? getThemeColor('rgba(255,255,255,1)') : ((getCalendarDay(dayNumber-1) == new Date().getDate() && months.indexOf(curCalendarDate.month) == new Date().getMonth() && isCurrentMonth(dayNumber-1) == 0.85) ? getThemeColor('rgba(206,140,229,1)') : getThemeColor('rgba(29,29,29,1)')), left: calculateCalendarDayLeft(dayNumber-1) + 'px', top: (Math.floor((dayNumber-1)/7)*37) + 'px'}">
+							<span v-cloak>{{getCalendarDay(dayNumber-1)}}</span>
+						</div>
+					</template>
+				</div>
+				<div class="Header_Calendar_Class">
+					<div class="Sun_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(49, tryTranslate('Sun'), 22, 'px', 'bold', 'SF Pro Text') }">
+						<span>{{tryTranslate('Sun')}}</span>
+					</div>
+					<div class="Mon_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(49, tryTranslate('Mon'), 22, 'px', 'bold', 'SF Pro Text') }">
+						<span>{{tryTranslate('Mon')}}</span>
+					</div>
+					<div class="Tue_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(49, tryTranslate('Tue'), 22, 'px', 'bold', 'SF Pro Text') }">
+						<span>{{tryTranslate('Tue')}}</span>
+					</div>
+					<div class="Wed_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(49, tryTranslate('Wed'), 22, 'px', 'bold', 'SF Pro Text') }">
+						<span>{{tryTranslate('Wed')}}</span>
+					</div>
+					<div class="Thu_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(49, tryTranslate('Thu'), 22, 'px', 'bold', 'SF Pro Text') }">
+						<span>{{tryTranslate('Thu')}}</span>
+					</div>
+					<div class="Fri_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(49, tryTranslate('Fri'), 22, 'px', 'bold', 'SF Pro Text') }">
+						<span>{{tryTranslate('Fri')}}</span>
+					</div>
+					<div class="Sat_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(49, tryTranslate('Sat'), 22, 'px', 'bold', 'SF Pro Text') }">
+						<span>{{tryTranslate('Sat')}}</span>
+					</div>
+					<div class="ID2020_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+						<span v-cloak>{{curCalendarDate.year}}</span>
+					</div>
+					<div class="January_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+						<span v-cloak>{{tryTranslate(curCalendarDate.month)}}</span>
+					</div>
+
+					<svg class="Left_Arrow_Icon clickable hover-opacity" v-on:click="rotateMonth(-1)" style="left: -24px; top: 195px" viewBox="0.563 0.563 18 18">
+						<path v-bind:fill="getThemeColor('rgba(29,29,29,1)')" class="Left_Arrow_Icon_Class" d="M 9.5625 18.56249809265137 C 4.590725421905518 18.56249809265137 0.5625 14.53427410125732 0.5625 9.5625 C 0.5625 4.590725421905518 4.590725421905518 0.5625 9.5625 0.5625 C 14.53427410125732 0.5625 18.56249809265137 4.590725421905518 18.56249809265137 9.5625 C 18.56249809265137 14.53427410125732 14.53427410125732 18.56249809265137 9.5625 18.56249809265137 Z M 13.77217769622803 7.965725421905518 L 9.5625 7.965725421905518 L 9.5625 5.392741680145264 C 9.5625 5.004435062408447 9.090725898742676 4.808467388153076 8.818548202514648 5.084273815155029 L 4.6705641746521 9.254032135009766 C 4.499999523162842 9.424596786499023 4.499999523162842 9.696774482727051 4.6705641746521 9.867339134216309 L 8.818548202514648 14.03709697723389 C 9.094354629516602 14.31290340423584 9.5625 14.11693668365479 9.5625 13.72863006591797 L 9.5625 11.15927410125732 L 13.77217769622803 11.15927410125732 C 14.01169300079346 11.15927410125732 14.20766162872314 10.96330642700195 14.20766162872314 10.72379016876221 L 14.20766162872314 8.401209831237793 C 14.20766162872314 8.161693572998047 14.01169300079346 7.965725421905518 13.77217769622803 7.965725421905518 Z">
+						</path>
+					</svg>
+					<svg class="Right_Arrow_Icon clickable hover-opacity" v-on:click="rotateMonth(1)" style="left: 414px; top: 195px" viewBox="0.563 0.563 18 18">
+						<path v-bind:fill="getThemeColor('rgba(29,29,29,1)')" class="Right_Arrow_Icon_Class" d="M 9.5625 0.5625 C 14.53427410125732 0.5625 18.56249809265137 4.590725421905518 18.56249809265137 9.5625 C 18.56249809265137 14.53427410125732 14.53427410125732 18.56249809265137 9.5625 18.56249809265137 C 4.590725421905518 18.56249809265137 0.5625 14.53427410125732 0.5625 9.5625 C 0.5625 4.590725421905518 4.590725421905518 0.5625 9.5625 0.5625 Z M 5.352822303771973 11.15927410125732 L 9.5625 11.15927410125732 L 9.5625 13.73225879669189 C 9.5625 14.12056541442871 10.03427410125732 14.31653213500977 10.30645179748535 14.04072570800781 L 14.45443534851074 9.870967864990234 C 14.625 9.700403213500977 14.625 9.428225517272949 14.45443534851074 9.257660865783691 L 10.30645179748535 5.084273338317871 C 10.0306453704834 4.808466911315918 9.5625 5.004434585571289 9.5625 5.392741203308105 L 9.5625 7.965725421905518 L 5.352822303771973 7.965725421905518 C 5.113306045532227 7.965725421905518 4.917338371276855 8.161693572998047 4.917338371276855 8.401209831237793 L 4.917338371276855 10.72379016876221 C 4.917338371276855 10.96330642700195 5.113306045532227 11.15927410125732 5.352822303771973 11.15927410125732 Z">
+						</path>
+					</svg>
+
+				</div>
+			</div>
+		</div>
+
+		<div class="Header_Class">
+
+			<div class="Guides_Button_Class clipButton clickable" v-on:click="openExternal('https://docs.resell.monster/resell-companion/getting-started')">
+				<div class="clipGroup" style="width: 118px;">
+					<svg class="Back_Transitioner" style="bottom: -25px;" viewBox="4631.671 2118.361 137.6 34.565">
+						<path fill="rgba(36,39,37,1)" id="Back_Transitioner" d="M 4631.67138671875 2136.780029296875 C 4631.67138671875 2136.780029296875 4649.8212890625 2127.950439453125 4669.78759765625 2136.780029296875 C 4689.75244140625 2145.610595703125 4680.9365234375 2141.826416015625 4680.9365234375 2141.826416015625 C 4680.9365234375 2141.826416015625 4699.80859375 2134.79638671875 4711.21826171875 2141.229248046875 C 4722.626953125 2147.663330078125 4712.8291015625 2141.229248046875 4712.8291015625 2141.229248046875 C 4712.8291015625 2141.229248046875 4737.462890625 2118.742431640625 4759.2421875 2118.3642578125 C 4781.0234375 2117.985107421875 4760.5390625 2152.92626953125 4760.5390625 2152.92626953125 L 4631.67138671875 2152.92626953125 L 4631.67138671875 2136.780029296875 Z">
+						</path>
+					</svg>
+					<svg class="Front_Transitioner" style="bottom: -30px;" viewBox="4631.671 2118.361 137.6 26.969">
+						<path fill="rgba(91,182,187,1)" id="Front_Transitioner" d="M 4631.67138671875 2132.73193359375 C 4631.67138671875 2132.73193359375 4649.82177734375 2125.843017578125 4669.78759765625 2132.73193359375 C 4689.7529296875 2139.621826171875 4680.93701171875 2136.66943359375 4680.93701171875 2136.66943359375 C 4680.93701171875 2136.66943359375 4699.80908203125 2131.184326171875 4711.21875 2136.203369140625 C 4722.62744140625 2141.2236328125 4712.82958984375 2136.203369140625 4712.82958984375 2136.203369140625 C 4712.82958984375 2136.203369140625 4737.462890625 2118.658447265625 4759.24267578125 2118.363525390625 C 4781.0234375 2118.0673828125 4760.5390625 2145.329833984375 4760.5390625 2145.329833984375 L 4631.67138671875 2145.329833984375 L 4631.67138671875 2132.73193359375 Z">
+						</path>
+					</svg>
+				</div>
+				<svg class="Guides_Rectangle">
+					<rect fill="transparent" stroke="rgba(91,182,187,1)" stroke-width="2px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Guides_Rectangle_Class" rx="18" ry="18" x="0" y="0" width="118" height="36">
+					</rect>
+				</svg>
+				<div class="Guides_Class" v-bind:style="{ fontSize: confineTextWidth(56, tryTranslate('Guides'), 15, 'px', 'bold', 'SF Pro Text') }">
+					<span>{{tryTranslate('Guides')}}</span>
+				</div>
+				<svg class="Guide_Icon" viewBox="3 3 17.874 17.874">
+					<path fill="rgba(91,182,187,1)" class="Guide_Icon_Class buttonIcon" d="M 4.787413120269775 6.574826240539551 L 2.999999761581421 6.574826240539551 L 2.999999761581421 19.08671760559082 C 2.999999761581421 20.06979370117188 3.804335832595825 20.87413024902344 4.787413120269775 20.87413024902344 L 17.29930305480957 20.87413024902344 L 17.29930305480957 19.08671760559082 L 4.787413120269775 19.08671760559082 L 4.787413120269775 6.574826240539551 Z M 19.08671760559082 2.999999761581421 L 8.362237930297852 2.999999761581421 C 7.379162311553955 2.999999761581421 6.574826240539551 3.804335832595825 6.574826240539551 4.787413120269775 L 6.574826240539551 15.51188945770264 C 6.574826240539551 16.49496841430664 7.379162311553955 17.29930305480957 8.362237930297852 17.29930305480957 L 19.08671760559082 17.29930305480957 C 20.06979370117188 17.29930305480957 20.87413024902344 16.49496841430664 20.87413024902344 15.51188945770264 L 20.87413024902344 4.787413120269775 C 20.87413024902344 3.804335832595825 20.06979370117188 2.999999761581421 19.08671760559082 2.999999761581421 Z M 18.1930103302002 11.04335784912109 L 9.25594425201416 11.04335784912109 L 9.25594425201416 9.25594425201416 L 18.1930103302002 9.25594425201416 L 18.1930103302002 11.04335784912109 Z M 14.61818313598633 14.61818313598633 L 9.25594425201416 14.61818313598633 L 9.25594425201416 12.83077049255371 L 14.61818313598633 12.83077049255371 L 14.61818313598633 14.61818313598633 Z M 18.1930103302002 7.468532562255859 L 9.25594425201416 7.468532562255859 L 9.25594425201416 5.681119441986084 L 18.1930103302002 5.681119441986084 L 18.1930103302002 7.468532562255859 Z">
+					</path>
+				</svg>
+			</div>
+
+			<div class="Home_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+				<span>{{tryTranslate('Home')}}</span>
+			</div>
+		</div>
+
+	</div>
+
+	<script src="../../../../../utils/scripts/button-transitions.js" type="text/javascript"></script>
+	<script src="./js/home.js" type="text/javascript"></script>
+
+</body>
+</html>

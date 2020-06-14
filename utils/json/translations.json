@@ -6,6 +6,12 @@
         "es": "Acciones"
       }
     },
+    "Add": {
+      "languages": {
+        "en": "Add",
+        "es": "Añadir"
+      }
+    },
     "Analytics": {
       "languages": {
         "en": "Analytics",
@@ -42,22 +48,40 @@
         "es": "Pago automático con tu perfil de facturación favorito"
       }
     },
+    "Automatically checkout on Supreme and Shopify": {
+      "languages": {
+        "en": "Automatically checkout on Supreme and Shopify",
+        "es": "Pago automático en Supreme y Shopify"
+      }
+    },
     "Begin Monitoring at": {
       "languages": {
         "en": "Begin Monitoring at",
         "es": "Comenzar a Monitorear a las"
       }
     },
-    "Bots": {
+    "Browser": {
       "languages": {
-        "en": "Bots",
-        "es": "Bots"
+        "en": "Browser",
+        "es": "Navegador"
+      }
+    },
+    "Billing Profiles": {
+      "languages": {
+        "en": "Billing Profiles",
+        "es": "Perfiles de facturación"
       }
     },
     "Browser": {
       "languages": {
         "en": "Browser",
         "es": "Navegador"
+      }
+    },
+    "Checkout Method": {
+      "languages": {
+        "en": "Checkout Method",
+        "es": "Método de compra"
       }
     },
     "Collection": {
@@ -70,6 +94,12 @@
       "languages": {
         "en": "Color",
         "es": "Color"
+      }
+    },
+    "Configure": {
+      "languages": {
+        "en": "Configure",
+        "es": "Configurar"
       }
     },
     "Configure Monitors": {
@@ -90,10 +120,28 @@
         "es": "Crear"
       }
     },
+    "Create Tasks": {
+      "languages": {
+        "en": "Create Tasks",
+        "es": "Crear Tareas"
+      }
+    },
+    "Clothing": {
+      "languages": {
+        "en": "Clothing",
+        "es": "Ropa"
+      }
+    },
     "December": {
       "languages": {
         "en": "December",
         "es": "Diciembre"
+      }
+    },
+    "Done": {
+      "languages": {
+        "en": "Done",
+        "es": "Terminar"
       }
     },
     "Stop": {
@@ -130,6 +178,12 @@
       "languages": {
         "en": "Fri",
         "es": "Vie"
+      }
+    },
+    "Go to": {
+      "languages": {
+        "en": "Go to",
+        "es": "Ir a"
       }
     },
     "Guides": {
@@ -198,6 +252,18 @@
         "es": "Fecha de Lanzamiento"
       }
     },
+    "Launch tasks using your connected bots": {
+      "languages": {
+        "en": "Launch tasks using your connected bots",
+        "es": "Inicie tareas con los bots conectados"
+      }
+    },
+    "Launch tasks using a randomly available size": {
+      "languages": {
+        "en": "Launch tasks using a randomly available size",
+        "es": "Iniciar tareas con un tamaño disponible al azar"
+      }
+    },
     "Left Click": {
       "languages": {
         "en": "Left Click",
@@ -252,6 +318,12 @@
       "languages": {
         "en": "nd",
         "es": "do"
+      }
+    },
+    "No bots are currently connected": {
+      "languages": {
+        "en": "No bots are currently connected",
+        "es": "No hay bots conectados actualmente"
       }
     },
     "No keywords specified": {
@@ -392,10 +464,28 @@
         "es": "Buscar"
       }
     },
+    "Select Sizes": {
+      "languages": {
+        "en": "Select Sizes",
+        "es": "Seleccionar tamaños"
+      }
+    },
     "September": {
       "languages": {
         "en": "September",
         "es": "Septiembre"
+      }
+    },
+    "Settings": {
+      "languages": {
+        "en": "Settings",
+        "es": "Configuración"
+      }
+    },
+    "Shoes": {
+      "languages": {
+        "en": "Shoes",
+        "es": "Zapatos"
       }
     },
     "Shopping Bag": {
@@ -500,6 +590,12 @@
         "es": "Jue"
       }
     },
+    "to connect your bots": {
+      "languages": {
+        "en": "to connect your bots",
+        "es": "para conectar los bots"
+      }
+    },
     "Total": {
       "languages": {
         "en": "Total",
@@ -536,10 +632,28 @@
         "es": "Producto Desconocido"
       }
     },
+    "Use Connected Bots": {
+      "languages": {
+        "en": "Use Connected Bots",
+        "es": "Usar Bots Conectados"
+      }
+    },
+    "Use Checkout Companion™": {
+      "languages": {
+        "en": "Use Checkout Companion™",
+        "es": "Usar Checkout Companion™"
+      }
+    },
     "Use Favorited Stores Only": {
       "languages": {
         "en": "Use Favorited Stores Only",
         "es": "Usar Solo Tiendas Favoritas"
+      }
+    },
+    "Use Random Size": {
+      "languages": {
+        "en": "Use Random Size",
+        "es": "Usar tamaño aleatorio"
       }
     },
     "Wednesday": {
@@ -564,6 +678,12 @@
       "languages": {
         "en": "Your shopping bag is empty",
         "es": "Su bolsa de la compra está vacía"
+      }
+    },
+    "Your tasks automatically began at": {
+      "languages": {
+        "en": "Your tasks automatically began at",
+        "es": "Sus tareas comenzaron automáticamente en"
       }
     },
     "Your tasks will begin monitoring at": {

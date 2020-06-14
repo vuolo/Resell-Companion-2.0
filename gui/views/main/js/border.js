@@ -31,7 +31,7 @@ let pages = [
 
 window.activePageIndex = 2;
 
-const borderApp = new Vue({
+window.borderApp = new Vue({
   el: "#Rewrite___Application_Border",
   data: {
     companionSettings: window.companionSettings,
@@ -44,7 +44,15 @@ const borderApp = new Vue({
     confineTextWidth: window.confineTextWidth,
     tryTranslate: window.tryTranslate,
     getThemeColor: window.getThemeColor,
-    switchToPage: function(pageIndex) {
+    switchToPage: function(pageIndex = -1, pageName = null) {
+      if (pageName) {
+        for (var i = 0; i < pages.length; i++) {
+          if (pages[i].name == pageName) {
+            pageIndex = i;
+            break;
+          }
+        }
+      }
       this.activePageIndex = pageIndex;
       try { contentApp.activePageIndex = pageIndex; } catch(err) { console.log(err); }
       curAwaitState = pages[this.activePageIndex].state;
