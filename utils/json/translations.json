@@ -42,6 +42,18 @@
         "es": "Pago automático con tu perfil de facturación favorito"
       }
     },
+    "Begin Monitoring at": {
+      "languages": {
+        "en": "Begin Monitoring at",
+        "es": "Comenzar a Monitorear a las"
+      }
+    },
+    "Bots": {
+      "languages": {
+        "en": "Bots",
+        "es": "Bots"
+      }
+    },
     "Browser": {
       "languages": {
         "en": "Browser",
@@ -63,7 +75,7 @@
     "Configure Monitors": {
       "languages": {
         "en": "Configure Monitors",
-        "es": "Configurar Observadores"
+        "es": "Configurar Monitores"
       }
     },
     "Could not find any products": {
@@ -72,10 +84,22 @@
         "es": "No se encontraron productos"
       }
     },
+    "Create": {
+      "languages": {
+        "en": "Create",
+        "es": "Crear"
+      }
+    },
     "December": {
       "languages": {
         "en": "December",
         "es": "Diciembre"
+      }
+    },
+    "Stop": {
+      "languages": {
+        "en": "Stop",
+        "es": "Terminar"
       }
     },
     "February": {
@@ -130,6 +154,12 @@
       "languages": {
         "en": "Initial Pickup",
         "es": "Recogida Inicial"
+      }
+    },
+    "Invalid Date": {
+      "languages": {
+        "en": "Invalid Date",
+        "es": "Fecha no válida"
       }
     },
     "January": {
@@ -207,7 +237,7 @@
     "Monitors": {
       "languages": {
         "en": "Monitors",
-        "es": "Observadores"
+        "es": "Monitores"
       }
     },
     "N/A": {
@@ -228,6 +258,24 @@
       "languages": {
         "en": "No keywords specified",
         "es": "No se especifican palabras clave"
+      }
+    },
+    "No product selected to setup tasks": {
+      "languages": {
+        "en": "No product selected to setup tasks",
+        "es": "No hay ningún producto seleccionado para configurar tareas"
+      }
+    },
+    "No products setup": {
+      "languages": {
+        "en": "No products setup",
+        "es": "Sin configuración de productos"
+      }
+    },
+    "No tasks are created for this product": {
+      "languages": {
+        "en": "No tasks are created for this product",
+        "es": "No se crean tareas para este producto"
       }
     },
     "November": {
@@ -302,6 +350,18 @@
         "es": "Pulsa"
       }
     },
+    "Product": {
+      "languages": {
+        "en": "Product",
+        "es": "Producto"
+      }
+    },
+    "Products": {
+      "languages": {
+        "en": "Products",
+        "es": "Productos"
+      }
+    },
     "rd": {
       "languages": {
         "en": "rd",
@@ -344,6 +404,18 @@
         "es": "Bolsa de la Compra"
       }
     },
+    "Size": {
+      "languages": {
+        "en": "Size",
+        "es": "Tamaño"
+      }
+    },
+    "Solvers Opened": {
+      "languages": {
+        "en": "Solvers Opened",
+        "es": "Solucionadores Abiertos"
+      }
+    },
     "Spoof": {
       "languages": {
         "en": "Spoof",
@@ -356,6 +428,18 @@
         "es": ""
       }
     },
+    "Status": {
+      "languages": {
+        "en": "Status",
+        "es": "Estado"
+      }
+    },
+    "Start": {
+      "languages": {
+        "en": "Start",
+        "es": "Comenzar"
+      }
+    },
     "Stores": {
       "languages": {
         "en": "Stores",
@@ -366,6 +450,12 @@
       "languages": {
         "en": "Style Code",
         "es": "Código de Estilo"
+      }
+    },
+    "Successfully Checked Out": {
+      "languages": {
+        "en": "Successfully checked out",
+        "es": "Desprotegido con éxito"
       }
     },
     "Sunday": {
@@ -384,12 +474,6 @@
       "languages": {
         "en": "Tasks",
         "es": "Tareas"
-      }
-    },
-    "To automatically checkout using your default browser, download our Chrome extension": {
-      "languages": {
-        "en": "To automatically checkout using your default browser, download our Chrome extension",
-        "es": "Para pagar automáticamente con su navegador predeterminado, descargue nuestra extensión de Chrome"
       }
     },
     "There are not any important releases today": {
@@ -414,6 +498,18 @@
       "languages": {
         "en": "Thu",
         "es": "Jue"
+      }
+    },
+    "Total": {
+      "languages": {
+        "en": "Total",
+        "es": "Total"
+      }
+    },
+    "To automatically checkout using your default browser, download our Chrome extension": {
+      "languages": {
+        "en": "To automatically checkout using your default browser, download our Chrome extension",
+        "es": "Para pagar automáticamente con su navegador predeterminado, descargue nuestra extensión de Chrome"
       }
     },
     "Try using other keywords": {
@@ -468,6 +564,12 @@
       "languages": {
         "en": "Your shopping bag is empty",
         "es": "Su bolsa de la compra está vacía"
+      }
+    },
+    "Your tasks will begin monitoring at": {
+      "languages": {
+        "en": "Your tasks will begin monitoring at",
+        "es": "Sus tareas comenzarán a monitorear el"
       }
     }
   }

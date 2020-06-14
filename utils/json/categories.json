@@ -2313,6 +2313,16 @@
           "favorited": true,
           "region": "Italy",
           "taskLaunchable": null
+        },
+        {
+          "name": "United Kingdom",
+          "identifier": "snkrs",
+          "urls": [
+            "nike.com/gb/launch"
+          ],
+          "favorited": true,
+          "region": "United-Kingdom",
+          "taskLaunchable": null
         }
       ]
     },

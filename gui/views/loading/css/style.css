@@ -30,7 +30,7 @@ body {
 	height: 345px;
 	/* background-color: rgba(251,247,241,1); */
   background-color: transparent;
-  border-radius: 25px;
+  /* border-radius: 25px; */
 	overflow: hidden;
 	--web-view-name: Loading Screen;
 	--web-view-id: Loading_Screen;

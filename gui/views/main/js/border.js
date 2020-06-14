@@ -29,7 +29,7 @@ let pages = [
   }
 ];
 
-window.activePageIndex = 0;
+window.activePageIndex = 2;
 
 const borderApp = new Vue({
   el: "#Rewrite___Application_Border",

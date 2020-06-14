@@ -106,8 +106,8 @@ electron.ipcRenderer.on('user-transfer', function(event, inLogin) {
   // login ready to be used
 });
 
-window.formatTimestamp = (timestamp) => { // TODO: add option to use 12/24 hour and also translate...
-  curDate = new Date(timestamp || undefined),
+window.formatTimestamp = (timestamp = new Date().getTime()) => { // TODO: add option to use 12/24 hour and also translate...
+  var curDate = new Date(timestamp || undefined),
   weekday = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'),
   dayOfWeek = weekday[curDate.getDay()],
   domEnder = function() { var a = curDate; if (/1/.test(parseInt((a + "").charAt(0)))) return "th"; a = parseInt((a + "").charAt(1)); return 1 == curDate.getDate() ? "st" : 2 == curDate.getDate() ? "nd" : 3 == curDate.getDate() ? "rd" : "th" }(),
@@ -122,6 +122,12 @@ window.formatTimestamp = (timestamp) => { // TODO: add option to use 12/24 hour 
   var curDateTime = String(curHour).replace("00", "12") + ":" + curMinute + ":" + curSeconds + " " + curMeridiem;
 
   return `${curDate.getMonth()+1}/${curDate.getDate()}/${curDate.getFullYear()} • ${curDateTime}`;
+};
+
+window.formatTimestampExpanded = (timestamp = new Date().getTime()) => {
+  var curDate = new Date(timestamp || undefined);
+  const options = { weekday: "long", year: "numeric", month: "short", day: "numeric", hour: "numeric", minute: "2-digit" };
+  return curDate.toLocaleString(window.companionSettings.language, options);
 };
 
 /**
