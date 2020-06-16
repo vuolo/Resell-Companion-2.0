@@ -50,7 +50,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 	height: 435px;
 	left: 0px;
 	top: 251.013px;
-	overflow: hidden;
+	overflow: auto;
+  overflow-x: hidden;
 }
 .Group_215_Class {
 	position: absolute;
@@ -968,12 +969,21 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 	top: 9px;
 	transform: matrix(1,0,0,1,0,0);
 }
+.Product_Table {
+  top: 31px;
+  width: 249px;
+  height: 586px;
+  overflow: auto;
+  overflow-x: hidden;
+  left: -10px;
+  position: absolute;
+}
 .Add_Product_Class {
 	position: absolute;
 	width: 222px;
 	height: 26px;
-	left: 0px;
-	top: 64px;
+	left: 10px;
+	top: 10px;
 	overflow: visible;
 }
 .Add_Product_Rectangle {
@@ -1005,7 +1015,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 	position: absolute;
 	width: 222px;
 	height: 26px;
-	left: 0px;
+	left: 10px;
 	top: 30.876px;
 	overflow: visible;
 }

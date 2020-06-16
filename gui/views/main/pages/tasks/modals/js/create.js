@@ -90,6 +90,8 @@ const createApp = new Vue({
     calculateUnderlineLeftOffset: window.parent.parent.calculateUnderlineLeftOffset,
     tryTranslate: window.parent.parent.tryTranslate,
     getThemeColor: window.parent.parent.getThemeColor,
+    addTaskNode: window.parent.addTaskNode,
+    updateTaskNode: window.parent.updateTaskNode,
     getTitleSwitchLeft: function(maxWidth, title) {
       let titleWidth = this.getTextWidth(title, 'bold 20px \'SF Pro Text\'');
       if (titleWidth >= maxWidth) {

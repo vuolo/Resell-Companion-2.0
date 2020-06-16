@@ -156,6 +156,12 @@
         "es": "Diciembre"
       }
     },
+    "Disabled": {
+      "languages": {
+        "en": "Disabled",
+        "es": "Deshabilitado"
+      }
+    },
     "Done": {
       "languages": {
         "en": "Done",
@@ -285,7 +291,7 @@
     "Launch tasks using a randomly available size": {
       "languages": {
         "en": "Launch tasks using a randomly available size",
-        "es": "Iniciar tareas con un tamaño disponible al azar"
+        "es": "Iniciar tareas con un tamaño aleatorio disponible"
       }
     },
     "Left Click": {
@@ -322,6 +328,12 @@
       "languages": {
         "en": "Mon",
         "es": "Lun"
+      }
+    },
+    "Monitoring...": {
+      "languages": {
+        "en": "Monitoring...",
+        "es": "Monitoreando..."
       }
     },
     "Monitors": {
@@ -476,6 +488,12 @@
         "es": "Cantidad"
       }
     },
+    "Random": {
+      "languages": {
+        "en": "Random",
+        "es": "Aleatorio"
+      }
+    },
     "rd": {
       "languages": {
         "en": "rd",
@@ -504,6 +522,12 @@
       "languages": {
         "en": "Sat",
         "es": "Sáb"
+      }
+    },
+    "Save": {
+      "languages": {
+        "en": "Save",
+        "es": "Guardar"
       }
     },
     "Search": {

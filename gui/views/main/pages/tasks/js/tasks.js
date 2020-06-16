@@ -58,8 +58,27 @@ window.tasksApp = new Vue({
       }
       return 0;
     },
+    toggleNodeEnabled: function(node, enabled = null) {
+      if (enabled != null) node.enabled = enabled;
+      else node.enabled = !node.enabled;
+      if (node.enabled) {
+        node.status.description = "Monitoring...";
+        node.status.color = "yellow";
+      } else {
+        node.status.description = "Disabled";
+        node.status.color = "red";
+      }
+    },
     openNewTaskModal: function() {
       window.frames['create-modal'].resetModalOptions();
+      this.openModal('create');
+    },
+    openEditTaskModal: function(taskNodeIndex) {
+      window.frames['create-modal'].resetModalOptions();
+      this.createModal.isEditingTaskIndex = taskNodeIndex;
+      this.createModal.sizes = tasks[this.activeTaskIndex].nodes[taskNodeIndex].configuration.sizes;
+      this.createModal.useRandomSize = tasks[this.activeTaskIndex].nodes[taskNodeIndex].configuration.useRandomSize;
+      this.createModal.checkoutMethod = tasks[this.activeTaskIndex].nodes[taskNodeIndex].configuration.checkoutMethod;
       this.openModal('create');
     },
     getColor: function(color) {
@@ -101,11 +120,11 @@ window.tasksApp = new Vue({
     },
     toggleAllTaskNodes: function(enabled = true) {
       for (var node of tasks[this.activeTaskIndex].nodes) {
-        node.enabled = enabled;
+        this.toggleNodeEnabled(node, enabled)
       }
     },
     getDisplayedSizes: function(node) {
-      return node.configuration.useRandomSize ? this.tryTranslate('Random') : node.configuration.sizes.join(", ");
+      return node.configuration.useRandomSize ? this.tryTranslate('Random') : (node.configuration.sizes.length > 0 ? node.configuration.sizes.join(", ") : this.tryTranslate("N/A"));
     },
     shouldDisplayStartButton: function() {
       for (var node of tasks[this.activeTaskIndex].nodes) {
@@ -164,6 +183,35 @@ window.tasksApp = new Vue({
     }
   }
 });
+
+window.addTaskNode = () => {
+  let newTaskNode = {
+    configuration: {
+      sizes: tasksApp.createModal.sizes,
+      useRandomSize: tasksApp.createModal.useRandomSize,
+      checkoutMethod: tasksApp.createModal.checkoutMethod
+    },
+    status: {
+      description: 'Monitoring...',
+      color: 'yellow'
+    },
+    enabled: true
+  };
+  for (var i = 0; i < tasksApp.createModal.quantity; i++) {
+    tasks[tasksApp.activeTaskIndex].nodes.push(window.parent.memory.copyObj(newTaskNode));
+  }
+};
+
+window.updateTaskNode = (taskNodeIndex) => {
+  let updatedTaskNode = {
+    configuration: {
+      sizes: tasksApp.createModal.sizes,
+      useRandomSize: tasksApp.createModal.useRandomSize,
+      checkoutMethod: tasksApp.createModal.checkoutMethod
+    }
+  };
+  window.parent.memory.syncObject(tasks[tasksApp.activeTaskIndex].nodes[taskNodeIndex], updatedTaskNode);
+};
 
 function separateDate(timestamp = new Date().getTime()) {
   let date = new Date(timestamp);

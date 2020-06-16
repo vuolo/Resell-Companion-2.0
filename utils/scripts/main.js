@@ -64,18 +64,7 @@ window.openInternal = (url, options = {}, combineOptions = true) => {
     url = "http://" + url;
   }
   if (combineOptions) {
-    for (var key of Object.keys(DEFAULT_OPEN_INTERNAL_OPTIONS)) {
-      let foundKey = false;
-      for (var optionKey of Object.keys(options)) {
-        if (key == optionKey) {
-          foundKey = true;
-          break;
-        }
-      }
-      if (!foundKey) {
-        options[key] = DEFAULT_OPEN_INTERNAL_OPTIONS[key];
-      }
-    }
+    window.combineObjects(options, DEFAULT_OPEN_INTERNAL_OPTIONS)
   }
   let win = new electron.remote.BrowserWindow(options);
   win.loadURL(url, { userAgent: USER_AGENT });
@@ -83,6 +72,21 @@ window.openInternal = (url, options = {}, combineOptions = true) => {
     win = null;
   });
   return win;
+};
+
+window.combineObjects = (incomingObj, fullObj) => {
+  for (var key of Object.keys(fullObj)) {
+    let foundKey = false;
+    for (var objKey of Object.keys(incomingObj)) {
+      if (key == objKey) {
+        foundKey = true;
+        break;
+      }
+    }
+    if (!foundKey) {
+      incomingObj[key] = fullObj[key];
+    }
+  }
 };
 
 window.openURL = (url, useDefaultBrowser, options) => {
