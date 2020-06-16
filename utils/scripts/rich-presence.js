@@ -24,12 +24,12 @@ var actualState = null;
 var curAwaitState = "Examining the release calendar...";
 
 rpc.on('ready', () => {
-  setRichPresenceActivity(curAwaitState);
+  setRichPresenceActivity(window.tryTranslate(curAwaitState));
 
   // activity can only be set every 15 seconds
   setInterval(() => {
     if (curAwaitState != actualState) {
-      setRichPresenceActivity(curAwaitState);
+      setRichPresenceActivity(window.tryTranslate(curAwaitState));
     }
   }, 15e3);
 });

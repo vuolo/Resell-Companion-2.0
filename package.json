@@ -18,6 +18,7 @@
   "dependencies": {
     "discord-rpc": "^3.1.1",
     "laravel-echo": "^1.8.0",
+    "lodash": "^4.17.15",
     "nedb": "^1.8.0",
     "open": "^7.0.4",
     "pusher-js": "^6.0.3",

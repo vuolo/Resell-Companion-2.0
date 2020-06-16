@@ -1,20 +1,27 @@
+const cloneDeep = require("lodash/clonedeep");
 const Datastore = require('nedb');
 const path = require('path');
 const homedir = require('os').homedir();
 
 function syncObject(obj, doc) {
+  // ### shallow sync:
   for (var key in doc) {
     obj[key] = doc[key];
   }
 }
 
 function syncObjects(objArr, docArr) {
+  // ### shallow sync:
   while (objArr.length > 0) {
     objArr.pop();
   }
   for (var doc of docArr) {
     objArr.push(doc)
   }
+}
+
+function copyObj(obj) {
+  return cloneDeep(obj);
 }
 
 async function saveToDatabase(database, data) {
@@ -50,6 +57,7 @@ async function getFromDatabase(database) {
 module.exports = {
   syncObject: syncObject,
   syncObjects: syncObjects,
+  copyObj: copyObj,
   saveToDatabase: saveToDatabase,
   getFromDatabase: getFromDatabase
 };

@@ -59,7 +59,7 @@ window.tasksApp = new Vue({
       return 0;
     },
     openNewTaskModal: function() {
-      window.frames['create-modal'].resetOptions();
+      window.frames['create-modal'].resetModalOptions();
       this.openModal('create');
     },
     getColor: function(color) {

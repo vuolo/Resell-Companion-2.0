@@ -7,16 +7,25 @@
 // imports
 const MODAL_NAME = 'create';
 
-window.modalOptions = {
+const MODAL_OPTIONS_TEMPLATE = {
   sizeView: 'Shoes',
   sizes: [],
   useRandomSize: true,
   checkoutMethod: {
-    useCheckoutCompanion: true
+    useCheckoutCompanion: true,
+    rotateBillingProfiles: true,
+    useFavoritedBillingProfile: false,
+    billingProfile: null
   },
   quantity: 1,
-  isEditingTask: false
+  isEditingTaskIndex: -1
 };
+
+window.modalOptions = {};
+window.resetModalOptions = () => {
+  window.parent.parent.memory.syncObject(window.modalOptions, window.parent.parent.memory.copyObj(MODAL_OPTIONS_TEMPLATE));
+}
+window.resetModalOptions();
 
 const shoeSizes = [
   "4",
@@ -68,7 +77,11 @@ const createApp = new Vue({
     companionSettings: window.parent.parent.companionSettings,
     modalOptions: modalOptions,
     shoeSizes: shoeSizes,
-    clothingSizes: clothingSizes
+    clothingSizes: clothingSizes,
+    isConfiguringBillingProfiles: false,
+    proxyProfiles: [],
+    billingProfiles: [],
+    connectedBots: []
   },
   methods: {
     confineTextWidth: window.parent.parent.confineTextWidth,
@@ -102,19 +115,10 @@ const createApp = new Vue({
     },
     closeModal: function() {
       window.parent.modals[MODAL_NAME].visible = false;
+      // TODO: add task (do this in code if you click on "done" button - save/create new task then call this function)
+      window.resetModalOptions();
     }
   }
 });
-
-function resetOptions() {
-  let templateOptions = {
-    sizes: [],
-    useRandomSize: true,
-    checkoutMethod: {
-      useCheckoutCompanion: true
-    }
-  };
-  modalOptions = templateOptions;
-}
 
 window.onload = window.parent.modalLoadedCallback(MODAL_NAME);

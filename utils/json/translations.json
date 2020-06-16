@@ -18,6 +18,12 @@
         "es": "Analíticos"
       }
     },
+    "Analyzing product data...": {
+      "languages": {
+        "en": "Analyzing product data...",
+        "es": "Análisis de datos de productos..."
+      }
+    },
     "April": {
       "languages": {
         "en": "April",
@@ -39,7 +45,7 @@
     "Automatically Checkout": {
       "languages": {
         "en": "Automatically Checkout",
-        "es": "Pago Automático"
+        "es": "Pago automático"
       }
     },
     "Automatically checkout using your favorited billing profile": {
@@ -57,13 +63,19 @@
     "Begin Monitoring at": {
       "languages": {
         "en": "Begin Monitoring at",
-        "es": "Comenzar a Monitorear a las"
+        "es": "Comenzar a monitorear a las"
       }
     },
     "Browser": {
       "languages": {
         "en": "Browser",
         "es": "Navegador"
+      }
+    },
+    "Billing Profile": {
+      "languages": {
+        "en": "Billing Profile",
+        "es": "Perfil de facturación"
       }
     },
     "Billing Profiles": {
@@ -105,7 +117,7 @@
     "Configure Monitors": {
       "languages": {
         "en": "Configure Monitors",
-        "es": "Configurar Monitores"
+        "es": "Configurar monitores"
       }
     },
     "Could not find any products": {
@@ -123,13 +135,19 @@
     "Create Tasks": {
       "languages": {
         "en": "Create Tasks",
-        "es": "Crear Tareas"
+        "es": "Crear tareas"
       }
     },
     "Clothing": {
       "languages": {
         "en": "Clothing",
         "es": "Ropa"
+      }
+    },
+    "Customizing Settings...": {
+      "languages": {
+        "en": "Customizing Settings...",
+        "es": "Personalizando la configuración..."
       }
     },
     "December": {
@@ -144,10 +162,16 @@
         "es": "Terminar"
       }
     },
-    "Stop": {
+    "Examining the release calendar...": {
       "languages": {
-        "en": "Stop",
-        "es": "Terminar"
+        "en": "Examining the release calendar...",
+        "es": "Examinando el calendario de lanzamiento..."
+      }
+    },
+    "Efficiently assign each task with an enabled billing profile": {
+      "languages": {
+        "en": "Efficiently assign each task with an enabled billing profile",
+        "es": "Asigne eficientemente cada tarea con un perfil de facturación habilitado"
       }
     },
     "February": {
@@ -207,7 +231,7 @@
     "Initial Pickup": {
       "languages": {
         "en": "Initial Pickup",
-        "es": "Recogida Inicial"
+        "es": "Recogida inicial"
       }
     },
     "Invalid Date": {
@@ -237,19 +261,19 @@
     "Keywords": {
       "languages": {
         "en": "Keywords",
-        "es": "Palabras Clave"
+        "es": "Palabras clave"
       }
     },
     "Keywords (ex: +yeezy, -380)": {
       "languages": {
         "en": "Keywords (ex: +yeezy, -380)",
-        "es": "Palabras Clave (ej: +yeezy, -380)"
+        "es": "Palabras clave (ej: +yeezy, -380)"
       }
     },
     "Launch Date": {
       "languages": {
         "en": "Launch Date",
-        "es": "Fecha de Lanzamiento"
+        "es": "Fecha de lanzamiento"
       }
     },
     "Launch tasks using your connected bots": {
@@ -267,7 +291,7 @@
     "Left Click": {
       "languages": {
         "en": "Left Click",
-        "es": "Clic Izquierdo"
+        "es": "Clic izquierdo"
       }
     },
     "March": {
@@ -318,6 +342,12 @@
       "languages": {
         "en": "nd",
         "es": "do"
+      }
+    },
+    "No billing profiles are currently setup": {
+      "languages": {
+        "en": "No billing profiles are currently setup",
+        "es": "No hay perfiles de facturación actualmente configurados"
       }
     },
     "No bots are currently connected": {
@@ -371,13 +401,13 @@
     "One Size": {
       "languages": {
         "en": "One Size",
-        "es": "Una Talla"
+        "es": "Una talla"
       }
     },
     "Open in Default Browser": {
       "languages": {
         "en": "Open in Default Browser",
-        "es": "Abrir en el Navegador Predeterminado"
+        "es": "Abrir en el navegador predeterminado"
       }
     },
     "Open websites using your computer's default browser": {
@@ -434,6 +464,18 @@
         "es": "Productos"
       }
     },
+    "Proxy Profile": {
+      "languages": {
+        "en": "Proxy Profile",
+        "es": "Perfil de proxy"
+      }
+    },
+    "Quantity": {
+      "languages": {
+        "en": "Quantity",
+        "es": "Cantidad"
+      }
+    },
     "rd": {
       "languages": {
         "en": "rd",
@@ -443,7 +485,13 @@
     "Resell Prediction": {
       "languages": {
         "en": "Resell Prediction",
-        "es": "Predicción de Reventa"
+        "es": "Predicción de reventa"
+      }
+    },
+    "Rotate Billing Profiles": {
+      "languages": {
+        "en": "Rotate Billing Profiles",
+        "es": "Alternar perfiles de facturación"
       }
     },
     "Saturday": {
@@ -464,6 +512,18 @@
         "es": "Buscar"
       }
     },
+    "Select Billing Profile": {
+      "languages": {
+        "en": "Select Billing Profile",
+        "es": "Seleccione perfil de facturación"
+      }
+    },
+    "Select Proxy Profile": {
+      "languages": {
+        "en": "Select Proxy Profile",
+        "es": "Seleccione perfil de proxy"
+      }
+    },
     "Select Sizes": {
       "languages": {
         "en": "Select Sizes",
@@ -474,6 +534,12 @@
       "languages": {
         "en": "September",
         "es": "Septiembre"
+      }
+    },
+    "Setting up tasks...": {
+      "languages": {
+        "en": "Setting up tasks...",
+        "es": "Configuración de tareas..."
       }
     },
     "Settings": {
@@ -491,7 +557,7 @@
     "Shopping Bag": {
       "languages": {
         "en": "Shopping Bag",
-        "es": "Bolsa de la Compra"
+        "es": "Bolsa de la compra"
       }
     },
     "Size": {
@@ -503,13 +569,19 @@
     "Solvers Opened": {
       "languages": {
         "en": "Solvers Opened",
-        "es": "Solucionadores Abiertos"
+        "es": "Solucionadores abiertos"
       }
     },
     "Spoof": {
       "languages": {
         "en": "Spoof",
-        "es": "Bromear"
+        "es": "Suplantar"
+      }
+    },
+    "Spoofing device locations...": {
+      "languages": {
+        "en": "Spoofing device locations...",
+        "es": "Suplantación de ubicaciones de dispositivos..."
       }
     },
     "st": {
@@ -530,6 +602,12 @@
         "es": "Comenzar"
       }
     },
+    "Stop": {
+      "languages": {
+        "en": "Stop",
+        "es": "Terminar"
+      }
+    },
     "Stores": {
       "languages": {
         "en": "Stores",
@@ -539,7 +617,7 @@
     "Style Code": {
       "languages": {
         "en": "Style Code",
-        "es": "Código de Estilo"
+        "es": "Código de estilo"
       }
     },
     "Successfully Checked Out": {
@@ -596,6 +674,12 @@
         "es": "para conectar los bots"
       }
     },
+    "to manage your billing profiles": {
+      "languages": {
+        "en": "to manage your billing profiles",
+        "es": "para gestionar sus perfiles de facturación"
+      }
+    },
     "Total": {
       "languages": {
         "en": "Total",
@@ -629,7 +713,7 @@
     "Unknown Product": {
       "languages": {
         "en": "Unknown Product",
-        "es": "Producto Desconocido"
+        "es": "Producto desconocido"
       }
     },
     "Use Connected Bots": {
@@ -644,16 +728,40 @@
         "es": "Usar Checkout Companion™"
       }
     },
+    "Use Favorited Billing Profile": {
+      "languages": {
+        "en": "Use Favorited Billing Profile",
+        "es": "Usar perfil de facturación favoritos"
+      }
+    },
     "Use Favorited Stores Only": {
       "languages": {
         "en": "Use Favorited Stores Only",
-        "es": "Usar Solo Tiendas Favoritas"
+        "es": "Usar solo tiendas favoritas"
       }
     },
     "Use Random Size": {
       "languages": {
         "en": "Use Random Size",
         "es": "Usar tamaño aleatorio"
+      }
+    },
+    "Watching browsers...": {
+      "languages": {
+        "en": "Watching browsers...",
+        "es": "Viendo navegadores..."
+      }
+    },
+    "Watching monitors...": {
+      "languages": {
+        "en": "Watching monitors...",
+        "es": "Viendo monitores..."
+      }
+    },
+    "Watching Social+ monitors...": {
+      "languages": {
+        "en": "Watching Social+ monitors...",
+        "es": "Viendo monitores de Social+..."
       }
     },
     "Wednesday": {

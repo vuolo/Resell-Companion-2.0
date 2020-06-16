@@ -26,6 +26,10 @@ let pages = [
   {
     name: "Social+",
     state: "Watching Social+ monitors..."
+  },
+  {
+    name: "Settings",
+    state: "Customizing Settings..."
   }
 ];
 

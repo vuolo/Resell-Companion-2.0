@@ -7,7 +7,7 @@
 // imports
 const MODAL_NAME = 'configure';
 
-window.modalOptions = {
+const MODAL_OPTIONS_TEMPLATE = {
   filters: {
     filteredKeywords: [
       // {
@@ -41,6 +41,12 @@ window.modalOptions = {
     useDefaultBrowser: false
   }
 };
+
+window.modalOptions = {};
+window.resetModalOptions = () => {
+  window.parent.parent.memory.syncObject(window.modalOptions, window.parent.parent.memory.copyObj(MODAL_OPTIONS_TEMPLATE));
+}
+window.resetModalOptions();
 
 const KEYWORD_PADDING_LEFT_RIGHT = 12;
 const KEYWORD_GAP = 6;

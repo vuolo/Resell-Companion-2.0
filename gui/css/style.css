@@ -118,6 +118,9 @@ input[type="date"]::-webkit-inner-spin-button {
 .use_light_transitions {
   transition: 0.1s all ease-out;
 }
+.use_slow_transitions {
+  transition: 0.33s all ease-out;
+}
 
 [v-cloak] {
    display: none;
@@ -153,9 +156,25 @@ input[type="date"]::-webkit-inner-spin-button {
   transition: 0.5s all ease-out;
 }
 
+.black-arrow {
+	background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position-x: 98%;
+  background-position-y: 5px;
+	-webkit-appearance: none;
+}
+
+.white-arrow {
+	background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position-x: 98%;
+  background-position-y: 5px;
+	-webkit-appearance: none;
+}
+
 .Search_Bar_Class {
 	border-radius: 20px;
-	padding-left: 40px;
+	text-indent: 40px;
 	padding-right: 20px;
 	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
