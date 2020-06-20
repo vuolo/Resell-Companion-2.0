@@ -62,6 +62,7 @@ async function startLogin() {
     resizable: false, // make window follow width x height restraints
     icon: ICON_PATH,
     webPreferences: {
+      enableRemoteModule: true,
       nodeIntegration: true // allows the use of modules
     }
   });
@@ -100,6 +101,7 @@ function startMain() {
     resizable: false, // make window follow width x height restraints
     icon: ICON_PATH,
     webPreferences: {
+      enableRemoteModule: true,
       nodeIntegration: true, // allows the use of modules
       webviewTag: true, // for the browsers page
       backgroundThrottling: false // ensure the tool always runs full speed even if minimized
@@ -154,6 +156,7 @@ function startLoading() {
     resizable: false, // make window follow width x height restraints
     icon: ICON_PATH,
     webPreferences: {
+      enableRemoteModule: true,
       nodeIntegration: true // allows the use of modules
     }
   });

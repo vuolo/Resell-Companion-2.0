@@ -46,10 +46,10 @@ const createApp = new Vue({
       return 0;
     },
     closeModal: function() {
-      window.parent.modals[MODAL_NAME].visible = false;
+      window.parent.browserModals[MODAL_NAME].visible = false;
       window.resetModalOptions();
     }
   }
 });
 
-window.onload = window.parent.modalLoadedCallback(MODAL_NAME);
+window.onload = window.parent.browserModalLoadedCallback(MODAL_NAME);

@@ -108,8 +108,49 @@
     <!-- ############################ LOAD SPOOF PAGE ############################ -->
     <iframe name="spoof-frame" class="pageFrame" v-show="pages[activePageIndex].name == 'Spoof'" src="./pages/spoof/spoof.html" width="1275" height="795" frameborder="0"></iframe>
     <!-- ############################ LOAD BROWSER PAGE ############################ -->
-    <iframe name="browsers-frame" class="pageFrame" v-show="pages[activePageIndex].name == 'Browsers'" src="./pages/browsers/browsers.html" width="1275" height="795" frameborder="0"></iframe>
+    <!--  #depreciated because <webview> tag doens't load on iframe # -->
+    <!-- <iframe name="browsers-frame" class="pageFrame" v-show="pages[activePageIndex].name == 'Browsers'" src="./pages/browsers/browsers.html" width="1275" height="795" frameborder="0"></iframe> -->
   </div>
+
+  <!-- # load without iframe to use <webview> tag # -->
+  <div name="browsers-frame" class="pageFrame" w3-include-html="./pages/browsers/browsers.html" style="top: 50px; position: absolute; display: none;"></div>
+
+  <script>
+    function includeHTML() {
+      var z, i, elmnt, file, xhttp;
+      /*loop through a collection of all HTML elements:*/
+      z = document.getElementsByTagName("*");
+      for (i = 0; i < z.length; i++) {
+        elmnt = z[i];
+        /*search for elements with a certain atrribute:*/
+        file = elmnt.getAttribute("w3-include-html");
+        if (file) {
+          /*make an HTTP request using the attribute value as the file name:*/
+          xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4) {
+              if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+              if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+              /*remove the attribute, and call this function once more:*/
+              elmnt.removeAttribute("w3-include-html");
+              if (window.pages[window.borderApp.activePageIndex].name == 'Browsers') elmnt.style.display = "block";
+              setTimeout(applyButtonTransitions, 1500); // TODO: figure out when to actually call this rather than using a timer
+              includeHTML();
+            }
+          }
+          xhttp.open("GET", file, true);
+          xhttp.send();
+          /*exit the function:*/
+          return;
+        }
+      }
+    };
+
+    includeHTML();
+  </script>
+
+  <script src="../../../utils/scripts/button-transitions.js" type="text/javascript"></script>
+  <script src="./pages/browsers/js/browsers.js" type="text/javascript"></script>
 
   <script src="./js/page-content.js" type="text/javascript"></script>
 

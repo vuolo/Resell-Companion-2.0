@@ -1,4 +1,4 @@
-let pages = [
+window.pages = [
   {
     name: "Home",
     state: "Examining the release calendar..."
@@ -60,6 +60,9 @@ window.borderApp = new Vue({
       this.activePageIndex = pageIndex;
       try { contentApp.activePageIndex = pageIndex; } catch(err) { console.log(err); }
       curAwaitState = pages[this.activePageIndex].state;
+      let browsersFrameElement = document.querySelector("[name='browsers-frame']");
+      if (this.pages[this.activePageIndex].name == 'Browsers') browsersFrameElement.style.display = "block";
+      else browsersFrameElement.style.display = "none";
     }
   }
 });

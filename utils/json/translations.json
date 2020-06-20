@@ -434,6 +434,12 @@
         "es": "No hay bots conectados actualmente"
       }
     },
+    "No browsers created": {
+      "languages": {
+        "en": "No browsers created",
+        "es": "No hay navegadores creados"
+      }
+    },
     "No keywords specified": {
       "languages": {
         "en": "No keywords specified",

@@ -394,6 +394,7 @@ function tryInjectTopBar() {
 
   // disable for small browser
   if (
+    (location.href == "chrome-error://chromewebdata/") || // dont inject on error browser
     (window.innerWidth == 420 && window.innerHeight == 340)// || // browser window (small)
     // (window.innerWidth == 500 && window.innerHeight == 820) // login window
   ) {

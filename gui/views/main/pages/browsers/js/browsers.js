@@ -6,83 +6,88 @@
 
 // imports
 
-
 // variables
 var browsers = [];
 var browserURLS = [];
+let browsersApp;
 
-window.modals = {
+window.browserModals = {
   'create': {
     visible: false
   }
 }
 
-window.openModal = (modalName) => {
-  window.modals[modalName].visible = true;
+window.openBrowserModal = (modalName) => {
+  window.browserModals[modalName].visible = true;
 }
 
-window.modalLoadedCallback = (modalName) => {
+window.browserModalLoadedCallback = async (modalName) => {
   if (modalName == 'create') {
+    while(!browsersApp) {
+      await window.parent.sleep(50);
+    }
     browsersApp.createModal = window.frames['create-modal'].modalOptions;
   }
 }
 
-const browsersApp = new Vue({
-  el: "#Rewrite___Browser",
-  data: {
-    companionSettings: window.parent.companionSettings,
-    modals: window.modals,
-    createModal: {},
-    browsers: browsers,
-    browserURLS: browserURLS,
-    creatingBrowsers: false
-  },
-  methods: {
-    confineTextWidth: window.parent.confineTextWidth,
-    getTextWidth: window.parent.getTextWidth,
-    tryTranslate: window.parent.tryTranslate,
-    getThemeColor: window.parent.getThemeColor,
-    openModal: window.openModal,
-    openNewBrowsersModal: function() {
-      if (this.creatingBrowsers) return;
-      window.frames['create-modal'].resetModalOptions();
-      this.openModal('create');
+window.onload = () => {
+  browsersApp = new Vue({
+    el: "#Rewrite___Browser",
+    data: {
+      companionSettings: window.parent.companionSettings,
+      modals: window.browserModals,
+      createModal: {},
+      browsers: browsers,
+      browserURLS: browserURLS,
+      creatingBrowsers: false
     },
-    shouldDisplayModals: function() {
-      for (var modal in modals) {
-        if (modals[modal].visible) return true;
-      }
-      return false;
-    },
-    getVisualizedBrowserIndex: getVisualizedBrowserIndex,
-    shortenURL: function(url) {
-      return new URL(url).host.replace("www.", "");
-    },
-    bindAndLaunchBrowser: bindAndLaunchBrowser,
-    calculateBrowserPosition: function(browserIndex) {
-      return { top: (Math.floor(browserIndex/5) * (218+9)) + 11 + 'px', left: ((browserIndex%5) * (227+9)) + 10 + 'px' }
-    },
-    refreshBrowser: function(browserIndex) {
-      const webviews = document.querySelectorAll('webview');
-      const curWebview = webviews[browserIndex];
-      curWebview.loadURL(curWebview.getURL());
-    },
-    deleteBrowser: async function(browserIndex) {
-      browsers[browserIndex].active = false;
-      var allBrowsersDeleted = true;
-      for (var browser of browsers) {
-        if (browser.active) {
-          allBrowsersDeleted = false;
-          break;
+    methods: {
+      confineTextWidth: window.parent.confineTextWidth,
+      getTextWidth: window.parent.getTextWidth,
+      tryTranslate: window.parent.tryTranslate,
+      getThemeColor: window.parent.getThemeColor,
+      openModal: window.openBrowserModal,
+      openNewBrowsersModal: function() {
+        if (this.creatingBrowsers) return;
+        window.frames['create-modal'].resetModalOptions();
+        this.openModal('create');
+      },
+      shouldDisplayModals: function() {
+        for (var modal in browserModals) {
+          if (browserModals[modal].visible) return true;
         }
-      }
-      if (allBrowsersDeleted) {
-        clearAllBrowsers();
-      }
-    },
-    clearAllBrowsers: clearAllBrowsers
-  }
-});
+        return false;
+      },
+      getVisualizedBrowserIndex: getVisualizedBrowserIndex,
+      shortenURL: function(url) {
+        return new URL(url).host.replace("www.", "");
+      },
+      bindAndLaunchBrowser: bindAndLaunchBrowser,
+      calculateBrowserPosition: function(browserIndex) {
+        return { top: (Math.floor(browserIndex/5) * (218+9)) + 11 + 'px', left: ((browserIndex%5) * (227+9)) + 10 + 'px' }
+      },
+      refreshBrowser: function(browserIndex) {
+        const webviews = document.querySelectorAll('webview');
+        const curWebview = webviews[browserIndex];
+        curWebview.loadURL(curWebview.getURL());
+      },
+      deleteBrowser: async function(browserIndex) {
+        browsers[browserIndex].active = false;
+        var allBrowsersDeleted = true;
+        for (var browser of browsers) {
+          if (browser.active) {
+            allBrowsersDeleted = false;
+            break;
+          }
+        }
+        if (allBrowsersDeleted) {
+          clearAllBrowsers();
+        }
+      },
+      clearAllBrowsers: clearAllBrowsers
+    }
+  });
+}
 
 function getVisualizedBrowserIndex(actualBrowserIndex) {
   let indexOffset = 0;
@@ -110,13 +115,13 @@ async function clearAllBrowsers() {
 }
 
 function makeid(length) {
-   var result           = '';
-   var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-   var charactersLength = characters.length;
-   for ( var i = 0; i < length; i++ ) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-   }
-   return result;
+  var result           = '';
+  var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  var charactersLength = characters.length;
+  for ( var i = 0; i < length; i++ ) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
 }
 
 window.addNewBrowsers = async (incomingOptions) => {
@@ -130,16 +135,16 @@ window.addNewBrowsers = async (incomingOptions) => {
     let proxy;
     if (options.proxyProfile) {
       // rotate proxies here based on options.proxyProfile
-			for (var proxyProfile of []) { // TODO: add proxyprofiles list
+      for (var proxyProfile of []) { // TODO: add proxyprofiles list
         // TODO (possibly): rework proxy profile locator method depending on how we gather the proxyProfile from the <select>
-				if (proxyProfile.name == options.proxyProfile) {
-					proxy = proxyProfile.proxies.length > curProxyIndex ? proxyProfile.proxies[curProxyIndex] : null;
-					curProxyIndex++;
-					if (curProxyIndex >= proxyProfile.proxies.length) {
-						curProxyIndex = 0;
-					}
-				}
-			}
+        if (proxyProfile.name == options.proxyProfile) {
+          proxy = proxyProfile.proxies.length > curProxyIndex ? proxyProfile.proxies[curProxyIndex] : null;
+          curProxyIndex++;
+          if (curProxyIndex >= proxyProfile.proxies.length) {
+            curProxyIndex = 0;
+          }
+        }
+      }
     }
     // TODO: add to statistics
     addNewBrowser(options, proxy);
@@ -147,6 +152,7 @@ window.addNewBrowsers = async (incomingOptions) => {
       await window.parent.sleep(parseInt(options.creationDelay));
     }
   }
+  browsersApp.creatingBrowsers = false;
 };
 
 function addNewBrowser(options, proxy) {
@@ -168,7 +174,7 @@ function addNewBrowser(options, proxy) {
   const userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.106 Safari/537.36';
   console.log("declared constants");
 
-  if (browsers[curBrowserIndex].disableImages) {
+  if (false && browsers[curBrowserIndex].disableImages) { // DEPRECIATED
     let forceRefreshed = false;
     setTimeout(function() {
       console.log("refreshing to force disable image load...");
@@ -307,12 +313,12 @@ async function bindAndLaunchBrowser(browserIndex) {
     const BrowserWindow = electron.remote.BrowserWindow;
     const BrowserView = electron.remote.BrowserView;
     const path = window.parent.require('path');
-    const iconPath = window.parent.process.platform != "darwin" ? path.resolve(window.parent.__dirname, '../../../../../build-assets/icons/win-icon.ico') : undefined;
+    const iconPath = window.parent.process.platform != "darwin" ? path.resolve(window.parent.__dirname, '../../../build-assets/icons/win-icon.ico') : undefined;
 
     const userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.106 Safari/537.36';
 
     // let win = new BrowserWindow({width: 1050, height: 650, icon: iconPath})
-    let win = new BrowserWindow({ title: curWebview.getTitle(), width: 1050, height: 650, frame: false, show: true, autoHideMenuBar: true, icon: iconPath, webPreferences: { partition: `persist:${browsers[browserIndex].identifier}`, nodeIntegration: false, enableRemoteModule: false, sandbox: true, images: !browsers[browserIndex].disableImages, preload: path.join(window.parent.__dirname, "../../JS/preload.js") } });
+    let win = new BrowserWindow({ title: curWebview.getTitle(), width: 1050, height: 650, frame: false, show: true, autoHideMenuBar: true, icon: iconPath, webPreferences: { partition: `persist:${browsers[browserIndex].identifier}`, nodeIntegration: false, enableRemoteModule: false, sandbox: true, images: !browsers[browserIndex].disableImages, preload: path.join(window.parent.__dirname, "../../../utils/preload.js") } });
 
     const winSession = win.webContents.session;
     const webviewSession = electron.remote.webContents.fromId(curWebview.getWebContentsId()).session;
@@ -343,7 +349,3 @@ async function bindAndLaunchBrowser(browserIndex) {
   }
 
 }
-
-// for (var i = 0; i < 30; i++) {
-//   addNewBrowser({ URL: "https://google.com", disableImages: false });
-// }
