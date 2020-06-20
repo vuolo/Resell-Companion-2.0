@@ -11,10 +11,6 @@
 
   <script src="../../../utils/downloaded/vue.js" type="text/javascript"></script>
   <script src="../../../utils/downloaded/jquery.js" type="text/javascript"></script>
-  <!-- <script src="../../JS/memory.js" type="text/javascript"></script>
-  <script src="../../JS/profiles.js" type="text/javascript"></script> -->
-  <!-- <script src="../../JS/downloaded/pusher.min.js" type="text/javascript"></script>
-  <script src="../../JS/downloaded/fetch.min.js" type="text/javascript"></script>-->
 
   <link rel="stylesheet" type="text/css" href="./css/border.css"/>
   <script src="../../../utils/scripts/console-stamp.js" type="text/javascript"></script>
@@ -87,7 +83,7 @@
       <img class="Kuri_Class" src="../../images/emoticons/Delivery-Boy.png">
 
       <template v-for="(page, pageIndex) in pages">
-        <div v-if="page.name != 'Settings'" class="Home_Class" v-bind:style="{ fontSize: confineTextWidth(100, tryTranslate(page.name), 16, 'px', pageIndex == activePageIndex ? '900' : 'bold', 'SF Pro Text'), fontWeight: pageIndex == activePageIndex ? '900' : 'bold', opacity: pageIndex == activePageIndex ? 1 : 0.66, left: (pageIndex * 100) + 79 + 'px', color: getThemeColor('rgba(29,29,29,1)') }">
+        <div v-if="page.name != 'Settings'" class="Home_Class" v-bind:style="{ fontSize: confineTextWidth(100-10, tryTranslate(page.name), 16, 'px', pageIndex == activePageIndex ? '900' : 'bold', 'SF Pro Text'), fontWeight: pageIndex == activePageIndex ? '900' : 'bold', opacity: pageIndex == activePageIndex ? 1 : 0.66, left: (pageIndex * 100) + 79 + 'px', color: getThemeColor('rgba(29,29,29,1)') }">
           <span class="clickable hover-underline" v-on:click="switchToPage(pageIndex)">{{tryTranslate(page.name)}}</span>
         </div>
       </template>
@@ -109,6 +105,10 @@
     <iframe name="monitors-frame" class="pageFrame" v-show="pages[activePageIndex].name == 'Monitors'" src="./pages/monitors/monitors.html" width="1275" height="795" frameborder="0"></iframe>
     <!-- ############################ LOAD TASKS PAGE ############################ -->
     <iframe name="tasks-frame" class="pageFrame" v-show="pages[activePageIndex].name == 'Tasks'" src="./pages/tasks/tasks.html" width="1275" height="795" frameborder="0"></iframe>
+    <!-- ############################ LOAD SPOOF PAGE ############################ -->
+    <iframe name="spoof-frame" class="pageFrame" v-show="pages[activePageIndex].name == 'Spoof'" src="./pages/spoof/spoof.html" width="1275" height="795" frameborder="0"></iframe>
+    <!-- ############################ LOAD BROWSER PAGE ############################ -->
+    <iframe name="browsers-frame" class="pageFrame" v-show="pages[activePageIndex].name == 'Browsers'" src="./pages/browsers/browsers.html" width="1275" height="795" frameborder="0"></iframe>
   </div>
 
   <script src="./js/page-content.js" type="text/javascript"></script>

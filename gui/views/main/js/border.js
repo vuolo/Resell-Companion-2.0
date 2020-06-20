@@ -16,7 +16,7 @@ let pages = [
     state: "Spoofing device locations..."
   },
   {
-    name: "Browser",
+    name: "Browsers",
     state: "Watching browsers..."
   },
   {
@@ -33,7 +33,7 @@ let pages = [
   }
 ];
 
-window.activePageIndex = 2;
+window.activePageIndex = 4;
 
 window.borderApp = new Vue({
   el: "#Rewrite___Application_Border",

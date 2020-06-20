@@ -1,0 +1,432 @@
+.mediaViewInfo {
+	--web-view-name: Rewrite – Spoof;
+	--web-view-id: Rewrite___Spoof;
+	--web-enable-deep-linking: true;
+}
+:root {
+	--web-view-ids: Rewrite___Spoof;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	border: none;
+}
+.Rewrite___Spoof_Class {
+	position: absolute;
+	width: 1287px;
+	height: 795px;
+	/* background-color: rgba(251,247,241,1); */
+	overflow: hidden;
+	--web-view-name: Rewrite – Spoof;
+	--web-view-id: Rewrite___Spoof;
+	--web-enable-deep-linking: true;
+}
+
+#Map_Background {
+	position: absolute;
+	width: 1422px;
+	/* height: 795px; */
+  height: 825px;
+	left: 0px;
+	top: 0px;
+	overflow: hidden;
+}
+.Device_1_Class {
+	position: absolute;
+	width: 346px;
+	height: 68px;
+	left: 27px;
+	top: 232px;
+	overflow: visible;
+}
+.Device_Area_Rectangle_dz {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 364px;
+	height: 86px;
+	left: 0px;
+	top: 0px;
+}
+.Device_Name_Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 55.783px;
+	top: 15.124px;
+	overflow: visible;
+	width: 84px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -11px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Marker_Location_d_Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 55.783px;
+	top: 35.124px;
+	overflow: visible;
+	width: 106px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -13.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 15px;
+	color: rgba(29,29,29,1);
+}
+.Device_Icon {
+	overflow: visible;
+	position: absolute;
+	width: 29.313px;
+	height: 33.5px;
+	left: 14.6px;
+	top: 18px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Stop_Button_Class {
+	position: absolute;
+	width: 30.429px;
+	height: 30.428px;
+	left: 292.537px;
+	top: 18.824px;
+	overflow: visible;
+}
+.Stop_Button_Circle {
+	filter: drop-shadow(0px 0px 6px rgba(253, 53, 53, 1));
+	overflow: visible;
+	position: absolute;
+	width: 48.429px;
+	height: 48.429px;
+	left: 0px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Stop_Button_Rectangle {
+	position: absolute;
+	overflow: visible;
+	width: 10px;
+	height: 10px;
+	left: 10.463px;
+	top: 10.176px;
+}
+.Device_1_dp_Class {
+	position: absolute;
+	width: 375px;
+	height: 600px;
+	left: 18px;
+	top: 153px;
+	overflow: auto;
+	overflow-x: hidden;
+}
+.Device_1_dq_Class {
+	position: absolute;
+	width: 346px;
+	height: 68px;
+	left: 9px;
+	top: 6px;
+	overflow: visible;
+}
+.Device_Area_Rectangle_dr {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 346px;
+	height: 68px;
+	left: 0px;
+	top: 0px;
+}
+.Device_Name_ds_Class {
+	/* opacity: 0.66; */
+	position: absolute;
+	left: 55.783px;
+	top: 15.124px;
+	overflow: visible;
+	width: 135px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -11px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Device_Icon_dt_Class {
+	opacity: 0.66;
+}
+.Device_Icon_dt {
+	overflow: visible;
+	position: absolute;
+	width: 19.5px;
+	height: 33px;
+	left: 20px;
+	top: 18px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Marker_Location_du_Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 55.783px;
+	top: 35.124px;
+	overflow: visible;
+	width: 106px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -13.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 15px;
+	color: rgba(29,29,29,1);
+}
+.Resume_Button_Class {
+	position: absolute;
+	width: 30.423px;
+	height: 30.423px;
+	left: 292.796px;
+	top: 18.824px;
+	overflow: visible;
+}
+.Resume_Button_Circle {
+	/* filter: drop-shadow(0px 0px 6px rgba(53, 178, 57, 0.561)); */
+	overflow: visible;
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	left: -1px;
+	top: -1px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Resume_Button_Triangle {
+	overflow: hidden;
+	position: absolute;
+	width: 12px;
+	height: 11px;
+	transform: translate(-290.796px, -228.824px) matrix(1,0,0,1,301.5,238.5) rotate(90deg);
+	transform-origin: center;
+	left: 0px;
+	top: 0px;
+}
+.Device_1_dy_Class {
+	position: absolute;
+	width: 346px;
+	height: 68px;
+	left: 9px;
+	top: 79px;
+	overflow: visible;
+}
+.Device_Area_Rectangle_dz {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 364px;
+	height: 86px;
+	left: 0px;
+	top: 0px;
+}
+.Device_Name_d_Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 55.783px;
+	top: 15.124px;
+	overflow: visible;
+	width: 135px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -11px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Device_Icon_d_Class {
+	opacity: 0.66;
+}
+.Device_Icon_d {
+	overflow: visible;
+	position: absolute;
+	width: 19.5px;
+	height: 33px;
+	left: 20px;
+	top: 18px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Marker_Location_d_Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 55.783px;
+	top: 35.124px;
+	overflow: visible;
+	width: 106px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -13.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 15px;
+	color: rgba(29,29,29,1);
+}
+.Resume_Button_d_Class {
+	position: absolute;
+	width: 30.423px;
+	height: 30.423px;
+	left: 292.796px;
+	top: 18.824px;
+	overflow: visible;
+}
+.Resume_Button_Circle_d {
+	filter: drop-shadow(0px 0px 6px rgba(53, 178, 57, 0.561));
+	overflow: visible;
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	left: 0px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Resume_Button_Triangle_d {
+	overflow: hidden;
+	position: absolute;
+	width: 12px;
+	height: 11px;
+	transform: translate(-290.796px, -228.824px) matrix(1,0,0,1,301.5,238.5) rotate(90deg);
+	transform-origin: center;
+	left: 0px;
+	top: 0px;
+}
+.Header_Class {
+	position: absolute;
+	width: 894.217px;
+	height: 48px;
+	left: 26.783px;
+	top: 18.124px;
+	overflow: visible;
+}
+.Search_Bar_Class {
+	position: absolute;
+	width: 474px;
+	height: 36px;
+	left: 420.217px;
+	top: 5.876px;
+	overflow: visible;
+}
+.Search_Bar_Rectangle {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 492px;
+	height: 54px;
+	left: 0px;
+	top: 0px;
+}
+.Search_Text_Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 45px;
+	top: 8px;
+	overflow: visible;
+	width: 56px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Magnifying_Glass_Icon_Class {
+	opacity: 0.66;
+}
+.Magnifying_Glass_Icon {
+	overflow: visible;
+	position: absolute;
+	width: 17.337px;
+	height: 17.337px;
+	left: 18.535px;
+	top: 9.124px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.ID2_Devices_Connected_Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 231px;
+	top: 18px;
+	overflow: visible;
+	width: 213px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -11px;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Spoof_Class {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+	width: 124px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -1px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: 900;
+	font-size: 40px;
+	color: rgba(29,29,29,1);
+}
+
+.Spoof_Modal_Shader {
+  position: absolute;
+  width: 1422px;
+  /* height: 795px; */
+  height: 825px;
+  left: 0px;
+  top: 0px;
+  background-color: rgba(29,29,29, 0.2);
+  overflow: hidden;
+  z-index: 5;
+}
+.Spoof_MessageModal {
+  filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	left: 410px;
+	top: 240px;
+  width: 500px;
+  height: 250px;
+  z-index: 6;
+}
+.Spoof_MessageModal_Close_Button:hover {
+  cursor: pointer;
+  opacity: 0.85;
+}
+.Spoof_MessageModal_Close_Button {
+	overflow: visible;
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	left: 873px;
+	top: 256px;
+	transform: matrix(1,0,0,1,0,0);
+  z-index: 7;
+}

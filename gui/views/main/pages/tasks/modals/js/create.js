@@ -14,7 +14,7 @@ const MODAL_OPTIONS_TEMPLATE = {
   checkoutMethod: {
     useCheckoutCompanion: true,
     rotateBillingProfiles: true,
-    useFavoritedBillingProfile: false,
+    useFavoritedBillingProfile: true,
     billingProfile: null
   },
   quantity: 1,
@@ -33,6 +33,8 @@ const shoeSizes = [
   "5",
   "5.5",
   "6",
+  "6.5",
+  "7",
   "7.5",
   "8",
   "8.5",
@@ -108,16 +110,17 @@ const createApp = new Vue({
       for (var i = 0; i < modalOptions.sizes.length; i++) {
         if (modalOptions.sizes[i] == size) {
           modalOptions.sizes.splice(i, 1);
+          modalOptions.useRandomSize = false;
           this.$forceUpdate();
           return;
         }
       }
       modalOptions.sizes.push(size);
+      modalOptions.useRandomSize = false;
       this.$forceUpdate();
     },
     closeModal: function() {
       window.parent.modals[MODAL_NAME].visible = false;
-      // TODO: add task (do this in code if you click on "done" button - save/create new task then call this function)
       window.resetModalOptions();
     }
   }

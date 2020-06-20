@@ -1,0 +1,486 @@
+.mediaViewInfo {
+	--web-view-name: Rewrite – Create Browsers Modal;
+	--web-view-id: Rewrite___Create_Browsers_Modal;
+	--web-enable-deep-linking: true;
+}
+:root {
+	--web-view-ids: Rewrite___Create_Browsers_Modal;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	border: none;
+}
+.Rewrite___Create_Browsers_Modal_Class {
+	position: absolute;
+	width: 1287px;
+	height: 795px;
+	/* background-color: rgba(255,255,255,1); */
+	overflow: hidden;
+	--web-view-name: Rewrite – Create Browsers Modal;
+	--web-view-id: Rewrite___Create_Browsers_Modal;
+	--web-enable-deep-linking: true;
+}
+.Modal_Class {
+	position: absolute;
+	width: 1287px;
+	height: 795px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+.Modal_Shader {
+	position: absolute;
+	overflow: visible;
+	width: 1287px;
+	height: 795px;
+	left: 0px;
+	top: 0px;
+}
+.Modal_Rectangle {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 585px;
+	height: 575px;
+	left: 351px;
+	top: 110px;
+}
+.Create_Button_Class {
+	position: absolute;
+	width: 107px;
+	height: 36px;
+	left: 802px;
+	top: 624px;
+	overflow: visible;
+}
+.Create_Rectangle {
+	position: absolute;
+	overflow: visible;
+	width: 107px;
+	height: 36px;
+	left: 0px;
+	top: 0px;
+}
+.Create__2__Class {
+	line-height: 19px;
+	position: absolute;
+	left: 0px;
+	top: 8.836px;
+	overflow: visible;
+	width: 107px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 15px;
+	color: rgba(91,182,187,1);
+}
+.Disable_Images_Area_Class {
+	position: absolute;
+	width: 262px;
+	height: 68px;
+	left: 513px;
+	top: 540px;
+	overflow: visible;
+}
+.Disabling_images_saves_proxy_d_Class {
+	position: absolute;
+	left: 0px;
+	top: 36px;
+	overflow: visible;
+	width: 263px;
+	white-space: pre-wrap;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	color: rgba(29,29,29,1);
+}
+.Disable_Images_Class {
+	position: absolute;
+	left: 85px;
+	top: 1px;
+	overflow: visible;
+	width: 154px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Switch_Class {
+	position: absolute;
+	width: 45px;
+	height: 25px;
+	left: 25px;
+	top: 0px;
+	overflow: visible;
+}
+.Switch_Rectangle {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 45px;
+	height: 25px;
+	left: 0px;
+	top: 0px;
+}
+.Image_Icon {
+	overflow: visible;
+	position: absolute;
+	width: 19.203px;
+	height: 14.402px;
+	left: 12.797px;
+	top: 5.598px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Switch_Circle {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 20px;
+	height: 21px;
+	left: 22px;
+	top: 2px;
+}
+.Separator {
+	position: absolute;
+	overflow: visible;
+	width: 485px;
+	height: 3px;
+	left: 397px;
+	top: 515px;
+}
+.Fields_Class {
+	position: absolute;
+	width: 485px;
+	height: 273px;
+	left: 401px;
+	top: 210px;
+	overflow: visible;
+}
+.Creation_delays_prevent_soft_b_Class {
+	position: absolute;
+	left: 124px;
+	top: 241px;
+	overflow: visible;
+	width: 231px;
+	white-space: pre-wrap;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	color: rgba(29,29,29,1);
+}
+.Creation_Delay_Area_Class {
+	position: absolute;
+	width: 279px;
+	height: 63px;
+	left: 99px;
+	top: 162px;
+	overflow: visible;
+}
+.Creation_Delay_Rectangle {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 297px;
+	height: 54px;
+	left: 0px;
+	top: 27px;
+}
+.Creation_Delay__ms__Class {
+	position: absolute;
+	left: 39px;
+	top: 36px;
+	overflow: visible;
+	width: 154px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Creation_Delay__ms__dx_Class {
+	position: absolute;
+	left: 15px;
+	top: 0px;
+	overflow: visible;
+	width: 171px;
+	white-space: nowrap;
+	line-height: 28px;
+	margin-top: -5.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 17px;
+	color: rgba(29,29,29,1);
+}
+.Clock_Icon_Class {
+	opacity: 0.66;
+	position: absolute;
+	width: 18px;
+	height: 18px;
+	left: 13px;
+	transform: scale(0.9);
+	top: 35px;
+	overflow: visible;
+}
+.Clock_Icon_2 {
+	overflow: visible;
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	left: 0px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Clock_Icon_1 {
+	overflow: visible;
+	position: absolute;
+	width: 6.15px;
+	height: 9.959px;
+	left: 8.87px;
+	top: 3.461px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Quantity_Area_Class {
+	position: absolute;
+	width: 187px;
+	height: 63px;
+	left: 298px;
+	top: 81px;
+	overflow: visible;
+}
+.Quantity_Rectangle {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 205px;
+	height: 54px;
+	left: 0px;
+	top: 27px;
+}
+.Quantity_Class {
+	position: absolute;
+	left: 39px;
+	top: 36px;
+	overflow: visible;
+	width: 67px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Quantity_d_Class {
+	position: absolute;
+	left: 15px;
+	top: 0px;
+	overflow: visible;
+	width: 75px;
+	white-space: nowrap;
+	line-height: 28px;
+	margin-top: -5.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 17px;
+	color: rgba(29,29,29,1);
+}
+.___Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 9px;
+	top: 37px;
+	overflow: visible;
+	width: 25px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+	letter-spacing: -2.75px;
+}
+.Proxy_Profile_Area_Class {
+	position: absolute;
+	width: 279px;
+	height: 63px;
+	left: 0px;
+	top: 81px;
+	overflow: visible;
+}
+.Proxy_Profile_Rectangle {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 297px;
+	height: 54px;
+	left: 0px;
+	top: 27px;
+}
+.Select_Proxy_Profile____Class {
+	position: absolute;
+	left: 39px;
+	top: 36px;
+	overflow: visible;
+	width: 167px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Proxy_Profile_Class {
+	position: absolute;
+	left: 15px;
+	top: 0px;
+	overflow: visible;
+	width: 110px;
+	white-space: nowrap;
+	line-height: 28px;
+	margin-top: -5.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 17px;
+	color: rgba(29,29,29,1);
+}
+.Globe_Icon_Class {
+	opacity: 0.66;
+}
+.Globe_Icon {
+	overflow: visible;
+	position: absolute;
+	width: 18px;
+	height: 17.996px;
+	left: 13px;
+	top: 36px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.URL_Area_Class {
+	position: absolute;
+	width: 485px;
+	height: 63px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+.URL_Rectangle {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 503px;
+	height: 54px;
+	left: 0px;
+	top: 27px;
+}
+.https___google_com_Class {
+	position: absolute;
+	left: 39px;
+	top: 36px;
+	overflow: visible;
+	width: 148px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.URL_Class {
+	position: absolute;
+	left: 15px;
+	top: 0px;
+	overflow: visible;
+	width: 36px;
+	white-space: nowrap;
+	line-height: 28px;
+	margin-top: -5.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 17px;
+	color: rgba(29,29,29,1);
+}
+.Magnifying_Glass_Icon_Class {
+	opacity: 0.66;
+}
+.Magnifying_Glass_Icon {
+	overflow: visible;
+	position: absolute;
+	width: 17.337px;
+	height: 17.337px;
+	left: 13.535px;
+	top: 37.124px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Header_Class {
+	position: absolute;
+	width: 539.356px;
+	height: 49.572px;
+	left: 377.783px;
+	top: 124.552px;
+	overflow: visible;
+}
+.Browser_Close_Button {
+	overflow: visible;
+	position: absolute;
+	width: 21px;
+	height: 20px;
+	left: 518.356px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Blue_Bar {
+	position: absolute;
+	overflow: visible;
+	width: 117px;
+	height: 3px;
+	left: 25.217px;
+	top: 42.448px;
+}
+.Create_Browsers_Class {
+	position: absolute;
+	left: 0px;
+	top: 1.572px;
+	overflow: visible;
+	width: 346px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -1px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: 900;
+	font-size: 40px;
+	color: rgba(29,29,29,1);
+}

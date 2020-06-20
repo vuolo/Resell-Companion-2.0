@@ -43,12 +43,23 @@
 						<rect fill="transparent" stroke="rgba(91,182,187,1)" stroke-width="2px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Done_Rectangle_Class" rx="19.5" ry="19.5" x="0" y="0" width="107" height="39">
 						</rect>
 					</svg>
-					<div class="Done_Class" v-bind:style="{ fontSize: confineTextWidth(107-20, (modalOptions.isEditingTaskIndex == -1 ? tryTranslate('Create') : tryTranslate('Done')), 15, 'px', 'bold', 'SF Pro Text') }">
-						<span>{{modalOptions.isEditingTaskIndex == -1 ? tryTranslate('Create') : tryTranslate('Done')}}</span>
+					<div class="Done_Class" v-bind:style="{ fontSize: confineTextWidth(107-20, (modalOptions.isEditingTaskIndex == -1 ? (tryTranslate('Create') + (String(modalOptions.quantity).length > 0 ? ` (${modalOptions.quantity})` : '')) : tryTranslate('Done')), 15, 'px', 'bold', 'SF Pro Text') }">
+						<span>{{modalOptions.isEditingTaskIndex == -1 ? (tryTranslate('Create') + (String(modalOptions.quantity).length > 0 ? ` (${modalOptions.quantity})` : '')) : tryTranslate('Done')}}</span>
 					</div>
 				</div>
 
 				<div class="Configure_Area_Class">
+
+					<div class="Quantity_Area_Class" v-bind:style="{ opacity: modalOptions.isEditingTaskIndex == -1 ? 1 : 0.66 }">
+						<input v-bind:disabled="modalOptions.isEditingTaskIndex != -1" v-bind:placeholder="tryTranslate('Quantity')" v-model="modalOptions.quantity" @keyup.enter="" type="number" min="1" max="100" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 187px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+						<div class="Arrows_Icon_Class" style="left: 12px; top: 36px; transform: scale(0.85);" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+							<span>↑↓</span>
+						</div>
+
+						<div class="Keywords_ep_Class" style="left: 10px; position: absolute;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+							<span>{{tryTranslate('Quantity')}}</span>
+						</div>
+					</div>
 
 					<div class="Billing_Profiles_Button_Class clipButton" v-bind:class="{ 'clickable': modalOptions.checkoutMethod.useCheckoutCompanion, 'unclickable': !modalOptions.checkoutMethod.useCheckoutCompanion }" v-on:click="() => { if (modalOptions.checkoutMethod.useCheckoutCompanion) isConfiguringBillingProfiles = true; }" v-bind:style="{ opacity: modalOptions.checkoutMethod.useCheckoutCompanion ? 1 : 0.66 }">
 						<div class="clipGroup" style="width: 181px; height: 40px;">
@@ -81,7 +92,7 @@
 					</div>
 
 					<div class="Proxy_Profile_Area_Class" v-bind:style="{ opacity: modalOptions.checkoutMethod.useCheckoutCompanion ? 1 : 0.66 }">
-						<select v-bind:disabled="!modalOptions.checkoutMethod.useCheckoutCompanion" v-bind:placeholder="tryTranslate('Proxy Profile')" class="Search_Bar_Class special-focus" v-bind:class="{ 'white-arrow': companionSettings.theme == 'dark', 'black-arrow': companionSettings.theme == 'light', 'special-focus-dark': companionSettings.theme == 'dark', 'unclickable': !modalOptions.checkoutMethod.useCheckoutCompanion }" style="left: 0px; top: 27px; width: 387px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+						<select v-bind:disabled="!modalOptions.checkoutMethod.useCheckoutCompanion" v-bind:placeholder="tryTranslate('Proxy Profile')" class="Search_Bar_Class special-focus" v-bind:class="{ 'white-arrow': companionSettings.theme == 'dark', 'black-arrow': companionSettings.theme == 'light', 'special-focus-dark': companionSettings.theme == 'dark', 'unclickable': !modalOptions.checkoutMethod.useCheckoutCompanion }" style="left: 0px; top: 27px; width: 387px; padding-left: 0px; text-indent: 40px" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
 							<option selected disabled value="-1">{{tryTranslate('Select Proxy Profile')}}...</option>
 							<option v-for="(proxyProfile, proxyProfileIndex) in proxyProfiles" value="proxyProfileIndex">{{proxyProfile.nickname}}</option>
 						</select>
@@ -92,17 +103,6 @@
 
 						<div class="Keywords_ep_Class" style="left: 10px; position: absolute;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
 							<span>{{tryTranslate('Proxy Profile')}}</span>
-						</div>
-					</div>
-
-					<div class="Quantity_Area_Class" v-bind:style="{ opacity: modalOptions.isEditingTaskIndex == -1 ? 1 : 0.66 }">
-						<input v-bind:disabled="modalOptions.isEditingTaskIndex != -1" v-bind:placeholder="tryTranslate('Quantity')" v-model="modalOptions.quantity" @keyup.enter="" type="number" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 187px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
-						<div class="Arrows_Icon_Class" style="left: 12px; top: 36px; transform: scale(0.85);" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-							<span>↑↓</span>
-						</div>
-
-						<div class="Keywords_ep_Class" style="left: 10px; position: absolute;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-							<span>{{tryTranslate('Quantity')}}</span>
 						</div>
 					</div>
 
@@ -336,8 +336,8 @@
 						<rect fill="rgba(91,182,187,1)" class="Blue_Bar_Class" rx="1.5" ry="1.5" x="0" y="0" v-bind:width="calculateUnderlineWidth(455, tryTranslate('Create Tasks'), 40, 'px', '900', 'SF Pro Text')" height="3">
 						</rect>
 					</svg>
-					<div class="Create_Tasks_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(455, tryTranslate('Create Tasks'), 40, 'px', '900', 'SF Pro Text') }">
-						<span>{{tryTranslate('Create Tasks')}}</span>
+					<div class="Create_Tasks_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(455, modalOptions.isEditingTaskIndex == -1 ? tryTranslate('Create Tasks') : tryTranslate('Edit Task'), 40, 'px', '900', 'SF Pro Text') }">
+						<span>{{modalOptions.isEditingTaskIndex == -1 ? tryTranslate('Create Tasks') : tryTranslate('Edit Task')}}</span>
 					</div>
 				</div>
 
@@ -374,8 +374,8 @@
 						</div>
 					</div>
 
-					<div class="Billing_Profile_Area_Class" v-bind:style="{ opacity: modalOptions.checkoutMethod.rotateBillingProfiles ? 0.66 : 1 }">
-						<select v-bind:disabled="modalOptions.checkoutMethod.rotateBillingProfiles" v-bind:placeholder="tryTranslate('Billing Profile')" class="Search_Bar_Class special-focus" v-bind:class="{ 'white-arrow': companionSettings.theme == 'dark', 'black-arrow': companionSettings.theme == 'light', 'special-focus-dark': companionSettings.theme == 'dark', 'unclickable': !modalOptions.checkoutMethod.useCheckoutCompanion }" style="left: 0px; top: 27px; width: 245px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+					<div class="Billing_Profile_Area_Class" v-bind:style="{ opacity: modalOptions.checkoutMethod.rotateBillingProfiles || modalOptions.checkoutMethod.useFavoritedBillingProfile ? 0.66 : 1 }">
+						<select v-bind:disabled="modalOptions.checkoutMethod.rotateBillingProfiles || modalOptions.checkoutMethod.useFavoritedBillingProfile" v-bind:placeholder="tryTranslate('Billing Profile')" class="Search_Bar_Class special-focus" v-bind:class="{ 'white-arrow': companionSettings.theme == 'dark', 'black-arrow': companionSettings.theme == 'light', 'special-focus-dark': companionSettings.theme == 'dark', 'unclickable': !modalOptions.checkoutMethod.useCheckoutCompanion }" style="left: 0px; top: 27px; width: 245px; padding-left: 0px; text-indent: 40px" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
 							<option selected disabled value="-1">{{tryTranslate('Select Billing Profile')}}...</option>
 							<option v-for="(billingProfile, billingProfileIndex) in billingProfiles" value="billingProfileIndex">{{billingProfile.configuration.companionSettings.nickname}}</option>
 						</select>

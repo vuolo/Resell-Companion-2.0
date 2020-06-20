@@ -16,13 +16,16 @@
   "author": "Resell Monster",
   "license": "UNLICENSED",
   "dependencies": {
+    "adm-zip": "^0.4.14",
     "discord-rpc": "^3.1.1",
     "laravel-echo": "^1.8.0",
     "lodash": "^4.17.15",
     "nedb": "^1.8.0",
+    "node-fetch": "^2.6.0",
     "open": "^7.0.4",
     "pusher-js": "^6.0.3",
     "request-promise": "^4.2.5",
+    "superagent": "^5.2.2",
     "translate": "^1.1.2"
   },
   "devDependencies": {

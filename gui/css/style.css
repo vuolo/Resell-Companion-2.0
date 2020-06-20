@@ -174,7 +174,8 @@ input[type="date"]::-webkit-inner-spin-button {
 
 .Search_Bar_Class {
 	border-radius: 20px;
-	text-indent: 40px;
+	/* text-indent: 40px; */
+	padding-left: 40px;
 	padding-right: 20px;
 	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
@@ -201,6 +202,23 @@ input[type="date"]::-webkit-inner-spin-button {
 	left: 487px;
 	top: 15px;
 	transform: matrix(1,0,0,1,0,0);
+}
+
+.Arrows_Icon_Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 9px;
+	top: 37px;
+	overflow: visible;
+	width: 25px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+	letter-spacing: -2.75px;
 }
 
 /* Scrollbar styles */

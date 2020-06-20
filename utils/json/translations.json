@@ -66,10 +66,10 @@
         "es": "Comenzar a monitorear a las"
       }
     },
-    "Browser": {
+    "Browsers": {
       "languages": {
-        "en": "Browser",
-        "es": "Navegador"
+        "en": "Browsers",
+        "es": "Navegadores"
       }
     },
     "Billing Profile": {
@@ -90,10 +90,22 @@
         "es": "Navegador"
       }
     },
+    "Change URLs": {
+      "languages": {
+        "en": "Change URLs",
+        "es": "Cambiar las URLs"
+      }
+    },
     "Checkout Method": {
       "languages": {
         "en": "Checkout Method",
         "es": "Método de compra"
+      }
+    },
+    "Clear All": {
+      "languages": {
+        "en": "Clear All",
+        "es": "Borrar todo"
       }
     },
     "Collection": {
@@ -132,10 +144,34 @@
         "es": "Crear"
       }
     },
+    "Create Browsers": {
+      "languages": {
+        "en": "Create Browsers",
+        "es": "Crear navegadores"
+      }
+    },
     "Create Tasks": {
       "languages": {
         "en": "Create Tasks",
         "es": "Crear tareas"
+      }
+    },
+    "Creating...": {
+      "languages": {
+        "en": "Creating...",
+        "es": "Creando..."
+      }
+    },
+    "Creation Delay": {
+      "languages": {
+        "en": "Creation Delay",
+        "es": "Retraso de creación"
+      }
+    },
+    "Creation delays prevent soft-bans on major retailer stores": {
+      "languages": {
+        "en": "Creation delays prevent soft-bans on major retailer stores",
+        "es": "Los retrasos en la creación evitan la prohibición de los clientes en las principales tiendas minoristas"
       }
     },
     "Clothing": {
@@ -156,10 +192,34 @@
         "es": "Diciembre"
       }
     },
+    "Device Connected": {
+      "languages": {
+        "en": "Device Connected",
+        "es": "Dispositivo conectado"
+      }
+    },
+    "Devices Connected": {
+      "languages": {
+        "en": "Devices Connected",
+        "es": "Dispositivos conectados"
+      }
+    },
+    "Disable Images": {
+      "languages": {
+        "en": "Disable Images",
+        "es": "Deshabilitar imágenes"
+      }
+    },
     "Disabled": {
       "languages": {
         "en": "Disabled",
         "es": "Deshabilitado"
+      }
+    },
+    "Disabling images saves proxy data and improves loading times": {
+      "languages": {
+        "en": "Disabling images saves proxy data and improves loading times",
+        "es": "Deshabilitar imágenes guarda los datos proxy y mejora los tiempos de carga"
       }
     },
     "Done": {
@@ -168,16 +228,22 @@
         "es": "Terminar"
       }
     },
-    "Examining the release calendar...": {
+    "Edit Task": {
       "languages": {
-        "en": "Examining the release calendar...",
-        "es": "Examinando el calendario de lanzamiento..."
+        "en": "Edit Task",
+        "es": "Editar Tarea"
       }
     },
     "Efficiently assign each task with an enabled billing profile": {
       "languages": {
         "en": "Efficiently assign each task with an enabled billing profile",
         "es": "Asigne eficientemente cada tarea con un perfil de facturación habilitado"
+      }
+    },
+    "Examining the release calendar...": {
+      "languages": {
+        "en": "Examining the release calendar...",
+        "es": "Examinando el calendario de lanzamiento..."
       }
     },
     "February": {
@@ -500,6 +566,12 @@
         "es": "ro"
       }
     },
+    "Refresh All": {
+      "languages": {
+        "en": "Refresh All",
+        "es": "Actualizar todo"
+      }
+    },
     "Resell Prediction": {
       "languages": {
         "en": "Resell Prediction",
@@ -738,6 +810,12 @@
       "languages": {
         "en": "Unknown Product",
         "es": "Producto desconocido"
+      }
+    },
+    "Unspecified Location": {
+      "languages": {
+        "en": "Unspecified Location",
+        "es": "Ubicación no especificada"
       }
     },
     "Use Connected Bots": {

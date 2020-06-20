@@ -23,7 +23,7 @@
 	position: absolute;
 	width: 1287px;
 	height: 795px;
-	background-color: rgba(251,247,241,1);
+	/* background-color: rgba(251,247,241,1); */
 	overflow: hidden;
 	--web-view-name: Rewrite – Home;
 	--web-view-id: Rewrite___Home;

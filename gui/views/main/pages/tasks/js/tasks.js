@@ -107,7 +107,8 @@ window.tasksApp = new Vue({
         }
         if (numGreenStatuses > numYellowStatuses && numGreenStatuses > numRedStatuses) {
           return this.getColor('green');
-        } else if (numYellowStatuses > numGreenStatuses && numYellowStatuses > numRedStatuses) {
+        } else if (numYellowStatuses > 0) {
+        // } else if (numYellowStatuses > numGreenStatuses && numYellowStatuses > numRedStatuses) {
           return this.getColor('yellow');
         } else if (numRedStatuses > numGreenStatuses && numRedStatuses > numYellowStatuses) {
           return this.getColor('red');

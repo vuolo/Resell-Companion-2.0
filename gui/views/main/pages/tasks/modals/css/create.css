@@ -64,6 +64,8 @@
 	top: 0px;
 }
 .Done_Class {
+	line-height: 19px;
+
 	position: absolute;
 	left: 0px;
 	top: 10.612px;
@@ -200,7 +202,7 @@
 	width: 18px;
 	height: 17.996px;
 	left: 13px;
-	top: 37px;
+	top: 36px;
 	transform: matrix(1,0,0,1,0,0);
 }
 .Quantity_Area_Class {
@@ -251,22 +253,6 @@
 	font-weight: bold;
 	font-size: 17px;
 	color: rgba(29,29,29,1);
-}
-.Arrows_Icon_Class {
-	opacity: 0.66;
-	position: absolute;
-	left: 9px;
-	top: 37px;
-	overflow: visible;
-	width: 25px;
-	white-space: nowrap;
-	text-align: left;
-	font-family: SF Pro Text;
-	font-style: normal;
-	font-weight: bold;
-	font-size: 16px;
-	color: rgba(29,29,29,1);
-	letter-spacing: -2.75px;
 }
 .Configure_Title_Class {
 	position: absolute;
