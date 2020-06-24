@@ -15,6 +15,7 @@ const MODAL_OPTIONS_TEMPLATE = {
     useCheckoutCompanion: true,
     rotateBillingProfiles: true,
     useFavoritedBillingProfile: true,
+    proxyProfile: null,
     billingProfile: null
   },
   quantity: 1,

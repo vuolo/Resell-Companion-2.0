@@ -33,7 +33,7 @@ window.pages = [
   }
 ];
 
-window.activePageIndex = 4;
+window.activePageIndex = 0;
 
 window.borderApp = new Vue({
   el: "#Rewrite___Application_Border",

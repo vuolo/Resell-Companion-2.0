@@ -74,6 +74,11 @@ window.openInternal = (url, options = {}, combineOptions = true) => {
   return win;
 };
 
+window.openURL = (url, useDefaultBrowser, options) => {
+  if (useDefaultBrowser) return window.openExternal(url);
+  else return window.openInternal(url, options);
+}
+
 window.combineObjects = (incomingObj, fullObj) => {
   for (var key of Object.keys(fullObj)) {
     let foundKey = false;
@@ -88,14 +93,6 @@ window.combineObjects = (incomingObj, fullObj) => {
     }
   }
 };
-
-window.openURL = (url, useDefaultBrowser, options) => {
-  if (useDefaultBrowser) {
-    window.openExternal(url);
-  } else {
-    window.openInternal(url, options);
-  }
-}
 
 window.getKeyOnCurPlatform = (key) => {
   if (key.toLowerCase() == "ctrl" || key.toLowerCase() == "control" || key.toLowerCase() == "cmd" || key.toLowerCase() == "command") {

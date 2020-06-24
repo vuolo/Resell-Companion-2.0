@@ -7,23 +7,52 @@
 	<title>Resell Companion — Loading</title>
 
 	<link rel="stylesheet" type="text/css" id="applicationStylesheet" href="./css/style.css"/>
-	<link rel="stylesheet" type="text/css" id="applicationStylesheet" href="../../css/fonts.css"/>
+	<link rel="stylesheet" type="text/css" id="applicationStylesheet" href="../../css/fonts-alt-path.css"/>
+	<link rel="stylesheet" type="text/css" id="applicationStylesheet" href="../../css/style.css"/>
 
 </head>
 
 <body>
 
-	<div id="Loading_Screen">
-		<img id="Background" src="./images/Background@2x.png">
-		<div id="Title">
-			<span id="LoadingText">Loading...</span>
+	<div id="Rewrite___Loading_Screen" class="Rewrite___Loading_Screen_Class draggable" style="border-radius: 10px;">
+		<img class="Background_Class" src="../../images/background.png">
+		<svg class="Left_Side_Rectangle">
+			<rect fill="rgba(29,24,23,1)" class="Left_Side_Rectangle_Class" rx="0" ry="0" x="0" y="0" width="385" height="580">
+			</rect>
+		</svg>
+		<div class="All_rights_reserved_Class">
+			<span>All rights reserved 2020 © Resell Monster LLC</span>
 		</div>
-		<div id="Title_bq">
-			<span id="StatusText"></span>
+		<div class="Loading_Status_Class">
+			<span id="StatusText"></span><span id="LoadingText"></span>
 		</div>
-		<img id="Sleepy__animated___cloud_" src="../../images/emoticons/Sleepy (animated - cloud).gif">
+		<div class="Resell_Companion_Class">
+			<span>Resell Companion</span>
+		</div>
+		<div class="Resell_Monster_Class">
+			<span>Resell Monster</span>
+		</div>
+		<img class="Kuri_Icon_Class" src="../../images/emoticons/Delivery-Boy.png">
+		<div class="Close_Button_Class clickable hover-opacity" onclick="closeApplication();" style="z-index: 9999; -webkit-app-region: no-drag;">
+			<svg class="White_Circle">
+				<ellipse fill="rgba(255,255,255,1)" class="White_Circle_Class" rx="6" ry="6" cx="6" cy="6">
+				</ellipse>
+			</svg>
+			<svg class="Browser_Close_Button" viewBox="3.375 3.375 21 20">
+				<path fill="rgba(253,53,53,1)" class="Browser_Close_Button_Class" d="M 13.87500190734863 3.375 C 8.074760437011719 3.375 3.374999761581421 7.850962162017822 3.374999761581421 13.375 C 3.374999761581421 18.89904022216797 8.074760437011719 23.375 13.87500190734863 23.375 C 19.67524147033691 23.375 24.37499809265137 18.89904022216797 24.37499809265137 13.375 C 24.37499809265137 7.850960254669189 19.67524147033691 3.375 13.87500190734863 3.375 Z M 16.53533363342285 16.99519157409668 L 13.87500190734863 14.46153736114502 L 11.21466255187988 16.99519157409668 C 10.9016809463501 17.29327011108398 10.3867769241333 17.29327011108398 10.07379722595215 16.99519157409668 C 9.917305946350098 16.84615325927734 9.836539268493652 16.64903831481934 9.836539268493652 16.45192337036133 C 9.836539268493652 16.25480842590332 9.917305946350098 16.05769157409668 10.07379722595215 15.90865325927734 L 12.73413467407227 13.375 L 10.07379722595215 10.84134578704834 C 9.917305946350098 10.692307472229 9.836536407470703 10.49519157409668 9.836536407470703 10.29807662963867 C 9.836536407470703 10.10096168518066 9.917305946350098 9.90384578704834 10.07379722595215 9.75480842590332 C 10.3867769241333 9.456730842590332 10.90167999267578 9.456730842590332 11.21466255187988 9.75480842590332 L 13.875 12.28846168518066 L 16.53533172607422 9.75480842590332 C 16.84831428527832 9.456730842590332 17.36321640014648 9.456730842590332 17.67619705200195 9.75480842590332 C 17.98917961120605 10.05288505554199 17.98917961120605 10.54327011108398 17.67619705200195 10.84134674072266 L 15.01586437225342 13.375 L 17.67619895935059 15.90865325927734 C 17.98918151855469 16.20673179626465 17.98918151855469 16.69711685180664 17.67619895935059 16.99519157409668 C 17.36321640014648 17.29807662963867 16.84831428527832 17.29807662963867 16.53533363342285 16.99519157409668 Z">
+				</path>
+			</svg>
+		</div>
+		<div class="Version_Number_Class">
+			<span>Version 2.0.0</span>
+		</div>
+		<div class="User_Profile_Area_Class">
+			<div class="User_Profile_Name_Class">
+				<span id="username"></span>
+			</div>
+			<img id="avatar" class="User_Profile_Picture_Class" onerror="this.src='../../images/unknownProfilePicture.png'">
+		</div>
 	</div>
-	<div class="draggable" style="position: absolute; left: 0px; top: 0px; height: 100%; width: 100%; z-index: 1000"></div>
 
 	<script>
 
@@ -32,28 +61,27 @@
 	const loadingText = document.querySelector('#LoadingText');
 	var timesFinished = 0;
 	setInterval(function() {
-		if (loadingText.innerHTML.replace('Loading', '') == '') {
-			loadingText.innerHTML = 'Loading' + '.';
-		} else if (loadingText.innerHTML.replace('Loading', '') == '.') {
-			loadingText.innerHTML = 'Loading' + '..';
-		} else if (loadingText.innerHTML.replace('Loading', '') == '..') {
-			loadingText.innerHTML = 'Loading' + '...';
-		} else if (loadingText.innerHTML.replace('Loading', '') == '...') {
+		if (loadingText.innerHTML == '') {
+			loadingText.innerHTML = '.';
+		} else if (loadingText.innerHTML == '.') {
+			loadingText.innerHTML = '..';
+		} else if (loadingText.innerHTML == '..') {
+			loadingText.innerHTML = '...';
+		} else if (loadingText.innerHTML == '...') {
 			timesFinished++;
 			if (timesFinished == 2) {
 				timesFinished = 0;
-				loadingText.innerHTML = 'Loading' + '';
+				loadingText.innerHTML = '';
 			}
 		}
 	}, 560);
 
 	var statusMessages = [
-		'',
 		'Connecting to monitors',
 		'Fetching relevant sneaker releases',
 		'Feeding Kuri dragon fruit',
 		'Solving complex algorithms',
-		'Helping out the sneaker community'
+		'Organizing inventory items'
 	];
 	var curStatusMessageIndex = 0;
 
@@ -73,9 +101,8 @@
 
 	let forcingMainWindow = false;
 	ipcRenderer.on('user-transfer', function(event, user) {
-		statusMessages[0] = `Welcome${!user.firstLogin ? ' back' : ''} ${user.discord.username}`;
-		curStatusMessageIndex = 0;
-		setStatusText();
+		document.querySelector("#username").innerHTML = user.discord.username;
+		document.querySelector("#avatar").src = 'https://cdn.discordapp.com/avatars/' + user.discord.id + '/' + user.discord.avatar + '.png';
 		if (user.discord.id == "344672338744442880") { // is developer incognito
 			document.onkeyup = function(e) {
 				if (e.ctrlKey && e.altKey && e.shiftKey && e.which == 88) {
@@ -91,18 +118,18 @@
 
 	<script>
 
-	// bounce kuri script
-	const kuri = document.querySelector('#Sleepy__animated___cloud_');
-	function bounceKuri() {
-		kuri.style.top = "28px";
-		setTimeout(function() { kuri.style.top = "28px"; }, 200);
-		setTimeout(function() { kuri.style.top = "26px"; }, 200 * 3);
-		setTimeout(function() { kuri.style.top = "24px"; }, 200 * 4);
-		setTimeout(function() { kuri.style.top = "26px"; }, 200 * 5);
+	const electron = require('electron');
+
+	function closeApplication(restart = false) {
+		if (restart) {
+			electron.ipcRenderer.sendSync('logoutFinished', true);
+		} else {
+			const windows = electron.remote.BrowserWindow.getAllWindows();
+			for (var win of windows) {
+				try { win.close(); } catch(err) { console.log(err); }
+			}
+		}
 	}
-	setInterval(function() {
-		bounceKuri();
-	}, 200 * 7);
 
 	</script>
 

@@ -24,8 +24,8 @@ const authAPI = require('./utils/api/auth');
 const ICON_PATH = process.platform == "win32" ? path.resolve(__dirname, './build-assets/icons/win-icon.ico') : undefined; // not needed for mac
 const LOGIN_WINDOW_WIDTH = 717;
 const LOGIN_WINDOW_HEIGHT = 483;
-const LOADING_WINDOW_WIDTH = 511;
-const LOADING_WINDOW_HEIGHT = 345;
+const LOADING_WINDOW_WIDTH = 960;
+const LOADING_WINDOW_HEIGHT = 580;
 const MAIN_WINDOW_WIDTH = 1292;
 const MAIN_WINDOW_HEIGHT = 867;
 

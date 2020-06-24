@@ -476,13 +476,18 @@ function tryInjectTopBar() {
 
         #resell_companion_url_bar input {
           text-transform: none;
+          min-height: 20px;
           height: 20px;
+          max-height: 20px;
+          min-width: 80%;
           width: 80%;
+          max-width: 80%;
           -webkit-app-region: no-drag;
           font-family: Arial, Helvetica, sans-serif;
           border-radius: 10px;
           border: none;
           font-size: 14px;
+          padding: 0;
           padding-left: 25px;
           background: rgba(243,224,185,1);
           color: #1d1d1d;

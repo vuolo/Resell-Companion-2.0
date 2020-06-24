@@ -30,6 +30,11 @@ window.modalLoadedCallback = (modalName) => {
 
 let allowNewTaskCreation = true;
 
+window.setNodeStatus = (node, color, status) => {
+  node.status.description = status;
+  node.status.color = color;
+};
+
 window.tasksApp = new Vue({
   el: "#Rewrite___Tasks",
   data: {
@@ -61,13 +66,9 @@ window.tasksApp = new Vue({
     toggleNodeEnabled: function(node, enabled = null) {
       if (enabled != null) node.enabled = enabled;
       else node.enabled = !node.enabled;
-      if (node.enabled) {
-        node.status.description = "Monitoring...";
-        node.status.color = "yellow";
-      } else {
-        node.status.description = "Disabled";
-        node.status.color = "red";
-      }
+      if (node.enabled) window.setNodeStatus(node, "yellow", "Monitoring...");
+      else window.setNodeStatus(node, "red", "Disabled");
+      if (node.checkoutWindow !== null) { try { node.checkoutWindow.close(); } catch(err) { /* err: checkout window already closed (user probably closed it) */ } node.checkoutWindow = null; window.setNodeStatus(node, "red", "Checkout Canceled"); }
     },
     openNewTaskModal: function() {
       window.frames['create-modal'].resetModalOptions();
@@ -82,35 +83,47 @@ window.tasksApp = new Vue({
       this.openModal('create');
     },
     getColor: function(color) {
-      if (color == 'green') {
-        return 'rgba(53,178,57,1)';
-      } else if (color == 'yellow') {
-        return 'rgba(253,213,53,1)';
-      } else if (color == 'red') {
-        return 'rgba(253,53,53,1)';
+      switch (color) {
+        case 'green':
+          return 'rgba(53,178,57,1)';
+        case 'yellow':
+          return 'rgba(253,213,53,1)';
+        case 'orange':
+          return 'rgba(255,167,78,1)';
+        case 'red':
+          return 'rgba(253,53,53,1)';
       }
       return this.getThemeColor('rgba(190,190,190,1)');
     },
     getTaskStatusColor: function(taskIndex) {
       if (tasks[taskIndex].nodes.length > 0) {
-        let numYellowStatuses = 0;
         let numGreenStatuses = 0;
+        let numYellowStatuses = 0;
+        let numOrangeStatuses = 0;
         let numRedStatuses = 0;
         for (var node of tasks[taskIndex].nodes) {
-          if (node.status.color == "yellow") {
-            numYellowStatuses++;
-          } else if (node.status.color == "green") {
-            numGreenStatuses++;
-          } else if (node.status.color == "red") {
-            numRedStatuses++;
+          switch (node.status.color) {
+            case 'green':
+              numGreenStatuses++;
+              break;
+            case 'yellow':
+              numYellowStatuses++;
+              break;
+            case 'orange':
+              numOrangeStatuses++;
+              break;
+            case 'red':
+              numRedStatuses++;
+              break;
           }
         }
-        if (numGreenStatuses > numYellowStatuses && numGreenStatuses > numRedStatuses) {
+        if (numGreenStatuses > 0) {
           return this.getColor('green');
+        } else if (numOrangeStatuses > 0) {
+          return this.getColor('orange');
         } else if (numYellowStatuses > 0) {
-        // } else if (numYellowStatuses > numGreenStatuses && numYellowStatuses > numRedStatuses) {
           return this.getColor('yellow');
-        } else if (numRedStatuses > numGreenStatuses && numRedStatuses > numYellowStatuses) {
+        } else if (numRedStatuses > 0) {
           return this.getColor('red');
         }
       }
@@ -217,10 +230,80 @@ window.updateTaskNode = (taskNodeIndex) => {
 function separateDate(timestamp = new Date().getTime()) {
   let date = new Date(timestamp);
   let dateString = date.getFullYear() + '-' + (String(date.getMonth() + 1).length == 1 ? "0" + (date.getMonth() + 1) : (date.getMonth() + 1)) + '-' + (String(date.getDate() + 1).length == 1 ? ("0" + date.getDate()) : date.getDate());
-  let timeString = (String(((date.getHours() + 1) + 1) > 24 ? 0 : ((date.getHours() + 1) + 1)).length == 1 ? "0" + (((date.getHours() + 1) + 1) > 24 ? 0 : ((date.getHours() + 1) + 1)) : (((date.getHours() + 1) + 1) > 24 ? 0 : ((date.getHours() + 1) + 1))) + ':' + 55;
+  let timeString = (String(date.getHours() % 24).length == 1 ? ("0" + String(date.getHours() % 24)) : String(date.getHours() % 24)) + ':' + 55;
   return { date: dateString, time: timeString, timestamp: timestamp };
 }
 
 function getTimestampFromDateAndTime(date, time) {
   return new Date(date).getTime() + (parseInt(time.split(":")[0]) * 60 * 60 * 1000) + (parseInt(time.split(":")[1]) * 60 * 1000) + (new Date().getTimezoneOffset() * 60 * 1000);
 }
+
+window.getAvailableVariants = (product) => {
+  let availableVariants = [];
+  for (var variant of product.Variants) if (variant.Available) availableVariants.push(variant);
+  return availableVariants;
+};
+
+window.getCheckoutURL = (storeURL, variantID, quantity = 1) => {
+  return "https://" + storeURL + "/cart/" + variantID + ":" + quantity;
+};
+
+window.launchCheckout = (product, variant, useDefaultBrowser = false, proxy = null, show = true) => {
+  // TODO: implement proxies into openURL (openInternal) func
+  return window.parent.openURL(window.getCheckoutURL(product.Store, variant.ID), useDefaultBrowser, { title: 'Resell Companion — ' + product.Name + ' Checkout', show: show });
+};
+
+window.launchTaskNode = (node, product, variant) => {
+  if (node.configuration.checkoutMethod.useCheckoutCompanion) { // use checkout companion
+    if (product.Identifier != "shopify" && !product.Identifier.startsWith("supreme")) return; // validate checkout companion can be used for the product
+    let billingProfile; // temp
+    let proxy; // temp
+    if (node.configuration.checkoutMethod.rotateBillingProfiles) { // TODO: rotate through billing profiles
+      // TODO: use proxy profile if selected (make new function above) - node.configuration.checkoutMethod.proxyProfile
+      // TODO: make proxy profile remember per task and efficiently spread proxies
+      initiateCheckoutCompanion(node, product, variant, billingProfile, proxy);
+    } else if (node.configuration.checkoutMethod.useCheckoutCompanion.useFavoritedBillingProfile) { // TODO: use favorited billing profile ONLY
+      // TODO: use proxy profile if selected (make new function above) - node.configuration.checkoutMethod.proxyProfile
+      initiateCheckoutCompanion(node, product, variant, billingProfile, proxy);
+    } else if (node.configuration.checkoutMethod.useCheckoutCompanion.billingProfile) { // TODO: use selected billing profile
+      // TODO: use proxy profile if selected (make new function above) - node.configuration.checkoutMethod.proxyProfile
+      initiateCheckoutCompanion(node, product, variant, billingProfile, proxy);
+    } else {
+      // throw error... no billing profile selected.
+    }
+  } else { // use connected bots
+
+  }
+};
+
+window.trylaunchTaskNodes = (task, product) => {
+  for (var node of task.nodes) {
+    if (node.status.color != "yellow") continue; // only check if "monitoring" aka yellow status color
+    let availableVariants = window.getAvailableVariants(product);
+    if (availableVariants.length == 0) return;
+    if (node.configuration.useRandomSize) {
+      window.launchTaskNode(node, product, availableVariants[Math.floor(Math.random() * availableVariants.length)]);
+      task.configuration.imageURL = product.ImageURL; // set current task picture to product url
+    } else {
+      for (var variant of availableVariants) {
+        // TODO: check if variant is right size
+      }
+    }
+  }
+};
+
+window.tryLaunchTask = (task, product = null) => {
+  let keywordsInput = document.getElementById("keywordsInput");
+  if (!keywordsInput || $(keywordsInput).is(':focus')) return; // validate user is done typing keywords (blurred from input) to prevent checkout on random items
+
+  let keywords = window.parent.getKeywordsFromString(task.configuration.rawKeywords);
+  if (keywords.length == 0) return;
+  if (product) { if (window.parent.areKeywordsMatching(keywords, product.Name)) window.trylaunchTaskNodes(task, product); }
+  else for (var curProduct of window.parent.frames['monitors-frame'].products) if (window.parent.areKeywordsMatching(keywords, curProduct.Name)) window.trylaunchTaskNodes(task, curProduct);
+};
+
+window.tryLaunchTasks = (product = null) => {
+  for (var task of window.tasks) {
+    window.tryLaunchTask(task, product);
+  }
+};

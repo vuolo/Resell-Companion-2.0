@@ -1,18 +1,14 @@
-body {
-  font-family: "SF Pro Text", san-serif;
-  user-select: none;
-  overflow: hidden;
+.draggable {
   -webkit-app-region: drag;
 }
 
 .mediaViewInfo {
-	--web-view-name: Loading Screen;
-	--web-view-id: Loading_Screen;
-	--web-scale-on-resize: true;
+	--web-view-name: Rewrite – Loading Screen;
+	--web-view-id: Rewrite___Loading_Screen;
 	--web-enable-deep-linking: true;
 }
 :root {
-	--web-view-ids: Loading_Screen;
+	--web-view-ids: Rewrite___Loading_Screen;
 }
 * {
 	margin: 0;
@@ -20,71 +16,181 @@ body {
 	box-sizing: border-box;
 	border: none;
 }
-.draggable {
-  -webkit-app-region: drag;
-}
-#Loading_Screen {
-  -webkit-app-region: drag;
+.Rewrite___Loading_Screen_Class {
 	position: absolute;
-	width: 511px;
-	height: 345px;
-	/* background-color: rgba(251,247,241,1); */
-  background-color: transparent;
-  /* border-radius: 25px; */
+	width: 960px;
+	height: 580px;
+	background-color: rgba(255,255,255,1);
 	overflow: hidden;
-	--web-view-name: Loading Screen;
-	--web-view-id: Loading_Screen;
-	--web-scale-on-resize: true;
+	--web-view-name: Rewrite – Loading Screen;
+	--web-view-id: Rewrite___Loading_Screen;
 	--web-enable-deep-linking: true;
 }
-#Background {
+.Background_Class {
 	position: absolute;
-	width: 1541px;
-	height: 867px;
-	left: -371px;
+	width: 1031px;
+	height: 580px;
+	left: -71px;
 	top: 0px;
 	overflow: visible;
 }
-#Title {
+.Left_Side_Rectangle_Class {
+	opacity: 0.95;
+}
+.Left_Side_Rectangle {
+	position: absolute;
+	overflow: visible;
+	width: 385px;
+	height: 580px;
+	left: 0px;
+	top: 0px;
+}
+.All_rights_reserved_Class {
+  filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+  position: absolute;
+  left: 0px;
+  top: 541px;
+  overflow: visible;
+  width: 385px;
+  white-space: nowrap;
+  text-align: center;
+  font-family: SF Pro Text;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  color: rgba(239,239,239,1);
+  letter-spacing: -0.01px;
+}
+.Loading_Status_Class {
 	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
-	left: 256px;
-	top: 168px;
+	left: 23px;
+	top: 312px;
 	overflow: visible;
-	width: 202px;
+	width: 133px;
 	white-space: nowrap;
-	line-height: 42px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 13px;
+	color: rgba(239,239,239,1);
+	letter-spacing: -0.01px;
+}
+.Resell_Companion_Class {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	left: 21px;
+	top: 275px;
+	overflow: visible;
+	width: 288px;
+	white-space: nowrap;
+	line-height: 33px;
 	margin-top: -1px;
 	text-align: left;
 	font-family: SF Pro Text;
 	font-style: normal;
-	font-weight: bold;
-	font-size: 40px;
-	color: rgba(255,255,255,1);
+	font-weight: 900;
+	font-size: 31px;
+	color: rgba(239,239,239,1);
 }
-#Title_bq {
-    filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
-    position: absolute;
-    left: 234px;
-    top: 224px;
-    overflow: visible;
-    width: 228px;
-    /* white-space: nowrap; */
-    line-height: 21px;
-    margin-top: -11px;
-    text-align: center;
-    font-family: SF Pro Text;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 20px;
-    color: rgba(255,255,255,1);
-}
-#Sleepy__animated___cloud_ {
+.Resell_Monster_Class {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
-	width: 280px;
-	/* height: 314px; */
-	left: -10px;
-	top: 26px;
+	left: 22px;
+	top: 251px;
 	overflow: visible;
-  transition: 200ms top;
+	width: 150px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -11px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(239,239,239,1);
+}
+.Kuri_Icon_Class {
+	position: absolute;
+	width: 77px;
+	height: 77px;
+	left: 11px;
+	top: 165px;
+	overflow: visible;
+}
+.Close_Button_Class {
+	position: absolute;
+	width: 21px;
+	height: 20px;
+	left: 926px;
+	top: 13px;
+	overflow: visible;
+}
+.White_Circle {
+	position: absolute;
+	overflow: visible;
+	width: 12px;
+	height: 12px;
+	left: 5px;
+	top: 4px;
+}
+.Browser_Close_Button {
+	overflow: visible;
+	position: absolute;
+	width: 21px;
+	height: 20px;
+	left: 0px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Version_Number_Class {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	left: 196px;
+	top: 16px;
+	overflow: visible;
+	width: 178px;
+	white-space: nowrap;
+	text-align: right;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 12px;
+	color: rgba(239,239,239,1);
+	letter-spacing: -0.01px;
+}
+.User_Profile_Area_Class {
+	position: absolute;
+	width: 62.368px;
+	height: 22.82px;
+	left: 12px;
+	top: 12px;
+	overflow: visible;
+}
+.User_Profile_Name_Class {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	left: 28.368px;
+	top: 5px;
+	overflow: visible;
+	width: 35px;
+	white-space: nowrap;
+	line-height: 20px;
+	margin-top: -4px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	color: rgba(239,239,239,1);
+}
+.User_Profile_Picture_Class {
+  border-radius: 50%;
+	position: absolute;
+	width: 23.226px;
+	height: 22.82px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
 }

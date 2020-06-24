@@ -221,8 +221,7 @@ window.monitorsApp = new Vue({
     },
     launchVariantCheckout: function(product, variant, useConnectedBots = false) {
       if (!useConnectedBots) {
-        let checkoutURL = "https://" + product.Store + "/cart/" + variant.ID + ":1";
-        this.openURL(checkoutURL, this.configureModal.preferences.useDefaultBrowser, { title: 'Resell Companion — ' + product.Name + " Checkout" });
+        window.parent.frames['tasks-frame'].launchCheckout(product, variant, this.configureModal.preferences.useDefaultBrowser);
         return;
       }
       // TODO: launch with connected bots
@@ -234,6 +233,7 @@ window.updateProduct = (product) => {
   let foundProduct = false;
   for (var i = 0; i < window.products.length; i++) {
     if (window.products[i].URL == product.URL) {
+      window.parent.frames['tasks-frame'].tryLaunchTasks(product);
       window.parent.memory.syncObject(window.products[i], product);
       if (product.Available) { // only move available products to the top
         tryDisplayProduct(window.products[i], false, i);
@@ -242,9 +242,7 @@ window.updateProduct = (product) => {
       break;
     }
   }
-  if (!foundProduct) {
-    addNewProduct(product);
-  }
+  if (!foundProduct) addNewProduct(product);
 };
 
 const MAX_PRODUCTS_PER_PAGE = 16;
@@ -360,7 +358,7 @@ function areKeywordsInProduct(product) {
   if (monitorsApp.configureModal.filters.filteredKeywords.length == 0) { // no keywords setup test
     return true;
   }
-  if (monitorsApp.configureModal.filters.filteredKeywords) { // favorited only test
+  if (monitorsApp.configureModal.filters.useFavoritedStoresOnly) { // favorited only test
     let foundStore = false;
     for (var category of window.categories) {
       for (var store of category.stores) {
@@ -384,21 +382,7 @@ function areKeywordsInProduct(product) {
   for (var filteredKeyword of monitorsApp.configureModal.filters.filteredKeywords) {
     if (filteredKeyword.enabled) {
       foundEnabledFilteredKeywords = true;
-      let foundKeywords = true;
-      for (var keyword of filteredKeyword.keywords) {
-        if (keyword.prefix == "+") {
-          if (!product.Name.toLowerCase().includes(keyword.term.toLowerCase())) {
-            foundKeywords = false;
-            break;
-          }
-        } else if (keyword.prefix == "-") {
-          if (product.Name.toLowerCase().includes(keyword.term.toLowerCase())) {
-            foundKeywords = false;
-            break;
-          }
-        }
-      }
-      if (foundKeywords) {
+      if (window.parent.areKeywordsMatching(filteredKeyword.keywords, product.Name)) {
         return filteredKeyword.keywords;
       }
     }
@@ -411,6 +395,7 @@ window.addNewProduct = (product) => {
   product.isDisplayingMoreInfo = false;
   product.Timestamp = new Date().getTime();
   if (product.ImageURL == "https://i.imgur.com/fip3nw5.png") product.ImageURL = "../../../../images/unknownImage.png";
+  window.parent.frames['tasks-frame'].tryLaunchTasks(product);
   window.products.unshift(product);
   tryDisplayProduct(product);
   if (window.products.length > 2500) { // random number that is large that becomes the largest # of products loaded in memory

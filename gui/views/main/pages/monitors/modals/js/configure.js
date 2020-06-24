@@ -69,6 +69,8 @@ const configureApp = new Vue({
     getThemeColor: window.parent.parent.getThemeColor,
     openExternal: window.parent.parent.openExternal,
     refreshDisplayedProducts: window.parent.refreshDisplayedProducts,
+    getKeywordsFromString: window.parent.parent.getKeywordsFromString,
+    stringifyKeywords: window.parent.parent.stringifyKeywords,
     toggleFilteredKeyword: function(filteredKeyword) {
       filteredKeyword.enabled = !filteredKeyword.enabled;
       if (window.parent.monitorsApp.useFilteredKeywords) this.refreshDisplayedProducts();
@@ -88,31 +90,6 @@ const configureApp = new Vue({
       this.filteredKeywords.splice(filteredKeywordIndex, 1);
       if (window.parent.monitorsApp.useFilteredKeywords) this.refreshDisplayedProducts();
       this.$forceUpdate();
-    },
-    getKeywordsFromString: function(string) { // TODO: detect empty strings, empty terms, no prefix cases etc.
-      let outKeywords = [];
-      // reformat string
-      string = string.toLowerCase();
-      for (var i = 0; i < string.length; i++) {
-        if (string.charAt(i) == "+" || string.charAt(i) == "-") {
-          let prefix = string.charAt(i); // get prefix
-          let term = string.substring(i+1, string.length); // get keyword string without initial prefix
-          term = term.substring(0, (term.indexOf("+") == -1 && term.indexOf("-") == -1) ? term.length : ((term.indexOf("+") != -1 && (term.indexOf("+") < term.indexOf("-") || term.indexOf("-") == -1)) ? term.indexOf("+") : term.indexOf("-"))); // get keyword with whitespace
-          i += term.length; // skip ahead in the search (not necessary)
-          term = term.replace(/\s/g, ''); // remove whitespace
-          term = term.replace(/,/g, ''); // replace commas
-          if (term.length == 0) {
-            continue;
-          }
-          outKeywords.push(
-            {
-              term: term,
-              prefix: prefix
-            }
-          );
-        }
-      }
-      return outKeywords;
     },
     handleAddFilteredKeyword: function() {
       if (modalOptions.filters.filteredKeywordIndex == -1) {
@@ -138,16 +115,6 @@ const configureApp = new Vue({
         return true;
       }
       return false;
-    },
-    stringifyKeywords: function(keywords) {
-      let outRaw = "";
-      for (var i = 0; i < keywords.length; i++) {
-        outRaw += keywords[i].prefix + keywords[i].term;
-        if (i != keywords.length-1) {
-          outRaw += ", ";
-        }
-      }
-      return outRaw;
     },
     getMaxDisplayedKeywordIndex: function(maxWidth, keywords) {
       let maxIndex = -1;
