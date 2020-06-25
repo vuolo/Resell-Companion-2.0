@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Resell Companion — Captcha Solver</title>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <style>
+    .flex {
+      display: flex;
+    }
+    .justify-center {
+      justify-content: center;
+    }
+    .items-center {
+      align-items: center;
+    }
+    .mt-6 {
+      /* margin-top: 1.5rem; */
+			margin-top: 70%;
+    }
+  </style>
+</head>
+<body style="overflow: hidden; display: block">
+  <div class="flex justify-center items-center mt-6">
+    <div id="captchaFrame" class="g-recaptcha" data-callback="sendCaptcha" data-theme="{{CAPTCHA_THEME}}" data-sitekey="{{CAPTCHA_SITEKEY}}"></div>
+  </div>
+
+  <!-- FORCE RENDER THE CAPTCHA IF IT HAS NOT ALREADY BEEN INITIALIZED AND RENDERED -->
+  <script>
+    function captchaSleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    (async () => {
+      if (typeof grecaptcha !== "undefined") return;
+      while (typeof grecaptcha === "undefined") await captchaSleep(50);
+      try { renderCaptcha(); } catch(err) { };
+    })();
+
+    function renderCaptcha() {
+      grecaptcha.render("captchaFrame", {
+        "sitekey": "{{CAPTCHA_SITEKEY}}"
+      });
+    }
+  </script>
+
+  <script>
+    function sendCaptcha() {
+      console.log("\${CC} CAPTCHA RESPONSE: " + grecaptcha.getResponse());
+      grecaptcha.reset();
+    }
+  </script>
+</body>
+</html>

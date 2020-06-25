@@ -305,11 +305,11 @@
 				</div>
 			</template>
 
-			<div class="ID4_Solvers_Opened_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(222, '4' + tryTranslate('Solvers Opened'), 20, 'px', 'bold', 'SF Pro Text') }">
-				<span>4 {{tryTranslate('Solvers Opened')}}</span>
+			<div class="ID4_Solvers_Opened_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(222, captchaSolvers.length + tryTranslate(captchaSolvers.length == 1 ? 'Solver Opened' : 'Solvers Opened'), 20, 'px', 'bold', 'SF Pro Text') }">
+				<span>{{captchaSolvers.length}} {{tryTranslate(captchaSolvers.length == 1 ? 'Solver Opened' : 'Solvers Opened')}}</span>
 			</div>
 
-			<div class="Captcha_Button_Class clipButton clickable">
+			<div class="Captcha_Button_Class clipButton clickable" onclick="window.openCaptchaSolver()">
 				<div class="clipGroup" style="width: 135px;">
 					<svg class="Back_Transitioner" style="bottom: -25px;" viewBox="4631.671 2118.361 137.6 34.565">
 						<path fill="rgba(36,39,37,1)" id="Back_Transitioner" d="M 4631.67138671875 2136.780029296875 C 4631.67138671875 2136.780029296875 4649.8212890625 2127.950439453125 4669.78759765625 2136.780029296875 C 4689.75244140625 2145.610595703125 4680.9365234375 2141.826416015625 4680.9365234375 2141.826416015625 C 4680.9365234375 2141.826416015625 4699.80859375 2134.79638671875 4711.21826171875 2141.229248046875 C 4722.626953125 2147.663330078125 4712.8291015625 2141.229248046875 4712.8291015625 2141.229248046875 C 4712.8291015625 2141.229248046875 4737.462890625 2118.742431640625 4759.2421875 2118.3642578125 C 4781.0234375 2117.985107421875 4760.5390625 2152.92626953125 4760.5390625 2152.92626953125 L 4631.67138671875 2152.92626953125 L 4631.67138671875 2136.780029296875 Z">
@@ -396,6 +396,7 @@
 	</div>
 
 	<script src="../../../../../utils/scripts/button-transitions.js" type="text/javascript"></script>
+	<script src="./js/captcha-bridge.js" type="text/javascript"></script>
 	<script src="./js/tasks.js" type="text/javascript"></script>
 	<script src="./js/checkout-companion.js" type="text/javascript"></script>
 

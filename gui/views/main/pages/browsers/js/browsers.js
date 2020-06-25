@@ -114,16 +114,6 @@ async function clearAllBrowsers() {
   }
 }
 
-function makeid(length) {
-  var result           = '';
-  var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  var charactersLength = characters.length;
-  for ( var i = 0; i < length; i++ ) {
-    result += characters.charAt(Math.floor(Math.random() * charactersLength));
-  }
-  return result;
-}
-
 window.addNewBrowsers = async (incomingOptions) => {
   let options = window.parent.memory.copyObj(incomingOptions);
   let curProxyIndex = 0;
@@ -147,7 +137,7 @@ window.addNewBrowsers = async (incomingOptions) => {
       }
     }
     // TODO: add to statistics
-    addNewBrowser(options, proxy);
+    await addNewBrowser(options, proxy);
     if (options.creationDelay && i < options.quantity-1) {
       await window.parent.sleep(parseInt(options.creationDelay));
     }
@@ -155,7 +145,7 @@ window.addNewBrowsers = async (incomingOptions) => {
   browsersApp.creatingBrowsers = false;
 };
 
-function addNewBrowser(options, proxy) {
+async function addNewBrowser(options, proxy) {
   const electron = window.parent.require('electron');
   let formattedURL = (options.URL.includes('https://') ? 'https://' : 'http://') + options.URL.replace(new RegExp('https://', 'g'), '').replace(new RegExp('http://', 'g'), '');
   if (proxy && proxy.includes("@")) {
@@ -164,7 +154,7 @@ function addNewBrowser(options, proxy) {
   browsers.push({
     active: true,
     URL: formattedURL,
-    identifier: makeid(10),
+    identifier: window.parent.makeid(10),
     proxy: proxy,
     disableImages: options.disableImages
   });
@@ -174,132 +164,33 @@ function addNewBrowser(options, proxy) {
   const userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.106 Safari/537.36';
   console.log("declared constants");
 
-  if (false && browsers[curBrowserIndex].disableImages) { // DEPRECIATED
-    let forceRefreshed = false;
-    setTimeout(function() {
-      console.log("refreshing to force disable image load...");
-      const curWebview = document.querySelectorAll('webview')[getVisualizedBrowserIndex(curBrowserIndex)];
+  await window.parent.sleep(50);
+  if (browsers[curBrowserIndex].proxy) { // setup proxy
+
+    let proxyConfig = window.parent.generateProxyConfig(proxy);
+
+    console.log("setting up proxy...");
+    const curWebview = document.querySelectorAll('webview')[getVisualizedBrowserIndex(curBrowserIndex)];
+    electron.remote.webContents.fromId(curWebview.getWebContentsId()).session.setProxy({ pacScript: "", proxyRules: "http://" + proxyConfig.proxy, proxyBypassRules: "" }, () => {
       try {
-        curWebview.loadURL(curWebview.getURL());
+        curWebview.loadURL(formattedURL, {userAgent: userAgent});
       } catch(err) {
         console.log(err);
-        curWebview.loadURL(formattedURL);
+        curWebview.loadURL(formattedURL, {userAgent: userAgent});
       }
-      electron.remote.webContents.fromId(curWebview.getWebContentsId()).on('did-navigate', (event, url) => {
-        // console.log(url);
-        if (forceRefreshed) {
-          return;
-        }
-        try {
-          curWebview.loadURL(curWebview.getURL());
-        } catch(err) {
-          console.log(err);
-          curWebview.loadURL(formattedURL);
-        }
-        console.log('force refreshed after load to fix image load');
-        forceRefreshed = true;
+    });
 
-        // setup proxy
-        if (browsers[curBrowserIndex].proxy) {
-
-          let proxyAuthentication = {
-            username: null,
-            password: null
-          }
-          let outProxy = proxy.replace("http://", "").replace("https://", "");
-          if (outProxy.includes("@") || outProxy.split(":").length == 4) { // proxy authenticion needed
-            if (outProxy.includes("@")) {
-              let authenticion = outProxy.split("@")[0];
-              proxyAuthentication.username = authenticion.split(":")[0];
-              proxyAuthentication.password = authenticion.split(":")[1];
-              outProxy = outProxy.split("@")[1];
-            } else if (outProxy.split(":").length == 4) {
-              let authenticion = outProxy.split(":")[2] + ":" + outProxy.split(":")[3];
-              proxyAuthentication.username = authenticion.split(":")[0];
-              proxyAuthentication.password = authenticion.split(":")[1];
-              outProxy = outProxy.split(":")[0] + ":" + outProxy.split(":")[1];
-            }
-          }
-
-          console.log(outProxy);
-          console.log(proxyAuthentication);
-
-          setTimeout(function() {
-            console.log("setting up proxy...");
-            const curWebview = document.querySelectorAll('webview')[getVisualizedBrowserIndex(curBrowserIndex)];
-            electron.remote.webContents.fromId(curWebview.getWebContentsId()).session.setProxy({ pacScript: "", proxyRules: "http://" + outProxy, proxyBypassRules: "" }, () => {
-              try {
-                curWebview.loadURL(formattedURL, {userAgent: userAgent});
-              } catch(err) {
-                console.log(err);
-                curWebview.loadURL(formattedURL, {userAgent: userAgent});
-              }
-            });
-
-            if (proxyAuthentication.username && proxyAuthentication.password) {
-              electron.remote.webContents.fromId(curWebview.getWebContentsId()).on('login', (event, authenticationResponseDetails, authInfo, callback) => {
-                event.preventDefault();
-                if (authInfo.isProxy) {
-                  callback(proxyAuthentication.username, proxyAuthentication.password); // supply credentials to server
-                }
-              });
-            }
-
-            console.log("setup proxy");
-            // document.querySelector('#BrowserAuthentication_Modal').style.display = "none";
-          }, 450);
-        }
-
-      });
-    }, 350);
-  } else if (browsers[curBrowserIndex].proxy) { // setup proxy
-
-    let proxyAuthentication = {
-      username: null,
-      password: null
-    }
-    let outProxy = proxy.replace("http://", "").replace("https://", "");
-    if (outProxy.includes("@") || outProxy.split(":").length == 4) { // proxy authenticion needed
-      if (outProxy.includes("@")) {
-        let authenticion = outProxy.split("@")[0];
-        proxyAuthentication.username = authenticion.split(":")[0];
-        proxyAuthentication.password = authenticion.split(":")[1];
-        outProxy = outProxy.split("@")[1];
-      } else if (outProxy.split(":").length == 4) {
-        let authenticion = outProxy.split(":")[2] + ":" + outProxy.split(":")[3];
-        proxyAuthentication.username = authenticion.split(":")[0];
-        proxyAuthentication.password = authenticion.split(":")[1];
-        outProxy = outProxy.split(":")[0] + ":" + outProxy.split(":")[1];
-      }
-    }
-
-    console.log(outProxy);
-    console.log(proxyAuthentication);
-
-    setTimeout(function() {
-      console.log("setting up proxy...");
-      const curWebview = document.querySelectorAll('webview')[getVisualizedBrowserIndex(curBrowserIndex)];
-      electron.remote.webContents.fromId(curWebview.getWebContentsId()).session.setProxy({ pacScript: "", proxyRules: "http://" + outProxy, proxyBypassRules: "" }, () => {
-        try {
-          curWebview.loadURL(formattedURL, {userAgent: userAgent});
-        } catch(err) {
-          console.log(err);
-          curWebview.loadURL(formattedURL, {userAgent: userAgent});
+    if (proxyConfig.authenticion.username && proxyConfig.authenticion.password) {
+      electron.remote.webContents.fromId(curWebview.getWebContentsId()).on('login', (event, authenticationResponseDetails, authInfo, callback) => {
+        event.preventDefault();
+        if (authInfo.isProxy) {
+          callback(proxyConfig.authenticion.username, proxyConfig.authenticion.password); // supply credentials to server
         }
       });
+    }
 
-      if (proxyAuthentication.username && proxyAuthentication.password) {
-        electron.remote.webContents.fromId(curWebview.getWebContentsId()).on('login', (event, authenticationResponseDetails, authInfo, callback) => {
-          event.preventDefault();
-          if (authInfo.isProxy) {
-            callback(proxyAuthentication.username, proxyAuthentication.password); // supply credentials to server
-          }
-        });
-      }
-
-      console.log("setup proxy");
-      // document.querySelector('#BrowserAuthentication_Modal').style.display = "none";
-    }, 450);
+    console.log("setup proxy");
+    // document.querySelector('#BrowserAuthentication_Modal').style.display = "none";
   }
 }
 

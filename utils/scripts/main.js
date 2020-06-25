@@ -3,6 +3,7 @@ const authAPI = require('../../../utils/api/auth.js');
 window.memory = require('../../../utils/memory.js');
 window.electron = require('electron');
 window.path = require('path');
+window.url = require('url');
 window.translate = window.parent.require('translate');
 
 // variables
@@ -59,24 +60,42 @@ window.openExternal = (url) => {
   electron.shell.openExternal(url);
 };
 
-window.openInternal = (url, options = {}, combineOptions = true) => {
-  if (!url.includes("://")) {
-    url = "http://" + url;
-  }
-  if (combineOptions) {
-    window.combineObjects(options, DEFAULT_OPEN_INTERNAL_OPTIONS)
-  }
+window.openInternal = (url, options = {}, combineOptions = true, partition = null, proxy = null) => {
+  if (!url.includes("://")) url = "http://" + url;
+  if (combineOptions) window.combineObjects(options, DEFAULT_OPEN_INTERNAL_OPTIONS);
+  if (partition) options.webPreferences.partition = partition;
+
   let win = new electron.remote.BrowserWindow(options);
-  win.loadURL(url, { userAgent: USER_AGENT });
+
+  if (proxy) { // TODO: check if this works
+    let proxyConfig = window.generateProxyConfig(proxy);
+
+    win.webContents.session.setProxy({ pacScript: "", proxyRules: "http://" + proxyConfig.proxy, proxyBypassRules: "" }, () => {
+      try {
+        win.loadURL(url, { userAgent: USER_AGENT });
+      } catch(err) {
+        console.error(err);
+        win.loadURL(url, { userAgent: USER_AGENT });
+      }
+    });
+
+    if (proxyConfig.authenticion.username && proxyConfig.authenticion.password) {
+      win.webContents.on('login', (event, authenticationResponseDetails, authInfo, callback) => {
+        event.preventDefault();
+        if (authInfo.isProxy) callback(proxyConfig.authenticion.username, proxyConfig.authenticion.password); // supply credentials to server
+      });
+    }
+  } else win.loadURL(url, { userAgent: USER_AGENT });
+
   win.on('closed', () => {
     win = null;
   });
   return win;
 };
 
-window.openURL = (url, useDefaultBrowser, options) => {
+window.openURL = (url, useDefaultBrowser, options, partition = null, proxy = null) => {
   if (useDefaultBrowser) return window.openExternal(url);
-  else return window.openInternal(url, options);
+  else return window.openInternal(url, options, true, partition, proxy);
 }
 
 window.combineObjects = (incomingObj, fullObj) => {
@@ -129,6 +148,16 @@ window.formatTimestampExpanded = (timestamp = new Date().getTime()) => {
   var curDate = new Date(timestamp || undefined);
   const options = { weekday: "long", year: "numeric", month: "short", day: "numeric", hour: "numeric", minute: "2-digit" };
   return curDate.toLocaleString(window.companionSettings.language, options);
+};
+
+window.makeid = (length) => {
+  var result           = '';
+  var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  var charactersLength = characters.length;
+  for ( var i = 0; i < length; i++ ) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
 };
 
 /**

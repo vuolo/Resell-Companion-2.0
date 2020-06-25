@@ -395,7 +395,9 @@ function tryInjectTopBar() {
   // disable for small browser
   if (
     (location.href == "chrome-error://chromewebdata/") || // dont inject on error browser
-    (window.innerWidth == 420 && window.innerHeight == 340)// || // browser window (small)
+    (window.innerWidth == 420 && window.innerHeight == 340) || // browser window (small)
+    (window.innerWidth == 400 && window.innerHeight == 725) || // captcha solver window
+    (window.innerWidth == 390 && window.innerHeight == 674) // captcha frame window
     // (window.innerWidth == 500 && window.innerHeight == 820) // login window
   ) {
     return;

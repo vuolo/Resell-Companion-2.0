@@ -40,6 +40,7 @@ window.tasksApp = new Vue({
   data: {
     companionSettings: window.parent.companionSettings,
     tasks: window.tasks,
+    captchaSolvers: window.captchaSolvers,
     modals: window.modals,
     activeTaskIndex: -1,
     configureModal: {},
@@ -67,7 +68,11 @@ window.tasksApp = new Vue({
       if (enabled != null) node.enabled = enabled;
       else node.enabled = !node.enabled;
       if (node.enabled) window.setNodeStatus(node, "yellow", "Monitoring...");
-      else window.setNodeStatus(node, "red", "Disabled");
+      else {
+        window.setNodeStatus(node, "red", "Disabled");
+        node.captchaSiteKey = undefined;
+        node.captchaResponse = undefined;
+      }
       if (node.checkoutWindow !== null) { try { node.checkoutWindow.close(); } catch(err) { /* err: checkout window already closed (user probably closed it) */ } node.checkoutWindow = null; window.setNodeStatus(node, "red", "Checkout Canceled"); }
     },
     openNewTaskModal: function() {
@@ -249,8 +254,7 @@ window.getCheckoutURL = (storeURL, variantID, quantity = 1) => {
 };
 
 window.launchCheckout = (product, variant, useDefaultBrowser = false, proxy = null, show = true) => {
-  // TODO: implement proxies into openURL (openInternal) func
-  return window.parent.openURL(window.getCheckoutURL(product.Store, variant.ID), useDefaultBrowser, { title: 'Resell Companion — ' + product.Name + ' Checkout', show: show });
+  return window.parent.openURL(window.getCheckoutURL(product.Store, variant.ID), useDefaultBrowser, { title: 'Resell Companion — ' + product.Name + ' Checkout', show: show }, `persist:${window.parent.makeid(10)}`, proxy);
 };
 
 window.launchTaskNode = (node, product, variant) => {

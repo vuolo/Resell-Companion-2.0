@@ -668,6 +668,12 @@
         "es": "Tamaño"
       }
     },
+    "Solver Opened": {
+      "languages": {
+        "en": "Solver Opened",
+        "es": "Solucionador abierto"
+      }
+    },
     "Solvers Opened": {
       "languages": {
         "en": "Solvers Opened",

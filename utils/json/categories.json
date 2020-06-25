@@ -1011,7 +1011,7 @@
           ],
           "checkpoint_enabled": false,
           "password_enabled": false,
-          "favorited": false,
+          "favorited": true,
           "region": "United-States-of-America",
           "taskLaunchable": true
         },
