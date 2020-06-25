@@ -1,23 +1,39 @@
+// imports
 const electron = require("electron");
 const path = require("path");
 const url = require("url");
 const fs = require("fs");
 
+// variables
+var captchaSettings = {
+	captchaNumber: 1,
+	language: "en",
+	theme: "light",
+	solverOpened: false,
+	host: "resell.monster",
+	sitekey: "",
+	nodeID: null,
+	mainWebContentsID: null
+};
+
 const captchaSolverApp = new Vue({
 	el: "#Captcha_Solver",
 	data: {
-		solverOpened: false,
-		host: "resell.monster"
+		captchaSettings: captchaSettings
+	},
+	methods: {
+    tryTranslate: window.tryTranslate,
+    getThemeColor: window.getThemeColor
 	}
 });
 
 const captchaFramePath = path.join(__dirname, '../../../gui/views/captcha-solver/solver-frame.html');
 
-// setupSolverFrame("shop-usa.palaceskateboards.com", "6LeoeSkTAAAAAA9rkZs5oS82l69OEYjKRZAiKdaF");
-
-async function setupSolverFrame(host, sitekey) {
-	captchaSolverApp.host = host;
-	captchaSolverApp.solverOpened = true;
+async function setupSolverFrame(nodeID, host, sitekey) {
+	captchaSettings.host = host;
+	captchaSettings.sitekey = sitekey
+	captchaSettings.nodeID = nodeID;
+	captchaSettings.solverOpened = true;
 
 	// sleep to let webview render and initialize
 	await sleep(50);
@@ -36,28 +52,51 @@ async function setupSolverFrame(host, sitekey) {
 		if (!message.startsWith("${CC}")) return;
 		if (message.includes("CAPTCHA RESPONSE")) {
 			let captchaResponse = message.split("${CC} CAPTCHA RESPONSE: ")[1];
-			console.log(captchaResponse);
-			// TODO: send captchaResponse to main window for node (get captcha solver index's node)
+			// send captchaResponse to main window using nodeID
+			sendCaptchaResponse(nodeID, captchaResponse);
 			closeSolverFrame();
 		}
 	});
 }
 
 function closeSolverFrame() {
-	captchaSolverApp.solverOpened = false;
-	captchaSolverApp.host = "resell.monster";
+	captchaSettings.solverOpened = false;
+	captchaSettings.host = "resell.monster";
+	captchaSettings.sitekey = "";
+	captchaSettings.nodeID = null;
 }
 
 async function injectCaptchaFrame(webContents, sitekey) {
 	await webContents.executeJavaScript(`
-		document.write(\`${generateCaptchaFrameHTML(sitekey, "dark")}\`)
+		document.write(\`${generateCaptchaFrameHTML(sitekey, captchaSettings.theme)}\`)
 		`, true);
 }
 
 function generateCaptchaFrameHTML(sitekey, theme) {
-	return String(fs.readFileSync(captchaFramePath)).replace(new RegExp("{{CAPTCHA_THEME}}", 'g'), theme).replace(new RegExp("{{CAPTCHA_SITEKEY}}", 'g'), sitekey);
+	return String(fs.readFileSync(captchaFramePath)).replace(new RegExp("{{CAPTCHA_THEME}}", 'g'), theme).replace(new RegExp("{{CAPTCHA_SITEKEY}}", 'g'), sitekey).replace(new RegExp("{{CAPTCHA_BACKGROUND_COLOR}}", 'g'), window.getThemeColor('rgba(251,247,241,1)', theme));
 }
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
+
+function sendCaptchaResponse(nodeID, captchaResponse) {
+  electron.remote.webContents.fromId(captchaSettings.mainWebContentsID).send('captchaResponse', { nodeID: nodeID, captchaResponse: captchaResponse });
+}
+
+electron.ipcRenderer.on('updateOptions', (event, options) => {
+	captchaSettings.mainWebContentsID = options.mainWebContentsID;
+	setupSolverFrame(options.nodeID, options.host, options.sitekey);
+});
+
+electron.ipcRenderer.on('updateTheme', (event, theme) => {
+	captchaSettings.theme = theme;
+});
+
+electron.ipcRenderer.on('updateLanguage', (event, language) => {
+	captchaSettings.language = language;
+});
+
+electron.ipcRenderer.on('updateNumber', (event, number) => {
+	captchaSettings.captchaNumber = number;
+});

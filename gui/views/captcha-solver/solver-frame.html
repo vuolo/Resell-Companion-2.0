@@ -15,11 +15,11 @@
     }
     .mt-6 {
       /* margin-top: 1.5rem; */
-			margin-top: 70%;
+			margin-top: 75%;
     }
   </style>
 </head>
-<body style="overflow: hidden; display: block">
+<body style="overflow: hidden; display: block; background-color: {{CAPTCHA_BACKGROUND_COLOR}}">
   <div class="flex justify-center items-center mt-6">
     <div id="captchaFrame" class="g-recaptcha" data-callback="sendCaptcha" data-theme="{{CAPTCHA_THEME}}" data-sitekey="{{CAPTCHA_SITEKEY}}"></div>
   </div>

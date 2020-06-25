@@ -230,6 +230,7 @@ window.monitorsApp = new Vue({
 });
 
 window.updateProduct = (product) => {
+  if (!product.Variants) product.Variants = [];
   let foundProduct = false;
   for (var i = 0; i < window.products.length; i++) {
     if (window.products[i].URL == product.URL) {
@@ -392,6 +393,7 @@ function areKeywordsInProduct(product) {
 }
 
 window.addNewProduct = (product) => {
+  if (!product.Variants) product.Variants = [];
   product.isDisplayingMoreInfo = false;
   product.Timestamp = new Date().getTime();
   if (product.ImageURL == "https://i.imgur.com/fip3nw5.png") product.ImageURL = "../../../../images/unknownImage.png";
@@ -704,6 +706,7 @@ async function initialProductsSetup() {
   if (fetchedProducts) {
     fetchedProducts = formatProducts(fetchedProducts);
     window.parent.memory.syncObjects(window.products, fetchedProducts);
+    for (var product of window.products) if (!product.Variants) product.Variants = [];
     refreshDisplayedProducts();
     monitorsApp.productsInitiallySetup = true;
   }

@@ -2,6 +2,7 @@ const WORDS_PER_MINUTE = 280;
 const VALIDATE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
 function initiateCheckoutCompanion(node, product, variant, billingProfile = null, proxy = null) {
+  node.host = product.Store;
   window.setNodeStatus(node, "orange", "Initializing Checkout Session... (1/3)");
   node.checkoutWindow = window.launchCheckout(product, variant, false, proxy, false);
   node.checkoutWindow.once('ready-to-show', () => {
@@ -74,7 +75,8 @@ async function beginSupremeCheckout(node, billingProfile) {
 
 async function beginShopifyCheckout(node, billingProfile) {
   // TODO: detect if item is OOS (display status and return)
-  let currentCheckoutStep = await getCurrentCheckoutStep(node); // TODO: check current checkout step to provide correct actions/fields to fill
+  // check current checkout step to provide correct actions/fields to fill
+  let currentCheckoutStep = await getCurrentCheckoutStep(node);
   if (currentCheckoutStep == 'contact_information') {
     // main autofill information fields
     await fillField(node, '#checkout_shipping_address_first_name', billingProfile.autofillInformation.firstName);
@@ -120,10 +122,12 @@ async function beginShopifyCheckout(node, billingProfile) {
     // export captcha sitekey from checkout page
     node.captchaSiteKey = await getCaptchaSiteKey(node);
     // open solver on resell companion for captcha
-    window.openCaptchaSolver(node, node.captchaSiteKey);
+    // TODO: try to use an unused captcha solver if some are already opened (make a new function that loops through all captcha solvers and if none are attached to a node, then just populate that captcha solver w/ the captcha details etc.)
+    window.openCaptchaSolver(node, node.host, node.captchaSiteKey);
     while (!node.captchaResponse || node.captchaResponse.length == 0) await window.parent.sleep(50);
     // inject solved captcha response (from resell companion) into checkout page (injects to hidden #g-recaptcha-response textarea)
     await injectCaptchaResponse(node, node.captchaResponse);
+    node.captchaResponse = undefined;
   }
 
   // TODO: wait for button to be ready to clicked on (after calculating taxes/billing information inputted (with this method you probably dont need to wait after inputting billing info) )
@@ -135,15 +139,16 @@ async function beginShopifyCheckout(node, billingProfile) {
 
 async function getCaptchaSiteKey(node) {
   return await node.checkoutWindow.webContents.executeJavaScript(`
-
-    `, true);
+    (() => {
+      if (document.querySelector(".g-recaptcha").dataset.sitekey) return document.querySelector(".g-recaptcha").dataset.sitekey;
+      else for (var script of document.querySelectorAll("script")) if (script.text.includes("sitekey:")) return script.text.split("sitekey:")[1].split(",")[0].replace(new RegExp('"', 'g'), '').trim();
+    })();`, true);
 };
 
 async function injectCaptchaResponse(node, captchaResponse) {
   await node.checkoutWindow.webContents.executeJavaScript(`
     document.querySelector("#g-recaptcha-response").value = "${captchaResponse}";
     `, true);
-  node.captchaResponse = undefined;
 };
 
 async function hasCaptcha(node) {

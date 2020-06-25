@@ -90,6 +90,12 @@
         "es": "Navegador"
       }
     },
+    "Captcha Solver": {
+      "languages": {
+        "en": "Captcha Solver",
+        "es": "Solucionador de Captcha"
+      }
+    },
     "Change URLs": {
       "languages": {
         "en": "Change URLs",
@@ -858,6 +864,12 @@
       "languages": {
         "en": "Use Random Size",
         "es": "Usar tamaño aleatorio"
+      }
+    },
+    "Waiting...": {
+      "languages": {
+        "en": "Waiting...",
+        "es": "Esperando..."
       }
     },
     "Watching browsers...": {

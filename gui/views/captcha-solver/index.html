@@ -13,63 +13,77 @@
 	<script src="../../../utils/downloaded/vue.js" type="text/javascript"></script>
   <script src="../../../utils/downloaded/jquery.js" type="text/javascript"></script>
 
+	<script src="../../../utils/scripts/themes.js" type="text/javascript"></script>
+  <script src="../../../utils/scripts/translations.js" type="text/javascript"></script>
+
 </head>
 
 <body>
 
 	<div id="Captcha_Solver" class="Captcha_Solver_Class">
 		<div class="Captcha_Solver_Window_Class">
-			<div id="captchaContents">
+			<div id="captchaContents" v-bind:style="{ backgroundColor: getThemeColor('rgba(251,247,241,1)', captchaSettings.theme) }">
 				<!-- TODO: use google account session -->
-				<webview v-if="solverOpened" id="captchaFrame" webpreferences="" v-bind:src="'https://' + host + '/resell-companion-captcha-solver'" autosize="on" minwidth="390px" maxwidth="390px" minheight="674px" maxheight="674px" partition="persist:TEMP_PARTITON" enableremotemodule="false" plugins preload="../../../utils/preload.js" useragent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.106 Safari/537.36"></webview>
+				<webview v-if="captchaSettings.solverOpened" id="captchaFrame" webpreferences="" v-bind:src="'https://' + captchaSettings.host + '/resell-companion-captcha-solver'" autosize="on" minwidth="390px" maxwidth="390px" minheight="674px" maxheight="674px" partition="persist:TEMP_PARTITON" enableremotemodule="false" plugins preload="../../../utils/preload.js" useragent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.106 Safari/537.36"></webview>
 				<svg class="Blue_Bar">
-					<rect fill="rgba(91,182,187,1)" class="Blue_Bar_Class" rx="1.5" ry="1.5" x="0" y="0" width="100" height="3">
+					<rect fill="#FFA74E" class="Blue_Bar_Class" rx="1.5" ry="1.5" x="0" y="0" width="100" height="3">
 					</rect>
 				</svg>
-				<div class="Waiting____Class">
-					<span>Waiting...</span>
+				<div class="Waiting____Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)', captchaSettings.theme) }">
+					<span>{{tryTranslate('Waiting...', captchaSettings.language)}}</span>
 				</div>
 				<div class="Loading_Circle_Class">
 					<svg class="spinner" viewBox="0 0 50 50">
 					  <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="1.5" stroke="#FFA74E"></circle>
 					</svg>
 				</div>
-				<img class="Sleepy_Class" src="../../images/emoticons/Sleepy (animated).gif">
+				<img class="Sleepy_Class" src="../../images/emoticons/Sleepy.png">
 			</div>
 
 			<div class="Header_Class" style="z-index: 10;">
 				<svg class="Header_Background">
-					<rect fill="rgba(243,224,185,1)" class="Header_Background_Class" rx="0" ry="0" x="0" y="0" width="340" height="30">
+					<rect v-bind:fill="getThemeColor('rgba(243,224,185,1)', captchaSettings.theme)" class="Header_Background_Class" rx="0" ry="0" x="0" y="0" width="340" height="30">
 					</rect>
 				</svg>
 				<div class="Window_Buttons_Class" style="z-index: 15;">
 					<svg class="Window_Buttons_Background">
-						<rect fill="rgba(255,237,200,1)" class="Window_Buttons_Background_Class" rx="15" ry="15" x="0" y="0" width="74" height="40">
+						<rect v-bind:fill="getThemeColor('rgba(255,237,200,1)', captchaSettings.theme)" class="Window_Buttons_Background_Class" rx="15" ry="15" x="0" y="0" width="74" height="40">
 						</rect>
 					</svg>
 					<svg class="Close_Icon clickable hover-opacity" onclick="closeSolver()" viewBox="3.375 3.375 20 20">
+						<circle cx="6.5" cy="6.5" r="6.5" transform="translate(6 6)" fill="#efefef"/>
 						<path fill="rgba(253,53,53,1)" class="Close_Icon_Class" d="M 13.37498569488525 3.375 C 7.850955486297607 3.375 3.375 7.850955486297607 3.375 13.37498569488525 C 3.375 18.89901542663574 7.850955486297607 23.37496948242188 13.37498569488525 23.37496948242188 C 18.89901542663574 23.37496948242188 23.37496948242188 18.89901542663574 23.37496948242188 13.37498569488525 C 23.37496948242188 7.850954532623291 18.89901542663574 3.375 13.37498569488525 3.375 Z M 15.90863418579102 16.99517250061035 L 13.37498569488525 14.46152019500732 L 10.84133434295654 16.99517250061035 C 10.54325771331787 17.29324913024902 10.0528736114502 17.29324913024902 9.75479793548584 16.99517250061035 C 9.605758666992188 16.84613227844238 9.528836250305176 16.64901733398438 9.528836250305176 16.45190238952637 C 9.528836250305176 16.25478935241699 9.605758666992188 16.05767250061035 9.75479793548584 15.90863418579102 L 12.2884464263916 13.37498569488525 L 9.75479793548584 10.84133434295654 C 9.605758666992188 10.69229602813721 9.528835296630859 10.49518203735352 9.528835296630859 10.29806613922119 C 9.528835296630859 10.10095119476318 9.605758666992188 9.903835296630859 9.75479793548584 9.754798889160156 C 10.0528736114502 9.456722259521484 10.54325580596924 9.456722259521484 10.84133434295654 9.754798889160156 L 13.3749828338623 12.28844738006592 L 15.90863418579102 9.754798889160156 C 16.20671081542969 9.456722259521484 16.69709396362305 9.456722259521484 16.99517059326172 9.754798889160156 C 17.29324722290039 10.05287456512451 17.29324722290039 10.54325866699219 16.99517059326172 10.84133529663086 L 14.46152019500732 13.37498569488525 L 16.99517250061035 15.90863418579102 C 17.29324913024902 16.20671081542969 17.29324913024902 16.69709587097168 16.99517250061035 16.99517250061035 C 16.69709396362305 17.29805374145508 16.20671081542969 17.29805374145508 15.90863418579102 16.99517250061035 Z">
 						</path>
 					</svg>
 					<svg class="Minimize_Icon clickable hover-opacity" onclick="minimizeWindow()" viewBox="0.563 0.563 20 20">
+						<circle cx="6.5" cy="6.5" r="6.5" transform="translate(4 6)" fill="#efefef"/>
 						<path fill="rgba(255,167,78,1)" class="Minimize_Icon_Class" d="M 10.56248474121094 0.5625000596046448 C 5.038299083709717 0.5625000596046448 0.5625000596046448 5.038299083709717 0.5625000596046448 10.56248474121094 C 0.5625000596046448 16.086669921875 5.038299083709717 20.56246757507324 10.56248474121094 20.56246757507324 C 16.086669921875 20.56246757507324 20.56246757507324 16.086669921875 20.56246757507324 10.56248474121094 C 20.56246757507324 5.038299083709717 16.086669921875 0.5625000596046448 10.56248474121094 0.5625000596046448 Z M 5.239912033081055 12.17538452148438 C 4.973783016204834 12.17538452148438 4.756041526794434 11.95764350891113 4.756041526794434 11.69151401519775 L 4.756041526794434 9.433454513549805 C 4.756041526794434 9.167325973510742 4.973783016204834 8.949583053588867 5.239912033081055 8.949583053588867 L 15.8850564956665 8.949583053588867 C 16.15118598937988 8.949583053588867 16.36892700195313 9.167325973510742 16.36892700195313 9.433454513549805 L 16.36892700195313 11.69151401519775 C 16.36892700195313 11.95764350891113 16.15118598937988 12.17538452148438 15.8850564956665 12.17538452148438 L 5.239912033081055 12.17538452148438 Z">
 						</path>
 					</svg>
 				</div>
-				<div class="Captcha_Solver_d_Class">
-					<span>Captcha Solver</span>
+				<div class="Captcha_Solver_d_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)', captchaSettings.theme) }">
+					<span>{{tryTranslate('Captcha Solver', captchaSettings.language)}}</span>
 				</div>
-				<div class="Captcha_Solver_Number_Class">
-					<span>1</span>
+				<div class="Captcha_Solver_Number_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)', captchaSettings.theme) }">
+					<span>{{captchaSettings.captchaNumber}}</span>
 				</div>
 			</div>
 
 			<div class="Footer_Class">
 				<svg class="Footer_Background_Rectangle">
-					<rect fill="rgba(245,224,182,1)" class="Footer_Background_Rectangle_Class" rx="0" ry="0" x="0" y="0" width="390" height="22">
+					<rect v-bind:fill="getThemeColor('rgba(243,224,185,1)', captchaSettings.theme)" class="Footer_Background_Rectangle_Class" rx="0" ry="0" x="0" y="0" width="390" height="22">
 					</rect>
 				</svg>
-				<img class="Google_Icon_Class clickable hover-opacity" src="../../images/Google Icon (gray).png">
+				<!-- TODO: convert below to SVG from shreenandan -->
+				<svg class="Google_Icon_Class clickable hover-opacity" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 612 792" style="enable-background:new 0 0 612 792;" xml:space="preserve">
+					 <path v-bind:fill="getThemeColor('rgba(29,29,29,1)', captchaSettings.theme)" class="st0" d="M414.3,406.9c31.5,0,63,0,94.5,0c7.9,0,7.9,0,9.4,7.5c4.4,22.1,3.8,44.3,1.2,66.6
+	 						c-3.1,26.9-10.6,52.5-23.1,76.6c-18.7,36.2-46,64.1-81.8,83.8c-37.5,20.6-77.8,28.5-120.1,25.3c-51.6-3.9-96.6-23.6-134.5-59.3
+	 						c-38.6-36.4-61.5-81.1-67.5-133.6c-7.2-62.5,8.7-119.1,49.1-167.8c37.2-44.8,85.3-71,143-77.8c63.1-7.5,119.3,10.1,168.5,50.3
+	 						c2.8,2.3,3.2,4.1,0.4,6.8c-19.4,19.3-38.7,38.6-58,58c-2.6,2.6-4.6,2.4-7.3,0.3c-17.5-13.6-37.3-22.1-59.2-24.8
+	 						c-37.6-4.8-71.4,4.5-100.7,28.7c-26.1,21.6-41.4,49.5-45.5,82.9c-4.6,37,4.9,70.4,28.8,99.3c21.6,26.1,49.4,41.6,82.9,45.6
+	 						c35.7,4.2,69.5-1.7,98.7-24.5c17.7-13.8,28.8-32.1,34.4-53.8c1.4-5.2-2.1-5-5.4-5c-29.2,0-58.3,0-87.5,0c-6.2,0-12.3-0.1-18.5,0
+	 						c-3.6,0.1-5.1-1.3-5.1-5c0.1-25,0.1-50,0-75c0-4.9,2.6-5.3,6.4-5.3C349.6,406.9,381.9,406.9,414.3,406.9z"/>
+				</svg>
 			</div>
 		</div>
 	</div>
@@ -98,11 +112,13 @@
 			"#CE8CE5", // purple
 			"#5BB6BB" // blue
 		];
-		let curColorIndex = 0;
+		let curColorIndex = 1;
 
 		const loadingCirclePath = document.querySelector(".spinner .path");
+		const waitingUnderlineRect = document.querySelector(".Blue_Bar rect");
 		setInterval(function() {
 			loadingCirclePath.style.stroke = loadingColors[curColorIndex];
+			waitingUnderlineRect.style.fill = loadingColors[curColorIndex];
 			curColorIndex++;
 			if (curColorIndex >= loadingColors.length) curColorIndex = 0;
 		}, 1500);

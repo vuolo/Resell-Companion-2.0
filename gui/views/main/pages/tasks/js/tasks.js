@@ -214,7 +214,8 @@ window.addTaskNode = () => {
       description: 'Monitoring...',
       color: 'yellow'
     },
-    enabled: true
+    enabled: true,
+    id: window.parent.makeid(10)
   };
   for (var i = 0; i < tasksApp.createModal.quantity; i++) {
     tasks[tasksApp.activeTaskIndex].nodes.push(window.parent.memory.copyObj(newTaskNode));
@@ -250,10 +251,12 @@ window.getAvailableVariants = (product) => {
 };
 
 window.getCheckoutURL = (storeURL, variantID, quantity = 1) => {
+  // TODO: add Supreme ATC support (you probably will need to pass additional paramters)
   return "https://" + storeURL + "/cart/" + variantID + ":" + quantity;
 };
 
 window.launchCheckout = (product, variant, useDefaultBrowser = false, proxy = null, show = true) => {
+  // TODO: add Supreme ATC support (you probably will need to pass additional paramters)
   return window.parent.openURL(window.getCheckoutURL(product.Store, variant.ID), useDefaultBrowser, { title: 'Resell Companion — ' + product.Name + ' Checkout', show: show }, `persist:${window.parent.makeid(10)}`, proxy);
 };
 

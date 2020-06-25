@@ -122,11 +122,14 @@
 }
 .Google_Icon_Class {
 	position: absolute;
-	width: 13px;
-	height: 13px;
-	left: 8px;
-	top: 5px;
+	width: 21px;
+	/* height: 28px; */
+	left: 2px;
+	top: -4px;
 	overflow: visible;
+}
+.Blue_Bar rect {
+	transition: all 0.5s ease-in-out;
 }
 .Blue_Bar {
 	position: absolute;
@@ -138,10 +141,10 @@
 }
 .Waiting____Class {
 	position: absolute;
-	left: 102.678px;
+	left: 0px;
 	top: 469px;
 	overflow: visible;
-	width: 189px;
+	width: 390px;
 	white-space: nowrap;
 	text-align: center;
 	font-family: SF Pro Text;
@@ -162,7 +165,8 @@
 	position: absolute;
 	/* width: 221px; */
 	height: 250px;
-	left: 68.678px;
+	/* left: 68.678px; */
+	left: 85.678px;
 	top: 156px;
 	overflow: visible;
 }
@@ -223,10 +227,10 @@
 }
 .Captcha_Solver_d_Class {
 	position: absolute;
-	left: 139px;
+	left: 0px;
 	top: 7px;
 	overflow: visible;
-	width: 123px;
+	width: 100%;
 	white-space: nowrap;
 	text-align: center;
 	font-family: SF Pro Text;

@@ -131,7 +131,7 @@
 			</template>
 
 			<template v-for="(product, productIndex) in products">
-				<div class="Product_Card_1_Class" v-bind:key="product.MD5" v-bind:style="{ top: ( (getProductRowNumber(productIndex)-1) * (228 - 5) ) + 8 + 'px', left: ( (getProductColumnNumber(productIndex)-1) * (473 + 15) ) + 10 + 'px', width: getProductCardWidth(product) + 'px' }">
+				<div class="Product_Card_1_Class" v-bind:key="product.MD5 + productIndex" v-bind:style="{ top: ( (getProductRowNumber(productIndex)-1) * (228 - 5) ) + 8 + 'px', left: ( (getProductColumnNumber(productIndex)-1) * (473 + 15) ) + 10 + 'px', width: getProductCardWidth(product) + 'px' }">
 					<div class="Product_Card_Rectangles_fc_Class">
 						<svg class="Product_Card_Rectangle_2_fd">
 							<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Product_Card_Rectangle_2_fd_Class" rx="20" ry="20" x="0" y="0" v-bind:width="getProductCardWidth(product)" height="210">
@@ -209,7 +209,7 @@
 							</rect>
 						</svg>
 						<div class="ID5_26_2020___10_00_02_PM_e_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-							<span class="text-selectable">{{formatTimestamp(product.LaunchDate)}}</span>
+							<span class="text-selectable">{{!product.LaunchDate ? tryTranslate('N/A') : formatTimestamp(product.LaunchDate)}}</span>
 						</div>
 						<div class="Launch_Date_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
 							<span>{{tryTranslate('Launch Date')}}</span>

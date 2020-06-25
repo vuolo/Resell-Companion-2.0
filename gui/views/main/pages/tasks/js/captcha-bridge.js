@@ -28,10 +28,62 @@ window.openCaptchaSolver = (node, host, sitekey) => {
   };
   window.captchaSolvers.push(newCaptchaSolver);
 
-  let curCaptchaSolverIndex = newCaptchaSolver.length-1;
+  newCaptchaSolver.window.webContents.once('dom-ready', () => {
+    if (node) window.sendOptionsToCaptchaSolver({ mainWebContentsID: window.parent.mainWebContentsID, nodeID: node.id, host: host, sitekey: sitekey }, window.captchaSolvers.indexOf(newCaptchaSolver));
+    window.sendThemeToCaptchaSolvers(window.parent.companionSettings.theme, window.captchaSolvers.indexOf(newCaptchaSolver));
+    window.sendLanguageToCaptchaSolvers(window.parent.companionSettings.language, window.captchaSolvers.indexOf(newCaptchaSolver));
+    window.refreshCaptchaSolverNumbers(window.captchaSolvers.indexOf(newCaptchaSolver));
+  });
   newCaptchaSolver.window.once('closed', () => {
     newCaptchaSolver.window = null;
-    window.captchaSolvers.splice(curCaptchaSolverIndex, 1);
+    window.captchaSolvers.splice(window.captchaSolvers.indexOf(newCaptchaSolver), 1);
+    window.refreshCaptchaSolverNumbers();
   });
+};
 
+function setCaptchaResponse(nodeID, captchaResponse) {
+  for (var captchaSolver of window.captchaSolvers) {
+    if (captchaSolver.node.id == nodeID) {
+      captchaSolver.node.captchaResponse = captchaResponse;
+      return;
+    }
+  }
+}
+
+window.parent.electron.ipcRenderer.on('captchaResponse', (event, captchaResponseOptions) => {
+  setCaptchaResponse(captchaResponseOptions.nodeID, captchaResponseOptions.captchaResponse);
+});
+
+window.sendOptionsToCaptchaSolver = (options, captchaSolverIndex) => {
+  window.captchaSolvers[captchaSolverIndex].window.webContents.send('updateOptions', options);
+};
+
+window.sendThemeToCaptchaSolvers = (theme, captchaSolverIndex = null) => {
+  if (captchaSolverIndex) {
+    window.captchaSolvers[captchaSolverIndex].window.webContents.send('updateTheme', theme);
+    return;
+  }
+  for (var captchaSolver of window.captchaSolvers) {
+    captchaSolver.window.webContents.send('updateTheme', theme);
+  }
+};
+
+window.sendLanguageToCaptchaSolvers = (language, captchaSolverIndex = null) => {
+  if (captchaSolverIndex) {
+    window.captchaSolvers[captchaSolverIndex].window.webContents.send('updateLanguage', language);
+    return;
+  }
+  for (var captchaSolver of window.captchaSolvers) {
+    captchaSolver.window.webContents.send('updateLanguage', language);
+  }
+};
+
+window.refreshCaptchaSolverNumbers = (captchaSolverIndex = null) => {
+  if (captchaSolverIndex) {
+    window.captchaSolvers[captchaSolverIndex].window.webContents.send('updateNumber', captchaSolverIndex+1);
+    return;
+  }
+  for (var i = 0; i < window.captchaSolvers.length; i++) {
+    window.captchaSolvers[i].window.webContents.send('updateNumber', i+1);
+  }
 };
