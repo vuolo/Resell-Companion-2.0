@@ -84,6 +84,10 @@ function sendCaptchaResponse(nodeID, captchaResponse) {
   electron.remote.webContents.fromId(captchaSettings.mainWebContentsID).send('captchaResponse', { nodeID: nodeID, captchaResponse: captchaResponse });
 }
 
+electron.ipcRenderer.on('resetOptions', (event) => {
+	closeSolverFrame();
+});
+
 electron.ipcRenderer.on('updateOptions', (event, options) => {
 	captchaSettings.mainWebContentsID = options.mainWebContentsID;
 	setupSolverFrame(options.nodeID, options.host, options.sitekey);

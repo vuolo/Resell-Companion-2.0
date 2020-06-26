@@ -1,17 +1,17 @@
 window.captchaSolvers = [];
 
-const captchaPath = window.parent.url.format({
+const captchaSolverPath = window.parent.url.format({
   pathname: window.parent.path.join(window.parent.__dirname, '../../../gui/views/captcha-solver/index.html'),
   protocol: 'file:',
   slashes: true
 });
 
-window.openCaptchaSolver = (node, host, sitekey) => {
+window.openCaptchaSolver = (node, host = "resell.monster", sitekey) => {
   let newCaptchaSolver = {
     node: node,
     host: host,
     sitekey: sitekey,
-    window: window.parent.openURL(captchaPath, false, {
+    window: window.parent.openURL(captchaSolverPath, false, {
       title: 'Resell Companion — Captcha Solver ' + window.captchaSolvers.length + 1,
       show: true,
       width: 400,
@@ -36,15 +36,41 @@ window.openCaptchaSolver = (node, host, sitekey) => {
   });
   newCaptchaSolver.window.once('closed', () => {
     newCaptchaSolver.window = null;
+    if (newCaptchaSolver.node && newCaptchaSolver.node.checkoutWindow) newCaptchaSolver.node.checkoutWindow.close();
     window.captchaSolvers.splice(window.captchaSolvers.indexOf(newCaptchaSolver), 1);
     window.refreshCaptchaSolverNumbers();
   });
 };
 
+// TODO: spread captchas around screen upon focus?
+// try to use an unused captcha solver if some are already opened
+window.initiateCaptchaSolver = (node, host = "resell.monster", sitekey) => {
+  for (var i = 0; i < window.captchaSolvers.length; i++) {
+    if (!window.captchaSolvers[i].node) {
+      window.captchaSolvers[i].node = node;
+      window.captchaSolvers[i].host = sitekey;
+      window.captchaSolvers[i].sitekey = sitekey;
+      window.captchaSolvers[i].window.focus();
+      window.sendOptionsToCaptchaSolver({ mainWebContentsID: window.parent.mainWebContentsID, nodeID: node.id, host: host, sitekey: sitekey }, i);
+      return;
+    }
+  }
+  // no free solver found -> make new
+  window.openCaptchaSolver(node, host, sitekey);
+};
+
+window.resetCaptchaSolver = (captchaSolver) => {
+  captchaSolver.node = null;
+  captchaSolver.host = "resell.monster";
+  captchaSolver.sitekey = null;
+  captchaSolver.window.webContents.send('resetOptions');
+};
+
 function setCaptchaResponse(nodeID, captchaResponse) {
   for (var captchaSolver of window.captchaSolvers) {
-    if (captchaSolver.node.id == nodeID) {
+    if (captchaSolver.node && captchaSolver.node.id == nodeID) {
       captchaSolver.node.captchaResponse = captchaResponse;
+      window.resetCaptchaSolver(captchaSolver);
       return;
     }
   }

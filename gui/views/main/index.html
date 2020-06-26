@@ -25,18 +25,10 @@
 <body>
 
   <div id="Rewrite___Application_Border" class="Rewrite___Application_Border_Class">
-  	<div class="Footer_Class">
-  		<svg class="Footer_Background_Rectangle">
-  			<rect v-bind:fill="getThemeColor('rgba(243,224,185,1)')" class="Footer_Background_Rectangle_Class" rx="0" ry="0" x="0" y="0" width="1275" height="22">
-  			</rect>
-  		</svg>
-  		<div class="Footer_Text_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-  			<span>Version {{appVersion}} • <span id="timeText">--:--:-- --</span></span>
-  		</div>
-  	</div>
   	<div class="Header_Class">
+      <div class="Header_Background" style="filter: none; height: 40px; top: 10px;" v-bind:style="{ backgroundColor: getThemeColor('rgba(251,247,241,1)') }"></div>
   		<svg class="Header_Background">
-  			<rect v-bind:fill="getThemeColor('rgba(243,224,185,1)')" class="Header_Background_Class" rx="0" ry="0" x="0" y="0" width="1035" height="50">
+  			<rect v-bind:fill="getThemeColor('rgba(243,224,185,1)')" class="Header_Background_Class" rx="5" ry="5" x="0" y="0" width="1035" height="50">
   			</rect>
   		</svg>
   		<div class="User_Bar_Class">
@@ -95,6 +87,16 @@
   			</rect>
   		</svg>
 
+  	</div>
+
+    <div class="Footer_Class">
+  		<svg class="Footer_Background_Rectangle">
+  			<rect v-bind:fill="getThemeColor('rgba(243,224,185,1)')" class="Footer_Background_Rectangle_Class" rx="0" ry="0" x="0" y="0" width="1275" height="22">
+  			</rect>
+  		</svg>
+  		<div class="Footer_Text_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+  			<span>Version {{appVersion}} • <span id="timeText">--:--:-- --</span></span>
+  		</div>
   	</div>
   </div>
 

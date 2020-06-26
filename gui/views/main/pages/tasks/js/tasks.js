@@ -64,7 +64,7 @@ window.tasksApp = new Vue({
       }
       return 0;
     },
-    toggleNodeEnabled: function(node, enabled = null) {
+    toggleNodeEnabled: function(node, enabled = null, canceled = false) {
       if (enabled != null) node.enabled = enabled;
       else node.enabled = !node.enabled;
       if (node.enabled) window.setNodeStatus(node, "yellow", "Monitoring...");
@@ -72,8 +72,14 @@ window.tasksApp = new Vue({
         window.setNodeStatus(node, "red", "Disabled");
         node.captchaSiteKey = undefined;
         node.captchaResponse = undefined;
+        for (var captchaSolver of window.captchaSolvers) {
+          if (captchaSolver.node && captchaSolver.node.id == node.id) {
+            window.resetCaptchaSolver(captchaSolver);
+            break;
+          }
+        }
       }
-      if (node.checkoutWindow !== null) { try { node.checkoutWindow.close(); } catch(err) { /* err: checkout window already closed (user probably closed it) */ } node.checkoutWindow = null; window.setNodeStatus(node, "red", "Checkout Canceled"); }
+      if (node.checkoutWindow !== null || canceled) { try { node.checkoutWindow.close(); } catch(err) { /* err: checkout window already closed (user probably closed it) */ } node.checkoutWindow = null; window.setNodeStatus(node, "red", "Checkout Canceled"); }
     },
     openNewTaskModal: function() {
       window.frames['create-modal'].resetModalOptions();
@@ -214,10 +220,10 @@ window.addTaskNode = () => {
       description: 'Monitoring...',
       color: 'yellow'
     },
-    enabled: true,
-    id: window.parent.makeid(10)
+    enabled: true
   };
   for (var i = 0; i < tasksApp.createModal.quantity; i++) {
+    newTaskNode.id = window.parent.makeid(10); // assign a new id to each node
     tasks[tasksApp.activeTaskIndex].nodes.push(window.parent.memory.copyObj(newTaskNode));
   }
 };

@@ -121,9 +121,8 @@ async function beginShopifyCheckout(node, billingProfile) {
     window.setNodeStatus(node, "orange", "Waiting for Captcha Response... (2/3)");
     // export captcha sitekey from checkout page
     node.captchaSiteKey = await getCaptchaSiteKey(node);
-    // open solver on resell companion for captcha
-    // TODO: try to use an unused captcha solver if some are already opened (make a new function that loops through all captcha solvers and if none are attached to a node, then just populate that captcha solver w/ the captcha details etc.)
-    window.openCaptchaSolver(node, node.host, node.captchaSiteKey);
+    // open new solver/use already made solver on resell companion for captcha
+    window.initiateCaptchaSolver(node, node.host, node.captchaSiteKey);
     while (!node.captchaResponse || node.captchaResponse.length == 0) await window.parent.sleep(50);
     // inject solved captcha response (from resell companion) into checkout page (injects to hidden #g-recaptcha-response textarea)
     await injectCaptchaResponse(node, node.captchaResponse);

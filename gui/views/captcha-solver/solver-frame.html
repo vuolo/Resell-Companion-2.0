@@ -33,13 +33,18 @@
     (async () => {
       if (typeof grecaptcha !== "undefined") return;
       while (typeof grecaptcha === "undefined") await captchaSleep(50);
-      try { renderCaptcha(); } catch(err) { };
+      while (!document.querySelector("#captchaFrame iframe")) {
+        tryRenderCaptcha();
+        await captchaSleep(50);
+      }
     })();
 
-    function renderCaptcha() {
-      grecaptcha.render("captchaFrame", {
-        "sitekey": "{{CAPTCHA_SITEKEY}}"
-      });
+    function tryRenderCaptcha() {
+      try {
+        grecaptcha.render("captchaFrame", {
+          "sitekey": "{{CAPTCHA_SITEKEY}}"
+        });
+      } catch(err) { /* captcha not yet initialized */ }
     }
   </script>
 
