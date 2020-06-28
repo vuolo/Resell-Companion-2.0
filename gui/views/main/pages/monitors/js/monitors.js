@@ -25,18 +25,18 @@ window.modals = {
   'configure': {
     visible: false
   }
-}
+};
 
 window.openModal = (modalName) => {
   window.modals[modalName].visible = true;
-}
+};
 
 window.modalLoadedCallback = (modalName) => {
   if (modalName == 'configure') {
     monitorsApp.configureModal = window.frames['configure-modal'].modalOptions;
     // window.parent.memory.syncObject(monitorsApp.configureModal, window.frames['configure-modal'].modalOptions);
   }
-}
+};
 
 window.monitorsApp = new Vue({
   el: "#Rewrite___Monitors",
@@ -297,6 +297,7 @@ function updateDisplayedProduct(product, displayedProductIndex = -1, productInde
   }
   window.products.splice(productIndex, 1);
   window.products.unshift(product);
+  refreshVisualizedProducts();
   return true;
 }
 
@@ -309,19 +310,14 @@ function addDisplayProduct(product, addToEnd = false, productIndex = -1) {
         break;
       }
     }
-    if (displayedProductIndex != -1) {
-      updateDisplayedProduct(product, displayedProductIndex, productIndex);
-      return true;
-    }
+    if (displayedProductIndex != -1) return updateDisplayedProduct(product, displayedProductIndex, productIndex);
   }
-  if (displayedProducts.length + 1 >= 16 * 25) {
-    return false;
+  if (displayedProducts.length >= 16 * 25) {
+    if (!addToEnd) displayedProducts.pop();
+    else displayedProducts.shift();
   }
-  if (!addToEnd) {
-    displayedProducts.unshift(product);
-  } else {
-    displayedProducts.push(product);
-  }
+  if (!addToEnd) displayedProducts.unshift(product);
+  else displayedProducts.push(product);
   refreshVisualizedProducts();
   return true;
 }
@@ -339,11 +335,11 @@ function tryDisplayProduct(product, addToEnd = false, productIndex = -1) {
     if (category.activeIndex != -1) {
       let store = category.stores[category.activeIndex];
       if (store.urls.length > 0) {
-        if (store.urls.includes(product.Store) && store.identifier == product.Identifier) {
+        if (store.urls.includes(product.Store) && (product.Identifier == store.identifier || store.identifier == "shopify" && product.Identifier == "cpfm")) {
           return addDisplayProduct(product, addToEnd, productIndex);
         }
       } else {
-        if (store.identifier == product.Identifier) {
+        if ((product.Identifier == store.identifier || store.identifier == "shopify" && product.Identifier == "cpfm")) {
           return addDisplayProduct(product, addToEnd, productIndex);
         }
       }
@@ -363,7 +359,7 @@ function areKeywordsInProduct(product) {
     let foundStore = false;
     for (var category of window.categories) {
       for (var store of category.stores) {
-        if (store.favorited && product.Identifier == store.identifier) {
+        if (store.favorited && (product.Identifier == store.identifier || store.identifier == "shopify" && product.Identifier == "cpfm")) {
           if (store.urls.length > 0) {
             for (var url of store.urls) {
               if (product.Store == url) {
@@ -407,165 +403,165 @@ window.addNewProduct = (product) => {
 
 window.addTestProduct = () => {
   var testProduct = {
-    "Store": "feature.com",
-    "StoreName": "Feature",
-    "Name": "Common Projects Soft Leather Toiletry Bag - Warm Grey [TEST - " + window.products.length + "]",
-    "URL": "https://feature.com/products/common-projects-soft-leather-toiletry-bag-soft-leather-warm-grey#" + window.products.length,
-    "Price": "$395.00",
-    "ImageURL": "https://cdn.shopify.com/s/files/1/0408/9909/products/Common_Projects_Soft_Leather_Zip_Coin_Case_-_Warm_Grey_9121-Warm_Grey_-_March_28_2019-4_5cd6bfc7-6f43-4c77-901a-fb2002fdd51f.jpg?v=1588037268",
+    "Store": "it-is-all-about-the-sauce.myshopify.com",
+    "StoreName": "It is All About the Sauce",
+    "Name": "Test 1 [TEST - " + window.products.length + "]",
+    "URL": "https://it-is-all-about-the-sauce.myshopify.com/products/test-1#" + window.products.length,
+    "Price": "$0.00",
+    "ImageURL": "",
     "Description": "<meta charset=\"utf-8\">\n<p><span>Founded by Prathan Poopat and Flavio Girolami in 2004, Common Projects are best known for their signature gold stamp at the heel highlighting style and size. Assembled in Italy using the highest-quality materials, Common Projects pushes the standard in luxury. Pictured is the </span>Common Projects Soft Leather Toiletry Bag in Warm Grey.</p>\n<meta charset=\"utf-8\">\n<ul>\n<li>Leather construction</li>\n<li>Interior zipper pocket</li>\n<li>Carry handle</li>\n<li>Gold Foil branding</li>\n<li>Made in Italy</li>\n<li><span>Style no: 9126</span></li>\n</ul>\n<ul></ul>",
     "Available": true,
     "Variants": [
       {
         "Name": "One Size",
-        "ID": "12738237366343",
+        "ID": "34901400846504",
         "Available": true,
         "Price": "395.00",
         "Quantity": -420
       },
       {
         "Name": "4.5",
-        "ID": "12738237366343",
+        "ID": "34901400846504",
         "Available": false,
         "Price": "395.00",
         "Quantity": -420
       },
       {
         "Name": "5",
-        "ID": "12738237366343",
+        "ID": "34901400846504",
         "Available": true,
         "Price": "395.00",
         "Quantity": -420
       },
       {
         "Name": "5.5",
-        "ID": "12738237366343",
+        "ID": "34901400846504",
         "Available": false,
         "Price": "395.00",
         "Quantity": -420
       },
       {
         "Name": "6",
-        "ID": "12738237366343",
+        "ID": "34901400846504",
         "Available": false,
         "Price": "395.00",
         "Quantity": -420
       },
       {
         "Name": "6.5",
-        "ID": "12738237366343",
+        "ID": "34901400846504",
         "Available": true,
         "Price": "395.00",
         "Quantity": -420
       },
       {
         "Name": "7",
-        "ID": "12738237366343",
+        "ID": "34901400846504",
         "Available": false,
         "Price": "395.00",
         "Quantity": -420
       },
       {
         "Name": "7.5",
-        "ID": "12738237366343",
+        "ID": "34901400846504",
         "Available": true,
         "Price": "395.00",
         "Quantity": -420
       },
       {
         "Name": "8",
-        "ID": "12738237366343",
+        "ID": "34901400846504",
         "Available": false,
         "Price": "395.00",
         "Quantity": -420
       },
       {
         "Name": "8.5",
-        "ID": "12738237366343",
+        "ID": "34901400846504",
         "Available": false,
         "Price": "395.00",
         "Quantity": -420
       },
       {
         "Name": "9",
-        "ID": "12738237366343",
+        "ID": "34901400846504",
         "Available": false,
         "Price": "395.00",
         "Quantity": -420
       },
       {
         "Name": "14",
-        "ID": "12738237366343",
+        "ID": "34901400846504",
         "Available": true,
         "Price": "395.00",
         "Quantity": -420
       },
       {
         "Name": "14.5",
-        "ID": "12738237366343",
+        "ID": "34901400846504",
         "Available": false,
         "Price": "395.00",
         "Quantity": -420
       },
       {
         "Name": "15",
-        "ID": "12738237366343",
+        "ID": "34901400846504",
         "Available": true,
         "Price": "395.00",
         "Quantity": -420
       },
       {
         "Name": "15.5",
-        "ID": "12738237366343",
+        "ID": "34901400846504",
         "Available": false,
         "Price": "395.00",
         "Quantity": -420
       },
       {
         "Name": "16",
-        "ID": "12738237366343",
+        "ID": "34901400846504",
         "Available": false,
         "Price": "395.00",
         "Quantity": -420
       },
       {
         "Name": "16.5",
-        "ID": "12738237366343",
+        "ID": "34901400846504",
         "Available": true,
         "Price": "395.00",
         "Quantity": -420
       },
       {
         "Name": "17",
-        "ID": "12738237366343",
+        "ID": "34901400846504",
         "Available": false,
         "Price": "395.00",
         "Quantity": -420
       },
       {
         "Name": "17.5",
-        "ID": "12738237366343",
+        "ID": "34901400846504",
         "Available": true,
         "Price": "395.00",
         "Quantity": -420
       },
       {
         "Name": "18",
-        "ID": "12738237366343",
+        "ID": "34901400846504",
         "Available": false,
         "Price": "395.00",
         "Quantity": -420
       },
       {
         "Name": "18.5",
-        "ID": "12738237366343",
+        "ID": "34901400846504",
         "Available": false,
         "Price": "395.00",
         "Quantity": -420
       },
       {
         "Name": "19",
-        "ID": "12738237366343",
+        "ID": "34901400846504",
         "Available": false,
         "Price": "395.00",
         "Quantity": -420

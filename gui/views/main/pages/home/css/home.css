@@ -154,6 +154,10 @@
 	left: 14.5px;
 	top: 14.186px;
 	overflow: visible;
+
+	display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .Product_Card_dy_Class {
 	position: absolute;

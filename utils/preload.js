@@ -414,6 +414,10 @@ function tryInjectTopBar() {
           opacity: 0.8;
         }
 
+        body {
+          position: sticky;
+        }
+
         /* The navigation bar */
         #resell_companion_top_bar {
           user-select: text;

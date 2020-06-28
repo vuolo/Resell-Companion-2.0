@@ -5,6 +5,12 @@
 // window.parent.out_var
 
 // variables
+const ShopifyBuy = window.parent.require('../../../utils/downloaded/shopify_sdk.js');
+const cpfmClient = ShopifyBuy.buildClient({
+  domain: "cactusplantfleamarket.myshopify.com",
+  storefrontAccessToken: "574d05e81d915e3c13a16c514c678649"
+});
+
 window.tasks = [];
 
 window.modals = {
@@ -64,14 +70,21 @@ window.tasksApp = new Vue({
       }
       return 0;
     },
-    toggleNodeEnabled: function(node, enabled = null, canceled = false) {
+    toggleNodeEnabled: function(node, enabled = null, canceled = false, statusMessage = null) {
+      if (node.status.color == 'green') return;
       if (enabled != null) node.enabled = enabled;
       else node.enabled = !node.enabled;
       if (node.enabled) window.setNodeStatus(node, "yellow", "Monitoring...");
       else {
-        window.setNodeStatus(node, "red", "Disabled");
+        if (!canceled) window.setNodeStatus(node, "red", "Disabled");
+        node.host = undefined;
         node.captchaSiteKey = undefined;
         node.captchaResponse = undefined;
+        node.currentCheckoutStep = undefined;
+        node.stepsInitialized = {};
+        node.DOMReady = false;
+        node.paymentFieldsInitialized = {};
+        node.retryNum = 0;
         for (var captchaSolver of window.captchaSolvers) {
           if (captchaSolver.node && captchaSolver.node.id == node.id) {
             window.resetCaptchaSolver(captchaSolver);
@@ -79,7 +92,12 @@ window.tasksApp = new Vue({
           }
         }
       }
-      if (node.checkoutWindow !== null || canceled) { try { node.checkoutWindow.close(); } catch(err) { /* err: checkout window already closed (user probably closed it) */ } node.checkoutWindow = null; window.setNodeStatus(node, "red", "Checkout Canceled"); }
+      if (node.checkoutWindow !== null || canceled) {
+        try { node.checkoutWindow.close(); } catch(err) { /* err: checkout window already closed (user probably closed it) */ }
+        node.checkoutWindow = null;
+        if (!node.status.description.includes(window.parent.tryTranslate("Size Unavailable (Sold Out)")) && !(node.status.description.includes(window.parent.tryTranslate("Card Declined")) && !node.status.description.includes(window.parent.tryTranslate("Retrying..."))) && !node.status.description.includes(window.parent.tryTranslate("Successfully Checked Out"))) window.setNodeStatus(node, "red", "Checkout Canceled");
+      }
+      if (statusMessage) window.setNodeStatus(node, statusMessage.color, statusMessage.description)
     },
     openNewTaskModal: function() {
       window.frames['create-modal'].resetModalOptions();
@@ -256,20 +274,121 @@ window.getAvailableVariants = (product) => {
   return availableVariants;
 };
 
-window.getCheckoutURL = (storeURL, variantID, quantity = 1) => {
-  // TODO: add Supreme ATC support (you probably will need to pass additional paramters)
-  return "https://" + storeURL + "/cart/" + variantID + ":" + quantity;
+window.getCheckoutURL = async (product, variant, quantity = 1) => {
+  if (product.Identifier.startsWith("supreme")) return "https://www.supremenewyork.com/checkout";
+  else if (product.Identifier == "cpfm") return await window.generateCPFMCartURL([variant], [quantity]);
+  else if (product.Identifier == "shopify") return "https://" + product.Store + "/cart/" + variant.ID + ":" + quantity;
+  return "https://" + product.Store;
 };
 
-window.launchCheckout = (product, variant, useDefaultBrowser = false, proxy = null, show = true) => {
-  // TODO: add Supreme ATC support (you probably will need to pass additional paramters)
-  return window.parent.openURL(window.getCheckoutURL(product.Store, variant.ID), useDefaultBrowser, { title: 'Resell Companion — ' + product.Name + ' Checkout', show: show }, `persist:${window.parent.makeid(10)}`, proxy);
+window.launchCheckout = async (product, variant, useDefaultBrowser = false, proxy = null, show = true) => {
+  return await window.parent.openURL(await window.getCheckoutURL(product, variant), useDefaultBrowser, { title: 'Resell Companion — ' + product.Name + ' Checkout', show: show }, `persist:${window.parent.makeid(10)}`, proxy, false, product, variant);
 };
+
+// ============================ CPFM ATC START ============================ \\
+window.generateCPFMCartURL = async (variants, quantities) => {
+  var checkout = await cpfmClient.checkout.create();
+  let cart;
+  for (var i = 0; i < variants.length; i++) cart = await cpfmClient.checkout.addLineItems(checkout.id, { variantId: variants[i].ID, quantity: quantities[i] });
+
+  return cart.webUrl;
+};
+// ============================ CPFM ATC END ============================ //
+
+// ============================ SUPREME ATC START ============================ \\
+async function injectSupremeCart(product, variant, win) {
+  let chopped_url = product.OverrideURL.substring(product.OverrideURL.indexOf('new/'), product.OverrideURL.length);
+  let pid = chopped_url.substring(chopped_url.indexOf('/')+1, chopped_url.lastIndexOf('/'));
+  let id = variant.ID;
+
+  const uri = `https://www.supremenewyork.com/shop/${id}/add.json`;
+  var cookiejar = window.parent.request.jar();
+
+  const requestOptions = {
+    method: 'POST',
+    uri: uri,
+    headers: {
+      "credentials": "include",
+      "headers": {
+        "content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+      },
+      "method": "POST",
+      "mode": "no-cors"
+    },
+    simple: false,
+    resolveWithFullResponse: true,
+    form: {
+      utf8: '✓',
+      style: pid,
+      size: id,
+      commit: 'add+to+basket' // add+to+cart ?
+    },
+    jar: cookiejar
+  };
+
+  const res = await window.parent.request(requestOptions);
+  const cookies = cookiejar.getCookies('https://www.supremenewyork.com');
+
+  const ses = win.webContents.session;
+  for (var cookie of cookies) { // inject cookies from request
+    let curCookie = cookie;
+    await ses.cookies.set(
+      {
+        url: `https://www.supremenewyork.com/`,
+        name: curCookie.key,
+        value: curCookie.value,
+        domain: curCookie.key == '_supreme_sess' ? '.supremenewyork.com' : 'www.supremenewyork.com',
+        path: '/',
+        httpOnly: curCookie.key == '_supreme_sess' ? true : false
+      }
+    ).then(() => {
+      // success
+      // console.log('success: ' + curCookie.key);
+    }, (error) => {
+      // console.log('failed: ' + curCookie.key);
+      // console.error(error);
+    })
+  }
+  // http://resell.monster/atc?store=supreme&pid=173076&id=76794
+  // injectSupremeCart(173076, 76794, win)
+}
+// ============================ SUPREME ATC END ============================ //
 
 window.launchTaskNode = (node, product, variant) => {
   if (node.configuration.checkoutMethod.useCheckoutCompanion) { // use checkout companion
     if (product.Identifier != "shopify" && !product.Identifier.startsWith("supreme")) return; // validate checkout companion can be used for the product
-    let billingProfile; // temp
+
+    // temp
+    let billingProfile = {
+      settings: {
+        autoCheckout: true,
+        autoCheckoutDelay: 450,
+        simulateTyping: true
+      },
+      autofillInformation: {
+        firstName: "Charles",
+        lastName: "Emanuel",
+        email: "ce@gmail.com",
+        phoneNumber: "4079028902",
+        address: "385 Caddie Drive",
+        unit: "",
+        zipCode: "32713",
+        city: "DeBary",
+        state: "Florida",
+        country: "United States",
+        billing: {
+          cardNumber: "4242424242424242",
+          cardType: "Visa",
+          expirationDateFull: "06/27",
+          expirationDate: {
+            month: "06",
+            year: "27"
+          },
+          cvc: "285"
+        }
+      }
+    };
+
     let proxy; // temp
     if (node.configuration.checkoutMethod.rotateBillingProfiles) { // TODO: rotate through billing profiles
       // TODO: use proxy profile if selected (make new function above) - node.configuration.checkoutMethod.proxyProfile
@@ -297,6 +416,7 @@ window.trylaunchTaskNodes = (task, product) => {
     if (node.configuration.useRandomSize) {
       window.launchTaskNode(node, product, availableVariants[Math.floor(Math.random() * availableVariants.length)]);
       task.configuration.imageURL = product.ImageURL; // set current task picture to product url
+      if (task.configuration.nickname.includes(window.parent.tryTranslate("Product") + " ")) task.configuration.nickname = product.Name;
     } else {
       for (var variant of availableVariants) {
         // TODO: check if variant is right size

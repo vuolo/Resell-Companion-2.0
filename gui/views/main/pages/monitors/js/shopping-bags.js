@@ -61,7 +61,7 @@ function getBagVariantValue(variant, includeCurrency = false, useCommas = false)
   return outCurrency + condensedTotalValue;
 }
 
-function tryGenerateShoppingBag(store_url, generateFullURL = false) {
+async function tryGenerateShoppingBag(store_url, generateFullURL = false, clearCart = false) {
   var foundStoreIndex = -1;
   for (var i = 0; i < shoppingBags.length; i++) {
     if (store_url == shoppingBags[i].store_url) {
@@ -79,8 +79,28 @@ function tryGenerateShoppingBag(store_url, generateFullURL = false) {
       outQueryString += ",";
     }
   }
-  if (generateFullURL) return "https://" + store_url + "/cart/" + outQueryString;
+  if (generateFullURL) {
+    if (store_url == "cactusplantfleamarket.com") {
+      let outVariants = [];
+      let outQuantities = [];
+      for (var i = 0; i < shoppingBags[foundStoreIndex].variants.length; i++) {
+        outVariants.push(shoppingBags[foundStoreIndex].variants[i].variant);
+        outQuantities.push(shoppingBags[foundStoreIndex].variants[i].quantity);
+      }
+      if (clearCart) clearShoppingBag(foundStoreIndex);
+      return await window.parent.frames['tasks-frame'].generateCPFMCartURL(outVariants, outQuantities);
+    }
+    else {
+      if (clearCart) clearShoppingBag(foundStoreIndex);
+      return "https://" + store_url + "/cart/" + outQueryString;
+    }
+  }
+  if (clearCart) clearShoppingBag(foundStoreIndex);
   return outQueryString;
+}
+
+function clearShoppingBag(bagIndex) {
+  while (shoppingBags[bagIndex].variants.length > 0) shoppingBags[bagIndex].variants.pop();
 }
 
 function tryAddEmptyShoppingBag(store_url, store_name) {

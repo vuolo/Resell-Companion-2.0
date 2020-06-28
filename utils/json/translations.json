@@ -96,10 +96,22 @@
         "es": "Solucionador de Captcha"
       }
     },
+    "Card Declined": {
+      "languages": {
+        "en": "Card Declined",
+        "es": "Tarjeta rechazada"
+      }
+    },
     "Change URLs": {
       "languages": {
         "en": "Change URLs",
         "es": "Cambiar las URLs"
+      }
+    },
+    "Checkout Canceled": {
+      "languages": {
+        "en": "Checkout Canceled",
+        "es": "Pago cancelado"
       }
     },
     "Checkout Method": {
@@ -310,6 +322,18 @@
       "languages": {
         "en": "Initial Pickup",
         "es": "Recogida inicial"
+      }
+    },
+    "Initializing Checkout Session...": {
+      "languages": {
+        "en": "Initializing Checkout Session...",
+        "es": "Inicializando la sesión de pago..."
+      }
+    },
+    "Inputting Billing Details...": {
+      "languages": {
+        "en": "Inputting Billing Details...",
+        "es": "Entrando detalles de facturación..."
       }
     },
     "Invalid Date": {
@@ -590,6 +614,12 @@
         "es": "Predicción de reventa"
       }
     },
+    "Retrying...": {
+      "languages": {
+        "en": "Retrying...",
+        "es": "Reintentando..."
+      }
+    },
     "Rotate Billing Profiles": {
       "languages": {
         "en": "Rotate Billing Profiles",
@@ -674,6 +704,12 @@
         "es": "Tamaño"
       }
     },
+    "Size Unavailable (Sold Out)": {
+      "languages": {
+        "en": "Size Unavailable (Sold Out)",
+        "es": "Tamaño no disponible (agotado)"
+      }
+    },
     "Solver Opened": {
       "languages": {
         "en": "Solver Opened",
@@ -732,6 +768,12 @@
       "languages": {
         "en": "Style Code",
         "es": "Código de estilo"
+      }
+    },
+    "Submitting Billing Details...": {
+      "languages": {
+        "en": "Submitting Billing Details...",
+        "es": "Enviando detalles de facturación..."
       }
     },
     "Successfully Checked Out": {
@@ -870,6 +912,12 @@
       "languages": {
         "en": "Waiting...",
         "es": "Esperando..."
+      }
+    },
+    "Waiting for Captcha Response...": {
+      "languages": {
+        "en": "Waiting for Captcha Response...",
+        "es": "Esperando la respuesta de Captcha..."
       }
     },
     "Watching browsers...": {

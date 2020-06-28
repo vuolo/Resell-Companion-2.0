@@ -1,83 +1,69 @@
-const WORDS_PER_MINUTE = 280;
+const WORDS_PER_MINUTE = 1000; // 420
 const VALIDATE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
-function initiateCheckoutCompanion(node, product, variant, billingProfile = null, proxy = null) {
+const PAYMENT_FIELDS = [
+  '[data-card-fields="number"]',
+  '[data-card-fields="name"]',
+  '[data-card-fields="expiry"]',
+  '[data-card-fields="verification_value"]'
+];
+
+async function initiateCheckoutCompanion(node, product, variant, billingProfile = null, proxy = null) {
+  // proxy = "207.229.93.66:1074";
   node.host = product.Store;
-  window.setNodeStatus(node, "orange", "Initializing Checkout Session... (1/3)");
-  node.checkoutWindow = window.launchCheckout(product, variant, false, proxy, false);
+  node.stepsInitialized = {};
+  node.paymentFieldsInitialized = {};
+  node.retryNum = 0;
+  node.maxRetries = 3;
+  window.setNodeStatus(node, "orange", `${window.parent.tryTranslate('Initializing Checkout Session...')} (1/3)`);
+  node.checkoutWindow = await window.launchCheckout(product, variant, false, proxy, false);
   node.checkoutWindow.once('ready-to-show', () => {
-    node.checkoutWindow.show(); // show to visualize checkout (keep false in production)
-    window.setNodeStatus(node, "orange", "Inputting billing details... (2/3)");
+    // node.checkoutWindow.show(); // DEV ONLY: show to visualize checkout (keep false in production)
+    window.setNodeStatus(node, "orange", `${window.parent.tryTranslate('Inputting Billing Details...')} (2/3)`);
   });
   node.checkoutWindow.once('closed', () => {
-    window.setNodeStatus(node, "red", "Checkout Canceled");
-    node.checkoutWindow = null;
-    node.enabled = false;
+    window.tasksApp.toggleNodeEnabled(node, false, true);
   });
-  node.checkoutWindow.webContents.on('dom-ready', async () => {
+  node.checkoutWindow.webContents.on('will-navigate', () => {
+    node.DOMReady = false;
+  });
+  // TODO: does 'did-finish-load' run faster than 'dom-ready'?
+  node.checkoutWindow.webContents.on('dom-ready', async () => { // TODO: figure out why this function begins but typing starts WAY AFTER (maybe JS execution bridge needs to wait to be initialized? i have no idea)
+    node.DOMReady = true;
     // disable select menu visibility to prevent leaking
     node.checkoutWindow.webContents.insertCSS('select option { display: none; }');
     node.checkoutWindow.webContents.insertCSS('select { visibility: hidden; }');
     node.checkoutWindow.webContents.insertCSS('select { visibility: hidden; }');
 
-    var testProfile = {
-      settings: {
-        autoCheckout: true,
-        autoCheckoutDelay: 450,
-        simulateTyping: true
-      },
-      autofillInformation: {
-        firstName: "Charles",
-        lastName: "Emanuel",
-        email: "ce@gmail.com",
-        phoneNumber: "4079028902",
-        address: "385 Caddie Drive",
-        unit: "",
-        zipCode: "32713",
-        city: "DeBary",
-        state: "Florida",
-        country: "United States",
-        billing: {
-          cardNumber: "4242424242424242",
-          cardType: "Visa",
-          expirationDateFull: "06/27",
-          expirationDate: {
-            month: "06",
-            year: "27"
-          },
-          cvc: "285"
-        }
-      }
-    };
-
-
-
-    if (product.Identifier == "shopify") beginShopifyCheckout(node, testProfile);
-    else if (product.Identifier.startsWith("supreme")) beginSupremeCheckout(node, testProfile);
+    if (product.Identifier == "shopify") beginShopifyCheckout(node, billingProfile, variant);
+    else if (product.Identifier.startsWith("supreme")) beginSupremeCheckout(node, billingProfile, variant);
   });
-
-  // TODO: figure out a better way to detect status?
-  // or just inject a script that logs as below as soon as it detects the status shits
   node.checkoutWindow.webContents.on('console-message', (event, level, message, line, sourceID) => {
     // MESSAGE TEMPLATE: ${CC} <message>
     if (!message.startsWith("${CC}")) return;
-    if (message.includes("CHECKOUT SUCCESSFUL")) window.setNodeStatus(node, "green", `Successfully Checked Out (${variant.Name})`);
-    else if (message.includes("CARD DECLINED")) window.setNodeStatus(node, "red", `Card Declined (${variant.Name})`); // TODO: add retry feature
-    else if (message.includes("CAPTCHA RESPONSE")) node.captchaResponse = message.split("${CC} CAPTCHA RESPONSE: ")[1];
+    if (message.includes("CAPTCHA RESPONSE")) node.captchaResponse = message.split("${CC} CAPTCHA RESPONSE: ")[1];
+    else if (message.includes("CONTINUE BUTTON READY")) node.stepsInitialized[node.currentCheckoutStep] = true;
+    else if (message.includes("PAYMENT FIELD READY: ")) node.paymentFieldsInitialized[message.split("${CC} PAYMENT FIELD READY: ")[1]] = true;
   });
-
-  // TODO: send notification on CHECKOUT SUCCESSFUL
 }
 
-async function beginSupremeCheckout(node, billingProfile) {
-
+async function beginSupremeCheckout(node, billingProfile, variant) {
+  // TODO: try shorten the billing profile state/province, and if it couldnt find shortened version then just type out full version
+  // function isSuccessfulCheckout() { return document.querySelector(".tab-confirmation").classList.contains("selected") }
+  // function isCardDeclined() { return document.querySelector(".errors").innerText.trim().length > 0 ? true : false }
 };
 
-async function beginShopifyCheckout(node, billingProfile) {
-  // TODO: detect if item is OOS (display status and return)
+async function beginShopifyCheckout(node, billingProfile, variant) {
   // check current checkout step to provide correct actions/fields to fill
-  let currentCheckoutStep = await getCurrentCheckoutStep(node);
-  if (currentCheckoutStep == 'contact_information') {
+  node.currentCheckoutStep = await getCurrentCheckoutStep(node);
+  if (node.currentCheckoutStep == 'stock_problems') { // detect if item is OOS
+    window.tasksApp.toggleNodeEnabled(node, false, true, { color: "red", description: `${window.parent.tryTranslate('Size Unavailable (Sold Out)')} [${variant.Name}]` });
+    return;
+  } else if (node.currentCheckoutStep == 'thank_you') { // detect if item was successfully checked out
+    window.tasksApp.toggleNodeEnabled(node, false, true, { color: "green", description: `${window.parent.tryTranslate('Successfully Checked Out')} [${variant.Name}]` });
+    // TODO: send notification
+    return;
+  } else if (node.currentCheckoutStep == 'contact_information') {
     // main autofill information fields
     await fillField(node, '#checkout_shipping_address_first_name', billingProfile.autofillInformation.firstName);
     await fillField(node, '#checkout_shipping_address_last_name', billingProfile.autofillInformation.lastName);
@@ -97,28 +83,60 @@ async function beginShopifyCheckout(node, billingProfile) {
 
     // disable email marketing notifications from store
     await clickField(node, '#checkout_buyer_accepts_marketing');
-  } else if (currentCheckoutStep == 'payment_method') {
-    // TODO: type card information
+  } else if (node.currentCheckoutStep == 'payment_method') {
+    const paymentNotice = await getPaymentNotice(node);
+    if (paymentNotice && paymentNotice.length > 0) {
+      node.retryNum++;
+      if (node.retryNum <= node.maxRetries) window.setNodeStatus(node, "red", `${window.parent.tryTranslate('Card Declined')}. ${window.parent.tryTranslate('Retrying...')} (${node.retryNum}/${node.maxRetries})`);
+      else {
+        window.tasksApp.toggleNodeEnabled(node, false, true, { color: "red", description: `${window.parent.tryTranslate('Card Declined')} [${variant.Name}]` });
+        // TODO: send notification
+        return;
+      }
+    }
+    // wait for payment information fields to be ready
+    addPaymentFieldListeners(node);
+    for (var paymentField of PAYMENT_FIELDS) {
+      while (!node.paymentFieldsInitialized[paymentField]) await window.parent.sleep(50);
+      let paymentInfo = "";
+      switch (paymentField) {
+        case '[data-card-fields="number"]':
+          paymentInfo = billingProfile.autofillInformation.billing.cardNumber.replace(new RegExp(" ", 'g'), "");
+          break;
+        case '[data-card-fields="name"]':
+          paymentInfo = billingProfile.autofillInformation.firstName + " " + billingProfile.autofillInformation.lastName;
+          break;
+        case '[data-card-fields="expiry"]':
+          paymentInfo = billingProfile.autofillInformation.billing.expirationDate.month + "/" + "20" + billingProfile.autofillInformation.billing.expirationDate.year; // this only works if card expires in 20xx
+          break;
+        case '[data-card-fields="verification_value"]':
+          paymentInfo = billingProfile.autofillInformation.billing.cvc;
+          break;
+      }
+      // type payment information
+      await fillField(node, paymentField, paymentInfo);
+    }
+    node.paymentFieldsInitialized = {}; // clear to allow for retries
 
     // enable use same address as shipping (disables need to type fields below)
     await clickField(node, '#checkout_different_billing_address_false');
 
     // POSSIBLE billing autofill information fields (not all stores have this extra set of fields)
-    await fillField(node, '#checkout_billing_address_first_name', billingProfile.autofillInformation.firstName);
-    await fillField(node, '#checkout_billing_address_last_name', billingProfile.autofillInformation.lastName);
-    await fillField(node, '#checkout_billing_address_address1', billingProfile.autofillInformation.address);
-    await fillField(node, '#checkout_billing_address_address2', billingProfile.autofillInformation.unit);
-    await fillField(node, '#checkout_billing_address_city', billingProfile.autofillInformation.city);
-    await fillField(node, '#checkout_billing_address_country', billingProfile.autofillInformation.country);
-    await fillField(node, '#checkout_billing_address_province', billingProfile.autofillInformation.state);
-    await fillField(node, '#checkout_billing_address_zip ', billingProfile.autofillInformation.zipCode);
-    await fillField(node, '#checkout_billing_address_phone', billingProfile.autofillInformation.phoneNumber);
+    // await fillField(node, '#checkout_billing_address_first_name', billingProfile.autofillInformation.firstName);
+    // await fillField(node, '#checkout_billing_address_last_name', billingProfile.autofillInformation.lastName);
+    // await fillField(node, '#checkout_billing_address_address1', billingProfile.autofillInformation.address);
+    // await fillField(node, '#checkout_billing_address_address2', billingProfile.autofillInformation.unit);
+    // await fillField(node, '#checkout_billing_address_city', billingProfile.autofillInformation.city);
+    // await fillField(node, '#checkout_billing_address_country', billingProfile.autofillInformation.country);
+    // await fillField(node, '#checkout_billing_address_province', billingProfile.autofillInformation.state);
+    // await fillField(node, '#checkout_billing_address_zip ', billingProfile.autofillInformation.zipCode);
+    // await fillField(node, '#checkout_billing_address_phone', billingProfile.autofillInformation.phoneNumber);
   }
 
   // detect captcha and send it to client w/ sitekey
   if (await hasCaptcha(node)) {
     addCaptchaListener(node);
-    window.setNodeStatus(node, "orange", "Waiting for Captcha Response... (2/3)");
+    window.setNodeStatus(node, "orange", `${window.parent.tryTranslate('Waiting for Captcha Response...')} (2/3)`);
     // export captcha sitekey from checkout page
     node.captchaSiteKey = await getCaptchaSiteKey(node);
     // open new solver/use already made solver on resell companion for captcha
@@ -127,13 +145,16 @@ async function beginShopifyCheckout(node, billingProfile) {
     // inject solved captcha response (from resell companion) into checkout page (injects to hidden #g-recaptcha-response textarea)
     await injectCaptchaResponse(node, node.captchaResponse);
     node.captchaResponse = undefined;
+    window.setNodeStatus(node, "orange", `${window.parent.tryTranslate('Submitting Billing Details...')} (3/3)`);
   }
 
-  // TODO: wait for button to be ready to clicked on (after calculating taxes/billing information inputted (with this method you probably dont need to wait after inputting billing info) )
+  // wait for continue button to be ready
+  addContinueListener(node);
+  while (!node.stepsInitialized[node.currentCheckoutStep]) await window.parent.sleep(50);
 
   // continue to next page
   await clickField(node, '.step__footer__continue-btn');
-  if (currentCheckoutStep == 'payment_method') window.setNodeStatus(node, "orange", "Submitting billing details... (3/3)");
+  if (node.currentCheckoutStep == 'payment_method' && node.retryNum == 0) window.setNodeStatus(node, "orange", `${window.parent.tryTranslate('Submitting Billing Details...')} (3/3)`);
 };
 
 async function getCaptchaSiteKey(node) {
@@ -175,40 +196,49 @@ function addCaptchaListener(node) {
     })();`, true);
 };
 
-async function getCurrentCheckoutStep(node) {
-  return await node.checkoutWindow.webContents.executeJavaScript(`
-    (() => {
-      var curStep = "";
-      try {
-        if (location.href.includes("&step=")) {
-          curStep = location.href.substring(
-            location.href.indexOf('&step=') + '&step='.length,
-            location.href.length
-          );
-          curStep = outCheckoutToken.substring(
-            0,
-            outCheckoutToken.indexOf("&") || outCheckoutToken.length
-          ).replace(/(\\r\\n|\\n|\\r)/gm,"").replace(" ", "");
-        } else if (location.href.includes("?step=")) {
-          curStep = location.href.substring(
-            location.href.indexOf('?step=') + '?step='.length,
-            location.href.length
-          );
-          curStep = outCheckoutToken.substring(
-            0,
-            outCheckoutToken.indexOf("&") || outCheckoutToken.length
-          ).replace(/(\\r\\n|\\n|\\r)/gm,"").replace(" ", "");
-        } else {
-          curStep = document.querySelector('[data-step]').dataset.step;
+function addPaymentFieldListeners(node) {
+  for (var paymentField of PAYMENT_FIELDS) {
+    node.checkoutWindow.webContents.executeJavaScript(`
+      (async () => {
+        function paymentSleep(ms) {
+          return new Promise(resolve => setTimeout(resolve, ms));
         }
-      } catch(err) {
-        return curStep
+        while (!document.querySelector('${paymentField} iframe')) await paymentSleep(50);
+        console.log("\${CC} PAYMENT FIELD READY: " + '${paymentField}');
+        // document.querySelector('${paymentField} iframe').onload = function() {
+        //   console.log("\${CC} PAYMENT FIELD READY: " + '${paymentField}');
+        // }
+      })();`, true);
+  }
+};
+
+function addContinueListener(node) {
+  node.checkoutWindow.webContents.executeJavaScript(`
+    (async () => {
+      function continueSleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
       }
-      return curStep
+      while (!document.querySelector('.step__footer__continue-btn') || document.querySelector('.step__footer__continue-btn').getAttribute("disabled") !== null) await continueSleep(50);
+      console.log("\${CC} CONTINUE BUTTON READY");
     })();`, true);
 };
 
+async function getPaymentNotice(node) {
+  return await node.checkoutWindow.webContents.executeJavaScript(`
+    (() => {
+      const notices = document.querySelectorAll(".notice");
+      for (var notice of notices) if (!notice.classList.contains("hidden")) return notice.innerText;
+    })();`, true);
+};
+
+async function getCurrentCheckoutStep(node) {
+  return await node.checkoutWindow.webContents.executeJavaScript(`
+    Shopify.Checkout.step;
+    `, true);
+};
+
 async function fillField(node, elementQuery, value, resetField = false) {
+  if (!node.DOMReady) return;
   // console.log(`START typing for: ${elementQuery} (${value})`);
 
   let shouldSendInput = await node.checkoutWindow.webContents.executeJavaScript(`
@@ -216,7 +246,7 @@ async function fillField(node, elementQuery, value, resetField = false) {
     (() => {
       if (typeof fieldElement === 'undefined' || !fieldElement) return;
       if (${resetField}) fieldElement.value = "";
-      return fieldElement.value.length == 0 || fieldElement.tagName == 'SELECT';
+      return fieldElement.querySelector('iframe') ? true : false || fieldElement.value.length == 0 || fieldElement.tagName == 'SELECT';
     })();`, true);
   if (!shouldSendInput) return;
 
@@ -228,12 +258,14 @@ async function fillField(node, elementQuery, value, resetField = false) {
   }
 
   let fieldElementDetails = await getFieldDetails(node, elementQuery);
+  if (!fieldElementDetails || !fieldElementDetails.value) return;
   if (fieldElementDetails.tagName != 'SELECT' && !validateValues(fieldElementDetails.value, value)) await fillField(node, elementQuery, value, true);
 
   // console.log(`END typing for: ${elementQuery} (${value})`);
 };
 
 async function clickField(node, elementQuery) { // TODO: mess with sleep timing
+  if (!node.DOMReady) return;
   let fieldElementDetails = await getFieldDetails(node, elementQuery, true);
   if (!fieldElementDetails) return;
   let mousePos = { x: Math.floor(fieldElementDetails.position.x + (fieldElementDetails.position.width/2)), y: Math.floor(fieldElementDetails.position.y + (fieldElementDetails.position.height/2)) };
@@ -247,6 +279,7 @@ async function clickField(node, elementQuery) { // TODO: mess with sleep timing
 };
 
 async function getFieldDetails(node, elementQuery, scrollTo = false) {
+  if (!node.DOMReady) return;
   return await node.checkoutWindow.webContents.executeJavaScript(`
     fieldElement = document.querySelector('${elementQuery}');
     (() => {

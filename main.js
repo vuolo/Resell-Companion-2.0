@@ -350,6 +350,7 @@ electron.ipcMain.on('loadingDone', (event, arg) => {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on('ready', async function() {
+  app.commandLine.appendSwitch('disable-site-isolation-trials');
   tryStartCompanion();
 
   // for proxy authentication to work without problems
@@ -362,6 +363,7 @@ app.on('ready', async function() {
     callback({ cancel: false, requestHeaders: details.requestHeaders });
   });
 
+  // DEPRECIATED: old method used chrome extension for checkout companion - now we just executeJavaScript w/ browser window (allows for easy message sending/parsing)
   // await electron.session.defaultSession.loadExtension(path.join(__dirname, 'Checkout Companion'))
 });
 

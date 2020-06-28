@@ -847,6 +847,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 	left: 36.474px;
 	top: 62.062px;
 	overflow: visible;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .Task_Title_Class {
 	position: absolute;

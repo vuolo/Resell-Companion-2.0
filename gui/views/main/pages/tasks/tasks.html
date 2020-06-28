@@ -242,7 +242,7 @@
 
 				<div class="Task_Title_Class">
 					<svg class="Red_Bar">
-						<rect fill="rgba(253,53,53,1)" class="Red_Bar_Class" rx="1.5" ry="1.5" x="0" y="0" width="117" v-bind:width="calculateUnderlineWidth(800, tasks[activeTaskIndex].configuration.nickname, 40, 'px', 'bold', 'SF Pro Text')" height="3">
+						<rect v-bind:fill="getTaskStatusColor(activeTaskIndex)" class="Red_Bar_Class" rx="1.5" ry="1.5" x="0" y="0" width="117" v-bind:width="calculateUnderlineWidth(800, tasks[activeTaskIndex].configuration.nickname, 40, 'px', 'bold', 'SF Pro Text')" height="3">
 						</rect>
 					</svg>
 					<input class="COVID_19_Relief_Box_Logo_Class" style="background: transparent;" v-model="tasks[activeTaskIndex].configuration.nickname" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(800, tasks[activeTaskIndex].configuration.nickname, 40, 'px', 'bold', 'SF Pro Text'), width: getTextWidth(tasks[activeTaskIndex].configuration.nickname, `bold ${confineTextWidth(800, tasks[activeTaskIndex].configuration.nickname, 40, 'px', 'bold', 'SF Pro Text')} 'SF Pro Text'`) + 15 + 'px' }">
@@ -350,7 +350,7 @@
 
 				<template v-for="(task, taskIndex) in tasks">
 					<div class="Product_Class clickable hover-opacity" v-bind:style="{ top: (taskIndex * (26 + 5)) + 'px' }" v-on:click="setActiveTask(taskIndex);">
-						<svg class="Product_Rectangle">
+						<svg class="Product_Rectangle" v-bind:style="{ opacity: activeTaskIndex == taskIndex ? 0.5 : 1 }">
 							<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Product_Rectangle_Class" rx="10" ry="10" x="0" y="0" width="222" height="26">
 							</rect>
 						</svg>

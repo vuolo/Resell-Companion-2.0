@@ -1496,6 +1496,10 @@
 	left: 18.559px;
 	top: 38.147px;
 	overflow: visible;
+
+	display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .Info_Icon_gf_Class:hover {
 	cursor: help;

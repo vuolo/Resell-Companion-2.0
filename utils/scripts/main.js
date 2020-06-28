@@ -2,9 +2,10 @@
 const authAPI = require('../../../utils/api/auth.js');
 window.memory = require('../../../utils/memory.js');
 window.electron = require('electron');
+window.request = require('request-promise');
 window.path = require('path');
 window.url = require('url');
-window.translate = window.parent.require('translate');
+window.translate = require('translate');
 
 // variables
 window.companionSettings = {
@@ -60,12 +61,14 @@ window.openExternal = (url) => {
   electron.shell.openExternal(url);
 };
 
-window.openInternal = (url, options = {}, combineOptions = true, partition = null, proxy = null) => {
+window.openInternal = async (url, options = {}, combineOptions = true, partition = null, proxy = null, webSecurity = true, product = null, variant = null) => {
   if (!url.includes("://")) url = "http://" + url;
   if (combineOptions) window.combineObjects(options, DEFAULT_OPEN_INTERNAL_OPTIONS);
   if (partition) options.webPreferences.partition = partition;
+  options.webPreferences.webSecurity = webSecurity;
 
   let win = new electron.remote.BrowserWindow(options);
+  if (product && product.Identifier.startsWith("supreme")) await window.frames['tasks-frame'].injectSupremeCart(product, variant, win);
 
   if (proxy) { // TODO: check if this works
     let proxyConfig = window.generateProxyConfig(proxy);
@@ -93,9 +96,9 @@ window.openInternal = (url, options = {}, combineOptions = true, partition = nul
   return win;
 };
 
-window.openURL = (url, useDefaultBrowser, options, partition = null, proxy = null) => {
+window.openURL = async (url, useDefaultBrowser, options, partition = null, proxy = null, webSecurity = true, product = null, variant = null) => {
   if (useDefaultBrowser) return window.openExternal(url);
-  else return window.openInternal(url, options, true, partition, proxy);
+  else return await window.openInternal(url, options, true, partition, proxy, webSecurity, product, variant);
 }
 
 window.combineObjects = (incomingObj, fullObj) => {
