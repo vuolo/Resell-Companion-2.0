@@ -190,9 +190,7 @@ window.tasksApp = new Vue({
       }, 35);
     },
     shouldDisplayModals: function() {
-      for (var modal in modals) {
-        if (modals[modal].visible) return true;
-      }
+      for (var modal in modals) if (modals[modal].visible) return true;
       return false;
     },
     addProduct: function(options = {}) {
@@ -238,7 +236,12 @@ window.addTaskNode = () => {
       description: 'Monitoring...',
       color: 'yellow'
     },
-    enabled: true
+    enabled: true,
+    stepsInitialized: {},
+    DOMReady: false,
+    paymentFieldsInitialized: {},
+    retryNum: 0,
+    checkoutWindow: null
   };
   for (var i = 0; i < tasksApp.createModal.quantity; i++) {
     newTaskNode.id = window.parent.makeid(10); // assign a new id to each node

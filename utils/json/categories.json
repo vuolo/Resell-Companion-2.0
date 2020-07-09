@@ -3,7 +3,7 @@
     {
       "name": "Shopify",
       "opened": true,
-      "activeIndex": 8,
+      "activeIndex": 7,
       "stores": [
         {
           "name": "Kith",
@@ -90,22 +90,6 @@
           "taskLaunchable": true
         },
         {
-          "name": "Funko",
-          "identifier": "shopify",
-          "urls": [
-            "funko-shop.com",
-            "bigpopshop.com",
-            "bungiestore.com",
-            "galactictoys.com",
-            "www.fugitivetoys.com"
-          ],
-          "checkpoint_enabled": false,
-          "password_enabled": false,
-          "favorited": true,
-          "region": "United-States-of-America",
-          "taskLaunchable": true
-        },
-        {
           "name": "Unfiltered",
           "identifier": "shopify",
           "urls": [],
@@ -115,6 +99,46 @@
           "region": "Global",
           "taskLaunchable": true
         },
+
+
+        {
+          "name": "Big Pop Shop",
+          "identifier": "shopify",
+          "urls": [
+            "bigpopshop.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Global",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Galactic Toys & Collectibles",
+          "identifier": "shopify",
+          "urls": [
+            "galactictoys.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Global",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Fugitive Toys",
+          "identifier": "shopify",
+          "urls": [
+            "www.fugitivetoys.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": false,
+          "region": "Global",
+          "taskLaunchable": true
+        },
+
+
         {
           "name": "50-50 Skate Shop",
           "identifier": "shopify",
@@ -1001,6 +1025,18 @@
           "password_enabled": false,
           "favorited": false,
           "region": "United-States-of-America",
+          "taskLaunchable": true
+        },
+        {
+          "name": "Palace Skateboards UK",
+          "identifier": "shopify",
+          "urls": [
+            "shop.palaceskateboards.com"
+          ],
+          "checkpoint_enabled": false,
+          "password_enabled": false,
+          "favorited": true,
+          "region": "United-Kingdom",
           "taskLaunchable": true
         },
         {
@@ -2265,26 +2301,6 @@
           "taskLaunchable": null
         },
         {
-          "name": "Singapore",
-          "identifier": "snkrs",
-          "urls": [
-            "nike.com/sg/launch"
-          ],
-          "favorited": true,
-          "region": "Singapore",
-          "taskLaunchable": null
-        },
-        {
-          "name": "Canada",
-          "identifier": "snkrs",
-          "urls": [
-            "nike.com/ca/launch"
-          ],
-          "favorited": true,
-          "region": "Canada",
-          "taskLaunchable": null
-        },
-        {
           "name": "Germany",
           "identifier": "snkrs",
           "urls": [
@@ -2292,16 +2308,6 @@
           ],
           "favorited": true,
           "region": "Germany",
-          "taskLaunchable": null
-        },
-        {
-          "name": "Russia",
-          "identifier": "snkrs",
-          "urls": [
-            "nike.com/ru/launch"
-          ],
-          "favorited": true,
-          "region": "Russia",
           "taskLaunchable": null
         },
         {
@@ -2322,53 +2328,6 @@
           ],
           "favorited": true,
           "region": "United-Kingdom",
-          "taskLaunchable": null
-        }
-      ]
-    },
-    {
-      "name": "adidas",
-      "opened": false,
-      "activeIndex": -1,
-      "stores": [
-        {
-          "name": "United States",
-          "identifier": "adidas",
-          "urls": [
-            "adidas.com"
-          ],
-          "favorited": true,
-          "region": "United-States-of-America",
-          "taskLaunchable": null
-        },
-        {
-          "name": "United Kingdom",
-          "identifier": "adidas",
-          "urls": [
-            "adidas.co.uk"
-          ],
-          "favorited": true,
-          "region": "United-Kingdom",
-          "taskLaunchable": null
-        },
-        {
-          "name": "Canada",
-          "identifier": "adidas",
-          "urls": [
-            "adidas.ca"
-          ],
-          "favorited": true,
-          "region": "Canada",
-          "taskLaunchable": null
-        },
-        {
-          "name": "Australia",
-          "identifier": "adidas",
-          "urls": [
-            "adidas.com.au"
-          ],
-          "favorited": true,
-          "region": "Australia",
           "taskLaunchable": null
         }
       ]
@@ -2401,105 +2360,6 @@
           "favorited": true,
           "region": "Japan",
           "taskLaunchable": true
-        }
-      ]
-    },
-    {
-      "name": "Misc",
-      "opened": false,
-      "activeIndex": -1,
-      "stores": [
-        {
-          "name": "Off-White",
-          "identifier": "offwhite",
-          "urls": [],
-          "favorited": true,
-          "region": "Global",
-          "taskLaunchable": true
-        },
-        {
-          "name": "Yeezy Supply",
-          "identifier": "yeezysupply",
-          "urls": [
-            "yeezysupply.com"
-          ],
-          "favorited": true,
-          "region": "Global",
-          "taskLaunchable": null
-        },
-        {
-          "name": "solebox",
-          "identifier": "solebox",
-          "urls": [
-            "solebox.com"
-          ],
-          "favorited": true,
-          "region": "Europe",
-          "taskLaunchable": null
-        },
-        {
-          "name": "Mesh",
-          "identifier": "mesh",
-          "urls": [
-            "footpatrol.com",
-            "size.co.uk",
-            "jdsports.co.uk",
-            "thehipstore.co.uk"
-          ],
-          "favorited": true,
-          "region": "Europe",
-          "taskLaunchable": null
-        },
-        {
-          "name": "END.",
-          "identifier": "end",
-          "urls": [
-            "endclothing.com/us"
-          ],
-          "favorited": true,
-          "region": "United-States-of-America",
-          "taskLaunchable": null
-        },
-        {
-          "name": "Footsites",
-          "identifier": "footsites",
-          "urls": [
-            "footlocker.com",
-            "footaction.com",
-            "eastbay.com",
-            "champssports.com"
-          ],
-          "favorited": true,
-          "region": "United-States-of-America",
-          "taskLaunchable": null
-        },
-        {
-          "name": "Nike Desktop",
-          "identifier": "nike_desktop",
-          "urls": [
-            "nike.com/w"
-          ],
-          "favorited": true,
-          "region": "Global",
-          "taskLaunchable": null
-        },
-        {
-          "name": "DSM (E-Shop)",
-          "identifier": "dsm_eshop",
-          "urls": [],
-          "favorited": true,
-          "region": "Global",
-          "taskLaunchable": null
-        },
-        {
-          "name": "Offspring",
-          "identifier": "offspring",
-          "urls": [
-            "offspring.co.uk"
-          ],
-          "favorited": true,
-          "region": "United-Kingdom",
-          "taskLaunchable": null
         }
       ]
     }

@@ -33,6 +33,7 @@
 	background-color: rgba(251,247,241,1);
 }
 
+
 .spinner {
   animation: rotate 2s linear infinite;
   position: absolute;

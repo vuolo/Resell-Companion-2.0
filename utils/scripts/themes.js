@@ -6,7 +6,10 @@ window.setTheme = (theme) => {
     theme == "light" ? 'mapbox://styles/michaelvuolo/ck6ft4ygk15481iliboylq305' : // light
     'mapbox://styles/michaelvuolo/ckbk3j51700aa1js1dxmg9y2x' // dark
   );
+  for (var i = 0; i < window.frames.length; i++) try { window.frames[i].setContextMenuTheme(theme); } catch (err) { }
   window.frames["tasks-frame"].sendThemeToCaptchaSolvers(theme);
+  window.frames["analytics-frame"].analyticsApp.$forceUpdate();
+  for (var i = 0; i < window.frames['analytics-frame'].frames.length; i++) try { window.frames['analytics-frame'].frames[i].setContextMenuTheme(theme); } catch (err) { }
 };
 
 window.getThemeColor = (incomingLightColor, theme = window.companionSettings.theme) => {

@@ -51,8 +51,8 @@
 				<div class="Configure_Area_Class">
 
 					<div class="Quantity_Area_Class" v-bind:style="{ opacity: modalOptions.isEditingTaskIndex == -1 ? 1 : 0.66 }">
-						<input v-bind:disabled="modalOptions.isEditingTaskIndex != -1" v-bind:placeholder="tryTranslate('Quantity')" v-model="modalOptions.quantity" @keyup.enter="" type="number" min="1" max="100" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 187px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
-						<div class="Arrows_Icon_Class" style="left: 12px; top: 36px; transform: scale(0.85);" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+						<input v-bind:disabled="modalOptions.isEditingTaskIndex != -1" v-bind:placeholder="tryTranslate('Quantity')" v-model="modalOptions.quantity" v-on:keyup.enter="() => { if (modalOptions.isEditingTaskIndex == -1) { addTaskNode() } else { updateTaskNode(modalOptions.isEditingTaskIndex) } closeModal(); }" type="number" min="1" max="100" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 187px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+						<div class="Arrows_Icon_Class" style="left: 10px; top: 36px; transform: scale(0.85);" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
 							<span>↑↓</span>
 						</div>
 
@@ -92,7 +92,7 @@
 					</div>
 
 					<div class="Proxy_Profile_Area_Class" v-bind:style="{ opacity: modalOptions.checkoutMethod.useCheckoutCompanion ? 1 : 0.66 }">
-						<select v-bind:disabled="!modalOptions.checkoutMethod.useCheckoutCompanion" v-bind:placeholder="tryTranslate('Proxy Profile')" class="Search_Bar_Class special-focus" v-bind:class="{ 'white-arrow': companionSettings.theme == 'dark', 'black-arrow': companionSettings.theme == 'light', 'special-focus-dark': companionSettings.theme == 'dark', 'unclickable': !modalOptions.checkoutMethod.useCheckoutCompanion }" style="left: 0px; top: 27px; width: 387px; padding-left: 0px; text-indent: 40px" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+						<select v-bind:disabled="!modalOptions.checkoutMethod.useCheckoutCompanion" v-bind:placeholder="tryTranslate('Proxy Profile')" class="Search_Bar_Class special-focus" v-on:keyup.enter="() => { if (modalOptions.isEditingTaskIndex == -1) { addTaskNode() } else { updateTaskNode(modalOptions.isEditingTaskIndex) } closeModal(); }" v-bind:class="{ 'white-arrow': companionSettings.theme == 'dark', 'black-arrow': companionSettings.theme == 'light', 'special-focus-dark': companionSettings.theme == 'dark', 'unclickable': !modalOptions.checkoutMethod.useCheckoutCompanion }" style="left: 0px; top: 27px; width: 387px; padding-left: 0px; text-indent: 40px; padding-right: 25px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
 							<option selected disabled value="-1">{{tryTranslate('Select Proxy Profile')}}...</option>
 							<option v-for="(proxyProfile, proxyProfileIndex) in proxyProfiles" value="proxyProfileIndex">{{proxyProfile.nickname}}</option>
 						</select>
@@ -238,7 +238,7 @@
 							<template v-for="(size, sizeIndex) in clothingSizes">
 								<div class="Keyword_Input_Area_gk_Class clickable hover-opacity" v-on:click="toggleSizeActive(size)" v-bind:style="{ left: ((sizeIndex)%5 * (59 + 9)) + 9 + 'px', top: (Math.floor((sizeIndex)/5) * (36 + 9)) + 6 + 'px' }">
 									<svg class="Keyword_Input_Rectangle_gl">
-										<rect v-bind:fill="isSizeActive(size) ? getThemeColor('rgba(190,190,190,1)') : getThemeColor('rgba(255,255,255,1)')" class="Keyword_Input_Rectangle_gl_Class" rx="10" ry="10" x="0" y="0" width="59" height="36">
+										<rect v-bind:fill="isSizeActive(size) ? getThemeColor('rgba(225,225,225,1)') : getThemeColor('rgba(255,255,255,1)')" class="Keyword_Input_Rectangle_gl_Class" rx="10" ry="10" x="0" y="0" width="59" height="36">
 										</rect>
 									</svg>
 									<div class="ID14_5_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(50, size, 16, 'px', 'bold', 'SF Pro Text') }">
@@ -252,7 +252,7 @@
 							<template v-for="(size, sizeIndex) in shoeSizes">
 								<div class="Keyword_Input_Area_gk_Class clickable hover-opacity" v-on:click="toggleSizeActive(size)" v-bind:style="{ left: ((sizeIndex)%5 * (59 + 9)) + 9 + 'px', top: (Math.floor((sizeIndex)/5) * (36 + 9)) + 6 + 'px' }">
 									<svg class="Keyword_Input_Rectangle_gl">
-										<rect v-bind:fill="isSizeActive(size) ? getThemeColor('rgba(190,190,190,1)') : getThemeColor('rgba(255,255,255,1)')" class="Keyword_Input_Rectangle_gl_Class" rx="10" ry="10" x="0" y="0" width="59" height="36">
+										<rect v-bind:fill="isSizeActive(size) ? getThemeColor('rgba(225,225,225,1)') : getThemeColor('rgba(255,255,255,1)')" class="Keyword_Input_Rectangle_gl_Class" rx="10" ry="10" x="0" y="0" width="59" height="36">
 										</rect>
 									</svg>
 									<div class="ID14_5_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(50, size, 16, 'px', 'bold', 'SF Pro Text') }">
@@ -264,7 +264,7 @@
 
 						<div class="Clothing_Button_Class clickable hover-opacity" v-on:click="modalOptions.sizeView = 'Clothing';">
 							<svg class="Clothing_Rectangle">
-								<rect v-bind:fill="modalOptions.sizeView == 'Clothing' ? getThemeColor('rgba(190,190,190,1)') : getThemeColor('rgba(255,255,255,1)')" class="Clothing_Rectangle_Class" rx="10" ry="10" x="0" y="0" width="145" height="47">
+								<rect v-bind:fill="modalOptions.sizeView == 'Clothing' ? getThemeColor('rgba(225,225,225,1)') : getThemeColor('rgba(255,255,255,1)')" class="Clothing_Rectangle_Class" rx="10" ry="10" x="0" y="0" width="145" height="47">
 								</rect>
 							</svg>
 							<div class="Clothing_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(90, tryTranslate('Clothing'), 20, 'px', 'bold', 'SF Pro Text') }">
@@ -278,7 +278,7 @@
 
 						<div class="Shoes_Button_Class clickable hover-opacity" v-on:click="modalOptions.sizeView = 'Shoes';">
 							<svg class="Shoes_Rectangle">
-								<rect v-bind:fill="modalOptions.sizeView == 'Shoes' ? getThemeColor('rgba(190,190,190,1)') : getThemeColor('rgba(255,255,255,1)')" class="Shoes_Rectangle_Class" rx="10" ry="10" x="0" y="0" width="145" height="47">
+								<rect v-bind:fill="modalOptions.sizeView == 'Shoes' ? getThemeColor('rgba(225,225,225,1)') : getThemeColor('rgba(255,255,255,1)')" class="Shoes_Rectangle_Class" rx="10" ry="10" x="0" y="0" width="145" height="47">
 								</rect>
 							</svg>
 							<div class="Shoes_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(90, tryTranslate('Shoes'), 20, 'px', 'bold', 'SF Pro Text') }">
@@ -375,7 +375,7 @@
 					</div>
 
 					<div class="Billing_Profile_Area_Class" v-bind:style="{ opacity: modalOptions.checkoutMethod.rotateBillingProfiles || modalOptions.checkoutMethod.useFavoritedBillingProfile ? 0.66 : 1 }">
-						<select v-bind:disabled="modalOptions.checkoutMethod.rotateBillingProfiles || modalOptions.checkoutMethod.useFavoritedBillingProfile" v-bind:placeholder="tryTranslate('Billing Profile')" class="Search_Bar_Class special-focus" v-bind:class="{ 'white-arrow': companionSettings.theme == 'dark', 'black-arrow': companionSettings.theme == 'light', 'special-focus-dark': companionSettings.theme == 'dark', 'unclickable': !modalOptions.checkoutMethod.useCheckoutCompanion }" style="left: 0px; top: 27px; width: 245px; padding-left: 0px; text-indent: 40px" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+						<select v-bind:disabled="modalOptions.checkoutMethod.rotateBillingProfiles || modalOptions.checkoutMethod.useFavoritedBillingProfile" v-bind:placeholder="tryTranslate('Billing Profile')" class="Search_Bar_Class special-focus" v-on:keyup.enter="isConfiguringBillingProfiles = false;" v-bind:class="{ 'white-arrow': companionSettings.theme == 'dark', 'black-arrow': companionSettings.theme == 'light', 'special-focus-dark': companionSettings.theme == 'dark', 'unclickable': !modalOptions.checkoutMethod.useCheckoutCompanion }" style="left: 0px; top: 27px; width: 245px; padding-left: 0px; text-indent: 40px; padding-right: 25px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
 							<option selected disabled value="-1">{{tryTranslate('Select Billing Profile')}}...</option>
 							<option v-for="(billingProfile, billingProfileIndex) in billingProfiles" value="billingProfileIndex">{{billingProfile.configuration.companionSettings.nickname}}</option>
 						</select>

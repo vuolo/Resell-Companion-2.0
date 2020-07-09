@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Resell Companion — Analytics</title>
+
+	<link rel="stylesheet" type="text/css" href="../../../../css/style.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../css/fonts-alt-path.css"/>
+
+	<link rel="stylesheet" type="text/css" id="applicationStylesheet" href="./css/analytics.css"/>
+
+	<script src="../../../../../utils/downloaded/vue.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+
+	<div id="subpageContent">
+		<!-- ############################ LOAD OVERVIEW SUBPAGE ############################ -->
+		<iframe name="overview-subpage" class="subpageFrame" v-show="subpages['overview'].visible" src="./subpages/overview/overview.html" width="1275" height="795" frameborder="0"></iframe>
+		<!-- ############################ LOAD SALES SUBPAGE ############################ -->
+		<iframe name="sales-subpage" class="subpageFrame" v-show="subpages['sales'].visible" src="./subpages/sales/sales.html" width="1275" height="795" frameborder="0"></iframe>
+		<!-- ############################ LOAD INVENTORY SUBPAGE ############################ -->
+		<iframe name="inventory-subpage" class="subpageFrame" v-show="subpages['inventory'].visible" src="./subpages/sales/sales.html" width="1275" height="795" frameborder="0"></iframe>
+		<!-- ############################ LOAD MARKET LOOKUP SUBPAGE ############################ -->
+		<iframe name="market-lookup-subpage" class="subpageFrame" v-show="subpages['market-lookup'].visible" src="./subpages/sales/sales.html" width="1275" height="795" frameborder="0"></iframe>
+		<!-- ############################ LOAD SUBSCRIPTIONS SUBPAGE ############################ -->
+		<iframe name="subscriptions-subpage" class="subpageFrame" v-show="subpages['subscriptions'].visible" src="./subpages/sales/sales.html" width="1275" height="795" frameborder="0"></iframe>
+		<!-- ############################ LOAD TICKETS SUBPAGE ############################ -->
+		<iframe name="tickets-subpage" class="subpageFrame" v-show="subpages['tickets'].visible" src="./subpages/sales/sales.html" width="1275" height="795" frameborder="0"></iframe>
+		<!-- ############################ LOAD CARDS SUBPAGE ############################ -->
+		<iframe name="cards-subpage" class="subpageFrame" v-show="subpages['cards'].visible" src="./subpages/sales/sales.html" width="1275" height="795" frameborder="0"></iframe>
+
+		<div class="Navigation_Bar_Class">
+			<div class="Cards_Area_Class clickable" v-on:click="openSubpage('cards')" onmouseover="this.querySelector('.use_light_transitions').style.top = '-5px'" onmouseout="this.querySelector('.use_light_transitions').style.top = '0px'">
+				<svg class="Rectangle use_light_transitions" style="top: 0px;">
+					<rect v-bind:fill="subpages['cards'].visible ? getThemeColor('rgba(225,225,225,1)') : getThemeColor('rgba(255,255,255,1)')" class="Rectangle_Class" rx="10" ry="10" x="0" y="0" width="147.728" height="60">
+					</rect>
+				</svg>
+				<div class="Title_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+					<span>{{tryTranslate('Cards')}}</span>
+				</div>
+				<svg class="Bottom_Rectangle">
+					<rect fill="rgba(255,167,78,1)" class="Bottom_Rectangle_Class" rx="0" ry="0" x="0" y="0" width="147.728" height="3">
+					</rect>
+				</svg>
+			</div>
+
+			<div class="Tickets_Area_Class clickable" v-on:click="openSubpage('tickets')" onmouseover="this.querySelector('.use_light_transitions').style.top = '-5px'" onmouseout="this.querySelector('.use_light_transitions').style.top = '0px'">
+				<svg class="Rectangle_d use_light_transitions">
+					<rect v-bind:fill="subpages['tickets'].visible ? getThemeColor('rgba(225,225,225,1)') : getThemeColor('rgba(255,255,255,1)')" class="Rectangle_d_Class" rx="10" ry="10" x="0" y="0" width="147.728" height="60">
+					</rect>
+				</svg>
+				<div class="Title_d_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(147-15, tryTranslate('Tickets'), 16, 'px', 'bold', 'SF Pro Text') }">
+					<span>{{tryTranslate('Tickets')}}</span>
+				</div>
+				<svg class="Bottom_Rectangle_d">
+					<rect fill="rgba(253,213,53,1)" class="Bottom_Rectangle_d_Class" rx="0" ry="0" x="0" y="0" width="147.728" height="3">
+					</rect>
+				</svg>
+			</div>
+
+			<div class="Bots_Area_Class clickable" v-on:click="openSubpage('subscriptions')" onmouseover="this.querySelector('.use_light_transitions').style.top = '-5px'" onmouseout="this.querySelector('.use_light_transitions').style.top = '0px'">
+				<svg class="Rectangle_ea use_light_transitions">
+					<rect v-bind:fill="subpages['subscriptions'].visible ? getThemeColor('rgba(225,225,225,1)') : getThemeColor('rgba(255,255,255,1)')" class="Rectangle_ea_Class" rx="10" ry="10" x="0" y="0" width="147.728" height="60">
+					</rect>
+				</svg>
+				<div class="Title_ea_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(147-15, tryTranslate('Subscriptions'), 16, 'px', 'bold', 'SF Pro Text') }">
+					<span>{{tryTranslate('Subscriptions')}}</span>
+				</div>
+				<svg class="Bottom_Rectangle_ea">
+					<rect fill="rgba(84,101,255,1)" class="Bottom_Rectangle_ea_Class" rx="0" ry="0" x="0" y="0" width="147.728" height="3">
+					</rect>
+				</svg>
+			</div>
+
+			<div class="Market_Lookup_Area_Class clickable" v-on:click="openSubpage('market-lookup')" onmouseover="this.querySelector('.use_light_transitions').style.top = '-5px'" onmouseout="this.querySelector('.use_light_transitions').style.top = '0px'">
+				<svg class="Rectangle_eb use_light_transitions">
+					<rect v-bind:fill="subpages['market-lookup'].visible ? getThemeColor('rgba(225,225,225,1)') : getThemeColor('rgba(255,255,255,1)')" class="Rectangle_eb_Class" rx="10" ry="10" x="0" y="0" width="147.728" height="60">
+					</rect>
+				</svg>
+				<div class="Title_eb_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(147-15, tryTranslate('Market Lookup'), 16, 'px', 'bold', 'SF Pro Text') }">
+					<span>{{tryTranslate('Market Lookup')}}</span>
+				</div>
+				<svg class="Bottom_Rectangle_ec">
+					<rect fill="rgba(253,53,53,1)" class="Bottom_Rectangle_ec_Class" rx="0" ry="0" x="0" y="0" width="147.728" height="3">
+					</rect>
+				</svg>
+			</div>
+
+			<div class="Inventory_Area_Class clickable" v-on:click="openSubpage('inventory')" onmouseover="this.querySelector('.use_light_transitions').style.top = '-5px'" onmouseout="this.querySelector('.use_light_transitions').style.top = '0px'">
+				<svg class="Rectangle_ee use_light_transitions">
+					<rect v-bind:fill="subpages['inventory'].visible ? getThemeColor('rgba(225,225,225,1)') : getThemeColor('rgba(255,255,255,1)')" class="Rectangle_ee_Class" rx="10" ry="10" x="0" y="0" width="147.728" height="60">
+					</rect>
+				</svg>
+				<div class="Title_ef_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(147-15, tryTranslate('Inventory'), 16, 'px', 'bold', 'SF Pro Text') }">
+					<span>{{tryTranslate('Inventory')}}</span>
+				</div>
+				<svg class="Bottom_Rectangle_eg">
+					<rect fill="rgba(91,182,187,1)" class="Bottom_Rectangle_eg_Class" rx="0" ry="0" x="0" y="0" width="147.728" height="3">
+					</rect>
+				</svg>
+			</div>
+
+			<div class="Sales_Area_Class clickable" v-on:click="openSubpage('sales')" onmouseover="this.querySelector('.use_light_transitions').style.top = '-5px'" onmouseout="this.querySelector('.use_light_transitions').style.top = '0px'">
+				<svg class="Rectangle_ei use_light_transitions">
+					<rect v-bind:fill="subpages['sales'].visible ? getThemeColor('rgba(225,225,225,1)') : getThemeColor('rgba(255,255,255,1)')" class="Rectangle_ei_Class" rx="10" ry="10" x="0" y="0" width="147.728" height="60">
+					</rect>
+				</svg>
+				<div class="Title_ej_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(147-15, tryTranslate('Sales'), 16, 'px', 'bold', 'SF Pro Text') }">
+					<span>{{tryTranslate('Sales')}}</span>
+				</div>
+				<svg class="Bottom_Rectangle_ek">
+					<rect fill="rgba(53,178,57,1)" class="Bottom_Rectangle_ek_Class" rx="0" ry="0" x="0" y="0" width="147.728" height="3">
+					</rect>
+				</svg>
+			</div>
+
+			<div class="Overview_Area_Class clickable" v-on:click="openSubpage('overview')" onmouseover="this.querySelector('.use_light_transitions').style.top = '-3px'" onmouseout="this.querySelector('.use_light_transitions').style.top = '0px'">
+				<svg class="Rectangle_em use_light_transitions">
+					<rect v-bind:fill="subpages['overview'].visible ? getThemeColor('rgba(225,225,225,1)') : getThemeColor('rgba(255,255,255,1)')" class="Rectangle_em_Class" rx="10" ry="10" x="0" y="0" width="147.728" height="60">
+					</rect>
+				</svg>
+				<div class="Title_en_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(147-15, tryTranslate('Overview'), 16, 'px', 'bold', 'SF Pro Text') }">
+					<span>{{tryTranslate('Overview')}}</span>
+				</div>
+				<svg class="Bottom_Rectangle_eo">
+					<rect fill="rgba(206,140,229,1)" class="Bottom_Rectangle_eo_Class" rx="0" ry="0" x="0" y="0" width="147.728" height="3">
+					</rect>
+				</svg>
+			</div>
+
+		</div>
+	</div>
+
+	<script src="./js/analytics.js" type="text/javascript"></script>
+
+</body>
+</html>

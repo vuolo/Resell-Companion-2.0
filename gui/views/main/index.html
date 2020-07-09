@@ -112,12 +112,14 @@
     <!-- ############################ LOAD SPOOF PAGE ############################ -->
     <iframe name="spoof-frame" class="pageFrame" v-show="pages[activePageIndex].name == 'Spoof'" src="./pages/spoof/spoof.html" width="1275" height="795" frameborder="0"></iframe>
     <!-- ############################ LOAD BROWSER PAGE ############################ -->
-    <!--  #depreciated because <webview> tag doens't load on iframe # -->
+    <!-- # depreciated because <webview> tag doens't load on iframe # -->
     <!-- <iframe name="browsers-frame" class="pageFrame" v-show="pages[activePageIndex].name == 'Browsers'" src="./pages/browsers/browsers.html" width="1275" height="795" frameborder="0"></iframe> -->
+    <!-- ############################ LOAD ANALYTICS PAGE ############################ -->
+    <iframe name="analytics-frame" class="pageFrame" v-show="pages[activePageIndex].name == 'Analytics'" src="./pages/analytics/analytics.html" width="1275" height="795" frameborder="0"></iframe>
   </div>
 
   <!-- # load without iframe to use <webview> tag # -->
-  <div name="browsers-frame" class="pageFrame" w3-include-html="./pages/browsers/browsers.html" style="top: 50px; position: absolute; display: none;"></div>
+  <div name="browsers-frame" class="pageFrame" include-html="./pages/browsers/browsers.html" style="top: 50px; position: absolute; display: none;"></div>
 
   <script>
     function includeHTML() {
@@ -127,7 +129,7 @@
       for (i = 0; i < z.length; i++) {
         elmnt = z[i];
         /*search for elements with a certain atrribute:*/
-        file = elmnt.getAttribute("w3-include-html");
+        file = elmnt.getAttribute("include-html");
         if (file) {
           /*make an HTTP request using the attribute value as the file name:*/
           xhttp = new XMLHttpRequest();
@@ -136,9 +138,8 @@
               if (this.status == 200) {elmnt.innerHTML = this.responseText;}
               if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
               /*remove the attribute, and call this function once more:*/
-              elmnt.removeAttribute("w3-include-html");
+              elmnt.removeAttribute("include-html");
               if (window.pages[window.borderApp.activePageIndex].name == 'Browsers') elmnt.style.display = "block";
-              setTimeout(applyButtonTransitions, 1500); // TODO: figure out when to actually call this rather than using a timer
               includeHTML();
             }
           }
@@ -222,6 +223,28 @@
     }
 
   </script>
+
+  <!-- automatically rotate all loading circle colors -->
+
+  <script>
+
+		const loadingColors = [
+			"#FFA74E", // orange
+			"#FD3535", // red
+			"#CE8CE5", // purple
+			"#5BB6BB" // blue
+		];
+		let curColorIndex = 1;
+
+		setInterval(function() {
+			for (var path of document.querySelectorAll(".spinner .path")) {
+				path.style.stroke = loadingColors[curColorIndex];
+				curColorIndex++;
+				if (curColorIndex >= loadingColors.length) curColorIndex = 0;
+			}
+		}, 1500);
+
+	</script>
 
 </body>
 </html>

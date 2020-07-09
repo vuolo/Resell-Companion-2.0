@@ -13,6 +13,11 @@
 
 	<script src="../../../../../utils/downloaded/vue.js" type="text/javascript"></script>
 	<script src="../../../../../utils/downloaded/jquery.js" type="text/javascript"></script>
+	<script src="../../../../../utils/downloaded/jquery.contextMenu.js" type="text/javascript"></script>
+	<script src="../../../../../utils/downloaded/jquery.ui.position.min.js" type="text/javascript"></script>
+
+	<link rel="stylesheet" type="text/css" href="../../../../../utils/downloaded/jquery.contextMenu.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../../utils/downloaded/fontawesome/css/all.css"/>
 
 	<script src="../../../../../utils/scripts/prototype-extensions.js" type="text/javascript"></script>
 
@@ -66,7 +71,7 @@
 			</svg>
 			<div class="Category_Buttons_Class" v-bind:class="{ 'dark-scrollbar': companionSettings.theme == 'dark' }">
 
-				<div class="Filtered_Button_Class clickable hover-opacity" v-on:click="enabledUseFilteredKeywords()">
+				<div class="Filtered_Button_Class clickable hover-opacity" v-on:click="enabledUseFilteredKeywords()" onclick="document.getElementById('productTable').scrollTop = 0;">
 					<svg class="Filtered_Rectangle">
 						<rect v-bind:fill="useFilteredKeywords ? getThemeColor('rgba(243,224,185,1)') : getThemeColor('rgba(242,242,242,1)')" class="Filtered_Rectangle_Class" rx="10" ry="10" x="0" y="0" width="176" height="47">
 						</rect>
@@ -78,7 +83,8 @@
 
 				<svg class="Filtered_Separator">
 					<rect v-bind:fill="getThemeColor('rgba(190,190,190,1)')" class="Filtered_Separator_Class" rx="1.5" ry="1.5" x="0" y="0" width="170" height="3">
-					</rect></svg>
+					</rect>
+				</svg>
 
 				<template v-for="(category, categoryIndex) in categories">
 					<div class="Shopify_Button_Class clickable hover-opacity" v-on:click="category.opened = !category.opened" v-bind:style="{ top: getCategoryTop(categoryIndex) + 'px' }">
@@ -98,7 +104,7 @@
 					<div class="Store_Dropdown_Class" v-if="category.opened">
 
 						<template v-for="(store, storeIndex) in category.stores">
-							<div v-if="store.favorited" class="Store_Class clickable hover-opacity" v-on:click="setStoreActive(category, storeIndex)" v-bind:style="{ top: (getCategoryTop(categoryIndex) - 66 - 6) + (storeIndex * (20 + 3)) + 5 + 'px' }">
+							<div v-if="store.favorited" class="Store_Class clickable hover-opacity" v-on:click="setStoreActive(category, storeIndex)" onclick="document.getElementById('productTable').scrollTop = 0;" v-bind:style="{ top: (getCategoryTop(categoryIndex) - 66 - 6) + (storeIndex * (20 + 3)) + 5 + 'px' }">
 								<svg class="Shopify_Rectangle">
 									<rect v-bind:fill="category.activeIndex == storeIndex ? getThemeColor('rgba(243,224,185,1)') : (storeIndex % 2 == 0 ? getThemeColor('rgba(247,247,247,1)') : getThemeColor('rgba(255,255,255,1)'))" class="Shopify_Rectangle_Class" rx="5" ry="5" x="0" y="0" width="176" height="20">
 									</rect>
@@ -121,7 +127,7 @@
 			</div>
 		</div>
 
-		<div class="Product_Card_Table center-contents" v-bind:class="{ 'dark-scrollbar': companionSettings.theme == 'dark' }">
+		<div id="productTable" class="Product_Card_Table center-contents" v-bind:class="{ 'dark-scrollbar': companionSettings.theme == 'dark' }">
 
 			<!-- display message if there are no items -->
 			<template v-if="products.length == 0">
@@ -304,6 +310,7 @@
 				</template>
 
 			</div>
+
 			<svg class="Separator_gy">
 				<rect v-bind:fill="getThemeColor('rgba(190,190,190,1)')" class="Separator_gy_Class" rx="1" ry="1" x="0" y="0" width="275" height="2">
 				</rect>
@@ -330,14 +337,14 @@
 		</div>
 
 		<div v-if="getMaxProductPage() >= 2" class="Monitors_Class pagination" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-			<span class="clickable hover-opacity" v-on:click="((productPage-1 < 0) ? productPage = getMaxProductPage()-1 : productPage--); refreshVisualizedProducts();">←</span>
+			<span class="clickable hover-opacity" v-on:click="((productPage-1 < 0) ? productPage = getMaxProductPage()-1 : productPage--); refreshVisualizedProducts();" onclick="document.getElementById('productTable').scrollTop = 0;">←</span>
 			<span> </span>
 			<template v-for="page in getMaxProductPage()">
-				<span class="clickable hover-underline hover-opacity" v-on:click="productPage = page-1; refreshVisualizedProducts();" v-bind:style="{ fontSize: (page-1 == productPage) ? '17px' : '15px', fontWeight: (page-1 == productPage) ? '600' : 'normal', textDecoration: (page-1 == productPage) ? 'underline' : 'none' }">{{page}}</span>
+				<span class="clickable hover-underline hover-opacity" v-on:click="productPage = page-1; refreshVisualizedProducts();" onclick="document.getElementById('productTable').scrollTop = 0;" v-bind:style="{ fontSize: (page-1 == productPage) ? '17px' : '15px', fontWeight: (page-1 == productPage) ? '600' : 'normal', textDecoration: (page-1 == productPage) ? 'underline' : 'none' }">{{page}}</span>
 				<span> </span>
 			</template>
 			<span> </span>
-			<span class="clickable hover-opacity" v-on:click="((productPage+2 > getMaxProductPage()) ? productPage=0 : productPage++); refreshVisualizedProducts();">→</span>
+			<span class="clickable hover-opacity" v-on:click="((productPage+2 > getMaxProductPage()) ? productPage=0 : productPage++); refreshVisualizedProducts();" onclick="document.getElementById('productTable').scrollTop = 0;">→</span>
 		</div>
 
 		<div id="modalContent" v-show="shouldDisplayModals()">
@@ -349,6 +356,42 @@
 
 	<script src="./js/shopping-bags.js" type="text/javascript"></script>
 	<script src="./js/monitors.js" type="text/javascript"></script>
+
+	<script>
+		const CONTEXT_MENUS = [
+			{
+				selector: '.Product_Card_1_Class',
+				// TODO: add functionality for each context menu item click
+				callback: function(key, options) {
+					const element = options.$trigger[0];
+					console.log(key);
+					// console.log(element);
+				},
+				items: {
+					"open": {name: "Open Product", icon: "fas fa-external-link-alt" },
+					"copy_url": {name: "Copy Product URL", icon: "far fa-clipboard" },
+					"add_to_inventory": { name: "Add to Inventory", icon: "fas fa-archive" },
+					"hide": { name: "Hide Product", icon: "fas fa-eye-slash" },
+					"search_on_market_lookup": { name: "Search on Market Lookup", icon: "far fa-search" }
+				}
+			},
+			{
+				selector: '.Store_Class',
+				// TODO: add functionality for each context menu item click
+				callback: function(key, options) {
+					const element = options.$trigger[0];
+					console.log(key);
+					// console.log(element);
+				},
+				items: {
+					"open": {name: "Open Store", icon: "fas fa-external-link-alt" },
+					"copy_url": {name: "Copy Store URL", icon: "far fa-clipboard" },
+					"hide": { name: "Remove From Favorites", icon: "fas fa-star-half" }
+				}
+			}
+		];
+	</script>
+	<script src="../../../../../utils/scripts/context-menu.js" type="text/javascript"></script>
 
 </body>
 </html>

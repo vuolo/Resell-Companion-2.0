@@ -66,6 +66,12 @@
         "es": "Comenzar a monitorear a las"
       }
     },
+    "between": {
+      "languages": {
+        "en": "between",
+        "es": "entre"
+      }
+    },
     "Browsers": {
       "languages": {
         "en": "Browsers",
@@ -84,6 +90,12 @@
         "es": "Perfiles de facturación"
       }
     },
+    "Bots": {
+      "languages": {
+        "en": "Bots",
+        "es": "Bots"
+      }
+    },
     "Browser": {
       "languages": {
         "en": "Browser",
@@ -100,6 +112,12 @@
       "languages": {
         "en": "Card Declined",
         "es": "Tarjeta rechazada"
+      }
+    },
+    "Cards": {
+      "languages": {
+        "en": "Cards",
+        "es": "Tarjetas"
       }
     },
     "Change URLs": {
@@ -258,6 +276,12 @@
         "es": "Asigne eficientemente cada tarea con un perfil de facturación habilitado"
       }
     },
+    "Everything": {
+      "languages": {
+        "en": "Everything",
+        "es": "Todos"
+      }
+    },
     "Examining the release calendar...": {
       "languages": {
         "en": "Examining the release calendar...",
@@ -268,6 +292,12 @@
       "languages": {
         "en": "February",
         "es": "Febrero"
+      }
+    },
+    "Fees": {
+      "languages": {
+        "en": "Fees",
+        "es": "Tarifas"
       }
     },
     "Filtered": {
@@ -342,6 +372,12 @@
         "es": "Fecha no válida"
       }
     },
+    "Inventory": {
+      "languages": {
+        "en": "Inventory",
+        "es": "Inventario"
+      }
+    },
     "January": {
       "languages": {
         "en": "January",
@@ -400,6 +436,12 @@
       "languages": {
         "en": "March",
         "es": "Marzo"
+      }
+    },
+    "Market Lookup": {
+      "languages": {
+        "en": "Market Lookup",
+        "es": "Análisis de mercado"
       }
     },
     "May": {
@@ -488,6 +530,12 @@
         "es": "Sin configuración de productos"
       }
     },
+    "No sales made": {
+      "languages": {
+        "en": "No sales made",
+        "es": "Sin ventas realizadas"
+      }
+    },
     "No tasks are created for this product": {
       "languages": {
         "en": "No tasks are created for this product",
@@ -530,12 +578,24 @@
         "es": "Abrir sitios web con el navegador predeterminado de tu ordenador"
       }
     },
+    "Overview": {
+      "languages": {
+        "en": "Overview",
+        "es": "Resumen"
+      }
+    },
     "Pay": {
       "languages": {
         "en": "Pay",
         "es": "Pagar"
       }
     },
+    "Platform": {
+      "languages": {
+        "en": "Platform",
+        "es": "Mercado"
+      }
+    },
     "Please wait while we search for products...": {
       "languages": {
         "en": "Please wait while we search for products...",
@@ -546,6 +606,12 @@
       "languages": {
         "en": "Please wait while we search for products...",
         "es": "Por favor, espere mientras buscamos productos..."
+      }
+    },
+    "Portfolio Value": {
+      "languages": {
+        "en": "Portfolio Value",
+        "es": "Valor de la cartera"
       }
     },
     "Possible": {
@@ -578,10 +644,22 @@
         "es": "Productos"
       }
     },
+    "Profit": {
+      "languages": {
+        "en": "Profit",
+        "es": "Ganancias"
+      }
+    },
     "Proxy Profile": {
       "languages": {
         "en": "Proxy Profile",
         "es": "Perfil de proxy"
+      }
+    },
+    "Purchased": {
+      "languages": {
+        "en": "Purchased",
+        "es": "Comprado"
       }
     },
     "Quantity": {
@@ -620,10 +698,22 @@
         "es": "Reintentando..."
       }
     },
+    "Revenue": {
+      "languages": {
+        "en": "Revenue",
+        "es": "Ingreso"
+      }
+    },
     "Rotate Billing Profiles": {
       "languages": {
         "en": "Rotate Billing Profiles",
         "es": "Alternar perfiles de facturación"
+      }
+    },
+    "Sales": {
+      "languages": {
+        "en": "Sales",
+        "es": "Ventas"
       }
     },
     "Saturday": {
@@ -698,6 +788,12 @@
         "es": "Bolsa de la compra"
       }
     },
+    "Show": {
+      "languages": {
+        "en": "Show",
+        "es": "Ver"
+      }
+    },
     "Size": {
       "languages": {
         "en": "Size",
@@ -710,6 +806,12 @@
         "es": "Tamaño no disponible (agotado)"
       }
     },
+    "Sold": {
+      "languages": {
+        "en": "Sold",
+        "es": "Vendido"
+      }
+    },
     "Solver Opened": {
       "languages": {
         "en": "Solver Opened",
@@ -720,6 +822,12 @@
       "languages": {
         "en": "Solvers Opened",
         "es": "Solucionadores abiertos"
+      }
+    },
+    "Spent": {
+      "languages": {
+        "en": "Spent",
+        "es": "Gastado"
       }
     },
     "Spoof": {
@@ -776,6 +884,12 @@
         "es": "Enviando detalles de facturación..."
       }
     },
+    "Subscriptions": {
+      "languages": {
+        "en": "Subscriptions",
+        "es": "Suscripciones"
+      }
+    },
     "Successfully Checked Out": {
       "languages": {
         "en": "Successfully checked out",
@@ -824,6 +938,18 @@
         "es": "Jue"
       }
     },
+    "Tickets": {
+      "languages": {
+        "en": "Tickets",
+        "es": "Boletos"
+      }
+    },
+    "Tracking": {
+      "languages": {
+        "en": "Tracking",
+        "es": "Rastreo"
+      }
+    },
     "to connect your bots": {
       "languages": {
         "en": "to connect your bots",
@@ -839,7 +965,7 @@
     "Total": {
       "languages": {
         "en": "Total",
-        "es": "Total"
+        "es": "En total"
       }
     },
     "To automatically checkout using your default browser, download our Chrome extension": {
@@ -948,6 +1074,12 @@
       "languages": {
         "en": "Wed",
         "es": "Mié"
+      }
+    },
+    "Welcome back": {
+      "languages": {
+        "en": "Welcome back",
+        "es": "¡Bienvenido de vuelta"
       }
     },
     "You must select a supported store to add an item to your shopping bag": {

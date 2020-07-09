@@ -31,6 +31,7 @@ window.browserModalLoadedCallback = async (modalName) => {
 }
 
 window.onload = () => {
+  setTimeout(function() { applyButtonTransitions(true) }, 1500);
   browsersApp = new Vue({
     el: "#Rewrite___Browser",
     data: {

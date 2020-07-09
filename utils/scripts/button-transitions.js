@@ -1,13 +1,11 @@
-window.onload = applyButtonTransitions;
+window.onload = setTimeout(applyButtonTransitions, 50);
 
-async function applyButtonTransitions() {
+async function applyButtonTransitions(force = false) {
 
   var clipButtons = document.querySelectorAll('.clipButton');
 
   for (var clipButton of clipButtons) {
-    if (clipButton.classList.contains('transitions-ready')) {
-      continue;
-    }
+    if (clipButton.classList.contains('transitions-ready') && !force) continue;
     try {
       clipButton.classList.add('transitions-ready');
       let curClipButton = clipButton;

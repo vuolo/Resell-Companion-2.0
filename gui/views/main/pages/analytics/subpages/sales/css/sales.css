@@ -1,0 +1,1288 @@
+.mediaViewInfo {
+	--web-view-name: Rewrite – Sales;
+	--web-view-id: Rewrite___Sales;
+	--web-enable-deep-linking: true;
+}
+:root {
+	--web-view-ids: Rewrite___Sales;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	border: none;
+}
+.Rewrite___Sales_Class {
+	position: absolute;
+	width: 1287px;
+	height: 795px;
+	background-color: rgba(251,247,241,1);
+	overflow: hidden;
+	--web-view-name: Rewrite – Sales;
+	--web-view-id: Rewrite___Sales;
+	--web-enable-deep-linking: true;
+}
+.Content_Class {
+	position: absolute;
+	width: 1206.043px;
+	height: 206.634px;
+	left: 40.74px;
+	top: 114px;
+	overflow: visible;
+}
+.Bottom_Section_Class {
+	position: absolute;
+	width: 1237px;
+	height: 473px;
+	left: -15px;
+	top: 144.124px;
+	overflow: auto;
+	overflow-x: hidden;
+}
+.Row_1_Class {
+	position: absolute;
+	width: 1206.043px;
+	height: 52.497px;
+	left: 10px;
+	top: 33.013px;
+	overflow: visible;
+}
+.Rectangle {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.149));
+	position: absolute;
+	overflow: visible;
+	width: 1206.043px;
+	height: 52.497px;
+	left: 0px;
+	top: 0px;
+}
+.Tracking_Class {
+	position: absolute;
+	left: 1074.01px;
+	top: 19.987px;
+	overflow: visible;
+	width: 81px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -13.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 15px;
+	color: rgba(255,167,78,1);
+}
+.Profit_Class {
+	position: absolute;
+	left: 961.01px;
+	top: 19.987px;
+	overflow: visible;
+	width: 55px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -13.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 15px;
+	color: rgba(53,178,57,1);
+}
+.Fees_Class {
+	position: absolute;
+	left: 856.73px;
+	top: 19.987px;
+	overflow: visible;
+	width: 54px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -13.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 15px;
+	color: rgba(29,29,29,1);
+}
+.Sale_Price_Class {
+	position: absolute;
+	left: 755.773px;
+	top: 19.987px;
+	overflow: visible;
+	width: 64px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -13.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 15px;
+	color: rgba(29,29,29,1);
+}
+.Purchase_Price_Class {
+	position: absolute;
+	left: 605.156px;
+	top: 19.987px;
+	overflow: visible;
+	width: 63px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -13.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 15px;
+	color: rgba(29,29,29,1);
+}
+.StockX_Icon_Class {
+	display: table;
+	position: absolute;
+	width: 115px;
+	height: 41px;
+	left: 462.906px;
+	top: 5.863px;
+	overflow: visible;
+
+	display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.Size_Class {
+	position: absolute;
+	left: 361.13px;
+	top: 19.987px;
+	overflow: visible;
+	width: 42px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -13.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 15px;
+	color: rgba(29,29,29,1);
+}
+.Product_Class {
+	position: absolute;
+	left: 71.652px;
+	top: 19.987px;
+	overflow: visible;
+	width: 237px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -13.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 15px;
+	color: rgba(29,29,29,1);
+}
+.Product_Image_Class {
+	border-radius: 5px;
+	display: table;
+	position: absolute;
+	width: 42px;
+	height: 42px;
+	left: 15.369px;
+	top: 5.049px;
+	overflow: visible;
+
+	display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.Top_Bar_Chart_Class {
+	position: absolute;
+	width: 1090.361px;
+	height: 24px;
+	left: 63.652px;
+	top: 126px;
+	overflow: visible;
+}
+.Tracking_ea_Class {
+	position: absolute;
+	left: 1003.361px;
+	top: 0px;
+	overflow: visible;
+	width: 88px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -11px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Profit_eb_Class {
+	position: absolute;
+	left: 890.361px;
+	top: 0px;
+	overflow: visible;
+	width: 57px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -11px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Fees_ec_Class {
+	position: absolute;
+	left: 786.073px;
+	top: 0px;
+	overflow: visible;
+	width: 48px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -11px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Sold_Class {
+	position: absolute;
+	left: 685.258px;
+	top: 0px;
+	overflow: visible;
+	width: 46px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -11px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Purchase_Class {
+	position: absolute;
+	left: 533.778px;
+	top: 0px;
+	overflow: visible;
+	width: 95px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -11px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Platform_Class {
+	position: absolute;
+	left: 389.608px;
+	top: 0px;
+	overflow: visible;
+	width: 88px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -11px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Size_eg_Class {
+	position: absolute;
+	left: 290.274px;
+	top: 0px;
+	overflow: visible;
+	width: 43px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -11px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Product_eh_Class {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+	width: 81px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -11px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Top_Section_Class {
+	position: absolute;
+	width: 949px;
+	height: 98px;
+	left: 128.26px;
+	top: 0px;
+	overflow: visible;
+}
+.Search_Area_Class {
+	position: absolute;
+	width: 825px;
+	height: 36px;
+	left: 62px;
+	top: 62px;
+	overflow: visible;
+}
+.Add_Button_Class {
+	position: absolute;
+	width: 107px;
+	height: 36px;
+	left: 718px;
+	top: 0px;
+	overflow: visible;
+}
+.Add_Rectangle {
+	position: absolute;
+	overflow: visible;
+	width: 107px;
+	height: 36px;
+	left: 0px;
+	top: 0px;
+}
+.Add_Class {
+	position: absolute;
+	left: 0;
+	top: 9.5px;
+	overflow: visible;
+	width: 107px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 15px;
+	color: rgba(91,182,187,1);
+}
+.Search_Bar_Class {
+	position: absolute;
+	width: 350px;
+	height: 36px;
+	left: 349px;
+	top: 0px;
+	overflow: visible;
+}
+.Search_Bar_Rectangle {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 368px;
+	height: 54px;
+	left: 0px;
+	top: 0px;
+}
+.Search_Text_Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 44px;
+	top: 8px;
+	overflow: visible;
+	width: 56px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Magnifying_Glass_Icon_Class {
+	opacity: 0.66;
+}
+.Magnifying_Glass_Icon {
+	overflow: visible;
+	position: absolute;
+	width: 17.337px;
+	height: 17.337px;
+	left: 17.715px;
+	top: 9.124px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Filter_Area_Class {
+	position: absolute;
+	width: 330px;
+	height: 36px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+.Rectangle_es {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 348px;
+	height: 54px;
+	left: 0px;
+	top: 0px;
+}
+.Date_Area_Class {
+	position: absolute;
+	width: 165px;
+	height: 36px;
+	left: 165px;
+	top: 0px;
+	overflow: visible;
+}
+.Date_Bar_Class {
+	position: absolute;
+	width: 165px;
+	height: 36px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+.Rectangle_ev {
+	position: absolute;
+	overflow: visible;
+	width: 165px;
+	height: 36px;
+	left: 0px;
+	top: 0px;
+}
+.Text_Class {
+	position: absolute;
+	left: 34px;
+	top: 9px;
+	overflow: visible;
+	width: 122px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Calendar_Icon_Class {
+	opacity: 0.66;
+}
+.Calendar_Icon {
+	overflow: visible;
+	position: absolute;
+	width: 14.165px;
+	height: 16.189px;
+	left: 12.667px;
+	top: 9.905px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Last_Months_Area_Class {
+	position: absolute;
+	width: 165px;
+	height: 36px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+.Last_Months_Bar_Class {
+	position: absolute;
+	width: 165px;
+	height: 36px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+.Rectangle_e {
+	position: absolute;
+	overflow: visible;
+	width: 165px;
+	height: 36px;
+	left: 0px;
+	top: 0px;
+}
+.Text_e_Class {
+	position: absolute;
+	left: 12px;
+	top: 9px;
+	overflow: visible;
+	width: 120px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Separator {
+	width: 18px;
+	height: 3px;
+	position: absolute;
+	overflow: visible;
+	transform: translate(106px, 53px) matrix(1,0,0,1,50,-35) rotate(90deg);
+	transform-origin: center;
+}
+.Revenue_Area_Class {
+	position: absolute;
+	width: 301px;
+	height: 39px;
+	left: 324px;
+	top: 0px;
+	overflow: visible;
+}
+.Rectangle_fa {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 318px;
+	height: 57px;
+	left: 1px;
+	top: 0px;
+}
+.Text_fa_Class {
+	position: absolute;
+	left: 146.368px;
+	top: 9.124px;
+	overflow: visible;
+	width: 146px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -11px;
+	text-align: right;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Title_Class {
+	position: absolute;
+	left: 52.342px;
+	top: 9.124px;
+	overflow: visible;
+	width: 87px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -11px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Suit_Case_Icon {
+	overflow: visible;
+	position: absolute;
+	width: 24.036px;
+	height: 21.031px;
+	left: 17px;
+	top: 8.341px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Side_Rectangle {
+	position: absolute;
+	overflow: visible;
+	width: 6px;
+	height: 39px;
+	left: 0px;
+	top: 0px;
+}
+.Profit_Area_Class {
+	position: absolute;
+	width: 301px;
+	height: 39px;
+	left: 648px;
+	top: 0px;
+	overflow: visible;
+}
+.Rectangle_fb {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 318px;
+	height: 57px;
+	left: 1px;
+	top: 0px;
+}
+.Text_fb_Class {
+	position: absolute;
+	left: 146.208px;
+	top: 9.124px;
+	overflow: visible;
+	width: 146px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -11px;
+	text-align: right;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Title_fc_Class {
+	position: absolute;
+	left: 46.843px;
+	top: 9.124px;
+	overflow: visible;
+	width: 57px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -11px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Graph_Icon {
+	overflow: visible;
+	position: absolute;
+	width: 19.108px;
+	height: 19.108px;
+	left: 18.091px;
+	top: 9.892px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Side_Rectangle_fe {
+	position: absolute;
+	overflow: visible;
+	width: 6px;
+	height: 39px;
+	left: 0px;
+	top: 0px;
+}
+.Spent_Area_Class {
+	position: absolute;
+	width: 301px;
+	height: 39px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+.Rectangle_fg {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 318px;
+	height: 57px;
+	left: 1px;
+	top: 0px;
+}
+.Text_fh_Class {
+	position: absolute;
+	left: 146.368px;
+	top: 9.124px;
+	overflow: visible;
+	width: 146px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -11px;
+	text-align: right;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Title_fi_Class {
+	position: absolute;
+	left: 52.342px;
+	top: 9.124px;
+	overflow: visible;
+	width: 60px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -11px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Dollars_Icon {
+	overflow: visible;
+	position: absolute;
+	width: 24.622px;
+	height: 15.576px;
+	left: 17.124px;
+	top: 10.97px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Side_Rectangle_fk {
+	position: absolute;
+	overflow: visible;
+	width: 6px;
+	height: 39px;
+	left: 0px;
+	top: 0px;
+}
+.Navigation_Bar_Class {
+	position: absolute;
+	width: 1245.729px;
+	height: 42.824px;
+	left: 21px;
+	top: 752.18px;
+	overflow: visible;
+}
+.Cards_Area_Class {
+	position: absolute;
+	width: 147.729px;
+	height: 42.824px;
+	left: 1098px;
+	top: 0px;
+	overflow: visible;
+}
+.Rectangle_fn {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 165.728px;
+	height: 60.73px;
+	left: 0.001px;
+	top: 0px;
+}
+.Title_fo_Class {
+	position: absolute;
+	left: 47.872px;
+	top: 12.743px;
+	overflow: visible;
+	width: 49px;
+	white-space: nowrap;
+	line-height: 18px;
+	margin-top: -0.5px;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 17px;
+	color: rgba(29,29,29,1);
+}
+.Bottom_Rectangle {
+	position: absolute;
+	overflow: visible;
+	width: 147.728px;
+	height: 3px;
+	left: 0px;
+	top: 39.823px;
+}
+.Tickets_Area_Class {
+	position: absolute;
+	width: 147.729px;
+	height: 42.824px;
+	left: 915px;
+	top: 0px;
+	overflow: visible;
+}
+.Rectangle_fr {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 165.728px;
+	height: 60.73px;
+	left: 0.001px;
+	top: 0px;
+}
+.Title_fs_Class {
+	position: absolute;
+	left: 42.872px;
+	top: 12.743px;
+	overflow: visible;
+	width: 59px;
+	white-space: nowrap;
+	line-height: 18px;
+	margin-top: -0.5px;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 17px;
+	color: rgba(29,29,29,1);
+}
+.Bottom_Rectangle_ft {
+	position: absolute;
+	overflow: visible;
+	width: 147.728px;
+	height: 3px;
+	left: 0px;
+	top: 39.823px;
+}
+.Bots_Area_Class {
+	position: absolute;
+	width: 147.729px;
+	height: 42.824px;
+	left: 732px;
+	top: 0px;
+	overflow: visible;
+}
+.Rectangle_fv {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 165.728px;
+	height: 60.73px;
+	left: 0.001px;
+	top: 0px;
+}
+.Title_fw_Class {
+	position: absolute;
+	left: 53.872px;
+	top: 12.743px;
+	overflow: visible;
+	width: 37px;
+	white-space: nowrap;
+	line-height: 18px;
+	margin-top: -0.5px;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 17px;
+	color: rgba(29,29,29,1);
+}
+.Bottom_Rectangle_fx {
+	position: absolute;
+	overflow: visible;
+	width: 147.728px;
+	height: 3px;
+	left: 0px;
+	top: 39.823px;
+}
+.Market_Lookup_Area_Class {
+	position: absolute;
+	width: 147.729px;
+	height: 42.824px;
+	left: 549px;
+	top: 0px;
+	overflow: visible;
+}
+.Rectangle_fz {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 165.728px;
+	height: 60.73px;
+	left: 0.001px;
+	top: 0px;
+}
+.Title_f_Class {
+	position: absolute;
+	left: 11.872px;
+	top: 12.743px;
+	overflow: visible;
+	width: 121px;
+	white-space: nowrap;
+	line-height: 18px;
+	margin-top: -0.5px;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 17px;
+	color: rgba(29,29,29,1);
+}
+.Bottom_Rectangle_f {
+	position: absolute;
+	overflow: visible;
+	width: 147.728px;
+	height: 3px;
+	left: 0px;
+	top: 39.823px;
+}
+.Inventory_Area_Class {
+	position: absolute;
+	width: 147.729px;
+	height: 42.824px;
+	left: 366px;
+	top: 0px;
+	overflow: visible;
+}
+.Rectangle_f {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 165.728px;
+	height: 60.73px;
+	left: 0.001px;
+	top: 0px;
+}
+.Title_ga_Class {
+	position: absolute;
+	left: 33.872px;
+	top: 12.743px;
+	overflow: visible;
+	width: 77px;
+	white-space: nowrap;
+	line-height: 18px;
+	margin-top: -0.5px;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 17px;
+	color: rgba(29,29,29,1);
+}
+.Bottom_Rectangle_ga {
+	position: absolute;
+	overflow: visible;
+	width: 147.728px;
+	height: 3px;
+	left: 0px;
+	top: 39.823px;
+}
+.Sales_Area_Class {
+	position: absolute;
+	width: 147.729px;
+	height: 42.824px;
+	left: 183px;
+	top: 0px;
+	overflow: visible;
+}
+.Rectangle_ga {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 165.728px;
+	height: 60.73px;
+	left: 0.001px;
+	top: 0px;
+}
+.Title_gb_Class {
+	position: absolute;
+	left: 49.872px;
+	top: 12.743px;
+	overflow: visible;
+	width: 45px;
+	white-space: nowrap;
+	line-height: 18px;
+	margin-top: -0.5px;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 17px;
+	color: rgba(29,29,29,1);
+}
+.Bottom_Rectangle_gb {
+	position: absolute;
+	overflow: visible;
+	width: 147.728px;
+	height: 3px;
+	left: 0px;
+	top: 39.823px;
+}
+.Overview_Area_Class {
+	position: absolute;
+	width: 147.729px;
+	height: 42.824px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+.Rectangle_gb {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 165.728px;
+	height: 60.73px;
+	left: 0.001px;
+	top: 0px;
+}
+.Title_gc_Class {
+	position: absolute;
+	left: 33.872px;
+	top: 12.743px;
+	overflow: visible;
+	width: 77px;
+	white-space: nowrap;
+	line-height: 18px;
+	margin-top: -0.5px;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 17px;
+	color: rgba(29,29,29,1);
+}
+.Bottom_Rectangle_gd {
+	position: absolute;
+	overflow: visible;
+	width: 147.728px;
+	height: 3px;
+	left: 0px;
+	top: 39.823px;
+}
+.Header_Class {
+	position: absolute;
+	width: 1229.589px;
+	height: 48px;
+	left: 25.411px;
+	top: 18.124px;
+	overflow: visible;
+}
+.Settings_Icon_Class {
+	position: absolute;
+	width: 36px;
+	height: 36px;
+	left: 1193.589px;
+	top: 11.876px;
+	overflow: visible;
+}
+.Sandwich_Icon_Class {
+	position: absolute;
+	width: 24px;
+	height: 24px;
+	left: 1154.589px;
+	top: 17.876px;
+	overflow: visible;
+}
+.Rectangle_545 {
+	position: absolute;
+	overflow: visible;
+	width: 24px;
+	height: 5px;
+	left: 0px;
+	top: 0px;
+}
+.Rectangle_546 {
+	position: absolute;
+	overflow: visible;
+	width: 24px;
+	height: 5px;
+	left: 0px;
+	top: 9.5px;
+}
+.Rectangle_547 {
+	position: absolute;
+	overflow: visible;
+	width: 24px;
+	height: 5px;
+	left: 0px;
+	top: 19px;
+}
+.Grid_Icon_Class {
+	/* opacity: 0.33; */
+	position: absolute;
+	width: 23px;
+	height: 24px;
+	left: 1120.589px;
+	top: 17.876px;
+	overflow: visible;
+}
+.Rectangle_536 {
+	position: absolute;
+	overflow: visible;
+	width: 5px;
+	height: 5px;
+	left: 0px;
+	top: 0px;
+}
+.Rectangle_537 {
+	position: absolute;
+	overflow: visible;
+	width: 5px;
+	height: 5px;
+	left: 9px;
+	top: 0px;
+}
+.Rectangle_538 {
+	position: absolute;
+	overflow: visible;
+	width: 5px;
+	height: 5px;
+	left: 18px;
+	top: 0px;
+}
+.Rectangle_539 {
+	position: absolute;
+	overflow: visible;
+	width: 5px;
+	height: 5px;
+	left: 0px;
+	top: 9.5px;
+}
+.Rectangle_540 {
+	position: absolute;
+	overflow: visible;
+	width: 5px;
+	height: 5px;
+	left: 9px;
+	top: 9.5px;
+}
+.Rectangle_541 {
+	position: absolute;
+	overflow: visible;
+	width: 5px;
+	height: 5px;
+	left: 18px;
+	top: 9.5px;
+}
+.Rectangle_542 {
+	position: absolute;
+	overflow: visible;
+	width: 5px;
+	height: 5px;
+	left: 0px;
+	top: 19px;
+}
+.Rectangle_543 {
+	position: absolute;
+	overflow: visible;
+	width: 5px;
+	height: 5px;
+	left: 9px;
+	top: 19px;
+}
+.Rectangle_544 {
+	position: absolute;
+	overflow: visible;
+	width: 5px;
+	height: 5px;
+	left: 18px;
+	top: 19px;
+}
+.Green_Bar {
+	position: absolute;
+	overflow: visible;
+	width: 66px;
+	height: 3px;
+	left: 17.589px;
+	top: 39.876px;
+}
+.Sales_Title_Class {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+	width: 192px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -1px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: 900;
+	font-size: 40px;
+	color: rgba(29,29,29,1);
+}
+
+
+.Product_Card_1_dy_Class {
+	position: absolute;
+	width: 210px;
+	height: 210px;
+	left: 8.941px;
+	top: 6px;
+	overflow: visible;
+}
+.Product_Card_1_dy_Class .Rectangle {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 209.941px;
+	height: 210px;
+	left: 0.059px;
+	top: 0px;
+}
+.Product_Card_1_dy_Class .Side_Rectangle {
+	overflow: visible;
+	position: absolute;
+	width: 5.059px;
+	height: 196px;
+	left: 0px;
+	top: 7px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Product_Card_1_dy_Class .Tracking_Class {
+	position: absolute;
+	left: 23px;
+	top: 187px;
+	overflow: visible;
+	width: 170px;
+	white-space: nowrap;
+	line-height: 14px;
+	margin-top: -3px;
+	text-align: right;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	color: rgba(255,167,78,1);
+}
+.Product_Card_1_dy_Class .Price_Class {
+	position: absolute;
+	left: 17.363px;
+	top: 187px;
+	overflow: visible;
+	width: 38px;
+	white-space: nowrap;
+	line-height: 14px;
+	margin-top: -3px;
+	text-align: right;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	color: rgba(29,29,29,1);
+}
+.Product_Card_1_dy_Class .Size_Class {
+	position: absolute;
+	left: 17.5px;
+	top: 166px;
+	overflow: visible;
+	width: 23px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -1.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	color: rgba(29,29,29,1);
+}
+.Product_Card_1_dy_Class .Title_Class {
+	position: absolute;
+	left: 17.5px;
+	top: 132px;
+	overflow: visible;
+	width: 180px;
+	white-space: pre-wrap;
+	line-height: 17px;
+	margin-top: -1.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	color: rgba(29,29,29,1);
+}
+.Product_Card_1_dy_Class .Product_Image_Class {
+	border-radius: 10px;
+	display: table;
+	position: absolute;
+	width: 118px;
+	height: 118px;
+	left: 45.559px;
+	top: 9.146px;
+	overflow: visible;
+
+	display: flex;
+  align-items: center;
+  justify-content: center;
+}

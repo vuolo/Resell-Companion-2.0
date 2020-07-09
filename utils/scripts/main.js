@@ -6,13 +6,16 @@ window.request = require('request-promise');
 window.path = require('path');
 window.url = require('url');
 window.translate = require('translate');
+window.packagesAPI = require('../../../utils/api/packages.js');
 
 // variables
 window.companionSettings = {
   // language: "en",
   language: "es",
   // theme: "light",
-  theme: "dark"
+  theme: "dark",
+  currency: "CAD",
+  currencySymbol: "CA$"
 };
 
 window.mainWebContentsID = getMainWebContentsID();
@@ -187,6 +190,14 @@ window.confineTextWidth = (maxWidth, text, incomingFontSize, incomingFontSizeTyp
   return includeFontSizeType ? (outFontSize + incomingFontSizeType) : outFontSize;
 };
 
+window.tryGenerateEllipses = (maxWidth, text, incomingFontSize, incomingFontSizeType, incomingFontStyle, incomingFont) => {
+  let outText = text;
+  while (getTextWidth(outText, `${incomingFontStyle} ${incomingFontSize + incomingFontSizeType} ${incomingFont}`) >= maxWidth) {
+    outText = outText.substring(0, outText.length-4) + "...";
+  }
+  return outText;
+}
+
 window.calculateUnderlineWidth = (maxWidth, text, incomingFontSize, incomingFontSizeType, incomingFontStyle, incomingFont, multiplier = 0.25) => {
   let textWidth = getTextWidth(text, `${incomingFontStyle} ${confineTextWidth(maxWidth, text, incomingFontSize, incomingFontSizeType, incomingFontStyle, incomingFont)} ${incomingFont}`);
   return Math.floor(textWidth * multiplier);
@@ -199,4 +210,17 @@ window.calculateUnderlineLeftOffset = (maxWidth, text, incomingFontSize, incomin
 
 window.numberWithCommas = (x) => {
   return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+};
+
+window.roundNumber = (num, scale = 2) => {
+  if(!("" + num).includes("e")) {
+    return +(Math.round(num + "e+" + scale)  + "e-" + scale);
+  } else {
+    var arr = ("" + num).split("e");
+    var sig = ""
+    if(+arr[1] + scale > 0) {
+      sig = "+";
+    }
+    return +(Math.round(+arr[0] + "e" + sig + (+arr[1] + scale)) + "e-" + scale);
+  }
 };

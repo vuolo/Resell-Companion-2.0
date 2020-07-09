@@ -79,9 +79,7 @@ window.monitorsApp = new Vue({
       refreshDisplayedProducts();
     },
     shouldDisplayModals: function() {
-      for (var modal in modals) {
-        if (modals[modal].visible) return true;
-      }
+      for (var modal in modals) if (modals[modal].visible) return true;
       return false;
     },
     getMaxProductPage: function() {
