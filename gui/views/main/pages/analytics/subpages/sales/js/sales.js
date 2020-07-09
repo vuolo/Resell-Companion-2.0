@@ -271,6 +271,25 @@ window.modalLoadedCallback = (modalName) => {
   }
 }
 
+window.addSale = () => {
+  for (var i = 0; i < salesApp.createModal.quantity; i++) {
+    salesApp.createModal.id = window.parent.parent.makeid(10); // assign a new id to each node
+    window.sales.push(window.parent.parent.memory.copyObj(salesApp.createModal));
+    window.sales[window.sales.length-1].quantity = 1;
+  }
+  // TODO: reorganize sales based on table filter
+};
+
+window.editSale = (saleIndex) => {
+  window.frames['create-modal'].createApp.activeSaleIndex = saleIndex;
+  window.parent.parent.memory.syncObject(window.frames['create-modal'].modalOptions, window.parent.parent.memory.copyObj(window.sales[saleIndex]));
+  openModal('create');
+};
+
+window.updateSale = (saleIndex) => {
+  window.parent.parent.memory.syncObject(window.sales[saleIndex], window.parent.parent.memory.copyObj(window.frames['create-modal'].modalOptions));
+};
+
 const salesApp = new Vue({
   el: "#Rewrite___Sales",
   data: {
@@ -394,25 +413,6 @@ const salesApp = new Vue({
     }
   }
 });
-
-window.addSale = () => {
-  for (var i = 0; i < salesApp.createModal.quantity; i++) {
-    salesApp.createModal.id = window.parent.parent.makeid(10); // assign a new id to each node
-    window.sales.push(window.parent.parent.memory.copyObj(salesApp.createModal));
-    window.sales[window.sales.length-1].quantity = 1;
-  }
-  // TODO: reorganize sales based on table filter
-};
-
-window.editSale = (saleIndex) => {
-  window.frames['create-modal'].createApp.activeSaleIndex = saleIndex;
-  window.parent.parent.memory.syncObject(window.frames['create-modal'].modalOptions, window.parent.parent.memory.copyObj(window.sales[saleIndex]));
-  openModal('create');
-};
-
-window.updateSale = (saleIndex) => {
-  window.parent.parent.memory.syncObject(window.sales[saleIndex], window.parent.parent.memory.copyObj(window.frames['create-modal'].modalOptions));
-};
 
 function getStatusDescription(statusNumber) {
   switch (statusNumber) {
