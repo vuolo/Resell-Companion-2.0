@@ -82,7 +82,8 @@
 	width: 586px;
 	height: 63px;
 	left: 351px;
-	top: 589px;
+	/* top: 589px; */
+	top: 570px;
 	/* display: none; */
 	overflow: visible;
 }

@@ -19,7 +19,7 @@ const MODAL_OPTIONS_TEMPLATE = {
     date: "2020-07-07",
     tracking: {
       number: "",
-      carrier: "",
+      carrier: "unselected",
       statuses: []
     }
   },
@@ -33,24 +33,25 @@ const MODAL_OPTIONS_TEMPLATE = {
     date: "2020-07-07",
     tracking: {
       number: "",
-      carrier: "",
+      carrier: "unselected",
       statuses: []
     }
-  }
+  },
+  quantity: 1
 };
 
 window.modalOptions = {};
 window.resetModalOptions = () => {
   window.parent.parent.parent.memory.syncObject(window.modalOptions, window.parent.parent.parent.memory.copyObj(MODAL_OPTIONS_TEMPLATE));
-  document.getElementById('carrierSelect').value = "unselected";
 }
 window.resetModalOptions();
 
-const createApp = new Vue({
+window.createApp = new Vue({
   el: "#Rewrite___Sold_Inventory_Item_Modal",
   data: {
     companionSettings: window.parent.parent.parent.companionSettings,
     modalOptions: modalOptions,
+    activeSaleIndex: -1
   },
   methods: {
     confineTextWidth: window.parent.parent.parent.confineTextWidth,
@@ -60,6 +61,11 @@ const createApp = new Vue({
     tryTranslate: window.parent.parent.parent.tryTranslate,
     getThemeColor: window.parent.parent.parent.getThemeColor,
     tryGenerateEllipses: window.parent.parent.parent.tryGenerateEllipses,
+    finalizeModal: function() {
+      if (this.activeSaleIndex == -1) window.parent.addSale();
+      else window.parent.updateSale(this.activeSaleIndex);
+      this.closeModal();
+    },
     isSizeActive: function(size) {
       return modalOptions.sizes.includes(size);
     },

@@ -105,7 +105,7 @@
 
 				<template v-for="(sale, saleIndex) in sales">
 					<template v-if="displayMode == 'table'">
-						<div class="Row_1_Class clickable hover-opacity" v-bind:style="{ top: (saleIndex * (52 + 6)) + 10 + 'px'}">
+						<div class="Row_1_Class clickable hover-opacity" v-bind:style="{ top: (saleIndex * (52 + 6)) + 10 + 'px'}" v-on:click="editSale(saleIndex)">
 							<svg class="Rectangle">
 								<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Rectangle_Class" rx="10" ry="10" x="0" y="0" width="1206.043" height="52.497">
 								</rect>
@@ -119,11 +119,11 @@
 							<div class="Fees_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(90, getDisplayedFees(sale), 15, 'px', 'normal', 'SF Pro Text') }">
 								<span>{{getDisplayedFees(sale)}}</span>
 							</div>
-							<div class="Sale_Price_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(85, companionSettings.currencySymbol + sale.sale.price, 15, 'px', 'normal', 'SF Pro Text') }">
-								<span>{{companionSettings.currencySymbol}}{{numberWithCommas(sale.sale.price)}}</span>
+							<div class="Sale_Price_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(85, companionSettings.currencySymbol + (sale.sale.price || 0), 15, 'px', 'normal', 'SF Pro Text') }">
+								<span>{{companionSettings.currencySymbol}}{{numberWithCommas((sale.sale.price || 0))}}</span>
 							</div>
-							<div class="Purchase_Price_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(130, companionSettings.currencySymbol + sale.purchase.price, 15, 'px', 'normal', 'SF Pro Text') }">
-								<span>{{companionSettings.currencySymbol}}{{numberWithCommas(sale.purchase.price)}}</span>
+							<div class="Purchase_Price_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(130, companionSettings.currencySymbol + (sale.purchase.price || 0), 15, 'px', 'normal', 'SF Pro Text') }">
+								<span>{{companionSettings.currencySymbol}}{{numberWithCommas((sale.purchase.price || 0))}}</span>
 							</div>
 							<template v-if="getPlatformImage(sale.sale.platform).length > 0">
 								<div class="StockX_Icon_Class">
@@ -132,14 +132,14 @@
 							</template>
 							<template v-else>
 								<div class="Size_Class" style="left: 462.906px" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(115, sale.sale.platform, 15, 'px', 'normal', 'SF Pro Text') }">
-									<span>{{sale.sale.platform}}</span>
+									<span>{{sale.sale.platform.length > 0 ? sale.sale.platform : tryTranslate('N/A')}}</span>
 								</div>
 							</template>
 							<div class="Size_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(85, sale.size, 15, 'px', 'normal', 'SF Pro Text') }">
-								<span>{{sale.size}}</span>
+								<span>{{sale.size.length > 0 ? sale.size : tryTranslate('N/A')}}</span>
 							</div>
 							<div class="Product_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-								<span>{{tryGenerateEllipses(240, sale.name, 15, 'px', 'normal', 'SF Pro Text')}}</span>
+								<span>{{sale.name.length > 0 ? tryGenerateEllipses(240, sale.name, 15, 'px', 'normal', 'SF Pro Text') : tryTranslate('N/A')}}</span>
 							</div>
 							<div class="Product_Image_Class">
 								<img style="display: table-cell; vertical-align: middle; max-width: 42px; max-height: 42px; border-radius: 5px; margin-left: auto; margin-right: auto;" v-bind:class="{ transparentify: companionSettings.theme == 'light' }" v-bind:src="sale.imageURL" onerror="this.src='../../../../../../images/unknownImage.png'">
@@ -148,7 +148,7 @@
 					</template>
 					<template v-else-if="displayMode == 'grid'">
 						<!-- grid display -->
-						<div class="Product_Card_1_dy_Class clickable hover-opacity" v-bind:style="calculateGridPosition(saleIndex)">
+						<div class="Product_Card_1_dy_Class clickable hover-opacity" v-bind:style="calculateGridPosition(saleIndex)" v-on:click="editSale(saleIndex)">
 							<svg class="Rectangle">
 								<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Rectangle_Class" rx="20" ry="20" x="0" y="0" width="209.941" height="210">
 								</rect>
@@ -261,7 +261,7 @@
 							<option hidden value="custom">{{tryTranslate('Custom')}}</option>
 						</select>
 
-						<input id="dateRangeFilter" disabled v-bind:placeholder="'Jun 23 – Jun 27'" class="Search_Bar_Class special-focus clickable" style="border-top-left-radius: 0px; border-bottom-left-radius: 0px; width: 165px; left: 165px; padding-left: 0px; text-align-last: center; filter: none; padding-right: 0px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+						<input id="dateRangeFilter" disabled v-model="displayedDateSearch" class="Search_Bar_Class special-focus clickable" style="border-top-left-radius: 0px; border-bottom-left-radius: 0px; width: 165px; left: 165px; padding-left: 0px; text-align-last: center; filter: none; padding-right: 0px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
 
 						<svg class="Separator">
 							<rect v-bind:fill="getThemeColor('rgba(190,190,190,1)')" class="Separator_Class" rx="1.5" ry="1.5" x="0" y="0" width="18" height="3">

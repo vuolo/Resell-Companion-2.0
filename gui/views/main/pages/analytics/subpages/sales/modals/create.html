@@ -27,26 +27,6 @@
 					</rect>
 				</svg>
 
-				<div class="Done_Button_Class clipButton clickable" v-on:click="closeModal();">
-					<div class="clipGroup" style="width: 107px; height: 37px;">
-						<svg class="Back_Transitioner" style="bottom: -25px;" viewBox="4631.671 2118.361 137.6 34.565">
-							<path fill="rgba(36,39,37,1)" id="Back_Transitioner" d="M 4631.67138671875 2136.780029296875 C 4631.67138671875 2136.780029296875 4649.8212890625 2127.950439453125 4669.78759765625 2136.780029296875 C 4689.75244140625 2145.610595703125 4680.9365234375 2141.826416015625 4680.9365234375 2141.826416015625 C 4680.9365234375 2141.826416015625 4699.80859375 2134.79638671875 4711.21826171875 2141.229248046875 C 4722.626953125 2147.663330078125 4712.8291015625 2141.229248046875 4712.8291015625 2141.229248046875 C 4712.8291015625 2141.229248046875 4737.462890625 2118.742431640625 4759.2421875 2118.3642578125 C 4781.0234375 2117.985107421875 4760.5390625 2152.92626953125 4760.5390625 2152.92626953125 L 4631.67138671875 2152.92626953125 L 4631.67138671875 2136.780029296875 Z">
-							</path>
-						</svg>
-						<svg class="Front_Transitioner" style="bottom: -30px;" viewBox="4631.671 2118.361 137.6 26.969">
-							<path fill="rgba(91,182,187,1)" id="Front_Transitioner" d="M 4631.67138671875 2132.73193359375 C 4631.67138671875 2132.73193359375 4649.82177734375 2125.843017578125 4669.78759765625 2132.73193359375 C 4689.7529296875 2139.621826171875 4680.93701171875 2136.66943359375 4680.93701171875 2136.66943359375 C 4680.93701171875 2136.66943359375 4699.80908203125 2131.184326171875 4711.21875 2136.203369140625 C 4722.62744140625 2141.2236328125 4712.82958984375 2136.203369140625 4712.82958984375 2136.203369140625 C 4712.82958984375 2136.203369140625 4737.462890625 2118.658447265625 4759.24267578125 2118.363525390625 C 4781.0234375 2118.0673828125 4760.5390625 2145.329833984375 4760.5390625 2145.329833984375 L 4631.67138671875 2145.329833984375 L 4631.67138671875 2132.73193359375 Z">
-							</path>
-						</svg>
-					</div>
-					<svg class="Done_Rectangle">
-						<rect fill="transparent" stroke="rgba(91,182,187,1)" stroke-width="2px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Done_Rectangle_Class" rx="18.5" ry="18.5" x="0" y="0" width="107" height="37">
-						</rect>
-					</svg>
-					<div class="Done_Class">
-						<span>{{tryTranslate('Create')}}</span>
-					</div>
-				</div>
-
 				<svg class="Separator_2">
 					<rect v-bind:fill="getThemeColor('rgba(190,190,190,1)')" class="Separator_2_Class" rx="1.5" ry="1.5" x="0" y="0" width="609" height="3">
 					</rect>
@@ -92,7 +72,7 @@
 				<div class="Left_Fields_Class">
 
 					<div class="Sold_Price_Area_Class">
-						<input v-bind:placeholder="tryTranslate('Sold Price')" v-model="modalOptions.sale.price" type="number" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 112px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+						<input v-bind:placeholder="tryTranslate('Sold Price')" v-on:keyup.enter="finalizeModal();" v-model="modalOptions.sale.price" type="number" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 112px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
 						<div class="Magnifying_Glass_Icon_gv" style="text-align: center; font-size: 14px; pointer-events: none; top: 37.5px; width: 30px; line-height: 16px; left: 6.5px;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
 							<span>{{companionSettings.currencySymbol}}</span>
 						</div>
@@ -103,7 +83,7 @@
 					</div>
 
 					<div class="Fees_Area_Class">
-						<input v-bind:placeholder="tryTranslate('Fees')" v-model="modalOptions.sale.fees.amount" type="number" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 90px; padding-left: 12px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)'), paddingRight: (modalOptions.sale.fees.isPercent ? 25 : (companionSettings.currencySymbol.length == 1 ? 25 : (companionSettings.currencySymbol.length == 2 ? 30 : 40))) + 'px' }">
+						<input v-bind:placeholder="tryTranslate('Fees')" v-on:keyup.enter="finalizeModal();" v-model="modalOptions.sale.fees.amount" type="number" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 90px; padding-left: 12px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)'), paddingRight: (modalOptions.sale.fees.isPercent ? 25 : (companionSettings.currencySymbol.length == 1 ? 25 : (companionSettings.currencySymbol.length == 2 ? 30 : 40))) + 'px' }">
 						<div class="Magnifying_Glass_Icon_gv" style="text-align: right; font-size: 14px; pointer-events: none; top: 37.5px; width: 30px; line-height: 16px; left: 50.5px;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
 							<span>{{modalOptions.sale.fees.isPercent ? '%' : companionSettings.currencySymbol}}</span>
 						</div>
@@ -118,7 +98,7 @@
 					</div>
 
 					<div class="Listing_Platform_Image_Class">
-						<input v-bind:placeholder="tryTranslate('Listing Platform')" v-model="modalOptions.sale.platform" type="text" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 211px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+						<input v-bind:placeholder="tryTranslate('Listing Platform')" v-on:keyup.enter="finalizeModal();" v-model="modalOptions.sale.platform" type="text" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 211px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
 						<svg class="Magnifying_Glass_Icon_gv" style="top: 37.5px" viewBox="0.004 0 18.682 15.529">
 							<path v-bind:fill="getThemeColor('rgba(29,29,29,1)')" class="Store_Icon_Class" d="M 18.26143646240234 3.597241401672363 L 16.29296112060547 0.4549630880355835 C 16.11704444885254 0.1728859692811966 15.8046350479126 0 15.47099590301514 0 L 3.217322826385498 0 C 2.883683204650879 0 2.571275234222412 0.1728859692811966 2.395356178283691 0.4549630880355835 L 0.4268826246261597 3.597241401672363 C -0.5892015695571899 5.219943046569824 0.3116253018379211 7.476560115814209 2.21033787727356 7.734372615814209 C 2.346826791763306 7.752570629119873 2.486348867416382 7.761670589447021 2.625870943069458 7.761670589447021 C 3.523664712905884 7.761670589447021 4.318333148956299 7.367369174957275 4.864288806915283 6.757718563079834 C 5.410244464874268 7.367369174957275 6.207946300506592 7.761670589447021 7.102706909179688 7.761670589447021 C 8.000500679016113 7.761670589447021 8.795169830322266 7.367369174957275 9.34112548828125 6.757718563079834 C 9.887081146240234 7.367369174957275 10.68478298187256 7.761670589447021 11.57954406738281 7.761670589447021 C 12.47733783721924 7.761670589447021 13.27200603485107 7.367369174957275 13.81796264648438 6.757718563079834 C 14.36695098876953 7.367369174957275 15.16162109375 7.761670589447021 16.05638122558594 7.761670589447021 C 16.19893646240234 7.761670589447021 16.33542442321777 7.752571582794189 16.47191429138184 7.734372615814209 C 18.37669372558594 7.479592800140381 19.28055191040039 5.222976207733154 18.26143646240234 3.597241401672363 Z M 16.06244659423828 8.735291481018066 C 15.75913906097412 8.735291481018066 15.45886325836182 8.689794540405273 15.16768646240234 8.620034217834473 L 15.16768646240234 11.64705467224121 L 3.520631551742554 11.64705467224121 L 3.520631551742554 8.620034217834473 C 3.229455232620239 8.686761856079102 2.929179668426514 8.735291481018066 2.625870943069458 8.735291481018066 C 2.443885564804077 8.735291481018066 2.258867263793945 8.723158836364746 2.079915285110474 8.698893547058105 C 1.910062193870544 8.674629211425781 1.743242383003235 8.635199546813965 1.582488894462585 8.589703559875488 L 1.582488894462585 14.55881881713867 C 1.582488894462585 15.09567451477051 2.016220331192017 15.52940654754639 2.553076982498169 15.52940654754639 L 16.14130783081055 15.52940654754639 C 16.67816352844238 15.52940654754639 17.11189460754395 15.09567451477051 17.11189460754395 14.55881881713867 L 17.11189460754395 8.589703559875488 C 16.9481086730957 8.638232231140137 16.78432083129883 8.67766284942627 16.61446952819824 8.698893547058105 C 16.42945098876953 8.723158836364746 16.24746513366699 8.735291481018066 16.06244659423828 8.735291481018066 Z">
 							</path>
@@ -133,7 +113,7 @@
 						<input v-bind:placeholder="tryTranslate('Sold Date')" v-model="modalOptions.sale.date" @change="" type="date" class="Search_Bar_Class special-focus" v-bind:class="{ 'white-input-icon': companionSettings.theme == 'dark' }" style="left: 0px; top: 27px; width: 211px; padding-left: 15px; padding-right: 10px; text-indent: 0px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
 
 						<div class="Keywords_ep_Class" style="left: 10px; position: absolute;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-							<span>{{tryTranslate('Sold Date')}}</span>
+							<span>{{tryTranslate('Sold Date')}} <span style="color: rgba(253,53,53,1); font-weight: bold;">*</span></span>
 						</div>
 					</div>
 
@@ -143,7 +123,7 @@
 				<div class="Right_Fields_Class">
 
 					<div class="Product_Name_Area_Class">
-						<input v-bind:placeholder="tryTranslate('Product Name')" v-model="modalOptions.name" type="text" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 279px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+						<input v-bind:placeholder="tryTranslate('Product Name')" v-on:keyup.enter="finalizeModal();" v-model="modalOptions.name" type="text" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 279px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
 						<svg class="Magnifying_Glass_Icon_gv" viewBox="0 -0.045 17.337 17.337">
 							<path v-bind:fill="getThemeColor('rgba(29,29,29,1)')" class="Magnifying_Glass_Icon_gv_Class" d="M 7.516793251037598 -0.0235234834253788 C 3.371819496154785 -0.0235234834253788 0 3.34829568862915 0 7.493270397186279 C 0 11.63824462890625 3.371819496154785 15.01006317138672 7.516793251037598 15.01006317138672 C 8.78391170501709 15.01006317138672 10.02955055236816 14.70939350128174 11.08190250396729 14.12952709197998 C 11.1661958694458 14.2309684753418 11.25965595245361 14.32442760467529 11.36109733581543 14.40872001647949 L 13.50875282287598 16.55637741088867 C 14.04909896850586 17.16438865661621 14.88185119628906 17.42293357849121 15.67153072357178 17.22785949707031 C 16.46121025085449 17.03278541564941 17.07778167724609 16.41621208190918 17.27285957336426 15.62653064727783 C 17.46793174743652 14.83684730529785 17.20938682556152 14.0040979385376 16.60137557983398 13.46375179290771 L 14.45372009277344 11.31609630584717 C 14.3491039276123 11.21144199371338 14.2339506149292 11.11788082122803 14.11009693145752 11.03690242767334 C 14.68996429443359 9.984550476074219 15.0550651550293 8.76038646697998 15.0550651550293 7.471794128417969 C 15.0550651550293 3.326818943023682 11.68324661254883 -0.04500007256865501 7.538270950317383 -0.04500007256865501 Z M 7.516793251037598 2.124131917953491 C 10.50203609466553 2.124131917953491 12.88593292236328 4.508029937744141 12.88593292236328 7.493270397186279 C 12.88593292236328 8.910723686218262 12.37049579620361 10.22079277038574 11.46848201751709 11.18723678588867 C 11.4470043182373 11.20871257781982 11.42552852630615 11.23019027709961 11.40405178070068 11.25166702270508 C 11.30261039733887 11.33596038818359 11.20915126800537 11.42942047119141 11.12485599517822 11.53086090087891 C 10.17988777160645 12.38992404937744 8.891294479370117 12.88388538360596 7.495319366455078 12.88388538360596 C 4.510077476501465 12.88388538360596 2.126179695129395 10.49998760223389 2.126179695129395 7.514747142791748 C 2.126179695129395 4.529504776000977 4.510077476501465 2.145607709884644 7.495319366455078 2.145607709884644 Z">
 							</path>
@@ -155,7 +135,7 @@
 					</div>
 
 					<div class="Size_Area_Class">
-						<input v-bind:placeholder="tryTranslate('Size')" v-model="modalOptions.size" type="text" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 187px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+						<input v-bind:placeholder="tryTranslate('Size')" v-on:keyup.enter="finalizeModal();" v-model="modalOptions.size" type="text" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 187px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
 						<div class="Arrows_Icon_Class" style="left: 10px; top: 36px; transform: scale(0.85);" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
 							<span>↑↓</span>
 						</div>
@@ -166,7 +146,7 @@
 					</div>
 
 					<div class="Product_Image_URL_Area_Class">
-						<input v-bind:placeholder="tryTranslate('Product Image URL')" v-model="modalOptions.imageURL" type="text" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 279px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+						<input v-bind:placeholder="tryTranslate('Product Image URL')" v-on:keyup.enter="finalizeModal();" v-model="modalOptions.imageURL" type="text" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 279px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
 						<svg class="Magnifying_Glass_Icon_gv" style="top: 39px;" viewBox="0 4.5 19.203 14.402">
 							<path v-bind:fill="getThemeColor('rgba(29,29,29,1)')" class="Image_Icon_Class" d="M 17.40238952636719 18.9019775390625 L 1.800247073173523 18.9019775390625 C 0.8059856295585632 18.9019775390625 0 18.09599304199219 0 17.10173034667969 L 0 6.300247192382813 C 0 5.305985450744629 0.8059856295585632 4.5 1.800247073173523 4.5 L 17.40238952636719 4.5 C 18.39665031433105 4.5 19.20263671875 5.305985450744629 19.20263671875 6.300247192382813 L 19.20263671875 17.10173034667969 C 19.20263671875 18.09599304199219 18.39665031433105 18.9019775390625 17.40238952636719 18.9019775390625 Z M 4.200576782226563 6.600288391113281 C 3.0406174659729 6.600288391113281 2.100288391113281 7.540616989135742 2.100288391113281 8.700576782226563 C 2.100288391113281 9.860536575317383 3.0406174659729 10.80086517333984 4.200576782226563 10.80086517333984 C 5.360536098480225 10.80086517333984 6.300865173339844 9.860536575317383 6.300865173339844 8.700576782226563 C 6.300865173339844 7.540616989135742 5.360536098480225 6.600288391113281 4.200576782226563 6.600288391113281 Z M 2.40032958984375 16.50164794921875 L 16.80230712890625 16.50164794921875 L 16.80230712890625 12.30107116699219 L 13.52004337310791 9.018808364868164 C 13.34429359436035 8.843058586120605 13.05933094024658 8.843058586120605 12.88354301452637 9.018808364868164 L 7.801070690155029 14.101318359375 L 5.718972682952881 12.01921939849854 C 5.54322338104248 11.84347057342529 5.258259296417236 11.84347057342529 5.082472801208496 12.01921939849854 L 2.40032958984375 14.70140075683594 L 2.40032958984375 16.50164794921875 Z">
 							</path>
@@ -181,12 +161,12 @@
 						<input v-bind:placeholder="tryTranslate('Purchase Date')" v-model="modalOptions.purchase.date" @change="" type="date" class="Search_Bar_Class special-focus" v-bind:class="{ 'white-input-icon': companionSettings.theme == 'dark' }" style="left: 0px; top: 27px; width: 187px; padding-left: 15px; padding-right: 10px; text-indent: 0px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
 
 						<div class="Keywords_ep_Class" style="left: 10px; position: absolute;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-							<span>{{tryTranslate('Purchase Date')}}</span>
+							<span>{{tryTranslate('Purchase Date')}} <span style="color: rgba(253,53,53,1); font-weight: bold;">*</span></span>
 						</div>
 					</div>
 
 					<div class="Store_Area_Class">
-						<input v-bind:placeholder="tryTranslate('Store')" v-model="modalOptions.purchase.store" type="text" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 149px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+						<input v-bind:placeholder="tryTranslate('Store')" v-on:keyup.enter="finalizeModal();" v-model="modalOptions.purchase.store" type="text" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 149px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
 						<svg class="Magnifying_Glass_Icon_gv" style="top: 37.5px" viewBox="0.004 0 18.682 15.529">
 							<path v-bind:fill="getThemeColor('rgba(29,29,29,1)')" class="Store_Icon_Class" d="M 18.26143646240234 3.597241401672363 L 16.29296112060547 0.4549630880355835 C 16.11704444885254 0.1728859692811966 15.8046350479126 0 15.47099590301514 0 L 3.217322826385498 0 C 2.883683204650879 0 2.571275234222412 0.1728859692811966 2.395356178283691 0.4549630880355835 L 0.4268826246261597 3.597241401672363 C -0.5892015695571899 5.219943046569824 0.3116253018379211 7.476560115814209 2.21033787727356 7.734372615814209 C 2.346826791763306 7.752570629119873 2.486348867416382 7.761670589447021 2.625870943069458 7.761670589447021 C 3.523664712905884 7.761670589447021 4.318333148956299 7.367369174957275 4.864288806915283 6.757718563079834 C 5.410244464874268 7.367369174957275 6.207946300506592 7.761670589447021 7.102706909179688 7.761670589447021 C 8.000500679016113 7.761670589447021 8.795169830322266 7.367369174957275 9.34112548828125 6.757718563079834 C 9.887081146240234 7.367369174957275 10.68478298187256 7.761670589447021 11.57954406738281 7.761670589447021 C 12.47733783721924 7.761670589447021 13.27200603485107 7.367369174957275 13.81796264648438 6.757718563079834 C 14.36695098876953 7.367369174957275 15.16162109375 7.761670589447021 16.05638122558594 7.761670589447021 C 16.19893646240234 7.761670589447021 16.33542442321777 7.752571582794189 16.47191429138184 7.734372615814209 C 18.37669372558594 7.479592800140381 19.28055191040039 5.222976207733154 18.26143646240234 3.597241401672363 Z M 16.06244659423828 8.735291481018066 C 15.75913906097412 8.735291481018066 15.45886325836182 8.689794540405273 15.16768646240234 8.620034217834473 L 15.16768646240234 11.64705467224121 L 3.520631551742554 11.64705467224121 L 3.520631551742554 8.620034217834473 C 3.229455232620239 8.686761856079102 2.929179668426514 8.735291481018066 2.625870943069458 8.735291481018066 C 2.443885564804077 8.735291481018066 2.258867263793945 8.723158836364746 2.079915285110474 8.698893547058105 C 1.910062193870544 8.674629211425781 1.743242383003235 8.635199546813965 1.582488894462585 8.589703559875488 L 1.582488894462585 14.55881881713867 C 1.582488894462585 15.09567451477051 2.016220331192017 15.52940654754639 2.553076982498169 15.52940654754639 L 16.14130783081055 15.52940654754639 C 16.67816352844238 15.52940654754639 17.11189460754395 15.09567451477051 17.11189460754395 14.55881881713867 L 17.11189460754395 8.589703559875488 C 16.9481086730957 8.638232231140137 16.78432083129883 8.67766284942627 16.61446952819824 8.698893547058105 C 16.42945098876953 8.723158836364746 16.24746513366699 8.735291481018066 16.06244659423828 8.735291481018066 Z">
 							</path>
@@ -198,7 +178,7 @@
 					</div>
 
 					<div class="Purchase_Price_Area_Class">
-						<input v-bind:placeholder="tryTranslate('Purchase Price')" v-model="modalOptions.purchase.price" type="number" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 149px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+						<input v-bind:placeholder="tryTranslate('Purchase Price')" v-on:keyup.enter="finalizeModal();" v-model="modalOptions.purchase.price" type="number" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 149px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
 						<div class="Magnifying_Glass_Icon_gv" style="text-align: center; font-size: 14px; pointer-events: none; top: 37.5px; width: 30px; line-height: 16px; left: 6.5px;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
 							<span>{{companionSettings.currencySymbol}}</span>
 						</div>
@@ -209,7 +189,7 @@
 					</div>
 
 					<div class="Est_Resell_Area_Class">
-						<input v-bind:placeholder="tryTranslate('Est. Resell')" v-model="modalOptions.purchase.estimatedResell" type="number" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 149px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+						<input v-bind:placeholder="tryTranslate('Est. Resell')" v-on:keyup.enter="finalizeModal();" v-model="modalOptions.purchase.estimatedResell" type="number" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 149px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
 						<div class="Magnifying_Glass_Icon_gv" style="text-align: center; font-size: 14px; pointer-events: none; top: 37.5px; width: 30px; line-height: 16px; left: 6.5px;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
 							<span>{{companionSettings.currencySymbol}}</span>
 						</div>
@@ -225,7 +205,7 @@
 				<div class="Tracking_Area__before__Class" style="display: block;">
 
 					<div class="Tracking_Number_Area_Class">
-						<input v-bind:placeholder="tryTranslate('Tracking Number')" v-model="modalOptions.sale.tracking.number" type="text" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 306px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+						<input v-bind:placeholder="tryTranslate('Tracking Number')" v-on:keyup.enter="" v-model="modalOptions.sale.tracking.number" type="text" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 306px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
 						<svg class="Magnifying_Glass_Icon_gv" viewBox="0 -0.045 17.337 17.337">
 							<path v-bind:fill="getThemeColor('rgba(29,29,29,1)')" class="Magnifying_Glass_Icon_gv_Class" d="M 7.516793251037598 -0.0235234834253788 C 3.371819496154785 -0.0235234834253788 0 3.34829568862915 0 7.493270397186279 C 0 11.63824462890625 3.371819496154785 15.01006317138672 7.516793251037598 15.01006317138672 C 8.78391170501709 15.01006317138672 10.02955055236816 14.70939350128174 11.08190250396729 14.12952709197998 C 11.1661958694458 14.2309684753418 11.25965595245361 14.32442760467529 11.36109733581543 14.40872001647949 L 13.50875282287598 16.55637741088867 C 14.04909896850586 17.16438865661621 14.88185119628906 17.42293357849121 15.67153072357178 17.22785949707031 C 16.46121025085449 17.03278541564941 17.07778167724609 16.41621208190918 17.27285957336426 15.62653064727783 C 17.46793174743652 14.83684730529785 17.20938682556152 14.0040979385376 16.60137557983398 13.46375179290771 L 14.45372009277344 11.31609630584717 C 14.3491039276123 11.21144199371338 14.2339506149292 11.11788082122803 14.11009693145752 11.03690242767334 C 14.68996429443359 9.984550476074219 15.0550651550293 8.76038646697998 15.0550651550293 7.471794128417969 C 15.0550651550293 3.326818943023682 11.68324661254883 -0.04500007256865501 7.538270950317383 -0.04500007256865501 Z M 7.516793251037598 2.124131917953491 C 10.50203609466553 2.124131917953491 12.88593292236328 4.508029937744141 12.88593292236328 7.493270397186279 C 12.88593292236328 8.910723686218262 12.37049579620361 10.22079277038574 11.46848201751709 11.18723678588867 C 11.4470043182373 11.20871257781982 11.42552852630615 11.23019027709961 11.40405178070068 11.25166702270508 C 11.30261039733887 11.33596038818359 11.20915126800537 11.42942047119141 11.12485599517822 11.53086090087891 C 10.17988777160645 12.38992404937744 8.891294479370117 12.88388538360596 7.495319366455078 12.88388538360596 C 4.510077476501465 12.88388538360596 2.126179695129395 10.49998760223389 2.126179695129395 7.514747142791748 C 2.126179695129395 4.529504776000977 4.510077476501465 2.145607709884644 7.495319366455078 2.145607709884644 Z">
 							</path>
@@ -237,7 +217,7 @@
 					</div>
 
 					<div class="Carrier_Area_Class">
-						<select id="carrierSelect" v-bind:placeholder="tryTranslate('Carrier')" class="Search_Bar_Class special-focus" v-bind:class="{ 'white-arrow': companionSettings.theme == 'dark', 'black-arrow': companionSettings.theme == 'light', 'special-focus-dark': companionSettings.theme == 'dark' }" style="left: 0px; top: 27px; width: 137px; padding-left: 0px; text-indent: 40px; padding-right: 25px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+						<select id="carrierSelect" v-model="modalOptions.sale.tracking.carrier" v-bind:placeholder="tryTranslate('Carrier')" class="Search_Bar_Class special-focus" v-bind:class="{ 'white-arrow': companionSettings.theme == 'dark', 'black-arrow': companionSettings.theme == 'light', 'special-focus-dark': companionSettings.theme == 'dark' }" style="left: 0px; top: 27px; width: 137px; padding-left: 0px; text-indent: 40px; padding-right: 25px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
 							<option selected disabled value="unselected">{{tryTranslate('Select Carrier')}}...</option>
 							<option value="ups">{{tryTranslate('UPS')}}</option>
 							<option value="upsmi">{{tryTranslate('UPS MI')}}</option>
@@ -438,6 +418,37 @@
 					<ellipse fill="rgba(53,178,57,1)" class="Ellipse_350_Class" rx="7.5" ry="7.5" cx="7.5" cy="7.5">
 					</ellipse>
 				</svg>
+
+				<div v-if="activeSaleIndex == -1" class="Size_Area_Class" style="top: 685px; left: 755px; width: 135px; height: 36px;">
+					<input v-bind:placeholder="tryTranslate('Quantity')" v-on:keyup.enter="finalizeModal();" v-model="modalOptions.quantity" type="text" class="Search_Bar_Class special-focus" style="left: 0px; top: 0px; width: 135px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+					<div class="Arrows_Icon_Class" style="left: 10px; top: 9px; transform: scale(0.85);" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+						<span>↑↓</span>
+					</div>
+
+					<div class="Keywords_ep_Class" style="top: -27px; left: 10px; position: absolute;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+						<span>{{tryTranslate('Quantity')}}</span>
+					</div>
+				</div>
+
+				<div class="Done_Button_Class clipButton clickable" v-on:click="finalizeModal();">
+					<div class="clipGroup" style="width: 107px; height: 37px;">
+						<svg class="Back_Transitioner" style="bottom: -25px;" viewBox="4631.671 2118.361 137.6 34.565">
+							<path fill="rgba(36,39,37,1)" id="Back_Transitioner" d="M 4631.67138671875 2136.780029296875 C 4631.67138671875 2136.780029296875 4649.8212890625 2127.950439453125 4669.78759765625 2136.780029296875 C 4689.75244140625 2145.610595703125 4680.9365234375 2141.826416015625 4680.9365234375 2141.826416015625 C 4680.9365234375 2141.826416015625 4699.80859375 2134.79638671875 4711.21826171875 2141.229248046875 C 4722.626953125 2147.663330078125 4712.8291015625 2141.229248046875 4712.8291015625 2141.229248046875 C 4712.8291015625 2141.229248046875 4737.462890625 2118.742431640625 4759.2421875 2118.3642578125 C 4781.0234375 2117.985107421875 4760.5390625 2152.92626953125 4760.5390625 2152.92626953125 L 4631.67138671875 2152.92626953125 L 4631.67138671875 2136.780029296875 Z">
+							</path>
+						</svg>
+						<svg class="Front_Transitioner" style="bottom: -30px;" viewBox="4631.671 2118.361 137.6 26.969">
+							<path fill="rgba(91,182,187,1)" id="Front_Transitioner" d="M 4631.67138671875 2132.73193359375 C 4631.67138671875 2132.73193359375 4649.82177734375 2125.843017578125 4669.78759765625 2132.73193359375 C 4689.7529296875 2139.621826171875 4680.93701171875 2136.66943359375 4680.93701171875 2136.66943359375 C 4680.93701171875 2136.66943359375 4699.80908203125 2131.184326171875 4711.21875 2136.203369140625 C 4722.62744140625 2141.2236328125 4712.82958984375 2136.203369140625 4712.82958984375 2136.203369140625 C 4712.82958984375 2136.203369140625 4737.462890625 2118.658447265625 4759.24267578125 2118.363525390625 C 4781.0234375 2118.0673828125 4760.5390625 2145.329833984375 4760.5390625 2145.329833984375 L 4631.67138671875 2145.329833984375 L 4631.67138671875 2132.73193359375 Z">
+							</path>
+						</svg>
+					</div>
+					<svg class="Done_Rectangle">
+						<rect fill="transparent" stroke="rgba(91,182,187,1)" stroke-width="2px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Done_Rectangle_Class" rx="18.5" ry="18.5" x="0" y="0" width="107" height="37">
+						</rect>
+					</svg>
+					<div class="Done_Class">
+						<span>{{activeSaleIndex == -1 ? tryTranslate('Create') : tryTranslate('Done')}}</span>
+					</div>
+				</div>
 
 			</div>
 		</div>

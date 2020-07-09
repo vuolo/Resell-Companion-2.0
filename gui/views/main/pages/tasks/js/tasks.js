@@ -247,6 +247,7 @@ window.addTaskNode = () => {
     newTaskNode.id = window.parent.makeid(10); // assign a new id to each node
     tasks[tasksApp.activeTaskIndex].nodes.push(window.parent.memory.copyObj(newTaskNode));
   }
+  // TODO?: reorganize tasks based on table filter
 };
 
 window.updateTaskNode = (taskNodeIndex) => {
