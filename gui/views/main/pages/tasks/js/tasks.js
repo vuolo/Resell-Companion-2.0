@@ -59,6 +59,7 @@ window.tasksApp = new Vue({
     calculateUnderlineLeftOffset: window.parent.calculateUnderlineLeftOffset,
     tryTranslate: window.parent.tryTranslate,
     getThemeColor: window.parent.getThemeColor,
+    getColor: window.parent.getColor,
     formatTimestampExpanded: window.parent.formatTimestampExpanded,
     openModal: window.openModal,
     getTitleSwitchLeft: function(maxWidth, title) {
@@ -110,19 +111,6 @@ window.tasksApp = new Vue({
       this.createModal.useRandomSize = tasks[this.activeTaskIndex].nodes[taskNodeIndex].configuration.useRandomSize;
       this.createModal.checkoutMethod = tasks[this.activeTaskIndex].nodes[taskNodeIndex].configuration.checkoutMethod;
       this.openModal('create');
-    },
-    getColor: function(color) {
-      switch (color) {
-        case 'green':
-          return 'rgba(53,178,57,1)';
-        case 'yellow':
-          return 'rgba(253,213,53,1)';
-        case 'orange':
-          return 'rgba(255,167,78,1)';
-        case 'red':
-          return 'rgba(253,53,53,1)';
-      }
-      return this.getThemeColor('rgba(190,190,190,1)');
     },
     getTaskStatusColor: function(taskIndex) {
       if (tasks[taskIndex].nodes.length > 0) {

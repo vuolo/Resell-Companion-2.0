@@ -166,10 +166,10 @@
 }
 .Track___Class {
 	position: absolute;
-	left: 23.967px;
+	left: 0;
 	top: 9.5px;
 	overflow: visible;
-	width: 61px;
+	width: 107px;
 	white-space: nowrap;
 	text-align: center;
 	font-family: SF Pro Text;
@@ -242,7 +242,7 @@
 .Tracking_Area__after__Class {
 	position: absolute;
 	width: 727px;
-	height: 136px;
+	height: 87px;
 	left: 318px;
 	top: 565px;
 	overflow: visible;
@@ -256,7 +256,9 @@
 	overflow: visible;
 }
 .Green_Separator {
-	width: 662px;
+	top: -6px;
+	left: -59px;
+	width: 20px;
 	height: 5px;
 	position: absolute;
 	overflow: visible;
@@ -266,15 +268,16 @@
 .Tracking_History_Content_Area_Class {
 	position: absolute;
 	width: 703px;
-	height: 115px;
+	height: 148px;
 	left: 24px;
 	top: 0px;
-	overflow: hidden;
+	overflow: auto;
+	overflow-y: hidden;
 }
 .Tracking_History_Content_Area_en_Class {
 	position: absolute;
 	width: 306px;
-	height: 97px;
+	height: 36px;
 	left: 9px;
 	top: 6px;
 	overflow: visible;
@@ -283,8 +286,8 @@
 	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
 	overflow: visible;
-	width: 324px;
-	height: 115px;
+	width: 306px;
+	height: 97px;
 	left: 0px;
 	top: 0px;
 }
@@ -292,8 +295,8 @@
 	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
 	overflow: visible;
-	width: 324px;
-	height: 54px;
+	width: 306px;
+	height: 36px;
 	left: 0px;
 	top: 0px;
 }
@@ -302,7 +305,7 @@
 	left: 39px;
 	top: 9px;
 	overflow: visible;
-	width: 183px;
+	width: 235px;
 	white-space: nowrap;
 	line-height: 17px;
 	margin-top: -0.5px;
@@ -316,10 +319,10 @@
 .ID1_Class {
 	opacity: 0.66;
 	position: absolute;
-	left: 18px;
+	left: 8px;
 	top: 9px;
 	overflow: visible;
-	width: 9px;
+	width: 30px;
 	white-space: nowrap;
 	line-height: 17px;
 	margin-top: -0.5px;
@@ -333,9 +336,9 @@
 .Side_Rectangle {
 	position: absolute;
 	overflow: visible;
-	width: 7px;
+	width: 8px;
 	height: 36px;
-	left: 0px;
+	left: -2px;
 	top: 0px;
 }
 .__Class {
@@ -355,10 +358,10 @@
 }
 .Time_Class {
 	position: absolute;
-	left: 67px;
+	left: 39px;
 	top: 70px;
 	overflow: visible;
-	width: 198px;
+	width: 260px;
 	white-space: nowrap;
 	line-height: 17px;
 	margin-top: -0.5px;
@@ -373,9 +376,10 @@
 	position: absolute;
 	width: 18px;
 	height: 18px;
-	left: 42px;
-	top: 71px;
+	left: 14px;
+	top: 69px;
 	overflow: visible;
+	transform: scale(0.8);
 }
 .Clock_Icon_2 {
 	overflow: visible;
@@ -397,10 +401,10 @@
 }
 .Location_Class {
 	position: absolute;
-	left: 97px;
+	left: 39px;
 	top: 45px;
 	overflow: visible;
-	width: 135px;
+	width: 260px;
 	white-space: nowrap;
 	line-height: 17px;
 	margin-top: -0.5px;
@@ -416,9 +420,9 @@
 	position: absolute;
 	width: 14.785px;
 	height: 20.699px;
-	left: 75.503px;
+	left: 16px;
 	top: 44.232px;
-	transform: matrix(1,0,0,1,0,0);
+	transform: matrix(1,0,0,1,0,0) scale(0.9);
 }
 .Tracking_History_Content_Area_e_Class {
 	position: absolute;
@@ -729,18 +733,18 @@
 }
 .Tracking_History_Class {
 	position: absolute;
-	left: 48px;
+	left: 43px;
 	top: 0px;
 	overflow: visible;
 	width: 143px;
 	white-space: nowrap;
-	line-height: 28px;
+	line-height: 29px;
 	margin-top: -5.5px;
 	text-align: left;
 	font-family: SF Pro Text;
 	font-style: normal;
-	font-weight: bold;
-	font-size: 17px;
+	font-weight: inherit;
+	font-size: inherit;
 	color: rgba(29,29,29,1);
 }
 .Ellipse_349 {

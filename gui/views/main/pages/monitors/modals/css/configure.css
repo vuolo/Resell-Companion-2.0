@@ -557,7 +557,7 @@ body {
 	text-align: left;
 	font-family: SF Pro Text;
 	font-style: normal;
-	font-weight: bold;
+	font-weight: inherit;
 	font-size: 17px;
 	color: rgba(29,29,29,1);
 }

@@ -60,74 +60,97 @@ const altCarriers = {
   "canadapost": false
 }
 
+function guessCarrier(trackingNumber) {
+  return shipit.guessCarrier(trackingNumber);
+}
+
+// guess status color
+function getActivityStatusColor(activity) {
+  let lowerCaseStatus = activity.details.toLowerCase();
+  if (activity.location.length == 0) return "yellow";
+  else if (lowerCaseStatus.startsWith("delivered")) return "green";
+  else if (lowerCaseStatus.includes("action needed") || lowerCaseStatus.includes("underliverable") || lowerCaseStatus.includes("no access") || lowerCaseStatus.includes("delayed")) return "red";
+  return "orange";
+}
+
+function formatDetails(details) {
+  if (details.activities) {
+    for (var activity of details.activities) {
+      activity.statusColor = getActivityStatusColor(activity);
+      activity.isOpened = false;
+    }
+  }
+  return details;
+}
+
 async function getPackageDetails(trackingNumber, carrier) {
-  return new Promise(async (resolve) => {
+  return formatDetails(await new Promise(async (resolve) => {
     if (altCarriers[carrier]) resolve(await getPackageDetails_ALT(trackingNumber, carrier));
     switch (carrier.toLowerCase()) {
       case "ups":
         await upsClient.requestData({trackingNumber: trackingNumber}, (err, result) => {
-          if (err) resolve(false);
+          if (err) resolve({});
           resolve(result);
         });
         break;
       case "upsmi":
         await upsmiClient.requestData({trackingNumber: trackingNumber}, (err, result) => {
-          if (err) resolve(false);
+          if (err) resolve({});
           resolve(result);
         });
         break;
       case "usps":
         await uspsClient.requestData({trackingNumber: trackingNumber}, (err, result) => {
-          if (err) resolve(false);
+          if (err) resolve({});
           resolve(result);
         });
         break;
       case "fedex":
         await fedexClient.requestData({trackingNumber: trackingNumber}, (err, result) => {
-          if (err) resolve(false);
+          if (err) resolve({});
           resolve(result);
         });
         break;
       case "lasership":
         await lsClient.requestData({trackingNumber: trackingNumber}, (err, result) => {
-          if (err) resolve(false);
+          if (err) resolve({});
           resolve(result);
         });
         break;
       case "ontrac":
         await onTracClient.requestData({trackingNumber: trackingNumber}, (err, result) => {
-          if (err) resolve(false);
+          if (err) resolve({});
           resolve(result);
         });
         break;
       case "dhl":
         await dhlClient.requestData({trackingNumber: trackingNumber}, (err, result) => {
-          if (err) resolve(false);
+          if (err) resolve({});
           resolve(result);
         });
         break;
       case "dhlgm":
         await dhlgmClient.requestData({trackingNumber: trackingNumber}, (err, result) => {
-          if (err) resolve(false);
+          if (err) resolve({});
           resolve(result);
         });
         break;
       case "a1intl":
         await prestigeClient.requestData({trackingNumber: trackingNumber}, (err, result) => {
-          if (err) resolve(false);
+          if (err) resolve({});
           resolve(result);
         });
         break;
       case "canadapost":
         await canadaPostClient.requestData({trackingNumber: trackingNumber}, (err, result) => {
-          if (err) resolve(false);
+          if (err) resolve({});
           resolve(result);
         });
         break;
       default:
-        return false;
+        resolve({});
     }
-  });
+  }));
 }
 
 async function getPackageDetails_ALT(trackingNumber, carrier) {
@@ -152,5 +175,6 @@ async function getPackageDetails_ALT(trackingNumber, carrier) {
 }
 
 module.exports = {
-  getPackageDetails: getPackageDetails
+  getPackageDetails: getPackageDetails,
+  guessCarrier: guessCarrier
 };

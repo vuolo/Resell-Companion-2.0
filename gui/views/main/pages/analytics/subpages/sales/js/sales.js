@@ -11,6 +11,7 @@ window.sales = [
     color: "",
     imageURL: "https://stockx-360.imgix.net/Adidas-Yeezy-Wave-Runner-700-Solid-Grey/Images/Adidas-Yeezy-Wave-Runner-700-Solid-Grey/Lv2/img02.jpg?auto=format,compress&w=559&q=90&dpr=2&updated_at=1538080256",
     size: "XXXL",
+    notes: "",
     purchase: {
       price: 220,
       estimatedResell: 380,
@@ -19,222 +20,7 @@ window.sales = [
       tracking: {
         number: "9274890198179002075020",
         carrier: "usps",
-        statuses: [
-          "EN_ROUTE",
-          "DELIVERED"
-        ]
-      }
-    },
-    sale: {
-      price: 420,
-      fees: {
-        amount: 4.75,
-        isPercent: true
-      },
-      platform: "ebay",
-      date: "2020-07-07",
-      tracking: {
-        number: "9274890198179002075020",
-        carrier: "usps",
-        statuses: [
-          "EN_ROUTE",
-          "DELIVERED"
-        ]
-      }
-    }
-  },{
-    name: "Adidas Yeezy Boost 700 Wave Runner",
-    color: "",
-    imageURL: "https://stockx-360.imgix.net/Adidas-Yeezy-Wave-Runner-700-Solid-Grey/Images/Adidas-Yeezy-Wave-Runner-700-Solid-Grey/Lv2/img02.jpg?auto=format,compress&w=559&q=90&dpr=2&updated_at=1538080256",
-    size: "XXXL",
-    purchase: {
-      price: 220,
-      estimatedResell: 380,
-      store: "Adidas",
-      date: "2020-07-07",
-      tracking: {
-        number: "9274890198179002075020",
-        carrier: "usps",
-        statuses: [
-          "EN_ROUTE",
-          "DELIVERED"
-        ]
-      }
-    },
-    sale: {
-      price: 420,
-      fees: {
-        amount: 4.75,
-        isPercent: true
-      },
-      platform: "ebay",
-      date: "2020-07-07",
-      tracking: {
-        number: "9274890198179002075020",
-        carrier: "usps",
-        statuses: [
-          "EN_ROUTE",
-          "DELIVERED"
-        ]
-      }
-    }
-  },{
-    name: "Adidas Yeezy Boost 700 Wave Runner",
-    color: "",
-    imageURL: "https://stockx-360.imgix.net/Adidas-Yeezy-Wave-Runner-700-Solid-Grey/Images/Adidas-Yeezy-Wave-Runner-700-Solid-Grey/Lv2/img02.jpg?auto=format,compress&w=559&q=90&dpr=2&updated_at=1538080256",
-    size: "XXXL",
-    purchase: {
-      price: 220,
-      estimatedResell: 380,
-      store: "Adidas",
-      date: "2020-07-07",
-      tracking: {
-        number: "9274890198179002075020",
-        carrier: "usps",
-        statuses: [
-          "EN_ROUTE",
-          "DELIVERED"
-        ]
-      }
-    },
-    sale: {
-      price: 420,
-      fees: {
-        amount: 4.75,
-        isPercent: true
-      },
-      platform: "ebay",
-      date: "2020-07-07",
-      tracking: {
-        number: "9274890198179002075020",
-        carrier: "usps",
-        statuses: [
-          "EN_ROUTE",
-          "DELIVERED"
-        ]
-      }
-    }
-  },{
-    name: "Adidas Yeezy Boost 700 Wave Runner",
-    color: "",
-    imageURL: "https://stockx-360.imgix.net/Adidas-Yeezy-Wave-Runner-700-Solid-Grey/Images/Adidas-Yeezy-Wave-Runner-700-Solid-Grey/Lv2/img02.jpg?auto=format,compress&w=559&q=90&dpr=2&updated_at=1538080256",
-    size: "XXXL",
-    purchase: {
-      price: 220,
-      estimatedResell: 380,
-      store: "Adidas",
-      date: "2020-07-07",
-      tracking: {
-        number: "9274890198179002075020",
-        carrier: "usps",
-        statuses: [
-          "EN_ROUTE",
-          "DELIVERED"
-        ]
-      }
-    },
-    sale: {
-      price: 420,
-      fees: {
-        amount: 4.75,
-        isPercent: true
-      },
-      platform: "flight club",
-      date: "2020-07-07",
-      tracking: {
-        number: "9274890198179002075020",
-        carrier: "usps",
-        statuses: [
-          "EN_ROUTE",
-          "DELIVERED"
-        ]
-      }
-    }
-  },{
-    name: "Adidas Yeezy Boost 700 Wave Runner",
-    color: "",
-    imageURL: "https://stockx-360.imgix.net/Adidas-Yeezy-Wave-Runner-700-Solid-Grey/Images/Adidas-Yeezy-Wave-Runner-700-Solid-Grey/Lv2/img02.jpg?auto=format,compress&w=559&q=90&dpr=2&updated_at=1538080256",
-    size: "XXXL",
-    purchase: {
-      price: 220,
-      estimatedResell: 380,
-      store: "Adidas",
-      date: "2020-07-07",
-      tracking: {
-        number: "9274890198179002075020",
-        carrier: "usps",
-        statuses: [
-          "EN_ROUTE",
-          "DELIVERED"
-        ]
-      }
-    },
-    sale: {
-      price: 420,
-      fees: {
-        amount: 4.75,
-        isPercent: true
-      },
-      platform: "stadium goods",
-      date: "2020-07-07",
-      tracking: {
-        number: "9274890198179002075020",
-        carrier: "usps",
-        statuses: [
-          "EN_ROUTE",
-          "DELIVERED"
-        ]
-      }
-    }
-  },{
-    name: "Adidas Yeezy Boost 700 Wave Runner",
-    color: "",
-    imageURL: "https://stockx-360.imgix.net/Adidas-Yeezy-Wave-Runner-700-Solid-Grey/Images/Adidas-Yeezy-Wave-Runner-700-Solid-Grey/Lv2/img02.jpg?auto=format,compress&w=559&q=90&dpr=2&updated_at=1538080256",
-    size: "XXXL",
-    purchase: {
-      price: 220,
-      estimatedResell: 380,
-      store: "Adidas",
-      date: "2020-07-07",
-      tracking: {
-        number: "9274890198179002075020",
-        carrier: "usps",
-        statuses: [
-          "EN_ROUTE",
-          "DELIVERED"
-        ]
-      }
-    },
-    sale: {
-      price: 420,
-      fees: {
-        amount: 4.75,
-        isPercent: true
-      },
-      platform: "stockx",
-      date: "2020-07-07",
-      tracking: {
-        number: "9274890198179002075020",
-        carrier: "usps",
-        statuses: [
-          "EN_ROUTE",
-          "DELIVERED"
-        ]
-      }
-    }
-  },{
-    name: "Adidas Yeezy Boost 700 Wave Runner",
-    color: "",
-    imageURL: "https://stockx-360.imgix.net/Adidas-Yeezy-Wave-Runner-700-Solid-Grey/Images/Adidas-Yeezy-Wave-Runner-700-Solid-Grey/Lv2/img02.jpg?auto=format,compress&w=559&q=90&dpr=2&updated_at=1538080256",
-    size: "XXXL",
-    purchase: {
-      price: 220,
-      estimatedResell: 380,
-      store: "Adidas",
-      date: "2020-07-07",
-      tracking: {
-        number: "9274890198179002075020",
-        carrier: "usps",
+        isTracking: false,
         details: {}
       }
     },
@@ -244,15 +30,16 @@ window.sales = [
         amount: 4.75,
         isPercent: true
       },
-      platform: "ebayz do you understand where",
+      platform: "ebay",
       date: "2020-07-07",
       tracking: {
         number: "9274890198179002075020",
         carrier: "usps",
+        isTracking: false,
         details: {}
       }
     }
-  },
+  }
 ];
 
 window.modals = {
@@ -280,7 +67,8 @@ window.addSale = () => {
   // TODO: reorganize sales based on table filter
 };
 
-window.editSale = (saleIndex) => {
+window.editSale = async (saleIndex) => {
+  while (!window.frames['create-modal'] || !window.frames['create-modal'].createApp) await window.parent.parent.sleep(50); // check & sleep in case user clicks on item before the modal is initialized
   window.frames['create-modal'].createApp.activeSaleIndex = saleIndex;
   window.parent.parent.memory.syncObject(window.frames['create-modal'].modalOptions, window.parent.parent.memory.copyObj(window.sales[saleIndex]));
   openModal('create');
@@ -307,6 +95,7 @@ const salesApp = new Vue({
     calculateUnderlineLeftOffset: window.parent.parent.calculateUnderlineLeftOffset,
     tryTranslate: window.parent.parent.tryTranslate,
     getThemeColor: window.parent.parent.getThemeColor,
+    getColor: window.parent.parent.getColor,
     numberWithCommas: window.parent.parent.numberWithCommas,
     tryGenerateEllipses: window.parent.parent.tryGenerateEllipses,
     openModal: window.openModal,
@@ -385,19 +174,6 @@ const salesApp = new Vue({
       }
       return "N/A";
     },
-    getColor: function(color) {
-      switch (color) {
-        case 'green':
-          return 'rgba(53,178,57,1)';
-        case 'yellow':
-          return 'rgba(253,213,53,1)';
-        case 'orange':
-          return 'rgba(255,167,78,1)';
-        case 'red':
-          return 'rgba(253,53,53,1)';
-      }
-      return this.getThemeColor('rgba(29,29,29,1)');
-    },
     getProfitColor: function(profit) {
       if (profit > 0) return 'green'
       else if (profit < 0) return 'red';
@@ -413,6 +189,18 @@ const salesApp = new Vue({
     }
   }
 });
+
+window.refreshTracking = async () => {
+  for (var sale of window.sales) {
+    if (!sale.sale.tracking.isTracking && sale.sale.tracking.number.length == 0 || sale.sale.tracking.carrier == 'unselected') continue;
+    sale.sale.tracking.isTracking = true;
+    let trackingDetails = await window.parent.parent.packagesAPI.getPackageDetails(sale.sale.tracking.number, sale.sale.tracking.carrier);
+    sale.sale.tracking.isTracking = false;
+    // set after gathering to ensure old packages are not reset
+    if (trackingDetails && trackingDetails.status) sale.sale.tracking.details = trackingDetails;
+    salesApp.$forceUpdate();
+  }
+};
 
 function getStatusDescription(statusNumber) {
   switch (statusNumber) {
@@ -432,4 +220,5 @@ function getStatusDescription(statusNumber) {
   return "UNKNOWN";
 }
 
+window.refreshTracking();
 window.onload = window.parent.subpageLoadedCallback('sales');

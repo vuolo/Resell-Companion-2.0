@@ -12,6 +12,7 @@ const MODAL_OPTIONS_TEMPLATE = {
   color: "",
   imageURL: "",
   size: "",
+  notes: "",
   purchase: {
     price: null,
     estimatedResell: null,
@@ -20,7 +21,8 @@ const MODAL_OPTIONS_TEMPLATE = {
     tracking: {
       number: "",
       carrier: "unselected",
-      statuses: []
+      isTracking: false,
+      details: {}
     }
   },
   sale: {
@@ -34,7 +36,8 @@ const MODAL_OPTIONS_TEMPLATE = {
     tracking: {
       number: "",
       carrier: "unselected",
-      statuses: []
+      isTracking: false,
+      details: {}
     }
   },
   quantity: 1
@@ -43,6 +46,7 @@ const MODAL_OPTIONS_TEMPLATE = {
 window.modalOptions = {};
 window.resetModalOptions = () => {
   window.parent.parent.parent.memory.syncObject(window.modalOptions, window.parent.parent.parent.memory.copyObj(MODAL_OPTIONS_TEMPLATE));
+  if (window.createApp) window.createApp.activeSaleIndex = -1;
 }
 window.resetModalOptions();
 
@@ -60,7 +64,21 @@ window.createApp = new Vue({
     calculateUnderlineLeftOffset: window.parent.parent.parent.calculateUnderlineLeftOffset,
     tryTranslate: window.parent.parent.parent.tryTranslate,
     getThemeColor: window.parent.parent.parent.getThemeColor,
+    getColor: window.parent.parent.parent.getColor,
     tryGenerateEllipses: window.parent.parent.parent.tryGenerateEllipses,
+    hasOpenActivity: function(tracking) {
+      if (!tracking.details || !tracking.details.activities) return false;
+      for (var activity of tracking.details.activities) if (activity.isOpened) return true;
+    },
+    updateTracking: async function(tracking) {
+      tracking.isTracking = true;
+      tracking.details = await window.parent.parent.parent.packagesAPI.getPackageDetails(tracking.number, tracking.carrier);
+      tracking.isTracking = false;
+    },
+    toggleActivityOpened: function(activity) {
+       activity.isOpened = !activity.isOpened;
+       this.$forceUpdate();
+    },
     finalizeModal: function() {
       if (this.activeSaleIndex == -1) window.parent.addSale();
       else window.parent.updateSale(this.activeSaleIndex);
@@ -74,6 +92,15 @@ window.createApp = new Vue({
       window.resetModalOptions();
     }
   }
+});
+
+function guessAndSetCarrier(trackingNumber) {
+  let guessedCarriers = window.parent.parent.parent.packagesAPI.guessCarrier(trackingNumber);
+  if (guessedCarriers.length > 0) modalOptions.sale.tracking.carrier = guessedCarriers[0];
+}
+
+$("#trackingNumber").on('change keydown paste input', function() {
+  guessAndSetCarrier(modalOptions.sale.tracking.number);
 });
 
 window.onload = window.parent.modalLoadedCallback(MODAL_NAME);
