@@ -1598,3 +1598,40 @@
 	font-size: 40px;
 	color: rgba(29,29,29,1);
 }
+
+
+
+.Note_Area_Class {
+	position: absolute;
+	width: 587px;
+	height: 54px;
+	left: 161.5px;
+	top: 76.814px;
+	overflow: visible;
+}
+.Rectangle_mf {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 605px;
+	height: 72px;
+	left: 0px;
+	top: 0px;
+}
+.Text_Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 8.51px;
+	top: 5.124px;
+	overflow: visible;
+	width: 110px;
+	white-space: nowrap;
+	line-height: 15px;
+	margin-top: -1.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	color: rgba(29,29,29,1);
+}

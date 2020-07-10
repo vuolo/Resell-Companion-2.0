@@ -276,6 +276,18 @@
         "es": "Asigne eficientemente cada tarea con un perfil de facturación habilitado"
       }
     },
+    "Est. Resell": {
+      "languages": {
+        "en": "Est. Resell",
+        "es": "Reventa est."
+      }
+    },
+    "Estimated Resell": {
+      "languages": {
+        "en": "Estimated Resell",
+        "es": "Reventa estimada"
+      }
+    },
     "Everything": {
       "languages": {
         "en": "Everything",
@@ -430,6 +442,12 @@
       "languages": {
         "en": "Left Click",
         "es": "Clic izquierdo"
+      }
+    },
+    "Listing Platform": {
+      "languages": {
+        "en": "Listing Platform",
+        "es": "Plataforma de listados"
       }
     },
     "March": {
@@ -638,6 +656,18 @@
         "es": "Producto"
       }
     },
+    "Product Image URL": {
+      "languages": {
+        "en": "Product Image URL",
+        "es": "URL de imagen del producto"
+      }
+    },
+    "Product Name": {
+      "languages": {
+        "en": "Product Name",
+        "es": "Nombre del producto"
+      }
+    },
     "Products": {
       "languages": {
         "en": "Products",
@@ -654,6 +684,18 @@
       "languages": {
         "en": "Proxy Profile",
         "es": "Perfil de proxy"
+      }
+    },
+    "Purchase Date": {
+      "languages": {
+        "en": "Purchase Date",
+        "es": "Fecha de compra"
+      }
+    },
+    "Purchase Price": {
+      "languages": {
+        "en": "Purchase Price",
+        "es": "Precio de compra"
       }
     },
     "Purchased": {
@@ -812,6 +854,24 @@
         "es": "Vendido"
       }
     },
+    "Sold Date": {
+      "languages": {
+        "en": "Sold Date",
+        "es": "Fecha de venta"
+      }
+    },
+    "Sold Item": {
+      "languages": {
+        "en": "Sold Item",
+        "es": "Artículo vendido"
+      }
+    },
+    "Sold Price": {
+      "languages": {
+        "en": "Sold Price",
+        "es": "Precio vendido"
+      }
+    },
     "Solver Opened": {
       "languages": {
         "en": "Solver Opened",
@@ -864,6 +924,12 @@
       "languages": {
         "en": "Stop",
         "es": "Terminar"
+      }
+    },
+    "Store": {
+      "languages": {
+        "en": "Store",
+        "es": "Tienda"
       }
     },
     "Stores": {
@@ -950,6 +1016,18 @@
         "es": "Rastreo"
       }
     },
+    "Tracking History": {
+      "languages": {
+        "en": "Tracking History",
+        "es": "Historial de Rastreo"
+      }
+    },
+    "Tracking Number": {
+      "languages": {
+        "en": "Tracking Number",
+        "es": "Número de Rastreo"
+      }
+    },
     "to connect your bots": {
       "languages": {
         "en": "to connect your bots",
@@ -992,10 +1070,22 @@
         "es": "Mar"
       }
     },
+    "Type to add a note...": {
+      "languages": {
+        "en": "Type to add a note...",
+        "es": "Escriba para agregar una nota..."
+      }
+    },
     "Unknown Product": {
       "languages": {
         "en": "Unknown Product",
         "es": "Producto desconocido"
+      }
+    },
+    "Unknown Size": {
+      "languages": {
+        "en": "Unknown Size",
+        "es": "Tamaño desconocido"
       }
     },
     "Unspecified Location": {

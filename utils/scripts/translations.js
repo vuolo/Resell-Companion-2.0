@@ -4,6 +4,7 @@ window.setLanguage = (language) => {
   window.companionSettings.language = language;
   window.frames["home-frame"].tryTranslateAlertMessages(language);
   window.frames["tasks-frame"].sendLanguageToCaptchaSolvers(language);
+  window.frames["analytics-frame"].refreshTracking();
 };
 
 window.tryTranslate = (incomingText, language = window.companionSettings.language) => {

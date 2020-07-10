@@ -57,3 +57,7 @@ window.analyticsApp = new Vue({
     openSubpage: window.openSubpage
   }
 });
+
+window.refreshTracking = () => {
+  window.frames['sales-subpage'].refreshTracking();
+};

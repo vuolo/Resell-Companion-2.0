@@ -73,7 +73,7 @@ function getActivityStatusColor(activity) {
   return "orange";
 }
 
-function formatDetails(details) {
+function formatDetails(details = {}) {
   if (details.activities) {
     for (var activity of details.activities) {
       activity.statusColor = getActivityStatusColor(activity);

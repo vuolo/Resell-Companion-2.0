@@ -44,8 +44,9 @@
 						<path fill="rgba(253,53,53,1)" class="Browser_Close_Button_Class" d="M 13.37500190734863 3.375 C 7.850962162017822 3.375 3.375 7.850962162017822 3.375 13.375 C 3.375 18.89904022216797 7.850962162017822 23.375 13.37500190734863 23.375 C 18.89904022216797 23.375 23.375 18.89904022216797 23.375 13.375 C 23.375 7.850960254669189 18.89904022216797 3.375 13.37500190734863 3.375 Z M 15.90865325927734 16.99519157409668 L 13.37500190734863 14.46153736114502 L 10.84134578704834 16.99519157409668 C 10.54326820373535 17.29327011108398 10.05288314819336 17.29327011108398 9.754807472229004 16.99519157409668 C 9.605768203735352 16.84615325927734 9.528846740722656 16.64903831481934 9.528846740722656 16.45192337036133 C 9.528846740722656 16.25480842590332 9.605768203735352 16.05769157409668 9.754807472229004 15.90865325927734 L 12.28846168518066 13.375 L 9.754807472229004 10.84134578704834 C 9.605768203735352 10.692307472229 9.528844833374023 10.49519157409668 9.528844833374023 10.29807662963867 C 9.528844833374023 10.10096168518066 9.605768203735352 9.90384578704834 9.754807472229004 9.75480842590332 C 10.05288314819336 9.456730842590332 10.54326725006104 9.456730842590332 10.84134578704834 9.75480842590332 L 13.375 12.28846168518066 L 15.90865135192871 9.75480842590332 C 16.20672988891602 9.456730842590332 16.69711303710938 9.456730842590332 16.99518966674805 9.75480842590332 C 17.29326820373535 10.05288505554199 17.29326820373535 10.54327011108398 16.99518966674805 10.84134674072266 L 14.46153831481934 13.375 L 16.99519157409668 15.90865325927734 C 17.29327011108398 16.20673179626465 17.29327011108398 16.69711685180664 16.99519157409668 16.99519157409668 C 16.69711303710938 17.29807662963867 16.20672988891602 17.29807662963867 15.90865325927734 16.99519157409668 Z">
 						</path>
 					</svg>
-					<svg class="Blue_Bar">
-						<rect fill="rgba(253,53,53,1)" class="Blue_Bar_Class" rx="1.5" ry="1.5" x="0" y="0" width="117" height="3">
+
+					<svg class="Blue_Bar" v-bind:style="{ left: calculateUnderlineLeftOffset(200, tryTranslate('Sold Item'), 40, 'px', '900', 'SF Pro Text', false) + 10 + 'px' }">
+						<rect fill="rgba(253,53,53,1)" class="Green_Bar_Class" rx="1.5" ry="1.5" x="0" y="0" v-bind:width="calculateUnderlineWidth(200, tryTranslate('Sold Item'), 40, 'px', '900', 'SF Pro Text')" height="3">
 						</rect>
 					</svg>
 					<div class="Sold_Inventory_Item_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
@@ -56,17 +57,28 @@
 
 				<div class="Top_Area_Class">
 					<div class="Size_hj_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), top: (modalOptions.color.length == 0 ? 25 : 47) + 'px' }">
-						<span style="user-select: text;">6.5 </span><span style="font-style:normal;font-weight:normal;font-size:16px; user-select: text;">UK </span><span style="font-style:normal;font-weight:normal;font-size:12px; user-select: text;">(7.5 US)</span>
+						<template v-if="tryConvertSize(modalOptions.size)">
+							<template v-if="!tryConvertSize(modalOptions.size).convertedSize || tryConvertSize(modalOptions.size).convertedSize.conversionType == tryConvertSize(modalOptions.size).currentSize.conversionType">
+								<span style="user-select: text;">{{tryConvertSize(modalOptions.size).currentSize.size}} </span><span style="font-style:normal;font-weight:normal;font-size:16px; user-select: text;">{{tryConvertSize(modalOptions.size).currentSize.conversionType}}</span>
+							</template>
+							<template v-else>
+								<span style="user-select: text;">{{tryConvertSize(modalOptions.size).convertedSize.size}} </span><span style="font-style:normal;font-weight:normal;font-size:16px; user-select: text;">{{tryConvertSize(modalOptions.size).convertedSize.conversionType}} </span><span style="font-style:normal;font-weight:normal;font-size:12px; user-select: text;">({{tryConvertSize(modalOptions.size).currentSize.size}} {{tryConvertSize(modalOptions.size).currentSize.conversionType}})</span>
+							</template>
+						</template>
+						<template v-else>
+							<span style="font-style:normal;font-weight:normal;font-size:20px; user-select: text;">{{modalOptions.size.length == 0 ? tryTranslate('Unknown Size') : modalOptions.size }}</span>
+						</template>
 					</div>
 					<div class="Product_Color_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
 						<span style="user-select: text;">{{tryGenerateEllipses(550, modalOptions.color, 18, 'px', 'normal', 'SF Pro Text')}}</span>
 					</div>
 					<div class="Product_Name_hl_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-						<span style="user-select: text;">{{modalOptions.name.length == 0 ? tryTranslate('New Sale') : tryGenerateEllipses(550, modalOptions.name, 20, 'px', 'bold', 'SF Pro Text')}}</span>
+						<span style="user-select: text;">{{modalOptions.name.length == 0 ? tryTranslate('Unknown Product') : tryGenerateEllipses(550, modalOptions.name, 20, 'px', 'bold', 'SF Pro Text')}}</span>
 					</div>
 					<div class="Product_Image_Class">
 						<img style="display: table-cell; vertical-align: middle; max-width: 131px; max-height: 131px; border-radius: 10px; margin-left: auto; margin-right: auto;" v-bind:class="{ transparentify: companionSettings.theme == 'light' }" v-bind:src="modalOptions.imageURL" onerror="this.src='../../../../../../../images/unknownImage.png'">
 					</div>
+					<textarea spellcheck="false" v-bind:placeholder="tryTranslate('Type to add a note...')" v-on:keyup.enter="finalizeModal();" v-model="modalOptions.note" type="text" class="Note_Area_Class Search_Bar_Class special-focus" style="border-radius: 10px; padding: 10px; font-size: 14px; white-space: pre-wrap; resize: none;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark', 'dark-scrollbar': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }"></textarea>
 				</div>
 
 
@@ -78,7 +90,7 @@
 							<span>{{companionSettings.currencySymbol}}</span>
 						</div>
 
-						<div class="Keywords_ep_Class" style="left: 10px; position: absolute;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+						<div class="Keywords_ep_Class" style="left: 10px; position: absolute; white-space: nowrap;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
 							<span>{{tryTranslate('Sold Price')}}</span>
 						</div>
 					</div>
@@ -89,7 +101,7 @@
 							<span>{{modalOptions.sale.fees.isPercent ? '%' : companionSettings.currencySymbol}}</span>
 						</div>
 
-						<div class="Keywords_ep_Class" style="left: 10px; position: absolute;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+						<div class="Keywords_ep_Class" style="left: 10px; position: absolute; white-space: nowrap;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
 							<span>{{tryTranslate('Fees')}}</span>
 						</div>
 					</div>
@@ -105,7 +117,7 @@
 							</path>
 						</svg>
 
-						<div class="Keywords_ep_Class" style="left: 10px; position: absolute;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+						<div class="Keywords_ep_Class" style="left: 10px; position: absolute; white-space: nowrap;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
 							<span>{{tryTranslate('Listing Platform')}}</span>
 						</div>
 					</div>
@@ -113,7 +125,7 @@
 					<div class="Sold_Date_Area_Class">
 						<input v-bind:placeholder="tryTranslate('Sold Date')" v-model="modalOptions.sale.date" @change="" type="date" class="Search_Bar_Class special-focus" v-bind:class="{ 'white-input-icon': companionSettings.theme == 'dark' }" style="left: 0px; top: 27px; width: 211px; padding-left: 15px; padding-right: 10px; text-indent: 0px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
 
-						<div class="Keywords_ep_Class" style="left: 10px; position: absolute;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+						<div class="Keywords_ep_Class" style="left: 10px; position: absolute; white-space: nowrap;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
 							<span>{{tryTranslate('Sold Date')}} <span style="color: rgba(253,53,53,1); font-weight: bold;">*</span></span>
 						</div>
 					</div>
@@ -130,7 +142,7 @@
 							</path>
 						</svg>
 
-						<div class="Keywords_ep_Class" style="left: 10px; position: absolute;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+						<div class="Keywords_ep_Class" style="left: 10px; position: absolute; white-space: nowrap;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
 							<span>{{tryTranslate('Product Name')}}</span>
 						</div>
 					</div>
@@ -141,7 +153,7 @@
 							<span>↑↓</span>
 						</div>
 
-						<div class="Keywords_ep_Class" style="left: 10px; position: absolute;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+						<div class="Keywords_ep_Class" style="left: 10px; position: absolute; white-space: nowrap;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
 							<span>{{tryTranslate('Size')}}</span>
 						</div>
 					</div>
@@ -153,7 +165,7 @@
 							</path>
 						</svg>
 
-						<div class="Keywords_ep_Class" style="left: 10px; position: absolute;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+						<div class="Keywords_ep_Class" style="left: 10px; position: absolute; white-space: nowrap;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
 							<span>{{tryTranslate('Product Image URL')}}</span>
 						</div>
 					</div>
@@ -161,7 +173,7 @@
 					<div class="Purchase_Date_Area_Class">
 						<input v-bind:placeholder="tryTranslate('Purchase Date')" v-model="modalOptions.purchase.date" @change="" type="date" class="Search_Bar_Class special-focus" v-bind:class="{ 'white-input-icon': companionSettings.theme == 'dark' }" style="left: 0px; top: 27px; width: 187px; padding-left: 15px; padding-right: 10px; text-indent: 0px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
 
-						<div class="Keywords_ep_Class" style="left: 10px; position: absolute;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+						<div class="Keywords_ep_Class" style="left: 10px; position: absolute; white-space: nowrap;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
 							<span>{{tryTranslate('Purchase Date')}} <span style="color: rgba(253,53,53,1); font-weight: bold;">*</span></span>
 						</div>
 					</div>
@@ -173,7 +185,7 @@
 							</path>
 						</svg>
 
-						<div class="Keywords_ep_Class" style="left: 10px; position: absolute;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+						<div class="Keywords_ep_Class" style="left: 10px; position: absolute; white-space: nowrap;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
 							<span>{{tryTranslate('Store')}}</span>
 						</div>
 					</div>
@@ -184,7 +196,7 @@
 							<span>{{companionSettings.currencySymbol}}</span>
 						</div>
 
-						<div class="Keywords_ep_Class" style="left: 10px; position: absolute;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+						<div class="Keywords_ep_Class" style="left: 10px; position: absolute; white-space: nowrap;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
 							<span>{{tryTranslate('Purchase Price')}}</span>
 						</div>
 					</div>
@@ -195,7 +207,7 @@
 							<span>{{companionSettings.currencySymbol}}</span>
 						</div>
 
-						<div class="Keywords_ep_Class" style="left: 10px; position: absolute;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+						<div class="Keywords_ep_Class" style="left: 10px; position: absolute; white-space: nowrap;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
 							<span>{{tryTranslate('Est. Resell')}}</span>
 						</div>
 					</div>
@@ -233,7 +245,7 @@
 							</path>
 						</svg>
 
-						<div class="Keywords_ep_Class" style="left: 10px; position: absolute;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+						<div class="Keywords_ep_Class" style="left: 10px; position: absolute; white-space: nowrap;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
 							<span>{{tryTranslate('Tracking Number')}}</span>
 						</div>
 					</div>
@@ -258,12 +270,12 @@
 							</path>
 						</svg>
 
-						<div class="Keywords_ep_Class" style="left: 10px; position: absolute;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+						<div class="Keywords_ep_Class" style="left: 10px; position: absolute; white-space: nowrap;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
 							<span>{{tryTranslate('Carrier')}}</span>
 						</div>
 					</div>
 
-					<div class="Track_Button_Class clipButton clickable" v-on:click="updateTracking(modalOptions.sale.tracking)">
+					<div class="Track_Button_Class clipButton" v-bind:class="{ 'clickable': !modalOptions.sale.tracking.isTracking, 'unclickable': modalOptions.sale.tracking.isTracking }" v-on:click="updateTracking(modalOptions.sale.tracking)">
 						<div class="clipGroup" style="width: 107px; height: 37px; clip-path: inset(0px round 5px);">
 							<svg class="Back_Transitioner" style="bottom: -25px;" viewBox="4631.671 2118.361 137.6 34.565">
 								<path fill="rgba(36,39,37,1)" id="Back_Transitioner" d="M 4631.67138671875 2136.780029296875 C 4631.67138671875 2136.780029296875 4649.8212890625 2127.950439453125 4669.78759765625 2136.780029296875 C 4689.75244140625 2145.610595703125 4680.9365234375 2141.826416015625 4680.9365234375 2141.826416015625 C 4680.9365234375 2141.826416015625 4699.80859375 2134.79638671875 4711.21826171875 2141.229248046875 C 4722.626953125 2147.663330078125 4712.8291015625 2141.229248046875 4712.8291015625 2141.229248046875 C 4712.8291015625 2141.229248046875 4737.462890625 2118.742431640625 4759.2421875 2118.3642578125 C 4781.0234375 2117.985107421875 4760.5390625 2152.92626953125 4760.5390625 2152.92626953125 L 4631.67138671875 2152.92626953125 L 4631.67138671875 2136.780029296875 Z">
@@ -298,7 +310,7 @@
 							<template v-for="(activity, activityIndex) in modalOptions.sale.tracking.details.activities">
 								<div class="Tracking_History_Content_Area_en_Class" style="z-index: 3;" v-bind:style="{ left: (activityIndex * 340) + 9 + 'px' }">
 
-									<svg v-if="activityIndex != 0" class="Green_Separator">
+									<svg v-if="activityIndex != 0" class="Green_Separator" style="filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161))">
 										<rect v-bind:fill="getColor(activity.statusColor)" class="Green_Separator_Class" x="0" y="0" width="50px" height="5">
 										</rect>
 									</svg>
@@ -343,8 +355,8 @@
 									<svg class="Side_Rectangle" width="8" height="39" viewBox="0 0 6 39">
 										<path v-bind:fill="getColor(activity.statusColor)" d="M6,0H6A0,0,0,0,1,6,0V39a0,0,0,0,1,0,0H6a6,6,0,0,1-6-6V6A6,6,0,0,1,6,0Z"/>
 									</svg>
-									<div class="__Class clickable hover-opacity" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-										<span v-on:click="toggleActivityOpened(activity)">{{activity.isOpened ? '↑' : '↓' }}</span>
+									<div class="__Class clickable hover-opacity" v-on:click="toggleActivityOpened(activity)" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+										<span>{{activity.isOpened ? '↑' : '↓' }}</span>
 									</div>
 
 								</div>
@@ -378,7 +390,7 @@
 						<span>↑↓</span>
 					</div>
 
-					<div class="Keywords_ep_Class" style="top: -27px; left: 10px; position: absolute;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+					<div class="Keywords_ep_Class" style="top: -27px; left: 10px; position: absolute; white-space: nowrap;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
 						<span>{{tryTranslate('Quantity')}}</span>
 					</div>
 				</div>

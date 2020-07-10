@@ -71,6 +71,7 @@ window.editSale = async (saleIndex) => {
   while (!window.frames['create-modal'] || !window.frames['create-modal'].createApp) await window.parent.parent.sleep(50); // check & sleep in case user clicks on item before the modal is initialized
   window.frames['create-modal'].createApp.activeSaleIndex = saleIndex;
   window.parent.parent.memory.syncObject(window.frames['create-modal'].modalOptions, window.parent.parent.memory.copyObj(window.sales[saleIndex]));
+  if (window.frames['create-modal'].modalOptions.sale.tracking.isTracking) setTimeout(window.refreshTracking(-2, true, window.frames['create-modal'].modalOptions.sale.tracking), 50);
   openModal('create');
 };
 
@@ -91,6 +92,7 @@ const salesApp = new Vue({
   },
   methods: {
     confineTextWidth: window.parent.parent.confineTextWidth,
+    getTextWidth: window.parent.parent.getTextWidth,
     calculateUnderlineWidth: window.parent.parent.calculateUnderlineWidth,
     calculateUnderlineLeftOffset: window.parent.parent.calculateUnderlineLeftOffset,
     tryTranslate: window.parent.parent.tryTranslate,
@@ -190,16 +192,29 @@ const salesApp = new Vue({
   }
 });
 
-window.refreshTracking = async () => {
-  for (var sale of window.sales) {
-    if (!sale.sale.tracking.isTracking && sale.sale.tracking.number.length == 0 || sale.sale.tracking.carrier == 'unselected') continue;
-    sale.sale.tracking.isTracking = true;
-    let trackingDetails = await window.parent.parent.packagesAPI.getPackageDetails(sale.sale.tracking.number, sale.sale.tracking.carrier);
-    sale.sale.tracking.isTracking = false;
-    // set after gathering to ensure old packages are not reset
-    if (trackingDetails && trackingDetails.status) sale.sale.tracking.details = trackingDetails;
-    salesApp.$forceUpdate();
+window.tryTranslateTrackingActivities = (tracking, language = window.parent.parent.companionSettings.language || "en") => {
+  if (language == "en" && !tracking.details.activities) return;
+  for (var i = 0; i < tracking.details.activities.length; i++) {
+    let activity = tracking.details.activities[i];
+    window.parent.parent.translate(activity.details, { from: "en", to: language, engine: 'google', key: 'AIzaSyAjeg3W1rEmviok1H2UmlPvrjOZybUb9wU'  })
+    .then(translation => activity.details = translation);
   }
+};
+
+async function tryUpdateTracking(tracking, force = false) {
+  if (!force && !tracking.isTracking && tracking.number.length == 0 || tracking.carrier == 'unselected') return;
+  tracking.isTracking = true;
+  let trackingDetails = await window.parent.parent.packagesAPI.getPackageDetails(tracking.number, tracking.carrier);
+  tracking.isTracking = false;
+  // set after gathering to ensure old packages are not reset
+  if (trackingDetails && trackingDetails.status) tracking.details = trackingDetails;
+  salesApp.$forceUpdate();
+  window.tryTranslateTrackingActivities(tracking);
+}
+
+window.refreshTracking = (saleIndex = -1, force = false, tracking = null) => {
+  if (saleIndex != -1) tryUpdateTracking(tracking || window.sales[saleIndex].sale.tracking, force);
+  else for (var i = 0; i < window.sales.length; i++) tryUpdateTracking(tracking || window.sales[i].sale.tracking, force);
 };
 
 function getStatusDescription(statusNumber) {
@@ -220,5 +235,5 @@ function getStatusDescription(statusNumber) {
   return "UNKNOWN";
 }
 
-window.refreshTracking();
+window.refreshTracking(-1, true); // force refresh tracking on load
 window.onload = window.parent.subpageLoadedCallback('sales');

@@ -183,11 +183,11 @@
 							<div class="Price_Class" style="line-height: 17px;" v-bind:style="{ color: getColor(getProfitColor(calculateProfit(sale))), fontSize: confineTextWidth(85, companionSettings.currencySymbol + calculateProfit(sale), 14, 'px', 'normal', 'SF Pro Text') }">
 								<span>{{companionSettings.currencySymbol}}{{numberWithCommas(calculateProfit(sale))}}</span>
 							</div>
-							<div class="Size_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(180, sale.size, 14, 'px', 'normal', 'SF Pro Text') }">
-								<span>{{sale.size}}</span>
+							<div class="Size_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), top: (getTextWidth(sale.name.length == 0 ? tryTranslate('Unknown Product') : sale.name, `${'normal'} ${14 + 'px'} ${'SF Pro Text'}`) <= (180 - 10) ? 148 : 166) + 'px', fontSize: confineTextWidth(180, sale.size, 14, 'px', 'normal', 'SF Pro Text') }">
+								<span>{{sale.size.length == 0 ? tryTranslate('Unknown Size') : sale.size}}</span>
 							</div>
 							<div class="Title_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-								<span>{{tryGenerateEllipses(320, sale.name, 14, 'px', 'normal', 'SF Pro Text')}}</span>
+								<span>{{sale.name.length == 0 ? tryTranslate('Unknown Product') : tryGenerateEllipses(300, sale.name, 14, 'px', 'normal', 'SF Pro Text')}}</span>
 							</div>
 							<div class="Product_Image_Class">
 								<img style="display: table-cell; vertical-align: middle; max-width: 118px; max-height: 118px; border-radius: 10px; margin-left: auto; margin-right: auto;" v-bind:class="{ transparentify: companionSettings.theme == 'light' }" v-bind:src="sale.imageURL" onerror="this.src='../../../../../../images/unknownImage.png'">
@@ -287,8 +287,8 @@
 						<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Rectangle_fa_Class" rx="5" ry="5" x="0" y="0" width="300" height="39">
 						</rect>
 					</svg>
-					<div class="Text_fa_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-						<span>{{companionSettings.currencySymbol}}{{numberWithCommas(getTotalRevenue())}}</span>
+					<div class="Text_fa_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(145, companionSettings.currencySymbol + numberWithCommas(getTotalRevenue()), 20, 'px', 'normal', 'SF Pro Text') }">
+						<span style="user-select: text;">{{companionSettings.currencySymbol}}{{numberWithCommas(getTotalRevenue())}}</span>
 					</div>
 					<div class="Title_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
 						<span>{{tryTranslate('Revenue')}}</span>
@@ -306,8 +306,8 @@
 						<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Rectangle_fb_Class" rx="5" ry="5" x="0" y="0" width="300" height="39">
 						</rect>
 					</svg>
-					<div class="Text_fb_Class" v-bind:style="{ color: getColor(getProfitColor(getTotalProfit())) }">
-						<span>{{companionSettings.currencySymbol}}{{numberWithCommas(getTotalProfit())}}</span>
+					<div class="Text_fb_Class" v-bind:style="{ color: getColor(getProfitColor(getTotalProfit())), fontSize: confineTextWidth(145, companionSettings.currencySymbol + numberWithCommas(getTotalProfit()), 20, 'px', 'normal', 'SF Pro Text') }">
+						<span style="user-select: text;">{{companionSettings.currencySymbol}}{{numberWithCommas(getTotalProfit())}}</span>
 					</div>
 					<div class="Title_fc_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
 						<span>{{tryTranslate('Profit')}}</span>
@@ -325,8 +325,8 @@
 						<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Rectangle_fg_Class" rx="5" ry="5" x="0" y="0" width="300" height="39">
 						</rect>
 					</svg>
-					<div class="Text_fh_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-						<span>{{companionSettings.currencySymbol}}{{numberWithCommas(getTotalSpent())}}</span>
+					<div class="Text_fh_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(145, companionSettings.currencySymbol + numberWithCommas(getTotalSpent()), 20, 'px', 'normal', 'SF Pro Text') }">
+						<span style="user-select: text;">{{companionSettings.currencySymbol}}{{numberWithCommas(getTotalSpent())}}</span>
 					</div>
 					<div class="Title_fi_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
 						<span>{{tryTranslate('Spent')}}</span>
@@ -362,8 +362,8 @@
 
 		const PRODUCT_CARD_ITEMS = {
 			"view": { name: "View Sale", icon: "fas fa-eye" },
-			"refresh-tracking": { name: "Refresh Tracking", icon: "fas fa-truck" },
-			"mark_unsold": { name: "Mark Sale(s) Unsold", icon: "fas fa-redo-alt" },
+			"refresh-tracking": { name: "Refresh Tracking", icon: "fas fa-redo-alt" },
+			"mark_unsold": { name: "Mark Sale(s) Unsold", icon: "fas fa-archive" },
 			"remove": { name: "Remove Sale(s)", icon: "fas fa-trash-alt" }
 		};
 
