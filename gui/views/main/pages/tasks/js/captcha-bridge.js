@@ -6,12 +6,12 @@ const captchaSolverPath = window.parent.url.format({
   slashes: true
 });
 
-window.openCaptchaSolver = (node, host = "resell.monster", sitekey) => {
+window.openCaptchaSolver = async (node, host = "resell.monster", sitekey) => {
   let newCaptchaSolver = {
     node: node,
     host: host,
     sitekey: sitekey,
-    window: window.parent.openURL(captchaSolverPath, false, {
+    window: await window.parent.openURL(captchaSolverPath, false, {
       title: 'Resell Companion — Captcha Solver ' + window.captchaSolvers.length + 1,
       show: true,
       width: 400,
@@ -27,6 +27,7 @@ window.openCaptchaSolver = (node, host = "resell.monster", sitekey) => {
     }, `persist:${window.parent.makeid(10)}`)
   };
   window.captchaSolvers.push(newCaptchaSolver);
+  console.log(newCaptchaSolver);
 
   newCaptchaSolver.window.webContents.once('dom-ready', () => {
     if (node) window.sendOptionsToCaptchaSolver({ mainWebContentsID: window.parent.mainWebContentsID, nodeID: node.id, host: host, sitekey: sitekey }, window.captchaSolvers.indexOf(newCaptchaSolver));

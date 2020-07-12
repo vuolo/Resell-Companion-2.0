@@ -193,7 +193,7 @@ const salesApp = new Vue({
 });
 
 window.tryTranslateTrackingActivities = (tracking, language = window.parent.parent.companionSettings.language || "en") => {
-  if (language == "en" && !tracking.details.activities) return;
+  if (language == "en" || !tracking.details.activities) return;
   for (var i = 0; i < tracking.details.activities.length; i++) {
     let activity = tracking.details.activities[i];
     window.parent.parent.translate(activity.details, { from: "en", to: language, engine: 'google', key: 'AIzaSyAjeg3W1rEmviok1H2UmlPvrjOZybUb9wU'  })

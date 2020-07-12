@@ -7,6 +7,7 @@ window.path = require('path');
 window.url = require('url');
 window.translate = require('translate');
 window.packagesAPI = require('../../../utils/api/packages.js');
+window.marketAPI = require('../../../utils/api/market.js');
 
 // variables
 window.companionSettings = {

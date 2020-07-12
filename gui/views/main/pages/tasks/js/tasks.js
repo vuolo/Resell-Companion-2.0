@@ -274,7 +274,7 @@ window.getCheckoutURL = async (product, variant, quantity = 1) => {
 };
 
 window.launchCheckout = async (product, variant, useDefaultBrowser = false, proxy = null, show = true) => {
-  return await window.parent.openURL(await window.getCheckoutURL(product, variant), useDefaultBrowser, { title: 'Resell Companion — ' + product.Name + ' Checkout', show: show }, `persist:${window.parent.makeid(10)}`, proxy, false, product, variant);
+  return await window.parent.openURL(await window.getCheckoutURL(product, variant), useDefaultBrowser, { title: 'Resell Companion — ' + product.Name + ' Checkout', show: show }, `persist:${product.Store /* + window.parent.makeid(10)*/}`, proxy, false, product, variant);
 };
 
 // ============================ CPFM ATC START ============================ \\
