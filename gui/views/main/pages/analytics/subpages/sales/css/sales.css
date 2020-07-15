@@ -433,8 +433,8 @@
 	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
 	overflow: visible;
-	width: 348px;
-	height: 54px;
+	width: 330px;
+	height: 36px;
 	left: 0px;
 	top: 0px;
 }
@@ -1285,4 +1285,97 @@
 	display: flex;
   align-items: center;
   justify-content: center;
+}
+
+
+
+
+
+
+
+
+
+.Date_Selection_Area_Class {
+	position: absolute;
+	width: 330px;
+	height: 36px;
+	left: 62px;
+	/* top: 105px; */
+	top: 108px;
+	overflow: visible;
+}
+.Rectangle_g {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 330px;
+	height: 36px;
+	left: 0px;
+	top: 0px;
+}
+.Calendar_Icon_2_Class {
+	opacity: 0.66;
+}
+.Calendar_Icon_2 {
+	overflow: visible;
+	position: absolute;
+	width: 14.165px;
+	height: 16.189px;
+	left: 315.667px;
+	top: 8.905px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Text_g_Class {
+	position: absolute;
+	left: 191px;
+	top: 8px;
+	overflow: visible;
+	width: 111px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Arrow_Class {
+	position: absolute;
+	left: 156px;
+	top: 7px;
+	overflow: visible;
+	width: 17px;
+	white-space: nowrap;
+	text-align: right;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 18px;
+	color: rgba(29,29,29,1);
+}
+.Calendar_Icon_1_Class {
+	opacity: 0.66;
+}
+.Calendar_Icon_1 {
+	overflow: visible;
+	position: absolute;
+	width: 14.165px;
+	height: 16.189px;
+	left: 139.667px;
+	top: 8.905px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Text_ha_Class {
+	position: absolute;
+	left: 15px;
+	top: 8px;
+	overflow: visible;
+	width: 111px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
 }

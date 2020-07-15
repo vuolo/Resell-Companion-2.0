@@ -157,9 +157,7 @@ async function searchStockX(query, options = {}) {
   };
 
   const res = await request(requestOptions);
-  if (res.body.includes("Please verify you are a human")) {
-    throw new Error("Human Authentication Requested.");
-  }
+  if (res.body.includes("Please verify you are a human")) return [];//throw new Error("Human Authentication Requested.");
   const body = JSON.parse(res.body);
 
   if (body.status && body.status == 'failed') return false;
@@ -181,7 +179,7 @@ async function searchStockX(query, options = {}) {
       };
     });
 
-    if (productArray == "") throw new Error("No products found!");
+    if (productArray == "") return [];//throw new Error("No products found!");
     else return removeDuplicateProducts(productArray);
   }
 
@@ -585,19 +583,19 @@ function removeDuplicateProducts(products) {
   let foundProductStyleCodes = [];
   let foundProductColors = [];
   for (var product of products) {
-    if (!foundProductNames.includes(product.name || "unknown product name")) {
+    if (!foundProductNames.includes(product.name || "unknown name")) {
       outProducts.push(product);
-      foundProductNames.push(product.name || "unknown product name");
+      foundProductNames.push(product.name || "unknown name");
       foundProductStyleCodes.push(product.pid || "unknown style code");
       foundProductColors.push(product.color || "unknown color");
     } else if (!foundProductStyleCodes.includes(product.pid || "unknown style code")) {
       outProducts.push(product);
-      foundProductNames.push(product.name || "unknown product name");
+      foundProductNames.push(product.name || "unknown name");
       foundProductStyleCodes.push(product.pid || "unknown style code");
       foundProductColors.push(product.color || "unknown color");
     } else if (!foundProductColors.includes(product.color || "unknown color")) {
       outProducts.push(product);
-      foundProductNames.push(product.name || "unknown product name");
+      foundProductNames.push(product.name || "unknown name");
       foundProductStyleCodes.push(product.pid || "unknown style code");
       foundProductColors.push(product.color || "unknown color");
     }

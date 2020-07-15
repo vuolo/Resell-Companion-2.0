@@ -412,8 +412,8 @@
 											<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Lower_Rectangle_Class" rx="10" ry="10" x="0" y="0" width="306" height="97">
 											</rect>
 										</svg>
-										<div class="Time_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(260, activity.timestamp, 16, 'px', 'normal', 'SF Pro Text') }">
-											<span style="user-select: text;">{{activity.timestamp}}</span>
+										<div class="Time_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(260, formatScheduleDate(activity.timestamp.toString(), true), 16, 'px', 'normal', 'SF Pro Text') }">
+											<span style="user-select: text;">{{formatScheduleDate(activity.timestamp.toString(), true)}}</span>
 										</div>
 										<div class="Clock_Icon_Class">
 											<svg class="Clock_Icon_2" viewBox="3 3 18 18">

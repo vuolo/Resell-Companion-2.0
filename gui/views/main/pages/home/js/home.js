@@ -85,7 +85,7 @@ var alertMessages = [
 
 var informationSchedules = [];
 
-const homeApp = new Vue({
+window.homeApp = new Vue({
   el: "#Rewrite___Home",
   data: {
     companionSettings: window.parent.companionSettings,
@@ -266,14 +266,14 @@ const homeApp = new Vue({
       }
       this.$forceUpdate();
     },
-    formatScheduleDate: function(date) {
+    formatScheduleDate: function(date, includeTime = false) {
       let domEnder = "";
-      var objToday = date ? new Date(date.year, date.month-1, date.day) : new Date();
-      // weekday = new Array(this.tryTranslate('Sunday'), this.tryTranslate('Monday'), this.tryTranslate('Tuesday'), this.tryTranslate('Wednesday'), this.tryTranslate('Thursday'), this.tryTranslate('Friday'), this.tryTranslate('Saturday')),
+      var objToday = date ? (typeof date === 'string' || (typeof date).includes('number') ? new Date(date) : new Date(date.year, date.month-1, date.day)) : new Date();
+      // weekday = new Array(window.parent.tryTranslate('Sunday'), window.parent.tryTranslate('Monday'), window.parent.tryTranslate('Tuesday'), window.parent.tryTranslate('Wednesday'), window.parent.tryTranslate('Thursday'), window.parent.tryTranslate('Friday'), window.parent.tryTranslate('Saturday')),
       // dayOfWeek = weekday[objToday.getDay()],
-      if (this.companionSettings.language == "en") domEnder = function() { var a = objToday; if (/1/.test(parseInt((a + "").charAt(0)))) return "th"; a = parseInt((a + "").charAt(1)); return 1 == objToday.getDate() ? window.parent.tryTranslate("st") : 2 == objToday.getDate() ? window.parent.tryTranslate("nd") : 3 == objToday.getDate() ? window.parent.tryTranslate("rd") : window.parent.tryTranslate("th") }();
+      if (window.parent.companionSettings.language == "en") domEnder = function() { var a = objToday; if (/1/.test(parseInt((a + "").charAt(0)))) return "th"; a = parseInt((a + "").charAt(1)); return 1 == objToday.getDate() ? window.parent.tryTranslate("st") : 2 == objToday.getDate() ? window.parent.tryTranslate("nd") : 3 == objToday.getDate() ? window.parent.tryTranslate("rd") : window.parent.tryTranslate("th") }();
       var dayOfMonth = todayDate + ( objToday.getDate() < 10) ? '0' + objToday.getDate() + domEnder : objToday.getDate() + domEnder,
-      months = new Array(this.tryTranslate('January'), this.tryTranslate('February'), this.tryTranslate('March'), this.tryTranslate('April'), this.tryTranslate('May'), this.tryTranslate('June'), this.tryTranslate('July'), this.tryTranslate('August'), this.tryTranslate('September'), this.tryTranslate('October'), this.tryTranslate('November'), this.tryTranslate('December')),
+      months = new Array(window.parent.tryTranslate('January'), window.parent.tryTranslate('February'), window.parent.tryTranslate('March'), window.parent.tryTranslate('April'), window.parent.tryTranslate('May'), window.parent.tryTranslate('June'), window.parent.tryTranslate('July'), window.parent.tryTranslate('August'), window.parent.tryTranslate('September'), window.parent.tryTranslate('October'), window.parent.tryTranslate('November'), window.parent.tryTranslate('December')),
       curMonth = months[objToday.getMonth()],
       curYear = objToday.getFullYear(),
       curHour = objToday.getHours() > 12 ? objToday.getHours() - 12 : (objToday.getHours() < 10 ? "0" + objToday.getHours() : objToday.getHours()),
@@ -284,10 +284,13 @@ const homeApp = new Vue({
       var todayTime = String(curHour).replace("00", "12") + ":" + curMinute + ":" + curSeconds + " " + curMeridiem;
       var todayDate = curMonth + " " + dayOfMonth;
       // translate date
-      if (this.companionSettings.language == "es") todayDate = dayOfMonth + " de " + curMonth;
-      if (this.companionSettings.language == "fr") todayDate = dayOfMonth + " " + curMonth;
-      if (this.companionSettings.language == "de") todayDate = dayOfMonth + ". " + curMonth;
-      if (this.companionSettings.language == "cn") todayDate = curMonth + dayOfMonth;
+      if (window.parent.companionSettings.language == "es") todayDate = dayOfMonth + " de " + curMonth;
+      if (window.parent.companionSettings.language == "fr") todayDate = dayOfMonth + " " + curMonth;
+      if (window.parent.companionSettings.language == "de") todayDate = dayOfMonth + ". " + curMonth;
+      if (window.parent.companionSettings.language == "cn") todayDate = curMonth + dayOfMonth;
+
+      // add time
+      if (includeTime) todayDate += " • " + window.parent.formatTimestamp(objToday, true, false);
 
       return todayDate;
     },

@@ -133,7 +133,7 @@ electron.ipcRenderer.on('user-transfer', function(event, inLogin) {
   // login ready to be used
 });
 
-window.formatTimestamp = (timestamp = new Date().getTime()) => { // TODO: add option to use 12/24 hour and also translate...
+window.formatTimestamp = (timestamp = new Date().getTime(), includeTime = true, includeDate = true) => { // TODO: add option to use 12/24 hour and also translate...
   var curDate = new Date(timestamp || undefined),
   weekday = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'),
   dayOfWeek = weekday[curDate.getDay()],
@@ -148,7 +148,10 @@ window.formatTimestamp = (timestamp = new Date().getTime()) => { // TODO: add op
   curMeridiem = curDate.getHours() > 12 ? "PM" : "AM";
   var curDateTime = String(curHour).replace("00", "12") + ":" + curMinute + ":" + curSeconds + " " + curMeridiem;
 
-  return `${curDate.getMonth()+1}/${curDate.getDate()}/${curDate.getFullYear()} • ${curDateTime}`;
+  if (includeTime && includeDate) return `${curDate.getMonth()+1}/${curDate.getDate()}/${curDate.getFullYear()} • ${curDateTime}`;
+  else if (includeTime && !includeDate) return curDateTime;
+  else if (!includeTime && includeDate) return `${curDate.getMonth()+1}/${curDate.getDate()}/${curDate.getFullYear()}`;
+  else return "";
 };
 
 window.formatTimestampExpanded = (timestamp = new Date().getTime()) => {

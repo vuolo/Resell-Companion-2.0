@@ -5,6 +5,11 @@
 // window.parent.out_var
 
 // variables
+window.tableSort = {
+  key: "name",
+  direction: "descending" // descending OR ascending
+};
+
 window.sales = [
   {
     name: "Adidas Yeezy Boost 700 Wave Runner",
@@ -82,7 +87,6 @@ window.addSale = () => {
     window.sales[window.sales.length-1].quantity = 1;
   }
   refreshSalesSearch();
-  // TODO: reorganize sales based on table filter (OR DO THIS IN THE FUNCTION ABOVE)
 };
 
 window.editSale = async (sale) => {
@@ -104,10 +108,15 @@ const salesApp = new Vue({
     companionSettings: window.parent.parent.companionSettings,
     sales: displayedSales,
     searchTerm: "",
+    dateSearch: {
+      category: "all-time",
+      start: "2020-06-23",
+      end: "2020-06-27",
+      display: "Jun 23 – Jun 27"
+    },
     displayMode: 'table', // 'grid'
     modals: window.modals,
-    createModal: {},
-    displayedDateSearch: 'Jun 23 – Jun 27'
+    createModal: {}
   },
   methods: {
     confineTextWidth: window.parent.parent.confineTextWidth,
@@ -121,6 +130,38 @@ const salesApp = new Vue({
     tryGenerateEllipses: window.parent.parent.tryGenerateEllipses,
     openModal: window.openModal,
     editSale: window.editSale,
+    applyDateSearch: function(category = this.dateSearch.category) {
+      this.dateSearch.category = category;
+      switch (category) {
+        case 'today':
+          break;
+        case 'last7d':
+          break;
+        case 'last4w':
+          break;
+        case 'last3m':
+          break;
+        case 'last1y':
+          break;
+        case 'all-time':
+          // TODO: get & set earliest sale date to START
+          // TO DO THIS => MAKE A FUNCTION THAT DUPLICATES ALL DISPLAYED SALES AND THEN SORTS BY DATE THEN RETURNS FIRST AND LAST DATE.
+          // this.dateSearch.start = sales[0].sale.date;
+          // this.dateSearch.end = sales[0].sale.date;
+          break;
+        case 'custom':
+          // do nothing
+          break;
+      }
+      this.updateDateSearch();
+    },
+    updateDateSearch: function() {
+      this.dateSearch.display = `${window.parent.parent.frames['home-frame'].homeApp.formatScheduleDate(new Date(new Date(this.dateSearch.start).getTime() + (24 * 60 * 60 * 1000)).toString())} – ${window.parent.parent.frames['home-frame'].homeApp.formatScheduleDate(new Date(new Date(this.dateSearch.end).getTime() + (24 * 60 * 60 * 1000)).toString())}`;
+      refreshSalesSearch();
+    },
+    getDisplayedSortDirection: function(key) {
+      return window.tableSort.key == key ? (window.tableSort.direction == "ascending" ? "↑" : (window.tableSort.direction == "descending" ? "↓" : "") ) : "";
+    },
     calculateGridPosition: function(index) {
       return { top: (Math.floor(index/5) * (218+9)) + 10 + 'px', left: ((index%5) * (227+9)) + (10 + 25) + 'px' }
     },
@@ -259,13 +300,55 @@ $("#salesSearch").on('change keydown paste input', refreshSalesSearch);
 function refreshSalesSearch() {
   while (displayedSales.length > 0) displayedSales.pop();
   for (var sale of window.sales) if (isSaleDisplayable(sale)) displayedSales.push(sale);
-  // TODO: sort at end?
+  // reorganize sales based on table filter
+  sortDisplayedSales();
 }
 
 function isSaleDisplayable(sale) {
-  return salesApp.searchTerm.length == 0 || sale.name.toLowerCase().includes(salesApp.searchTerm.toLowerCase());
+  let searchName = sale.name;
+  if (searchName.length == 0) searchName = window.parent.parent.tryTranslate('N/A');
+  return salesApp.searchTerm.length == 0 || searchName.toLowerCase().includes(salesApp.searchTerm.toLowerCase());
 };
 
-refreshSalesSearch();
+function toggleSortSalesByColumn(key) {
+  var isSameColumn = window.tableSort.key == key;
+  window.tableSort.key = key;
+  window.tableSort.direction = isSameColumn ? (window.tableSort.direction == 'ascending' ? 'descending' : 'ascending') : 'descending';
+  refreshSalesSearch();
+}
+
+function sortDisplayedSales() {
+  let key = window.tableSort.key;
+  let tempShortenedDisplayedSales = [];
+  for (var displayedSale of displayedSales) {
+    tempShortenedDisplayedSales.push({
+      'name': displayedSale.name.toLowerCase() || window.parent.parent.tryTranslate('N/A'),
+      'size': displayedSale.size.toLowerCase() || window.parent.parent.tryTranslate('N/A'),
+      'sale.platform': displayedSale.sale.platform.toLowerCase()  || window.parent.parent.tryTranslate('N/A'),
+      'purchase.price': displayedSale.purchase.price || 0,
+      'sale.price': displayedSale.sale.price || 0,
+      'sale.fees.amount': displayedSale.sale.fees.amount || 0,
+      'sale.profit': salesApp.calculateProfit(displayedSale) || 0,
+      'sale.tracking.details.status': displayedSale.sale.tracking.details.status || 0,
+      'sale.date': displayedSale.sale.date,
+      id: displayedSale.id
+    });
+  }
+  tempShortenedDisplayedSales.quick_sort(function(a,b) { return window.tableSort.direction == "descending" ? a[key] < b[key] : a[key] > b[key] });
+  // rearrange displayedSales based on tempDisplayedSales' id order
+  let tempDisplayedSales = [];
+  for (var tempShortenedDisplayedSale of tempShortenedDisplayedSales) {
+    for (var displayedSale of displayedSales) {
+      if (tempShortenedDisplayedSale.id == displayedSale.id) {
+        tempDisplayedSales.push(displayedSale);
+        break;
+      }
+    }
+  }
+  while (displayedSales.length > 0) displayedSales.pop();
+  for (var tempDisplayedSale of tempDisplayedSales) displayedSales.push(tempDisplayedSale);
+}
+
+salesApp.applyDateSearch();
 window.refreshTracking(-1, true); // force refresh tracking on load
 window.onload = window.parent.subpageLoadedCallback('sales');

@@ -199,29 +199,29 @@
 			</div>
 
 			<div v-if="displayMode == 'table'" class="Top_Bar_Chart_Class">
-				<div class="Tracking_ea_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(115, tryTranslate('Tracking'), 20, 'px', 'bold', 'SF Pro Text') }">
-					<span class="clickable">{{tryTranslate('Tracking')}}</span>
+				<div class="Tracking_ea_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(115, tryTranslate('Tracking') + ' ' + getDisplayedSortDirection('sale.tracking.details.status'), 20, 'px', 'bold', 'SF Pro Text') }">
+					<span class="clickable hover-underline" onclick="toggleSortSalesByColumn('sale.tracking.details.status')">{{tryTranslate('Tracking')}} {{getDisplayedSortDirection('sale.tracking.details.status')}}</span>
 				</div>
-				<div class="Profit_eb_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(95, tryTranslate('Profit'), 20, 'px', 'bold', 'SF Pro Text') }">
-					<span class="clickable">{{tryTranslate('Profit')}}</span>
+				<div class="Profit_eb_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(95, tryTranslate('Profit') + ' ' + getDisplayedSortDirection('sale.profit'), 20, 'px', 'bold', 'SF Pro Text') }">
+					<span class="clickable hover-underline" onclick="toggleSortSalesByColumn('sale.profit')">{{tryTranslate('Profit')}} {{getDisplayedSortDirection('sale.profit')}}</span>
 				</div>
-				<div class="Fees_ec_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(90, tryTranslate('Fees'), 20, 'px', 'bold', 'SF Pro Text') }">
-					<span class="clickable">{{tryTranslate('Fees')}}</span>
+				<div class="Fees_ec_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(90, tryTranslate('Fees') + ' ' + getDisplayedSortDirection('sale.fees.amount'), 20, 'px', 'bold', 'SF Pro Text') }">
+					<span class="clickable hover-underline" onclick="toggleSortSalesByColumn('sale.fees.amount')">{{tryTranslate('Fees')}} {{getDisplayedSortDirection('sale.fees.amount')}}</span>
 				</div>
-				<div class="Sold_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(85, tryTranslate('Sold'), 20, 'px', 'bold', 'SF Pro Text') }">
-					<span class="clickable">{{tryTranslate('Sold')}}</span>
+				<div class="Sold_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(85, tryTranslate('Sold') + ' ' + getDisplayedSortDirection('sale.price'), 20, 'px', 'bold', 'SF Pro Text') }">
+					<span class="clickable hover-underline" onclick="toggleSortSalesByColumn('sale.price')">{{tryTranslate('Sold')}} {{getDisplayedSortDirection('sale.price')}}</span>
 				</div>
-				<div class="Purchase_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(130, tryTranslate('Purchased'), 20, 'px', 'bold', 'SF Pro Text') }">
-					<span class="clickable">{{tryTranslate('Purchased')}}</span>
+				<div class="Purchase_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(130, tryTranslate('Purchased') + ' ' + getDisplayedSortDirection('purchase.price'), 20, 'px', 'bold', 'SF Pro Text') }">
+					<span class="clickable hover-underline" onclick="toggleSortSalesByColumn('purchase.price')">{{tryTranslate('Purchased')}} {{getDisplayedSortDirection('purchase.price')}}</span>
 				</div>
-				<div class="Platform_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(115, tryTranslate('Platform'), 20, 'px', 'bold', 'SF Pro Text') }">
-					<span class="clickable">{{tryTranslate('Platform')}}</span>
+				<div class="Platform_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(115, tryTranslate('Platform') + ' ' + getDisplayedSortDirection('sale.platform'), 20, 'px', 'bold', 'SF Pro Text') }">
+					<span class="clickable hover-underline" onclick="toggleSortSalesByColumn('sale.platform')">{{tryTranslate('Platform')}} {{getDisplayedSortDirection('sale.platform')}}</span>
 				</div>
-				<div class="Size_eg_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(85, tryTranslate('Size'), 20, 'px', 'bold', 'SF Pro Text') }">
-					<span class="clickable">{{tryTranslate('Size')}}</span>
+				<div class="Size_eg_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(85, tryTranslate('Size') + ' ' + getDisplayedSortDirection('size'), 20, 'px', 'bold', 'SF Pro Text') }">
+					<span class="clickable hover-underline" onclick="toggleSortSalesByColumn('size')">{{tryTranslate('Size')}} {{getDisplayedSortDirection('size')}}</span>
 				</div>
-				<div class="Product_eh_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(240, tryTranslate('Product'), 20, 'px', 'bold', 'SF Pro Text') }">
-					<span class="clickable">{{tryTranslate('Product')}}</span>
+				<div class="Product_eh_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(240, tryTranslate('Product') + ' ' + getDisplayedSortDirection('name'), 20, 'px', 'bold', 'SF Pro Text') }">
+					<span class="clickable hover-underline" onclick="toggleSortSalesByColumn('name')">{{tryTranslate('Product')}} {{getDisplayedSortDirection('name')}}</span>
 				</div>
 			</div>
 
@@ -261,7 +261,7 @@
 							</rect>
 						</svg>
 
-						<select v-bind:placeholder="tryTranslate('Carrier')" class="Search_Bar_Class special-focus" v-bind:class="{ 'white-arrow': companionSettings.theme == 'dark', 'black-arrow': companionSettings.theme == 'light', 'special-focus-dark': companionSettings.theme == 'dark' }" style="filter: none; left: 0px; top: 0px; width: 165px; padding-left: 0px; text-indent: 15px; padding-right: 25px; border-top-right-radius: 0px; border-bottom-right-radius: 0px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+						<select v-model="dateSearch.category" @change="applyDateSearch()" class="Search_Bar_Class special-focus" v-bind:class="{ 'white-arrow': companionSettings.theme == 'dark', 'black-arrow': companionSettings.theme == 'light', 'special-focus-dark': companionSettings.theme == 'dark' }" style="filter: none; left: 0px; top: 0px; width: 165px; padding-left: 0px; text-indent: 15px; padding-right: 25px; border-top-right-radius: 0px; border-bottom-right-radius: 0px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
 							<option value="today">{{tryTranslate('Today')}}</option>
 							<option value="last7d">{{tryTranslate('Last 7 Days')}}</option>
 							<option value="last4w">{{tryTranslate('Last 4 Weeks')}}</option>
@@ -271,7 +271,7 @@
 							<option hidden value="custom">{{tryTranslate('Custom')}}</option>
 						</select>
 
-						<input id="dateRangeFilter" disabled v-model="displayedDateSearch" class="Search_Bar_Class special-focus clickable" style="border-top-left-radius: 0px; border-bottom-left-radius: 0px; width: 165px; left: 165px; padding-left: 0px; text-align-last: center; filter: none; padding-right: 0px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+						<input id="dateRangeFilter" disabled v-model="dateSearch.display" class="Search_Bar_Class special-focus clickable" style="border-top-left-radius: 0px; border-bottom-left-radius: 0px; width: 165px; left: 165px; padding-left: 0px; text-align-last: center; filter: none; padding-right: 0px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(165-20, dateSearch.display, 16, 'px', 'normal', 'SF Pro Text') }">
 
 						<svg class="Separator">
 							<rect v-bind:fill="getThemeColor('rgba(190,190,190,1)')" class="Separator_Class" rx="1.5" ry="1.5" x="0" y="0" width="18" height="3">
@@ -282,6 +282,19 @@
 
 
 				</div>
+
+				<div class="Date_Selection_Area_Class">
+					<svg class="Rectangle_g">
+						<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Rectangle_g_Class" rx="10" ry="10" x="0" y="0" width="330" height="36">
+						</rect>
+					</svg>
+					<input v-model="dateSearch.start" @change="updateDateSearch()" type="date" class="Search_Bar_Class special-focus" v-bind:class="{ 'white-input-icon': companionSettings.theme == 'dark' }" style="left: 0px; top: 0px; width: 165px; padding-left: 8px; padding-right: 13px; text-indent: 0px; border-radius: 10px; border-top-right-radius: 0px; border-bottom-right-radius: 0px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+					<input v-model="dateSearch.end" @change="updateDateSearch()" type="date" class="Search_Bar_Class special-focus" v-bind:class="{ 'white-input-icon': companionSettings.theme == 'dark' }" style="left: 165px; top: 0px; width: 165px; padding-left: 16px; padding-right: 3px; text-indent: 0px; border-radius: 10px; border-top-left-radius: 0px; border-bottom-left-radius: 0px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+					<div class="Arrow_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+						<span>→</span>
+					</div>
+				</div>
+
 				<div class="Revenue_Area_Class">
 					<svg class="Rectangle_fa">
 						<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Rectangle_fa_Class" rx="5" ry="5" x="0" y="0" width="300" height="39">
@@ -301,6 +314,7 @@
 						<path fill="rgba(255,167,78,1)" d="M6,0H6A0,0,0,0,1,6,0V39a0,0,0,0,1,0,0H6a6,6,0,0,1-6-6V6A6,6,0,0,1,6,0Z"/>
 					</svg>
 				</div>
+
 				<div class="Profit_Area_Class">
 					<svg class="Rectangle_fb">
 						<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Rectangle_fb_Class" rx="5" ry="5" x="0" y="0" width="300" height="39">
@@ -320,6 +334,7 @@
 						<path fill="rgba(53,178,57,1)" d="M6,0H6A0,0,0,0,1,6,0V39a0,0,0,0,1,0,0H6a6,6,0,0,1-6-6V6A6,6,0,0,1,6,0Z"/>
 					</svg>
 				</div>
+
 				<div class="Spent_Area_Class">
 					<svg class="Rectangle_fg">
 						<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Rectangle_fg_Class" rx="5" ry="5" x="0" y="0" width="300" height="39">
@@ -339,7 +354,9 @@
 						<path fill="rgba(253,53,53,1)" d="M6,0H6A0,0,0,0,1,6,0V39a0,0,0,0,1,0,0H6a6,6,0,0,1-6-6V6A6,6,0,0,1,6,0Z"/>
 					</svg>
 				</div>
+
 			</div>
+
 		</div>
 
 		<div id="modalContent" v-show="shouldDisplayModals()">
@@ -348,6 +365,8 @@
 	  </div>
 
 	</div>
+
+	<script src="../../../../../../../utils/scripts/prototype-extensions.js" type="text/javascript"></script>
 
 	<script src="./js/sales.js" type="text/javascript"></script>
 	<script src="../../../../../../../utils/scripts/button-transitions.js" type="text/javascript"></script>

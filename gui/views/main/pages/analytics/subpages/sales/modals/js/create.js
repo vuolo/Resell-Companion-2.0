@@ -91,6 +91,7 @@ window.createApp = new Vue({
     getThemeColor: window.parent.parent.parent.getThemeColor,
     getColor: window.parent.parent.parent.getColor,
     tryGenerateEllipses: window.parent.parent.parent.tryGenerateEllipses,
+    formatScheduleDate: window.parent.parent.parent.frames['home-frame'].homeApp.formatScheduleDate,
     calculateSizeGridPosition: function(index) {
       return { top: (Math.floor(index/3) * (15 + 20)) + (11 + 20) + 'px', left: ((index%3) * (50)) + (18) + 'px' }
     },
