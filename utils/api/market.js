@@ -182,7 +182,7 @@ async function searchStockX(query, options = {}) {
     });
 
     if (productArray == "") throw new Error("No products found!");
-    else return productArray;
+    else return removeDuplicateProducts(productArray);
   }
 
 }
@@ -238,6 +238,7 @@ async function fetchStockXVariants(product, options = {}) {
         lowestAsk: sizes[key].market.lowestAsk,
         highestBid: sizes[key].market.highestBid,
         currency: "USD",
+        groupTitle: sizes[key].skuVariantGroup ? sizes[key].skuVariantGroup.shortCode || "U.S. Men's Size" : "U.S. Men's Size",
         url: `https://stockx.com/${slug}?size=${sizes[key].shoeSize}`
       });
     };
@@ -575,6 +576,33 @@ function removeDuplicateVariants(variants) {
     foundDuplicateIndex = getDuplicateVariantIndex(variants);
   }
   return variants;
+}
+
+// clear duplicate products
+function removeDuplicateProducts(products) {
+  let outProducts = [];
+  let foundProductNames = [];
+  let foundProductStyleCodes = [];
+  let foundProductColors = [];
+  for (var product of products) {
+    if (!foundProductNames.includes(product.name || "unknown product name")) {
+      outProducts.push(product);
+      foundProductNames.push(product.name || "unknown product name");
+      foundProductStyleCodes.push(product.pid || "unknown style code");
+      foundProductColors.push(product.color || "unknown color");
+    } else if (!foundProductStyleCodes.includes(product.pid || "unknown style code")) {
+      outProducts.push(product);
+      foundProductNames.push(product.name || "unknown product name");
+      foundProductStyleCodes.push(product.pid || "unknown style code");
+      foundProductColors.push(product.color || "unknown color");
+    } else if (!foundProductColors.includes(product.color || "unknown color")) {
+      outProducts.push(product);
+      foundProductNames.push(product.name || "unknown product name");
+      foundProductStyleCodes.push(product.pid || "unknown style code");
+      foundProductColors.push(product.color || "unknown color");
+    }
+  }
+  return outProducts;
 }
 
 // returns the first index of the duplicated variant

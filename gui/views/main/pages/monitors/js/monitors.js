@@ -259,9 +259,7 @@ function refreshVisualizedProducts() {
 }
 
 function refreshDisplayedProducts() {
-  while (displayedProducts.length > 0) {
-    displayedProducts.pop();
-  }
+  while (displayedProducts.length > 0) displayedProducts.pop();
   let displayedCount = 0;
   for (var product of window.products) {
     if (tryDisplayProduct(product, true)) {

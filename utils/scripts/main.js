@@ -167,6 +167,13 @@ window.makeid = (length) => {
   return result;
 };
 
+window.separateDate = (timestamp = new Date().getTime()) => {
+  let date = new Date(timestamp);
+  let dateString = date.getFullYear() + '-' + (String(date.getMonth() + 1).length == 1 ? "0" + (date.getMonth() + 1) : (date.getMonth() + 1)) + '-' + (String(date.getDate() + 1).length == 1 ? ("0" + date.getDate()) : date.getDate());
+  let timeString = (String(date.getHours() % 24).length == 1 ? ("0" + String(date.getHours() % 24)) : String(date.getHours() % 24)) + ':' + 55;
+  return { date: dateString, time: timeString, timestamp: timestamp };
+}
+
 /**
  * Uses canvas.measureText to compute and return the width of the given text of given font in pixels.
  *

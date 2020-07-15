@@ -183,7 +183,7 @@ window.tasksApp = new Vue({
     },
     addProduct: function(options = {}) {
       if (!allowNewTaskCreation) return;
-      let separatedDate = separateDate();
+      let separatedDate = window.parent.separateDate();
       let taskTemplate = {
         configuration: {
           nickname: this.tryTranslate("Product") + " " + (tasks.length + 1),
@@ -249,12 +249,7 @@ window.updateTaskNode = (taskNodeIndex) => {
   window.parent.memory.syncObject(tasks[tasksApp.activeTaskIndex].nodes[taskNodeIndex], updatedTaskNode);
 };
 
-function separateDate(timestamp = new Date().getTime()) {
-  let date = new Date(timestamp);
-  let dateString = date.getFullYear() + '-' + (String(date.getMonth() + 1).length == 1 ? "0" + (date.getMonth() + 1) : (date.getMonth() + 1)) + '-' + (String(date.getDate() + 1).length == 1 ? ("0" + date.getDate()) : date.getDate());
-  let timeString = (String(date.getHours() % 24).length == 1 ? ("0" + String(date.getHours() % 24)) : String(date.getHours() % 24)) + ':' + 55;
-  return { date: dateString, time: timeString, timestamp: timestamp };
-}
+
 
 function getTimestampFromDateAndTime(date, time) {
   return new Date(date).getTime() + (parseInt(time.split(":")[0]) * 60 * 60 * 1000) + (parseInt(time.split(":")[1]) * 60 * 1000) + (new Date().getTimezoneOffset() * 60 * 1000);

@@ -136,11 +136,17 @@
 				<div class="Right_Fields_Class">
 
 					<div class="Product_Name_Area_Class">
-						<input v-bind:placeholder="tryTranslate('Product Name')" v-on:keyup.enter="finalizeModal();" v-model="modalOptions.name" type="text" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 279px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+						<input v-bind:placeholder="tryTranslate('Product Name')" v-on:keyup.enter="finalizeModal();" v-on:blur="hideSuggestedItems()" v-on:focus="modalOptions.suggestions.itemsOpened = true;" v-model="modalOptions.name" type="text" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 279px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)'), paddingRight: (modalOptions.suggestions.isSearchingForItems ? 35 : 20) + 'px' }">
 						<svg class="Magnifying_Glass_Icon_gv" viewBox="0 -0.045 17.337 17.337">
 							<path v-bind:fill="getThemeColor('rgba(29,29,29,1)')" class="Magnifying_Glass_Icon_gv_Class" d="M 7.516793251037598 -0.0235234834253788 C 3.371819496154785 -0.0235234834253788 0 3.34829568862915 0 7.493270397186279 C 0 11.63824462890625 3.371819496154785 15.01006317138672 7.516793251037598 15.01006317138672 C 8.78391170501709 15.01006317138672 10.02955055236816 14.70939350128174 11.08190250396729 14.12952709197998 C 11.1661958694458 14.2309684753418 11.25965595245361 14.32442760467529 11.36109733581543 14.40872001647949 L 13.50875282287598 16.55637741088867 C 14.04909896850586 17.16438865661621 14.88185119628906 17.42293357849121 15.67153072357178 17.22785949707031 C 16.46121025085449 17.03278541564941 17.07778167724609 16.41621208190918 17.27285957336426 15.62653064727783 C 17.46793174743652 14.83684730529785 17.20938682556152 14.0040979385376 16.60137557983398 13.46375179290771 L 14.45372009277344 11.31609630584717 C 14.3491039276123 11.21144199371338 14.2339506149292 11.11788082122803 14.11009693145752 11.03690242767334 C 14.68996429443359 9.984550476074219 15.0550651550293 8.76038646697998 15.0550651550293 7.471794128417969 C 15.0550651550293 3.326818943023682 11.68324661254883 -0.04500007256865501 7.538270950317383 -0.04500007256865501 Z M 7.516793251037598 2.124131917953491 C 10.50203609466553 2.124131917953491 12.88593292236328 4.508029937744141 12.88593292236328 7.493270397186279 C 12.88593292236328 8.910723686218262 12.37049579620361 10.22079277038574 11.46848201751709 11.18723678588867 C 11.4470043182373 11.20871257781982 11.42552852630615 11.23019027709961 11.40405178070068 11.25166702270508 C 11.30261039733887 11.33596038818359 11.20915126800537 11.42942047119141 11.12485599517822 11.53086090087891 C 10.17988777160645 12.38992404937744 8.891294479370117 12.88388538360596 7.495319366455078 12.88388538360596 C 4.510077476501465 12.88388538360596 2.126179695129395 10.49998760223389 2.126179695129395 7.514747142791748 C 2.126179695129395 4.529504776000977 4.510077476501465 2.145607709884644 7.495319366455078 2.145607709884644 Z">
 							</path>
 						</svg>
+
+						<div v-show="modalOptions.suggestions.isSearchingForItems" style="pointer-events: none; width: 20px; height: 33px; left: 230px; position: absolute; transform: translate(100%, 65%);">
+							<svg class="spinner" viewBox="0 0 50 50">
+								<circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="1.5" stroke="#FFA74E"></circle>
+							</svg>
+						</div>
 
 						<div class="Keywords_ep_Class" style="left: 10px; position: absolute; white-space: nowrap;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
 							<span>{{tryTranslate('Product Name')}}</span>
@@ -148,9 +154,15 @@
 					</div>
 
 					<div class="Size_Area_Class">
-						<input v-bind:placeholder="tryTranslate('Size')" v-on:keyup.enter="finalizeModal();" v-model="modalOptions.size" type="text" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 187px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+						<input v-bind:placeholder="tryTranslate('Size')" v-on:blur="hideSuggestedSizes()" v-on:focus="modalOptions.suggestions.sizesOpened = true;" v-on:keyup.enter="finalizeModal();" v-model="modalOptions.size" type="text" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 187px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)'), paddingRight: (modalOptions.suggestions.isSearchingForSizes ? 35 : 20) + 'px' }">
 						<div class="Arrows_Icon_Class" style="left: 10px; top: 36px; transform: scale(0.85);" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
 							<span>↑↓</span>
+						</div>
+
+						<div v-show="modalOptions.suggestions.isSearchingForSizes" style="pointer-events: none; width: 20px; height: 33px; left: 137px; position: absolute; transform: translate(100%, 65%);">
+							<svg class="spinner" viewBox="0 0 50 50">
+								<circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="1.5" stroke="#FFA74E"></circle>
+							</svg>
 						</div>
 
 						<div class="Keywords_ep_Class" style="left: 10px; position: absolute; white-space: nowrap;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
@@ -212,6 +224,86 @@
 						</div>
 					</div>
 
+				</div>
+
+
+				<div id="SuggestedItems" class="Suggested_Items_Area_Class" v-show="modalOptions.name.length > 0 && modalOptions.suggestions.itemsOpened && modalOptions.suggestions.items.length > 0" v-bind:style="{ height: (modalOptions.suggestions.items.length < 3 ? ((112 * modalOptions.suggestions.items.length) + 47.21) : 351) + 'px' }">
+					<svg class="Rectangle_hv" v-bind:style="{ height: (modalOptions.suggestions.items.length < 3 ? ((112 * modalOptions.suggestions.items.length) + 47.21) : 351) + 'px' }">
+						<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Rectangle_hv_Class" rx="5" ry="5" x="0" y="0" width="485" v-bind:height="modalOptions.suggestions.items.length < 3 ? ((112 * modalOptions.suggestions.items.length) + 47.21) : 351">
+						</rect>
+					</svg>
+					<svg class="Side_Rectangle" v-bind:style="{ height: (modalOptions.suggestions.items.length < 3 ? ((112 * modalOptions.suggestions.items.length) + 47.21) : 351) + 'px' }">
+						<rect fill="rgba(255,167,78,1)" class="Side_Rectangle_Class" rx="3" ry="3" x="0" y="0" width="3" v-bind:height="modalOptions.suggestions.items.length < 3 ? ((112 * modalOptions.suggestions.items.length) + 47.21) : 351">
+						</rect>
+					</svg>
+
+					<div class="Suggested_Item_Class" v-bind:style="{ height: (modalOptions.suggestions.items.length < 3 ? modalOptions.suggestions.items.length * 112 : 304.29) + 'px' }" v-bind:class="{ 'dark-scrollbar': companionSettings.theme == 'dark' }">
+						<template v-for="(item, itemIndex) in modalOptions.suggestions.items">
+							<svg class="Separator_hz" v-bind:style="{ top: (itemIndex * 129) + 'px'}" v-show="itemIndex != modalOptions.suggestions.items.length-1">
+								<rect v-bind:fill="getThemeColor('rgba(190,190,190,1)')" class="Separator_hz_Class" rx="1.5" ry="1.5" x="0" y="0" width="406" height="3">
+								</rect>
+							</svg>
+							<div class="Suggested_Item_hy_Class clickable hover-opacity" v-on:click="applySuggestedItem(item)" v-bind:style="{ top: (itemIndex * 129) + 'px'}">
+								<div class="Product_Image_Class" style="width: 92px; height: 92px;">
+									<img style="display: table-cell; vertical-align: middle; max-width: 92px; max-height: 92px; border-radius: 10px; margin-left: auto; margin-right: auto;" v-bind:class="{ transparentify: companionSettings.theme == 'light' }" v-bind:src="item.image" onerror="this.src='../../../../../../../images/unknownImage.png'">
+								</div>
+								<div class="White_Zest_Academy_Blue__Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+									<span style="user-select: text;">{{tryGenerateEllipses(340, item.color, 12, 'px', 'normal', 'SF Pro Text')}}</span><br>
+								</div>
+								<div class="Nike_Air_Assault_Low_Zest_Acad_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+									<span style="user-select: text;">{{tryGenerateEllipses(340, item.name, 14, 'px', 'bold', 'SF Pro Text')}}</span>
+								</div>
+								<div class="BQ8462_601__Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+									<span style="user-select: text;">{{tryGenerateEllipses(340, item.pid || '', 12, 'px', 'normal', 'SF Pro Text')}}</span><br>
+								</div>
+							</div>
+						</template>
+					</div>
+
+					<svg class="Orange_Bar" v-bind:style="{ left: calculateUnderlineLeftOffset(300, tryTranslate('Suggested Items'), 21, 'px', '900', 'SF Pro Text', false) + 40 + 'px' }">
+						<rect fill="rgba(255,167,78,1)" class="Green_Bar_Class" rx="1.5" ry="1.5" x="0" y="0" v-bind:width="calculateUnderlineWidth(200, tryTranslate('Suggested Items'), 21, 'px', '900', 'SF Pro Text')" height="3">
+						</rect>
+					</svg>
+					<div class="Suggested_Items_3_Total_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+						<span>{{tryTranslate('Suggested Items')}} </span><span style="font-style:normal;font-weight:bold;font-size:16px;opacity: 0.66;">{{modalOptions.suggestions.items.length}} {{tryTranslate('Total')}}</span>
+					</div>
+
+					<div class="Exclamation_Icon_Class">
+						<svg class="Circle">
+							<ellipse fill="rgba(255,167,78,1)" class="Circle_Class" rx="10" ry="10.5" cx="10" cy="10.5">
+							</ellipse>
+						</svg>
+						<div class="__ik_Class">
+							<span>!</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="Size_Area_il_Class" v-show="modalOptions.name.length > 0 && modalOptions.suggestions.sizesOpened  && modalOptions.suggestions.sizes.length > 0" v-bind:style="{ height: (Math.ceil(modalOptions.suggestions.sizes.length/3) < 10 ? ((26 + 10) * Math.ceil(modalOptions.suggestions.sizes.length/3) + (31 + 3)) : 351) + 'px' }">
+					<svg class="Rectangle_im" v-bind:style="{ height: (Math.ceil(modalOptions.suggestions.sizes.length/3) < 10 ? ((26 + 10) * Math.ceil(modalOptions.suggestions.sizes.length/3) + (31 + 3)) : 351) + 'px' }">
+						<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Rectangle_im_Class" rx="5" ry="5" x="0" y="0" width="185" v-bind:height="Math.ceil(modalOptions.suggestions.sizes.length/3) < 10 ? ((26 + 10) * Math.ceil(modalOptions.suggestions.sizes.length/3) + (31 + 3)) : 351">
+						</rect>
+					</svg>
+					<svg class="Side_Rectangle_in" v-bind:style="{ height: (Math.ceil(modalOptions.suggestions.sizes.length/3) < 10 ? ((26 + 10) * Math.ceil(modalOptions.suggestions.sizes.length/3) + (31 + 3)) : 351) + 'px' }">
+						<rect fill="rgba(206,140,229,1)" class="Side_Rectangle_in_Class" rx="3" ry="3" x="0" y="0" width="3" v-bind:height="Math.ceil(modalOptions.suggestions.sizes.length/3) < 10 ? ((26 + 10) * Math.ceil(modalOptions.suggestions.sizes.length/3) + (31 + 3)) : 351">
+						</rect>
+					</svg>
+					<div class="Keyword_Input_Area_Class" v-bind:style="{ height: (Math.ceil(modalOptions.suggestions.sizes.length/3) < 10 ? ((26 + 10) * Math.ceil(modalOptions.suggestions.sizes.length/3) + (31 + 3)) : 351) - 2 + 'px' }" v-bind:class="{ 'dark-scrollbar': companionSettings.theme == 'dark' }">
+						<div v-if="modalOptions.suggestions.sizes.length > 0" class="ID14_5_Class" style="font-weight: bold; left: 5px; width: 167px; top: 8px;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(182-15, tryTranslate(modalOptions.suggestions.sizes[0].groupTitle), 16, 'px', 'bold', 'SF Pro Text') }">
+							<span>{{tryTranslate(modalOptions.suggestions.sizes[0].groupTitle)}}</span>
+						</div>
+						<template v-for="(size, sizeIndex) in modalOptions.suggestions.sizes">
+							<div class="Keyword_Input_Area_ip_Class clickable hover-opacity" v-on:click="applySuggestedSize(size)" v-bind:style="calculateSizeGridPosition(sizeIndex)">
+								<svg class="Keyword_Input_Rectangle">
+									<rect v-bind:fill="getThemeColor('rgba(242,242,242,1)')" class="Keyword_Input_Rectangle_Class" rx="5" ry="5" x="0" y="0" width="41" height="26">
+									</rect>
+								</svg>
+								<div class="ID14_5_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(41-10, size.name.length > 0 ? size.name : tryTranslate('N/A'), 16, 'px', 'normal', 'SF Pro Text') }">
+									<span>{{size.name.length > 0 ? size.name : tryTranslate('N/A')}}</span>
+								</div>
+							</div>
+						</template>
+					</div>
 				</div>
 
 
@@ -352,7 +444,7 @@
 									<div class="ID1_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
 										<span>{{activityIndex+1}}</span>
 									</div>
-									<svg class="Side_Rectangle" width="8" height="39" viewBox="0 0 6 39">
+									<svg class="Side_Rectangle_tracking" width="8" height="39" viewBox="0 0 6 39">
 										<path v-bind:fill="getColor(activity.statusColor)" d="M6,0H6A0,0,0,0,1,6,0V39a0,0,0,0,1,0,0H6a6,6,0,0,1-6-6V6A6,6,0,0,1,6,0Z"/>
 									</svg>
 									<div class="__Class clickable hover-opacity" v-on:click="toggleActivityOpened(activity)" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">

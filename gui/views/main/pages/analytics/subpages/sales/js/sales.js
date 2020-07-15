@@ -9,9 +9,22 @@ window.sales = [
   {
     name: "Adidas Yeezy Boost 700 Wave Runner",
     color: "",
+    styleCode: "",
     imageURL: "https://stockx-360.imgix.net/Adidas-Yeezy-Wave-Runner-700-Solid-Grey/Images/Adidas-Yeezy-Wave-Runner-700-Solid-Grey/Lv2/img02.jpg?auto=format,compress&w=559&q=90&dpr=2&updated_at=1538080256",
     size: "XXXL",
     notes: "",
+    marketplaceData: {
+      product: {},
+      size: ""
+    },
+    suggestions: {
+      items: [],
+      itemsOpened: false,
+      isSearchingForItems: false,
+      sizes: [],
+      sizesOpened: false,
+      isSearchingForSizes: false
+    },
     purchase: {
       price: 220,
       estimatedResell: 380,
@@ -41,6 +54,8 @@ window.sales = [
     }
   }
 ];
+
+let displayedSales = [];
 
 window.modals = {
   'create': {
@@ -83,7 +98,7 @@ const salesApp = new Vue({
   el: "#Rewrite___Sales",
   data: {
     companionSettings: window.parent.parent.companionSettings,
-    sales: window.sales,
+    sales: displayedSales,
     searchTerm: "",
     displayMode: 'table', // 'grid'
     modals: window.modals,
@@ -235,5 +250,18 @@ function getStatusDescription(statusNumber) {
   return "UNKNOWN";
 }
 
+$("#salesSearch").on('change keydown paste input', refreshSalesSearch);
+
+function refreshSalesSearch() {
+  while (displayedSales.length > 0) displayedSales.pop();
+  for (var sale of window.sales) if (isSaleDisplayable(sale)) displayedSales.push(sale);
+  // TODO: sort at end?
+}
+
+function isSaleDisplayable(sale) {
+  return salesApp.searchTerm.length == 0 || sale.name.toLowerCase().includes(salesApp.searchTerm.toLowerCase());
+};
+
+refreshSalesSearch();
 window.refreshTracking(-1, true); // force refresh tracking on load
 window.onload = window.parent.subpageLoadedCallback('sales');

@@ -10,9 +10,22 @@ const MODAL_NAME = 'create';
 const MODAL_OPTIONS_TEMPLATE = {
   name: "",
   color: "",
+  styleCode: "",
   imageURL: "",
   size: "",
   notes: "",
+  marketplaceData: {
+    product: {},
+    size: ""
+  },
+  suggestions: {
+    items: [],
+    itemsOpened: false,
+    isSearchingForItems: false,
+    sizes: [],
+    sizesOpened: false,
+    isSearchingForSizes: false
+  },
   purchase: {
     price: null,
     estimatedResell: null,
@@ -48,8 +61,16 @@ window.resetModalOptions = () => {
   if (window.createApp) {
     if (window.createApp.activeSaleIndex != -1 && window.modalOptions.sale.tracking.isTracking) window.parent.refreshTracking(window.createApp.activeSaleIndex, true);
     window.createApp.activeSaleIndex = -1;
+    resetSuggestedItems();
+    window.createApp.itemsOpened = false;
+    window.createApp.isSearchingForItems = false;
+    window.createApp.sizesOpened = false;
+    window.createApp.isSearchingForSizes = false;
   }
   window.parent.parent.parent.memory.syncObject(window.modalOptions, window.parent.parent.parent.memory.copyObj(MODAL_OPTIONS_TEMPLATE));
+  let separatedDate = window.parent.parent.parent.separateDate();
+  window.modalOptions.purchase.date = separatedDate.date;
+  window.modalOptions.sale.date = separatedDate.date;
 }
 window.resetModalOptions();
 
@@ -69,6 +90,57 @@ window.createApp = new Vue({
     getThemeColor: window.parent.parent.parent.getThemeColor,
     getColor: window.parent.parent.parent.getColor,
     tryGenerateEllipses: window.parent.parent.parent.tryGenerateEllipses,
+    calculateSizeGridPosition: function(index) {
+      return { top: (Math.floor(index/3) * (15 + 20)) + (11 + 20) + 'px', left: ((index%3) * (50)) + (18) + 'px' }
+    },
+    hideSuggestedItems: function() {
+      let isHovering = false;
+      for (var elem of $('.Suggested_Item_hy_Class')) if ($(elem).is(":hover")) { isHovering = true; break; }
+      if (isHovering) setTimeout(function() { modalOptions.suggestions.itemsOpened = false; }, 150);
+      else modalOptions.suggestions.itemsOpened = false;
+    },
+    hideSuggestedSizes: function() {
+      let isHovering = false;
+      for (var elem of $('.Keyword_Input_Area_ip_Class')) if ($(elem).is(":hover")) { isHovering = true; break; }
+      if (isHovering) setTimeout(function() { modalOptions.suggestions.sizesOpened = false; }, 150);
+      else {
+        modalOptions.suggestions.sizesOpened = false;
+        // loop through all sizes and check if typed size = any sizes, then apply if so
+        for (var size of modalOptions.suggestions.sizes) {
+          if (size.name == modalOptions.size) {
+            this.applySuggestedSize(size);
+            break;
+          }
+        }
+      }
+    },
+    applySuggestedItem: async function(item) {
+      // update previous search term to prevent a refresh
+      allowRefresh = false;
+      previousSearchTerm = modalOptions.name;
+      try { clearInterval(searchIntv); } catch(err) { console.log(err); }
+      searchIntv = null;
+      setTimeout(function() { allowRefresh = true; }, 150);
+
+      modalOptions.name = item.name || "";
+      modalOptions.color = item.color || "";
+      modalOptions.styleCode = item.pid || "";
+      modalOptions.imageURL = item.image || "";
+      modalOptions.purchase.price = item.retail || null;
+      modalOptions.purchase.estimatedResell = item.market.lowestAsk || null;
+      modalOptions.marketplaceData.product = item || {};
+      modalOptions.suggestions.itemsOpened = false;
+      modalOptions.suggestions.isSearchingForSizes = true;
+      document.querySelector(".Size_Area_Class > input").focus();
+      modalOptions.suggestions.sizes = await window.parent.parent.parent.marketAPI.fetchVariants('stockx', item.urlKey);
+      modalOptions.suggestions.isSearchingForSizes = false;
+    },
+    applySuggestedSize: function(size) {
+      modalOptions.size = size.name || "";
+      modalOptions.purchase.estimatedResell = size.lowestAsk || modalOptions.purchase.estimatedResell || null;
+      modalOptions.marketplaceData.size = size || "";
+      modalOptions.suggestions.sizesOpened = false;
+    },
     tryConvertSize: function(size) {
       // let convertedSizeObj = {
       //   convertedSize: {
@@ -124,6 +196,46 @@ function guessAndSetCarrier(trackingNumber) {
 
 $("#trackingNumber").on('change keydown paste input', function() {
   guessAndSetCarrier(modalOptions.sale.tracking.number);
+});
+
+async function refreshSuggestedItems(inputtedName = modalOptions.name) {
+  resetSuggestedItems();
+  modalOptions.suggestions.isSearchingForItems = true;
+  let searchResults = await window.parent.parent.parent.marketAPI.searchMarketplace('stockx', inputtedName);
+  // validate this is still the correct last typed phrase
+  if (inputtedName == modalOptions.name) {
+    modalOptions.suggestions.items = searchResults;
+    modalOptions.suggestions.isSearchingForItems = false;
+  }
+}
+
+function resetSuggestedItems() {
+  while (modalOptions.suggestions.items.length > 0) modalOptions.suggestions.items.pop();
+  while (modalOptions.suggestions.sizes.length > 0) modalOptions.suggestions.sizes.pop();
+  try { clearInterval(searchIntv); } catch(err) { console.log(err); }
+  searchIntv = null;
+}
+
+let searchIntv;
+let previousSearchTerm;
+let allowRefresh = true;
+$('.Product_Name_Area_Class .Search_Bar_Class').on('change keydown paste input', function() {
+  if (previousSearchTerm && previousSearchTerm.length > 0 && modalOptions.name.length == 0) {
+    previousSearchTerm = modalOptions.name;
+    if (previousSearchTerm.length > 0 ) { if (allowRefresh) refreshSuggestedItems(previousSearchTerm); }
+    else resetSuggestedItems();
+  }
+  if (!searchIntv) {
+    searchIntv = setInterval(function() {
+      if (modalOptions.name != previousSearchTerm) {
+        previousSearchTerm = modalOptions.name;
+      } else {
+        previousSearchTerm = modalOptions.name;
+        if (previousSearchTerm.length > 0 ) { if (allowRefresh) refreshSuggestedItems(previousSearchTerm); }
+        else resetSuggestedItems();
+      }
+    }, 333);
+  }
 });
 
 window.onload = window.parent.modalLoadedCallback(MODAL_NAME);

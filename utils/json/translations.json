@@ -228,6 +228,12 @@
         "es": "Diciembre"
       }
     },
+    "Delivered": {
+      "languages": {
+        "en": "Delivered",
+        "es": "Entregado"
+      }
+    },
     "Device Connected": {
       "languages": {
         "en": "Device Connected",
@@ -274,6 +280,12 @@
       "languages": {
         "en": "Efficiently assign each task with an enabled billing profile",
         "es": "Asigne eficientemente cada tarea con un perfil de facturación habilitado"
+      }
+    },
+    "En Route...": {
+      "languages": {
+        "en": "En Route...",
+        "es": "En camino..."
       }
     },
     "Est. Resell": {
@@ -596,6 +608,12 @@
         "es": "Abrir sitios web con el navegador predeterminado de tu ordenador"
       }
     },
+    "Out for Delivery": {
+      "languages": {
+        "en": "Out for Delivery",
+        "es": "En ruta de entrega"
+      }
+    },
     "Overview": {
       "languages": {
         "en": "Overview",
@@ -818,6 +836,12 @@
         "es": "Configuración"
       }
     },
+    "Shipping...": {
+      "languages": {
+        "en": "Shipping...",
+        "es": "Enviando..."
+      }
+    },
     "Shoes": {
       "languages": {
         "en": "Shoes",
@@ -962,6 +986,12 @@
         "es": "Desprotegido con éxito"
       }
     },
+    "Suggested Items": {
+      "languages": {
+        "en": "Suggested Items",
+        "es": "Artículos sugeridos"
+      }
+    },
     "Sunday": {
       "languages": {
         "en": "Sunday",
@@ -1076,6 +1106,18 @@
         "es": "Escriba para agregar una nota..."
       }
     },
+    "U.S. Men's Size": {
+      "languages": {
+        "en": "U.S. Men's Size",
+        "es": "Tamaño de los hombres de EE. UU."
+      }
+    },
+    "Unknown": {
+      "languages": {
+        "en": "Unknown",
+        "es": "Desconocido"
+      }
+    },
     "Unknown Product": {
       "languages": {
         "en": "Unknown Product",
@@ -1122,6 +1164,12 @@
       "languages": {
         "en": "Use Random Size",
         "es": "Usar tamaño aleatorio"
+      }
+    },
+    "Version": {
+      "languages": {
+        "en": "Version",
+        "es": "Versión"
       }
     },
     "Waiting...": {
