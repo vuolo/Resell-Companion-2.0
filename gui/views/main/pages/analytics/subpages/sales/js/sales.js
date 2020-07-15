@@ -51,7 +51,9 @@ window.sales = [
         isTracking: false,
         details: {}
       }
-    }
+    },
+    quantity: 1,
+    id: "TEST-SALE"
   }
 ];
 
@@ -79,19 +81,21 @@ window.addSale = () => {
     window.sales.push(window.parent.parent.memory.copyObj(salesApp.createModal));
     window.sales[window.sales.length-1].quantity = 1;
   }
-  // TODO: reorganize sales based on table filter
+  refreshSalesSearch();
+  // TODO: reorganize sales based on table filter (OR DO THIS IN THE FUNCTION ABOVE)
 };
 
-window.editSale = async (saleIndex) => {
+window.editSale = async (sale) => {
   while (!window.frames['create-modal'] || !window.frames['create-modal'].createApp) await window.parent.parent.sleep(50); // check & sleep in case user clicks on item before the modal is initialized
-  window.frames['create-modal'].createApp.activeSaleIndex = saleIndex;
-  window.parent.parent.memory.syncObject(window.frames['create-modal'].modalOptions, window.parent.parent.memory.copyObj(window.sales[saleIndex]));
+  window.frames['create-modal'].createApp.activeSaleIndex = window.sales.indexOf(sale);
+  window.parent.parent.memory.syncObject(window.frames['create-modal'].modalOptions, window.parent.parent.memory.copyObj(sale));
   if (window.frames['create-modal'].modalOptions.sale.tracking.isTracking) setTimeout(window.refreshTracking(-2, true, window.frames['create-modal'].modalOptions.sale.tracking), 50);
   openModal('create');
 };
 
 window.updateSale = (saleIndex) => {
   window.parent.parent.memory.syncObject(window.sales[saleIndex], window.parent.parent.memory.copyObj(window.frames['create-modal'].modalOptions));
+  refreshSalesSearch();
 };
 
 const salesApp = new Vue({

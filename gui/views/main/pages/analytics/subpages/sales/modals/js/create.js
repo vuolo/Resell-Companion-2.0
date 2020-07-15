@@ -53,7 +53,8 @@ const MODAL_OPTIONS_TEMPLATE = {
       details: {}
     }
   },
-  quantity: 1
+  quantity: 1,
+  id: ""
 };
 
 window.modalOptions = {};

@@ -105,7 +105,7 @@
 
 				<template v-for="(sale, saleIndex) in sales">
 					<template v-if="displayMode == 'table'">
-						<div class="Row_1_Class clickable hover-opacity" v-bind:style="{ top: (saleIndex * (52 + 6)) + 10 + 'px'}" v-on:click="editSale(saleIndex)">
+						<div class="Row_1_Class clickable hover-opacity" v-bind:style="{ top: (saleIndex * (52 + 6)) + 10 + 'px'}" v-on:click="editSale(sale)">
 							<svg class="Rectangle">
 								<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Rectangle_Class" rx="10" ry="10" x="0" y="0" width="1206.043" height="52.497">
 								</rect>
@@ -153,7 +153,7 @@
 					</template>
 					<template v-else-if="displayMode == 'grid'">
 						<!-- grid display -->
-						<div class="Product_Card_1_dy_Class clickable hover-opacity" v-bind:style="calculateGridPosition(saleIndex)" v-on:click="editSale(saleIndex)">
+						<div class="Product_Card_1_dy_Class clickable hover-opacity" v-bind:style="calculateGridPosition(saleIndex)" v-on:click="editSale(sale)">
 							<svg class="Rectangle">
 								<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Rectangle_Class" rx="20" ry="20" x="0" y="0" width="209.941" height="210">
 								</rect>
