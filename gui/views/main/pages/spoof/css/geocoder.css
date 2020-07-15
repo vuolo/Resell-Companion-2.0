@@ -37,6 +37,8 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  font-size: 16px;
+  font-weight: normal;
 }
 
 .mapboxgl-ctrl-geocoder--input::-ms-clear {
@@ -229,16 +231,20 @@
   }
 
   .mapboxgl-ctrl-geocoder--icon-search {
-    left: 7px;
+    left: 2px;
     width: 20px;
     height: 20px;
     margin-left: 10px;
     /* padding: 0px 25px; */
+    transform: scale(0.87);
+    /* opacity: 0.66; */
+    /* fill: #efefef; */
   }
 
   .mapboxgl-ctrl-geocoder--input {
     height: 36px;
     padding: 6px 45px;
+    padding-left: 40px;
   }
 
   .mapboxgl-ctrl-geocoder--icon-loading {

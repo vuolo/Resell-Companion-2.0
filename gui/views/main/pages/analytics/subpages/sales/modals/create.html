@@ -75,7 +75,7 @@
 					<div class="Product_Name_hl_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
 						<span style="user-select: text;">{{modalOptions.name.length == 0 ? tryTranslate('Unknown Product') : tryGenerateEllipses(550, modalOptions.name, 20, 'px', 'bold', 'SF Pro Text')}}</span>
 					</div>
-					<div class="Product_Image_Class">
+					<div class="Product_Image_Class" style="width: 131px; height: 131px;">
 						<img style="display: table-cell; vertical-align: middle; max-width: 131px; max-height: 131px; border-radius: 10px; margin-left: auto; margin-right: auto;" v-bind:class="{ transparentify: companionSettings.theme == 'light' }" v-bind:src="modalOptions.imageURL" onerror="this.src='../../../../../../../images/unknownImage.png'">
 					</div>
 					<textarea spellcheck="false" v-bind:placeholder="tryTranslate('Type to add a note...')" v-on:keyup.enter="finalizeModal();" v-model="modalOptions.note" type="text" class="Note_Area_Class Search_Bar_Class special-focus" style="border-radius: 10px; padding: 10px; font-size: 14px; white-space: pre-wrap; resize: none;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark', 'dark-scrollbar': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }"></textarea>
@@ -328,7 +328,7 @@
 				</div>
 
 
-				<div class="Tracking_Area__before__Class" v-bind:style="{ display: (modalOptions.sale.tracking.details && modalOptions.sale.tracking.details.status) ? 'none' : 'block', top: (activeSaleIndex == -1 ? 570 : 580) + 'px' }">
+				<div class="Tracking_Area__before__Class" v-bind:style="{ display: (modalOptions.sale.tracking.details && modalOptions.sale.tracking.details.status != null) ? 'none' : 'block', top: (activeSaleIndex == -1 ? 570 : 580) + 'px' }">
 
 					<div class="Tracking_Number_Area_Class">
 						<input id="trackingNumber" v-bind:placeholder="tryTranslate('Tracking Number')" v-on:keyup.enter="" v-model="modalOptions.sale.tracking.number" type="text" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 306px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
@@ -395,10 +395,18 @@
 
 				</div>
 
-				<div class="Tracking_Area__after__Class" v-bind:style="{ display: (modalOptions.sale.tracking.details && modalOptions.sale.tracking.details.status) ? 'block' : 'none', top: (activeSaleIndex == -1 ? 570 : 580) + 'px' }">
+				<div class="Tracking_Area__after__Class" v-bind:style="{ display: (modalOptions.sale.tracking.details && modalOptions.sale.tracking.details.status != null) ? 'block' : 'none', top: (activeSaleIndex == -1 ? 570 : 580) + 'px' }">
 					<div class="Status_Area_Class">
 
 						<div v-if="modalOptions.sale.tracking.details && modalOptions.sale.tracking.details.activities" class="Tracking_History_Content_Area_Class" v-bind:class="{ 'dark-scrollbar': companionSettings.theme == 'dark' }" v-bind:style="{ height: (hasOpenActivity(modalOptions.sale.tracking) ? 148 : 66) + 'px' }">
+
+							<!-- display message if there are no items -->
+							<template v-if="modalOptions.sale.tracking.details.activities.length == 0">
+								<div class="centered-content" style="font-size: 0.9em; padding-top: 2.1%; padding-left: 19px; text-align: left;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+									<span>{{tryTranslate('This package does not have any tracking history yet')}}</span>
+								</div>
+							</template>
+
 							<template v-for="(activity, activityIndex) in modalOptions.sale.tracking.details.activities">
 								<div class="Tracking_History_Content_Area_en_Class" style="z-index: 3;" v-bind:style="{ left: (activityIndex * 340) + 9 + 'px' }">
 

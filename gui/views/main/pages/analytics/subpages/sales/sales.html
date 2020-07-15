@@ -271,7 +271,9 @@
 							<option hidden value="custom">{{tryTranslate('Custom')}}</option>
 						</select>
 
-						<input id="dateRangeFilter" disabled v-model="dateSearch.display" class="Search_Bar_Class special-focus clickable" style="border-top-left-radius: 0px; border-bottom-left-radius: 0px; width: 165px; left: 165px; padding-left: 0px; text-align-last: center; filter: none; padding-right: 0px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(165-20, dateSearch.display, 16, 'px', 'normal', 'SF Pro Text') }">
+						<div id="dateRangeFilter" class="clickable" v-on:click="dateSearch.visible = !dateSearch.visible;" style="border-top-left-radius: 0px; border-bottom-left-radius: 0px; width: 165px; left: 165px; padding-left: 0px; text-align-last: center; filter: none; padding-right: 0px; position: absolute; height: 36px;">
+							<input disabled v-model="dateSearch.display" class="Search_Bar_Class special-focus hover-underline" style="border-top-left-radius: 0px; border-bottom-left-radius: 0px; width: 165px; left: 0px; padding-left: 0px; text-align-last: center; filter: none; padding-right: 0px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(165-20, dateSearch.display, 16, 'px', 'normal', 'SF Pro Text') }">
+						</div>
 
 						<svg class="Separator">
 							<rect v-bind:fill="getThemeColor('rgba(190,190,190,1)')" class="Separator_Class" rx="1.5" ry="1.5" x="0" y="0" width="18" height="3">
@@ -283,13 +285,13 @@
 
 				</div>
 
-				<div class="Date_Selection_Area_Class">
+				<div v-show="dateSearch.visible" class="Date_Selection_Area_Class">
 					<svg class="Rectangle_g">
 						<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Rectangle_g_Class" rx="10" ry="10" x="0" y="0" width="330" height="36">
 						</rect>
 					</svg>
-					<input v-model="dateSearch.start" @change="updateDateSearch()" type="date" class="Search_Bar_Class special-focus" v-bind:class="{ 'white-input-icon': companionSettings.theme == 'dark' }" style="left: 0px; top: 0px; width: 165px; padding-left: 8px; padding-right: 13px; text-indent: 0px; border-radius: 10px; border-top-right-radius: 0px; border-bottom-right-radius: 0px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
-					<input v-model="dateSearch.end" @change="updateDateSearch()" type="date" class="Search_Bar_Class special-focus" v-bind:class="{ 'white-input-icon': companionSettings.theme == 'dark' }" style="left: 165px; top: 0px; width: 165px; padding-left: 16px; padding-right: 3px; text-indent: 0px; border-radius: 10px; border-top-left-radius: 0px; border-bottom-left-radius: 0px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+					<input v-model="dateSearch.start" @change="updateDateSearch()" type="date" class="Search_Bar_Class special-focus" v-bind:class="{ 'white-input-icon': companionSettings.theme == 'dark' }" style="left: 0px; top: 0px; width: 165px; padding-left: 8px; padding-right: 13px; text-indent: 0px; border-radius: 10px; border-top-right-radius: 0px; border-bottom-right-radius: 0px; filter: none;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+					<input v-model="dateSearch.end" @change="updateDateSearch()" type="date" class="Search_Bar_Class special-focus" v-bind:class="{ 'white-input-icon': companionSettings.theme == 'dark' }" style="left: 165px; top: 0px; width: 165px; padding-left: 16px; padding-right: 3px; text-indent: 0px; border-radius: 10px; border-top-left-radius: 0px; border-bottom-left-radius: 0px; filter: none;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
 					<div class="Arrow_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
 						<span>→</span>
 					</div>

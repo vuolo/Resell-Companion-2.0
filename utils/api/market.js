@@ -164,6 +164,7 @@ async function searchStockX(query, options = {}) {
   else {
     const { Products } = body;
     const target = limit !== undefined ? Products.slice(0, limit) : Products;
+    if (!target) return [];
     const productArray = target.map(product => {
       const image = new URL(product.media.imageUrl, 'https://stockx.com').href;
       return {

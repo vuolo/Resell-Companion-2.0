@@ -86,7 +86,7 @@ window.addSale = () => {
     window.sales.push(window.parent.parent.memory.copyObj(salesApp.createModal));
     window.sales[window.sales.length-1].quantity = 1;
   }
-  refreshSalesSearch();
+  salesApp.applyDateSearch();
 };
 
 window.editSale = async (sale) => {
@@ -99,7 +99,7 @@ window.editSale = async (sale) => {
 
 window.updateSale = (saleIndex) => {
   window.parent.parent.memory.syncObject(window.sales[saleIndex], window.parent.parent.memory.copyObj(window.frames['create-modal'].modalOptions));
-  refreshSalesSearch();
+  salesApp.applyDateSearch();
 };
 
 const salesApp = new Vue({
@@ -112,7 +112,8 @@ const salesApp = new Vue({
       category: "all-time",
       start: "2020-06-23",
       end: "2020-06-27",
-      display: "Jun 23 – Jun 27"
+      display: "Jun 23 – Jun 27",
+      visible: false
     },
     displayMode: 'table', // 'grid'
     modals: window.modals,
@@ -134,20 +135,30 @@ const salesApp = new Vue({
       this.dateSearch.category = category;
       switch (category) {
         case 'today':
+          let separatedDate = window.parent.parent.separateDate();
+          this.dateSearch.start = separatedDate.date;
+          this.dateSearch.end = separatedDate.date;
           break;
         case 'last7d':
+          this.dateSearch.start = window.parent.parent.separateDate(new Date().getTime() - (7 * 24 * 60 * 60 * 1000)).date;
+          this.dateSearch.end = window.parent.parent.separateDate().date;
           break;
         case 'last4w':
+          this.dateSearch.start = window.parent.parent.separateDate(new Date().getTime() - (4 * 7 * 24 * 60 * 60 * 1000)).date;
+          this.dateSearch.end = window.parent.parent.separateDate().date;
           break;
         case 'last3m':
+          this.dateSearch.start = window.parent.parent.separateDate(new Date().setMonth(new Date().getMonth() - 3)).date;
+          this.dateSearch.end = window.parent.parent.separateDate().date;
           break;
         case 'last1y':
+          this.dateSearch.start = window.parent.parent.separateDate(new Date().setMonth(new Date().getMonth() - 12)).date;
+          this.dateSearch.end = window.parent.parent.separateDate().date;
           break;
         case 'all-time':
-          // TODO: get & set earliest sale date to START
-          // TO DO THIS => MAKE A FUNCTION THAT DUPLICATES ALL DISPLAYED SALES AND THEN SORTS BY DATE THEN RETURNS FIRST AND LAST DATE.
-          // this.dateSearch.start = sales[0].sale.date;
-          // this.dateSearch.end = sales[0].sale.date;
+          let allTimeDates = getAllTimeDates();
+          this.dateSearch.start = allTimeDates.start;
+          this.dateSearch.end = allTimeDates.end;
           break;
         case 'custom':
           // do nothing
@@ -201,7 +212,7 @@ const salesApp = new Vue({
       return "";
     },
     getTrackingColor: function(tracking) {
-      if (!tracking.details || !tracking.details.status) return "N/A";
+      if (!tracking.details || tracking.details.status == null) return "N/A";
       switch (getStatusDescription(tracking.details.status)) {
         case 'UNKNOWN':
           return 'N/A';
@@ -219,7 +230,7 @@ const salesApp = new Vue({
       return "N/A";
     },
     getDisplayedTrackingStatus: function(tracking) {
-      if (!tracking.details || !tracking.details.status) return "N/A";
+      if (!tracking.details || tracking.details.status == null) return "N/A";
       switch (getStatusDescription(tracking.details.status)) {
         case 'UNKNOWN':
           return 'Unknown';
@@ -267,7 +278,7 @@ async function tryUpdateTracking(tracking, force = false) {
   let trackingDetails = await window.parent.parent.packagesAPI.getPackageDetails(tracking.number, tracking.carrier);
   tracking.isTracking = false;
   // set after gathering to ensure old packages are not reset
-  if (trackingDetails && trackingDetails.status) tracking.details = trackingDetails;
+  if (trackingDetails && trackingDetails.status != null) tracking.details = trackingDetails;
   salesApp.$forceUpdate();
   window.tryTranslateTrackingActivities(tracking);
 }
@@ -307,6 +318,9 @@ function refreshSalesSearch() {
 function isSaleDisplayable(sale) {
   let searchName = sale.name;
   if (searchName.length == 0) searchName = window.parent.parent.tryTranslate('N/A');
+  // validate sale is within date range
+  let saleTimestamp = new Date(sale.sale.date).getTime();
+  if (!(saleTimestamp >= new Date(salesApp.dateSearch.start).getTime() && saleTimestamp <= new Date(salesApp.dateSearch.end).getTime())) return false;
   return salesApp.searchTerm.length == 0 || searchName.toLowerCase().includes(salesApp.searchTerm.toLowerCase());
 };
 
@@ -348,6 +362,22 @@ function sortDisplayedSales() {
   while (displayedSales.length > 0) displayedSales.pop();
   for (var tempDisplayedSale of tempDisplayedSales) displayedSales.push(tempDisplayedSale);
 }
+
+function getAllTimeDates() {
+  if (window.sales.length == 0) {
+    let separatedDate = window.parent.parent.separateDate();
+    return { start: separatedDate.date, end: separatedDate.date }
+  }
+  let key = 'sale.date';
+  let dates = [];
+  for (var sale of window.sales) dates.push(sale.sale.date);
+  dates.quick_sort(function(a,b) { return a < b });
+  return { start: dates[0], end: dates[dates.length-1] };
+}
+
+document.addEventListener("click", function(){
+  if (!$('.Date_Selection_Area_Class').is(":hover") && !$('#dateRangeFilter').is(":hover")) salesApp.dateSearch.visible = false;
+});
 
 salesApp.applyDateSearch();
 window.refreshTracking(-1, true); // force refresh tracking on load

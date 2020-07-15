@@ -120,6 +120,12 @@
         "es": "Tarjetas"
       }
     },
+    "Carrier": {
+      "languages": {
+        "en": "Carrier",
+        "es": "Cartero"
+      }
+    },
     "Change URLs": {
       "languages": {
         "en": "Change URLs",
@@ -1014,6 +1020,12 @@
       "languages": {
         "en": "There are not any important releases today",
         "es": "Hoy no hay lanzamientos importantes"
+      }
+    },
+    "This package does not have any tracking history yet": {
+      "languages": {
+        "en": "This package does not have any tracking history yet",
+        "es": "Este paquete aún no tiene ningún historial de rastreo"
       }
     },
     "This store is currently unsupported": {
