@@ -59,6 +59,7 @@ async function startLogin() {
     height: LOGIN_WINDOW_HEIGHT,
     title: 'Resell Companion⁠ — Login',
     frame: false, // disables default top frame
+    transparent: true, // enabled to have the top bar curved
     resizable: false, // make window follow width x height restraints
     icon: ICON_PATH,
     webPreferences: {

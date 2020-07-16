@@ -58,6 +58,7 @@ window.sales = [
       }
     },
     quantity: 1,
+    selected: false,
     id: "TEST-SALE"
   }
 ];
@@ -67,6 +68,9 @@ let displayedSales = [];
 window.modals = {
   'create': {
     visible: false
+  },
+  'delete': {
+    visible: false
   }
 }
 
@@ -75,8 +79,13 @@ window.openModal = (modalName) => {
 }
 
 window.modalLoadedCallback = (modalName) => {
-  if (modalName == 'create') {
-    salesApp.createModal = window.frames['create-modal'].modalOptions;
+  switch (modalName) {
+    case 'create':
+      salesApp.createModal = window.frames['create-modal'].modalOptions;
+      break;
+    case 'delete':
+      salesApp.deleteModal = window.frames['delete-modal'].modalOptions;
+      break;
   }
 }
 
@@ -102,6 +111,51 @@ window.updateSale = (saleIndex) => {
   salesApp.applyDateSearch();
 };
 
+function setMultipleSelectedSales(saleIndex) {
+  let startSaleIndex = -1;
+  for (var i = 0; i < displayedSales.length; i++) {
+    if (displayedSales[i].selected) {
+      startSaleIndex = i;
+      break;
+    }
+  }
+  if (startSaleIndex == -1) {
+    switchSelectedSales(saleIndex);
+  } else {
+    // check if saleIndex is > than startSaleIndex (go in order) else, saleIndex is  < than startSaleIndex, loop reverse
+    let allowSetSelected = false;
+    if (saleIndex > startSaleIndex) {
+      for (var i = 0; i < displayedSales.length; i++) {
+        if (i == startSaleIndex) {
+          allowSetSelected = true;
+        } else if (i > saleIndex) {
+          break;
+        } else if (allowSetSelected) {
+          displayedSales[i].selected = true;
+        }
+      }
+    } else {
+      for (var i = displayedSales.length-1; i >= 0; i--) {
+        if (i == startSaleIndex) {
+          allowSetSelected = true;
+        } else if (i < saleIndex) {
+          break;
+        } else if (allowSetSelected) {
+          displayedSales[i].selected = true;
+        }
+      }
+    }
+  }
+}
+
+function switchSelectedSales(saleIndex) {
+  displayedSales[saleIndex].selected = !displayedSales[saleIndex].selected;
+}
+
+window.setAllSalesSelected = (selected = true, displayedOnly = true) => {
+  for (var sale of displayedOnly ? displayedSales : window.sales) sale.selected = selected;
+};
+
 const salesApp = new Vue({
   el: "#Rewrite___Sales",
   data: {
@@ -117,7 +171,8 @@ const salesApp = new Vue({
     },
     displayMode: 'table', // 'grid'
     modals: window.modals,
-    createModal: {}
+    createModal: {},
+    deleteModal: {}
   },
   methods: {
     confineTextWidth: window.parent.parent.confineTextWidth,
@@ -131,6 +186,11 @@ const salesApp = new Vue({
     tryGenerateEllipses: window.parent.parent.tryGenerateEllipses,
     openModal: window.openModal,
     editSale: window.editSale,
+    handleSelectClick: function(e, saleIndex) {
+      if (e.ctrlKey) switchSelectedSales(saleIndex);
+      else if (e.shiftKey) setMultipleSelectedSales(saleIndex);
+      else editSale(displayedSales[saleIndex]);
+    },
     applyDateSearch: function(category = this.dateSearch.category) {
       this.dateSearch.category = category;
       switch (category) {
@@ -262,6 +322,7 @@ const salesApp = new Vue({
     }
   }
 });
+window.salesApp = salesApp;
 
 window.tryTranslateTrackingActivities = (tracking, language = window.parent.parent.companionSettings.language || "en") => {
   if (language == "en" || !tracking.details.activities) return;
@@ -318,10 +379,14 @@ function refreshSalesSearch() {
 function isSaleDisplayable(sale) {
   let searchName = sale.name;
   if (searchName.length == 0) searchName = window.parent.parent.tryTranslate('N/A');
+  let searchSize = sale.size;
+  if (searchSize.length == 0) searchSize = window.parent.parent.tryTranslate('N/A');
+  let searchPlatform = sale.sale.platform;
+  if (searchPlatform.length == 0) searchPlatform = window.parent.parent.tryTranslate('N/A');
   // validate sale is within date range
   let saleTimestamp = new Date(sale.sale.date).getTime();
   if (!(saleTimestamp >= new Date(salesApp.dateSearch.start).getTime() && saleTimestamp <= new Date(salesApp.dateSearch.end).getTime())) return false;
-  return salesApp.searchTerm.length == 0 || searchName.toLowerCase().includes(salesApp.searchTerm.toLowerCase());
+  return salesApp.searchTerm.length == 0 || searchName.toLowerCase().includes(salesApp.searchTerm.toLowerCase()) || searchSize.toLowerCase().includes(salesApp.searchTerm.toLowerCase()) || searchPlatform.toLowerCase().includes(salesApp.searchTerm.toLowerCase());
 };
 
 function toggleSortSalesByColumn(key) {
@@ -368,16 +433,43 @@ function getAllTimeDates() {
     let separatedDate = window.parent.parent.separateDate();
     return { start: separatedDate.date, end: separatedDate.date }
   }
-  let key = 'sale.date';
   let dates = [];
   for (var sale of window.sales) dates.push(sale.sale.date);
   dates.quick_sort(function(a,b) { return a < b });
   return { start: dates[0], end: dates[dates.length-1] };
 }
 
-document.addEventListener("click", function(){
+document.addEventListener("click", function() {
   if (!$('.Date_Selection_Area_Class').is(":hover") && !$('#dateRangeFilter').is(":hover")) salesApp.dateSearch.visible = false;
+  let isHoveringOverItem = false;
+  if (!isHoveringOverItem) for (var elem of $('.Row_1_Class')) if ($(elem).is(":hover")) { isHoveringOverItem = true; break; }
+  if (!isHoveringOverItem) for (var elem of $('.Product_Card_1_dy_Class')) if ($(elem).is(":hover")) { isHoveringOverItem = true; break; }
+  if (!isHoveringOverItem) for (var elem of $('body > ul.context-menu-root')) if ($(elem).is(":hover")) { isHoveringOverItem = true; break; }
+  if (!isHoveringOverItem) window.setAllSalesSelected(false, false);
 });
+
+window.getSaleByID = (id) => {
+  for (var sale of window.sales) if (sale.id == id) return sale;
+};
+
+window.removeSale = (sale, refreshSales = true) => {
+  window.sales.splice(window.sales.indexOf(sale), 1)
+  if (refreshSales) salesApp.applyDateSearch();
+};
+
+window.getSelectedSales = () => {
+  let outSales = [];
+  for (var sale of window.sales) if (sale.selected) outSales.push(sale);
+  return outSales;
+};
+
+async function displayRemovePrompt() {
+  while (!window.frames['delete-modal'] || !window.frames['delete-modal'].deleteApp) await window.parent.parent.sleep(50); // check & sleep in case user clicks on item before the modal is initialized
+  let selectedSales = window.getSelectedSales();
+  window.parent.parent.memory.syncObject(window.frames['delete-modal'].modalOptions.sales, window.parent.parent.memory.copyObj(selectedSales));
+  window.frames['delete-modal'].deleteApp.$forceUpdate();
+  openModal('delete');
+}
 
 salesApp.applyDateSearch();
 window.refreshTracking(-1, true); // force refresh tracking on load

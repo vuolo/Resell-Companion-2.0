@@ -16,6 +16,8 @@ window.setTheme = (theme) => {
     window.frames['spoof-frame'].document.querySelector(".mapboxgl-ctrl-geocoder--input").style.backgroundColor = window.getThemeColor('rgba(255,255,255,1)');
     window.frames['spoof-frame'].document.querySelector(".mapboxgl-ctrl-geocoder--input").style.color = window.getThemeColor('rgba(29,29,29,1)');
     window.frames['spoof-frame'].document.querySelector(".mapboxgl-ctrl-geocoder--button").style.backgroundColor = window.getThemeColor('rgba(255,255,255,1)');
+    window.frames['spoof-frame'].document.querySelector(".mapboxgl-ctrl-geocoder--icon").style.fill = window.getThemeColor('rgba(29,29,29,1)');
+    window.frames['spoof-frame'].document.querySelector(".mapboxgl-ctrl-geocoder--icon").style.opacity = 0.66;
   })();
   // analytics page
   window.frames["analytics-frame"].analyticsApp.$forceUpdate();

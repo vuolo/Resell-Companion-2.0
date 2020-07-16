@@ -12,6 +12,12 @@
         "es": "Añadir"
       }
     },
+    "All Time": {
+      "languages": {
+        "en": "All Time",
+        "es": "Todos los tiempos"
+      }
+    },
     "Analytics": {
       "languages": {
         "en": "Analytics",
@@ -24,16 +30,28 @@
         "es": "Análisis de datos de productos..."
       }
     },
+    "and set Chrome as your default browser": {
+      "languages": {
+        "en": "and set Chrome as your default browser",
+        "es": "y establezca Chrome como su navegador predeterminado"
+      }
+    },
     "April": {
       "languages": {
         "en": "April",
         "es": "Abril"
       }
     },
-    "and set Chrome as your default browser": {
+    "Are you sure?": {
       "languages": {
-        "en": "and set Chrome as your default browser",
-        "es": "y establezca Chrome como su navegador predeterminado"
+        "en": "Are you sure?",
+        "es": "¿Estás seguro?"
+      }
+    },
+    "Are you sure you want to delete": {
+      "languages": {
+        "en": "Are you sure you want to delete",
+        "es": "¿Confirma que desea eliminar"
       }
     },
     "August": {
@@ -318,6 +336,12 @@
         "es": "Examinando el calendario de lanzamiento..."
       }
     },
+    "Export": {
+      "languages": {
+        "en": "Export",
+        "es": "Exportar"
+      }
+    },
     "February": {
       "languages": {
         "en": "February",
@@ -378,6 +402,12 @@
         "es": "Inicio"
       }
     },
+    "Import": {
+      "languages": {
+        "en": "Import",
+        "es": "Importar"
+      }
+    },
     "Initial Pickup": {
       "languages": {
         "en": "Initial Pickup",
@@ -408,6 +438,18 @@
         "es": "Inventario"
       }
     },
+    "item from your": {
+      "languages": {
+        "en": "item from your",
+        "es": "artículo de sus"
+      }
+    },
+    "items from your": {
+      "languages": {
+        "en": "items from your",
+        "es": "artículos de sus"
+      }
+    },
     "January": {
       "languages": {
         "en": "January",
@@ -436,6 +478,30 @@
       "languages": {
         "en": "Keywords (ex: +yeezy, -380)",
         "es": "Palabras clave (ej: +yeezy, -380)"
+      }
+    },
+    "Last Year": {
+      "languages": {
+        "en": "Last Year",
+        "es": "Último año"
+      }
+    },
+    "Last 3 Months": {
+      "languages": {
+        "en": "Last 3 Months",
+        "es": "Últimos 3 meses"
+      }
+    },
+    "Last 4 Weeks": {
+      "languages": {
+        "en": "Last 4 Weeks",
+        "es": "Últimas 4 semanas"
+      }
+    },
+    "Last 7 Days": {
+      "languages": {
+        "en": "Last 7 Days",
+        "es": "Últimos 7 días"
       }
     },
     "Launch Date": {
@@ -1082,6 +1148,12 @@
         "es": "para gestionar sus perfiles de facturación"
       }
     },
+    "Today": {
+      "languages": {
+        "en": "Today",
+        "es": "Hoy"
+      }
+    },
     "Total": {
       "languages": {
         "en": "Total",
@@ -1230,6 +1302,12 @@
       "languages": {
         "en": "Welcome back",
         "es": "¡Bienvenido de vuelta"
+      }
+    },
+    "Yes": {
+      "languages": {
+        "en": "Yes",
+        "es": "Sí"
       }
     },
     "You must select a supported store to add an item to your shopping bag": {

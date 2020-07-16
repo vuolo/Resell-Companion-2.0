@@ -23,7 +23,7 @@ body {
 	position: absolute;
 	width: 717px;
 	height: 483px;
-	background-color: rgba(251,247,241,1);
+	/* background-color: rgba(251,247,241,1); */
 	overflow: hidden;
 	--web-view-name: Login;
 	--web-view-id: Login;
@@ -31,12 +31,13 @@ body {
 	--web-enable-deep-linking: true;
 }
 #Background {
-	position: absolute;
-	width: 1541px;
-	height: 867px;
-	left: -752px;
-	top: -180px;
-	overflow: visible;
+  position: absolute;
+  width: 1535px;
+  height: 867px;
+  left: -515px;
+  top: -142px;
+  overflow: visible;
+  transform: scale(0.6);
 }
 #Login_Button:hover {
 	cursor: pointer;

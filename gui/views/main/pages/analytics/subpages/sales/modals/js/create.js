@@ -54,6 +54,7 @@ const MODAL_OPTIONS_TEMPLATE = {
     }
   },
   quantity: 1,
+  selected: false,
   id: ""
 };
 
