@@ -441,11 +441,17 @@
 				case 'refresh-tracking':
 					window.refreshTracking(window.sales.indexOf(sale), true);
 					break;
-				case 'mark_unsold':
-					// TODO: add functionality (remove from sales and add to inventory)
+				case 'copy':
+					sale.selected = true;
+					copySales();
+					window.setAllSalesSelected(false);
 					break;
 				case 'duplicate':
-					// TODO: add functionality (duplicate all selected sales)
+					sale.selected = true;
+					duplicateSales();
+					break;
+				case 'mark_unsold':
+					// TODO: add functionality (remove from sales and add to inventory)
 					break;
 				case 'remove':
 					sale.selected = true;
@@ -460,6 +466,7 @@
 		const PRODUCT_CARD_ITEMS = {
 			"view": { name: "View Sale", icon: "fas fa-eye" },
 			"refresh-tracking": { name: "Refresh Tracking", icon: "fas fa-redo-alt" },
+			"copy": { name: "Copy Sale(s)", icon: "far fa-clipboard" },
 			"duplicate": { name: "Duplicate Sale(s)", icon: "fas fa-clone" },
 			"mark_unsold": { name: "Mark Sale(s) Unsold", icon: "fas fa-archive" },
 			"remove": { name: "Remove Sale(s)", icon: "fas fa-trash-alt" },
@@ -468,14 +475,25 @@
 
 		const CONTEXT_MENUS = [
 			{
+				selector: '.Bottom_Section_Class',
+				callback: function(key, options) {
+					switch (key) {
+						case 'paste':
+							pasteSales();
+							break;
+					}
+				},
+				items: {
+					"paste": { name: "Paste Sale(s)", icon: "far fa-clipboard" }
+				}
+			},
+			{
 				selector: '.Row_1_Class',
-				// TODO: add functionality for each context menu item click
 				callback: PRODUCT_CARD_CALLBACK,
 				items: PRODUCT_CARD_ITEMS
 			},
 			{
 				selector: '.Product_Card_1_dy_Class',
-				// TODO: add functionality for each context menu item click
 				callback: PRODUCT_CARD_CALLBACK,
 				items: PRODUCT_CARD_ITEMS
 			}

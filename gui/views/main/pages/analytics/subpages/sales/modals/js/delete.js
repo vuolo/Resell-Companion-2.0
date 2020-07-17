@@ -32,8 +32,10 @@ window.deleteApp = new Vue({
     getThemeColor: window.parent.parent.parent.getThemeColor,
     finalizeModal: function() {
       for (var sale of window.modalOptions.sales) window.parent.removeSale(window.parent.getSaleByID(sale.id), false);
-      window.parent.salesApp.applyDateSearch();
-      this.closeModal();
+      if (window.modalOptions.sales.length > 0) { // do the if statement in case user presses enter on sales page
+        window.parent.salesApp.applyDateSearch();
+        this.closeModal();
+      }
     },
     closeModal: function() {
       window.parent.modals[MODAL_NAME].visible = false;
@@ -42,5 +44,12 @@ window.deleteApp = new Vue({
     }
   }
 });
+
+// KEYBINDS
+document.onkeyup = function(e) {
+  if (e.which == 13) { // Enter: submit
+    window.deleteApp.finalizeModal();
+  }
+};
 
 window.onload = window.parent.modalLoadedCallback(MODAL_NAME);

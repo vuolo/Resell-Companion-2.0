@@ -198,6 +198,12 @@
         "es": "Configurar monitores"
       }
     },
+    "Copy Sale(s)": {
+      "languages": {
+        "en": "Copy Sale(s)",
+        "es": "Copiar venta(s)"
+      }
+    },
     "Copy Product URL": {
       "languages": {
         "en": "Copy Product URL",
@@ -738,6 +744,12 @@
       "languages": {
         "en": "Overview",
         "es": "Resumen"
+      }
+    },
+    "Paste Sale(s)": {
+      "languages": {
+        "en": "Paste Sale(s)",
+        "es": "Pegar venta(s)"
       }
     },
     "Pay": {

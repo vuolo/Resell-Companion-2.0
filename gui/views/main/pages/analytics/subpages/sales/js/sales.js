@@ -64,8 +64,8 @@ window.sales = [
     id: "TEST-SALE"
   }
 ];
-
-let displayedSales = [];
+var displayedSales = [];
+var copiedSaleIDs = [];
 
 window.modals = {
   'create': {
@@ -93,7 +93,7 @@ window.modalLoadedCallback = (modalName) => {
 
 window.addSale = () => {
   for (var i = 0; i < salesApp.createModal.quantity; i++) {
-    salesApp.createModal.id = window.parent.parent.makeid(10); // assign a new id to each node
+    salesApp.createModal.id = window.parent.parent.makeid(10); // assign a new id to each sale
     window.sales.push(window.parent.parent.memory.copyObj(salesApp.createModal));
     window.sales[window.sales.length-1].quantity = 1;
   }
@@ -190,6 +190,7 @@ const salesApp = new Vue({
     editSale: window.editSale,
     beginHovering: async function(sale) {
       if (!sale.isHovering && sale.marketplaceData.media360.length > 0) {
+        window.preloadSales360Media(sale);
         sale.isHovering = true;
         let curMedia360Index = 0;
         // while (sale.isHovering) {
@@ -494,6 +495,29 @@ window.preloadSales360Media = (incomingSale = null) => {
   else for (var sale of window.sales) window.parent.parent.preloadImages(sale.marketplaceData.media360);
 }
 
+function duplicateSales(incomingSales = null) {
+  if (incomingSales) {
+    for (var incomingSale of incomingSales) {
+      let duplicateSale = {};
+      window.parent.parent.memory.syncObject(duplicateSale, window.parent.parent.memory.copyObj(incomingSale));
+      duplicateSale.id = window.parent.parent.makeid(10); // assign a new id to each duplicated sale
+      duplicateSale.selected = true; // force select on new sales ONLY
+      window.sales.push(duplicateSale);
+    }
+  } else {
+    for (var sale of window.sales) {
+      if (sale.selected) {
+        sale.selected = false; // force deselect on BOTH new AND duplciated sales
+        let duplicateSale = {};
+        window.parent.parent.memory.syncObject(duplicateSale, window.parent.parent.memory.copyObj(sale));
+        duplicateSale.id = window.parent.parent.makeid(10); // assign a new id to each duplicated sale
+        window.sales.push(duplicateSale);
+      }
+    }
+  }
+  refreshSalesSearch();
+}
+
 async function displayRemovePrompt() {
   while (!window.frames['delete-modal'] || !window.frames['delete-modal'].deleteApp) await window.parent.parent.sleep(50); // check & sleep in case user clicks on item before the modal is initialized
   let selectedSales = window.getSelectedSales();
@@ -501,6 +525,37 @@ async function displayRemovePrompt() {
   window.frames['delete-modal'].deleteApp.$forceUpdate();
   openModal('delete');
 }
+
+function copySales() {
+  while (copiedSaleIDs.length > 0) copiedSaleIDs.pop();
+  for (var sale of window.sales) if (sale.selected) copiedSaleIDs.push(sale.id);
+}
+
+function pasteSales() {
+  let outSales = [];
+  for (var copiedSaleID of copiedSaleIDs) outSales.push(window.getSaleByID(copiedSaleID));
+  window.setAllSalesSelected(false, false);
+  duplicateSales(outSales);
+}
+
+// KEYBINDS
+document.onkeyup = function(e) {
+  if (e.which == 46) { // Delete: display delete prompt
+    let atLeastOneSelected = false;
+    for (var sale of window.sales) if (sale.selected) { atLeastOneSelected = true; break; }
+    if (atLeastOneSelected) displayRemovePrompt();
+  } else if (e.ctrlKey && e.which == 65) { // Ctrl + A: select all displayed sales
+    window.setAllSalesSelected(true);
+  } else if (e.ctrlKey && e.which == 68) { // Ctrl + D: deselect all displayed sales
+    window.setAllSalesSelected(false);
+  } else if (e.ctrlKey && e.which == 67) { // Ctrl + C: copy sales
+    copySales();
+  } else if (e.ctrlKey && e.which == 86) { // Ctrl + V: paste sales
+    pasteSales();
+  } else if (e.which == 13) { // Enter: submit delete modal (if user has not yet clicked on the delete modal)
+    window.frames['delete-modal'].deleteApp.finalizeModal();
+  }
+};
 
 salesApp.applyDateSearch();
 window.preloadSales360Media();
