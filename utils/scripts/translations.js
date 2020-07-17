@@ -2,6 +2,7 @@ const translations = require("../../../utils/json/translations.json").translatio
 
 window.setLanguage = (language) => {
   window.companionSettings.language = language;
+  for (var i = 0; i < window.frames.length; i++) try { window.frames[i].setContextMenuTheme(); } catch (err) { }
   // home page
   if (window.frames["home-frame"]) window.frames["home-frame"].tryTranslateAlertMessages(language);
   // tasks page
@@ -13,6 +14,7 @@ window.setLanguage = (language) => {
   })();
   // analytics page
   if (window.frames["analytics-frame"]) window.frames["analytics-frame"].refreshTracking();
+  if (window.frames["analytics-frame"]) for (var i = 0; i < window.frames['analytics-frame'].frames.length; i++) try { window.frames['analytics-frame'].frames[i].setContextMenuTheme(); } catch (err) { }
 };
 
 window.tryTranslate = (incomingText, language = window.companionSettings.language) => {

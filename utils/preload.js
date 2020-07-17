@@ -423,7 +423,6 @@ function tryInjectTopBar() {
           user-select: text;
           width: 99%;
           height: 36px;
-          background: rgba(255,237,200,1);
           border-top-right-radius: 10px;
           border-bottom-right-radius: 10px;
           filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.161));
@@ -432,6 +431,9 @@ function tryInjectTopBar() {
           top: 0;
           left: 0;
           z-index: 999999;
+
+          /* background: rgba(255,237,200,1); */
+          background: #836685;
         }
 
         #resell_companion_left_arrow {
@@ -493,16 +495,20 @@ function tryInjectTopBar() {
           max-width: 80%;
           -webkit-app-region: no-drag;
           font-family: Arial, Helvetica, sans-serif;
+          font-style: normal;
           border-radius: 10px;
           border: none;
           font-size: 14px;
           padding: 0;
           padding-left: 25px;
-          background: rgba(243,224,185,1);
-          color: #1d1d1d;
           top: 8px;
           left: 99px;
           position: fixed;
+
+          /* background: rgba(243,224,185,1); */
+          background: #755277;
+          /* color: #1d1d1d; */
+          color: #efefef;
         }
 
         /* Main content */
@@ -587,33 +593,36 @@ function tryInjectTopBar() {
         }
 
         ::-webkit-scrollbar-thumb {
-          background: rgba(243,224,185,1);
           filter: drop-shadow(0px 2px 6px rgba(0, 0, 0, 0.161));
           border-radius: 10px;
+
+          /* background: rgba(243,224,185,1); */
+          background: #755277;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-          background: #dfcfac;
+          /* background: #dfcfac; */
+          background: #836685;
         }
 
       </style>
 
       <div id="resell_companion_top_bar">
         <svg id="resell_companion_left_arrow" onclick="window.history.back(); setTimeout(function() { document.querySelector('#resell_companion_url_bar input').value = location.href; }, 50)" class="resell_companion_clickable" xmlns="http://www.w3.org/2000/svg" width="18.134" height="17.674" viewBox="0 0 18.134 17.674">
-          <path d="M10.42,19.138l-.9.9a.967.967,0,0,1-1.372,0L.282,12.172a.967.967,0,0,1,0-1.372L8.15,2.933a.967.967,0,0,1,1.372,0l.9.9A.972.972,0,0,1,10.4,5.219L5.527,9.866H17.159a.969.969,0,0,1,.971.971v1.3a.969.969,0,0,1-.971.971H5.527L10.4,17.75A.965.965,0,0,1,10.42,19.138Z" transform="translate(0.004 -2.647)" fill="#1d1d1d"/>
+          <path d="M10.42,19.138l-.9.9a.967.967,0,0,1-1.372,0L.282,12.172a.967.967,0,0,1,0-1.372L8.15,2.933a.967.967,0,0,1,1.372,0l.9.9A.972.972,0,0,1,10.4,5.219L5.527,9.866H17.159a.969.969,0,0,1,.971.971v1.3a.969.969,0,0,1-.971.971H5.527L10.4,17.75A.965.965,0,0,1,10.42,19.138Z" transform="translate(0.004 -2.647)" _fill="#1d1d1d" fill="#efefef"/>
         </svg>
         <svg id="resell_companion_right_arrow" onclick="window.history.forward(); setTimeout(function() { document.querySelector('#resell_companion_url_bar input').value = location.href; }, 50)" class="resell_companion_clickable" xmlns="http://www.w3.org/2000/svg" width="18.134" height="17.674" viewBox="0 0 18.134 17.674">
-          <path d="M7.71,3.831l.9-.9a.967.967,0,0,1,1.372,0L17.848,10.8a.967.967,0,0,1,0,1.372L9.981,20.036a.967.967,0,0,1-1.372,0l-.9-.9a.972.972,0,0,1,.016-1.388L12.6,13.1H.971A.969.969,0,0,1,0,12.132v-1.3a.969.969,0,0,1,.971-.971H12.6L7.726,5.219A.965.965,0,0,1,7.71,3.831Z" transform="translate(0 -2.647)" fill="#1d1d1d"/>
+          <path d="M7.71,3.831l.9-.9a.967.967,0,0,1,1.372,0L17.848,10.8a.967.967,0,0,1,0,1.372L9.981,20.036a.967.967,0,0,1-1.372,0l-.9-.9a.972.972,0,0,1,.016-1.388L12.6,13.1H.971A.969.969,0,0,1,0,12.132v-1.3a.969.969,0,0,1,.971-.971H12.6L7.726,5.219A.965.965,0,0,1,7.71,3.831Z" transform="translate(0 -2.647)" _fill="#1d1d1d" fill="#efefef"/>
         </svg>
         <svg id="resell_companion_refresh_icon" onclick="location.reload();" class="resell_companion_clickable" xmlns="http://www.w3.org/2000/svg" width="18.134" height="17.674" viewBox="0 0 18.134 17.674">
-          <path d="M21.082,8.6a8.839,8.839,0,1,0,2.3,8.451h-2.3a6.625,6.625,0,1,1-6.241-8.837A6.534,6.534,0,0,1,19.5,10.176l-3.557,3.557h7.733V6Z" transform="translate(-6.015 -6)" fill="#1d1d1d"/>
+          <path d="M21.082,8.6a8.839,8.839,0,1,0,2.3,8.451h-2.3a6.625,6.625,0,1,1-6.241-8.837A6.534,6.534,0,0,1,19.5,10.176l-3.557,3.557h7.733V6Z" transform="translate(-6.015 -6)" _fill="#1d1d1d" fill="#efefef"/>
         </svg>
 
         <svg id="resell_companion_lock_icon" style="display: none;" xmlns="http://www.w3.org/2000/svg" width="18.134" height="17.674" viewBox="0 0 18.134 17.674">
-          <path d="M6.427,22.614V12.265h1.94V9.031a5.174,5.174,0,0,1,5.175-5.175h.647a5.175,5.175,0,0,1,5.175,5.175v3.234H21.3V22.614H6.427ZM13.376,17.3l-.481,3.372h1.94L14.354,17.3a1.293,1.293,0,1,0-.977,0Zm4.046-7.948a3.558,3.558,0,1,0-7.115,0v2.911h7.115Z" transform="translate(-6.427 -3.856)" fill="#1d1d1d"/>
+          <path d="M6.427,22.614V12.265h1.94V9.031a5.174,5.174,0,0,1,5.175-5.175h.647a5.175,5.175,0,0,1,5.175,5.175v3.234H21.3V22.614H6.427ZM13.376,17.3l-.481,3.372h1.94L14.354,17.3a1.293,1.293,0,1,0-.977,0Zm4.046-7.948a3.558,3.558,0,1,0-7.115,0v2.911h7.115Z" transform="translate(-6.427 -3.856)" _fill="#1d1d1d" fill="#efefef"/>
         </svg>
         <svg id="resell_companion_unlock_icon" style="display: block;" xmlns="http://www.w3.org/2000/svg" width="18.134" height="17.674" viewBox="0 0 18.134 17.674">
-          <path d="M21.373,12.285V9.367a3.566,3.566,0,1,0-7.132,0v2.964h3.242V22.658H2.571V12.285H12.3V9.043a5.187,5.187,0,0,1,5.187-5.187h.648a5.187,5.187,0,0,1,5.187,5.187v3.242H21.373ZM10.027,14.838a1.3,1.3,0,0,0-.49,2.5l-.482,3.379H11l-.483-3.38a1.3,1.3,0,0,0-.49-2.5Z" transform="translate(-2.571 -3.856)" fill="#1d1d1d"/>
+          <path d="M21.373,12.285V9.367a3.566,3.566,0,1,0-7.132,0v2.964h3.242V22.658H2.571V12.285H12.3V9.043a5.187,5.187,0,0,1,5.187-5.187h.648a5.187,5.187,0,0,1,5.187,5.187v3.242H21.373ZM10.027,14.838a1.3,1.3,0,0,0-.49,2.5l-.482,3.379H11l-.483-3.38a1.3,1.3,0,0,0-.49-2.5Z" transform="translate(-2.571 -3.856)" _fill="#1d1d1d" fill="#efefef"/>
         </svg>
 
         <form id="resell_companion_url_bar" action="#">

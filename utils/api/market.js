@@ -1,6 +1,5 @@
 const request = require('request-promise');
 const cheerio = require('cheerio');
-const FormData = require('form-data');
 
 // this function requires a StockX search result
 async function updateMarket(result) {
@@ -188,7 +187,7 @@ async function searchStockX(query, options = {}) {
 
 // force return market prices in USD to convert to local currency after gathering
 async function fetchStockXVariants(product, options = {}) {
-  const { currency = "USD", proxy } = options;
+  const { currency = "USD", proxy, includeMedia360 = false } = options;
   let slug;
   if (typeof product == 'string') {
       if (product.includes('stockx.com/')) slug = product.split('stockx.com/')[1].split('/')[0];
@@ -242,7 +241,8 @@ async function fetchStockXVariants(product, options = {}) {
       });
     };
 
-    return variants;
+    const media360 = body.Product.media['360'] || [body.Product.media.imageUrl];
+    return includeMedia360 ? { variants: variants, media360: media360 } : variants;
   }
 
 }

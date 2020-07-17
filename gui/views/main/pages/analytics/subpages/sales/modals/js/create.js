@@ -16,7 +16,8 @@ const MODAL_OPTIONS_TEMPLATE = {
   notes: "",
   marketplaceData: {
     product: {},
-    size: ""
+    size: {},
+    media360: []
   },
   suggestions: {
     items: [],
@@ -55,6 +56,7 @@ const MODAL_OPTIONS_TEMPLATE = {
   },
   quantity: 1,
   selected: false,
+  isHovering: false,
   id: ""
 };
 
@@ -129,19 +131,22 @@ window.createApp = new Vue({
       modalOptions.color = item.color || "";
       modalOptions.styleCode = item.pid || "";
       modalOptions.imageURL = item.image || "";
-      modalOptions.purchase.price = item.retail || null;
-      modalOptions.purchase.estimatedResell = item.market.lowestAsk || null;
+      modalOptions.purchase.price = await window.parent.parent.parent.exchangeRatesAPI.convertCurrency(item.retail || 0, 'USD', window.parent.parent.parent.companionSettings.currency) || null;
+      modalOptions.purchase.estimatedResell = await window.parent.parent.parent.exchangeRatesAPI.convertCurrency(item.market.lowestAsk || 0, 'USD', window.parent.parent.parent.companionSettings.currency) || null;
       modalOptions.marketplaceData.product = item || {};
       modalOptions.suggestions.itemsOpened = false;
       modalOptions.suggestions.isSearchingForSizes = true;
       document.querySelector(".Size_Area_Class > input").focus();
-      modalOptions.suggestions.sizes = await window.parent.parent.parent.marketAPI.fetchVariants('stockx', item.urlKey);
+      let fetchedVariants = await window.parent.parent.parent.marketAPI.fetchVariants('stockx', item.urlKey, { includeMedia360: true });
+      modalOptions.suggestions.sizes = fetchedVariants.variants;
+      modalOptions.marketplaceData.media360 = fetchedVariants.media360;
       modalOptions.suggestions.isSearchingForSizes = false;
+      window.parent.preloadSales360Media(modalOptions);
     },
-    applySuggestedSize: function(size) {
+    applySuggestedSize: async function(size) {
       modalOptions.size = size.name || "";
-      modalOptions.purchase.estimatedResell = size.lowestAsk || modalOptions.purchase.estimatedResell || null;
-      modalOptions.marketplaceData.size = size || "";
+      modalOptions.purchase.estimatedResell = await window.parent.parent.parent.exchangeRatesAPI.convertCurrency(size.lowestAsk || 0, 'USD', window.parent.parent.parent.companionSettings.currency) || modalOptions.purchase.estimatedResell || null;
+      modalOptions.marketplaceData.size = size || {};
       modalOptions.suggestions.sizesOpened = false;
     },
     tryConvertSize: function(size) {
@@ -178,6 +183,8 @@ window.createApp = new Vue({
       modalOptions.purchase.estimatedResell = parseFloat(modalOptions.purchase.estimatedResell);
       modalOptions.sale.price = parseFloat(modalOptions.sale.price);
       modalOptions.sale.fees.amount = parseFloat(modalOptions.sale.fees.amount);
+      modalOptions.suggestions.isSearchingForItems = false;
+      modalOptions.suggestions.isSearchingForSizes = false;
       if (this.activeSaleIndex == -1) window.parent.addSale();
       else window.parent.updateSale(this.activeSaleIndex);
       this.closeModal();

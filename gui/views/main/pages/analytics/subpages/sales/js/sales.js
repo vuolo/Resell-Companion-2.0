@@ -20,7 +20,8 @@ window.sales = [
     notes: "",
     marketplaceData: {
       product: {},
-      size: ""
+      size: {},
+      media360: []
     },
     suggestions: {
       items: [],
@@ -59,6 +60,7 @@ window.sales = [
     },
     quantity: 1,
     selected: false,
+    isHovering: false,
     id: "TEST-SALE"
   }
 ];
@@ -186,6 +188,30 @@ const salesApp = new Vue({
     tryGenerateEllipses: window.parent.parent.tryGenerateEllipses,
     openModal: window.openModal,
     editSale: window.editSale,
+    beginHovering: async function(sale) {
+      if (!sale.isHovering && sale.marketplaceData.media360.length > 0) {
+        sale.isHovering = true;
+        let curMedia360Index = 0;
+        // while (sale.isHovering) {
+        //   sale.imageURL = sale.marketplaceData.media360[curMedia360Index];
+        //   curMedia360Index++;
+        //   if (curMedia360Index >= sale.marketplaceData.media360.length-1) curMedia360Index = 0;
+        //   await window.parent.parent.sleep(50);
+        // }
+        let hoverIntv = setInterval(function() {
+          sale.imageURL = sale.marketplaceData.media360[curMedia360Index];
+          curMedia360Index++;
+          if (curMedia360Index >= sale.marketplaceData.media360.length-1) curMedia360Index = 0;
+          if (!sale.isHovering) clearInterval(hoverIntv);
+        }, 50);
+      }
+    },
+    endHovering: function(sale) {
+      sale.isHovering = false;
+      setTimeout(function() {
+        if (sale.marketplaceData.media360.length > 0) sale.imageURL = sale.marketplaceData.media360[0];
+      }, 50);
+    },
     handleSelectClick: function(e, saleIndex) {
       if (e.ctrlKey) switchSelectedSales(saleIndex);
       else if (e.shiftKey) setMultipleSelectedSales(saleIndex);
@@ -463,6 +489,11 @@ window.getSelectedSales = () => {
   return outSales;
 };
 
+window.preloadSales360Media = (incomingSale = null) => {
+  if (incomingSale) window.parent.parent.preloadImages(incomingSale.marketplaceData.media360);
+  else for (var sale of window.sales) window.parent.parent.preloadImages(sale.marketplaceData.media360);
+}
+
 async function displayRemovePrompt() {
   while (!window.frames['delete-modal'] || !window.frames['delete-modal'].deleteApp) await window.parent.parent.sleep(50); // check & sleep in case user clicks on item before the modal is initialized
   let selectedSales = window.getSelectedSales();
@@ -472,5 +503,6 @@ async function displayRemovePrompt() {
 }
 
 salesApp.applyDateSearch();
+window.preloadSales360Media();
 window.refreshTracking(-1, true); // force refresh tracking on load
 window.onload = window.parent.subpageLoadedCallback('sales');

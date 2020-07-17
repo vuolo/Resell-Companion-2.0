@@ -145,7 +145,7 @@
 
 				<template v-for="(sale, saleIndex) in sales">
 					<template v-if="displayMode == 'table'">
-						<div v-bind:id="sale.id" class="Row_1_Class clickable hover-opacity" v-bind:style="{ top: (saleIndex * (52 + 6)) + 10 + 'px'}" v-on:click="handleSelectClick($event, saleIndex)">
+						<div v-bind:id="sale.id" class="Row_1_Class clickable hover-opacity" v-bind:style="{ top: (saleIndex * (52 + 6)) + 10 + 'px'}" v-on:click="handleSelectClick($event, saleIndex)" v-on:mouseover="beginHovering(sale);" v-on:mouseleave="endHovering(sale);">
 							<svg class="Rectangle">
 								<rect v-bind:fill="sale.selected ? getThemeColor('rgba(225,225,225,1)') : getThemeColor('rgba(255,255,255,1)')" class="Rectangle_Class" rx="10" ry="10" x="0" y="0" width="1206.043" height="52.497">
 								</rect>
@@ -193,7 +193,7 @@
 					</template>
 					<template v-else-if="displayMode == 'grid'">
 						<!-- grid display -->
-						<div v-bind:id="sale.id" class="Product_Card_1_dy_Class clickable hover-opacity" v-bind:style="calculateGridPosition(saleIndex)" v-on:click="handleSelectClick($event, saleIndex)">
+						<div v-bind:id="sale.id" class="Product_Card_1_dy_Class clickable hover-opacity" v-bind:style="calculateGridPosition(saleIndex)" v-on:click="handleSelectClick($event, saleIndex)" v-on:mouseover="beginHovering(sale);" v-on:mouseleave="endHovering(sale);">
 							<svg class="Rectangle">
 								<rect v-bind:fill="sale.selected ? getThemeColor('rgba(225,225,225,1)') : getThemeColor('rgba(255,255,255,1)')" class="Rectangle_Class" rx="20" ry="20" x="0" y="0" width="209.941" height="210">
 								</rect>
@@ -444,6 +444,9 @@
 				case 'mark_unsold':
 					// TODO: add functionality (remove from sales and add to inventory)
 					break;
+				case 'duplicate':
+					// TODO: add functionality (duplicate all selected sales)
+					break;
 				case 'remove':
 					sale.selected = true;
 					displayRemovePrompt();
@@ -457,6 +460,7 @@
 		const PRODUCT_CARD_ITEMS = {
 			"view": { name: "View Sale", icon: "fas fa-eye" },
 			"refresh-tracking": { name: "Refresh Tracking", icon: "fas fa-redo-alt" },
+			"duplicate": { name: "Duplicate Sale(s)", icon: "fas fa-clone" },
 			"mark_unsold": { name: "Mark Sale(s) Unsold", icon: "fas fa-archive" },
 			"remove": { name: "Remove Sale(s)", icon: "fas fa-trash-alt" },
 			"search_on_market_lookup": { name: "Search on Market Lookup", icon: "far fa-search" }

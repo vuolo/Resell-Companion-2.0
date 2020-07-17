@@ -1,6 +1,6 @@
 const themes = require("../../../utils/json/themes.json");
 
-window.setTheme = (theme) => {
+window.setTheme = (theme = window.companionSettings.theme) => {
   window.companionSettings.theme = theme;
   for (var i = 0; i < window.frames.length; i++) try { window.frames[i].setContextMenuTheme(theme); } catch (err) { }
   // tasks page
@@ -20,8 +20,8 @@ window.setTheme = (theme) => {
     window.frames['spoof-frame'].document.querySelector(".mapboxgl-ctrl-geocoder--icon").style.opacity = 0.66;
   })();
   // analytics page
-  window.frames["analytics-frame"].analyticsApp.$forceUpdate();
-  for (var i = 0; i < window.frames['analytics-frame'].frames.length; i++) try { window.frames['analytics-frame'].frames[i].setContextMenuTheme(theme); } catch (err) { }
+  if (window.frames["analytics-frame"]) window.frames["analytics-frame"].analyticsApp.$forceUpdate();
+  if (window.frames["analytics-frame"]) for (var i = 0; i < window.frames['analytics-frame'].frames.length; i++) try { window.frames['analytics-frame'].frames[i].setContextMenuTheme(theme); } catch (err) { }
 };
 
 window.getThemeColor = (incomingLightColor, theme = window.companionSettings.theme) => {

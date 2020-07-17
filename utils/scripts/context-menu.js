@@ -18,6 +18,7 @@ window.setContextMenuTheme = async (theme) => {
     item.querySelector('span').style.background = "transparent";
     for (var classItem of item.querySelector('i').classList) if (classItem.includes('-theme')) { item.querySelector('i').classList.remove(classItem); break; }
     item.querySelector('i').classList.add(theme + '-theme');
+    item.querySelector('span').innerText = window.parent.companionSettings ? window.parent.tryTranslate(item.querySelector('span').innerText) : window.parent.parent.tryTranslate(item.querySelector('span').innerText);
   }
   // apply theme to context menu list
   for (var list of document.querySelectorAll('.context-menu-list')) list.style.background = window.parent.getThemeColor ? window.parent.getThemeColor('rgba(247,247,247,1)') : window.parent.parent.getThemeColor('rgba(247,247,247,1)');

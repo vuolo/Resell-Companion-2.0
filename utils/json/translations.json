@@ -12,6 +12,12 @@
         "es": "Añadir"
       }
     },
+    "Add to Inventory": {
+      "languages": {
+        "en": "Add to Inventory",
+        "es": "Añadir al inventario"
+      }
+    },
     "All Time": {
       "languages": {
         "en": "All Time",
@@ -192,6 +198,18 @@
         "es": "Configurar monitores"
       }
     },
+    "Copy Product URL": {
+      "languages": {
+        "en": "Copy Product URL",
+        "es": "Copiar URL del producto"
+      }
+    },
+    "Copy Store URL": {
+      "languages": {
+        "en": "Copy Store URL",
+        "es": "Copiar URL del tienda"
+      }
+    },
     "Could not find any products": {
       "languages": {
         "en": "Could not find any products",
@@ -294,6 +312,12 @@
         "es": "Terminar"
       }
     },
+    "Duplicate Sale": {
+      "languages": {
+        "en": "Duplicate Sale(s)",
+        "es": "Duplicar venta(s)"
+      }
+    },
     "Edit Task": {
       "languages": {
         "en": "Edit Task",
@@ -394,6 +418,12 @@
       "languages": {
         "en": "here",
         "es": "aquí"
+      }
+    },
+    "Hide Product": {
+      "languages": {
+        "en": "Hide Product",
+        "es": "Ocultar producto"
       }
     },
     "Home": {
@@ -540,6 +570,12 @@
         "es": "Marzo"
       }
     },
+    "Mark Sale(s) Unsold": {
+      "languages": {
+        "en": "Mark Sale(s) Unsold",
+        "es": "Marcar venta(s) no vendida"
+      }
+    },
     "Market Lookup": {
       "languages": {
         "en": "Market Lookup",
@@ -672,6 +708,18 @@
       "languages": {
         "en": "Open in Default Browser",
         "es": "Abrir en el navegador predeterminado"
+      }
+    },
+    "Open Product": {
+      "languages": {
+        "en": "Open Product",
+        "es": "Abrir producto"
+      }
+    },
+    "Open Store": {
+      "languages": {
+        "en": "Open Store",
+        "es": "Abrir tienda"
       }
     },
     "Open websites using your computer's default browser": {
@@ -818,10 +866,58 @@
         "es": "Actualizar todo"
       }
     },
+    "Refresh Tracking": {
+      "languages": {
+        "en": "Refresh Tracking",
+        "es": "Actualizar el retraso"
+      }
+    },
+    "Remove All Tasks": {
+      "languages": {
+        "en": "Remove All Tasks",
+        "es": "Eliminar todas las tareas"
+      }
+    },
+    "Remove From Favorites": {
+      "languages": {
+        "en": "Remove From Favorites",
+        "es": "Eliminar de favoritos"
+      }
+    },
+    "Remove Product": {
+      "languages": {
+        "en": "Remove Product",
+        "es": "Eliminar producto"
+      }
+    },
+    "Remove Sale(s)": {
+      "languages": {
+        "en": "Remove Sale(s)",
+        "es": "Eliminar Venta(es)"
+      }
+    },
+    "Remove Task(s)": {
+      "languages": {
+        "en": "Remove Task(s)",
+        "es": "Eliminar tarea(s)"
+      }
+    },
     "Resell Prediction": {
       "languages": {
         "en": "Resell Prediction",
         "es": "Predicción de reventa"
+      }
+    },
+    "Reset All Tasks": {
+      "languages": {
+        "en": "Reset All Tasks",
+        "es": "Restablecer todas las tareas"
+      }
+    },
+    "Reset Task(s)": {
+      "languages": {
+        "en": "Reset Task(s)",
+        "es": "Restablecer tarea(s)"
       }
     },
     "Retrying...": {
@@ -870,6 +966,12 @@
       "languages": {
         "en": "Search",
         "es": "Buscar"
+      }
+    },
+    "Search on Market Lookup": {
+      "languages": {
+        "en": "Search on Market Lookup",
+        "es": "Buscar en análisis de mercado"
       }
     },
     "Select Billing Profile": {
@@ -1148,6 +1250,12 @@
         "es": "para gestionar sus perfiles de facturación"
       }
     },
+    "Toggle Task(s)": {
+      "languages": {
+        "en": "Toggle Task(s)",
+        "es": "Alternar tarea(s)"
+      }
+    },
     "Today": {
       "languages": {
         "en": "Today",
@@ -1248,6 +1356,12 @@
       "languages": {
         "en": "Use Random Size",
         "es": "Usar tamaño aleatorio"
+      }
+    },
+    "View Sale": {
+      "languages": {
+        "en": "View Sale",
+        "es": "Ver venta"
       }
     },
     "Version": {
