@@ -15,8 +15,8 @@ window.sales = [
     name: "Adidas Yeezy Boost 700 Wave Runner",
     color: "",
     styleCode: "",
-    imageURL: "https://stockx-360.imgix.net/Adidas-Yeezy-Wave-Runner-700-Solid-Grey/Images/Adidas-Yeezy-Wave-Runner-700-Solid-Grey/Lv2/img02.jpg?auto=format,compress&w=559&q=90&dpr=2&updated_at=1538080256",
     size: "XXXL",
+    imageURL: "https://stockx-360.imgix.net/Adidas-Yeezy-Wave-Runner-700-Solid-Grey/Images/Adidas-Yeezy-Wave-Runner-700-Solid-Grey/Lv2/img02.jpg?auto=format,compress&w=559&q=90&dpr=2&updated_at=1538080256",
     notes: "",
     marketplaceData: {
       product: {},
@@ -188,6 +188,8 @@ const salesApp = new Vue({
     tryGenerateEllipses: window.parent.parent.tryGenerateEllipses,
     openModal: window.openModal,
     editSale: window.editSale,
+    exportItems: window.parent.parent.csvAPI.exportItems,
+    importItems: window.parent.parent.csvAPI.importItems,
     beginHovering: async function(sale) {
       if (!sale.isHovering && sale.marketplaceData.media360.length > 0) {
         window.preloadSales360Media(sale);
@@ -363,7 +365,7 @@ window.tryTranslateTrackingActivities = (tracking, language = window.parent.pare
 async function tryUpdateTracking(tracking, force = false) {
   if (!force && !tracking.isTracking && tracking.number.length == 0 || tracking.carrier == 'unselected') return;
   tracking.isTracking = true;
-  let trackingDetails = await window.parent.parent.packagesAPI.getPackageDetails(tracking.number, tracking.carrier);
+  let trackingDetails = await window.parent.parent.trackingAPI.getPackageDetails(tracking.number, tracking.carrier);
   tracking.isTracking = false;
   // set after gathering to ensure old packages are not reset
   if (trackingDetails && trackingDetails.status != null) tracking.details = trackingDetails;
@@ -538,6 +540,13 @@ function pasteSales() {
   duplicateSales(outSales);
 }
 
+// DISABLE SELECT ALL TEXT FROM Ctrl + A
+$(function(){
+  $(document).keydown(function(objEvent) {
+    if (objEvent.ctrlKey && objEvent.keyCode == 65) objEvent.preventDefault();
+  });
+});
+
 // KEYBINDS
 document.onkeyup = function(e) {
   if (e.which == 46) { // Delete: display delete prompt
@@ -545,6 +554,7 @@ document.onkeyup = function(e) {
     for (var sale of window.sales) if (sale.selected) { atLeastOneSelected = true; break; }
     if (atLeastOneSelected) displayRemovePrompt();
   } else if (e.ctrlKey && e.which == 65) { // Ctrl + A: select all displayed sales
+    // TODO: disable select all text
     window.setAllSalesSelected(true);
   } else if (e.ctrlKey && e.which == 68) { // Ctrl + D: deselect all displayed sales
     window.setAllSalesSelected(false);

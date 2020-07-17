@@ -44,6 +44,8 @@ function roundNumber(num, scale = 2) {
   }
 }
 
+updateExchangeRates(); // initialize exchange rates
+
 module.exports = {
   convertCurrency: convertCurrency,
   updateExchangeRates: updateExchangeRates

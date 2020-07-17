@@ -6,10 +6,12 @@ window.request = require('request-promise');
 window.path = require('path');
 window.url = require('url');
 window.translate = require('translate');
-window.packagesAPI = require('../../../utils/api/packages.js');
+
+// Custom APIs
+window.trackingAPI = require('../../../utils/api/tracking.js');
 window.marketAPI = require('../../../utils/api/market.js');
 window.exchangeRatesAPI = require('../../../utils/api/exchange-rates.js');
-window.exchangeRatesAPI.updateExchangeRates(); // initialize exchange rates
+window.csvAPI = require('../../../utils/api/csv.js');
 
 // variables
 window.companionSettings = {

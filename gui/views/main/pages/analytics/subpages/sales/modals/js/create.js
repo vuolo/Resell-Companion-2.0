@@ -11,8 +11,8 @@ const MODAL_OPTIONS_TEMPLATE = {
   name: "",
   color: "",
   styleCode: "",
-  imageURL: "",
   size: "",
+  imageURL: "",
   notes: "",
   marketplaceData: {
     product: {},
@@ -170,7 +170,7 @@ window.createApp = new Vue({
     updateTracking: async function(tracking) {
       if (tracking.isTracking) return;
       tracking.isTracking = true;
-      tracking.details = await window.parent.parent.parent.packagesAPI.getPackageDetails(tracking.number, tracking.carrier);
+      tracking.details = await window.parent.parent.parent.trackingAPI.getPackageDetails(tracking.number, tracking.carrier);
       tracking.isTracking = false;
       window.parent.tryTranslateTrackingActivities(tracking);
     },
@@ -200,7 +200,7 @@ window.createApp = new Vue({
 });
 
 function guessAndSetCarrier(trackingNumber) {
-  let guessedCarriers = window.parent.parent.parent.packagesAPI.guessCarrier(trackingNumber);
+  let guessedCarriers = window.parent.parent.parent.trackingAPI.guessCarrier(trackingNumber);
   if (guessedCarriers.length > 0) modalOptions.sale.tracking.carrier = guessedCarriers[0];
 }
 

@@ -264,6 +264,12 @@
         "es": "Ropa"
       }
     },
+    "Currency": {
+      "languages": {
+        "en": "Currency",
+        "es": "Moneda"
+      }
+    },
     "Customizing Settings...": {
       "languages": {
         "en": "Customizing Settings...",
@@ -292,6 +298,12 @@
       "languages": {
         "en": "Devices Connected",
         "es": "Dispositivos conectados"
+      }
+    },
+    "Directory": {
+      "languages": {
+        "en": "Directory",
+        "es": "Directorio"
       }
     },
     "Disable Images": {
@@ -366,6 +378,12 @@
         "es": "Examinando el calendario de lanzamiento..."
       }
     },
+    "Excel Spreadsheet": {
+      "languages": {
+        "en": "Excel Spreadsheet",
+        "es": "Hoja de cálculo de Excel"
+      }
+    },
     "Export": {
       "languages": {
         "en": "Export",
@@ -436,6 +454,12 @@
       "languages": {
         "en": "Home",
         "es": "Inicio"
+      }
+    },
+    "Hooray!": {
+      "languages": {
+        "en": "Hooray!",
+        "es": "¡Hurra!"
       }
     },
     "Import": {
@@ -698,6 +722,12 @@
         "es": "Octubre"
       }
     },
+    "Okay": {
+      "languages": {
+        "en": "Okay",
+        "es": "Vale"
+      }
+    },
     "on a product's size to add it to your shopping bag": {
       "languages": {
         "en": "on a product's size to add it to your shopping bag",
@@ -836,6 +866,18 @@
         "es": "Perfil de proxy"
       }
     },
+    "Purchase Tracking Carrier": {
+      "languages": {
+        "en": "Purchase Tracking Carrier",
+        "es": "Cartero de retraso de la compra"
+      }
+    },
+    "Purchase Tracking Number": {
+      "languages": {
+        "en": "Purchase Tracking Number",
+        "es": "Número de retraso de la compra"
+      }
+    },
     "Purchase Date": {
       "languages": {
         "en": "Purchase Date",
@@ -950,6 +992,18 @@
         "es": "Alternar perfiles de facturación"
       }
     },
+    "Sale Tracking Carrier": {
+      "languages": {
+        "en": "Sale Tracking Carrier",
+        "es": "Cartero de retraso de la venta"
+      }
+    },
+    "Sale Tracking Number": {
+      "languages": {
+        "en": "Sale Tracking Number",
+        "es": "Número de retraso de la venta"
+      }
+    },
     "Sales": {
       "languages": {
         "en": "Sales",
@@ -990,6 +1044,12 @@
       "languages": {
         "en": "Select Billing Profile",
         "es": "Seleccione perfil de facturación"
+      }
+    },
+    "Select Carrier": {
+      "languages": {
+        "en": "Select Carrier",
+        "es": "Seleccionar cartero"
       }
     },
     "Select Proxy Profile": {
@@ -1166,6 +1226,12 @@
         "es": "Suscripciones"
       }
     },
+    "Success!": {
+      "languages": {
+        "en": "Success!",
+        "es": "¡Qué éxito!"
+      }
+    },
     "Successfully Checked Out": {
       "languages": {
         "en": "Successfully checked out",
@@ -1229,7 +1295,7 @@
     "Tickets": {
       "languages": {
         "en": "Tickets",
-        "es": "Boletos"
+        "es": "Entradas"
       }
     },
     "Tracking": {
@@ -1440,6 +1506,36 @@
       "languages": {
         "en": "You must select a supported store to add an item to your shopping bag",
         "es": "Debe seleccionar una tienda compatible para agregar un artículo a su bolsa de la compra"
+      }
+    },
+    "Your cards have been exported!": {
+      "languages": {
+        "en": "Your cards have been exported!",
+        "es": "¡Sus tarjetas han sido exportadas!"
+      }
+    },
+    "Your inventory has been exported!": {
+      "languages": {
+        "en": "Your inventory has been exported!",
+        "es": "¡Su inventario ha sido exportado!"
+      }
+    },
+    "Your sales have been exported!": {
+      "languages": {
+        "en": "Your sales have been exported!",
+        "es": "¡Sus ventas han sido exportadas!"
+      }
+    },
+    "Your subscriptions have been exported!": {
+      "languages": {
+        "en": "Your subscriptions have been exported!",
+        "es": "¡Sus suscripciones han sido exportadas!"
+      }
+    },
+    "Your tickets have been exported!": {
+      "languages": {
+        "en": "Your tickets have been exported!",
+        "es": "¡Sus entradas han sido exportadas!"
       }
     },
     "Your shopping bag is empty": {

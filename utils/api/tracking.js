@@ -174,7 +174,32 @@ async function getPackageDetails_ALT(trackingNumber, carrier) {
 
 }
 
+const CARRIER_DISPLAY_NAMES = {
+  "ups": "UPS",
+  "upsmi": "UPS MI",
+  "usps": "USPS",
+  "fedex": "FedEx",
+  "lasership": "LaserShip",
+  "amazon": "Amazon",
+  "ontrac": "OnTrac",
+  "dhl": "DHL",
+  "dhlgm": "DHL GM",
+  "a1intl": "A1 Intl.",
+  "canadapost": "Canada Post"
+}
+
+function getCarrierDisplayName(carrier) {
+  return CARRIER_DISPLAY_NAMES[carrier] || window.tryTranslate('N/A');
+}
+
+function getCarrierID(displayName) {
+  for (var id in CARRIER_DISPLAY_NAMES) if (CARRIER_DISPLAY_NAMES[id] == displayName) return id;
+  return 'unselected';
+}
+
 module.exports = {
   getPackageDetails: getPackageDetails,
-  guessCarrier: guessCarrier
+  guessCarrier: guessCarrier,
+  getCarrierDisplayName: getCarrierDisplayName,
+  getCarrierID: getCarrierID
 };
