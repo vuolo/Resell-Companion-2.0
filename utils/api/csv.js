@@ -134,7 +134,10 @@ async function importSales(sales) {
   }
 
   // import sales
-  for (var formattedObject of formattedObjects) sales.push(formattedObject);
+  for (var formattedObject of formattedObjects) {
+    sales.push(formattedObject);
+    window.frames['analytics-frame'].frames['sales-subpage'].refreshTracking(sales.length-1, true);
+  }
   window.frames['analytics-frame'].frames['sales-subpage'].refreshSalesSearch();
 
   // show success message box
