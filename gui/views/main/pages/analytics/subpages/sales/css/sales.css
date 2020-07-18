@@ -1400,12 +1400,12 @@
 }
 .___Import_Class {
 	position: absolute;
-	left: 17.555px;
+	left: 0px;
 	top: 9.5px;
 	overflow: visible;
-	width: 73px;
+	width: 107px;
 	white-space: nowrap;
-	text-align: left;
+	text-align: center;
 	font-family: SF Pro Text;
 	font-style: normal;
 	font-weight: bold;
@@ -1431,12 +1431,12 @@
 }
 .___Export_Class {
 	position: absolute;
-	left: 17.555px;
+	left: 0px;
 	top: 9.5px;
 	overflow: visible;
-	width: 72px;
+	width: 107px;
 	white-space: nowrap;
-	text-align: left;
+	text-align: center;
 	font-family: SF Pro Text;
 	font-style: normal;
 	font-weight: bold;

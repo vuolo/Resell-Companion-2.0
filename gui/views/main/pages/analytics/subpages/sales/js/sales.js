@@ -173,6 +173,8 @@ const salesApp = new Vue({
     },
     displayMode: 'table', // 'grid'
     modals: window.modals,
+    isExporting: false,
+    isImporting: false,
     createModal: {},
     deleteModal: {}
   },
@@ -188,8 +190,18 @@ const salesApp = new Vue({
     tryGenerateEllipses: window.parent.parent.tryGenerateEllipses,
     openModal: window.openModal,
     editSale: window.editSale,
-    exportItems: window.parent.parent.csvAPI.exportItems,
-    importItems: window.parent.parent.csvAPI.importItems,
+    beginExport: async function(displayedOnly = true) {
+      if (this.isExporting) return; // prevent duplicate exports
+      this.isExporting = true;
+      try { await window.parent.parent.csvAPI.exportItems('sales', displayedOnly ? this.sales : window.sales); } catch(err) { console.error(err); }
+      this.isExporting = false;
+    },
+    beginImport: async function() {
+      if (this.isImporting) return; // prevent duplicate imports
+      this.isImporting = true;
+      try { await window.parent.parent.csvAPI.importItems('sales', window.sales); } catch(err) { console.error(err); }
+      this.isImporting = false;
+    },
     beginHovering: async function(sale) {
       if (!sale.isHovering && sale.marketplaceData.media360.length > 0) {
         window.preloadSales360Media(sale);

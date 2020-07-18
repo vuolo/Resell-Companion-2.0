@@ -18,6 +18,7 @@
   "dependencies": {
     "adm-zip": "^0.4.14",
     "cheerio": "^1.0.0-rc.3",
+    "csv-parser": "^2.3.3",
     "discord-rpc": "^3.1.1",
     "laravel-echo": "^1.8.0",
     "lodash": "^4.17.15",
