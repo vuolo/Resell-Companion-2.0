@@ -63,7 +63,7 @@ async function exportSales(sales) {
     formattedSale[window.tryTranslate("Notes")] = sale.notes || window.tryTranslate("N/A");
     // sale information
     formattedSale[window.tryTranslate("Sale Price")] = sale.sale.price || window.tryTranslate("N/A");
-    formattedSale[window.tryTranslate("Fees")] = (sale.sale.fees.amount + (sale.sale.fees.isPercent ? "%" : 0)) || window.tryTranslate("N/A");
+    formattedSale[window.tryTranslate("Fees")] = sale.sale.fees.amount ? ((sale.sale.fees.amount + (sale.sale.fees.isPercent ? "%" : 0)) || window.tryTranslate("N/A")) : window.tryTranslate("N/A");
     formattedSale[window.tryTranslate("Platform")] = sale.sale.platform || window.tryTranslate("N/A");
     formattedSale[window.tryTranslate("Sold Date")] = sale.sale.date || window.tryTranslate("N/A");
     formattedSale[window.tryTranslate("Sale Tracking Number")] = sale.sale.tracking.number || window.tryTranslate("N/A");
@@ -104,7 +104,7 @@ async function exportSales(sales) {
 }
 
 // import sales
-async function importSales(sale) {
+async function importSales(sales) {
   // open to documents path by default
   var documentsPath = path.resolve(electron.remote.app.getPath("documents"), path.basename(`${window.tryTranslate('Sales')}.csv`));
 
@@ -117,9 +117,9 @@ async function importSales(sale) {
   if (result.canceled || result.filePaths.length == 0) return;
 
   // format objects to csv
-  let errored = await formatObjectsFromCSV('sales', result.filePaths[0]);
+  let formattedObjects = await formatObjectsFromCSV('sales', result.filePaths[0]);
 
-  if (errored === true) {
+  if (formattedObjects === false) {
     // show errored message box
     const options = {
       type: 'none',
@@ -133,6 +133,10 @@ async function importSales(sale) {
     return electron.remote.dialog.showMessageBox(null, options);
   }
 
+  // import sales
+  for (var formattedObject of formattedObjects) sales.push(formattedObject);
+  window.frames['analytics-frame'].frames['sales-subpage'].refreshSalesSearch();
+
   // show success message box
   const options = {
     type: 'none',
@@ -140,7 +144,7 @@ async function importSales(sale) {
     defaultId: 0,
     title: `Resell Companion - ${window.tryTranslate('Hooray!')}`,
     message: window.tryTranslate("Your sales have been imported!"),
-    detail: `${window.tryTranslate("Imported from")}: ${result.filePath}`,
+    detail: `${window.tryTranslate("Imported from")}: ${result.filePaths[0]}`,
     icon: './build-assets/icons/icon.png'
   };
   electron.remote.dialog.showMessageBox(null, options);
@@ -189,17 +193,17 @@ async function formatObjectsFromCSV(type, filePath) {
                 data[window.tryTranslate("Purchase Tracking Carrier")] &&
                 // extra
                 data[window.tryTranslate("Currency")]
-              ) resolve(true);
+              )) resolve(false);
 
               // format sale
               let formattedSale = {
                 // TODO: add implementation
-                name: "",
-                color: "",
-                styleCode: "",
-                size: "",
-                imageURL: "",
-                notes: "",
+                name: data[window.tryTranslate("Product Name")] == window.tryTranslate("N/A") ? "" : data[window.tryTranslate("Product Name")],
+                color: data[window.tryTranslate("Color")] == window.tryTranslate("N/A") ? "" : data[window.tryTranslate("Color")],
+                styleCode: data[window.tryTranslate("Style Code")] == window.tryTranslate("N/A") ? "" : data[window.tryTranslate("Style Code")],
+                size: data[window.tryTranslate("Size")] == window.tryTranslate("N/A") ? "" : data[window.tryTranslate("Size")],
+                imageURL: data[window.tryTranslate("Image URL")] == window.tryTranslate("N/A") ? "" : data[window.tryTranslate("Image URL")],
+                notes: data[window.tryTranslate("Notes")] == window.tryTranslate("N/A") ? "" : data[window.tryTranslate("Notes")],
                 marketplaceData: {
                   product: {},
                   size: {},
@@ -214,28 +218,28 @@ async function formatObjectsFromCSV(type, filePath) {
                   isSearchingForSizes: false
                 },
                 purchase: {
-                  price: null,
-                  estimatedResell: null,
-                  store: "",
-                  date: "2020-07-07",
+                  price: data[window.tryTranslate("Purchase Price")] == window.tryTranslate("N/A") ? null : Number(data[window.tryTranslate("Purchase Price")]),
+                  estimatedResell: data[window.tryTranslate("Estimated Resell")] == window.tryTranslate("N/A") ? null : Number(data[window.tryTranslate("Estimated Resell")]),
+                  store: data[window.tryTranslate("Store")] == window.tryTranslate("N/A") ? "" : data[window.tryTranslate("Store")],
+                  date: data[window.tryTranslate("Purchase Date")] == window.tryTranslate("N/A") ? "1999-01-26" : data[window.tryTranslate("Purchase Date")],
                   tracking: {
-                    number: "",
-                    carrier: "unselected",
+                    number: data[window.tryTranslate("Purchase Tracking Number")] == window.tryTranslate("N/A") ? "" : data[window.tryTranslate("Purchase Tracking Number")],
+                    carrier: data[window.tryTranslate("Purchase Tracking Carrier")] == window.tryTranslate("N/A") ? "unselected" : window.trackingAPI.getCarrierID(data[window.tryTranslate("Purchase Tracking Carrier")]),
                     isTracking: false,
                     details: {}
                   }
                 },
                 sale: {
-                  price: null,
+                  price: data[window.tryTranslate("Sale Price")] == window.tryTranslate("N/A") ? null : Number(data[window.tryTranslate("Sale Price")]),
                   fees: {
-                    amount: null,
-                    isPercent: true
+                    amount: data[window.tryTranslate("Fees")] == window.tryTranslate("N/A") ? null : window.getNumberFromString(data[window.tryTranslate("Fees")]),
+                    isPercent: data[window.tryTranslate("Fees")].includes("%")
                   },
-                  platform: "",
-                  date: "2020-07-07",
+                  platform: data[window.tryTranslate("Platform")] == window.tryTranslate("N/A") ? "" : data[window.tryTranslate("Platform")],
+                  date: data[window.tryTranslate("Sold Date")] == window.tryTranslate("N/A") ? "1999-01-26" : data[window.tryTranslate("Sold Date")],
                   tracking: {
-                    number: "",
-                    carrier: "unselected",
+                    number: data[window.tryTranslate("Sale Tracking Number")] == window.tryTranslate("N/A") ? "" : data[window.tryTranslate("Sale Tracking Number")],
+                    carrier: data[window.tryTranslate("Sale Tracking Carrier")] == window.tryTranslate("N/A") ? "unselected" : window.trackingAPI.getCarrierID(data[window.tryTranslate("Sale Tracking Carrier")]),
                     isTracking: false,
                     details: {}
                   }
@@ -243,7 +247,7 @@ async function formatObjectsFromCSV(type, filePath) {
                 quantity: 1,
                 selected: false,
                 isHovering: false,
-                id: window.makeid(10); // assign a new id to each sale
+                id: window.makeid(10) // assign a new id to each sale
               };
               // push to array
               outObjArry.push(formattedSale);
@@ -263,7 +267,7 @@ async function formatObjectsFromCSV(type, filePath) {
           }
         } catch(err) {
           console.error(err);
-          resolve(true);
+          resolve(false);
           return;
         }
       })

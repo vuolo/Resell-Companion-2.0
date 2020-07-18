@@ -276,3 +276,7 @@ window.roundNumber = (num, scale = 2) => {
     return +(Math.round(+arr[0] + "e" + sig + (+arr[1] + scale)) + "e-" + scale);
   }
 };
+
+window.getNumberFromString = (string) => {
+  return Number(string.replace(/[^0-9\.]+/g,""));
+}

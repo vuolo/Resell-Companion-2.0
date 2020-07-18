@@ -31,7 +31,7 @@ const MODAL_OPTIONS_TEMPLATE = {
     price: null,
     estimatedResell: null,
     store: "",
-    date: "2020-07-07",
+    date: "1999-01-26",
     tracking: {
       number: "",
       carrier: "unselected",
@@ -46,7 +46,7 @@ const MODAL_OPTIONS_TEMPLATE = {
       isPercent: true
     },
     platform: "",
-    date: "2020-07-07",
+    date: "1999-01-26",
     tracking: {
       number: "",
       carrier: "unselected",

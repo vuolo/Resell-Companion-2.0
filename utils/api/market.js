@@ -229,6 +229,7 @@ async function fetchStockXVariants(product, options = {}) {
   else {
     let variants = [];
 
+    if (!body.Product) return variants;
     const sizes = body.Product.children;
     for (let key in sizes) {
       variants.push({
@@ -556,8 +557,8 @@ function validateSKU(incomingSKU, expectedSKU) {
 
 // validate variant name function
 function validateVariantName(incomingVariant, expectedVariant) {
-  let incomingVariantNum = getNumberFromString(incomingVariant);
-  let expectedVariantNum = getNumberFromString(expectedVariant);
+  let incomingVariantNum = window.getNumberFromString(incomingVariant);
+  let expectedVariantNum = window.getNumberFromString(expectedVariant);
   if (incomingVariantNum == 0 && expectedVariantNum) return incomingVariant == expectedVariant; // variant names do NOT include numbers at all. (or both variant names are "0"). either way. return this.
   return incomingVariantNum == expectedVariantNum;
 }
@@ -612,10 +613,6 @@ function getDuplicateVariantIndex(variants) {
     }
   }
   return -1;
-}
-
-function getNumberFromString(string) {
-  return Number(string.replace(/[^0-9\.]+/g,""));
 }
 
 module.exports = {

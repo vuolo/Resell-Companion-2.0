@@ -35,7 +35,7 @@ window.sales = [
       price: 220,
       estimatedResell: 380,
       store: "Adidas",
-      date: "2020-07-07",
+      date: "1999-01-26",
       tracking: {
         number: "9274890198179002075020",
         carrier: "usps",
@@ -50,7 +50,7 @@ window.sales = [
         isPercent: true
       },
       platform: "ebay",
-      date: "2020-07-07",
+      date: "1999-01-26",
       tracking: {
         number: "9274890198179002075020",
         carrier: "usps",
@@ -103,6 +103,7 @@ window.addSale = () => {
 window.editSale = async (sale) => {
   while (!window.frames['create-modal'] || !window.frames['create-modal'].createApp) await window.parent.parent.sleep(50); // check & sleep in case user clicks on item before the modal is initialized
   window.frames['create-modal'].createApp.activeSaleIndex = window.sales.indexOf(sale);
+  salesApp.endHovering(sale);
   window.parent.parent.memory.syncObject(window.frames['create-modal'].modalOptions, window.parent.parent.memory.copyObj(sale));
   if (window.frames['create-modal'].modalOptions.sale.tracking.isTracking) setTimeout(window.refreshTracking(-2, true, window.frames['create-modal'].modalOptions.sale.tracking), 50);
   openModal('create');
@@ -223,9 +224,7 @@ const salesApp = new Vue({
     },
     endHovering: function(sale) {
       sale.isHovering = false;
-      setTimeout(function() {
-        if (sale.marketplaceData.media360.length > 0) sale.imageURL = sale.marketplaceData.media360[0];
-      }, 50);
+      if (sale.marketplaceData.media360.length > 0) sale.imageURL = sale.marketplaceData.media360[0];
     },
     handleSelectClick: function(e, saleIndex) {
       if (e.ctrlKey) switchSelectedSales(saleIndex);
@@ -416,6 +415,7 @@ function refreshSalesSearch() {
   // reorganize sales based on table filter
   sortDisplayedSales();
 }
+window.refreshSalesSearch = refreshSalesSearch;
 
 function isSaleDisplayable(sale) {
   let searchName = sale.name;
