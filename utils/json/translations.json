@@ -522,16 +522,28 @@
         "es": "Inventario"
       }
     },
-    "item from your": {
+    "item from your#PLURAL": {
       "languages": {
         "en": "item from your",
         "es": "artículo de sus"
       }
     },
-    "items from your": {
+    "items from your#PLURAL": {
       "languages": {
         "en": "items from your",
         "es": "artículos de sus"
+      }
+    },
+    "item from your#SINGULAR": {
+      "languages": {
+        "en": "item from your",
+        "es": "artículo de su"
+      }
+    },
+    "items from your#SINGULAR": {
+      "languages": {
+        "en": "items from your",
+        "es": "artículos de su"
       }
     },
     "January": {

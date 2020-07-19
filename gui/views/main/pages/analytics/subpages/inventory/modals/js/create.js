@@ -63,8 +63,8 @@ const MODAL_OPTIONS_TEMPLATE = {
 window.modalOptions = {};
 window.resetModalOptions = () => {
   if (window.createApp) {
-    if (window.createApp.activeSaleIndex != -1 && window.modalOptions.sale.tracking.isTracking) window.parent.refreshTracking(window.createApp.activeSaleIndex, true);
-    window.createApp.activeSaleIndex = -1;
+    if (window.createApp.activeInventoryItemIndex != -1 && window.modalOptions.purchase.tracking.isTracking) window.parent.refreshTracking(window.createApp.activeInventoryItemIndex, true);
+    window.createApp.activeInventoryItemIndex = -1;
     resetSuggestedItems();
     window.createApp.itemsOpened = false;
     window.createApp.isSearchingForItems = false;
@@ -83,7 +83,7 @@ window.createApp = new Vue({
   data: {
     companionSettings: window.parent.parent.parent.companionSettings,
     modalOptions: modalOptions,
-    activeSaleIndex: -1
+    activeInventoryItemIndex: -1
   },
   methods: {
     confineTextWidth: window.parent.parent.parent.confineTextWidth,
@@ -141,7 +141,7 @@ window.createApp = new Vue({
       modalOptions.suggestions.sizes = fetchedVariants.variants;
       modalOptions.marketplaceData.media360 = fetchedVariants.media360;
       modalOptions.suggestions.isSearchingForSizes = false;
-      window.parent.preloadSales360Media(modalOptions);
+      window.parent.preloadInventoryItems360Media(modalOptions);
     },
     applySuggestedSize: async function(size) {
       modalOptions.size = size.name || "";
@@ -185,8 +185,8 @@ window.createApp = new Vue({
       modalOptions.sale.fees.amount = parseFloat(modalOptions.sale.fees.amount);
       modalOptions.suggestions.isSearchingForItems = false;
       modalOptions.suggestions.isSearchingForSizes = false;
-      if (this.activeSaleIndex == -1) window.parent.addSale();
-      else window.parent.updateSale(this.activeSaleIndex);
+      if (this.activeInventoryItemIndex == -1) window.parent.addInventoryItem();
+      else window.parent.updateInventoryItem(this.activeInventoryItemIndex);
       this.closeModal();
     },
     isSizeActive: function(size) {
@@ -201,11 +201,11 @@ window.createApp = new Vue({
 
 function guessAndSetCarrier(trackingNumber) {
   let guessedCarriers = window.parent.parent.parent.trackingAPI.guessCarrier(trackingNumber);
-  if (guessedCarriers.length > 0) modalOptions.sale.tracking.carrier = guessedCarriers[0];
+  if (guessedCarriers.length > 0) modalOptions.purchase.tracking.carrier = guessedCarriers[0];
 }
 
 $("#trackingNumber").on('change keydown paste input', function() {
-  guessAndSetCarrier(modalOptions.sale.tracking.number);
+  guessAndSetCarrier(modalOptions.purchase.tracking.number);
 });
 
 async function refreshSuggestedItems(inputtedName = modalOptions.name) {

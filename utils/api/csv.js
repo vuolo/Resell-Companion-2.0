@@ -172,31 +172,31 @@ async function formatObjectsFromCSV(type, filePath) {
           switch (type) {
             case 'sales':
               // validate import data columns is correct
-              if (!(
+              if (
                 // generic product information
-                data[window.tryTranslate("Product Name")] &&
-                data[window.tryTranslate("Color")] &&
-                data[window.tryTranslate("Style Code")] &&
-                data[window.tryTranslate("Size")] &&
-                data[window.tryTranslate("Image URL")] &&
-                data[window.tryTranslate("Notes")] &&
+                data[window.tryTranslate("Product Name")] != null &&
+                data[window.tryTranslate("Color")] != null &&
+                data[window.tryTranslate("Style Code")] != null &&
+                data[window.tryTranslate("Size")] != null &&
+                data[window.tryTranslate("Image URL")] != null &&
+                data[window.tryTranslate("Notes")] != null &&
                 // sale information
-                data[window.tryTranslate("Sale Price")] &&
-                data[window.tryTranslate("Fees")] &&
-                data[window.tryTranslate("Platform")] &&
-                data[window.tryTranslate("Sold Date")] &&
-                data[window.tryTranslate("Sale Tracking Number")] &&
-                data[window.tryTranslate("Sale Tracking Carrier")] &&
+                data[window.tryTranslate("Sale Price")] != null &&
+                data[window.tryTranslate("Fees")] != null &&
+                data[window.tryTranslate("Platform")] != null &&
+                data[window.tryTranslate("Sold Date")] != null &&
+                data[window.tryTranslate("Sale Tracking Number")] != null &&
+                data[window.tryTranslate("Sale Tracking Carrier")] != null &&
                 // purchase information
-                data[window.tryTranslate("Purchase Price")] &&
-                data[window.tryTranslate("Estimated Resell")] &&
-                data[window.tryTranslate("Store")] &&
-                data[window.tryTranslate("Purchase Date")] &&
-                data[window.tryTranslate("Purchase Tracking Number")] &&
-                data[window.tryTranslate("Purchase Tracking Carrier")] &&
+                data[window.tryTranslate("Purchase Price")] != null &&
+                data[window.tryTranslate("Estimated Resell")] != null &&
+                data[window.tryTranslate("Store")] != null &&
+                data[window.tryTranslate("Purchase Date")] != null &&
+                data[window.tryTranslate("Purchase Tracking Number")] != null &&
+                data[window.tryTranslate("Purchase Tracking Carrier")] != null &&
                 // extra
-                data[window.tryTranslate("Currency")]
-              )) resolve(false);
+                data[window.tryTranslate("Currency")] != null
+              ) resolve(false);
 
               // format sale
               let formattedSale = {

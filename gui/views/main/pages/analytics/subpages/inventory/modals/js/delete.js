@@ -8,7 +8,7 @@
 const MODAL_NAME = 'delete';
 
 const MODAL_OPTIONS_TEMPLATE = {
-  sales: []
+  inventoryItems: []
 };
 
 window.modalOptions = {};
@@ -31,16 +31,16 @@ window.deleteApp = new Vue({
     tryTranslate: window.parent.parent.parent.tryTranslate,
     getThemeColor: window.parent.parent.parent.getThemeColor,
     finalizeModal: function() {
-      for (var sale of window.modalOptions.sales) window.parent.removeSale(window.parent.getSaleByID(sale.id), false);
-      if (window.modalOptions.sales.length > 0) { // do the if statement in case user presses enter on sales page
-        window.parent.salesApp.applyDateSearch();
+      for (var inventoryItem of window.modalOptions.inventoryItems) window.parent.removeInventoryItem(window.parent.getInventoryItemByID(inventoryItem.id), false);
+      if (window.modalOptions.inventoryItems.length > 0) { // do the if statement in case user presses enter on inventory page
+        window.parent.inventoryApp.applyDateSearch();
         this.closeModal();
       }
     },
     closeModal: function() {
       window.parent.modals[MODAL_NAME].visible = false;
       window.resetModalOptions();
-      if (window.parent.getSelectedSales().length == 1) window.parent.setAllSalesSelected(false, false);
+      if (window.parent.getSelectedInventoryItems().length == 1) window.parent.setAllInventoryItemsSelected(false, false);
     }
   }
 });

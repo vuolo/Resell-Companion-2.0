@@ -158,16 +158,16 @@
 							<div v-if="!sale.sale.tracking.isTracking" class="Tracking_Class" v-bind:style="{ color: getColor(getTrackingColor(sale.sale.tracking)), fontSize: confineTextWidth(100, tryTranslate(getDisplayedTrackingStatus(sale.sale.tracking)), 15, 'px', 'normal', 'SF Pro Text') }">
 								<span>{{tryTranslate(getDisplayedTrackingStatus(sale.sale.tracking))}}</span>
 							</div>
-							<div class="Profit_Class" v-bind:style="{ color: getColor(getProfitColor(calculateProfit(sale))), fontSize: confineTextWidth(95, companionSettings.currencySymbol + calculateProfit(sale), 15, 'px', 'normal', 'SF Pro Text') }">
+							<div class="Profit_Class" v-bind:style="{ color: getColor(getProfitColor(calculateProfit(sale))), fontSize: confineTextWidth(95, companionSettings.currencySymbol + numberWithCommas(calculateProfit(sale)), 15, 'px', 'normal', 'SF Pro Text') }">
 								<span>{{companionSettings.currencySymbol}}{{numberWithCommas(calculateProfit(sale))}}</span>
 							</div>
 							<div class="Fees_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(90, getDisplayedFees(sale), 15, 'px', 'normal', 'SF Pro Text') }">
 								<span>{{getDisplayedFees(sale)}}</span>
 							</div>
-							<div class="Sale_Price_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(85, companionSettings.currencySymbol + (sale.sale.price || 0), 15, 'px', 'normal', 'SF Pro Text') }">
+							<div class="Sale_Price_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(85, companionSettings.currencySymbol + numberWithCommas((sale.sale.price || 0)), 15, 'px', 'normal', 'SF Pro Text') }">
 								<span>{{companionSettings.currencySymbol}}{{numberWithCommas((sale.sale.price || 0))}}</span>
 							</div>
-							<div class="Purchase_Price_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(130, companionSettings.currencySymbol + (sale.purchase.price || 0), 15, 'px', 'normal', 'SF Pro Text') }">
+							<div class="Purchase_Price_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(130, companionSettings.currencySymbol + numberWithCommas((sale.purchase.price || 0)), 15, 'px', 'normal', 'SF Pro Text') }">
 								<span>{{companionSettings.currencySymbol}}{{numberWithCommas((sale.purchase.price || 0))}}</span>
 							</div>
 							<template v-if="getPlatformImage(sale.sale.platform).length > 0">
@@ -220,7 +220,7 @@
 							<div v-if="!sale.sale.tracking.isTracking && getDisplayedTrackingStatus(sale.sale.tracking) != 'N/A'" class="Tracking_Class" v-bind:style="{ color: getColor(getTrackingColor(sale.sale.tracking)), fontSize: confineTextWidth(85, tryTranslate(getDisplayedTrackingStatus(sale.sale.tracking)), 14, 'px', 'normal', 'SF Pro Text') }">
 								<span>{{tryTranslate(getDisplayedTrackingStatus(sale.sale.tracking))}}</span>
 							</div>
-							<div class="Price_Class" style="line-height: 17px;" v-bind:style="{ color: getColor(getProfitColor(calculateProfit(sale))), fontSize: confineTextWidth(85, companionSettings.currencySymbol + calculateProfit(sale), 14, 'px', 'normal', 'SF Pro Text') }">
+							<div class="Price_Class" style="line-height: 17px;" v-bind:style="{ color: getColor(getProfitColor(calculateProfit(sale))), fontSize: confineTextWidth(85, companionSettings.currencySymbol + numberWithCommas(calculateProfit(sale)), 14, 'px', 'normal', 'SF Pro Text') }">
 								<span>{{companionSettings.currencySymbol}}{{numberWithCommas(calculateProfit(sale))}}</span>
 							</div>
 							<div class="Size_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), top: (getTextWidth(sale.name.length == 0 ? tryTranslate('Unknown Product') : sale.name, `${'normal'} ${14 + 'px'} ${'SF Pro Text'}`) <= (180 - 10) ? 148 : 166) + 'px', fontSize: confineTextWidth(180, sale.size, 14, 'px', 'normal', 'SF Pro Text') }">

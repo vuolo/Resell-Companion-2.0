@@ -192,13 +192,13 @@ const salesApp = new Vue({
     openModal: window.openModal,
     editSale: window.editSale,
     beginExport: async function(displayedOnly = true) {
-      if (this.isExporting) return; // prevent duplicate exports
+      if (this.isExporting) return; // prevent overlapping exports
       this.isExporting = true;
       try { await window.parent.parent.csvAPI.exportItems('sales', displayedOnly ? this.sales : window.sales); } catch(err) { console.error(err); }
       this.isExporting = false;
     },
     beginImport: async function() {
-      if (this.isImporting) return; // prevent duplicate imports
+      if (this.isImporting) return; // prevent overlapping imports
       this.isImporting = true;
       try { await window.parent.parent.csvAPI.importItems('sales', window.sales); } catch(err) { console.error(err); }
       this.isImporting = false;
@@ -208,12 +208,6 @@ const salesApp = new Vue({
         window.preloadSales360Media(sale);
         sale.isHovering = true;
         let curMedia360Index = 0;
-        // while (sale.isHovering) {
-        //   sale.imageURL = sale.marketplaceData.media360[curMedia360Index];
-        //   curMedia360Index++;
-        //   if (curMedia360Index >= sale.marketplaceData.media360.length-1) curMedia360Index = 0;
-        //   await window.parent.parent.sleep(50);
-        // }
         let hoverIntv = setInterval(function() {
           sale.imageURL = sale.marketplaceData.media360[curMedia360Index];
           curMedia360Index++;
@@ -555,7 +549,7 @@ function pasteSales() {
 // DISABLE SELECT ALL TEXT FROM Ctrl + A
 $(function(){
   $(document).keydown(function(objEvent) {
-    if (objEvent.ctrlKey && objEvent.keyCode == 65) objEvent.preventDefault();
+    if (objEvent.ctrlKey && objEvent.keyCode == 65 && objEvent.target.tagName != "INPUT" && objEvent.target.tagName != "TEXTAREA") objEvent.preventDefault();
   });
 });
 
@@ -566,7 +560,6 @@ document.onkeyup = function(e) {
     for (var sale of window.sales) if (sale.selected) { atLeastOneSelected = true; break; }
     if (atLeastOneSelected) displayRemovePrompt();
   } else if (e.ctrlKey && e.which == 65) { // Ctrl + A: select all displayed sales
-    // TODO: disable select all text
     window.setAllSalesSelected(true);
   } else if (e.ctrlKey && e.which == 68) { // Ctrl + D: deselect all displayed sales
     window.setAllSalesSelected(false);
