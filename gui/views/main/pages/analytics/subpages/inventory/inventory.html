@@ -344,7 +344,7 @@
 						<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Rectangle_fa_Class" rx="5" ry="5" x="0" y="0" width="300" height="39">
 						</rect>
 					</svg>
-					<div class="Text_fa_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(145, companionSettings.currencySymbol + numberWithCommas(getTotalRevenue()), 20, 'px', 'normal', 'SF Pro Text') }">
+					<div class="Text_fa_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(145, companionSettings.currencySymbol + numberWithCommas(getTotalEstimatedResell()), 20, 'px', 'normal', 'SF Pro Text') }">
 						<span style="user-select: text;">{{companionSettings.currencySymbol}}{{numberWithCommas(getTotalEstimatedResell())}}</span>
 					</div>
 					<div class="Title_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
