@@ -3,7 +3,7 @@ const cheerio = require('cheerio');
 
 // this function requires a StockX search result
 async function updateMarket(result) {
-  // result Obj looks like this: { product: product, variants: [] }
+  // result Obj looks like this: { product: product, variants: [], storesCrawled: [] }
   // clear result variants
   while (result.variants.length > 0) result.variants.pop();
 
@@ -37,7 +37,8 @@ async function updateMarket(result) {
       }
     });
   }
-
+  result.storesCrawled.push("stockx");
+  
   tryMatchAndApplyMarkets("goat", result);
   tryMatchAndApplyMarkets("stadiumgoods", result);
   tryMatchAndApplyMarkets("flightclub", result);
@@ -50,7 +51,7 @@ async function tryMatchAndApplyMarkets(marketplace, stockXResult) {
   let matchedResult;
   for (var searchResult of searchResults) {
     // validate sku to ensure the result is 100% correct.
-    if (validateSKU(searchResult.sku || searchResult.manufacturer_sku || searchResult.style || "N/A", result.product.pid)) {
+    if (validateSKU(searchResult.sku || searchResult.manufacturer_sku || searchResult.style || "N/A", stockXResult.product.pid)) {
       matchedResult = searchResult;
       break;
     }
@@ -88,6 +89,7 @@ async function applyMatchedVariants(marketplace, stockXResult, matchedResult) {
       }
     }
   }
+  stockXResult.storesCrawled.push(marketplace);
 }
 
 // general marketplace api search functions

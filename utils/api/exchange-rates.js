@@ -7,6 +7,13 @@ async function convertCurrency(value, from, to, roundScale = 2, base = "USD") {
   return roundScale == -1 ? convertedValue : roundNumber(convertedValue, roundScale);
 }
 
+// ONLY run SYNC if already updated
+function convertCurrencySync(value, from, to, roundScale = 2, base = "USD") {
+  if (!fx.rates[base]) return value; // force return value if can't -- TODO: work around this by making a sync fetch request to update? idk.
+  let convertedValue = fx.convert(value, { from: from, to: to });
+  return roundScale == -1 ? convertedValue : roundNumber(convertedValue, roundScale);
+}
+
 async function updateExchangeRates(base = "USD") {
   let rates = (await fetchExchangeRates(base)).rates;
   fx.base = base;
@@ -48,5 +55,6 @@ updateExchangeRates(); // initialize exchange rates
 
 module.exports = {
   convertCurrency: convertCurrency,
+  convertCurrencySync: convertCurrencySync,
   updateExchangeRates: updateExchangeRates
 };

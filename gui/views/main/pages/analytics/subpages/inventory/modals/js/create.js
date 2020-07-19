@@ -60,6 +60,17 @@ const MODAL_OPTIONS_TEMPLATE = {
   id: ""
 };
 
+const MARKETPLACE_RESULT_TEMPLATE = {
+  product: {},
+  variants: [],
+  storesCrawled: []
+};
+
+window.marketplaceResult = {};
+window.resetMarketplaceResult = () => {
+  window.parent.parent.parent.memory.syncObject(window.marketplaceResult, window.parent.parent.parent.memory.copyObj(MARKETPLACE_RESULT_TEMPLATE));
+}
+
 window.modalOptions = {};
 window.resetModalOptions = () => {
   if (window.createApp) {
@@ -70,11 +81,14 @@ window.resetModalOptions = () => {
     window.createApp.isSearchingForItems = false;
     window.createApp.sizesOpened = false;
     window.createApp.isSearchingForSizes = false;
+    window.createApp.currentMarketplaceView = "lowestAsk";
   }
   window.parent.parent.parent.memory.syncObject(window.modalOptions, window.parent.parent.parent.memory.copyObj(MODAL_OPTIONS_TEMPLATE));
+  window.resetMarketplaceResult();
   let separatedDate = window.parent.parent.parent.separateDate();
   window.modalOptions.purchase.date = separatedDate.date;
   window.modalOptions.sale.date = separatedDate.date;
+  try { clearInterval(updateMarketplaceIntv); updateMarketplaceIntv = null; } catch(err) {}
 }
 window.resetModalOptions();
 
@@ -83,7 +97,8 @@ window.createApp = new Vue({
   data: {
     companionSettings: window.parent.parent.parent.companionSettings,
     modalOptions: modalOptions,
-    activeInventoryItemIndex: -1
+    activeInventoryItemIndex: -1,
+    currentMarketplaceView: "lowestAsk" // highestBid
   },
   methods: {
     confineTextWidth: window.parent.parent.parent.confineTextWidth,
@@ -93,8 +108,18 @@ window.createApp = new Vue({
     tryTranslate: window.parent.parent.parent.tryTranslate,
     getThemeColor: window.parent.parent.parent.getThemeColor,
     getColor: window.parent.parent.parent.getColor,
+    numberWithCommas: window.parent.parent.parent.numberWithCommas,
     tryGenerateEllipses: window.parent.parent.parent.tryGenerateEllipses,
     formatScheduleDate: window.parent.parent.parent.frames['home-frame'].homeApp.formatScheduleDate,
+    getDisplayedMarketplaceResult: function(marketplace, type = this.currentMarketplaceView) {
+      for (var variant of window.marketplaceResult.variants) {
+        if (variant.name == modalOptions.size) {
+          let outResult = this.companionSettings.currencySymbol + this.numberWithCommas((type == "lowestAsk" ? window.parent.parent.parent.exchangeRatesAPI.convertCurrencySync(variant.stores[marketplace].lowestAsk || 0, variant.stores[marketplace].currency || "USD", window.parent.parent.parent.companionSettings.currency) : window.parent.parent.parent.exchangeRatesAPI.convertCurrencySync(variant.stores[marketplace].highestBid || 0, variant.stores[marketplace].currency || "USD", window.parent.parent.parent.companionSettings.currency)) || 0);
+          return this.companionSettings.currencySymbol + 0 == outResult ? this.tryTranslate('N/A') : outResult;
+        }
+      }
+      return this.tryTranslate('N/A');
+    },
     calculateSizeGridPosition: function(index) {
       return { top: (Math.floor(index/3) * (15 + 20)) + (11 + 20) + 'px', left: ((index%3) * (50)) + (18) + 'px' }
     },
@@ -133,7 +158,10 @@ window.createApp = new Vue({
       modalOptions.imageURL = item.image || "";
       modalOptions.purchase.price = await window.parent.parent.parent.exchangeRatesAPI.convertCurrency(item.retail || 0, 'USD', window.parent.parent.parent.companionSettings.currency) || null;
       modalOptions.purchase.estimatedResell = await window.parent.parent.parent.exchangeRatesAPI.convertCurrency(item.market.lowestAsk || 0, 'USD', window.parent.parent.parent.companionSettings.currency) || null;
+      window.resetMarketplaceResult();
       modalOptions.marketplaceData.product = item || {};
+      window.marketplaceResult.product = item || {};
+      setupMarketplaceResult();
       modalOptions.suggestions.itemsOpened = false;
       modalOptions.suggestions.isSearchingForSizes = true;
       document.querySelector(".Size_Area_Class > input").focus();
@@ -247,6 +275,20 @@ $('.Product_Name_Area_Class .Search_Bar_Class').on('change keydown paste input',
     }, 333);
   }
 });
+
+let updateMarketplaceIntv;
+function setupMarketplaceResult() {
+  window.parent.parent.parent.marketAPI.updateMarket(window.marketplaceResult);
+  setTimeout(function() { window.createApp.$forceUpdate(); try { clearInterval(updateMarketplaceIntv); updateMarketplaceIntv = null; } catch(err) {} }, 15 * 1000);
+  let previousStoresCrawledNum = 0;
+  updateMarketplaceIntv = setInterval(function() {
+    if (previousStoresCrawledNum != window.marketplaceResult.storesCrawled.length) {
+      window.createApp.$forceUpdate();
+      previousStoresCrawledNum = window.marketplaceResult.storesCrawled.length;
+      if (previousStoresCrawledNum == 4) { try { clearInterval(updateMarketplaceIntv); updateMarketplaceIntv = null; } catch(err) {} }
+    }
+  }, 50);
+}
 
 // DISABLE SELECT ALL TEXT FROM Ctrl + A
 $(function(){

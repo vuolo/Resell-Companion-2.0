@@ -3419,3 +3419,274 @@
 	font-size: 16px;
 	color: rgba(29,29,29,1);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+.Market_Lookup_Area_Class {
+	opacity: 1;
+	position: absolute;
+	width: 214px;
+	height: 191px;
+	left: 286px;
+	top: 322px;
+	overflow: visible;
+}
+.Price_Area_Class {
+	position: absolute;
+	width: 111px;
+	height: 165px;
+	left: 84px;
+	top: 26px;
+	overflow: visible;
+}
+.Flight_Club_Price_Class {
+	position: absolute;
+	width: 111px;
+	height: 37px;
+	left: 0px;
+	top: 128px;
+	overflow: visible;
+}
+.Rectangle_ha {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 111px;
+	height: 37px;
+	left: 0px;
+	top: 0px;
+}
+.Price_Class {
+	position: absolute;
+	left: 0px;
+	top: 20px;
+	overflow: visible;
+	width: 111px;
+	white-space: nowrap;
+	line-height: 20px;
+	margin-top: -11px;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+	user-select: text;
+}
+.Stadium_Goods_Price_Class {
+	position: absolute;
+	width: 111px;
+	height: 37px;
+	left: 0px;
+	top: 85px;
+	overflow: visible;
+}
+.Rectangle_hc {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 111px;
+	height: 37px;
+	left: 0px;
+	top: 0px;
+}
+.Price_hd_Class {
+	position: absolute;
+	left: 0px;
+	top: 20px;
+	overflow: visible;
+	width: 111px;
+	white-space: nowrap;
+	line-height: 20px;
+	margin-top: -11px;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+	user-select: text;
+}
+.Goat_Price_Class {
+	position: absolute;
+	width: 111px;
+	height: 37px;
+	left: 0px;
+	top: 43px;
+	overflow: visible;
+}
+.Rectangle_hf {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 111px;
+	height: 37px;
+	left: 0px;
+	top: 0px;
+}
+.Price_hg_Class {
+	position: absolute;
+	left: 0px;
+	top: 20px;
+	overflow: visible;
+	width: 111px;
+	white-space: nowrap;
+	line-height: 20px;
+	margin-top: -11px;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+	user-select: text;
+}
+.StockX_Price_Class {
+	position: absolute;
+	width: 111px;
+	height: 37px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+.Rectangle_hi {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 111px;
+	height: 37px;
+	left: 0px;
+	top: 0px;
+}
+.Price_hj_Class {
+	position: absolute;
+	left: 0px;
+	top: 20px;
+	overflow: visible;
+	width: 111px;
+	white-space: nowrap;
+	line-height: 20px;
+	margin-top: -11px;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+	user-select: text;
+}
+.Store_Icons_Class {
+	position: absolute;
+	width: 76px;
+	height: 153px;
+	left: 0px;
+	top: 27px;
+	overflow: visible;
+}
+.Flight_Club_Class {
+	position: absolute;
+	width: 74px;
+	height: 14px;
+	left: 0px;
+	top: 139px;
+	overflow: visible;
+}
+.Stadium_Goods_Class {
+	position: absolute;
+	width: 74px;
+	height: 29px;
+	left: 2px;
+	top: 89px;
+	overflow: visible;
+}
+.Goat_Icon_Class {
+	position: absolute;
+	width: 71px;
+	height: 28px;
+	left: 2px;
+	top: 46px;
+	overflow: visible;
+}
+.StockX_Class {
+	position: absolute;
+	width: 71px;
+	height: 38px;
+	left: 2px;
+	top: 0px;
+	overflow: visible;
+}
+.Lowest_Ask_Class {
+	position: absolute;
+	left: 84px;
+	top: 0px;
+	overflow: visible;
+	width: 111px;
+	white-space: nowrap;
+	line-height: 28px;
+	margin-top: -6px;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Market_Lookup_Area_Class .___Class {
+	transform: translate(-61.666px, -90px) matrix(1,0,0,1,258.1655,191.5) rotate(-90deg);
+	transform-origin: center;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+	width: 21px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 13px;
+	color: rgba(29,29,29,1);
+	letter-spacing: -2px;
+}
+.Warning_Area_Class {
+	position: absolute;
+	width: 239.422px;
+	height: 63.74px;
+	left: 258.673px;
+	top: 347px;
+	overflow: visible;
+}
+.Select_a_Suggested_Item_and_Si_Class {
+	position: absolute;
+	left: 74.422px;
+	top: 7.74px;
+	overflow: visible;
+	width: 166px;
+	white-space: nowrap;
+	line-height: 16px;
+	margin-top: -1px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	color: rgba(0,0,0,1);
+}
+.Warning_Icon {
+	overflow: visible;
+	position: absolute;
+	width: 63.739px;
+	height: 63.74px;
+	left: 0px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
