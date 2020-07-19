@@ -281,12 +281,17 @@ const inventoryApp = new Vue({
     },
     getTotalRevenue: function() {
       let outRevenue = 0;
-      for (var inventoryItem of this.inventoryItems) outRevenue += this.calculateProfit(inventoryItem) + (inventoryItem.purchase.price || 0);
+      for (var inventoryItem of this.inventoryItems) outRevenue += this.calculateEstimatedProfit(inventoryItem) + (inventoryItem.purchase.price || 0);
       return window.parent.parent.roundNumber(outRevenue);
     },
-    getTotalProfit: function() {
+    getTotalEstimatedResell: function () {
+      let outEstimatedResell = 0;
+      for (var inventoryItem of this.inventoryItems) outEstimatedResell += (inventoryItem.purchase.estimatedResell || 0);
+      return window.parent.parent.roundNumber(outEstimatedResell);
+    },
+    getTotalEstimatedProfit: function() {
       let outProfit = 0;
-      for (var inventoryItem of this.inventoryItems) outProfit += this.calculateProfit(inventoryItem);
+      for (var inventoryItem of this.inventoryItems) outProfit += this.calculateEstimatedProfit(inventoryItem);
       return window.parent.parent.roundNumber(outProfit);
     },
     getStoreImage: function(store) {
@@ -346,9 +351,8 @@ const inventoryApp = new Vue({
       else if (profit < 0) return 'red';
       return 'yellow';
     },
-    calculateProfit: function(inventoryItem) {
-      if (inventoryItem.sale.fees.isPercent) return window.parent.parent.roundNumber((inventoryItem.sale.price || 0) * (1 - (inventoryItem.sale.fees.amount || 0) * (1/100)) - (inventoryItem.purchase.price || 0));
-      return window.parent.parent.roundNumber((inventoryItem.sale.price || 0) - (inventoryItem.sale.fees.amount || 0) - (inventoryItem.purchase.price || 0));
+    calculateEstimatedProfit: function(inventoryItem) {
+      return window.parent.parent.roundNumber((inventoryItem.purchase.estimatedResell || 0) - (inventoryItem.purchase.price || 0));
     },
     getDisplayedFees: function(inventoryItem) {
       if (inventoryItem.sale.fees.amount == null || inventoryItem.sale.fees.amount == 0) return this.tryTranslate("N/A");

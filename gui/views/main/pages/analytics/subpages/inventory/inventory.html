@@ -345,10 +345,10 @@
 						</rect>
 					</svg>
 					<div class="Text_fa_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(145, companionSettings.currencySymbol + numberWithCommas(getTotalRevenue()), 20, 'px', 'normal', 'SF Pro Text') }">
-						<span style="user-select: text;">{{companionSettings.currencySymbol}}{{numberWithCommas(getTotalRevenue())}}</span>
+						<span style="user-select: text;">{{companionSettings.currencySymbol}}{{numberWithCommas(getTotalEstimatedResell())}}</span>
 					</div>
 					<div class="Title_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-						<span>{{tryTranslate('Revenue')}}</span>
+						<span>{{tryTranslate('Est. Revenue')}}</span>
 					</div>
 					<svg class="Suit_Case_Icon" viewBox="0 2.25 24.036 21.032">
 						<path fill="rgba(255,167,78,1)" class="Suit_Case_Icon_Class" d="M 6.009037971496582 23.2816333770752 L 18.02711296081543 23.2816333770752 L 18.02711296081543 4.503389358520508 C 18.02711296081543 3.25933051109314 17.01778411865234 2.25 15.77372550964355 2.25 L 8.26242733001709 2.25 C 7.018368721008301 2.25 6.009037971496582 3.25933051109314 6.009037971496582 4.503389358520508 L 6.009037971496582 23.2816333770752 Z M 9.013556480407715 5.254519462585449 L 15.02259540557861 5.254519462585449 L 15.02259540557861 6.756777763366699 L 9.013556480407715 6.756777763366699 L 9.013556480407715 5.254519462585449 Z M 24.03615188598633 9.010167121887207 L 24.03615188598633 21.02824401855469 C 24.03615188598633 22.27230262756348 23.02682113647461 23.2816333770752 21.78276252746582 23.2816333770752 L 19.52937316894531 23.2816333770752 L 19.52937316894531 6.756777763366699 L 21.78276252746582 6.756777763366699 C 23.02682113647461 6.756777763366699 24.03615188598633 7.766108512878418 24.03615188598633 9.010167121887207 Z M 4.506778240203857 23.2816333770752 L 2.253389120101929 23.2816333770752 C 1.009330630302429 23.2816333770752 0 22.27230262756348 0 21.02824401855469 L 0 9.010167121887207 C 0 7.766108512878418 1.009330630302429 6.756777763366699 2.253389120101929 6.756777763366699 L 4.506778240203857 6.756777763366699 L 4.506778240203857 23.2816333770752 Z">
@@ -364,11 +364,11 @@
 						<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Rectangle_fb_Class" rx="5" ry="5" x="0" y="0" width="300" height="39">
 						</rect>
 					</svg>
-					<div class="Text_fb_Class" v-bind:style="{ color: getColor(getProfitColor(getTotalProfit())), fontSize: confineTextWidth(145, companionSettings.currencySymbol + numberWithCommas(getTotalProfit()), 20, 'px', 'normal', 'SF Pro Text') }">
-						<span style="user-select: text;">{{companionSettings.currencySymbol}}{{numberWithCommas(getTotalProfit())}}</span>
+					<div class="Text_fb_Class" v-bind:style="{ color: getColor(getProfitColor(getTotalEstimatedProfit())), fontSize: confineTextWidth(145, companionSettings.currencySymbol + numberWithCommas(getTotalEstimatedProfit()), 20, 'px', 'normal', 'SF Pro Text') }">
+						<span style="user-select: text;">{{companionSettings.currencySymbol}}{{numberWithCommas(getTotalEstimatedProfit())}}</span>
 					</div>
 					<div class="Title_fc_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-						<span>{{tryTranslate('Profit')}}</span>
+						<span>{{tryTranslate('Est. Profit')}}</span>
 					</div>
 					<svg class="Graph_Icon" viewBox="0 0 19.108 19.108">
 						<path fill="rgba(53,178,57,1)" class="Graph_Icon_Class" d="M 16.79150581359863 0 L 9.55419921875 7.1656494140625 L 7.1656494140625 4.777099609375 L 0 12.01440525054932 L 2.3885498046875 14.40295600891113 L 7.1656494140625 9.55419921875 L 9.55419921875 11.9427490234375 L 19.1083984375 2.3885498046875 L 16.79150581359863 0 Z M 0 16.7198486328125 L 0 19.1083984375 L 19.1083984375 19.1083984375 L 19.1083984375 16.7198486328125 L 0 16.7198486328125 Z">
