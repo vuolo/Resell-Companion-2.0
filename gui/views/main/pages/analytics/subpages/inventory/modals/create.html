@@ -82,7 +82,7 @@
 				</div>
 
 
-				<div class="Market_Lookup_Area_Class" v-bind:style="{ opacity: false && modalOptions.marketplaceData.size.name == null ? 0.05 : 1 }">
+				<div class="Market_Lookup_Area_Class" v-bind:style="{ opacity: (modalOptions.marketplaceData.product.name == null && modalOptions.size.length == 0) ? 0.05 : 1 }">
 					<div class="Price_Area_Class">
 						<div class="Flight_Club_Price_Class">
 							<svg class="Rectangle_ha">
@@ -135,7 +135,7 @@
 					</div>
 				</div>
 
-				<div class="Warning_Area_Class" v-show="false && modalOptions.marketplaceData.size.name == null">
+				<div class="Warning_Area_Class" v-show="(modalOptions.marketplaceData.product.name == null && modalOptions.size.length > 0)">
 					<div class="Select_a_Suggested_Item_and_Si_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
 						<span>Select a </span><span class="clickable" style="text-decoration:underline;" onclick="document.querySelector('.Product_Name_Area_Class > input').focus();">Suggested Item</span><br><span>and </span><span class="clickable" style="text-decoration:underline;" onclick="document.querySelector('.Size_Area_Class > input').focus();">Size</span><span> to perform a<br/>Market Lookup</span>
 					</div>

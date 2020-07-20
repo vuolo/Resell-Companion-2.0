@@ -204,6 +204,12 @@
         "es": "Configurar monitores"
       }
     },
+    "Copy Item(s)": {
+      "languages": {
+        "en": "Copy Item(s)",
+        "es": "Copiar artículo(s)"
+      }
+    },
     "Copy Sale(s)": {
       "languages": {
         "en": "Copy Sale(s)",
@@ -330,10 +336,16 @@
         "es": "Terminar"
       }
     },
-    "Duplicate Sale": {
+    "Duplicate Sale(s)": {
       "languages": {
         "en": "Duplicate Sale(s)",
         "es": "Duplicar venta(s)"
+      }
+    },
+    "Duplicate Item(s)": {
+      "languages": {
+        "en": "Duplicate Item(s)",
+        "es": "Duplicar artículo(s)"
       }
     },
     "Edit Task": {
@@ -354,10 +366,22 @@
         "es": "En camino..."
       }
     },
+    "Est. Profit": {
+      "languages": {
+        "en": "Est. Profit",
+        "es": "Ganancias est."
+      }
+    },
     "Est. Resell": {
       "languages": {
         "en": "Est. Resell",
         "es": "Reventa est."
+      }
+    },
+    "Est. Revenue": {
+      "languages": {
+        "en": "Est. Revenue",
+        "es": "Ingresos est."
       }
     },
     "Estimated Resell": {
@@ -462,6 +486,12 @@
         "es": "Ocultar producto"
       }
     },
+    "Highest Bid": {
+      "languages": {
+        "en": "Highest Bid",
+        "es": "Puja más alta"
+      }
+    },
     "Home": {
       "languages": {
         "en": "Home",
@@ -520,6 +550,12 @@
       "languages": {
         "en": "Inventory",
         "es": "Inventario"
+      }
+    },
+    "Inventory Item": {
+      "languages": {
+        "en": "Inventory Item",
+        "es": "Artículo de inventario"
       }
     },
     "item from your#PLURAL": {
@@ -630,6 +666,12 @@
         "es": "Plataforma de listados"
       }
     },
+    "Lowest Ask": {
+      "languages": {
+        "en": "Lowest Ask",
+        "es": "Pedir más bajo"
+      }
+    },
     "March": {
       "languages": {
         "en": "March",
@@ -639,7 +681,13 @@
     "Mark Sale(s) Unsold": {
       "languages": {
         "en": "Mark Sale(s) Unsold",
-        "es": "Marcar venta(s) no vendida"
+        "es": "Marcar venta(s) no vendida(s)"
+      }
+    },
+    "Mark Sale(s) Sold": {
+      "languages": {
+        "en": "Mark Sale(s) Sold",
+        "es": "Marcar artículo(s) vendido(s)"
       }
     },
     "Market Lookup": {
@@ -714,6 +762,12 @@
       "languages": {
         "en": "No browsers created",
         "es": "No hay navegadores creados"
+      }
+    },
+    "No items added": {
+      "languages": {
+        "en": "No items added",
+        "es": "No se han añadido artículos"
       }
     },
     "No keywords specified": {
@@ -978,6 +1032,12 @@
       "languages": {
         "en": "Remove All Tasks",
         "es": "Eliminar todas las tareas"
+      }
+    },
+    "Remove Item(s)": {
+      "languages": {
+        "en": "Remove Item(s)",
+        "es": "Eliminar artículo(s)"
       }
     },
     "Remove From Favorites": {
@@ -1488,6 +1548,12 @@
       "languages": {
         "en": "Use Random Size",
         "es": "Usar tamaño aleatorio"
+      }
+    },
+    "View Item": {
+      "languages": {
+        "en": "View Item",
+        "es": "Ver artículo"
       }
     },
     "View Sale": {

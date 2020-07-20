@@ -161,7 +161,7 @@ window.createApp = new Vue({
       window.resetMarketplaceResult();
       modalOptions.marketplaceData.product = item || {};
       window.marketplaceResult.product = item || {};
-      setupMarketplaceResult();
+      window.setupMarketplaceResult();
       modalOptions.suggestions.itemsOpened = false;
       modalOptions.suggestions.isSearchingForSizes = true;
       document.querySelector(".Size_Area_Class > input").focus();
@@ -277,7 +277,8 @@ $('.Product_Name_Area_Class .Search_Bar_Class').on('change keydown paste input',
 });
 
 let updateMarketplaceIntv;
-function setupMarketplaceResult() {
+window.setupMarketplaceResult = () => {
+  if (!window.marketplaceResult.product.name) return;
   window.parent.parent.parent.marketAPI.updateMarket(window.marketplaceResult);
   setTimeout(function() { window.createApp.$forceUpdate(); try { clearInterval(updateMarketplaceIntv); updateMarketplaceIntv = null; } catch(err) {} }, 15 * 1000);
   let previousStoresCrawledNum = 0;
