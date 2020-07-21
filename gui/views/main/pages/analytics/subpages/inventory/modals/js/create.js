@@ -96,7 +96,9 @@ window.createApp = new Vue({
   el: "#Rewrite___Sold_Inventory_Item_Modal",
   data: {
     companionSettings: window.parent.parent.parent.companionSettings,
+    window: window,
     modalOptions: modalOptions,
+    marketplaceResult: marketplaceResult,
     activeInventoryItemIndex: -1,
     currentMarketplaceView: "lowestAsk" // highestBid
   },
@@ -115,10 +117,10 @@ window.createApp = new Vue({
       for (var variant of window.marketplaceResult.variants) {
         if (variant.name == modalOptions.size) {
           let outResult = this.companionSettings.currencySymbol + this.numberWithCommas((type == "lowestAsk" ? window.parent.parent.parent.exchangeRatesAPI.convertCurrencySync(variant.stores[marketplace].lowestAsk || 0, variant.stores[marketplace].currency || "USD", window.parent.parent.parent.companionSettings.currency) : window.parent.parent.parent.exchangeRatesAPI.convertCurrencySync(variant.stores[marketplace].highestBid || 0, variant.stores[marketplace].currency || "USD", window.parent.parent.parent.companionSettings.currency)) || 0);
-          return this.companionSettings.currencySymbol + 0 == outResult ? this.tryTranslate('N/A') : outResult;
+          return this.companionSettings.currencySymbol + 0 == outResult ? { value: this.tryTranslate('N/A'), link: "#" } : { value: outResult, link: variant.stores[marketplace].url };
         }
       }
-      return this.tryTranslate('N/A');
+      return { value: this.tryTranslate('N/A'), link: "#" };
     },
     calculateSizeGridPosition: function(index) {
       return { top: (Math.floor(index/3) * (15 + 20)) + (11 + 20) + 'px', left: ((index%3) * (50)) + (18) + 'px' }

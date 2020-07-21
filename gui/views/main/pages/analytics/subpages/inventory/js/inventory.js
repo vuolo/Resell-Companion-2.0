@@ -105,8 +105,9 @@ window.editInventoryItem = async (inventoryItem) => {
   window.frames['create-modal'].createApp.activeInventoryItemIndex = window.inventoryItems.indexOf(inventoryItem);
   inventoryApp.endHovering(inventoryItem);
   window.parent.parent.memory.syncObject(window.frames['create-modal'].modalOptions, window.parent.parent.memory.copyObj(inventoryItem));
+  window.frames['create-modal'].resetMarketplaceResult();
   window.frames['create-modal'].marketplaceResult.product = window.frames['create-modal'].modalOptions.marketplaceData.product;
-  window.frames['create-modal'].setupMarketplaceResult();
+  setTimeout(window.frames['create-modal'].setupMarketplaceResult, 500);
   if (window.frames['create-modal'].modalOptions.purchase.tracking.isTracking) setTimeout(window.refreshTracking(-2, true, window.frames['create-modal'].modalOptions.purchase.tracking), 50);
   openModal('create');
 };

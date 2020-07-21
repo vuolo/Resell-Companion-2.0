@@ -59,10 +59,10 @@
 					<div class="Size_hj_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), top: (modalOptions.color.length == 0 ? 25 : 47) + 'px' }">
 						<template v-if="tryConvertSize(modalOptions.size)">
 							<template v-if="!tryConvertSize(modalOptions.size).convertedSize || tryConvertSize(modalOptions.size).convertedSize.conversionType == tryConvertSize(modalOptions.size).currentSize.conversionType">
-								<span style="user-select: text;">{{tryConvertSize(modalOptions.size).currentSize.size}} </span><span style="font-style:normal;font-weight:normal;font-size:16px; user-select: text;">{{tryConvertSize(modalOptions.size).currentSize.conversionType}}</span>
+								<span style="user-select: all;">{{tryConvertSize(modalOptions.size).currentSize.size}} </span><span style="font-style:normal;font-weight:normal;font-size:16px; user-select: text;">{{tryConvertSize(modalOptions.size).currentSize.conversionType}}</span>
 							</template>
 							<template v-else>
-								<span style="user-select: text;">{{tryConvertSize(modalOptions.size).convertedSize.size}} </span><span style="font-style:normal;font-weight:normal;font-size:16px; user-select: text;">{{tryConvertSize(modalOptions.size).convertedSize.conversionType}} </span><span style="font-style:normal;font-weight:normal;font-size:12px; user-select: text;">({{tryConvertSize(modalOptions.size).currentSize.size}} {{tryConvertSize(modalOptions.size).currentSize.conversionType}})</span>
+								<span style="user-select: all;">{{tryConvertSize(modalOptions.size).convertedSize.size}} </span><span style="font-style:normal;font-weight:normal;font-size:16px; user-select: text;">{{tryConvertSize(modalOptions.size).convertedSize.conversionType}} </span><span style="font-style:normal;font-weight:normal;font-size:12px; user-select: text;">({{tryConvertSize(modalOptions.size).currentSize.size}} {{tryConvertSize(modalOptions.size).currentSize.conversionType}})</span>
 							</template>
 						</template>
 						<template v-else>
@@ -70,10 +70,10 @@
 						</template>
 					</div>
 					<div class="Product_Color_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-						<span style="user-select: text;">{{tryGenerateEllipses(550, modalOptions.color, 18, 'px', 'normal', 'SF Pro Text')}}</span>
+						<span style="user-select: all;">{{tryGenerateEllipses(550, modalOptions.color, 18, 'px', 'normal', 'SF Pro Text')}}</span>
 					</div>
 					<div class="Product_Name_hl_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-						<span style="user-select: text;">{{modalOptions.name.length == 0 ? tryTranslate('Unknown Product') : tryGenerateEllipses(550, modalOptions.name, 20, 'px', 'bold', 'SF Pro Text')}}</span>
+						<span style="user-select: all;">{{modalOptions.name.length == 0 ? tryTranslate('Unknown Product') : tryGenerateEllipses(550, modalOptions.name, 20, 'px', 'bold', 'SF Pro Text')}}</span>
 					</div>
 					<div class="Product_Image_Class" style="width: 131px; height: 131px;">
 						<img style="display: table-cell; vertical-align: middle; max-width: 131px; max-height: 131px; border-radius: 10px; margin-left: auto; margin-right: auto;" v-bind:class="{ transparentify: companionSettings.theme == 'light' }" v-bind:src="modalOptions.imageURL" onerror="this.src='../../../../../../../images/unknownImage.png'">
@@ -82,15 +82,21 @@
 				</div>
 
 
-				<div class="Market_Lookup_Area_Class" v-bind:style="{ opacity: (modalOptions.marketplaceData.product.name == null && modalOptions.size.length == 0) ? 0.05 : 1 }">
+				<div class="Market_Lookup_Area_Class" v-bind:style="{ opacity: (modalOptions.marketplaceData.product.name == null || modalOptions.size.length == 0) ? 0.05 : 1 }">
 					<div class="Price_Area_Class">
 						<div class="Flight_Club_Price_Class">
 							<svg class="Rectangle_ha">
 								<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Rectangle_ha_Class" rx="10" ry="10" x="0" y="0" width="111" height="37">
 								</rect>
 							</svg>
-							<div class="Price_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(111-15, getDisplayedMarketplaceResult('flightclub') || tryTranslate('N/A'), 20, 'px', 'normal', 'SF Pro Text') }">
-								<span style="user-select: text;">{{getDisplayedMarketplaceResult('flightclub') || tryTranslate('N/A')}}</span>
+							<div class="Price_Class" v-bind:class="{ 'clickable': (getDisplayedMarketplaceResult('flightclub').link || '#') != '#', 'hover-opacity': (getDisplayedMarketplaceResult('flightclub').link || '#') != '#' }" v-bind:style="{ userSelect: (getDisplayedMarketplaceResult('flightclub').link || '#') != '#' ? 'all' : 'none', color: getThemeColor('rgba(29,29,29,1)'), opacity: (getDisplayedMarketplaceResult('flightclub').value || tryTranslate('N/A')) == tryTranslate('N/A') ? 0.66 : 1, fontSize: confineTextWidth(111-15, getDisplayedMarketplaceResult('flightclub').value || tryTranslate('N/A'), 20, 'px', 'normal', 'SF Pro Text') }">
+								<span v-bind:style="{ userSelect: (getDisplayedMarketplaceResult('flightclub').link || '#') != '#' ? 'all' : 'none' }" v-on:click="(getDisplayedMarketplaceResult('flightclub').link || '#') != '#' ? window.open(getDisplayedMarketplaceResult('flightclub').link || '#') : window">{{getDisplayedMarketplaceResult('flightclub').value || tryTranslate('N/A')}}</span>
+							</div>
+
+							<div v-show="!marketplaceResult.storesCrawled.includes('flightclub') && modalOptions.marketplaceData.product.name != null" style="pointer-events: none; width: 20px; height: 33px; left: 96px; top:-26px; position: absolute; transform: translate(100%, 65%);">
+								<svg class="spinner" viewBox="0 0 50 50">
+									<circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="1.5" stroke="#FFA74E"></circle>
+								</svg>
 							</div>
 						</div>
 						<div class="Stadium_Goods_Price_Class">
@@ -98,8 +104,14 @@
 								<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Rectangle_hc_Class" rx="10" ry="10" x="0" y="0" width="111" height="37">
 								</rect>
 							</svg>
-							<div class="Price_hd_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(111-15, getDisplayedMarketplaceResult('stadiumgoods') || tryTranslate('N/A'), 20, 'px', 'normal', 'SF Pro Text') }">
-								<span style="user-select: text;">{{getDisplayedMarketplaceResult('stadiumgoods') || tryTranslate('N/A')}}</span>
+							<div class="Price_hd_Class" v-bind:class="{ 'clickable': (getDisplayedMarketplaceResult('stadiumgoods').link || '#') != '#', 'hover-opacity': (getDisplayedMarketplaceResult('stadiumgoods').link || '#') != '#' }" v-bind:style="{ userSelect: (getDisplayedMarketplaceResult('stadiumgoods').link || '#') != '#' ? 'all' : 'none', color: getThemeColor('rgba(29,29,29,1)'), opacity: (getDisplayedMarketplaceResult('stadiumgoods').value || tryTranslate('N/A')) == tryTranslate('N/A') ? 0.66 : 1, fontSize: confineTextWidth(111-15, getDisplayedMarketplaceResult('stadiumgoods').value || tryTranslate('N/A'), 20, 'px', 'normal', 'SF Pro Text') }">
+								<span v-bind:style="{ userSelect: (getDisplayedMarketplaceResult('stadiumgoods').link || '#') != '#' ? 'all' : 'none' }" v-on:click="(getDisplayedMarketplaceResult('stadiumgoods').link || '#') != '#' ? window.open(getDisplayedMarketplaceResult('stadiumgoods').link || '#') : window">{{getDisplayedMarketplaceResult('stadiumgoods').value || tryTranslate('N/A')}}</span>
+							</div>
+
+							<div v-show="!marketplaceResult.storesCrawled.includes('stadiumgoods') && modalOptions.marketplaceData.product.name != null" style="pointer-events: none; width: 20px; height: 33px; left: 96px; top:-26px; position: absolute; transform: translate(100%, 65%);">
+								<svg class="spinner" viewBox="0 0 50 50">
+									<circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="1.5" stroke="#FFA74E"></circle>
+								</svg>
 							</div>
 						</div>
 						<div class="Goat_Price_Class">
@@ -107,8 +119,14 @@
 								<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Rectangle_hf_Class" rx="10" ry="10" x="0" y="0" width="111" height="37">
 								</rect>
 							</svg>
-							<div class="Price_hg_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(111-15, getDisplayedMarketplaceResult('goat') || tryTranslate('N/A'), 20, 'px', 'normal', 'SF Pro Text') }">
-								<span style="user-select: text;">{{getDisplayedMarketplaceResult('goat') || tryTranslate('N/A')}}</span>
+							<div class="Price_hg_Class" v-bind:class="{ 'clickable': (getDisplayedMarketplaceResult('goat').link || '#') != '#', 'hover-opacity': (getDisplayedMarketplaceResult('goat').link || '#') != '#' }" v-bind:style="{ userSelect: (getDisplayedMarketplaceResult('goat').link || '#') != '#' ? 'all' : 'none', color: getThemeColor('rgba(29,29,29,1)'), opacity: (getDisplayedMarketplaceResult('goat').value || tryTranslate('N/A')) == tryTranslate('N/A') ? 0.66 : 1, fontSize: confineTextWidth(111-15, getDisplayedMarketplaceResult('goat').value || tryTranslate('N/A'), 20, 'px', 'normal', 'SF Pro Text') }">
+								<span  v-bind:style="{ userSelect: (getDisplayedMarketplaceResult('goat').link || '#') != '#' ? 'all' : 'none' }" v-on:click="(getDisplayedMarketplaceResult('goat').link || '#') != '#' ? window.open(getDisplayedMarketplaceResult('goat').link || '#') : window">{{getDisplayedMarketplaceResult('goat').value || tryTranslate('N/A')}}</span>
+							</div>
+
+							<div v-show="!marketplaceResult.storesCrawled.includes('goat') && modalOptions.marketplaceData.product.name != null" style="pointer-events: none; width: 20px; height: 33px; left: 96px; top:-26px; position: absolute; transform: translate(100%, 65%);">
+								<svg class="spinner" viewBox="0 0 50 50">
+									<circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="1.5" stroke="#FFA74E"></circle>
+								</svg>
 							</div>
 						</div>
 						<div class="StockX_Price_Class">
@@ -116,8 +134,14 @@
 								<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Rectangle_hi_Class" rx="10" ry="10" x="0" y="0" width="111" height="37">
 								</rect>
 							</svg>
-							<div class="Price_hj_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(111-15, getDisplayedMarketplaceResult('stockx') || tryTranslate('N/A'), 20, 'px', 'normal', 'SF Pro Text') }">
-								<span style="user-select: text;">{{getDisplayedMarketplaceResult('stockx') || tryTranslate('N/A')}}</span>
+							<div class="Price_hj_Class" v-bind:class="{ 'clickable': (getDisplayedMarketplaceResult('stockx').link || '#') != '#', 'hover-opacity': (getDisplayedMarketplaceResult('stockx').link || '#') != '#' }" v-bind:style="{ userSelect: (getDisplayedMarketplaceResult('stockx').link || '#') != '#' ? 'all' : 'none', color: getThemeColor('rgba(29,29,29,1)'), opacity: (getDisplayedMarketplaceResult('stockx').value || tryTranslate('N/A')) == tryTranslate('N/A') ? 0.66 : 1, fontSize: confineTextWidth(111-15, getDisplayedMarketplaceResult('stockx').value || tryTranslate('N/A'), 20, 'px', 'normal', 'SF Pro Text') }">
+								<span v-bind:style="{ userSelect: (getDisplayedMarketplaceResult('stockx').link || '#') != '#' ? 'all' : 'none' }" v-on:click="(getDisplayedMarketplaceResult('stockx').link || '#') != '#' ? window.open(getDisplayedMarketplaceResult('stockx').link || '#') : window">{{getDisplayedMarketplaceResult('stockx').value || tryTranslate('N/A')}}</span>
+							</div>
+
+							<div v-show="!marketplaceResult.storesCrawled.includes('stockx') && modalOptions.marketplaceData.product.name != null" style="pointer-events: none; width: 20px; height: 33px; left: 96px; top:-26px; position: absolute; transform: translate(100%, 65%);">
+								<svg class="spinner" viewBox="0 0 50 50">
+									<circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="1.5" stroke="#FFA74E"></circle>
+								</svg>
 							</div>
 						</div>
 					</div>
@@ -128,16 +152,16 @@
 						<img class="StockX_Class" v-bind:class="{ transparentify: companionSettings.theme == 'light' }" v-bind:src="companionSettings.theme == 'dark' ? '../../../../../../../images/stores/' + 'StockX' + '-white.png' : '../../../../../../../images/stores/' + 'StockX' + '.png'" onerror="this.src='../../../../../../images/unknownImage.png'">
 					</div>
 					<div class="Lowest_Ask_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(111-10, currentMarketplaceView == 'lowestAsk' ? tryTranslate('Lowest Ask') : tryTranslate('Highest Bid'), 16, 'px', 'normal', 'SF Pro Text') }">
-						<span style="user-select: text;">{{currentMarketplaceView == 'lowestAsk' ? tryTranslate('Lowest Ask') : tryTranslate('Highest Bid')}}</span>
+						<span style="user-select: all;">{{currentMarketplaceView == 'lowestAsk' ? tryTranslate('Lowest Ask') : tryTranslate('Highest Bid')}}</span>
 					</div>
 					<div class="___Class clickable hover-opacity" v-on:click="currentMarketplaceView = currentMarketplaceView == 'lowestAsk' ? 'highestBid' : 'lowestAsk';" style="left: 3px;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
 						<span>↑↓</span>
 					</div>
 				</div>
 
-				<div class="Warning_Area_Class" v-show="(modalOptions.marketplaceData.product.name == null && modalOptions.size.length > 0)">
+				<div class="Warning_Area_Class" v-show="(modalOptions.marketplaceData.product.name == null || modalOptions.size.length == 0)">
 					<div class="Select_a_Suggested_Item_and_Si_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-						<span>Select a </span><span class="clickable" style="text-decoration:underline;" onclick="document.querySelector('.Product_Name_Area_Class > input').focus();">Suggested Item</span><br><span>and </span><span class="clickable" style="text-decoration:underline;" onclick="document.querySelector('.Size_Area_Class > input').focus();">Size</span><span> to perform a<br/>Market Lookup</span>
+						<span>Select a </span><span class="clickable" style="text-decoration:underline;" onclick="document.querySelector('.Product_Name_Area_Class > input').focus(); refreshSuggestedItems();">Suggested Item</span><br><span>and </span><span class="clickable" style="text-decoration:underline;" onclick="document.querySelector('.Size_Area_Class > input').focus();">Size</span><span> to perform a<br/>Market Lookup</span>
 					</div>
 					<svg class="Warning_Icon" viewBox="2.571 1.928 63.739 63.74">
 						<path v-bind:fill="getThemeColor('rgba(29,29,29,1)')" class="Warning_Icon_Class" d="M 34.44039154052734 7.7028489112854 L 61.15005874633789 60.93727874755859 L 7.730673313140869 60.93727874755859 L 34.44046020507813 7.702850818634033 Z M 34.44039154052734 1.928033828735352 C 33.06663131713867 1.928033828735352 31.69287872314453 2.854379177093506 30.65064239501953 4.707195281982422 L 3.444764614105225 58.93046188354492 C 1.360411882400513 62.6360969543457 3.133535623550415 65.66796875 7.385151386260986 65.66796875 L 61.49564361572266 65.66796875 C 65.74700164794922 65.66796875 67.5205078125 62.6360969543457 65.43578338623047 58.93046188354492 L 65.43590545654297 58.93046188354492 L 38.23002624511719 4.707194328308105 C 37.18791198730469 2.854379177093506 35.81415176391602 1.928033828735352 34.44039154052734 1.928033828735352 Z M 38.42411041259766 53.71673965454102 C 38.42411041259766 55.91688919067383 36.64052200317383 57.70048522949219 34.44039154052734 57.70048522949219 C 32.24026489257813 57.70048522949219 30.45668029785156 55.91688919067383 30.45668029785156 53.71673965454102 C 30.45668029785156 51.5165901184082 32.24026489257813 49.73299407958984 34.44039154052734 49.73299407958984 C 36.64052200317383 49.73299407958984 38.42411041259766 51.5165901184082 38.42411041259766 53.71673965454102 Z M 34.44039154052734 45.74924087524414 C 32.24026489257813 45.74924087524414 30.45668029785156 43.96564483642578 30.45668029785156 41.76549530029297 L 30.45668029785156 29.81425666809082 C 30.45668029785156 27.61410522460938 32.24026489257813 25.83051300048828 34.44039154052734 25.83051300048828 C 36.64052200317383 25.83051300048828 38.42411041259766 27.61410522460938 38.42411041259766 29.81425666809082 L 38.42411041259766 41.76549530029297 C 38.42411041259766 43.96564483642578 36.64052200317383 45.74924087524414 34.44039154052734 45.74924087524414 Z">
@@ -312,13 +336,13 @@
 									<img style="display: table-cell; vertical-align: middle; max-width: 92px; max-height: 92px; border-radius: 10px; margin-left: auto; margin-right: auto;" v-bind:class="{ transparentify: companionSettings.theme == 'light' }" v-bind:src="item.image" onerror="this.src='../../../../../../../images/unknownImage.png'">
 								</div>
 								<div class="White_Zest_Academy_Blue__Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-									<span style="user-select: text;">{{tryGenerateEllipses(340, item.color, 12, 'px', 'normal', 'SF Pro Text')}}</span><br>
+									<span style="user-select: all;">{{tryGenerateEllipses(340, item.color, 12, 'px', 'normal', 'SF Pro Text')}}</span><br>
 								</div>
 								<div class="Nike_Air_Assault_Low_Zest_Acad_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-									<span style="user-select: text;">{{tryGenerateEllipses(340, item.name, 14, 'px', 'bold', 'SF Pro Text')}}</span>
+									<span style="user-select: all;">{{tryGenerateEllipses(340, item.name, 14, 'px', 'bold', 'SF Pro Text')}}</span>
 								</div>
 								<div class="BQ8462_601__Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-									<span style="user-select: text;">{{tryGenerateEllipses(340, item.pid || '', 12, 'px', 'normal', 'SF Pro Text')}}</span><br>
+									<span style="user-select: all;">{{tryGenerateEllipses(340, item.pid || '', 12, 'px', 'normal', 'SF Pro Text')}}</span><br>
 								</div>
 							</div>
 						</template>
@@ -485,7 +509,7 @@
 											</rect>
 										</svg>
 										<div class="Time_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(260, formatScheduleDate(activity.timestamp.toString(), true), 16, 'px', 'normal', 'SF Pro Text') }">
-											<span style="user-select: text;">{{formatScheduleDate(activity.timestamp.toString(), true)}}</span>
+											<span style="user-select: all;">{{formatScheduleDate(activity.timestamp.toString(), true)}}</span>
 										</div>
 										<div class="Clock_Icon_Class">
 											<svg class="Clock_Icon_2" viewBox="3 3 18 18">
@@ -498,7 +522,7 @@
 											</svg>
 										</div>
 										<div class="Location_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(260, activity.location, 16, 'px', 'normal', 'SF Pro Text') }">
-											<span style="user-select: text;">{{activity.location.length > 0 ? tryGenerateEllipses(260, activity.location, 16, 'px', 'normal', 'SF Pro Text') : tryTranslate('N/A')}}</span>
+											<span style="user-select: all;">{{activity.location.length > 0 ? tryGenerateEllipses(260, activity.location, 16, 'px', 'normal', 'SF Pro Text') : tryTranslate('N/A')}}</span>
 										</div>
 										<svg class="Location_Icon" viewBox="6.75 2.25 14.785 20.699">
 											<path v-bind:fill="getThemeColor('rgba(29,29,29,1)')" class="Location_Icon_Class" d="M 14.14262199401855 2.25 C 10.07649517059326 2.25 6.75 5.510007858276367 6.75 9.494815826416016 C 6.75 14.92834758758545 14.14262199401855 22.9493408203125 14.14262199401855 22.9493408203125 C 14.14262199401855 22.9493408203125 21.53524398803711 14.92834758758545 21.53524398803711 9.494815826416016 C 21.53524398803711 5.510007858276367 18.20874786376953 2.25 14.14262199401855 2.25 Z M 14.14262199401855 12.08223342895508 C 12.66428184509277 12.08223342895508 11.50234794616699 10.94353866577148 11.50234794616699 9.494815826416016 C 11.50234794616699 8.046000480651855 12.66423606872559 6.907398223876953 14.14262199401855 6.907398223876953 C 15.62100791931152 6.907398223876953 16.78289604187012 8.046000480651855 16.78289604187012 9.494815826416016 C 16.78289604187012 10.94353866577148 15.62096214294434 12.08223342895508 14.14262199401855 12.08223342895508 Z">
@@ -511,7 +535,7 @@
 										</rect>
 									</svg>
 									<div class="Delivered__In_At_Mailbox_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-										<span style="user-select: text;">{{activity.details.length > 0 ? tryGenerateEllipses(235, activity.details, 16, 'px', 'normal', 'SF Pro Text') : tryTranslate('N/A')}}</span>
+										<span style="user-select: all;">{{activity.details.length > 0 ? tryGenerateEllipses(235, activity.details, 16, 'px', 'normal', 'SF Pro Text') : tryTranslate('N/A')}}</span>
 									</div>
 									<div class="ID1_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
 										<span>{{activityIndex+1}}</span>

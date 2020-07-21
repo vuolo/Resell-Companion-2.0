@@ -38,7 +38,7 @@ async function updateMarket(result) {
     });
   }
   result.storesCrawled.push("stockx");
-  
+
   tryMatchAndApplyMarkets("goat", result);
   tryMatchAndApplyMarkets("stadiumgoods", result);
   tryMatchAndApplyMarkets("flightclub", result);
@@ -552,8 +552,8 @@ async function fetchFlightClubVariants(product, options = {}) {
 
 // validate sku function
 function validateSKU(incomingSKU, expectedSKU) {
-  let formattedIncomingSKU = incomingSKU.toUpperCase().replace(new RegExp(" ", "g"), "-").trim();
-  let formattedExpectedSKU = expectedSKU.toUpperCase().replace(new RegExp(" ", "g"), "-").trim();
+  let formattedIncomingSKU = incomingSKU || "".toUpperCase().replace(new RegExp(" ", "g"), "-").trim();
+  let formattedExpectedSKU = expectedSKU || "".toUpperCase().replace(new RegExp(" ", "g"), "-").trim();
   return formattedIncomingSKU == formattedExpectedSKU;
 }
 
