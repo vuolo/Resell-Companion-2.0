@@ -271,7 +271,7 @@ window.homeApp = new Vue({
       var objToday = date ? (typeof date === 'string' || (typeof date).includes('number') ? new Date(date) : new Date(date.year, date.month-1, date.day)) : new Date();
       // weekday = new Array(window.parent.tryTranslate('Sunday'), window.parent.tryTranslate('Monday'), window.parent.tryTranslate('Tuesday'), window.parent.tryTranslate('Wednesday'), window.parent.tryTranslate('Thursday'), window.parent.tryTranslate('Friday'), window.parent.tryTranslate('Saturday')),
       // dayOfWeek = weekday[objToday.getDay()],
-      if (window.parent.companionSettings.language == "en") domEnder = function() { var a = objToday; if (/1/.test(parseInt((a + "").charAt(0)))) return "th"; a = parseInt((a + "").charAt(1)); return 1 == objToday.getDate() ? window.parent.tryTranslate("st") : 2 == objToday.getDate() ? window.parent.tryTranslate("nd") : 3 == objToday.getDate() ? window.parent.tryTranslate("rd") : window.parent.tryTranslate("th") }();
+      if (window.parent.companionSettings.language == "en") domEnder = function() { var a = objToday; if (/1/.test(parseInt((a + "").charAt(0)))) return "th"; a = parseInt((a + "").charAt(1)); return 1 == objToday.getDate() % 10 ? window.parent.tryTranslate("st") : 2 == objToday.getDate() % 10 ? window.parent.tryTranslate("nd") : 3 == objToday.getDate() % 10 ? window.parent.tryTranslate("rd") : window.parent.tryTranslate("th") }();
       var dayOfMonth = todayDate + ( objToday.getDate() < 10) ? '0' + objToday.getDate() + domEnder : objToday.getDate() + domEnder,
       months = new Array(window.parent.tryTranslate('January'), window.parent.tryTranslate('February'), window.parent.tryTranslate('March'), window.parent.tryTranslate('April'), window.parent.tryTranslate('May'), window.parent.tryTranslate('June'), window.parent.tryTranslate('July'), window.parent.tryTranslate('August'), window.parent.tryTranslate('September'), window.parent.tryTranslate('October'), window.parent.tryTranslate('November'), window.parent.tryTranslate('December')),
       curMonth = months[objToday.getMonth()],
@@ -288,6 +288,7 @@ window.homeApp = new Vue({
       if (window.parent.companionSettings.language == "fr") todayDate = dayOfMonth + " " + curMonth;
       if (window.parent.companionSettings.language == "de") todayDate = dayOfMonth + ". " + curMonth;
       if (window.parent.companionSettings.language == "cn") todayDate = curMonth + dayOfMonth;
+      if (!dayOfMonth || dayOfMonth == NaN) todayDate = window.parent.tryTranslate('N/A');
 
       // add time
       if (includeTime) todayDate += " • " + window.parent.formatTimestamp(objToday, true, false);

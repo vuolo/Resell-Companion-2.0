@@ -144,6 +144,24 @@
         "es": "Tarjeta rechazada"
       }
     },
+    "Card Image URL": {
+      "languages": {
+        "en": "Card Image URL",
+        "es": "URL de la imagen de la tarjeta"
+      }
+    },
+    "Card": {
+      "languages": {
+        "en": "Card",
+        "es": "Tarjeta"
+      }
+    },
+    "Card Name": {
+      "languages": {
+        "en": "Card Name",
+        "es": "Nombre de la tarjeta"
+      }
+    },
     "Cards": {
       "languages": {
         "en": "Cards",
@@ -202,6 +220,12 @@
       "languages": {
         "en": "Configure Monitors",
         "es": "Configurar monitores"
+      }
+    },
+    "Copy Card(s)": {
+      "languages": {
+        "en": "Copy Card(s)",
+        "es": "Copiar tarjeta(s)"
       }
     },
     "Copy Item(s)": {
@@ -282,6 +306,12 @@
         "es": "Moneda"
       }
     },
+    "Custom": {
+      "languages": {
+        "en": "Custom",
+        "es": "Personalizada"
+      }
+    },
     "Customizing Settings...": {
       "languages": {
         "en": "Customizing Settings...",
@@ -336,16 +366,22 @@
         "es": "Terminar"
       }
     },
-    "Duplicate Sale(s)": {
+    "Duplicate Card(s)": {
       "languages": {
-        "en": "Duplicate Sale(s)",
-        "es": "Duplicar venta(s)"
+        "en": "Duplicate Card(s)",
+        "es": "Duplicar tarjeta(s)"
       }
     },
     "Duplicate Item(s)": {
       "languages": {
         "en": "Duplicate Item(s)",
         "es": "Duplicar artículo(s)"
+      }
+    },
+    "Duplicate Sale(s)": {
+      "languages": {
+        "en": "Duplicate Sale(s)",
+        "es": "Duplicar venta(s)"
       }
     },
     "Edit Task": {
@@ -460,6 +496,12 @@
       "languages": {
         "en": "Fri",
         "es": "Vie"
+      }
+    },
+    "Grade": {
+      "languages": {
+        "en": "Grade",
+        "es": "Grado"
       }
     },
     "Go to": {
@@ -764,6 +806,12 @@
         "es": "No hay navegadores creados"
       }
     },
+    "No cards created": {
+      "languages": {
+        "en": "No cards created",
+        "es": "No hay tarjetas creados"
+      }
+    },
     "No items added": {
       "languages": {
         "en": "No items added",
@@ -798,6 +846,12 @@
       "languages": {
         "en": "No tasks are created for this product",
         "es": "No se crean tareas para este producto"
+      }
+    },
+    "No tickets added": {
+      "languages": {
+        "en": "No tickets added",
+        "es": "No se han añadido entradas"
       }
     },
     "Notes": {
@@ -876,6 +930,18 @@
       "languages": {
         "en": "Overview",
         "es": "Resumen"
+      }
+    },
+    "Paste Card(s)": {
+      "languages": {
+        "en": "Paste Card(s)",
+        "es": "Pegar tarjeta(s)"
+      }
+    },
+    "Paste Item(s)": {
+      "languages": {
+        "en": "Paste Item(s)",
+        "es": "Pegar artículo(s)"
       }
     },
     "Paste Sale(s)": {
@@ -1034,6 +1100,12 @@
         "es": "Eliminar todas las tareas"
       }
     },
+    "Remove Card(s)": {
+      "languages": {
+        "en": "Remove Card(s)",
+        "es": "Eliminar tarjeta(s)"
+      }
+    },
     "Remove Item(s)": {
       "languages": {
         "en": "Remove Item(s)",
@@ -1146,6 +1218,12 @@
       "languages": {
         "en": "Search on Market Lookup",
         "es": "Buscar en análisis de mercado"
+      }
+    },
+    "Seat": {
+      "languages": {
+        "en": "Seat",
+        "es": "Asiento"
       }
     },
     "Select Billing Profile": {
@@ -1406,6 +1484,18 @@
         "es": "Jue"
       }
     },
+    "Ticket": {
+      "languages": {
+        "en": "Ticket",
+        "es": "Entrada"
+      }
+    },
+    "Ticket Image URL": {
+      "languages": {
+        "en": "Ticket Image URL",
+        "es": "URL de la imagen de entrada"
+      }
+    },
     "Tickets": {
       "languages": {
         "en": "Tickets",
@@ -1428,6 +1518,12 @@
       "languages": {
         "en": "Tracking Number",
         "es": "Número de Rastreo"
+      }
+    },
+    "Trading Card": {
+      "languages": {
+        "en": "Trading Card",
+        "es": "Carta coleccionable"
       }
     },
     "to connect your bots": {
@@ -1502,16 +1598,40 @@
         "es": "Desconocido"
       }
     },
+    "Unknown Card": {
+      "languages": {
+        "en": "Unknown Card",
+        "es": "Tarjeta desconocida"
+      }
+    },
+    "Unknown Grade": {
+      "languages": {
+        "en": "Unknown Grade",
+        "es": "Grado desconocido"
+      }
+    },
     "Unknown Product": {
       "languages": {
         "en": "Unknown Product",
         "es": "Producto desconocido"
       }
     },
+    "Unknown Seat": {
+      "languages": {
+        "en": "Unknown Seat",
+        "es": "Asiento desconocido"
+      }
+    },
     "Unknown Size": {
       "languages": {
         "en": "Unknown Size",
         "es": "Tamaño desconocido"
+      }
+    },
+    "Unknown Ticket": {
+      "languages": {
+        "en": "Unknown Ticket",
+        "es": "Entrada desconocida"
       }
     },
     "Unspecified Location": {
@@ -1548,6 +1668,12 @@
       "languages": {
         "en": "Use Random Size",
         "es": "Usar tamaño aleatorio"
+      }
+    },
+    "View Card": {
+      "languages": {
+        "en": "View Card",
+        "es": "Ver tarjeta"
       }
     },
     "View Item": {

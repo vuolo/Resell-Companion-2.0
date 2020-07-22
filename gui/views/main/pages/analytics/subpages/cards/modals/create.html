@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Resell Companion — Create Card</title>
+
+		<link rel="stylesheet" type="text/css" href="../../../../../../../css/style.css"/>
+	  <link rel="stylesheet" type="text/css" href="../../../../../../../css/fonts-alt-path.css"/>
+
+		<link rel="stylesheet" type="text/css" id="applicationStylesheet" href="./css/create.css"/>
+
+		<script src="../../../../../../../../utils/downloaded/vue.js" type="text/javascript"></script>
+		<script src="../../../../../../../../utils/downloaded/jquery.js" type="text/javascript"></script>
+
+	</head>
+	<body>
+
+		<div id="Rewrite___Sold_Inventory_Item_Modal" class="Rewrite___Sold_Inventory_Item_Modal_Class">
+			<div class="Modal_Class">
+				<svg class="Modal_Shader" v-on:click="closeModal()">
+					<rect fill="rgba(29,29,29,0.251)" class="Modal_Shader_Class" rx="0" ry="0" x="0" y="0" width="1287" height="795">
+					</rect>
+				</svg>
+				<svg class="Modal_Rectangle">
+					<rect v-bind:fill="getThemeColor('rgba(251,247,241,1)')" class="Modal_Rectangle_Class" rx="20" ry="20" x="0" y="0" width="802" height="698">
+					</rect>
+				</svg>
+
+				<svg class="Separator_2">
+					<rect v-bind:fill="getThemeColor('rgba(190,190,190,1)')" class="Separator_2_Class" rx="1.5" ry="1.5" x="0" y="0" width="609" height="3">
+					</rect>
+				</svg>
+
+				<svg class="Separator_1">
+					<rect v-bind:fill="getThemeColor('rgba(190,190,190,1)')" class="Separator_1_Class" rx="1.5" ry="1.5" x="0" y="0" width="230" height="3">
+					</rect>
+				</svg>
+
+				<div class="Header_Class">
+					<svg class="Browser_Close_Button clickable hover-opacity" v-on:click="closeModal()" viewBox="3.375 3.375 20 20">
+						<circle cx="6.5" cy="6.5" r="6.5" transform="translate(6 6)" fill="#efefef"></circle>
+						<path fill="rgba(253,53,53,1)" class="Browser_Close_Button_Class" d="M 13.37500190734863 3.375 C 7.850962162017822 3.375 3.375 7.850962162017822 3.375 13.375 C 3.375 18.89904022216797 7.850962162017822 23.375 13.37500190734863 23.375 C 18.89904022216797 23.375 23.375 18.89904022216797 23.375 13.375 C 23.375 7.850960254669189 18.89904022216797 3.375 13.37500190734863 3.375 Z M 15.90865325927734 16.99519157409668 L 13.37500190734863 14.46153736114502 L 10.84134578704834 16.99519157409668 C 10.54326820373535 17.29327011108398 10.05288314819336 17.29327011108398 9.754807472229004 16.99519157409668 C 9.605768203735352 16.84615325927734 9.528846740722656 16.64903831481934 9.528846740722656 16.45192337036133 C 9.528846740722656 16.25480842590332 9.605768203735352 16.05769157409668 9.754807472229004 15.90865325927734 L 12.28846168518066 13.375 L 9.754807472229004 10.84134578704834 C 9.605768203735352 10.692307472229 9.528844833374023 10.49519157409668 9.528844833374023 10.29807662963867 C 9.528844833374023 10.10096168518066 9.605768203735352 9.90384578704834 9.754807472229004 9.75480842590332 C 10.05288314819336 9.456730842590332 10.54326725006104 9.456730842590332 10.84134578704834 9.75480842590332 L 13.375 12.28846168518066 L 15.90865135192871 9.75480842590332 C 16.20672988891602 9.456730842590332 16.69711303710938 9.456730842590332 16.99518966674805 9.75480842590332 C 17.29326820373535 10.05288505554199 17.29326820373535 10.54327011108398 16.99518966674805 10.84134674072266 L 14.46153831481934 13.375 L 16.99519157409668 15.90865325927734 C 17.29327011108398 16.20673179626465 17.29327011108398 16.69711685180664 16.99519157409668 16.99519157409668 C 16.69711303710938 17.29807662963867 16.20672988891602 17.29807662963867 15.90865325927734 16.99519157409668 Z">
+						</path>
+					</svg>
+
+					<svg class="Blue_Bar" v-bind:style="{ left: calculateUnderlineLeftOffset(200, tryTranslate('Trading Card'), 40, 'px', '900', 'SF Pro Text', false) + 10 + 'px' }">
+						<rect fill="rgba(253,53,53,1)" class="Green_Bar_Class" rx="1.5" ry="1.5" x="0" y="0" v-bind:width="calculateUnderlineWidth(200, tryTranslate('Trading Card'), 40, 'px', '900', 'SF Pro Text')" height="3">
+						</rect>
+					</svg>
+					<div class="Sold_Inventory_Item_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+						<span>{{tryTranslate('Trading Card')}}</span>
+					</div>
+				</div>
+
+
+				<div class="Top_Area_Class">
+					<div class="Size_hj_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), top: (modalOptions.color.length == 0 ? 25 : 47) + 'px' }">
+						<template v-if="tryConvertSize(modalOptions.size)">
+							<template v-if="!tryConvertSize(modalOptions.size).convertedSize || tryConvertSize(modalOptions.size).convertedSize.conversionType == tryConvertSize(modalOptions.size).currentSize.conversionType">
+								<span style="user-select: text;">{{tryConvertSize(modalOptions.size).currentSize.size}} </span><span style="font-style:normal;font-weight:normal;font-size:16px; user-select: text;">{{tryConvertSize(modalOptions.size).currentSize.conversionType}}</span>
+							</template>
+							<template v-else>
+								<span style="user-select: text;">{{tryConvertSize(modalOptions.size).convertedSize.size}} </span><span style="font-style:normal;font-weight:normal;font-size:16px; user-select: text;">{{tryConvertSize(modalOptions.size).convertedSize.conversionType}} </span><span style="font-style:normal;font-weight:normal;font-size:12px; user-select: text;">({{tryConvertSize(modalOptions.size).currentSize.size}} {{tryConvertSize(modalOptions.size).currentSize.conversionType}})</span>
+							</template>
+						</template>
+						<template v-else>
+							<span style="font-style:normal;font-weight:normal;font-size:20px; user-select: text;">{{modalOptions.size.length == 0 ? tryTranslate('Unknown Grade') : modalOptions.size }}</span>
+						</template>
+					</div>
+					<div class="Product_Color_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+						<span style="user-select: text;">{{tryGenerateEllipses(550, modalOptions.color, 18, 'px', 'normal', 'SF Pro Text')}}</span>
+					</div>
+					<div class="Product_Name_hl_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+						<span style="user-select: text;">{{modalOptions.name.length == 0 ? tryTranslate('Unknown Card') : tryGenerateEllipses(550, modalOptions.name, 20, 'px', 'bold', 'SF Pro Text')}}</span>
+					</div>
+					<div class="Product_Image_Class" style="width: 131px; height: 131px;">
+						<img style="display: table-cell; vertical-align: middle; max-width: 131px; max-height: 131px; border-radius: 10px; margin-left: auto; margin-right: auto;" v-bind:class="{ transparentify: companionSettings.theme == 'light' }" v-bind:src="modalOptions.imageURL" onerror="this.src='../../../../../../../images/unknownImage.png'">
+					</div>
+					<textarea spellcheck="false" v-bind:placeholder="tryTranslate('Type to add a note...')" v-on:keyup.enter="finalizeModal();" v-model="modalOptions.note" type="text" class="Note_Area_Class Search_Bar_Class special-focus" style="border-radius: 10px; padding: 10px; font-size: 14px; white-space: pre-wrap; resize: none;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark', 'dark-scrollbar': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }"></textarea>
+				</div>
+
+
+				<div class="Left_Fields_Class">
+
+					<div class="Sold_Price_Area_Class">
+						<input v-bind:placeholder="tryTranslate('Sold Price')" v-on:keyup.enter="finalizeModal();" v-model="modalOptions.sale.price" type="number" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 112px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+						<div class="Magnifying_Glass_Icon_gv" style="text-align: center; font-size: 14px; pointer-events: none; top: 37.5px; width: 30px; line-height: 16px; left: 6.5px;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+							<span>{{companionSettings.currencySymbol}}</span>
+						</div>
+
+						<div class="Keywords_ep_Class" style="left: 10px; position: absolute; white-space: nowrap;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+							<span>{{tryTranslate('Sold Price')}}</span>
+						</div>
+					</div>
+
+					<div class="Fees_Area_Class">
+						<input v-bind:placeholder="tryTranslate('Fees')" v-on:keyup.enter="finalizeModal();" v-model="modalOptions.sale.fees.amount" type="number" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 90px; padding-left: 12px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)'), paddingRight: (modalOptions.sale.fees.isPercent ? 25 : (companionSettings.currencySymbol.length == 1 ? 25 : (companionSettings.currencySymbol.length == 2 ? 30 : 40))) + 'px' }">
+						<div class="Magnifying_Glass_Icon_gv" style="text-align: right; font-size: 14px; pointer-events: none; top: 37.5px; width: 30px; line-height: 16px; left: 50.5px;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+							<span>{{modalOptions.sale.fees.isPercent ? '%' : companionSettings.currencySymbol}}</span>
+						</div>
+
+						<div class="Keywords_ep_Class" style="left: 10px; position: absolute; white-space: nowrap;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+							<span>{{tryTranslate('Fees')}}</span>
+						</div>
+					</div>
+
+					<div class="___hh_Class clickable hover-opacity" v-on:click="modalOptions.sale.fees.isPercent = !modalOptions.sale.fees.isPercent" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+						<span>{{modalOptions.sale.fees.isPercent ? '↓↑' : '↑↓'}}</span>
+					</div>
+
+					<div class="Listing_Platform_Image_Class">
+						<input v-bind:placeholder="tryTranslate('Listing Platform')" v-on:keyup.enter="finalizeModal();" v-model="modalOptions.sale.platform" type="text" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 211px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+						<svg class="Magnifying_Glass_Icon_gv" style="top: 37.5px" viewBox="0.004 0 18.682 15.529">
+							<path v-bind:fill="getThemeColor('rgba(29,29,29,1)')" class="Store_Icon_Class" d="M 18.26143646240234 3.597241401672363 L 16.29296112060547 0.4549630880355835 C 16.11704444885254 0.1728859692811966 15.8046350479126 0 15.47099590301514 0 L 3.217322826385498 0 C 2.883683204650879 0 2.571275234222412 0.1728859692811966 2.395356178283691 0.4549630880355835 L 0.4268826246261597 3.597241401672363 C -0.5892015695571899 5.219943046569824 0.3116253018379211 7.476560115814209 2.21033787727356 7.734372615814209 C 2.346826791763306 7.752570629119873 2.486348867416382 7.761670589447021 2.625870943069458 7.761670589447021 C 3.523664712905884 7.761670589447021 4.318333148956299 7.367369174957275 4.864288806915283 6.757718563079834 C 5.410244464874268 7.367369174957275 6.207946300506592 7.761670589447021 7.102706909179688 7.761670589447021 C 8.000500679016113 7.761670589447021 8.795169830322266 7.367369174957275 9.34112548828125 6.757718563079834 C 9.887081146240234 7.367369174957275 10.68478298187256 7.761670589447021 11.57954406738281 7.761670589447021 C 12.47733783721924 7.761670589447021 13.27200603485107 7.367369174957275 13.81796264648438 6.757718563079834 C 14.36695098876953 7.367369174957275 15.16162109375 7.761670589447021 16.05638122558594 7.761670589447021 C 16.19893646240234 7.761670589447021 16.33542442321777 7.752571582794189 16.47191429138184 7.734372615814209 C 18.37669372558594 7.479592800140381 19.28055191040039 5.222976207733154 18.26143646240234 3.597241401672363 Z M 16.06244659423828 8.735291481018066 C 15.75913906097412 8.735291481018066 15.45886325836182 8.689794540405273 15.16768646240234 8.620034217834473 L 15.16768646240234 11.64705467224121 L 3.520631551742554 11.64705467224121 L 3.520631551742554 8.620034217834473 C 3.229455232620239 8.686761856079102 2.929179668426514 8.735291481018066 2.625870943069458 8.735291481018066 C 2.443885564804077 8.735291481018066 2.258867263793945 8.723158836364746 2.079915285110474 8.698893547058105 C 1.910062193870544 8.674629211425781 1.743242383003235 8.635199546813965 1.582488894462585 8.589703559875488 L 1.582488894462585 14.55881881713867 C 1.582488894462585 15.09567451477051 2.016220331192017 15.52940654754639 2.553076982498169 15.52940654754639 L 16.14130783081055 15.52940654754639 C 16.67816352844238 15.52940654754639 17.11189460754395 15.09567451477051 17.11189460754395 14.55881881713867 L 17.11189460754395 8.589703559875488 C 16.9481086730957 8.638232231140137 16.78432083129883 8.67766284942627 16.61446952819824 8.698893547058105 C 16.42945098876953 8.723158836364746 16.24746513366699 8.735291481018066 16.06244659423828 8.735291481018066 Z">
+							</path>
+						</svg>
+
+						<div class="Keywords_ep_Class" style="left: 10px; position: absolute; white-space: nowrap;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+							<span>{{tryTranslate('Listing Platform')}}</span>
+						</div>
+					</div>
+
+					<div class="Sold_Date_Area_Class">
+						<input v-bind:placeholder="tryTranslate('Sold Date')" v-model="modalOptions.sale.date" @change="" type="date" class="Search_Bar_Class special-focus" v-bind:class="{ 'white-input-icon': companionSettings.theme == 'dark' }" style="left: 0px; top: 27px; width: 211px; padding-left: 15px; padding-right: 10px; text-indent: 0px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+
+						<div class="Keywords_ep_Class" style="left: 10px; position: absolute; white-space: nowrap;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+							<span>{{tryTranslate('Sold Date')}} <span style="color: rgba(253,53,53,1); font-weight: bold;">*</span></span>
+						</div>
+					</div>
+
+				</div>
+
+
+				<div class="Right_Fields_Class">
+
+					<div class="Product_Name_Area_Class">
+						<input v-bind:placeholder="tryTranslate('Card Name')" v-on:keyup.enter="finalizeModal();" v-on:blur="hideSuggestedItems()" v-on:focus="modalOptions.suggestions.itemsOpened = true;" v-model="modalOptions.name" type="text" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 279px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)'), paddingRight: (modalOptions.suggestions.isSearchingForItems ? 35 : 20) + 'px' }">
+						<svg class="Magnifying_Glass_Icon_gv" viewBox="0 -0.045 17.337 17.337">
+							<path v-bind:fill="getThemeColor('rgba(29,29,29,1)')" class="Magnifying_Glass_Icon_gv_Class" d="M 7.516793251037598 -0.0235234834253788 C 3.371819496154785 -0.0235234834253788 0 3.34829568862915 0 7.493270397186279 C 0 11.63824462890625 3.371819496154785 15.01006317138672 7.516793251037598 15.01006317138672 C 8.78391170501709 15.01006317138672 10.02955055236816 14.70939350128174 11.08190250396729 14.12952709197998 C 11.1661958694458 14.2309684753418 11.25965595245361 14.32442760467529 11.36109733581543 14.40872001647949 L 13.50875282287598 16.55637741088867 C 14.04909896850586 17.16438865661621 14.88185119628906 17.42293357849121 15.67153072357178 17.22785949707031 C 16.46121025085449 17.03278541564941 17.07778167724609 16.41621208190918 17.27285957336426 15.62653064727783 C 17.46793174743652 14.83684730529785 17.20938682556152 14.0040979385376 16.60137557983398 13.46375179290771 L 14.45372009277344 11.31609630584717 C 14.3491039276123 11.21144199371338 14.2339506149292 11.11788082122803 14.11009693145752 11.03690242767334 C 14.68996429443359 9.984550476074219 15.0550651550293 8.76038646697998 15.0550651550293 7.471794128417969 C 15.0550651550293 3.326818943023682 11.68324661254883 -0.04500007256865501 7.538270950317383 -0.04500007256865501 Z M 7.516793251037598 2.124131917953491 C 10.50203609466553 2.124131917953491 12.88593292236328 4.508029937744141 12.88593292236328 7.493270397186279 C 12.88593292236328 8.910723686218262 12.37049579620361 10.22079277038574 11.46848201751709 11.18723678588867 C 11.4470043182373 11.20871257781982 11.42552852630615 11.23019027709961 11.40405178070068 11.25166702270508 C 11.30261039733887 11.33596038818359 11.20915126800537 11.42942047119141 11.12485599517822 11.53086090087891 C 10.17988777160645 12.38992404937744 8.891294479370117 12.88388538360596 7.495319366455078 12.88388538360596 C 4.510077476501465 12.88388538360596 2.126179695129395 10.49998760223389 2.126179695129395 7.514747142791748 C 2.126179695129395 4.529504776000977 4.510077476501465 2.145607709884644 7.495319366455078 2.145607709884644 Z">
+							</path>
+						</svg>
+
+						<div v-show="modalOptions.suggestions.isSearchingForItems" style="pointer-events: none; width: 20px; height: 33px; left: 230px; position: absolute; transform: translate(100%, 65%);">
+							<svg class="spinner" viewBox="0 0 50 50">
+								<circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="1.5" stroke="#FFA74E"></circle>
+							</svg>
+						</div>
+
+						<div class="Keywords_ep_Class" style="left: 10px; position: absolute; white-space: nowrap;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+							<span>{{tryTranslate('Card Name')}}</span>
+						</div>
+					</div>
+
+					<div class="Size_Area_Class">
+						<input v-bind:placeholder="tryTranslate('Grade')" v-on:blur="hideSuggestedSizes()" v-on:focus="modalOptions.suggestions.sizesOpened = true;" v-on:keyup.enter="finalizeModal();" v-model="modalOptions.size" type="text" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 187px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)'), paddingRight: (modalOptions.suggestions.isSearchingForSizes ? 35 : 20) + 'px' }">
+						<div class="Arrows_Icon_Class" style="left: 10px; top: 36px; transform: scale(0.85);" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+							<span>↑↓</span>
+						</div>
+
+						<div v-show="modalOptions.suggestions.isSearchingForSizes" style="pointer-events: none; width: 20px; height: 33px; left: 137px; position: absolute; transform: translate(100%, 65%);">
+							<svg class="spinner" viewBox="0 0 50 50">
+								<circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="1.5" stroke="#FFA74E"></circle>
+							</svg>
+						</div>
+
+						<div class="Keywords_ep_Class" style="left: 10px; position: absolute; white-space: nowrap;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+							<span>{{tryTranslate('Grade')}}</span>
+						</div>
+					</div>
+
+					<div class="Product_Image_URL_Area_Class">
+						<input v-bind:placeholder="tryTranslate('Card Image URL')" v-on:keyup.enter="finalizeModal();" v-model="modalOptions.imageURL" type="text" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 279px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+						<svg class="Magnifying_Glass_Icon_gv" style="top: 39px;" viewBox="0 4.5 19.203 14.402">
+							<path v-bind:fill="getThemeColor('rgba(29,29,29,1)')" class="Image_Icon_Class" d="M 17.40238952636719 18.9019775390625 L 1.800247073173523 18.9019775390625 C 0.8059856295585632 18.9019775390625 0 18.09599304199219 0 17.10173034667969 L 0 6.300247192382813 C 0 5.305985450744629 0.8059856295585632 4.5 1.800247073173523 4.5 L 17.40238952636719 4.5 C 18.39665031433105 4.5 19.20263671875 5.305985450744629 19.20263671875 6.300247192382813 L 19.20263671875 17.10173034667969 C 19.20263671875 18.09599304199219 18.39665031433105 18.9019775390625 17.40238952636719 18.9019775390625 Z M 4.200576782226563 6.600288391113281 C 3.0406174659729 6.600288391113281 2.100288391113281 7.540616989135742 2.100288391113281 8.700576782226563 C 2.100288391113281 9.860536575317383 3.0406174659729 10.80086517333984 4.200576782226563 10.80086517333984 C 5.360536098480225 10.80086517333984 6.300865173339844 9.860536575317383 6.300865173339844 8.700576782226563 C 6.300865173339844 7.540616989135742 5.360536098480225 6.600288391113281 4.200576782226563 6.600288391113281 Z M 2.40032958984375 16.50164794921875 L 16.80230712890625 16.50164794921875 L 16.80230712890625 12.30107116699219 L 13.52004337310791 9.018808364868164 C 13.34429359436035 8.843058586120605 13.05933094024658 8.843058586120605 12.88354301452637 9.018808364868164 L 7.801070690155029 14.101318359375 L 5.718972682952881 12.01921939849854 C 5.54322338104248 11.84347057342529 5.258259296417236 11.84347057342529 5.082472801208496 12.01921939849854 L 2.40032958984375 14.70140075683594 L 2.40032958984375 16.50164794921875 Z">
+							</path>
+						</svg>
+
+						<div class="Keywords_ep_Class" style="left: 10px; position: absolute; white-space: nowrap;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+							<span>{{tryTranslate('Card Image URL')}}</span>
+						</div>
+					</div>
+
+					<div class="Purchase_Date_Area_Class">
+						<input v-bind:placeholder="tryTranslate('Purchase Date')" v-model="modalOptions.purchase.date" @change="" type="date" class="Search_Bar_Class special-focus" v-bind:class="{ 'white-input-icon': companionSettings.theme == 'dark' }" style="left: 0px; top: 27px; width: 187px; padding-left: 15px; padding-right: 10px; text-indent: 0px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+
+						<div class="Keywords_ep_Class" style="left: 10px; position: absolute; white-space: nowrap;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+							<span>{{tryTranslate('Purchase Date')}} <span style="color: rgba(253,53,53,1); font-weight: bold;">*</span></span>
+						</div>
+					</div>
+
+					<div class="Store_Area_Class">
+						<input v-bind:placeholder="tryTranslate('Store')" v-on:keyup.enter="finalizeModal();" v-model="modalOptions.purchase.store" type="text" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 149px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+						<svg class="Magnifying_Glass_Icon_gv" style="top: 37.5px" viewBox="0.004 0 18.682 15.529">
+							<path v-bind:fill="getThemeColor('rgba(29,29,29,1)')" class="Store_Icon_Class" d="M 18.26143646240234 3.597241401672363 L 16.29296112060547 0.4549630880355835 C 16.11704444885254 0.1728859692811966 15.8046350479126 0 15.47099590301514 0 L 3.217322826385498 0 C 2.883683204650879 0 2.571275234222412 0.1728859692811966 2.395356178283691 0.4549630880355835 L 0.4268826246261597 3.597241401672363 C -0.5892015695571899 5.219943046569824 0.3116253018379211 7.476560115814209 2.21033787727356 7.734372615814209 C 2.346826791763306 7.752570629119873 2.486348867416382 7.761670589447021 2.625870943069458 7.761670589447021 C 3.523664712905884 7.761670589447021 4.318333148956299 7.367369174957275 4.864288806915283 6.757718563079834 C 5.410244464874268 7.367369174957275 6.207946300506592 7.761670589447021 7.102706909179688 7.761670589447021 C 8.000500679016113 7.761670589447021 8.795169830322266 7.367369174957275 9.34112548828125 6.757718563079834 C 9.887081146240234 7.367369174957275 10.68478298187256 7.761670589447021 11.57954406738281 7.761670589447021 C 12.47733783721924 7.761670589447021 13.27200603485107 7.367369174957275 13.81796264648438 6.757718563079834 C 14.36695098876953 7.367369174957275 15.16162109375 7.761670589447021 16.05638122558594 7.761670589447021 C 16.19893646240234 7.761670589447021 16.33542442321777 7.752571582794189 16.47191429138184 7.734372615814209 C 18.37669372558594 7.479592800140381 19.28055191040039 5.222976207733154 18.26143646240234 3.597241401672363 Z M 16.06244659423828 8.735291481018066 C 15.75913906097412 8.735291481018066 15.45886325836182 8.689794540405273 15.16768646240234 8.620034217834473 L 15.16768646240234 11.64705467224121 L 3.520631551742554 11.64705467224121 L 3.520631551742554 8.620034217834473 C 3.229455232620239 8.686761856079102 2.929179668426514 8.735291481018066 2.625870943069458 8.735291481018066 C 2.443885564804077 8.735291481018066 2.258867263793945 8.723158836364746 2.079915285110474 8.698893547058105 C 1.910062193870544 8.674629211425781 1.743242383003235 8.635199546813965 1.582488894462585 8.589703559875488 L 1.582488894462585 14.55881881713867 C 1.582488894462585 15.09567451477051 2.016220331192017 15.52940654754639 2.553076982498169 15.52940654754639 L 16.14130783081055 15.52940654754639 C 16.67816352844238 15.52940654754639 17.11189460754395 15.09567451477051 17.11189460754395 14.55881881713867 L 17.11189460754395 8.589703559875488 C 16.9481086730957 8.638232231140137 16.78432083129883 8.67766284942627 16.61446952819824 8.698893547058105 C 16.42945098876953 8.723158836364746 16.24746513366699 8.735291481018066 16.06244659423828 8.735291481018066 Z">
+							</path>
+						</svg>
+
+						<div class="Keywords_ep_Class" style="left: 10px; position: absolute; white-space: nowrap;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+							<span>{{tryTranslate('Store')}}</span>
+						</div>
+					</div>
+
+					<div class="Purchase_Price_Area_Class">
+						<input v-bind:placeholder="tryTranslate('Purchase Price')" v-on:keyup.enter="finalizeModal();" v-model="modalOptions.purchase.price" type="number" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 149px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+						<div class="Magnifying_Glass_Icon_gv" style="text-align: center; font-size: 14px; pointer-events: none; top: 37.5px; width: 30px; line-height: 16px; left: 6.5px;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+							<span>{{companionSettings.currencySymbol}}</span>
+						</div>
+
+						<div class="Keywords_ep_Class" style="left: 10px; position: absolute; white-space: nowrap;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+							<span>{{tryTranslate('Purchase Price')}}</span>
+						</div>
+					</div>
+
+					<div class="Est_Resell_Area_Class">
+						<input v-bind:placeholder="tryTranslate('Est. Resell')" v-on:keyup.enter="finalizeModal();" v-model="modalOptions.purchase.estimatedResell" type="number" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 149px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+						<div class="Magnifying_Glass_Icon_gv" style="text-align: center; font-size: 14px; pointer-events: none; top: 37.5px; width: 30px; line-height: 16px; left: 6.5px;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+							<span>{{companionSettings.currencySymbol}}</span>
+						</div>
+
+						<div class="Keywords_ep_Class" style="left: 10px; position: absolute; white-space: nowrap;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+							<span>{{tryTranslate('Est. Resell')}}</span>
+						</div>
+					</div>
+
+				</div>
+
+
+				<div id="SuggestedItems" class="Suggested_Items_Area_Class" v-show="modalOptions.name.length > 0 && modalOptions.suggestions.itemsOpened && modalOptions.suggestions.items.length > 0" v-bind:style="{ height: (modalOptions.suggestions.items.length < 3 ? ((112 * modalOptions.suggestions.items.length) + 47.21) : 351) + 'px' }">
+					<svg class="Rectangle_hv" v-bind:style="{ height: (modalOptions.suggestions.items.length < 3 ? ((112 * modalOptions.suggestions.items.length) + 47.21) : 351) + 'px' }">
+						<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Rectangle_hv_Class" rx="5" ry="5" x="0" y="0" width="485" v-bind:height="modalOptions.suggestions.items.length < 3 ? ((112 * modalOptions.suggestions.items.length) + 47.21) : 351">
+						</rect>
+					</svg>
+					<svg class="Side_Rectangle" v-bind:style="{ height: (modalOptions.suggestions.items.length < 3 ? ((112 * modalOptions.suggestions.items.length) + 47.21) : 351) + 'px' }">
+						<rect fill="rgba(255,167,78,1)" class="Side_Rectangle_Class" rx="3" ry="3" x="0" y="0" width="3" v-bind:height="modalOptions.suggestions.items.length < 3 ? ((112 * modalOptions.suggestions.items.length) + 47.21) : 351">
+						</rect>
+					</svg>
+
+					<div class="Suggested_Item_Class" v-bind:style="{ height: (modalOptions.suggestions.items.length < 3 ? modalOptions.suggestions.items.length * 112 : 304.29) + 'px' }" v-bind:class="{ 'dark-scrollbar': companionSettings.theme == 'dark' }">
+						<template v-for="(item, itemIndex) in modalOptions.suggestions.items">
+							<svg class="Separator_hz" v-bind:style="{ top: (itemIndex * 129) + 'px'}" v-show="itemIndex != modalOptions.suggestions.items.length-1">
+								<rect v-bind:fill="getThemeColor('rgba(190,190,190,1)')" class="Separator_hz_Class" rx="1.5" ry="1.5" x="0" y="0" width="406" height="3">
+								</rect>
+							</svg>
+							<div class="Suggested_Item_hy_Class clickable hover-opacity" v-on:click="applySuggestedItem(item)" v-bind:style="{ top: (itemIndex * 129) + 'px'}">
+								<div class="Product_Image_Class" style="width: 92px; height: 92px;">
+									<img style="display: table-cell; vertical-align: middle; max-width: 92px; max-height: 92px; border-radius: 10px; margin-left: auto; margin-right: auto;" v-bind:class="{ transparentify: companionSettings.theme == 'light' }" v-bind:src="item.image" onerror="this.src='../../../../../../../images/unknownImage.png'">
+								</div>
+								<div class="White_Zest_Academy_Blue__Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+									<span style="user-select: text;">{{tryGenerateEllipses(340, item.color, 12, 'px', 'normal', 'SF Pro Text')}}</span><br>
+								</div>
+								<div class="Nike_Air_Assault_Low_Zest_Acad_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+									<span style="user-select: text;">{{tryGenerateEllipses(340, item.name, 14, 'px', 'bold', 'SF Pro Text')}}</span>
+								</div>
+								<div class="BQ8462_601__Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+									<span style="user-select: text;">{{tryGenerateEllipses(340, item.pid || '', 12, 'px', 'normal', 'SF Pro Text')}}</span><br>
+								</div>
+							</div>
+						</template>
+					</div>
+
+					<svg class="Orange_Bar" v-bind:style="{ left: calculateUnderlineLeftOffset(300, tryTranslate('Suggested Items'), 21, 'px', '900', 'SF Pro Text', false) + 40 + 'px' }">
+						<rect fill="rgba(255,167,78,1)" class="Green_Bar_Class" rx="1.5" ry="1.5" x="0" y="0" v-bind:width="calculateUnderlineWidth(200, tryTranslate('Suggested Items'), 21, 'px', '900', 'SF Pro Text')" height="3">
+						</rect>
+					</svg>
+					<div class="Suggested_Items_3_Total_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+						<span>{{tryTranslate('Suggested Items')}} </span><span style="font-style:normal;font-weight:bold;font-size:16px;opacity: 0.66;">{{modalOptions.suggestions.items.length}} {{tryTranslate('Total')}}</span>
+					</div>
+
+					<div class="Exclamation_Icon_Class">
+						<svg class="Circle">
+							<ellipse fill="rgba(255,167,78,1)" class="Circle_Class" rx="10" ry="10.5" cx="10" cy="10.5">
+							</ellipse>
+						</svg>
+						<div class="__ik_Class">
+							<span>!</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="Size_Area_il_Class" v-show="modalOptions.name.length > 0 && modalOptions.suggestions.sizesOpened  && modalOptions.suggestions.sizes.length > 0" v-bind:style="{ height: (Math.ceil(modalOptions.suggestions.sizes.length/3) < 10 ? ((26 + 10) * Math.ceil(modalOptions.suggestions.sizes.length/3) + (31 + 3)) : 351) + 'px' }">
+					<svg class="Rectangle_im" v-bind:style="{ height: (Math.ceil(modalOptions.suggestions.sizes.length/3) < 10 ? ((26 + 10) * Math.ceil(modalOptions.suggestions.sizes.length/3) + (31 + 3)) : 351) + 'px' }">
+						<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Rectangle_im_Class" rx="5" ry="5" x="0" y="0" width="185" v-bind:height="Math.ceil(modalOptions.suggestions.sizes.length/3) < 10 ? ((26 + 10) * Math.ceil(modalOptions.suggestions.sizes.length/3) + (31 + 3)) : 351">
+						</rect>
+					</svg>
+					<svg class="Side_Rectangle_in" v-bind:style="{ height: (Math.ceil(modalOptions.suggestions.sizes.length/3) < 10 ? ((26 + 10) * Math.ceil(modalOptions.suggestions.sizes.length/3) + (31 + 3)) : 351) + 'px' }">
+						<rect fill="rgba(206,140,229,1)" class="Side_Rectangle_in_Class" rx="3" ry="3" x="0" y="0" width="3" v-bind:height="Math.ceil(modalOptions.suggestions.sizes.length/3) < 10 ? ((26 + 10) * Math.ceil(modalOptions.suggestions.sizes.length/3) + (31 + 3)) : 351">
+						</rect>
+					</svg>
+					<div class="Keyword_Input_Area_Class" v-bind:style="{ height: (Math.ceil(modalOptions.suggestions.sizes.length/3) < 10 ? ((26 + 10) * Math.ceil(modalOptions.suggestions.sizes.length/3) + (31 + 3)) : 351) - 2 + 'px' }" v-bind:class="{ 'dark-scrollbar': companionSettings.theme == 'dark' }">
+						<div v-if="modalOptions.suggestions.sizes.length > 0" class="ID14_5_Class" style="font-weight: bold; left: 5px; width: 167px; top: 8px;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(182-15, tryTranslate(modalOptions.suggestions.sizes[0].groupTitle), 16, 'px', 'bold', 'SF Pro Text') }">
+							<span>{{tryTranslate(modalOptions.suggestions.sizes[0].groupTitle)}}</span>
+						</div>
+						<template v-for="(size, sizeIndex) in modalOptions.suggestions.sizes">
+							<div class="Keyword_Input_Area_ip_Class clickable hover-opacity" v-on:click="applySuggestedSize(size)" v-bind:style="calculateSizeGridPosition(sizeIndex)">
+								<svg class="Keyword_Input_Rectangle">
+									<rect v-bind:fill="getThemeColor('rgba(242,242,242,1)')" class="Keyword_Input_Rectangle_Class" rx="5" ry="5" x="0" y="0" width="41" height="26">
+									</rect>
+								</svg>
+								<div class="ID14_5_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(41-10, size.name.length > 0 ? size.name : tryTranslate('N/A'), 16, 'px', 'normal', 'SF Pro Text') }">
+									<span>{{size.name.length > 0 ? size.name : tryTranslate('N/A')}}</span>
+								</div>
+							</div>
+						</template>
+					</div>
+				</div>
+
+
+				<div class="Done_Button_Class clipButton clickable" style="z-index: 2;" v-on:click="finalizeModal();">
+					<div class="clipGroup" style="width: 107px; height: 37px;">
+						<svg class="Back_Transitioner" style="bottom: -25px;" viewBox="4631.671 2118.361 137.6 34.565">
+							<path fill="rgba(36,39,37,1)" id="Back_Transitioner" d="M 4631.67138671875 2136.780029296875 C 4631.67138671875 2136.780029296875 4649.8212890625 2127.950439453125 4669.78759765625 2136.780029296875 C 4689.75244140625 2145.610595703125 4680.9365234375 2141.826416015625 4680.9365234375 2141.826416015625 C 4680.9365234375 2141.826416015625 4699.80859375 2134.79638671875 4711.21826171875 2141.229248046875 C 4722.626953125 2147.663330078125 4712.8291015625 2141.229248046875 4712.8291015625 2141.229248046875 C 4712.8291015625 2141.229248046875 4737.462890625 2118.742431640625 4759.2421875 2118.3642578125 C 4781.0234375 2117.985107421875 4760.5390625 2152.92626953125 4760.5390625 2152.92626953125 L 4631.67138671875 2152.92626953125 L 4631.67138671875 2136.780029296875 Z">
+							</path>
+						</svg>
+						<svg class="Front_Transitioner" style="bottom: -30px;" viewBox="4631.671 2118.361 137.6 26.969">
+							<path fill="rgba(91,182,187,1)" id="Front_Transitioner" d="M 4631.67138671875 2132.73193359375 C 4631.67138671875 2132.73193359375 4649.82177734375 2125.843017578125 4669.78759765625 2132.73193359375 C 4689.7529296875 2139.621826171875 4680.93701171875 2136.66943359375 4680.93701171875 2136.66943359375 C 4680.93701171875 2136.66943359375 4699.80908203125 2131.184326171875 4711.21875 2136.203369140625 C 4722.62744140625 2141.2236328125 4712.82958984375 2136.203369140625 4712.82958984375 2136.203369140625 C 4712.82958984375 2136.203369140625 4737.462890625 2118.658447265625 4759.24267578125 2118.363525390625 C 4781.0234375 2118.0673828125 4760.5390625 2145.329833984375 4760.5390625 2145.329833984375 L 4631.67138671875 2145.329833984375 L 4631.67138671875 2132.73193359375 Z">
+							</path>
+						</svg>
+					</div>
+					<svg class="Done_Rectangle">
+						<rect fill="transparent" stroke="rgba(91,182,187,1)" stroke-width="2px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Done_Rectangle_Class" rx="18.5" ry="18.5" x="0" y="0" width="107" height="37">
+						</rect>
+					</svg>
+					<div class="Done_Class" v-bind:style="{ fontSize: confineTextWidth(107-20, activeCardIndex == -1 ? tryTranslate('Create') : tryTranslate('Done'), 15, 'px', 'bold', 'SF Pro Text') }">
+						<span>{{activeCardIndex == -1 ? tryTranslate('Create') : tryTranslate('Done')}}</span>
+					</div>
+				</div>
+
+
+				<div class="Tracking_Area__before__Class" v-bind:style="{ display: (modalOptions.sale.tracking.details && modalOptions.sale.tracking.details.status != null) ? 'none' : 'block', top: (activeCardIndex == -1 ? 570 : 580) + 'px' }">
+
+					<div class="Tracking_Number_Area_Class">
+						<input id="trackingNumber" v-bind:placeholder="tryTranslate('Tracking Number')" v-on:keyup.enter="" v-model="modalOptions.sale.tracking.number" type="text" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 306px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+						<svg class="Magnifying_Glass_Icon_gv" viewBox="0 -0.045 17.337 17.337">
+							<path v-bind:fill="getThemeColor('rgba(29,29,29,1)')" class="Magnifying_Glass_Icon_gv_Class" d="M 7.516793251037598 -0.0235234834253788 C 3.371819496154785 -0.0235234834253788 0 3.34829568862915 0 7.493270397186279 C 0 11.63824462890625 3.371819496154785 15.01006317138672 7.516793251037598 15.01006317138672 C 8.78391170501709 15.01006317138672 10.02955055236816 14.70939350128174 11.08190250396729 14.12952709197998 C 11.1661958694458 14.2309684753418 11.25965595245361 14.32442760467529 11.36109733581543 14.40872001647949 L 13.50875282287598 16.55637741088867 C 14.04909896850586 17.16438865661621 14.88185119628906 17.42293357849121 15.67153072357178 17.22785949707031 C 16.46121025085449 17.03278541564941 17.07778167724609 16.41621208190918 17.27285957336426 15.62653064727783 C 17.46793174743652 14.83684730529785 17.20938682556152 14.0040979385376 16.60137557983398 13.46375179290771 L 14.45372009277344 11.31609630584717 C 14.3491039276123 11.21144199371338 14.2339506149292 11.11788082122803 14.11009693145752 11.03690242767334 C 14.68996429443359 9.984550476074219 15.0550651550293 8.76038646697998 15.0550651550293 7.471794128417969 C 15.0550651550293 3.326818943023682 11.68324661254883 -0.04500007256865501 7.538270950317383 -0.04500007256865501 Z M 7.516793251037598 2.124131917953491 C 10.50203609466553 2.124131917953491 12.88593292236328 4.508029937744141 12.88593292236328 7.493270397186279 C 12.88593292236328 8.910723686218262 12.37049579620361 10.22079277038574 11.46848201751709 11.18723678588867 C 11.4470043182373 11.20871257781982 11.42552852630615 11.23019027709961 11.40405178070068 11.25166702270508 C 11.30261039733887 11.33596038818359 11.20915126800537 11.42942047119141 11.12485599517822 11.53086090087891 C 10.17988777160645 12.38992404937744 8.891294479370117 12.88388538360596 7.495319366455078 12.88388538360596 C 4.510077476501465 12.88388538360596 2.126179695129395 10.49998760223389 2.126179695129395 7.514747142791748 C 2.126179695129395 4.529504776000977 4.510077476501465 2.145607709884644 7.495319366455078 2.145607709884644 Z">
+							</path>
+						</svg>
+
+						<div class="Keywords_ep_Class" style="left: 10px; position: absolute; white-space: nowrap;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+							<span>{{tryTranslate('Tracking Number')}}</span>
+						</div>
+					</div>
+
+					<div class="Carrier_Area_Class">
+						<select id="carrierSelect" v-model="modalOptions.sale.tracking.carrier" v-bind:placeholder="tryTranslate('Carrier')" class="Search_Bar_Class special-focus" v-bind:class="{ 'white-arrow': companionSettings.theme == 'dark', 'black-arrow': companionSettings.theme == 'light', 'special-focus-dark': companionSettings.theme == 'dark' }" style="left: 0px; top: 27px; width: 137px; padding-left: 0px; text-indent: 40px; padding-right: 25px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+							<option selected disabled value="unselected">{{tryTranslate('Select Carrier')}}...</option>
+							<option value="ups">UPS</option>
+							<option value="upsmi">UPS MI</option>
+							<option value="usps">USPS</option>
+							<option value="fedex">FedEx</option>
+							<option value="lasership">LaserShip</option>
+							<!-- <option value="amazon">Amazon</option> -->
+							<option value="ontrac">OnTrac</option>
+							<option value="dhl">DHL</option>
+							<option value="dhlgm">DHL GM</option>
+							<option value="a1intl">A1 Intl.</option>
+							<option value="canadapost">Canada Post</option>
+						</select>
+						<svg class="Magnifying_Glass_Icon_gv" viewBox="26.235 39.74 12.346 12.856">
+							<path v-bind:fill="getThemeColor('rgba(29,29,29,1)')" v-bind:fill="getThemeColor('rgba(29,29,29,1)')" stroke-width="0.30000001192092896px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" d="M 32.30147552490234 39.7400016784668 L 32.49641799926758 39.7400016784668 C 33.10452270507813 39.98234939575195 33.71275329589844 40.2247428894043 34.32110595703125 40.46717834472656 C 35.56775283813477 40.96554183959961 36.81313705444336 41.46784973144531 38.06166458129883 41.96062469482422 C 38.29755401611328 42.05378723144531 38.50128936767578 42.16629028320313 38.5809211730957 42.44659423828125 L 38.5809211730957 49.93138122558594 C 38.49664306640625 50.21931838989258 38.28989410400391 50.34761810302734 38.04018783569336 50.42169952392578 C 37.97135543823242 50.44214248657227 37.90390396118164 50.46856689453125 37.83696365356445 50.49526214599609 C 36.16730880737305 51.16354751586914 34.49825286865234 51.8328857421875 32.82978057861328 52.50327301025391 C 32.54741668701172 52.61753845214844 32.28427124023438 52.63075256347656 31.99851226806641 52.51566696166992 C 30.22118759155273 51.79911422729492 28.43996047973633 51.09372711181641 26.66162109375 50.37976455688477 C 26.29736328125 50.23374938964844 26.23556518554688 50.12260818481445 26.23543930053711 49.70051574707031 C 26.2348518371582 47.36113357543945 26.2348518371582 45.02169418334961 26.23543930053711 42.68221282958984 C 26.23543930053711 42.62583541870117 26.23619079589844 42.56943893432617 26.23945617675781 42.51319885253906 C 26.25277328491211 42.28859710693359 26.34785842895508 42.12475204467773 26.54631423950195 42.04329681396484 C 26.7096061706543 41.97601318359375 26.87602996826172 41.91444778442383 27.04032516479492 41.84839630126953 C 28.19087982177734 41.38585662841797 29.34135437011719 40.92309188842773 30.49174118041992 40.46009826660156 C 31.09440231323242 40.21834182739258 31.69818878173828 39.9799919128418 32.30147552490234 39.7400016784668 Z M 37.92388153076172 46.29482269287109 C 37.92388153076172 45.24524688720703 37.92367172241211 44.19563674926758 37.92324829101563 43.14597702026367 C 37.92324829101563 42.88079833984375 37.89084243774414 42.85750961303711 37.66060638427734 42.94944763183594 C 36.05133438110352 43.59204483032227 34.44210433959961 44.23463439941406 32.83291625976563 44.87723541259766 C 32.68370056152344 44.93648529052734 32.61348724365234 45.0250129699707 32.61361312866211 45.200439453125 C 32.61612319946289 47.31392288208008 32.61700439453125 49.42730331420898 32.61624526977539 51.54060363769531 C 32.61624526977539 51.78971099853516 32.65857696533203 51.81831741333008 32.87273788452148 51.7327766418457 C 34.46994781494141 51.09522247314453 36.06540298461914 50.45249176025391 37.66449737548828 49.82093048095703 C 37.86245727539063 49.74274063110352 37.93016052246094 49.62574768066406 37.92827224731445 49.40115356445313 C 37.91923141479492 48.36575698852539 37.92425537109375 47.3299446105957 37.92388153076172 46.29482269287109 Z M 26.87377166748047 46.29482269287109 C 26.87377166748047 47.34478759765625 26.87515258789063 48.39476013183594 26.87226486206055 49.44474411010742 C 26.87226486206055 49.60708999633789 26.90140151977539 49.72367477416992 27.06306076049805 49.78797149658203 C 28.69192504882813 50.4359130859375 30.31995391845703 51.08695983886719 31.9471435546875 51.7410888671875 C 32.13555145263672 51.81654739379883 32.17235565185547 51.78426742553711 32.18228149414063 51.55789566040039 C 32.18579483032227 51.48054122924805 32.18428802490234 51.40290069580078 32.18428802490234 51.32540130615234 L 32.18428802490234 46.56858062744141 C 32.18428802490234 46.15289306640625 32.18491744995117 45.7370719909668 32.18428802490234 45.32125091552734 C 32.18353652954102 44.96711730957031 32.18278121948242 44.96711730957031 31.8860969543457 44.84822082519531 C 31.68512725830078 44.76759338378906 31.48386764526367 44.68737030029297 31.28230667114258 44.60756301879883 C 31.0318489074707 44.50880813598633 31.00798034667969 44.52651214599609 31.00748062133789 44.82547760009766 C 31.0062255859375 45.6358757019043 31.00748062133789 46.44627380371094 31.00609970092773 47.25666427612305 C 31.00522232055664 47.6711311340332 30.88463973999023 47.7606086730957 30.52176284790039 47.61582565307617 C 29.79575729370117 47.32717514038086 29.07016372680664 47.03715133666992 28.34500122070313 46.74578094482422 C 27.98073959350586 46.5994987487793 27.97646713256836 46.59091949462891 27.97621917724609 46.16433334350586 C 27.97621917724609 45.30463027954102 27.9714469909668 44.44492340087891 27.97898483276367 43.58522796630859 C 27.98086547851563 43.3719367980957 27.92560195922852 43.24227523803711 27.72438049316406 43.18166732788086 C 27.53107070922852 43.12337493896484 27.34642791748047 43.03184509277344 27.15726470947266 42.95638656616211 C 26.90190505981445 42.85505294799805 26.87527847290039 42.8733024597168 26.87490081787109 43.16586685180664 C 26.87339401245117 44.20889663696289 26.87301635742188 45.25188064575195 26.87377166748047 46.29482269287109 Z M 37.38276290893555 42.52476501464844 C 37.3841438293457 42.5050163269043 37.38540267944336 42.48526763916016 37.38678359985352 42.46538162231445 C 37.32397842407227 42.4354248046875 37.26193618774414 42.40178680419922 37.19749450683594 42.37590026855469 C 35.66132354736328 41.76095581054688 34.12565994262695 41.14410018920898 32.58648300170898 40.53800201416016 C 32.4756965637207 40.49441909790039 32.32509231567383 40.49332809448242 32.21456146240234 40.53678131103516 C 30.66960144042969 41.14532089233398 29.12752914428711 41.76476287841797 27.58533096313477 42.38270950317383 C 27.52378463745117 42.40736389160156 27.46612930297852 42.44345855712891 27.35585021972656 42.50039291381836 C 27.58734130859375 42.59572982788086 27.76545333862305 42.6589241027832 27.93602752685547 42.74078750610352 C 28.1141357421875 42.82632064819336 28.27817535400391 42.81910705566406 28.46093368530273 42.74323654174805 C 29.14059066772461 42.4611701965332 29.82690811157227 42.19842910766602 30.50706481933594 41.91717529296875 C 30.68831253051758 41.8424072265625 30.85273361206055 41.83736419677734 31.03461456298828 41.91159057617188 C 31.78825378417969 42.21954345703125 32.54578399658203 42.51863479614258 33.30168151855469 42.82114028930664 C 33.43319320678711 42.87371444702148 33.56734466552734 42.93309783935547 33.56683731079102 43.11547470092773 C 33.56683731079102 43.29253005981445 33.42867279052734 43.33748626708984 33.30607986450195 43.38705825805664 C 32.77614593505859 43.60211944580078 32.24608612060547 43.81486892700195 31.71665191650391 44.02978897094727 C 31.65385055541992 44.05512237548828 31.59469223022461 44.08889770507813 31.53377532958984 44.11886215209961 C 31.75194931030273 44.26256561279297 31.96347045898438 44.37097930908203 32.18592071533203 44.43389511108398 C 32.320068359375 44.47190093994141 32.48549270629883 44.48130035400391 32.61298370361328 44.43144607543945 C 33.92733001708984 43.91783142089844 35.23702621459961 43.38991928100586 36.547607421875 42.86513519287109 C 36.82658004760742 42.75359344482422 37.10441970825195 42.63850021362305 37.38276290893555 42.5249137878418 Z M 28.43016052246094 44.87832641601563 C 28.43016052246094 45.25137710571289 28.43669128417969 45.62470626831055 28.42739868164063 45.99762725830078 C 28.42287445068359 46.17972183227539 28.48329162597656 46.28105545043945 28.64319229125977 46.3428955078125 C 29.21181106567383 46.5628662109375 29.77791976928711 46.79071807861328 30.3428955078125 47.02116775512695 C 30.49111175537109 47.08164978027344 30.55969619750977 47.05740356445313 30.55869293212891 46.86863327026367 C 30.55466842651367 46.08728790283203 30.55466842651367 45.30586242675781 30.55869293212891 44.52433776855469 C 30.55869293212891 44.37587738037109 30.50555801391602 44.29279327392578 30.37655639648438 44.24185562133789 C 29.80303955078125 44.01603317260742 29.2324104309082 43.78135299682617 28.65888977050781 43.55527114868164 C 28.46595764160156 43.4791374206543 28.43380355834961 43.50691604614258 28.43166732788086 43.73777008056641 C 28.42752075195313 44.11763763427734 28.43016052246094 44.4979133605957 28.43016052246094 44.87832641601563 Z M 32.62780380249023 43.11574935913086 C 32.56500244140625 43.07379531860352 32.53133773803711 43.04206085205078 32.49214935302734 43.02626037597656 C 31.96297073364258 42.81256103515625 31.43454360961914 42.59627532958984 30.90171813964844 42.39388656616211 C 30.81882095336914 42.3624153137207 30.7066535949707 42.37236022949219 30.62161636352539 42.40478134155273 C 30.11354064941406 42.59900665283203 29.60935592651367 42.80493545532227 29.10441589355469 43.00868988037109 C 29.05241775512695 43.02966690063477 29.00393295288086 43.06180953979492 28.91977310180664 43.1074333190918 C 29.00204849243164 43.1531982421875 29.04927825927734 43.18629837036133 29.10077667236328 43.20699691772461 C 29.6058349609375 43.41035461425781 30.10939407348633 43.61818695068359 30.61885070800781 43.80778503417969 C 30.71934127807617 43.8451042175293 30.85197830200195 43.84047317504883 30.95309448242188 43.80261611938477 C 31.45552062988281 43.61424255371094 31.95355224609375 43.40884780883789 32.45246124267578 43.20781707763672 C 32.50432968139648 43.18697738647461 32.55256652832031 43.15565490722656 32.62780380249023 43.11574935913086 Z" class="Path_444_Class">
+							</path>
+						</svg>
+
+						<div class="Keywords_ep_Class" style="left: 10px; position: absolute; white-space: nowrap;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+							<span>{{tryTranslate('Carrier')}}</span>
+						</div>
+					</div>
+
+					<div class="Track_Button_Class clipButton" v-bind:class="{ 'clickable': !modalOptions.sale.tracking.isTracking, 'unclickable': modalOptions.sale.tracking.isTracking }" v-on:click="updateTracking(modalOptions.sale.tracking)">
+						<div class="clipGroup" style="width: 107px; height: 37px; clip-path: inset(0px round 5px);">
+							<svg class="Back_Transitioner" style="bottom: -25px;" viewBox="4631.671 2118.361 137.6 34.565">
+								<path fill="rgba(36,39,37,1)" id="Back_Transitioner" d="M 4631.67138671875 2136.780029296875 C 4631.67138671875 2136.780029296875 4649.8212890625 2127.950439453125 4669.78759765625 2136.780029296875 C 4689.75244140625 2145.610595703125 4680.9365234375 2141.826416015625 4680.9365234375 2141.826416015625 C 4680.9365234375 2141.826416015625 4699.80859375 2134.79638671875 4711.21826171875 2141.229248046875 C 4722.626953125 2147.663330078125 4712.8291015625 2141.229248046875 4712.8291015625 2141.229248046875 C 4712.8291015625 2141.229248046875 4737.462890625 2118.742431640625 4759.2421875 2118.3642578125 C 4781.0234375 2117.985107421875 4760.5390625 2152.92626953125 4760.5390625 2152.92626953125 L 4631.67138671875 2152.92626953125 L 4631.67138671875 2136.780029296875 Z">
+								</path>
+							</svg>
+							<svg class="Front_Transitioner" style="bottom: -30px;" viewBox="4631.671 2118.361 137.6 26.969">
+								<path fill="rgba(255,167,78,1)" id="Front_Transitioner" d="M 4631.67138671875 2132.73193359375 C 4631.67138671875 2132.73193359375 4649.82177734375 2125.843017578125 4669.78759765625 2132.73193359375 C 4689.7529296875 2139.621826171875 4680.93701171875 2136.66943359375 4680.93701171875 2136.66943359375 C 4680.93701171875 2136.66943359375 4699.80908203125 2131.184326171875 4711.21875 2136.203369140625 C 4722.62744140625 2141.2236328125 4712.82958984375 2136.203369140625 4712.82958984375 2136.203369140625 C 4712.82958984375 2136.203369140625 4737.462890625 2118.658447265625 4759.24267578125 2118.363525390625 C 4781.0234375 2118.0673828125 4760.5390625 2145.329833984375 4760.5390625 2145.329833984375 L 4631.67138671875 2145.329833984375 L 4631.67138671875 2132.73193359375 Z">
+								</path>
+							</svg>
+						</div>
+						<svg class="Rectangle_ec">
+							<rect fill="transparent" stroke="rgba(255,167,78,1)" stroke-width="2px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Rectangle_ec_Class" rx="5" ry="5" x="0" y="0" width="107" height="37">
+							</rect>
+						</svg>
+						<div class="Track___Class" v-bind:style="{ fontSize: confineTextWidth(107-20, (modalOptions.sale.tracking.isTracking ? (tryTranslate('Tracking...')) : (tryTranslate('Track') + ' →')), 15, 'px', 'bold', 'SF Pro Text') }">
+							<span>{{modalOptions.sale.tracking.isTracking ? (tryTranslate('Tracking...')) : (tryTranslate('Track') + ' →')}}</span>
+						</div>
+					</div>
+
+					<div v-show="modalOptions.sale.tracking.isTracking" style="width: 30px; height: 36px; left: 570px; position: absolute; transform: translate(100%, 65%);">
+						<svg class="spinner" viewBox="0 0 50 50">
+							<circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="1.5" stroke="#FFA74E"></circle>
+						</svg>
+					</div>
+
+				</div>
+
+				<div class="Tracking_Area__after__Class" v-bind:style="{ display: (modalOptions.sale.tracking.details && modalOptions.sale.tracking.details.status != null) ? 'block' : 'none', top: (activeCardIndex == -1 ? 570 : 580) + 'px' }">
+					<div class="Status_Area_Class">
+
+						<div v-if="modalOptions.sale.tracking.details && modalOptions.sale.tracking.details.activities" class="Tracking_History_Content_Area_Class" v-bind:class="{ 'dark-scrollbar': companionSettings.theme == 'dark' }" v-bind:style="{ height: (hasOpenActivity(modalOptions.sale.tracking) ? 148 : 66) + 'px' }">
+
+							<!-- display message if there are no items -->
+							<template v-if="modalOptions.sale.tracking.details.activities.length == 0">
+								<div class="centered-content" style="font-size: 0.9em; padding-top: 2.1%; padding-left: 19px; text-align: left;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+									<span>{{tryTranslate('This package does not have any tracking history yet')}}</span>
+								</div>
+							</template>
+
+							<template v-for="(activity, activityIndex) in modalOptions.sale.tracking.details.activities">
+								<div class="Tracking_History_Content_Area_en_Class" style="z-index: 3;" v-bind:style="{ left: (activityIndex * 340) + 9 + 'px' }">
+
+									<svg v-if="activityIndex != 0" class="Green_Separator" style="filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161))">
+										<rect v-bind:fill="getColor(activity.statusColor)" class="Green_Separator_Class" x="0" y="0" width="50px" height="5">
+										</rect>
+									</svg>
+
+									<template v-if="activity.isOpened">
+										<svg class="Lower_Rectangle">
+											<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Lower_Rectangle_Class" rx="10" ry="10" x="0" y="0" width="306" height="97">
+											</rect>
+										</svg>
+										<div class="Time_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(260, formatScheduleDate(activity.timestamp.toString(), true), 16, 'px', 'normal', 'SF Pro Text') }">
+											<span style="user-select: text;">{{formatScheduleDate(activity.timestamp.toString(), true)}}</span>
+										</div>
+										<div class="Clock_Icon_Class">
+											<svg class="Clock_Icon_2" viewBox="3 3 18 18">
+												<path fill="transparent" v-bind:stroke="getThemeColor('rgba(29,29,29,1)')" stroke-width="2px" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" shape-rendering="auto" class="Clock_Icon_2_Class" d="M 21 11.99999904632568 C 21 16.97056198120117 16.97056198120117 21 11.99999904632568 21 C 7.02943754196167 21 3 16.97056198120117 3 11.99999904632568 C 3 7.02943754196167 7.02943754196167 3 11.99999904632568 3 C 16.97056198120117 3 21 7.02943754196167 21 11.99999904632568 Z">
+												</path>
+											</svg>
+											<svg class="Clock_Icon_1" viewBox="18 9 3.809 7.618">
+												<path fill="transparent" v-bind:stroke="getThemeColor('rgba(29,29,29,1)')" stroke-width="2px" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" shape-rendering="auto" class="Clock_Icon_1_Class" d="M 18 9 L 18 14.71332931518555 L 21.80888557434082 16.61777305603027">
+												</path>
+											</svg>
+										</div>
+										<div class="Location_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(260, activity.location, 16, 'px', 'normal', 'SF Pro Text') }">
+											<span style="user-select: text;">{{activity.location.length > 0 ? tryGenerateEllipses(260, activity.location, 16, 'px', 'normal', 'SF Pro Text') : tryTranslate('N/A')}}</span>
+										</div>
+										<svg class="Location_Icon" viewBox="6.75 2.25 14.785 20.699">
+											<path v-bind:fill="getThemeColor('rgba(29,29,29,1)')" class="Location_Icon_Class" d="M 14.14262199401855 2.25 C 10.07649517059326 2.25 6.75 5.510007858276367 6.75 9.494815826416016 C 6.75 14.92834758758545 14.14262199401855 22.9493408203125 14.14262199401855 22.9493408203125 C 14.14262199401855 22.9493408203125 21.53524398803711 14.92834758758545 21.53524398803711 9.494815826416016 C 21.53524398803711 5.510007858276367 18.20874786376953 2.25 14.14262199401855 2.25 Z M 14.14262199401855 12.08223342895508 C 12.66428184509277 12.08223342895508 11.50234794616699 10.94353866577148 11.50234794616699 9.494815826416016 C 11.50234794616699 8.046000480651855 12.66423606872559 6.907398223876953 14.14262199401855 6.907398223876953 C 15.62100791931152 6.907398223876953 16.78289604187012 8.046000480651855 16.78289604187012 9.494815826416016 C 16.78289604187012 10.94353866577148 15.62096214294434 12.08223342895508 14.14262199401855 12.08223342895508 Z">
+											</path>
+										</svg>
+									</template>
+
+									<svg class="Rectangle_ep">
+										<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Rectangle_ep_Class" rx="10" ry="10" x="0" y="0" width="306" height="36">
+										</rect>
+									</svg>
+									<div class="Delivered__In_At_Mailbox_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+										<span style="user-select: text;">{{activity.details.length > 0 ? tryGenerateEllipses(235, activity.details, 16, 'px', 'normal', 'SF Pro Text') : tryTranslate('N/A')}}</span>
+									</div>
+									<div class="ID1_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+										<span>{{activityIndex+1}}</span>
+									</div>
+									<svg class="Side_Rectangle_tracking" width="8" height="39" viewBox="0 0 6 39">
+										<path v-bind:fill="getColor(activity.statusColor)" d="M6,0H6A0,0,0,0,1,6,0V39a0,0,0,0,1,0,0H6a6,6,0,0,1-6-6V6A6,6,0,0,1,6,0Z"/>
+									</svg>
+									<div class="__Class clickable hover-opacity" v-on:click="toggleActivityOpened(activity)" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+										<span>{{activity.isOpened ? '↑' : '↓' }}</span>
+									</div>
+
+								</div>
+							</template>
+						</div>
+
+						<svg class="Pencil_Icon_1 clickable hover-opacity" viewBox="0 0 17.74 17.74" v-on:click="modalOptions.sale.tracking.details = {}">
+							<path v-bind:fill="getThemeColor('rgba(29,29,29,1)')" class="Pencil_Icon_1_Class" d="M 13.30517578125 0 L 11.087646484375 2.217529296875 L 15.522705078125 6.652587890625 L 17.740234375 4.43505859375 L 13.30517578125 0 Z M 8.8701171875 4.43505859375 L 0 13.30517578125 L 0 17.740234375 L 4.43505859375 17.740234375 L 13.30517578125 8.8701171875 L 8.8701171875 4.43505859375 Z">
+							</path>
+						</svg>
+
+					</div>
+
+					<div class="Tracking_History_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+						<span>{{tryTranslate('Tracking History')}}</span>
+					</div>
+				</div>
+
+				<svg class="Ellipse_349">
+					<ellipse fill="rgba(53,178,57,1)" class="Ellipse_349_Class" rx="7.5" ry="7.5" cx="7.5" cy="7.5">
+					</ellipse>
+				</svg>
+				<svg class="Ellipse_350">
+					<ellipse fill="rgba(53,178,57,1)" class="Ellipse_350_Class" rx="7.5" ry="7.5" cx="7.5" cy="7.5">
+					</ellipse>
+				</svg>
+
+				<div v-if="activeCardIndex == -1" class="Size_Area_Class" style="top: 685px; left: 755px; width: 135px; height: 36px;">
+					<input v-bind:placeholder="tryTranslate('Quantity')" v-on:keyup.enter="finalizeModal();" v-model="modalOptions.quantity" type="text" class="Search_Bar_Class special-focus" style="left: 0px; top: 0px; width: 135px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+					<div class="Arrows_Icon_Class" style="left: 10px; top: 9px; transform: scale(0.85);" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+						<span>↑↓</span>
+					</div>
+
+					<div class="Keywords_ep_Class" style="top: -27px; left: 10px; position: absolute; white-space: nowrap;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+						<span>{{tryTranslate('Quantity')}}</span>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<script src="./js/create.js" type="text/javascript"></script>
+		<script src="../../../../../../../../utils/scripts/button-transitions.js" type="text/javascript"></script>
+		<script src="../../../../../../../../utils/scripts/spinner-colors.js" type="text/javascript"></script>
+
+	</body>
+</html>

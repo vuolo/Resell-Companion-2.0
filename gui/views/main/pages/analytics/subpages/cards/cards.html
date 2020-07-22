@@ -4,247 +4,503 @@
 	<meta charset="utf-8"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Resell Companion – Overview</title>
+	<title>Resell Companion – Cards</title>
 
 	<link rel="stylesheet" type="text/css" href="../../../../../../css/style.css"/>
 	<link rel="stylesheet" type="text/css" href="../../../../../../css/fonts-alt-path.css"/>
 
-	<link rel="stylesheet" type="text/css" id="applicationStylesheet" href="./css/overview.css"/>
+	<link rel="stylesheet" type="text/css" id="applicationStylesheet" href="./css/cards.css"/>
 
 	<script src="../../../../../../../utils/downloaded/vue.js" type="text/javascript"></script>
+	<script src="../../../../../../../utils/downloaded/jquery.js" type="text/javascript"></script>
+	<script src="../../../../../../../utils/downloaded/jquery.contextMenu.js" type="text/javascript"></script>
+	<script src="../../../../../../../utils/downloaded/jquery.ui.position.min.js" type="text/javascript"></script>
+
+	<link rel="stylesheet" type="text/css" href="../../../../../../../utils/downloaded/jquery.contextMenu.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../../../../../utils/downloaded/fontawesome/css/all.css"/>
 </head>
 <body>
-	<div id="Rewrite___Overview" class="Rewrite___Overview_Class" v-bind:style="{ backgroundColor: getThemeColor('rgba(251,247,241,1)') }">
+	<div id="Rewrite___Sales" class="Rewrite___Sales_Class" v-bind:style="{ backgroundColor: getThemeColor('rgba(251,247,241,1)') }">
 		<div class="Header_Class">
-			<svg class="Purple_Bar">
-				<rect fill="rgba(206,140,229,1)" class="Purple_Bar_Class" rx="1.5" ry="1.5" x="0" y="0" width="66" height="3">
+
+			<!-- <svg class="Settings_Icon_Class clickable hover-opacity" v-on:click="openModal('configure')" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36">
+				<path v-bind:fill="getThemeColor('rgba(29,29,29,1)')" d="M36.07,14.67v6.86a.19.19,0,0,0-.17.14,2.32,2.32,0,0,1-.88.93,3.14,3.14,0,0,1-1.78.4c-.52,0-1,0-1.56,0-.11,0-.24,0-.29.11-.12.28-.23.57-.34.85,0,.13,0,.21.12.29A18.75,18.75,0,0,1,33,26.14a2.44,2.44,0,0,1,0,2.6,33.24,33.24,0,0,1-2.47,2.56,18.82,18.82,0,0,1-1.71,1.63,2.48,2.48,0,0,1-2.3.19,6.47,6.47,0,0,1-1.71-1.46c-.38-.38-.7-.86-1.32-.39a.17.17,0,0,1-.1,0c-.25.05-.32.19-.33.44a18.25,18.25,0,0,1-.09,2.45,2.74,2.74,0,0,1-1,1.62c-.1.09-.3.06-.32.26H14.6c0-.11-.1-.14-.17-.19a2.73,2.73,0,0,1-1-1.05,3.65,3.65,0,0,1-.32-1.36c0-.6,0-1.2,0-1.8,0-.15,0-.28-.17-.32a3.24,3.24,0,0,1-.67-.27.35.35,0,0,0-.43.12A13.39,13.39,0,0,1,10,32.94a2.27,2.27,0,0,1-2.29.17A5.69,5.69,0,0,1,6.32,31.9c-.81-.77-1.59-1.58-2.38-2.37a3,3,0,0,1-1-1.56,2.29,2.29,0,0,1,.35-1.84,11.58,11.58,0,0,1,1.38-1.5c.35-.35.71-.65.25-1.15,0,0,0-.06,0-.1,0-.31-.2-.38-.51-.39a9,9,0,0,1-2.74-.17,3,3,0,0,1-1-.63c-.24-.2-.25-.56-.57-.66V14.67c.07,0,.1-.06.14-.12A2.36,2.36,0,0,1,1.47,13.4a5.3,5.3,0,0,1,1.18-.26,8.44,8.44,0,0,1,1.33,0c.49,0,.87,0,1-.57,0-.22.31-.41,0-.67A17.2,17.2,0,0,1,3.23,10,2.51,2.51,0,0,1,3,7.78,4.48,4.48,0,0,1,4,6.61C5,5.56,6.06,4.47,7.14,3.44A2.24,2.24,0,0,1,9.66,3a5.24,5.24,0,0,1,1.48,1.18c.48.42.79,1.28,1.7.63.18-.13.29-.19.3-.42A12.2,12.2,0,0,1,13.25,2,2.74,2.74,0,0,1,14,.64c.23-.24.58-.3.77-.57h6.74c.06.17.23.22.36.31a2.16,2.16,0,0,1,1,1.22A4.91,4.91,0,0,1,23,3.13c0,.45,0,.91,0,1.37,0,.13,0,.27.18.3a4.51,4.51,0,0,1,.79.32c.08,0,.14.08.2,0a6.13,6.13,0,0,1,.75-.78,5.06,5.06,0,0,1,1.44-1.25,2.31,2.31,0,0,1,2.3.11,10.89,10.89,0,0,1,1.61,1.5c.73.69,1.41,1.44,2.15,2.13a2.53,2.53,0,0,1,.64.82,2.34,2.34,0,0,1-.41,2.75c-.38.45-.83.84-1.25,1.26s-.41.4-.16.94a.59.59,0,0,1,.07.25c0,.26.17.29.38.3a12.57,12.57,0,0,1,2.45.11,2.66,2.66,0,0,1,1.34.69C35.71,14.16,35.84,14.45,36.07,14.67Zm-18,18.86c.63,0,1.27,0,1.9,0,.28,0,.39-.06.38-.37,0-.6,0-1.2,0-1.8A2.45,2.45,0,0,1,22,29.06c.43-.15.84-.35,1.27-.52a2.16,2.16,0,0,1,2.13.2,13.93,13.93,0,0,1,1.8,1.72c.18.18.28.16.44,0l2.84-2.85c.14-.13.14-.21,0-.37a14.34,14.34,0,0,1-1.72-1.85,2.11,2.11,0,0,1-.24-2.07c.18-.46.39-.91.56-1.36A2.43,2.43,0,0,1,31,20.4a11.46,11.46,0,0,1,2.19-.06c.3,0,.41-.06.4-.38,0-1.17,0-2.34,0-3.5,0-.66,0-.64-.64-.67a6.35,6.35,0,0,1-2.49-.2,2.35,2.35,0,0,1-1.28-1.29c-.2-.46-.35-.93-.55-1.38a2.37,2.37,0,0,1,.36-2.46c.49-.52,1-1,1.52-1.5.19-.18.15-.28,0-.43L27.89,6c-.59-.57-.32-.55-.94,0a7,7,0,0,1-1.87,1.59,2.3,2.3,0,0,1-1.87,0c-.46-.19-.92-.41-1.39-.59a2.32,2.32,0,0,1-1-.75,2.77,2.77,0,0,1-.52-1.79c0-.53,0-1.07,0-1.6,0-.19,0-.28-.26-.28h-4c-.19,0-.26.07-.25.25,0,.34,0,.67,0,1a4.75,4.75,0,0,1-.19,1.83,2.55,2.55,0,0,1-1.4,1.39c-.4.16-.8.31-1.18.49a2.3,2.3,0,0,1-2.54-.33c-.54-.49-1.05-1-1.55-1.56-.15-.17-.26-.14-.38,0-1,1-1.94,1.93-2.91,2.9-.09.1-.17.22,0,.35.42.41.83.84,1.27,1.24a2.38,2.38,0,0,1,.85,2.42c-.05.25-.19.46-.26.7A6.23,6.23,0,0,1,7,14.5,2.44,2.44,0,0,1,4.7,15.8c-.6,0-1.2,0-1.8,0-.23,0-.31.06-.3.3V20c0,.23.06.31.3.31.6,0,1.2,0,1.8,0a2.36,2.36,0,0,1,2.12,1.15,7.69,7.69,0,0,1,1,2.47,1.91,1.91,0,0,1-.41,1.53c-.52.62-1.11,1.19-1.69,1.76-.15.14-.14.22,0,.34l2.88,2.88c.14.13.23.15.41,0a14,14,0,0,1,1.86-1.75,2.09,2.09,0,0,1,2-.22c.45.18.9.41,1.36.56a2.51,2.51,0,0,1,1.65,2.31c0,.59,0,1.18,0,1.77,0,.31.07.42.4.41C16.81,33.51,17.44,33.53,18.06,33.53Z" transform="translate(-0.07 -0.07)"/>
+				<path v-bind:fill="getThemeColor('rgba(29,29,29,1)')" d="M17.86,25.47a7.64,7.64,0,0,1-4.78-2,7.24,7.24,0,0,1-2.38-5.44,7,7,0,0,1,1.36-4.22,7.27,7.27,0,0,1,6-3.13,6.94,6.94,0,0,1,4.68,1.68,7.18,7.18,0,0,1,2.69,5.7A7.45,7.45,0,0,1,17.86,25.47Zm.22-2.67a4.75,4.75,0,0,0,4.74-4.29,4.85,4.85,0,0,0-4.39-5.19,4.87,4.87,0,0,0-5.11,4.4A4.72,4.72,0,0,0,18.08,22.8Z" transform="translate(-0.07 -0.07)"/>
+			</svg> -->
+
+			<div class="Sandwich_Icon_Class clickable hover-opacity" style="left: 1193px;" v-bind:style="{ opacity: displayMode == 'table' ? 1 : 0.33 }" v-on:click="displayMode = 'table'">
+				<svg class="Rectangle_545">
+					<rect v-bind:fill="getThemeColor('rgba(29,29,29,1)')" class="Rectangle_545_Class" rx="2" ry="2" x="0" y="0" width="24" height="5">
+					</rect>
+				</svg>
+				<svg class="Rectangle_546">
+					<rect v-bind:fill="getThemeColor('rgba(29,29,29,1)')" class="Rectangle_546_Class" rx="2" ry="2" x="0" y="0" width="24" height="5">
+					</rect>
+				</svg>
+				<svg class="Rectangle_547">
+					<rect v-bind:fill="getThemeColor('rgba(29,29,29,1)')" class="Rectangle_547_Class" rx="2" ry="2" x="0" y="0" width="24" height="5">
+					</rect>
+				</svg>
+			</div>
+
+			<div class="Grid_Icon_Class clickable hover-opacity" style="left: 1154px;" v-bind:style="{ opacity: displayMode == 'grid' ? 1 : 0.33 }" v-on:click="displayMode = 'grid'">
+				<svg class="Rectangle_536">
+					<rect v-bind:fill="getThemeColor('rgba(29,29,29,1)')" class="Rectangle_536_Class" rx="1" ry="1" x="0" y="0" width="5" height="5">
+					</rect>
+				</svg>
+				<svg class="Rectangle_537">
+					<rect v-bind:fill="getThemeColor('rgba(29,29,29,1)')" class="Rectangle_537_Class" rx="1" ry="1" x="0" y="0" width="5" height="5">
+					</rect>
+				</svg>
+				<svg class="Rectangle_538">
+					<rect v-bind:fill="getThemeColor('rgba(29,29,29,1)')" class="Rectangle_538_Class" rx="1" ry="1" x="0" y="0" width="5" height="5">
+					</rect>
+				</svg>
+				<svg class="Rectangle_539">
+					<rect v-bind:fill="getThemeColor('rgba(29,29,29,1)')" class="Rectangle_539_Class" rx="1" ry="1" x="0" y="0" width="5" height="5">
+					</rect>
+				</svg>
+				<svg class="Rectangle_540">
+					<rect v-bind:fill="getThemeColor('rgba(29,29,29,1)')" class="Rectangle_540_Class" rx="1" ry="1" x="0" y="0" width="5" height="5">
+					</rect>
+				</svg>
+				<svg class="Rectangle_541">
+					<rect v-bind:fill="getThemeColor('rgba(29,29,29,1)')" class="Rectangle_541_Class" rx="1" ry="1" x="0" y="0" width="5" height="5">
+					</rect>
+				</svg>
+				<svg class="Rectangle_542">
+					<rect v-bind:fill="getThemeColor('rgba(29,29,29,1)')" class="Rectangle_542_Class" rx="1" ry="1" x="0" y="0" width="5" height="5">
+					</rect>
+				</svg>
+				<svg class="Rectangle_543">
+					<rect v-bind:fill="getThemeColor('rgba(29,29,29,1)')" class="Rectangle_543_Class" rx="1" ry="1" x="0" y="0" width="5" height="5">
+					</rect>
+				</svg>
+				<svg class="Rectangle_544">
+					<rect v-bind:fill="getThemeColor('rgba(29,29,29,1)')" class="Rectangle_544_Class" rx="1" ry="1" x="0" y="0" width="5" height="5">
+					</rect>
+				</svg>
+			</div>
+
+			<div class="Add_Button_g_Class clipButton" v-bind:class="{ 'clickable': !isImporting, 'unclickable': isImporting }" v-on:click="beginImport()">
+				<div class="clipGroup" style="width: 107px;">
+					<svg class="Back_Transitioner" style="bottom: -25px;" viewBox="4631.671 2118.361 137.6 34.565">
+						<path fill="rgba(36,39,37,1)" id="Back_Transitioner" d="M 4631.67138671875 2136.780029296875 C 4631.67138671875 2136.780029296875 4649.8212890625 2127.950439453125 4669.78759765625 2136.780029296875 C 4689.75244140625 2145.610595703125 4680.9365234375 2141.826416015625 4680.9365234375 2141.826416015625 C 4680.9365234375 2141.826416015625 4699.80859375 2134.79638671875 4711.21826171875 2141.229248046875 C 4722.626953125 2147.663330078125 4712.8291015625 2141.229248046875 4712.8291015625 2141.229248046875 C 4712.8291015625 2141.229248046875 4737.462890625 2118.742431640625 4759.2421875 2118.3642578125 C 4781.0234375 2117.985107421875 4760.5390625 2152.92626953125 4760.5390625 2152.92626953125 L 4631.67138671875 2152.92626953125 L 4631.67138671875 2136.780029296875 Z">
+						</path>
+					</svg>
+					<svg class="Front_Transitioner" style="bottom: -30px;" viewBox="4631.671 2118.361 137.6 26.969">
+						<path fill="rgba(255,167,78,1)" id="Front_Transitioner" d="M 4631.67138671875 2132.73193359375 C 4631.67138671875 2132.73193359375 4649.82177734375 2125.843017578125 4669.78759765625 2132.73193359375 C 4689.7529296875 2139.621826171875 4680.93701171875 2136.66943359375 4680.93701171875 2136.66943359375 C 4680.93701171875 2136.66943359375 4699.80908203125 2131.184326171875 4711.21875 2136.203369140625 C 4722.62744140625 2141.2236328125 4712.82958984375 2136.203369140625 4712.82958984375 2136.203369140625 C 4712.82958984375 2136.203369140625 4737.462890625 2118.658447265625 4759.24267578125 2118.363525390625 C 4781.0234375 2118.0673828125 4760.5390625 2145.329833984375 4760.5390625 2145.329833984375 L 4631.67138671875 2145.329833984375 L 4631.67138671875 2132.73193359375 Z">
+						</path>
+					</svg>
+				</div>
+				<svg class="Add_Rectangle_g">
+					<rect fill="transparent" stroke="rgba(255,167,78,1)" stroke-width="2px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Add_Rectangle_g_Class" rx="18" ry="18" x="0" y="0" width="107" height="36">
+					</rect>
+				</svg>
+				<div class="___Import_Class" v-bind:style="{ fontSize: confineTextWidth(107-25, isImporting ? (tryTranslate('Importing') + '...') : ('→ ' + tryTranslate('Import')), 15, 'px', 'normal', 'SF Pro Text') }">
+					<span>{{isImporting ? (tryTranslate('Importing') + '...') : ('→ ' + tryTranslate('Import'))}}</span>
+				</div>
+			</div>
+
+			<div class="Add_Button_ha_Class clipButton" v-bind:class="{ 'clickable': !isExporting, 'unclickable': isExporting }" v-on:click="beginExport()">
+				<div class="clipGroup" style="width: 107px;">
+					<svg class="Back_Transitioner" style="bottom: -25px;" viewBox="4631.671 2118.361 137.6 34.565">
+						<path fill="rgba(36,39,37,1)" id="Back_Transitioner" d="M 4631.67138671875 2136.780029296875 C 4631.67138671875 2136.780029296875 4649.8212890625 2127.950439453125 4669.78759765625 2136.780029296875 C 4689.75244140625 2145.610595703125 4680.9365234375 2141.826416015625 4680.9365234375 2141.826416015625 C 4680.9365234375 2141.826416015625 4699.80859375 2134.79638671875 4711.21826171875 2141.229248046875 C 4722.626953125 2147.663330078125 4712.8291015625 2141.229248046875 4712.8291015625 2141.229248046875 C 4712.8291015625 2141.229248046875 4737.462890625 2118.742431640625 4759.2421875 2118.3642578125 C 4781.0234375 2117.985107421875 4760.5390625 2152.92626953125 4760.5390625 2152.92626953125 L 4631.67138671875 2152.92626953125 L 4631.67138671875 2136.780029296875 Z">
+						</path>
+					</svg>
+					<svg class="Front_Transitioner" style="bottom: -30px;" viewBox="4631.671 2118.361 137.6 26.969">
+						<path fill="rgba(53,178,57,1)" id="Front_Transitioner" d="M 4631.67138671875 2132.73193359375 C 4631.67138671875 2132.73193359375 4649.82177734375 2125.843017578125 4669.78759765625 2132.73193359375 C 4689.7529296875 2139.621826171875 4680.93701171875 2136.66943359375 4680.93701171875 2136.66943359375 C 4680.93701171875 2136.66943359375 4699.80908203125 2131.184326171875 4711.21875 2136.203369140625 C 4722.62744140625 2141.2236328125 4712.82958984375 2136.203369140625 4712.82958984375 2136.203369140625 C 4712.82958984375 2136.203369140625 4737.462890625 2118.658447265625 4759.24267578125 2118.363525390625 C 4781.0234375 2118.0673828125 4760.5390625 2145.329833984375 4760.5390625 2145.329833984375 L 4631.67138671875 2145.329833984375 L 4631.67138671875 2132.73193359375 Z">
+						</path>
+					</svg>
+				</div>
+				<svg class="Add_Rectangle_ha">
+					<rect fill="transparent" stroke="rgba(53,178,57,1)" stroke-width="2px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Add_Rectangle_ha_Class" rx="18" ry="18" x="0" y="0" width="107" height="36">
+					</rect>
+				</svg>
+				<div class="___Export_Class" v-bind:style="{ fontSize: confineTextWidth(107-25, isExporting ? (tryTranslate('Exporting') + '...') : ('→ ' + tryTranslate('Export')), 15, 'px', 'normal', 'SF Pro Text') }">
+					<span>{{isExporting ? (tryTranslate('Exporting') + '...') : ('→ ' + tryTranslate('Export'))}}</span>
+				</div>
+			</div>
+
+			<svg class="Green_Bar" v-bind:style="{ left: calculateUnderlineLeftOffset(200, tryTranslate('Cards'), 40, 'px', '900', 'SF Pro Text', false) + 10 + 'px' }">
+				<rect fill="rgba(255,167,78,1)" class="Green_Bar_Class" rx="1.5" ry="1.5" x="0" y="0" v-bind:width="calculateUnderlineWidth(200, tryTranslate('Cards'), 40, 'px', '900', 'SF Pro Text')" height="3">
 				</rect>
 			</svg>
+
 			<div class="Sales_Title_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-				<span>Overview</span>
+				<span>{{tryTranslate('Cards')}} </span><span style="font-style: normal; font-weight: bold; font-size: 20px; opacity: 0.66;">{{cards.length}} {{tryTranslate('Total')}}</span>
 			</div>
 		</div>
 
 		<div class="Content_Class">
-			<div class="Left_Graph_Class">
-				<svg class="Graph_Rectangle">
-					<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Graph_Rectangle_Class" rx="20" ry="20" x="0" y="0" width="639" height="296">
-					</rect>
-				</svg>
-				<img class="Sample_Graph_Class" src="Sample_Graph.png" srcset="Sample_Graph.png 1x, Sample_Graph@2x.png 2x">
-			</div>
-			<div class="Right_Graph_Class">
-				<svg class="Graph_Rectangle_eu">
-					<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Graph_Rectangle_eu_Class" rx="10" ry="10" x="0" y="0" width="309" height="296">
-					</rect>
-				</svg>
-				<img class="Sample_Graph_ev_Class" src="Sample_Graph_ev.png" srcset="Sample_Graph_ev.png 1x, Sample_Graph_ev@2x.png 2x">
-				<div class="Cards_Area_ew_Class">
-					<div class="Cards_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-						<span>Cards</span>
+
+			<div class="Bottom_Section_Class" v-bind:style="{ overflow: cards.length == 0 ? 'hidden' : 'auto', overflowX: 'hidden', width: displayMode == 'table' ? '1236px' : '1223px', height: displayMode == 'table' ? '473px' : '457px' }" v-bind:class="{ 'dark-scrollbar': companionSettings.theme == 'dark' }">
+
+				<!-- display message if there are no items -->
+				<template v-if="cards.length == 0">
+					<div class="centered-content" style="font-size: 1.1em; padding-top: 12.5%;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+						<span>{{tryTranslate('No cards added')}}</span>
 					</div>
-					<svg class="Cards_Icon" viewBox="130 56 11.223 13.639">
-						<path fill="rgba(255,167,78,1)" class="Cards_Icon_Class" d="M 140.5576782226563 56.00000762939453 L 130.660888671875 56.00000762939453 C 130.2988891601563 56.00000762939453 130 56.29888534545898 130 56.66091537475586 L 130 68.97817993164063 C 130 69.3402099609375 130.2988891601563 69.63909149169922 130.660888671875 69.63909149169922 L 140.5618896484375 69.63909149169922 C 140.9238891601563 69.63909149169922 141.2227783203125 69.3402099609375 141.2227783203125 68.97817993164063 L 141.2227783203125 56.66091537475586 C 141.2185974121094 56.29888534545898 140.9238891601563 56.00000762939453 140.5576782226563 56.00000762939453 Z M 135.5945434570313 57.27550888061523 C 136.5164489746094 57.26288223266602 137.3162841796875 58.06270599365234 137.307861328125 58.98881912231445 C 137.2994384765625 59.91913604736328 136.5332946777344 60.6768684387207 135.6029968261719 60.67266082763672 C 134.6726684570313 60.67266082763672 133.9107055664063 59.91071701049805 133.906494140625 58.98040390014648 C 133.9023132324219 58.05849838256836 134.6642456054688 57.28813934326172 135.5945434570313 57.27550888061523 Z M 134.2727355957031 61.53561782836914 C 134.4158630371094 61.52299118041992 134.5674133300781 61.54403686523438 134.7021179199219 61.59035110473633 C 135.2956848144531 61.77978134155273 135.8892211914063 61.78399276733398 136.4827880859375 61.59455871582031 C 137.4004821777344 61.29988479614258 138.4991760253906 62.04076766967773 138.5707397460938 62.9963493347168 C 138.5791625976563 63.14369201660156 138.5791625976563 63.29102325439453 138.5791625976563 63.43414688110352 C 138.574951171875 63.85510635375977 138.3602294921875 64.07400512695313 137.9350891113281 64.07400512695313 C 137.1563110351563 64.07820892333984 136.3775329589844 64.07400512695313 135.5987854003906 64.07400512695313 C 134.8494567871094 64.07400512695313 134.095947265625 64.07400512695313 133.3466186523438 64.07400512695313 C 132.8246459960938 64.07400512695313 132.6352233886719 63.88457489013672 132.6310119628906 63.36258697509766 C 132.6225891113281 62.27230453491211 133.2119140625 61.6156005859375 134.2727355957031 61.53561782836914 Z M 139.4884338378906 68.43093109130859 L 131.7890777587891 68.43093109130859 C 131.561767578125 68.43093109130859 131.3765411376953 68.24571228027344 131.3765411376953 68.01840209960938 C 131.3765411376953 67.79107666015625 131.561767578125 67.60585784912109 131.7890777587891 67.60585784912109 L 139.4884338378906 67.60585784912109 C 139.7157287597656 67.60585784912109 139.9009704589844 67.79107666015625 139.9009704589844 68.01840209960938 C 139.9009704589844 68.24150848388672 139.7157287597656 68.43093109130859 139.4884338378906 68.43093109130859 Z M 139.4884338378906 67.16384887695313 L 131.7890777587891 67.16384887695313 C 131.561767578125 67.16384887695313 131.3765411376953 66.97862243652344 131.3765411376953 66.75130462646484 C 131.3765411376953 66.52399444580078 131.561767578125 66.33877563476563 131.7890777587891 66.33877563476563 L 139.4884338378906 66.33877563476563 C 139.7157287597656 66.33877563476563 139.9009704589844 66.52399444580078 139.9009704589844 66.75130462646484 C 139.9009704589844 66.97862243652344 139.7157287597656 67.16384887695313 139.4884338378906 67.16384887695313 Z M 139.4884338378906 65.90097045898438 L 131.7890777587891 65.90097045898438 C 131.561767578125 65.90097045898438 131.3765411376953 65.71575164794922 131.3765411376953 65.48843383789063 C 131.3765411376953 65.26111602783203 131.561767578125 65.07588958740234 131.7890777587891 65.07588958740234 L 139.4884338378906 65.07588958740234 C 139.7157287597656 65.07588958740234 139.9009704589844 65.26111602783203 139.9009704589844 65.48843383789063 C 139.9009704589844 65.71575164794922 139.7157287597656 65.90097045898438 139.4884338378906 65.90097045898438 Z">
-						</path>
-					</svg>
+				</template>
+
+				<template v-for="(card, cardIndex) in cards">
+					<template v-if="displayMode == 'table'">
+						<div v-bind:id="card.id" class="Row_1_Class clickable hover-opacity" v-bind:style="{ top: (cardIndex * (52 + 6)) + 10 + 'px'}" v-on:click="handleSelectClick($event, cardIndex)" v-on:mouseover="beginHovering(card);" v-on:mouseleave="endHovering(card);">
+							<svg class="Rectangle">
+								<rect v-bind:fill="card.selected ? getThemeColor('rgba(225,225,225,1)') : getThemeColor('rgba(255,255,255,1)')" class="Rectangle_Class" rx="10" ry="10" x="0" y="0" width="1206.043" height="52.497">
+								</rect>
+							</svg>
+							<div v-show="card.sale.tracking.isTracking" style="width: 16px; height: 21px; left: 1058px; position: absolute; transform: translate(100%, 65%);">
+								<svg class="spinner" viewBox="0 0 50 50">
+									<circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="1.5" stroke="#FFA74E"></circle>
+								</svg>
+							</div>
+							<div v-if="!card.sale.tracking.isTracking" class="Tracking_Class" v-bind:style="{ color: getColor(getTrackingColor(card.sale.tracking)), fontSize: confineTextWidth(100, tryTranslate(getDisplayedTrackingStatus(card.sale.tracking)), 15, 'px', 'normal', 'SF Pro Text') }">
+								<span>{{tryTranslate(getDisplayedTrackingStatus(card.sale.tracking))}}</span>
+							</div>
+							<div class="Profit_Class" v-bind:style="{ color: getColor(getProfitColor(calculateProfit(card))), fontSize: confineTextWidth(95, companionSettings.currencySymbol + numberWithCommas(calculateProfit(card)), 15, 'px', 'normal', 'SF Pro Text') }">
+								<span>{{companionSettings.currencySymbol}}{{numberWithCommas(calculateProfit(card))}}</span>
+							</div>
+							<div class="Fees_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(90, getDisplayedFees(card), 15, 'px', 'normal', 'SF Pro Text') }">
+								<span>{{getDisplayedFees(card)}}</span>
+							</div>
+							<div class="Sale_Price_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(85, companionSettings.currencySymbol + numberWithCommas((card.sale.price || 0)), 15, 'px', 'normal', 'SF Pro Text') }">
+								<span>{{companionSettings.currencySymbol}}{{numberWithCommas((card.sale.price || 0))}}</span>
+							</div>
+							<div class="Purchase_Price_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(130, companionSettings.currencySymbol + numberWithCommas((card.purchase.price || 0)), 15, 'px', 'normal', 'SF Pro Text') }">
+								<span>{{companionSettings.currencySymbol}}{{numberWithCommas((card.purchase.price || 0))}}</span>
+							</div>
+							<template v-if="getPlatformImage(card.sale.platform).length > 0">
+								<div class="StockX_Icon_Class">
+									<img style="vertical-align: middle; max-width: 115px; max-height: 41px; margin-right: auto;" v-bind:class="{ transparentify: companionSettings.theme == 'light' }" v-bind:src="companionSettings.theme == 'dark' ? '../../../../../../images/stores/' + getPlatformImage(card.sale.platform) + '-white.png' : '../../../../../../images/stores/' + getPlatformImage(card.sale.platform) + '.png'" onerror="this.src='../../../../../../images/unknownImage.png'">
+								</div>
+							</template>
+							<template v-else>
+								<div class="Size_Class" style="left: 462.906px" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(115, card.sale.platform, 15, 'px', 'normal', 'SF Pro Text') }">
+									<span>{{card.sale.platform.length > 0 ? card.sale.platform : tryTranslate('N/A')}}</span>
+								</div>
+							</template>
+							<div class="Size_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(85, card.size, 15, 'px', 'normal', 'SF Pro Text') }">
+								<span>{{card.size.length > 0 ? card.size : tryTranslate('N/A')}}</span>
+							</div>
+							<div class="Product_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+								<span>{{card.name.length > 0 ? tryGenerateEllipses(240, card.name, 15, 'px', 'normal', 'SF Pro Text') : tryTranslate('N/A')}}</span>
+							</div>
+							<div class="Product_Image_Class">
+								<img style="display: table-cell; vertical-align: middle; max-width: 42px; max-height: 42px; border-radius: 5px; margin-left: auto; margin-right: auto;" v-bind:class="{ transparentify: companionSettings.theme == 'light' }" v-bind:src="card.imageURL" onerror="this.src='../../../../../../images/unknownImage.png'">
+							</div>
+						</div>
+					</template>
+					<template v-else-if="displayMode == 'grid'">
+						<!-- grid display -->
+						<div v-bind:id="card.id" class="Product_Card_1_dy_Class clickable hover-opacity" v-bind:style="calculateGridPosition(cardIndex)" v-on:click="handleSelectClick($event, cardIndex)" v-on:mouseover="beginHovering(card);" v-on:mouseleave="endHovering(card);">
+							<svg class="Rectangle">
+								<rect v-bind:fill="card.selected ? getThemeColor('rgba(225,225,225,1)') : getThemeColor('rgba(255,255,255,1)')" class="Rectangle_Class" rx="20" ry="20" x="0" y="0" width="209.941" height="210">
+								</rect>
+							</svg>
+							<svg class="Side_Rectangle" viewBox="-0.059 0 5.059 196">
+								<path v-bind:fill="getColor(getTrackingColor(card.sale.tracking))" class="Side_Rectangle_Class" d="M 5 0 L 5 196 C 2.238576173782349 196 0.0283203125 186.8766632080078 0.0283203125 184.115234375 L -0.05859375 12.4959716796875 C -0.05859375 9.73454761505127 2.238576173782349 0 5 0 Z">
+								</path>
+							</svg>
+							<template v-if="getPlatformImage(card.sale.platform).length > 0">
+								<div class="StockX_Icon_Class" style="top: -7px; left: -30px; transform: scale(0.33);">
+									<img style="vertical-align: middle; max-width: 100px; max-height: 100px; margin-left: auto; margin-right: auto;" v-bind:class="{ transparentify: companionSettings.theme == 'light' }" v-bind:src="companionSettings.theme == 'dark' ? '../../../../../../images/stores/' + getPlatformImage(card.sale.platform) + '-white.png' : '../../../../../../images/stores/' + getPlatformImage(card.sale.platform) + '.png'" onerror="this.src='../../../../../../images/unknownImage.png'">
+								</div>
+							</template>
+							<template v-else>
+								<div class="Size_Class" style="left: 11px; top: 6px;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(185, card.sale.platform, 12, 'px', 'normal', 'SF Pro Text') }">
+									<span>{{card.sale.platform}}</span>
+								</div>
+							</template>
+							<div v-show="card.sale.tracking.isTracking" style="width: 16px; height: 21px; left: 165px; top: 165px; position: absolute; transform: translate(100%, 65%);">
+								<svg class="spinner" viewBox="0 0 50 50">
+									<circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="1.5" stroke="#FFA74E"></circle>
+								</svg>
+							</div>
+							<div v-if="!card.sale.tracking.isTracking && getDisplayedTrackingStatus(card.sale.tracking) != 'N/A'" class="Tracking_Class" v-bind:style="{ color: getColor(getTrackingColor(card.sale.tracking)), fontSize: confineTextWidth(85, tryTranslate(getDisplayedTrackingStatus(card.sale.tracking)), 14, 'px', 'normal', 'SF Pro Text') }">
+								<span>{{tryTranslate(getDisplayedTrackingStatus(card.sale.tracking))}}</span>
+							</div>
+							<div class="Price_Class" style="line-height: 17px;" v-bind:style="{ color: getColor(getProfitColor(calculateProfit(card))), fontSize: confineTextWidth(85, companionSettings.currencySymbol + numberWithCommas(calculateProfit(card)), 14, 'px', 'normal', 'SF Pro Text') }">
+								<span>{{companionSettings.currencySymbol}}{{numberWithCommas(calculateProfit(card))}}</span>
+							</div>
+							<div class="Size_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), top: (getTextWidth(card.name.length == 0 ? tryTranslate('Unknown Card') : card.name, `${'normal'} ${14 + 'px'} ${'SF Pro Text'}`) <= (180 - 10) ? 148 : 166) + 'px', fontSize: confineTextWidth(180, card.size, 14, 'px', 'normal', 'SF Pro Text') }">
+								<span>{{card.size.length == 0 ? tryTranslate('Unknown Grade') : card.size}}</span>
+							</div>
+							<div class="Title_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+								<span>{{card.name.length == 0 ? tryTranslate('Unknown Card') : tryGenerateEllipses(300, card.name, 14, 'px', 'normal', 'SF Pro Text')}}</span>
+							</div>
+							<div class="Product_Image_Class">
+								<img style="display: table-cell; vertical-align: middle; max-width: 118px; max-height: 118px; border-radius: 10px; margin-left: auto; margin-right: auto;" v-bind:class="{ transparentify: companionSettings.theme == 'light' }" v-bind:src="card.imageURL" onerror="this.src='../../../../../../images/unknownImage.png'">
+							</div>
+						</div>
+					</template>
+				</template>
+
+			</div>
+
+			<div v-if="displayMode == 'table'" class="Top_Bar_Chart_Class">
+				<div class="Tracking_ea_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(115, tryTranslate('Tracking') + ' ' + getDisplayedSortDirection('sale.tracking.details.status'), 20, 'px', 'bold', 'SF Pro Text') }">
+					<span class="clickable hover-underline" onclick="toggleSortCardsByColumn('sale.tracking.details.status')">{{tryTranslate('Tracking')}}</span><span class="clickable" onclick="toggleSortCardsByColumn('sale.tracking.details.status')"> {{getDisplayedSortDirection('sale.tracking.details.status')}}</span>
 				</div>
-				<div class="Tickets_Area_ez_Class">
-					<div class="Tickets_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-						<span>Tickets</span>
-					</div>
-					<svg class="Tickets_Icon" viewBox="0 4.5 15.977 10.651">
-						<path fill="rgba(255,197,66,1)" class="Tickets_Icon_Class" d="M 3.550425052642822 7.162817001342773 L 12.42648696899414 7.162817001342773 L 12.42648696899414 12.48845386505127 L 3.550425052642822 12.48845386505127 L 3.550425052642822 7.162817001342773 Z M 14.6455020904541 9.825636863708496 C 14.6455020904541 10.56096267700195 15.24158573150635 11.15704536437988 15.97691059112549 11.15704536437988 L 15.97691059112549 13.81986427307129 C 15.97691059112549 14.55519008636475 15.38082790374756 15.15127277374268 14.6455020904541 15.15127277374268 L 1.331409215927124 15.15127277374268 C 0.5960831046104431 15.15127277374268 0 14.55519008636475 0 13.81986427307129 L 0 11.15704536437988 C 0.7353262901306152 11.15704536437988 1.331409215927124 10.56096267700195 1.331409215927124 9.825636863708496 C 1.331409215927124 9.090311050415039 0.7353262901306152 8.494228363037109 0 8.494228363037109 L 0 5.831408977508545 C 0 5.09608268737793 0.5960831046104431 4.499999523162842 1.331409215927124 4.499999523162842 L 14.6455020904541 4.499999523162842 C 15.38082790374756 4.499999523162842 15.97691059112549 5.09608268737793 15.97691059112549 5.831408977508545 L 15.97691059112549 8.494228363037109 C 15.24158573150635 8.494228363037109 14.6455020904541 9.090311050415039 14.6455020904541 9.825636863708496 Z M 13.31409358978271 6.940916538238525 C 13.31409358978271 6.57325267791748 13.01605319976807 6.275212287902832 12.64838886260986 6.275212287902832 L 3.328523397445679 6.275212287902832 C 2.960860013961792 6.275212287902832 2.662818431854248 6.57325267791748 2.662818431854248 6.940916538238525 L 2.662818431854248 12.71035575866699 C 2.662818431854248 13.07801914215088 2.960860013961792 13.37605953216553 3.328523397445679 13.37605953216553 L 12.64838886260986 13.37605953216553 C 13.01605319976807 13.37605953216553 13.31409358978271 13.07801914215088 13.31409358978271 12.71035575866699 L 13.31409358978271 6.940916538238525 Z">
-						</path>
-					</svg>
+				<div class="Profit_eb_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(95, tryTranslate('Profit') + ' ' + getDisplayedSortDirection('sale.profit'), 20, 'px', 'bold', 'SF Pro Text') }">
+					<span class="clickable hover-underline" onclick="toggleSortCardsByColumn('sale.profit')">{{tryTranslate('Profit')}}</span><span class="clickable" onclick="toggleSortCardsByColumn('sale.profit')"> {{getDisplayedSortDirection('sale.profit')}}</span>
 				</div>
-				<div class="Bots_Area_e_Class">
-					<div class="Bots_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-						<span>Bots</span>
-					</div>
-					<svg class="Bots_Icon" viewBox="0 0 15.977 12.782">
-						<path fill="rgba(0,100,255,1)" class="Bots_Icon_Class" d="M 0 6.390764236450195 L 0 9.586146354675293 C 0 10.0280065536499 0.3569840788841248 10.38498973846436 0.7988455891609192 10.38498973846436 L 1.597691178321838 10.38498973846436 L 1.597691178321838 5.591917991638184 L 0.7988455891609192 5.591917991638184 C 0.3569840788841248 5.591917991638184 0 5.948901653289795 0 6.390764236450195 Z M 11.5832576751709 2.396536588668823 L 8.787302017211914 2.396536588668823 L 8.787302017211914 0.7988455295562744 C 8.787302017211914 0.3569840490818024 8.430316925048828 0 7.988455295562744 0 C 7.54659366607666 0 7.189608573913574 0.3569840490818024 7.189608573913574 0.7988455295562744 L 7.189608573913574 2.396536588668823 L 4.393651008605957 2.396536588668823 C 3.290245056152344 2.396536588668823 2.396536827087402 3.290244579315186 2.396536827087402 4.393650531768799 L 2.396536827087402 11.18383598327637 C 2.396536827087402 12.06506252288818 3.113001108169556 12.78152847290039 3.994227647781372 12.78152847290039 L 11.9826831817627 12.78152847290039 C 12.86390972137451 12.78152847290039 13.58037376403809 12.06506252288818 13.58037376403809 11.18383598327637 L 13.58037376403809 4.393650531768799 C 13.58037376403809 3.290244579315186 12.68666553497314 2.396536588668823 11.5832576751709 2.396536588668823 Z M 6.390764713287354 10.38498973846436 L 4.793073654174805 10.38498973846436 L 4.793073654174805 9.586146354675293 L 6.390764713287354 9.586146354675293 L 6.390764713287354 10.38498973846436 Z M 5.591919422149658 7.38931941986084 C 5.040215492248535 7.38931941986084 4.593361854553223 6.942466259002686 4.593361854553223 6.390764236450195 C 4.593361854553223 5.839061260223389 5.040215492248535 5.392206192016602 5.591919422149658 5.392206192016602 C 6.143621444702148 5.392206192016602 6.590474605560303 5.839061260223389 6.590474605560303 6.390764236450195 C 6.590474605560303 6.942466259002686 6.143621444702148 7.38931941986084 5.591919422149658 7.38931941986084 Z M 8.787302017211914 10.38498973846436 L 7.189608573913574 10.38498973846436 L 7.189608573913574 9.586146354675293 L 8.787302017211914 9.586146354675293 L 8.787302017211914 10.38498973846436 Z M 11.18383884429932 10.38498973846436 L 9.586147308349609 10.38498973846436 L 9.586147308349609 9.586146354675293 L 11.18383884429932 9.586146354675293 L 11.18383884429932 10.38498973846436 Z M 10.38499164581299 7.38931941986084 C 9.83328914642334 7.38931941986084 9.386433601379395 6.942466259002686 9.386433601379395 6.390764236450195 C 9.386433601379395 5.839061260223389 9.83328914642334 5.392206192016602 10.38499164581299 5.392206192016602 C 10.93669509887695 5.392206192016602 11.38354778289795 5.839061260223389 11.38354778289795 6.390764236450195 C 11.38354778289795 6.942466259002686 10.93669509887695 7.38931941986084 10.38499164581299 7.38931941986084 Z M 15.17806339263916 5.591917991638184 L 14.37921714782715 5.591917991638184 L 14.37921714782715 10.38498973846436 L 15.17806339263916 10.38498973846436 C 15.61992740631104 10.38498973846436 15.97691059112549 10.0280065536499 15.97691059112549 9.586146354675293 L 15.97691059112549 6.390764236450195 C 15.97691059112549 5.948901653289795 15.61992740631104 5.591917991638184 15.17806339263916 5.591917991638184 Z">
-						</path>
-					</svg>
+				<div class="Fees_ec_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(90, tryTranslate('Fees') + ' ' + getDisplayedSortDirection('sale.fees.amount'), 20, 'px', 'bold', 'SF Pro Text') }">
+					<span class="clickable hover-underline" onclick="toggleSortCardsByColumn('sale.fees.amount')">{{tryTranslate('Fees')}}</span><span class="clickable" onclick="toggleSortCardsByColumn('sale.fees.amount')"> {{getDisplayedSortDirection('sale.fees.amount')}}</span>
 				</div>
-				<div class="Inventory_Area_e_Class">
-					<div class="Inventory_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-						<span>Inventory</span>
-					</div>
-					<div class="Inventory_Icon_Class">
-						<svg class="Path_444" viewBox="26.235 39.74 12.346 12.856">
-							<path fill="rgba(91,182,187,1)" stroke="rgba(91,182,187,1)" stroke-width="0.30000001192092896px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Path_444_Class" d="M 32.30147552490234 39.7400016784668 L 32.49641799926758 39.7400016784668 C 33.10452270507813 39.98234939575195 33.71275329589844 40.2247428894043 34.32110595703125 40.46717834472656 C 35.56775283813477 40.96554183959961 36.81313705444336 41.46784973144531 38.06166458129883 41.96062469482422 C 38.29755401611328 42.05378723144531 38.50128936767578 42.16629028320313 38.5809211730957 42.44659423828125 L 38.5809211730957 49.93138122558594 C 38.49664306640625 50.21931838989258 38.28989410400391 50.34761810302734 38.04018783569336 50.42169952392578 C 37.97135543823242 50.44214248657227 37.90390396118164 50.46856689453125 37.83696365356445 50.49526214599609 C 36.16730880737305 51.16354751586914 34.49825286865234 51.8328857421875 32.82978057861328 52.50327301025391 C 32.54741668701172 52.61753845214844 32.28427124023438 52.63075256347656 31.99851226806641 52.51566696166992 C 30.22118759155273 51.79911422729492 28.43996047973633 51.09372711181641 26.66162109375 50.37976455688477 C 26.29736328125 50.23374938964844 26.23556518554688 50.12260818481445 26.23543930053711 49.70051574707031 C 26.2348518371582 47.36113357543945 26.2348518371582 45.02169418334961 26.23543930053711 42.68221282958984 C 26.23543930053711 42.62583541870117 26.23619079589844 42.56943893432617 26.23945617675781 42.51319885253906 C 26.25277328491211 42.28859710693359 26.34785842895508 42.12475204467773 26.54631423950195 42.04329681396484 C 26.7096061706543 41.97601318359375 26.87602996826172 41.91444778442383 27.04032516479492 41.84839630126953 C 28.19087982177734 41.38585662841797 29.34135437011719 40.92309188842773 30.49174118041992 40.46009826660156 C 31.09440231323242 40.21834182739258 31.69818878173828 39.9799919128418 32.30147552490234 39.7400016784668 Z M 37.92388153076172 46.29482269287109 C 37.92388153076172 45.24524688720703 37.92367172241211 44.19563674926758 37.92324829101563 43.14597702026367 C 37.92324829101563 42.88079833984375 37.89084243774414 42.85750961303711 37.66060638427734 42.94944763183594 C 36.05133438110352 43.59204483032227 34.44210433959961 44.23463439941406 32.83291625976563 44.87723541259766 C 32.68370056152344 44.93648529052734 32.61348724365234 45.0250129699707 32.61361312866211 45.200439453125 C 32.61612319946289 47.31392288208008 32.61700439453125 49.42730331420898 32.61624526977539 51.54060363769531 C 32.61624526977539 51.78971099853516 32.65857696533203 51.81831741333008 32.87273788452148 51.7327766418457 C 34.46994781494141 51.09522247314453 36.06540298461914 50.45249176025391 37.66449737548828 49.82093048095703 C 37.86245727539063 49.74274063110352 37.93016052246094 49.62574768066406 37.92827224731445 49.40115356445313 C 37.91923141479492 48.36575698852539 37.92425537109375 47.3299446105957 37.92388153076172 46.29482269287109 Z M 26.87377166748047 46.29482269287109 C 26.87377166748047 47.34478759765625 26.87515258789063 48.39476013183594 26.87226486206055 49.44474411010742 C 26.87226486206055 49.60708999633789 26.90140151977539 49.72367477416992 27.06306076049805 49.78797149658203 C 28.69192504882813 50.4359130859375 30.31995391845703 51.08695983886719 31.9471435546875 51.7410888671875 C 32.13555145263672 51.81654739379883 32.17235565185547 51.78426742553711 32.18228149414063 51.55789566040039 C 32.18579483032227 51.48054122924805 32.18428802490234 51.40290069580078 32.18428802490234 51.32540130615234 L 32.18428802490234 46.56858062744141 C 32.18428802490234 46.15289306640625 32.18491744995117 45.7370719909668 32.18428802490234 45.32125091552734 C 32.18353652954102 44.96711730957031 32.18278121948242 44.96711730957031 31.8860969543457 44.84822082519531 C 31.68512725830078 44.76759338378906 31.48386764526367 44.68737030029297 31.28230667114258 44.60756301879883 C 31.0318489074707 44.50880813598633 31.00798034667969 44.52651214599609 31.00748062133789 44.82547760009766 C 31.0062255859375 45.6358757019043 31.00748062133789 46.44627380371094 31.00609970092773 47.25666427612305 C 31.00522232055664 47.6711311340332 30.88463973999023 47.7606086730957 30.52176284790039 47.61582565307617 C 29.79575729370117 47.32717514038086 29.07016372680664 47.03715133666992 28.34500122070313 46.74578094482422 C 27.98073959350586 46.5994987487793 27.97646713256836 46.59091949462891 27.97621917724609 46.16433334350586 C 27.97621917724609 45.30463027954102 27.9714469909668 44.44492340087891 27.97898483276367 43.58522796630859 C 27.98086547851563 43.3719367980957 27.92560195922852 43.24227523803711 27.72438049316406 43.18166732788086 C 27.53107070922852 43.12337493896484 27.34642791748047 43.03184509277344 27.15726470947266 42.95638656616211 C 26.90190505981445 42.85505294799805 26.87527847290039 42.8733024597168 26.87490081787109 43.16586685180664 C 26.87339401245117 44.20889663696289 26.87301635742188 45.25188064575195 26.87377166748047 46.29482269287109 Z M 37.38276290893555 42.52476501464844 C 37.3841438293457 42.5050163269043 37.38540267944336 42.48526763916016 37.38678359985352 42.46538162231445 C 37.32397842407227 42.4354248046875 37.26193618774414 42.40178680419922 37.19749450683594 42.37590026855469 C 35.66132354736328 41.76095581054688 34.12565994262695 41.14410018920898 32.58648300170898 40.53800201416016 C 32.4756965637207 40.49441909790039 32.32509231567383 40.49332809448242 32.21456146240234 40.53678131103516 C 30.66960144042969 41.14532089233398 29.12752914428711 41.76476287841797 27.58533096313477 42.38270950317383 C 27.52378463745117 42.40736389160156 27.46612930297852 42.44345855712891 27.35585021972656 42.50039291381836 C 27.58734130859375 42.59572982788086 27.76545333862305 42.6589241027832 27.93602752685547 42.74078750610352 C 28.1141357421875 42.82632064819336 28.27817535400391 42.81910705566406 28.46093368530273 42.74323654174805 C 29.14059066772461 42.4611701965332 29.82690811157227 42.19842910766602 30.50706481933594 41.91717529296875 C 30.68831253051758 41.8424072265625 30.85273361206055 41.83736419677734 31.03461456298828 41.91159057617188 C 31.78825378417969 42.21954345703125 32.54578399658203 42.51863479614258 33.30168151855469 42.82114028930664 C 33.43319320678711 42.87371444702148 33.56734466552734 42.93309783935547 33.56683731079102 43.11547470092773 C 33.56683731079102 43.29253005981445 33.42867279052734 43.33748626708984 33.30607986450195 43.38705825805664 C 32.77614593505859 43.60211944580078 32.24608612060547 43.81486892700195 31.71665191650391 44.02978897094727 C 31.65385055541992 44.05512237548828 31.59469223022461 44.08889770507813 31.53377532958984 44.11886215209961 C 31.75194931030273 44.26256561279297 31.96347045898438 44.37097930908203 32.18592071533203 44.43389511108398 C 32.320068359375 44.47190093994141 32.48549270629883 44.48130035400391 32.61298370361328 44.43144607543945 C 33.92733001708984 43.91783142089844 35.23702621459961 43.38991928100586 36.547607421875 42.86513519287109 C 36.82658004760742 42.75359344482422 37.10441970825195 42.63850021362305 37.38276290893555 42.5249137878418 Z M 28.43016052246094 44.87832641601563 C 28.43016052246094 45.25137710571289 28.43669128417969 45.62470626831055 28.42739868164063 45.99762725830078 C 28.42287445068359 46.17972183227539 28.48329162597656 46.28105545043945 28.64319229125977 46.3428955078125 C 29.21181106567383 46.5628662109375 29.77791976928711 46.79071807861328 30.3428955078125 47.02116775512695 C 30.49111175537109 47.08164978027344 30.55969619750977 47.05740356445313 30.55869293212891 46.86863327026367 C 30.55466842651367 46.08728790283203 30.55466842651367 45.30586242675781 30.55869293212891 44.52433776855469 C 30.55869293212891 44.37587738037109 30.50555801391602 44.29279327392578 30.37655639648438 44.24185562133789 C 29.80303955078125 44.01603317260742 29.2324104309082 43.78135299682617 28.65888977050781 43.55527114868164 C 28.46595764160156 43.4791374206543 28.43380355834961 43.50691604614258 28.43166732788086 43.73777008056641 C 28.42752075195313 44.11763763427734 28.43016052246094 44.4979133605957 28.43016052246094 44.87832641601563 Z M 32.62780380249023 43.11574935913086 C 32.56500244140625 43.07379531860352 32.53133773803711 43.04206085205078 32.49214935302734 43.02626037597656 C 31.96297073364258 42.81256103515625 31.43454360961914 42.59627532958984 30.90171813964844 42.39388656616211 C 30.81882095336914 42.3624153137207 30.7066535949707 42.37236022949219 30.62161636352539 42.40478134155273 C 30.11354064941406 42.59900665283203 29.60935592651367 42.80493545532227 29.10441589355469 43.00868988037109 C 29.05241775512695 43.02966690063477 29.00393295288086 43.06180953979492 28.91977310180664 43.1074333190918 C 29.00204849243164 43.1531982421875 29.04927825927734 43.18629837036133 29.10077667236328 43.20699691772461 C 29.6058349609375 43.41035461425781 30.10939407348633 43.61818695068359 30.61885070800781 43.80778503417969 C 30.71934127807617 43.8451042175293 30.85197830200195 43.84047317504883 30.95309448242188 43.80261611938477 C 31.45552062988281 43.61424255371094 31.95355224609375 43.40884780883789 32.45246124267578 43.20781707763672 C 32.50432968139648 43.18697738647461 32.55256652832031 43.15565490722656 32.62780380249023 43.11574935913086 Z">
-							</path>
-						</svg>
-						<svg class="Path_445" viewBox="684.363 714.862 2.894 1.337">
-							<path fill="rgba(91,182,187,1)" stroke="rgba(91,182,187,1)" stroke-width="0.30000001192092896px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Path_445_Class" d="M 687.2565307617188 715.1529541015625 C 687.1945190429688 715.1976318359375 687.1069946289063 715.2911376953125 686.9994506835938 715.3321533203125 C 686.3151245117188 715.5926513671875 685.6266479492188 715.8416748046875 684.9390258789063 716.09423828125 C 684.8538208007813 716.125732421875 684.7698364257813 716.16162109375 684.6821899414063 716.18408203125 C 684.5516967773438 716.217529296875 684.4275512695313 716.202880859375 684.3776245117188 716.05615234375 C 684.3290405273438 715.913330078125 684.4027709960938 715.8138427734375 684.5338745117188 715.7655029296875 C 685.3358764648438 715.4677734375 686.1378784179688 715.17041015625 686.9430541992188 714.881103515625 C 687.1213989257813 714.817138671875 687.2610473632813 714.9189453125 687.2565307617188 715.1529541015625 Z">
-							</path>
-						</svg>
-						<svg class="Path_446" viewBox="725.388 561.385 2.381 1.148">
-							<path fill="rgba(91,182,187,1)" stroke="rgba(91,182,187,1)" stroke-width="0.30000001192092896px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Path_446_Class" d="M 727.7684326171875 561.6484375 C 727.7315673828125 561.6845703125 727.6751708984375 561.781982421875 727.5933837890625 561.8135986328125 C 726.9700927734375 562.0535888671875 726.3421630859375 562.2818603515625 725.7147216796875 562.510498046875 C 725.5826416015625 562.55859375 725.4642333984375 562.5316162109375 725.407470703125 562.391357421875 C 725.3494873046875 562.2476806640625 725.4237060546875 562.146484375 725.5528564453125 562.097900390625 C 726.1781005859375 561.8629150390625 726.803955078125 561.628662109375 727.4339599609375 561.4071044921875 C 727.628173828125 561.3394775390625 727.763427734375 561.4276123046875 727.7684326171875 561.6484375 Z">
-							</path>
-						</svg>
-						<svg class="Path_447" viewBox="725.544 637.535 2.377 1.147">
-							<path fill="rgba(91,182,187,1)" stroke="rgba(91,182,187,1)" stroke-width="0.30000001192092896px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Path_447_Class" d="M 727.9212646484375 637.8028564453125 C 727.8892822265625 637.837158203125 727.8427734375 637.9285888671875 727.7716064453125 637.956298828125 C 727.142333984375 638.1978759765625 726.5101318359375 638.43212890625 725.8748779296875 638.658935546875 C 725.7431640625 638.706298828125 725.6068115234375 638.685546875 725.5567626953125 638.526611328125 C 725.510009765625 638.3787841796875 725.6033935546875 638.2896728515625 725.7279052734375 638.2431640625 C 726.3533935546875 638.0098876953125 726.9794921875 637.778564453125 727.6082763671875 637.5537109375 C 727.787841796875 637.490234375 727.9259033203125 637.587646484375 727.9212646484375 637.8028564453125 Z">
-							</path>
-						</svg>
-						<svg class="Path_448" viewBox="622.13 807.99 0.517 0.462">
-							<path fill="rgba(91,182,187,1)" stroke="rgba(91,182,187,1)" stroke-width="0.30000001192092896px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Path_448_Class" d="M 622.3262939453125 808.452392578125 C 622.2101440429688 808.442138671875 622.1290283203125 808.374267578125 622.129638671875 808.23291015625 C 622.129638671875 808.1009521484375 622.2743530273438 807.98388671875 622.4287719726563 807.990234375 C 622.56591796875 807.995849609375 622.6453247070313 808.0693359375 622.6461791992188 808.2093505859375 C 622.6468505859375 808.3411865234375 622.5048217773438 808.45263671875 622.3262939453125 808.452392578125 Z">
-							</path>
-						</svg>
-					</div>
+				<div class="Sold_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(85, tryTranslate('Sold') + ' ' + getDisplayedSortDirection('sale.price'), 20, 'px', 'bold', 'SF Pro Text') }">
+					<span class="clickable hover-underline" onclick="toggleSortCardsByColumn('sale.price')">{{tryTranslate('Sold')}}</span><span class="clickable" onclick="toggleSortCardsByColumn('sale.price')"> {{getDisplayedSortDirection('sale.price')}}</span>
 				</div>
-				<div class="Portfolio_Value_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-					<span>Portfolio Value</span>
+				<div class="Purchase_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(130, tryTranslate('Purchased') + ' ' + getDisplayedSortDirection('purchase.price'), 20, 'px', 'bold', 'SF Pro Text') }">
+					<span class="clickable hover-underline" onclick="toggleSortCardsByColumn('purchase.price')">{{tryTranslate('Purchased')}}</span><span class="clickable" onclick="toggleSortCardsByColumn('purchase.price')"> {{getDisplayedSortDirection('purchase.price')}}</span>
+				</div>
+				<div class="Platform_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(115, tryTranslate('Platform') + ' ' + getDisplayedSortDirection('sale.platform'), 20, 'px', 'bold', 'SF Pro Text') }">
+					<span class="clickable hover-underline" onclick="toggleSortCardsByColumn('sale.platform')">{{tryTranslate('Platform')}}</span><span class="clickable" onclick="toggleSortCardsByColumn('sale.platform')"> {{getDisplayedSortDirection('sale.platform')}}</span>
+				</div>
+				<div class="Size_eg_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(85, tryTranslate('Grade') + ' ' + getDisplayedSortDirection('size'), 20, 'px', 'bold', 'SF Pro Text') }">
+					<span class="clickable hover-underline" onclick="toggleSortCardsByColumn('size')">{{tryTranslate('Grade')}}</span><span class="clickable" onclick="toggleSortCardsByColumn('size')"> {{getDisplayedSortDirection('size')}}</span>
+				</div>
+				<div class="Product_eh_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(240, tryTranslate('Card') + ' ' + getDisplayedSortDirection('name'), 20, 'px', 'bold', 'SF Pro Text') }">
+					<span class="clickable hover-underline" onclick="toggleSortCardsByColumn('name')">{{tryTranslate('Card')}}</span><span class="clickable" onclick="toggleSortCardsByColumn('name')"> {{getDisplayedSortDirection('name')}}</span>
 				</div>
 			</div>
-			<div class="Profit_Area_Class">
-				<svg class="Rectangle_ff">
-					<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Rectangle_ff_Class" rx="5" ry="5" x="0" y="0" width="309.728" height="87.729">
-					</rect>
-				</svg>
-				<div class="Text_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-					<span>$11,200.52</span>
-				</div>
-				<div class="Title_fh_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-					<span>Profit</span>
-				</div>
-				<svg class="Side_Rectangle">
-					<rect fill="rgba(53,178,57,1)" class="Side_Rectangle_Class" rx="5" ry="5" x="0" y="0" width="5" height="87.729">
-					</rect>
-				</svg>
-				<svg class="Arrow_Icon" viewBox="0 0 21.998 21.998">
-					<path fill="rgba(53,178,57,1)" class="Arrow_Icon_Class" d="M 10.99884605407715 21.99771118164063 C 4.92287015914917 21.99771118164063 0 17.07483863830566 0 10.99885654449463 C 0 4.92287540435791 4.92287015914917 0 10.99884605407715 0 C 17.07482147216797 0 21.99769020080566 4.92287540435791 21.99769020080566 10.99885654449463 C 21.99769020080566 17.07483863830566 17.07482147216797 21.99771118164063 10.99884605407715 21.99771118164063 Z M 16.14346694946289 9.047446250915527 L 10.99884605407715 9.047446250915527 L 10.99884605407715 5.90301513671875 C 10.99884605407715 5.428467273712158 10.42229270935059 5.188976287841797 10.08966636657715 5.52603816986084 L 5.020440101623535 10.62187957763672 C 4.811994075775146 10.83032608032227 4.811994075775146 11.1629524230957 5.020440101623535 11.37139892578125 L 10.08966636657715 16.46723937988281 C 10.42672824859619 16.80430221557617 10.99884605407715 16.56481170654297 10.99884605407715 16.09026527404785 L 10.99884605407715 12.95026588439941 L 16.14346694946289 12.95026588439941 C 16.43617820739746 12.95026588439941 16.67566871643066 12.71077442169189 16.67566871643066 12.41806411743164 L 16.67566871643066 9.579648971557617 C 16.67566871643066 9.28693675994873 16.43617820739746 9.047446250915527 16.14346694946289 9.047446250915527 Z">
-					</path>
-				</svg>
-				<div class="ID30_Class">
-					<span>+30%</span>
-				</div>
-				<div class="Arrow_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-					<span>→</span>
-				</div>
-				<svg class="Graph_Icon" viewBox="0 0 19.108 19.108">
-					<path fill="rgba(53,178,57,1)" class="Graph_Icon_Class" d="M 16.79150581359863 0 L 9.55419921875 7.1656494140625 L 7.1656494140625 4.777099609375 L 0 12.01440525054932 L 2.3885498046875 14.40295600891113 L 7.1656494140625 9.55419921875 L 9.55419921875 11.9427490234375 L 19.1083984375 2.3885498046875 L 16.79150581359863 0 Z M 0 16.7198486328125 L 0 19.1083984375 L 19.1083984375 19.1083984375 L 19.1083984375 16.7198486328125 L 0 16.7198486328125 Z">
-					</path>
-				</svg>
-			</div>
-			<div class="Revenue_Area_Class">
-				<svg class="Rectangle_fo">
-					<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Rectangle_fo_Class" rx="5" ry="5" x="0" y="0" width="309.728" height="87.729">
-					</rect>
-				</svg>
-				<div class="Text_fp_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-					<span>$11,200.52</span>
-				</div>
-				<div class="Title_fq_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-					<span>Revenue</span>
-				</div>
-				<svg class="Side_Rectangle_fr">
-					<rect fill="rgba(255,167,78,1)" class="Side_Rectangle_fr_Class" rx="5" ry="5" x="0" y="0" width="5" height="87.729">
-					</rect>
-				</svg>
-				<svg class="Arrow_Icon_fs" viewBox="0 0 21.998 21.998">
-					<path fill="rgba(53,178,57,1)" class="Arrow_Icon_fs_Class" d="M 10.99884605407715 21.99771118164063 C 4.92287015914917 21.99771118164063 0 17.07483863830566 0 10.99885654449463 C 0 4.92287540435791 4.92287015914917 0 10.99884605407715 0 C 17.07482147216797 0 21.99769020080566 4.92287540435791 21.99769020080566 10.99885654449463 C 21.99769020080566 17.07483863830566 17.07482147216797 21.99771118164063 10.99884605407715 21.99771118164063 Z M 16.14346694946289 9.047446250915527 L 10.99884605407715 9.047446250915527 L 10.99884605407715 5.90301513671875 C 10.99884605407715 5.428467273712158 10.42229270935059 5.188976287841797 10.08966636657715 5.52603816986084 L 5.020440101623535 10.62187957763672 C 4.811994075775146 10.83032608032227 4.811994075775146 11.1629524230957 5.020440101623535 11.37139892578125 L 10.08966636657715 16.46723937988281 C 10.42672824859619 16.80430221557617 10.99884605407715 16.56481170654297 10.99884605407715 16.09026527404785 L 10.99884605407715 12.95026588439941 L 16.14346694946289 12.95026588439941 C 16.43617820739746 12.95026588439941 16.67566871643066 12.71077442169189 16.67566871643066 12.41806411743164 L 16.67566871643066 9.579648971557617 C 16.67566871643066 9.28693675994873 16.43617820739746 9.047446250915527 16.14346694946289 9.047446250915527 Z">
-					</path>
-				</svg>
-				<div class="ID30_ft_Class">
-					<span>+30%</span>
-				</div>
-				<div class="Arrow_fu_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-					<span>→</span>
-				</div>
-				<svg class="Suit_Case_Icon" viewBox="0 2.25 22.087 19.326">
-					<path fill="rgba(255,167,78,1)" class="Suit_Case_Icon_Class" d="M 5.521653652191162 21.57579040527344 L 16.56496047973633 21.57579040527344 L 16.56496047973633 4.320620536804199 C 16.56496047973633 3.177465200424194 15.63749694824219 2.25 14.49434185028076 2.25 L 7.592274188995361 2.25 C 6.449119091033936 2.25 5.521653652191162 3.177465200424194 5.521653652191162 4.320620536804199 L 5.521653652191162 21.57579040527344 Z M 8.282480239868164 5.010827541351318 L 13.8041353225708 5.010827541351318 L 13.8041353225708 6.391239643096924 L 8.282480239868164 6.391239643096924 L 8.282480239868164 5.010827541351318 Z M 22.08661460876465 8.461859703063965 L 22.08661460876465 19.50516891479492 C 22.08661460876465 20.64832496643066 21.15914916992188 21.57579040527344 20.01599502563477 21.57579040527344 L 17.94537544250488 21.57579040527344 L 17.94537544250488 6.391239643096924 L 20.01599502563477 6.391239643096924 C 21.15914916992188 6.391239643096924 22.08661460876465 7.318705081939697 22.08661460876465 8.461859703063965 Z M 4.141240119934082 21.57579040527344 L 2.070620059967041 21.57579040527344 C 0.9274653196334839 21.57579040527344 0 20.64832496643066 0 19.50516891479492 L 0 8.461859703063965 C 0 7.318705081939697 0.9274653196334839 6.391239643096924 2.070620059967041 6.391239643096924 L 4.141240119934082 6.391239643096924 L 4.141240119934082 21.57579040527344 Z">
-					</path>
-				</svg>
-			</div>
-			<div class="Spent_Area_Class">
-				<svg class="Rectangle_fx">
-					<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Rectangle_fx_Class" rx="5" ry="5" x="0" y="0" width="309.728" height="87.729">
-					</rect>
-				</svg>
-				<div class="Text_fy_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-					<span>$11,200.52</span>
-				</div>
-				<div class="Title_fz_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-					<span>Spent</span>
-				</div>
-				<svg class="Side_Rectangle_f">
-					<rect fill="rgba(253,53,53,1)" class="Side_Rectangle_f_Class" rx="5" ry="5" x="0" y="0" width="5" height="87.729">
-					</rect>
-				</svg>
-				<svg class="Arrow_Icon_f" viewBox="0 0 21.998 21.998">
-					<path fill="rgba(53,178,57,1)" class="Arrow_Icon_f_Class" d="M 10.99884605407715 21.99771118164063 C 4.92287015914917 21.99771118164063 0 17.07483863830566 0 10.99885654449463 C 0 4.92287540435791 4.92287015914917 0 10.99884605407715 0 C 17.07482147216797 0 21.99769020080566 4.92287540435791 21.99769020080566 10.99885654449463 C 21.99769020080566 17.07483863830566 17.07482147216797 21.99771118164063 10.99884605407715 21.99771118164063 Z M 16.14346694946289 9.047446250915527 L 10.99884605407715 9.047446250915527 L 10.99884605407715 5.90301513671875 C 10.99884605407715 5.428467273712158 10.42229270935059 5.188976287841797 10.08966636657715 5.52603816986084 L 5.020440101623535 10.62187957763672 C 4.811994075775146 10.83032608032227 4.811994075775146 11.1629524230957 5.020440101623535 11.37139892578125 L 10.08966636657715 16.46723937988281 C 10.42672824859619 16.80430221557617 10.99884605407715 16.56481170654297 10.99884605407715 16.09026527404785 L 10.99884605407715 12.95026588439941 L 16.14346694946289 12.95026588439941 C 16.43617820739746 12.95026588439941 16.67566871643066 12.71077442169189 16.67566871643066 12.41806411743164 L 16.67566871643066 9.579648971557617 C 16.67566871643066 9.28693675994873 16.43617820739746 9.047446250915527 16.14346694946289 9.047446250915527 Z">
-					</path>
-				</svg>
-				<div class="ID30_f_Class">
-					<span>+30%</span>
-				</div>
-				<div class="Arrow_f_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-					<span>→</span>
-				</div>
-				<svg class="Dollars_Icon" viewBox="2.571 9.726 24.622 15.576">
-					<path fill="rgba(253,53,53,1)" class="Dollars_Icon_Class" d="M 25.8978157043457 22.05605888366699 L 25.93474769592285 10.98347949981689 L 5.816327571868896 10.99579048156738 L 5.81567907333374 9.725833892822266 L 27.19239044189453 9.725833892822266 L 27.19239044189453 22.05670738220215 L 25.89781379699707 22.05605888366699 Z M 25.2453441619873 24.00440406799316 L 23.951416015625 24.00310897827148 L 23.98834800720215 12.93052673339844 L 3.869927406311035 12.94348621368408 L 3.869279384613037 11.67353057861328 L 25.24599075317383 11.67353057861328 L 25.24599075317383 24.00440406799316 Z M 23.33911514282227 25.30221939086914 L 2.570816040039063 25.30221939086914 L 2.570816040039063 13.6199312210083 L 23.33913612365723 13.6199312210083 L 23.33913612365723 25.30221939086914 Z M 22.0406494140625 14.87757396697998 L 3.868652582168579 14.87757396697998 L 3.868652582168579 24.00440406799316 L 22.04002571105957 24.00440406799316 L 22.04002571105957 14.8775749206543 Z M 20.09425163269043 23.03120231628418 C 20.09425163269043 23.14588737487793 20.12276077270508 23.2527961730957 20.15969085693359 23.35517120361328 L 12.95463943481445 23.35517120361328 C 14.7468318939209 23.35517120361328 16.20015335083008 21.61222267150879 16.20015335083008 19.46107482910156 C 16.20015335083008 17.3099250793457 14.7468318939209 15.56697940826416 12.95463943481445 15.56697940826416 L 20.15904235839844 15.56697940826416 C 20.12211227416992 15.66935253143311 20.09360122680664 15.7762622833252 20.09360122680664 15.89159393310547 C 20.09360122680664 16.42938232421875 20.52901458740234 16.86479568481445 21.06680488586426 16.86479568481445 C 21.1821346282959 16.86479568481445 21.2890453338623 16.83628463745117 21.39141654968262 16.79935455322266 L 21.39141654968262 22.12214851379395 C 21.28904342651367 22.08586311340332 21.1821346282959 22.05670738220215 21.06680488586426 22.05670738220215 C 20.5296630859375 22.0573558807373 20.09425163269043 22.49341773986816 20.09425163269043 23.03120422363281 Z M 18.79578590393066 18.1094799041748 C 18.25799751281738 18.1094799041748 17.82258415222168 18.69003105163574 17.82258415222168 19.40729713439941 C 17.82258415222168 20.12456321716309 18.25799560546875 20.70511245727539 18.79578590393066 20.70511245727539 C 19.33357429504395 20.70511245727539 19.76898765563965 20.12456321716309 19.76898765563965 19.40729713439941 C 19.76898765563965 18.69003105163574 19.33357429504395 18.1094799041748 18.79578590393066 18.1094799041748 Z M 14.31336212158203 17.12137985229492 C 14.32308387756348 17.14016723632813 14.33085632324219 17.16543769836426 14.33733749389648 17.1965389251709 C 14.3444652557373 17.22764015197754 14.3489990234375 17.26716423034668 14.35094451904297 17.3144645690918 C 14.35418319702148 17.36176300048828 14.35547828674316 17.42072677612305 14.35547828674316 17.4913501739502 C 14.35547828674316 17.56974983215332 14.35353469848633 17.6364860534668 14.34964752197266 17.69026565551758 C 14.34511184692383 17.74469375610352 14.33798408508301 17.78940200805664 14.32955932617188 17.82439041137695 C 14.31919288635254 17.86002731323242 14.30623245239258 17.88594436645508 14.28938674926758 17.90149307250977 C 14.27189254760742 17.91769218444824 14.2479190826416 17.92611694335938 14.21811485290527 17.92611694335938 C 14.18831062316895 17.92611694335938 14.14165878295898 17.90732574462891 14.07621574401855 17.86974334716797 C 14.01077461242676 17.83151626586914 13.93107795715332 17.79134750366211 13.83712768554688 17.74728393554688 C 13.74317741394043 17.70322418212891 13.63302803039551 17.66240310668945 13.50862503051758 17.62612152099609 C 13.38422203063965 17.5898380279541 13.24815368652344 17.57169342041016 13.09912872314453 17.57169342041016 C 12.98250007629395 17.57169342041016 12.88142204284668 17.58530044555664 12.79524612426758 17.61380958557129 C 12.70842361450195 17.64231872558594 12.63585472106934 17.68119430541992 12.57818794250488 17.73108673095703 C 12.51987457275391 17.78097534179688 12.47646331787109 17.84123420715332 12.44860076904297 17.91056442260742 C 12.42009162902832 17.98054122924805 12.40583801269531 18.0550537109375 12.40583801269531 18.13280487060547 C 12.40583801269531 18.24943542480469 12.43758583068848 18.3498649597168 12.50108337402344 18.43539237976074 C 12.5645809173584 18.52027320861816 12.64946174621582 18.5960807800293 12.75701904296875 18.66217041015625 C 12.86392784118652 18.72890853881836 12.98509216308594 18.79046249389648 13.11986351013184 18.84877586364746 C 13.2546329498291 18.9070930480957 13.39264488220215 18.96864318847656 13.53324508666992 19.03279113769531 C 13.67384719848633 19.09823226928711 13.81185722351074 19.17144775390625 13.9472770690918 19.2543830871582 C 14.08269500732422 19.33667182922363 14.20321083068848 19.43515777587891 14.30817794799805 19.54984283447266 C 14.41378974914551 19.66517639160156 14.49931716918945 19.79994583129883 14.56411170959473 19.95545196533203 C 14.62890625 20.1109561920166 14.66130256652832 20.29367446899414 14.66130256652832 20.50490188598633 C 14.66130256652832 20.78027725219727 14.60946846008301 21.02260208129883 14.50709342956543 21.22994041442871 C 14.40471839904785 21.43793106079102 14.26541328430176 21.61222267150879 14.08917427062988 21.75153160095215 C 13.91293716430664 21.89083671569824 13.70818901062012 21.99515151977539 13.47298812866211 22.06513023376465 C 13.44318389892578 22.0742015838623 13.41078567504883 22.07808876037598 13.38033294677734 22.0852165222168 L 13.38033294677734 22.79405975341797 L 12.74211692810059 22.79405975341797 L 12.74211692810059 22.16880226135254 C 12.73369216918945 22.16880226135254 12.72656631469727 22.17074584960938 12.71814346313477 22.17074584960938 C 12.53736877441406 22.17074584960938 12.36890602111816 22.15584373474121 12.21339988708496 22.12668800354004 C 12.05789566040039 22.09688186645508 11.92053413391113 22.06124687194824 11.80196189880371 22.02042579650879 C 11.68274116516113 21.97895622253418 11.5836067199707 21.93489837646484 11.50391006469727 21.88954162597656 C 11.42356491088867 21.84418487548828 11.36654853820801 21.80401420593262 11.3315601348877 21.7690258026123 C 11.29657173156738 21.73403739929199 11.27130126953125 21.68349838256836 11.25639915466309 21.61741065979004 C 11.24149703979492 21.55132102966309 11.23372077941895 21.4554271697998 11.23372077941895 21.33102035522461 C 11.23372077941895 21.2474365234375 11.23631286621094 21.17681121826172 11.24214553833008 21.12044143676758 C 11.24732780456543 21.06342315673828 11.25639915466309 21.01742172241211 11.26870918273926 20.98178482055664 C 11.28101921081543 20.94679641723633 11.29721832275391 20.9215259552002 11.31730651855469 20.9066219329834 C 11.3373908996582 20.89236831665039 11.36136436462402 20.88459014892578 11.38792991638184 20.88459014892578 C 11.42615699768066 20.88459014892578 11.47928810119629 20.9066219329834 11.54861831665039 20.95197677612305 C 11.61730003356934 20.99603652954102 11.7060661315918 21.04592895507813 11.81427192687988 21.09970474243164 C 11.92247772216797 21.15348625183105 12.05141830444336 21.20272827148438 12.20173835754395 21.24743461608887 C 12.35141181945801 21.29214286804199 12.52570724487305 21.31482124328613 12.72267913818359 21.31482124328613 C 12.85226631164551 21.31482124328613 12.96889495849609 21.29927062988281 13.07126808166504 21.26816940307617 C 13.17428970336914 21.23706817626953 13.2611141204834 21.19300651550293 13.33303451538086 21.13663864135742 C 13.4043083190918 21.07962036132813 13.45873641967773 21.00899505615234 13.49696159362793 20.92541122436523 C 13.53519248962402 20.84117889404297 13.55397987365723 20.74787521362305 13.55397987365723 20.64485549926758 C 13.55397987365723 20.525634765625 13.52093505859375 20.42325973510742 13.45678901672363 20.33838272094727 C 13.39199638366699 20.25285339355469 13.30776405334473 20.17769241333008 13.20344543457031 20.11095428466797 C 13.09912872314453 20.04486465454102 12.98120498657227 19.98266220092773 12.84902572631836 19.92499732971191 C 12.7161979675293 19.86668395996094 12.58013153076172 19.80512809753418 12.43952941894531 19.74033355712891 C 12.29892730712891 19.67554092407227 12.16221237182617 19.60167694091797 12.03003311157227 19.51939010620117 C 11.89785385131836 19.43710136413574 11.77928352355957 19.33861541748047 11.67561149597168 19.2232837677002 C 11.57194328308105 19.10859680175781 11.48706245422363 18.97253036499023 11.42226791381836 18.81637954711914 C 11.35747528076172 18.65958023071289 11.3250789642334 18.47167778015137 11.3250789642334 18.2526741027832 C 11.3250789642334 18.00127410888672 11.37172889709473 17.78032875061035 11.46503257751465 17.59048461914063 C 11.55833625793457 17.39999008178711 11.68403434753418 17.24189376831055 11.84213066101074 17.1161937713623 C 12.0002269744873 16.99114227294922 12.18683242797852 16.89654541015625 12.40130043029785 16.83434295654297 C 12.51144981384277 16.80259323120117 12.62548446655273 16.77926826477051 12.74276161193848 16.76371765136719 L 12.74276161193848 16.09310340881348 L 13.38097953796387 16.09310340881348 L 13.38097953796387 16.76371765136719 C 13.40624809265137 16.7669563293457 13.4315185546875 16.76566123962402 13.45678901672363 16.7695484161377 C 13.58119201660156 16.78833961486816 13.69782066345215 16.81360816955566 13.80602645874023 16.84600448608398 C 13.91358375549316 16.87840270996094 14.00947761535645 16.91403961181641 14.09306144714355 16.95485877990723 C 14.17729187011719 16.99503135681152 14.23236656188965 17.028076171875 14.26022911071777 17.05529022216797 C 14.28549957275391 17.07926177978516 14.30364227294922 17.1019401550293 14.3133602142334 17.12137985229492 Z M 9.709798812866211 19.4610767364502 C 9.709798812866211 21.6115779876709 11.1624698638916 23.35517120361328 12.95466232299805 23.35517120361328 L 5.750239372253418 23.35517120361328 C 5.786523818969727 23.25279998779297 5.815680980682373 23.14588928222656 5.815680980682373 23.03120422363281 C 5.815680980682373 22.49341773986816 5.379619121551514 22.0573558807373 4.842480182647705 22.0573558807373 C 4.727147102355957 22.0573558807373 4.620237827301025 22.08651542663574 4.517864227294922 22.1227970123291 L 4.517864227294922 16.80000305175781 C 4.620237827301025 16.83693313598633 4.727147102355957 16.86544418334961 4.842480182647705 16.86544418334961 C 5.380267143249512 16.86544418334961 5.815680980682373 16.43003082275391 5.815680980682373 15.89224243164063 C 5.815680980682373 15.77691078186035 5.786523818969727 15.67000007629395 5.750239372253418 15.567626953125 L 12.95464134216309 15.567626953125 C 11.16245079040527 15.56697940826416 9.709775924682617 17.31057357788086 9.709775924682617 19.4610767364502 Z M 7.113517284393311 18.10948181152344 C 6.575729846954346 18.10948181152344 6.140316963195801 18.69003295898438 6.140316963195801 19.40729904174805 C 6.140316963195801 20.12456321716309 6.576378345489502 20.70511436462402 7.113517284393311 20.70511436462402 C 7.651304244995117 20.70511436462402 8.08671760559082 20.12456321716309 8.08671760559082 19.40729904174805 C 8.08671760559082 18.69003295898438 7.651304244995117 18.10948181152344 7.113517284393311 18.10948181152344 Z">
-					</path>
-				</svg>
-			</div>
+
 			<div class="Top_Section_Class">
-				<div class="Spent_Title_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-					<span>between</span>
-				</div>
-				<svg class="Search_Bar_Rectangle">
-					<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Search_Bar_Rectangle_Class" rx="18" ry="18" x="0" y="0" width="165" height="36">
-					</rect>
-				</svg>
-				<div class="Search_Text_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-					<span>Everything</span>
-				</div>
-				<div class="Spent_Title_f_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-					<span>Show</span>
-				</div>
-				<div class="Group_251_Class">
-					<svg class="Search_Bar_Rectangle_gb">
-						<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Search_Bar_Rectangle_gb_Class" rx="18" ry="18" x="0" y="0" width="330" height="36">
-						</rect>
-					</svg>
-					<div class="Search_Area_Class">
-						<div class="Search_Bar_Class">
-							<svg class="Search_Bar_Rectangle_ge">
-								<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Search_Bar_Rectangle_ge_Class" rx="0" ry="0" x="0" y="0" width="165" height="36">
-								</rect>
+				<div class="Search_Area_Class">
+
+					<div class="Add_Button_Class clipButton clickable" v-on:click="openModal('create')">
+						<div class="clipGroup" style="width: 107px;">
+							<svg class="Back_Transitioner" style="bottom: -25px;" viewBox="4631.671 2118.361 137.6 34.565">
+								<path fill="rgba(36,39,37,1)" id="Back_Transitioner" d="M 4631.67138671875 2136.780029296875 C 4631.67138671875 2136.780029296875 4649.8212890625 2127.950439453125 4669.78759765625 2136.780029296875 C 4689.75244140625 2145.610595703125 4680.9365234375 2141.826416015625 4680.9365234375 2141.826416015625 C 4680.9365234375 2141.826416015625 4699.80859375 2134.79638671875 4711.21826171875 2141.229248046875 C 4722.626953125 2147.663330078125 4712.8291015625 2141.229248046875 4712.8291015625 2141.229248046875 C 4712.8291015625 2141.229248046875 4737.462890625 2118.742431640625 4759.2421875 2118.3642578125 C 4781.0234375 2117.985107421875 4760.5390625 2152.92626953125 4760.5390625 2152.92626953125 L 4631.67138671875 2152.92626953125 L 4631.67138671875 2136.780029296875 Z">
+								</path>
 							</svg>
-							<div class="Search_Text_gf_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-								<span>Jun 21 - Jun 29</span>
-							</div>
+							<svg class="Front_Transitioner" style="bottom: -30px;" viewBox="4631.671 2118.361 137.6 26.969">
+								<path fill="rgba(91,182,187,1)" id="Front_Transitioner" d="M 4631.67138671875 2132.73193359375 C 4631.67138671875 2132.73193359375 4649.82177734375 2125.843017578125 4669.78759765625 2132.73193359375 C 4689.7529296875 2139.621826171875 4680.93701171875 2136.66943359375 4680.93701171875 2136.66943359375 C 4680.93701171875 2136.66943359375 4699.80908203125 2131.184326171875 4711.21875 2136.203369140625 C 4722.62744140625 2141.2236328125 4712.82958984375 2136.203369140625 4712.82958984375 2136.203369140625 C 4712.82958984375 2136.203369140625 4737.462890625 2118.658447265625 4759.24267578125 2118.363525390625 C 4781.0234375 2118.0673828125 4760.5390625 2145.329833984375 4760.5390625 2145.329833984375 L 4631.67138671875 2145.329833984375 L 4631.67138671875 2132.73193359375 Z">
+								</path>
+							</svg>
 						</div>
-						<svg class="Icon_awesome_calendar_alt" viewBox="0 0 14.165 16.189">
-							<path fill="rgba(0,0,0,1)" class="Icon_awesome_calendar_alt_Class" d="M 0 14.67131423950195 C 0 15.50922298431396 0.679813027381897 16.18903732299805 1.517722129821777 16.18903732299805 L 12.64768505096436 16.18903732299805 C 13.48559379577637 16.18903732299805 14.16540622711182 15.50922298431396 14.16540622711182 14.67131423950195 L 14.16540622711182 6.070888519287109 L 0 6.070888519287109 L 0 14.67131423950195 Z M 10.11814785003662 8.47394847869873 C 10.11814785003662 8.265261650085449 10.28889083862305 8.094518661499023 10.49757766723633 8.094518661499023 L 11.7623462677002 8.094518661499023 C 11.97103309631348 8.094518661499023 12.14177703857422 8.265261650085449 12.14177703857422 8.47394847869873 L 12.14177703857422 9.738717079162598 C 12.14177703857422 9.947403907775879 11.97103309631348 10.11814785003662 11.7623462677002 10.11814785003662 L 10.49757766723633 10.11814785003662 C 10.28889083862305 10.11814785003662 10.11814785003662 9.947403907775879 10.11814785003662 9.738717079162598 L 10.11814785003662 8.47394847869873 Z M 10.11814785003662 12.52120780944824 C 10.11814785003662 12.31252002716064 10.28889083862305 12.14177703857422 10.49757766723633 12.14177703857422 L 11.7623462677002 12.14177703857422 C 11.97103309631348 12.14177703857422 12.14177703857422 12.31252002716064 12.14177703857422 12.52120780944824 L 12.14177703857422 13.78597640991211 C 12.14177703857422 13.99466228485107 11.97103309631348 14.16540622711182 11.7623462677002 14.16540622711182 L 10.49757766723633 14.16540622711182 C 10.28889083862305 14.16540622711182 10.11814785003662 13.99466228485107 10.11814785003662 13.78597640991211 L 10.11814785003662 12.52120780944824 Z M 6.070888519287109 8.47394847869873 C 6.070888519287109 8.265261650085449 6.241631984710693 8.094518661499023 6.450319290161133 8.094518661499023 L 7.715087413787842 8.094518661499023 C 7.923773765563965 8.094518661499023 8.094518661499023 8.265261650085449 8.094518661499023 8.47394847869873 L 8.094518661499023 9.738717079162598 C 8.094518661499023 9.947403907775879 7.923773765563965 10.11814785003662 7.715087413787842 10.11814785003662 L 6.450319290161133 10.11814785003662 C 6.241631984710693 10.11814785003662 6.070888519287109 9.947403907775879 6.070888519287109 9.738717079162598 L 6.070888519287109 8.47394847869873 Z M 6.070888519287109 12.52120780944824 C 6.070888519287109 12.31252002716064 6.241631984710693 12.14177703857422 6.450319290161133 12.14177703857422 L 7.715087413787842 12.14177703857422 C 7.923773765563965 12.14177703857422 8.094518661499023 12.31252002716064 8.094518661499023 12.52120780944824 L 8.094518661499023 13.78597640991211 C 8.094518661499023 13.99466228485107 7.923773765563965 14.16540622711182 7.715087413787842 14.16540622711182 L 6.450319290161133 14.16540622711182 C 6.241631984710693 14.16540622711182 6.070888519287109 13.99466228485107 6.070888519287109 13.78597640991211 L 6.070888519287109 12.52120780944824 Z M 2.023629665374756 8.47394847869873 C 2.023629665374756 8.265261650085449 2.19437313079834 8.094518661499023 2.403059959411621 8.094518661499023 L 3.667828559875488 8.094518661499023 C 3.87651538848877 8.094518661499023 4.047259330749512 8.265261650085449 4.047259330749512 8.47394847869873 L 4.047259330749512 9.738717079162598 C 4.047259330749512 9.947403907775879 3.87651538848877 10.11814785003662 3.667828559875488 10.11814785003662 L 2.403059959411621 10.11814785003662 C 2.19437313079834 10.11814785003662 2.023629665374756 9.947403907775879 2.023629665374756 9.738717079162598 L 2.023629665374756 8.47394847869873 Z M 2.023629665374756 12.52120780944824 C 2.023629665374756 12.31252002716064 2.19437313079834 12.14177703857422 2.403059959411621 12.14177703857422 L 3.667828559875488 12.14177703857422 C 3.87651538848877 12.14177703857422 4.047259330749512 12.31252002716064 4.047259330749512 12.52120780944824 L 4.047259330749512 13.78597640991211 C 4.047259330749512 13.99466228485107 3.87651538848877 14.16540622711182 3.667828559875488 14.16540622711182 L 2.403059959411621 14.16540622711182 C 2.19437313079834 14.16540622711182 2.023629665374756 13.99466228485107 2.023629665374756 13.78597640991211 L 2.023629665374756 12.52120780944824 Z M 12.64768505096436 2.023629665374756 L 11.12996196746826 2.023629665374756 L 11.12996196746826 0.505907416343689 C 11.12996196746826 0.2276583313941956 10.90230369567871 0 10.62405490875244 0 L 9.612239837646484 0 C 9.333991050720215 0 9.106332778930664 0.2276583313941956 9.106332778930664 0.505907416343689 L 9.106332778930664 2.023629665374756 L 5.059073925018311 2.023629665374756 L 5.059073925018311 0.505907416343689 C 5.059073925018311 0.2276583313941956 4.831415176391602 0 4.553166389465332 0 L 3.541351556777954 0 C 3.263102531433105 0 3.035444259643555 0.2276583313941956 3.035444259643555 0.505907416343689 L 3.035444259643555 2.023629665374756 L 1.517722129821777 2.023629665374756 C 0.679813027381897 2.023629665374756 0 2.703442335128784 0 3.541351556777954 L 0 5.059073925018311 L 14.16540622711182 5.059073925018311 L 14.16540622711182 3.541351556777954 C 14.16540622711182 2.703442335128784 13.48559379577637 2.023629665374756 12.64768505096436 2.023629665374756 Z">
-							</path>
+						<svg class="Add_Rectangle">
+							<rect fill="transparent" stroke="rgba(91,182,187,1)" stroke-width="2px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Add_Rectangle_Class" rx="18" ry="18" x="0" y="0" width="107" height="36">
+							</rect>
 						</svg>
-					</div>
-					<div class="Search_Area_gh_Class">
-						<div class="Search_Bar_gi_Class">
-							<svg class="Search_Bar_Rectangle_gj">
-								<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Search_Bar_Rectangle_gj_Class" rx="18" ry="18" x="0" y="0" width="165" height="36">
-								</rect>
-							</svg>
-							<div class="Search_Text_gk_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-								<span>Last 12 Months</span>
-							</div>
+						<div class="Add_Class">
+							<span>{{tryTranslate('Add')}}</span>
 						</div>
 					</div>
-					<svg class="Separator">
-						<rect fill="rgba(190,190,190,1)" class="Separator_Class" rx="1.5" ry="1.5" x="0" y="0" width="18" height="3">
+
+					<input id="cardsSearch" v-bind:placeholder="tryTranslate('Search')" v-model="searchTerm" class="Search_Bar_Class special-focus" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+					<svg class="Magnifying_Glass_Icon" style="left: 362px;" viewBox="0 -0.045 17.337 17.337">
+						<path v-bind:fill="getThemeColor('rgba(29,29,29,1)')" class="Magnifying_Glass_Icon_Class" d="M 7.516793251037598 -0.0235234834253788 C 3.371819496154785 -0.0235234834253788 0 3.34829568862915 0 7.493270397186279 C 0 11.63824462890625 3.371819496154785 15.01006317138672 7.516793251037598 15.01006317138672 C 8.78391170501709 15.01006317138672 10.02955055236816 14.70939350128174 11.08190250396729 14.12952709197998 C 11.1661958694458 14.2309684753418 11.25965595245361 14.32442760467529 11.36109733581543 14.40872001647949 L 13.50875282287598 16.55637741088867 C 14.04909896850586 17.16438865661621 14.88185119628906 17.42293357849121 15.67153072357178 17.22785949707031 C 16.46121025085449 17.03278541564941 17.07778167724609 16.41621208190918 17.27285957336426 15.62653064727783 C 17.46793174743652 14.83684730529785 17.20938682556152 14.0040979385376 16.60137557983398 13.46375179290771 L 14.45372009277344 11.31609630584717 C 14.3491039276123 11.21144199371338 14.2339506149292 11.11788082122803 14.11009693145752 11.03690242767334 C 14.68996429443359 9.984550476074219 15.0550651550293 8.76038646697998 15.0550651550293 7.471794128417969 C 15.0550651550293 3.326818943023682 11.68324661254883 -0.04500007256865501 7.538270950317383 -0.04500007256865501 Z M 7.516793251037598 2.124131917953491 C 10.50203609466553 2.124131917953491 12.88593292236328 4.508029937744141 12.88593292236328 7.493270397186279 C 12.88593292236328 8.910723686218262 12.37049579620361 10.22079277038574 11.46848201751709 11.18723678588867 C 11.4470043182373 11.20871257781982 11.42552852630615 11.23019027709961 11.40405178070068 11.25166702270508 C 11.30261039733887 11.33596038818359 11.20915126800537 11.42942047119141 11.12485599517822 11.53086090087891 C 10.17988777160645 12.38992404937744 8.891294479370117 12.88388538360596 7.495319366455078 12.88388538360596 C 4.510077476501465 12.88388538360596 2.126179695129395 10.49998760223389 2.126179695129395 7.514747142791748 C 2.126179695129395 4.529504776000977 4.510077476501465 2.145607709884644 7.495319366455078 2.145607709884644 Z">
+						</path>
+					</svg>
+
+
+					<div class="Filter_Area_Class">
+
+						<div class="Sold_Class" style="text-align: right; left: -60px; top: 9px;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+							<span class="clickable" onclick="toggleSortCardsByColumn('sale.date')">{{getDisplayedSortDirection('sale.date')}}</span>
+						</div>
+
+						<svg class="Rectangle_es">
+							<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Rectangle_es_Class" rx="18" ry="18" x="0" y="0" width="330" height="36">
+							</rect>
+						</svg>
+
+						<select v-model="dateSearch.category" @change="applyDateSearch(dateSearch.category, true)" class="Search_Bar_Class special-focus" v-bind:class="{ 'white-arrow': companionSettings.theme == 'dark', 'black-arrow': companionSettings.theme == 'light', 'special-focus-dark': companionSettings.theme == 'dark' }" style="filter: none; left: 0px; top: 0px; width: 165px; padding-left: 0px; text-indent: 15px; padding-right: 25px; border-top-right-radius: 0px; border-bottom-right-radius: 0px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+							<option value="today">{{tryTranslate('Today')}}</option>
+							<option value="last7d">{{tryTranslate('Last 7 Days')}}</option>
+							<option value="last4w">{{tryTranslate('Last 4 Weeks')}}</option>
+							<option value="last3m">{{tryTranslate('Last 3 Months')}}</option>
+							<option value="last1y">{{tryTranslate('Last Year')}}</option>
+							<option selected value="all-time">{{tryTranslate('All Time')}}</option>
+							<option hidden value="custom">{{tryTranslate('Custom')}}</option>
+						</select>
+
+						<div id="dateRangeFilter" class="clickable" v-on:click="dateSearch.visible = !dateSearch.visible;" style="border-top-left-radius: 0px; border-bottom-left-radius: 0px; width: 165px; left: 165px; padding-left: 0px; text-align-last: center; filter: none; padding-right: 0px; position: absolute; height: 36px;">
+							<input disabled v-model="dateSearch.display" class="Search_Bar_Class special-focus hover-underline" style="border-top-left-radius: 0px; border-bottom-left-radius: 0px; width: 165px; left: 0px; padding-left: 0px; text-align-last: center; filter: none; padding-right: 0px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(165-20, dateSearch.display, 16, 'px', 'normal', 'SF Pro Text') }">
+						</div>
+
+						<svg class="Separator">
+							<rect v-bind:fill="getThemeColor('rgba(190,190,190,1)')" class="Separator_Class" rx="1.5" ry="1.5" x="0" y="0" width="18" height="3">
+							</rect>
+						</svg>
+
+					</div>
+
+
+				</div>
+
+				<div v-show="dateSearch.visible" class="Date_Selection_Area_Class">
+					<!-- <svg class="Rectangle_g">
+						<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Rectangle_g_Class" rx="10" ry="10" x="0" y="0" width="330" height="36">
+						</rect>
+					</svg> -->
+					<svg class="Rectangle_g" style="top: -1px; transform: scaleX(1.6) scaleY(1.6); pointer-events: none;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="358" height="60.016" viewBox="0 0 358 60.016">
+					  <defs>
+					    <filter id="Rectangle" x="0" y="0" width="358" height="60.016" filterUnits="userSpaceOnUse">
+					      <feOffset dy="3" input="SourceAlpha"/>
+					      <feGaussianBlur stdDeviation="3" result="blur"/>
+					      <feFlood flood-opacity="0.161"/>
+					      <feComposite operator="in" in2="blur"/>
+					      <feComposite in="SourceGraphic"/>
+					    </filter>
+					  </defs>
+					  <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Rectangle)">
+					    <path id="Rectangle-2" data-name="Rectangle" d="M9.984-.328,237.742,0l16.367-7.016L269.578,0H330a10,10,0,0,1,10,10V25a10,10,0,0,1-10,10H10A10,10,0,0,1,0,25V10A10.272,10.272,0,0,1,9.984-.328Z" transform="translate(9 13.02)" v-bind:fill="getThemeColor('rgba(255,255,255,1)')"/>
+					  </g>
+					</svg>
+					<input v-model="dateSearch.start" @change="applyDateSearch('custom', true)" type="date" class="Search_Bar_Class special-focus" v-bind:class="{ 'white-input-icon': companionSettings.theme == 'dark' }" style="left: 0px; top: 0px; width: 165px; padding-left: 8px; padding-right: 13px; text-indent: 0px; border-radius: 10px; border-top-right-radius: 0px; border-bottom-right-radius: 0px; filter: none;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+					<input v-model="dateSearch.end" @change="applyDateSearch('custom', true)" type="date" class="Search_Bar_Class special-focus" v-bind:class="{ 'white-input-icon': companionSettings.theme == 'dark' }" style="left: 165px; top: 0px; width: 165px; padding-left: 16px; padding-right: 3px; text-indent: 0px; border-radius: 10px; border-top-left-radius: 0px; border-bottom-left-radius: 0px; filter: none;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+					<div class="Arrow_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+						<span>→</span>
+					</div>
+				</div>
+
+				<div class="Revenue_Area_Class">
+					<svg class="Rectangle_fa">
+						<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Rectangle_fa_Class" rx="5" ry="5" x="0" y="0" width="300" height="39">
 						</rect>
 					</svg>
+					<div class="Text_fa_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(145, companionSettings.currencySymbol + numberWithCommas(getTotalRevenue()), 20, 'px', 'normal', 'SF Pro Text') }">
+						<span style="user-select: text;">{{companionSettings.currencySymbol}}{{numberWithCommas(getTotalRevenue())}}</span>
+					</div>
+					<div class="Title_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: tryTranslate('Revenue') + ' ' + confineTextWidth(215, companionSettings.currencySymbol + numberWithCommas(getTotalRevenue()), 20, 'px', 'bold', 'SF Pro Text') }">
+						<span>{{tryTranslate('Revenue')}}</span>
+					</div>
+					<svg class="Suit_Case_Icon" viewBox="0 2.25 24.036 21.032">
+						<path fill="rgba(255,167,78,1)" class="Suit_Case_Icon_Class" d="M 6.009037971496582 23.2816333770752 L 18.02711296081543 23.2816333770752 L 18.02711296081543 4.503389358520508 C 18.02711296081543 3.25933051109314 17.01778411865234 2.25 15.77372550964355 2.25 L 8.26242733001709 2.25 C 7.018368721008301 2.25 6.009037971496582 3.25933051109314 6.009037971496582 4.503389358520508 L 6.009037971496582 23.2816333770752 Z M 9.013556480407715 5.254519462585449 L 15.02259540557861 5.254519462585449 L 15.02259540557861 6.756777763366699 L 9.013556480407715 6.756777763366699 L 9.013556480407715 5.254519462585449 Z M 24.03615188598633 9.010167121887207 L 24.03615188598633 21.02824401855469 C 24.03615188598633 22.27230262756348 23.02682113647461 23.2816333770752 21.78276252746582 23.2816333770752 L 19.52937316894531 23.2816333770752 L 19.52937316894531 6.756777763366699 L 21.78276252746582 6.756777763366699 C 23.02682113647461 6.756777763366699 24.03615188598633 7.766108512878418 24.03615188598633 9.010167121887207 Z M 4.506778240203857 23.2816333770752 L 2.253389120101929 23.2816333770752 C 1.009330630302429 23.2816333770752 0 22.27230262756348 0 21.02824401855469 L 0 9.010167121887207 C 0 7.766108512878418 1.009330630302429 6.756777763366699 2.253389120101929 6.756777763366699 L 4.506778240203857 6.756777763366699 L 4.506778240203857 23.2816333770752 Z">
+						</path>
+					</svg>
+					<svg class="Side_Rectangle" width="6" height="39" viewBox="0 0 6 39">
+						<path fill="rgba(255,167,78,1)" d="M6,0H6A0,0,0,0,1,6,0V39a0,0,0,0,1,0,0H6a6,6,0,0,1-6-6V6A6,6,0,0,1,6,0Z"/>
+					</svg>
 				</div>
-				<div class="Welcome_back_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-					<span>{{tryTranslate('Welcome back')}}{{curLogin.discord.username ? " " + curLogin.discord.username + "!" : "!"}}</span>
+
+				<div class="Profit_Area_Class">
+					<svg class="Rectangle_fb">
+						<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Rectangle_fb_Class" rx="5" ry="5" x="0" y="0" width="300" height="39">
+						</rect>
+					</svg>
+					<div class="Text_fb_Class" v-bind:style="{ color: getColor(getProfitColor(getTotalProfit())), fontSize: confineTextWidth(145, companionSettings.currencySymbol + numberWithCommas(getTotalProfit()), 20, 'px', 'normal', 'SF Pro Text') }">
+						<span style="user-select: text;">{{companionSettings.currencySymbol}}{{numberWithCommas(getTotalProfit())}}</span>
+					</div>
+					<div class="Title_fc_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(215, tryTranslate('Profit') + ' ' + companionSettings.currencySymbol + numberWithCommas(getTotalProfit()), 20, 'px', 'bold', 'SF Pro Text') }">
+						<span>{{tryTranslate('Profit')}}</span>
+					</div>
+					<svg class="Graph_Icon" viewBox="0 0 19.108 19.108">
+						<path fill="rgba(53,178,57,1)" class="Graph_Icon_Class" d="M 16.79150581359863 0 L 9.55419921875 7.1656494140625 L 7.1656494140625 4.777099609375 L 0 12.01440525054932 L 2.3885498046875 14.40295600891113 L 7.1656494140625 9.55419921875 L 9.55419921875 11.9427490234375 L 19.1083984375 2.3885498046875 L 16.79150581359863 0 Z M 0 16.7198486328125 L 0 19.1083984375 L 19.1083984375 19.1083984375 L 19.1083984375 16.7198486328125 L 0 16.7198486328125 Z">
+						</path>
+					</svg>
+					<svg class="Side_Rectangle_fe" width="6" height="39" viewBox="0 0 6 39">
+						<path fill="rgba(53,178,57,1)" d="M6,0H6A0,0,0,0,1,6,0V39a0,0,0,0,1,0,0H6a6,6,0,0,1-6-6V6A6,6,0,0,1,6,0Z"/>
+					</svg>
 				</div>
+
+				<div class="Spent_Area_Class">
+					<svg class="Rectangle_fg">
+						<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Rectangle_fg_Class" rx="5" ry="5" x="0" y="0" width="300" height="39">
+						</rect>
+					</svg>
+					<div class="Text_fh_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(145, companionSettings.currencySymbol + numberWithCommas(getTotalSpent()), 20, 'px', 'normal', 'SF Pro Text') }">
+						<span style="user-select: text;">{{companionSettings.currencySymbol}}{{numberWithCommas(getTotalSpent())}}</span>
+					</div>
+					<div class="Title_fi_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(215, tryTranslate('Spent') + ' ' + companionSettings.currencySymbol + numberWithCommas(getTotalSpent()), 20, 'px', 'bold', 'SF Pro Text') }">
+						<span>{{tryTranslate('Spent')}}</span>
+					</div>
+					<svg class="Dollars_Icon" viewBox="2.571 9.726 24.622 15.576">
+						<path fill="rgba(253,53,53,1)" class="Dollars_Icon_Class" d="M 25.8978157043457 22.05605888366699 L 25.93474769592285 10.98347949981689 L 5.816327571868896 10.99579048156738 L 5.81567907333374 9.725833892822266 L 27.19239044189453 9.725833892822266 L 27.19239044189453 22.05670738220215 L 25.89781379699707 22.05605888366699 Z M 25.2453441619873 24.00440406799316 L 23.951416015625 24.00310897827148 L 23.98834800720215 12.93052673339844 L 3.869927406311035 12.94348621368408 L 3.869279384613037 11.67353057861328 L 25.24599075317383 11.67353057861328 L 25.24599075317383 24.00440406799316 Z M 23.33911514282227 25.30221939086914 L 2.570816040039063 25.30221939086914 L 2.570816040039063 13.6199312210083 L 23.33913612365723 13.6199312210083 L 23.33913612365723 25.30221939086914 Z M 22.0406494140625 14.87757396697998 L 3.868652582168579 14.87757396697998 L 3.868652582168579 24.00440406799316 L 22.04002571105957 24.00440406799316 L 22.04002571105957 14.8775749206543 Z M 20.09425163269043 23.03120231628418 C 20.09425163269043 23.14588737487793 20.12276077270508 23.2527961730957 20.15969085693359 23.35517120361328 L 12.95463943481445 23.35517120361328 C 14.7468318939209 23.35517120361328 16.20015335083008 21.61222267150879 16.20015335083008 19.46107482910156 C 16.20015335083008 17.3099250793457 14.7468318939209 15.56697940826416 12.95463943481445 15.56697940826416 L 20.15904235839844 15.56697940826416 C 20.12211227416992 15.66935253143311 20.09360122680664 15.7762622833252 20.09360122680664 15.89159393310547 C 20.09360122680664 16.42938232421875 20.52901458740234 16.86479568481445 21.06680488586426 16.86479568481445 C 21.1821346282959 16.86479568481445 21.2890453338623 16.83628463745117 21.39141654968262 16.79935455322266 L 21.39141654968262 22.12214851379395 C 21.28904342651367 22.08586311340332 21.1821346282959 22.05670738220215 21.06680488586426 22.05670738220215 C 20.5296630859375 22.0573558807373 20.09425163269043 22.49341773986816 20.09425163269043 23.03120422363281 Z M 18.79578590393066 18.1094799041748 C 18.25799751281738 18.1094799041748 17.82258415222168 18.69003105163574 17.82258415222168 19.40729713439941 C 17.82258415222168 20.12456321716309 18.25799560546875 20.70511245727539 18.79578590393066 20.70511245727539 C 19.33357429504395 20.70511245727539 19.76898765563965 20.12456321716309 19.76898765563965 19.40729713439941 C 19.76898765563965 18.69003105163574 19.33357429504395 18.1094799041748 18.79578590393066 18.1094799041748 Z M 14.31336212158203 17.12137985229492 C 14.32308387756348 17.14016723632813 14.33085632324219 17.16543769836426 14.33733749389648 17.1965389251709 C 14.3444652557373 17.22764015197754 14.3489990234375 17.26716423034668 14.35094451904297 17.3144645690918 C 14.35418319702148 17.36176300048828 14.35547828674316 17.42072677612305 14.35547828674316 17.4913501739502 C 14.35547828674316 17.56974983215332 14.35353469848633 17.6364860534668 14.34964752197266 17.69026565551758 C 14.34511184692383 17.74469375610352 14.33798408508301 17.78940200805664 14.32955932617188 17.82439041137695 C 14.31919288635254 17.86002731323242 14.30623245239258 17.88594436645508 14.28938674926758 17.90149307250977 C 14.27189254760742 17.91769218444824 14.2479190826416 17.92611694335938 14.21811485290527 17.92611694335938 C 14.18831062316895 17.92611694335938 14.14165878295898 17.90732574462891 14.07621574401855 17.86974334716797 C 14.01077461242676 17.83151626586914 13.93107795715332 17.79134750366211 13.83712768554688 17.74728393554688 C 13.74317741394043 17.70322418212891 13.63302803039551 17.66240310668945 13.50862503051758 17.62612152099609 C 13.38422203063965 17.5898380279541 13.24815368652344 17.57169342041016 13.09912872314453 17.57169342041016 C 12.98250007629395 17.57169342041016 12.88142204284668 17.58530044555664 12.79524612426758 17.61380958557129 C 12.70842361450195 17.64231872558594 12.63585472106934 17.68119430541992 12.57818794250488 17.73108673095703 C 12.51987457275391 17.78097534179688 12.47646331787109 17.84123420715332 12.44860076904297 17.91056442260742 C 12.42009162902832 17.98054122924805 12.40583801269531 18.0550537109375 12.40583801269531 18.13280487060547 C 12.40583801269531 18.24943542480469 12.43758583068848 18.3498649597168 12.50108337402344 18.43539237976074 C 12.5645809173584 18.52027320861816 12.64946174621582 18.5960807800293 12.75701904296875 18.66217041015625 C 12.86392784118652 18.72890853881836 12.98509216308594 18.79046249389648 13.11986351013184 18.84877586364746 C 13.2546329498291 18.9070930480957 13.39264488220215 18.96864318847656 13.53324508666992 19.03279113769531 C 13.67384719848633 19.09823226928711 13.81185722351074 19.17144775390625 13.9472770690918 19.2543830871582 C 14.08269500732422 19.33667182922363 14.20321083068848 19.43515777587891 14.30817794799805 19.54984283447266 C 14.41378974914551 19.66517639160156 14.49931716918945 19.79994583129883 14.56411170959473 19.95545196533203 C 14.62890625 20.1109561920166 14.66130256652832 20.29367446899414 14.66130256652832 20.50490188598633 C 14.66130256652832 20.78027725219727 14.60946846008301 21.02260208129883 14.50709342956543 21.22994041442871 C 14.40471839904785 21.43793106079102 14.26541328430176 21.61222267150879 14.08917427062988 21.75153160095215 C 13.91293716430664 21.89083671569824 13.70818901062012 21.99515151977539 13.47298812866211 22.06513023376465 C 13.44318389892578 22.0742015838623 13.41078567504883 22.07808876037598 13.38033294677734 22.0852165222168 L 13.38033294677734 22.79405975341797 L 12.74211692810059 22.79405975341797 L 12.74211692810059 22.16880226135254 C 12.73369216918945 22.16880226135254 12.72656631469727 22.17074584960938 12.71814346313477 22.17074584960938 C 12.53736877441406 22.17074584960938 12.36890602111816 22.15584373474121 12.21339988708496 22.12668800354004 C 12.05789566040039 22.09688186645508 11.92053413391113 22.06124687194824 11.80196189880371 22.02042579650879 C 11.68274116516113 21.97895622253418 11.5836067199707 21.93489837646484 11.50391006469727 21.88954162597656 C 11.42356491088867 21.84418487548828 11.36654853820801 21.80401420593262 11.3315601348877 21.7690258026123 C 11.29657173156738 21.73403739929199 11.27130126953125 21.68349838256836 11.25639915466309 21.61741065979004 C 11.24149703979492 21.55132102966309 11.23372077941895 21.4554271697998 11.23372077941895 21.33102035522461 C 11.23372077941895 21.2474365234375 11.23631286621094 21.17681121826172 11.24214553833008 21.12044143676758 C 11.24732780456543 21.06342315673828 11.25639915466309 21.01742172241211 11.26870918273926 20.98178482055664 C 11.28101921081543 20.94679641723633 11.29721832275391 20.9215259552002 11.31730651855469 20.9066219329834 C 11.3373908996582 20.89236831665039 11.36136436462402 20.88459014892578 11.38792991638184 20.88459014892578 C 11.42615699768066 20.88459014892578 11.47928810119629 20.9066219329834 11.54861831665039 20.95197677612305 C 11.61730003356934 20.99603652954102 11.7060661315918 21.04592895507813 11.81427192687988 21.09970474243164 C 11.92247772216797 21.15348625183105 12.05141830444336 21.20272827148438 12.20173835754395 21.24743461608887 C 12.35141181945801 21.29214286804199 12.52570724487305 21.31482124328613 12.72267913818359 21.31482124328613 C 12.85226631164551 21.31482124328613 12.96889495849609 21.29927062988281 13.07126808166504 21.26816940307617 C 13.17428970336914 21.23706817626953 13.2611141204834 21.19300651550293 13.33303451538086 21.13663864135742 C 13.4043083190918 21.07962036132813 13.45873641967773 21.00899505615234 13.49696159362793 20.92541122436523 C 13.53519248962402 20.84117889404297 13.55397987365723 20.74787521362305 13.55397987365723 20.64485549926758 C 13.55397987365723 20.525634765625 13.52093505859375 20.42325973510742 13.45678901672363 20.33838272094727 C 13.39199638366699 20.25285339355469 13.30776405334473 20.17769241333008 13.20344543457031 20.11095428466797 C 13.09912872314453 20.04486465454102 12.98120498657227 19.98266220092773 12.84902572631836 19.92499732971191 C 12.7161979675293 19.86668395996094 12.58013153076172 19.80512809753418 12.43952941894531 19.74033355712891 C 12.29892730712891 19.67554092407227 12.16221237182617 19.60167694091797 12.03003311157227 19.51939010620117 C 11.89785385131836 19.43710136413574 11.77928352355957 19.33861541748047 11.67561149597168 19.2232837677002 C 11.57194328308105 19.10859680175781 11.48706245422363 18.97253036499023 11.42226791381836 18.81637954711914 C 11.35747528076172 18.65958023071289 11.3250789642334 18.47167778015137 11.3250789642334 18.2526741027832 C 11.3250789642334 18.00127410888672 11.37172889709473 17.78032875061035 11.46503257751465 17.59048461914063 C 11.55833625793457 17.39999008178711 11.68403434753418 17.24189376831055 11.84213066101074 17.1161937713623 C 12.0002269744873 16.99114227294922 12.18683242797852 16.89654541015625 12.40130043029785 16.83434295654297 C 12.51144981384277 16.80259323120117 12.62548446655273 16.77926826477051 12.74276161193848 16.76371765136719 L 12.74276161193848 16.09310340881348 L 13.38097953796387 16.09310340881348 L 13.38097953796387 16.76371765136719 C 13.40624809265137 16.7669563293457 13.4315185546875 16.76566123962402 13.45678901672363 16.7695484161377 C 13.58119201660156 16.78833961486816 13.69782066345215 16.81360816955566 13.80602645874023 16.84600448608398 C 13.91358375549316 16.87840270996094 14.00947761535645 16.91403961181641 14.09306144714355 16.95485877990723 C 14.17729187011719 16.99503135681152 14.23236656188965 17.028076171875 14.26022911071777 17.05529022216797 C 14.28549957275391 17.07926177978516 14.30364227294922 17.1019401550293 14.3133602142334 17.12137985229492 Z M 9.709798812866211 19.4610767364502 C 9.709798812866211 21.6115779876709 11.1624698638916 23.35517120361328 12.95466232299805 23.35517120361328 L 5.750239372253418 23.35517120361328 C 5.786523818969727 23.25279998779297 5.815680980682373 23.14588928222656 5.815680980682373 23.03120422363281 C 5.815680980682373 22.49341773986816 5.379619121551514 22.0573558807373 4.842480182647705 22.0573558807373 C 4.727147102355957 22.0573558807373 4.620237827301025 22.08651542663574 4.517864227294922 22.1227970123291 L 4.517864227294922 16.80000305175781 C 4.620237827301025 16.83693313598633 4.727147102355957 16.86544418334961 4.842480182647705 16.86544418334961 C 5.380267143249512 16.86544418334961 5.815680980682373 16.43003082275391 5.815680980682373 15.89224243164063 C 5.815680980682373 15.77691078186035 5.786523818969727 15.67000007629395 5.750239372253418 15.567626953125 L 12.95464134216309 15.567626953125 C 11.16245079040527 15.56697940826416 9.709775924682617 17.31057357788086 9.709775924682617 19.4610767364502 Z M 7.113517284393311 18.10948181152344 C 6.575729846954346 18.10948181152344 6.140316963195801 18.69003295898438 6.140316963195801 19.40729904174805 C 6.140316963195801 20.12456321716309 6.576378345489502 20.70511436462402 7.113517284393311 20.70511436462402 C 7.651304244995117 20.70511436462402 8.08671760559082 20.12456321716309 8.08671760559082 19.40729904174805 C 8.08671760559082 18.69003295898438 7.651304244995117 18.10948181152344 7.113517284393311 18.10948181152344 Z">
+						</path>
+					</svg>
+					<svg class="Side_Rectangle_fk" width="6" height="39" viewBox="0 0 6 39">
+						<path fill="rgba(253,53,53,1)" d="M6,0H6A0,0,0,0,1,6,0V39a0,0,0,0,1,0,0H6a6,6,0,0,1-6-6V6A6,6,0,0,1,6,0Z"/>
+					</svg>
+				</div>
+
 			</div>
+
 		</div>
+
+		<div id="modalContent" v-show="shouldDisplayModals()">
+	    <!-- ############################ LOAD CREATE CARDS MODAL ############################ -->
+	    <iframe name="create-modal" class="modalFrame" v-show="modals['create'].visible" src="./modals/create.html" width="1275" height="795" frameborder="0"></iframe>
+			<!-- ############################ LOAD DELETE CARDS MODAL ############################ -->
+	    <iframe name="delete-modal" class="modalFrame" v-show="modals['delete'].visible" src="./modals/delete.html" width="1275" height="795" frameborder="0"></iframe>
+	  </div>
+
 	</div>
 
-	<script src="./js/overview.js" type="text/javascript"></script>
+	<script src="../../../../../../../utils/scripts/prototype-extensions.js" type="text/javascript"></script>
+
+	<script src="./js/cards.js" type="text/javascript"></script>
+	<script src="../../../../../../../utils/scripts/button-transitions.js" type="text/javascript"></script>
+	<script src="../../../../../../../utils/scripts/spinner-colors.js" type="text/javascript"></script>
+
+	<script>
+		const PRODUCT_CARD_CALLBACK = function(key, options) {
+			const element = options.$trigger[0];
+			let card = window.getCardByID(element.id);
+			switch (key) {
+				case 'view':
+					editCard(card);
+					break;
+				case 'refresh-tracking':
+					window.refreshTracking(window.cards.indexOf(card), true);
+					break;
+				case 'copy':
+					card.selected = true;
+					copyCards();
+					window.setAllCardsSelected(false);
+					break;
+				case 'duplicate':
+					card.selected = true;
+					duplicateCards();
+					break;
+				case 'remove':
+					card.selected = true;
+					displayRemovePrompt();
+					break;
+				case 'search_on_market_lookup':
+					// TODO: add functionality
+					break;
+			}
+		};
+
+		const PRODUCT_CARD_ITEMS = {
+			"view": { name: "View Card", icon: "fas fa-eye" },
+			"refresh-tracking": { name: "Refresh Tracking", icon: "fas fa-redo-alt" },
+			"copy": { name: "Copy Card(s)", icon: "far fa-clipboard" },
+			"duplicate": { name: "Duplicate Card(s)", icon: "fas fa-clone" },
+			"remove": { name: "Remove Card(s)", icon: "fas fa-trash-alt" },
+			"search_on_market_lookup": { name: "Search on Market Lookup", icon: "far fa-search" }
+		};
+
+		const CONTEXT_MENUS = [
+			{
+				selector: '.Bottom_Section_Class',
+				callback: function(key, options) {
+					switch (key) {
+						case 'paste':
+							pasteCards();
+							break;
+					}
+				},
+				items: {
+					"paste": { name: "Paste Card(s)", icon: "far fa-clipboard" }
+				}
+			},
+			{
+				selector: '.Row_1_Class',
+				callback: PRODUCT_CARD_CALLBACK,
+				items: PRODUCT_CARD_ITEMS
+			},
+			{
+				selector: '.Product_Card_1_dy_Class',
+				callback: PRODUCT_CARD_CALLBACK,
+				items: PRODUCT_CARD_ITEMS
+			}
+		];
+	</script>
+	<script src="../../../../../../../utils/scripts/context-menu.js" type="text/javascript"></script>
 
 </body>
 </html>

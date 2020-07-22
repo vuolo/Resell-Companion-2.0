@@ -4,7 +4,7 @@ function setupContextMenu() {
   });
 }
 
-window.setContextMenuTheme = async (theme) => {
+window.setContextMenuTheme = async (theme = window.parent.companionSettings ? window.parent.companionSettings.theme : window.parent.parent.companionSettings.theme) => {
   $.contextMenu('destroy');
   setupContextMenu();
   // wait for context menu to be rendered

@@ -1,0 +1,175 @@
+.mediaViewInfo {
+	--web-view-name: Rewrite – Delete Modal;
+	--web-view-id: Rewrite___Delete_Modal;
+	--web-enable-deep-linking: true;
+}
+:root {
+	--web-view-ids: Rewrite___Delete_Modal;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	border: none;
+}
+.Rewrite___Delete_Modal_Class {
+	position: absolute;
+	width: 1287px;
+	height: 795px;
+	/* background-color: rgba(255,255,255,1); */
+	overflow: hidden;
+	--web-view-name: Rewrite – Delete Modal;
+	--web-view-id: Rewrite___Delete_Modal;
+	--web-enable-deep-linking: true;
+}
+.Modal_Class {
+	position: absolute;
+	width: 1287px;
+	height: 795px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+.Modal_Shader {
+	position: absolute;
+	overflow: visible;
+	width: 1287px;
+	height: 795px;
+	left: 0px;
+	top: 0px;
+}
+.Modal_Rectangle {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 505px;
+	height: 265px;
+	left: 391px;
+	top: 265px;
+}
+.No_Button_Class {
+	position: absolute;
+	width: 107px;
+	height: 36px;
+	left: 653px;
+	top: 469px;
+	overflow: visible;
+}
+.Rectangle {
+	position: absolute;
+	overflow: visible;
+	width: 107px;
+	height: 36px;
+	left: 0px;
+	top: 0px;
+}
+.No_Class {
+	position: absolute;
+	left: 0px;
+	top: 9.5px;
+	overflow: visible;
+	width: 107px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 15px;
+	color: rgba(253,53,53,1);
+}
+.Yes_Button_Class {
+	position: absolute;
+	width: 107px;
+	height: 36px;
+	left: 527px;
+	top: 469px;
+	overflow: visible;
+}
+.Rectangle_d {
+	position: absolute;
+	overflow: visible;
+	width: 107px;
+	height: 36px;
+	left: 0px;
+	top: 0px;
+}
+.Yes_Class {
+	position: absolute;
+	left: 0px;
+	top: 9.5px;
+	overflow: visible;
+	width: 107px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 15px;
+	color: rgba(53,178,57,1);
+}
+.Are_you_sure_you_want_to_delet_Class {
+	position: absolute;
+	left: 527px;
+	top: 376px;
+	overflow: visible;
+	width: 335px;
+	white-space: pre-wrap;
+	line-height: 22px;
+	margin-top: -1px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: rgba(0,0,0,1);
+}
+.Warning_Icon {
+	overflow: visible;
+	position: absolute;
+	width: 76.841px;
+	height: 76.842px;
+	left: 431.545px;
+	top: 360.545px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Header_Class {
+	position: absolute;
+	width: 460.185px;
+	height: 48.124px;
+	left: 417.865px;
+	top: 281px;
+	overflow: visible;
+}
+.Browser_Close_Button {
+	overflow: visible;
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	left: 440.185px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Red_Bar {
+	position: absolute;
+	overflow: visible;
+	width: 117px;
+	height: 3px;
+	left: 25.135px;
+	top: 39px;
+}
+.Are_you_sure__Class {
+	position: absolute;
+	left: 0px;
+	top: 0.124px;
+	overflow: visible;
+	width: 285px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -1px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: 900;
+	font-size: 40px;
+	color: rgba(29,29,29,1);
+}

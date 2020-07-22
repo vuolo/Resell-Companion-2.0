@@ -2,7 +2,7 @@ const request = require('request-promise');
 const cheerio = require('cheerio');
 
 // this function requires a StockX search result
-async function updateMarket(result) {
+async function updateMarket(result, markets = { 'goat': true, 'stadiumgoods': true, 'flightclub': true }) {
   // result Obj looks like this: { product: product, variants: [], storesCrawled: [] }
   // clear result variants
   while (result.variants.length > 0) result.variants.pop();
@@ -39,9 +39,9 @@ async function updateMarket(result) {
   }
   result.storesCrawled.push("stockx");
 
-  tryMatchAndApplyMarkets("goat", result);
-  tryMatchAndApplyMarkets("stadiumgoods", result);
-  tryMatchAndApplyMarkets("flightclub", result);
+  if (markets['goat']) tryMatchAndApplyMarkets("goat", result);
+  if (markets['stadiumgoods']) tryMatchAndApplyMarkets("stadiumgoods", result);
+  if (markets['flightclub']) tryMatchAndApplyMarkets("flightclub", result);
 }
 
 // requires an initialized StockX result (modifying)
@@ -129,8 +129,8 @@ async function fetchVariants(marketplace, product, options = {}) {
 // ==== STOCKX API ==== \\
 
 async function searchStockX(query, options = {}) {
-  const { limit, dataType, proxy } = options;
-  let uri = dataType == undefined ? `https://stockx.com/api/browse?&_search=${query}` : `https://stockx.com/api/browse?&_search=${query}&dataType=${dataType}`;
+  const { limit, dataType, proxy, isTradingCard = false } = options;
+  let uri = dataType == undefined ? `https://stockx.com/api/browse?&_search=${query + (isTradingCard ? ' trading card' : '')}` : `https://stockx.com/api/browse?&_search=${query}&dataType=${dataType}`;
 
   const requestOptions = {
     uri: uri,
@@ -168,6 +168,7 @@ async function searchStockX(query, options = {}) {
     if (!target) return [];
     const productArray = target.map(product => {
       const image = new URL(product.media.imageUrl, 'https://stockx.com').href;
+      console.log(product);
       return {
         name: product.title,
         retail: product.retailPrice,

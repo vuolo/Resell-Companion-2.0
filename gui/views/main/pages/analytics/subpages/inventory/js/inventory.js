@@ -11,58 +11,58 @@ window.tableSort = {
 };
 
 window.inventoryItems = [
-  {
-    name: "Adidas Yeezy Boost 700 Wave Runner",
-    color: "",
-    styleCode: "",
-    size: "9.5",
-    imageURL: "https://stockx-360.imgix.net/Adidas-Yeezy-Wave-Runner-700-Solid-Grey/Images/Adidas-Yeezy-Wave-Runner-700-Solid-Grey/Lv2/img02.jpg?auto=format,compress&w=559&q=90&dpr=2&updated_at=1538080256",
-    notes: "",
-    marketplaceData: {
-      product: {},
-      size: {},
-      media360: []
-    },
-    suggestions: {
-      items: [],
-      itemsOpened: false,
-      isSearchingForItems: false,
-      sizes: [],
-      sizesOpened: false,
-      isSearchingForSizes: false
-    },
-    purchase: {
-      price: 220,
-      estimatedResell: 380,
-      store: "Adidas",
-      date: "1999-01-26",
-      tracking: {
-        number: "9274890198179002075020",
-        carrier: "usps",
-        isTracking: false,
-        details: {}
-      }
-    },
-    sale: {
-      price: null,
-      fees: {
-        amount: null,
-        isPercent: true
-      },
-      platform: "",
-      date: "1999-01-26",
-      tracking: {
-        number: "",
-        carrier: "unselected",
-        isTracking: false,
-        details: {}
-      }
-    },
-    quantity: 1,
-    selected: false,
-    isHovering: false,
-    id: "TEST-INVENTORY-ITEM"
-  }
+  // {
+  //   name: "Adidas Yeezy Boost 700 Wave Runner",
+  //   color: "",
+  //   styleCode: "",
+  //   size: "9.5",
+  //   imageURL: "https://stockx-360.imgix.net/Adidas-Yeezy-Wave-Runner-700-Solid-Grey/Images/Adidas-Yeezy-Wave-Runner-700-Solid-Grey/Lv2/img02.jpg?auto=format,compress&w=559&q=90&dpr=2&updated_at=1538080256",
+  //   notes: "",
+  //   marketplaceData: {
+  //     product: {},
+  //     size: {},
+  //     media360: []
+  //   },
+  //   suggestions: {
+  //     items: [],
+  //     itemsOpened: false,
+  //     isSearchingForItems: false,
+  //     sizes: [],
+  //     sizesOpened: false,
+  //     isSearchingForSizes: false
+  //   },
+  //   purchase: {
+  //     price: 220,
+  //     estimatedResell: 380,
+  //     store: "Adidas",
+  //     date: "1999-01-26",
+  //     tracking: {
+  //       number: "9274890198179002075020",
+  //       carrier: "usps",
+  //       isTracking: false,
+  //       details: {}
+  //     }
+  //   },
+  //   sale: {
+  //     price: null,
+  //     fees: {
+  //       amount: null,
+  //       isPercent: true
+  //     },
+  //     platform: "",
+  //     date: "1999-01-26",
+  //     tracking: {
+  //       number: "",
+  //       carrier: "unselected",
+  //       isTracking: false,
+  //       details: {}
+  //     }
+  //   },
+  //   quantity: 1,
+  //   selected: false,
+  //   isHovering: false,
+  //   id: "TEST-INVENTORY-ITEM"
+  // }
 ];
 var displayedInventoryItems = [];
 var copiedInventoryItemIDs = [];
@@ -107,7 +107,8 @@ window.editInventoryItem = async (inventoryItem) => {
   window.parent.parent.memory.syncObject(window.frames['create-modal'].modalOptions, window.parent.parent.memory.copyObj(inventoryItem));
   window.frames['create-modal'].resetMarketplaceResult();
   window.frames['create-modal'].marketplaceResult.product = window.frames['create-modal'].modalOptions.marketplaceData.product;
-  setTimeout(window.frames['create-modal'].setupMarketplaceResult, 500);
+  window.frames['create-modal'].setupMarketplaceResult();
+  window.frames['create-modal'].setupMarketplaceResult();
   if (window.frames['create-modal'].modalOptions.purchase.tracking.isTracking) setTimeout(window.refreshTracking(-2, true, window.frames['create-modal'].modalOptions.purchase.tracking), 50);
   openModal('create');
 };
@@ -228,7 +229,7 @@ const inventoryApp = new Vue({
       else if (e.shiftKey) setMultipleSelectedInventoryItems(inventoryItemIndex);
       else editInventoryItem(displayedInventoryItems[inventoryItemIndex]);
     },
-    applyDateSearch: function(category = this.dateSearch.category) {
+    applyDateSearch: function(category = this.dateSearch.category, changeSorting = false) {
       this.dateSearch.category = category;
       switch (category) {
         case 'today':
@@ -261,11 +262,12 @@ const inventoryApp = new Vue({
           // do nothing
           break;
       }
-      this.updateDateSearch();
+      this.updateDateSearch(changeSorting);
     },
-    updateDateSearch: function() {
+    updateDateSearch: function(changeSorting = false) {
       this.dateSearch.display = `${window.parent.parent.frames['home-frame'].homeApp.formatScheduleDate(new Date(new Date(this.dateSearch.start).getTime() + (24 * 60 * 60 * 1000)).toString())} – ${window.parent.parent.frames['home-frame'].homeApp.formatScheduleDate(new Date(new Date(this.dateSearch.end).getTime() + (24 * 60 * 60 * 1000)).toString())}`;
-      refreshInventoryItemsSearch();
+      if (changeSorting) toggleSortInventoryItemsByColumn('purchase.date', true);
+      else refreshInventoryItemsSearch();
     },
     getDisplayedSortDirection: function(key) {
       return window.tableSort.key == key ? (window.tableSort.direction == "ascending" ? "↑" : (window.tableSort.direction == "descending" ? "↓" : "") ) : "";
@@ -302,14 +304,20 @@ const inventoryApp = new Vue({
       switch (formattedStore) {
         case 'adidas':
           return 'adidas-full';
-        case 'supreme':
-          return 'Supreme';
         case 'nike':
           return 'Nike';
         case 'offwhite':
           return 'Off White';
         case 'shopify':
           return 'Shopify-full';
+        case 'snkrs':
+          return 'SNKRS';
+        case 'supreme':
+          return 'Supreme';
+        case 'yeezy':
+          return 'Yeezy';
+        case 'yeezysupply':
+          return 'Yeezy';
       }
       return "";
     },
@@ -431,11 +439,12 @@ function isInventoryItemDisplayable(inventoryItem) {
   return inventoryApp.searchTerm.length == 0 || searchName.toLowerCase().includes(inventoryApp.searchTerm.toLowerCase()) || searchSize.toLowerCase().includes(inventoryApp.searchTerm.toLowerCase()) || searchStore.toLowerCase().includes(inventoryApp.searchTerm.toLowerCase());
 };
 
-function toggleSortInventoryItemsByColumn(key) {
+function toggleSortInventoryItemsByColumn(key, forceSameColumn = false) {
   var isSameColumn = window.tableSort.key == key;
   window.tableSort.key = key;
-  window.tableSort.direction = isSameColumn ? (window.tableSort.direction == 'ascending' ? 'descending' : 'ascending') : 'descending';
+  window.tableSort.direction = !forceSameColumn && isSameColumn ? (window.tableSort.direction == 'ascending' ? 'descending' : 'ascending') : 'descending';
   refreshInventoryItemsSearch();
+  inventoryApp.$forceUpdate();
 }
 
 function sortDisplayedInventoryItems() {
@@ -447,6 +456,7 @@ function sortDisplayedInventoryItems() {
       'size': displayedInventoryItem.size.toLowerCase() || window.parent.parent.tryTranslate('N/A'),
       'purchase.store': displayedInventoryItem.purchase.store.toLowerCase()  || window.parent.parent.tryTranslate('N/A'),
       'purchase.price': displayedInventoryItem.purchase.price || 0,
+      'purchase.estimatedResell': displayedInventoryItem.purchase.estimatedResell || 0,
       'purchase.tracking.details.status': displayedInventoryItem.purchase.tracking.details.status || 0,
       'purchase.date': displayedInventoryItem.purchase.date,
       id: displayedInventoryItem.id
@@ -545,7 +555,10 @@ function copyInventoryItems() {
 
 function pasteInventoryItems() {
   let outInventoryItems = [];
-  for (var copiedInventoryItemID of copiedInventoryItemIDs) outInventoryItems.push(window.getInventoryItemByID(copiedInventoryItemID));
+  for (var copiedInventoryItemID of copiedInventoryItemIDs) {
+    let inventoryItem = window.getInventoryItemByID(copiedInventoryItemID);
+    if (inventoryItem) outInventoryItems.push(inventoryItem);
+  }
   window.setAllInventoryItemsSelected(false, false);
   duplicateInventoryItems(outInventoryItems);
 }

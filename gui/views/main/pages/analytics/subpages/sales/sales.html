@@ -296,12 +296,17 @@
 
 
 					<div class="Filter_Area_Class">
+
+						<div class="Sold_Class" style="text-align: right; left: -60px; top: 9px;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+							<span class="clickable" onclick="toggleSortSalesByColumn('sale.date')">{{getDisplayedSortDirection('sale.date')}}</span>
+						</div>
+
 						<svg class="Rectangle_es">
 							<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Rectangle_es_Class" rx="18" ry="18" x="0" y="0" width="330" height="36">
 							</rect>
 						</svg>
 
-						<select v-model="dateSearch.category" @change="applyDateSearch()" class="Search_Bar_Class special-focus" v-bind:class="{ 'white-arrow': companionSettings.theme == 'dark', 'black-arrow': companionSettings.theme == 'light', 'special-focus-dark': companionSettings.theme == 'dark' }" style="filter: none; left: 0px; top: 0px; width: 165px; padding-left: 0px; text-indent: 15px; padding-right: 25px; border-top-right-radius: 0px; border-bottom-right-radius: 0px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+						<select v-model="dateSearch.category" @change="applyDateSearch(dateSearch.category, true)" class="Search_Bar_Class special-focus" v-bind:class="{ 'white-arrow': companionSettings.theme == 'dark', 'black-arrow': companionSettings.theme == 'light', 'special-focus-dark': companionSettings.theme == 'dark' }" style="filter: none; left: 0px; top: 0px; width: 165px; padding-left: 0px; text-indent: 15px; padding-right: 25px; border-top-right-radius: 0px; border-bottom-right-radius: 0px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
 							<option value="today">{{tryTranslate('Today')}}</option>
 							<option value="last7d">{{tryTranslate('Last 7 Days')}}</option>
 							<option value="last4w">{{tryTranslate('Last 4 Weeks')}}</option>
@@ -330,7 +335,7 @@
 						<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Rectangle_g_Class" rx="10" ry="10" x="0" y="0" width="330" height="36">
 						</rect>
 					</svg> -->
-					<svg class="Rectangle_g" style="top: -1px; transform: scaleX(1.6) scaleY(1.6);" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="358" height="60.016" viewBox="0 0 358 60.016">
+					<svg class="Rectangle_g" style="top: -1px; transform: scaleX(1.6) scaleY(1.6); pointer-events: none;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="358" height="60.016" viewBox="0 0 358 60.016">
 					  <defs>
 					    <filter id="Rectangle" x="0" y="0" width="358" height="60.016" filterUnits="userSpaceOnUse">
 					      <feOffset dy="3" input="SourceAlpha"/>
@@ -344,8 +349,8 @@
 					    <path id="Rectangle-2" data-name="Rectangle" d="M9.984-.328,237.742,0l16.367-7.016L269.578,0H330a10,10,0,0,1,10,10V25a10,10,0,0,1-10,10H10A10,10,0,0,1,0,25V10A10.272,10.272,0,0,1,9.984-.328Z" transform="translate(9 13.02)" v-bind:fill="getThemeColor('rgba(255,255,255,1)')"/>
 					  </g>
 					</svg>
-					<input v-model="dateSearch.start" @change="updateDateSearch()" type="date" class="Search_Bar_Class special-focus" v-bind:class="{ 'white-input-icon': companionSettings.theme == 'dark' }" style="left: 0px; top: 0px; width: 165px; padding-left: 8px; padding-right: 13px; text-indent: 0px; border-radius: 10px; border-top-right-radius: 0px; border-bottom-right-radius: 0px; filter: none;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
-					<input v-model="dateSearch.end" @change="updateDateSearch()" type="date" class="Search_Bar_Class special-focus" v-bind:class="{ 'white-input-icon': companionSettings.theme == 'dark' }" style="left: 165px; top: 0px; width: 165px; padding-left: 16px; padding-right: 3px; text-indent: 0px; border-radius: 10px; border-top-left-radius: 0px; border-bottom-left-radius: 0px; filter: none;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+					<input v-model="dateSearch.start" @change="applyDateSearch('custom', true)" type="date" class="Search_Bar_Class special-focus" v-bind:class="{ 'white-input-icon': companionSettings.theme == 'dark' }" style="left: 0px; top: 0px; width: 165px; padding-left: 8px; padding-right: 13px; text-indent: 0px; border-radius: 10px; border-top-right-radius: 0px; border-bottom-right-radius: 0px; filter: none;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+					<input v-model="dateSearch.end" @change="applyDateSearch('custom', true)" type="date" class="Search_Bar_Class special-focus" v-bind:class="{ 'white-input-icon': companionSettings.theme == 'dark' }" style="left: 165px; top: 0px; width: 165px; padding-left: 16px; padding-right: 3px; text-indent: 0px; border-radius: 10px; border-top-left-radius: 0px; border-bottom-left-radius: 0px; filter: none;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
 					<div class="Arrow_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
 						<span>→</span>
 					</div>
@@ -359,7 +364,7 @@
 					<div class="Text_fa_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(145, companionSettings.currencySymbol + numberWithCommas(getTotalRevenue()), 20, 'px', 'normal', 'SF Pro Text') }">
 						<span style="user-select: text;">{{companionSettings.currencySymbol}}{{numberWithCommas(getTotalRevenue())}}</span>
 					</div>
-					<div class="Title_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+					<div class="Title_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: tryTranslate('Revenue') + ' ' + confineTextWidth(215, companionSettings.currencySymbol + numberWithCommas(getTotalRevenue()), 20, 'px', 'bold', 'SF Pro Text') }">
 						<span>{{tryTranslate('Revenue')}}</span>
 					</div>
 					<svg class="Suit_Case_Icon" viewBox="0 2.25 24.036 21.032">
@@ -379,7 +384,7 @@
 					<div class="Text_fb_Class" v-bind:style="{ color: getColor(getProfitColor(getTotalProfit())), fontSize: confineTextWidth(145, companionSettings.currencySymbol + numberWithCommas(getTotalProfit()), 20, 'px', 'normal', 'SF Pro Text') }">
 						<span style="user-select: text;">{{companionSettings.currencySymbol}}{{numberWithCommas(getTotalProfit())}}</span>
 					</div>
-					<div class="Title_fc_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+					<div class="Title_fc_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(215, tryTranslate('Profit') + ' ' + companionSettings.currencySymbol + numberWithCommas(getTotalProfit()), 20, 'px', 'bold', 'SF Pro Text') }">
 						<span>{{tryTranslate('Profit')}}</span>
 					</div>
 					<svg class="Graph_Icon" viewBox="0 0 19.108 19.108">
@@ -399,7 +404,7 @@
 					<div class="Text_fh_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(145, companionSettings.currencySymbol + numberWithCommas(getTotalSpent()), 20, 'px', 'normal', 'SF Pro Text') }">
 						<span style="user-select: text;">{{companionSettings.currencySymbol}}{{numberWithCommas(getTotalSpent())}}</span>
 					</div>
-					<div class="Title_fi_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+					<div class="Title_fi_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(215, tryTranslate('Spent') + ' ' + companionSettings.currencySymbol + numberWithCommas(getTotalSpent()), 20, 'px', 'bold', 'SF Pro Text') }">
 						<span>{{tryTranslate('Spent')}}</span>
 					</div>
 					<svg class="Dollars_Icon" viewBox="2.571 9.726 24.622 15.576">

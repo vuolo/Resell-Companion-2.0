@@ -11,58 +11,58 @@ window.tableSort = {
 };
 
 window.sales = [
-  {
-    name: "Adidas Yeezy Boost 700 Wave Runner",
-    color: "",
-    styleCode: "",
-    size: "XXXL",
-    imageURL: "https://stockx-360.imgix.net/Adidas-Yeezy-Wave-Runner-700-Solid-Grey/Images/Adidas-Yeezy-Wave-Runner-700-Solid-Grey/Lv2/img02.jpg?auto=format,compress&w=559&q=90&dpr=2&updated_at=1538080256",
-    notes: "",
-    marketplaceData: {
-      product: {},
-      size: {},
-      media360: []
-    },
-    suggestions: {
-      items: [],
-      itemsOpened: false,
-      isSearchingForItems: false,
-      sizes: [],
-      sizesOpened: false,
-      isSearchingForSizes: false
-    },
-    purchase: {
-      price: 220,
-      estimatedResell: 380,
-      store: "Adidas",
-      date: "1999-01-26",
-      tracking: {
-        number: "9274890198179002075020",
-        carrier: "usps",
-        isTracking: false,
-        details: {}
-      }
-    },
-    sale: {
-      price: 420,
-      fees: {
-        amount: 4.75,
-        isPercent: true
-      },
-      platform: "ebay",
-      date: "1999-01-26",
-      tracking: {
-        number: "9274890198179002075020",
-        carrier: "usps",
-        isTracking: false,
-        details: {}
-      }
-    },
-    quantity: 1,
-    selected: false,
-    isHovering: false,
-    id: "TEST-SALE"
-  }
+  // {
+  //   name: "Adidas Yeezy Boost 700 Wave Runner",
+  //   color: "",
+  //   styleCode: "",
+  //   size: "XXXL",
+  //   imageURL: "https://stockx-360.imgix.net/Adidas-Yeezy-Wave-Runner-700-Solid-Grey/Images/Adidas-Yeezy-Wave-Runner-700-Solid-Grey/Lv2/img02.jpg?auto=format,compress&w=559&q=90&dpr=2&updated_at=1538080256",
+  //   notes: "",
+  //   marketplaceData: {
+  //     product: {},
+  //     size: {},
+  //     media360: []
+  //   },
+  //   suggestions: {
+  //     items: [],
+  //     itemsOpened: false,
+  //     isSearchingForItems: false,
+  //     sizes: [],
+  //     sizesOpened: false,
+  //     isSearchingForSizes: false
+  //   },
+  //   purchase: {
+  //     price: 220,
+  //     estimatedResell: 380,
+  //     store: "Adidas",
+  //     date: "1999-01-26",
+  //     tracking: {
+  //       number: "9274890198179002075020",
+  //       carrier: "usps",
+  //       isTracking: false,
+  //       details: {}
+  //     }
+  //   },
+  //   sale: {
+  //     price: 420,
+  //     fees: {
+  //       amount: 4.75,
+  //       isPercent: true
+  //     },
+  //     platform: "ebay",
+  //     date: "1999-01-26",
+  //     tracking: {
+  //       number: "9274890198179002075020",
+  //       carrier: "usps",
+  //       isTracking: false,
+  //       details: {}
+  //     }
+  //   },
+  //   quantity: 1,
+  //   selected: false,
+  //   isHovering: false,
+  //   id: "TEST-SALE"
+  // }
 ];
 var displayedSales = [];
 var copiedSaleIDs = [];
@@ -225,7 +225,7 @@ const salesApp = new Vue({
       else if (e.shiftKey) setMultipleSelectedSales(saleIndex);
       else editSale(displayedSales[saleIndex]);
     },
-    applyDateSearch: function(category = this.dateSearch.category) {
+    applyDateSearch: function(category = this.dateSearch.category, changeSorting = false) {
       this.dateSearch.category = category;
       switch (category) {
         case 'today':
@@ -258,11 +258,12 @@ const salesApp = new Vue({
           // do nothing
           break;
       }
-      this.updateDateSearch();
+      this.updateDateSearch(changeSorting);
     },
-    updateDateSearch: function() {
+    updateDateSearch: function(changeSorting = false) {
       this.dateSearch.display = `${window.parent.parent.frames['home-frame'].homeApp.formatScheduleDate(new Date(new Date(this.dateSearch.start).getTime() + (24 * 60 * 60 * 1000)).toString())} – ${window.parent.parent.frames['home-frame'].homeApp.formatScheduleDate(new Date(new Date(this.dateSearch.end).getTime() + (24 * 60 * 60 * 1000)).toString())}`;
-      refreshSalesSearch();
+      if (changeSorting) toggleSortSalesByColumn('sale.date', true);
+      else refreshSalesSearch();
     },
     getDisplayedSortDirection: function(key) {
       return window.tableSort.key == key ? (window.tableSort.direction == "ascending" ? "↑" : (window.tableSort.direction == "descending" ? "↓" : "") ) : "";
@@ -424,11 +425,12 @@ function isSaleDisplayable(sale) {
   return salesApp.searchTerm.length == 0 || searchName.toLowerCase().includes(salesApp.searchTerm.toLowerCase()) || searchSize.toLowerCase().includes(salesApp.searchTerm.toLowerCase()) || searchPlatform.toLowerCase().includes(salesApp.searchTerm.toLowerCase());
 };
 
-function toggleSortSalesByColumn(key) {
+function toggleSortSalesByColumn(key, forceSameColumn = false) {
   var isSameColumn = window.tableSort.key == key;
   window.tableSort.key = key;
-  window.tableSort.direction = isSameColumn ? (window.tableSort.direction == 'ascending' ? 'descending' : 'ascending') : 'descending';
+  window.tableSort.direction = !forceSameColumn && isSameColumn ? (window.tableSort.direction == 'ascending' ? 'descending' : 'ascending') : 'descending';
   refreshSalesSearch();
+  salesApp.$forceUpdate();
 }
 
 function sortDisplayedSales() {
@@ -541,7 +543,10 @@ function copySales() {
 
 function pasteSales() {
   let outSales = [];
-  for (var copiedSaleID of copiedSaleIDs) outSales.push(window.getSaleByID(copiedSaleID));
+  for (var copiedSaleID of copiedSaleIDs) {
+    let sale = window.getSaleByID(copiedSaleID);
+    if (sale) outSales.push(sale);
+  }
   window.setAllSalesSelected(false, false);
   duplicateSales(outSales);
 }
