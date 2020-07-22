@@ -43,7 +43,7 @@
 
 
 							<div class="Lowest_Ask_Area_Class">
-								<div class="Flight_Club_Price_Class">
+								<div v-bind:index="variantIndex" marketplace="flightclub" class="Flight_Club_Price_Class variantResultPrice">
 									<svg class="Rectangle_ha">
 										<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Rectangle_ha_Class" rx="10" ry="10" x="0" y="0" width="111" height="37">
 										</rect>
@@ -52,7 +52,7 @@
 										<span v-bind:style="{ userSelect: (getDisplayedMarketplaceResult('flightclub', variant, 'lowestAsk').link || '#') != '#' ? 'all' : 'none' }" v-on:click="(getDisplayedMarketplaceResult('flightclub', variant, 'lowestAsk').link || '#') != '#' ? window.open(getDisplayedMarketplaceResult('flightclub', variant, 'lowestAsk').link || '#') : window">{{getDisplayedMarketplaceResult('flightclub', variant, 'lowestAsk').value || tryTranslate('N/A')}}</span>
 									</div>
 								</div>
-								<div class="Stadium_Goods_Price_Class">
+								<div v-bind:index="variantIndex" marketplace="stadiumgoods" class="Stadium_Goods_Price_Class variantResultPrice">
 									<svg class="Rectangle_hc">
 										<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Rectangle_hc_Class" rx="10" ry="10" x="0" y="0" width="111" height="37">
 										</rect>
@@ -61,7 +61,7 @@
 										<span v-bind:style="{ userSelect: (getDisplayedMarketplaceResult('stadiumgoods', variant, 'lowestAsk').link || '#') != '#' ? 'all' : 'none' }" v-on:click="(getDisplayedMarketplaceResult('stadiumgoods', variant, 'lowestAsk').link || '#') != '#' ? window.open(getDisplayedMarketplaceResult('stadiumgoods', variant, 'lowestAsk').link || '#') : window">{{getDisplayedMarketplaceResult('stadiumgoods', variant, 'lowestAsk').value || tryTranslate('N/A')}}</span>
 									</div>
 								</div>
-								<div class="Goat_Price_Class">
+								<div v-bind:index="variantIndex" marketplace="goat" class="Goat_Price_Class variantResultPrice">
 									<svg class="Rectangle_hf">
 										<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Rectangle_hf_Class" rx="10" ry="10" x="0" y="0" width="111" height="37">
 										</rect>
@@ -70,7 +70,7 @@
 										<span  v-bind:style="{ userSelect: (getDisplayedMarketplaceResult('goat', variant, 'lowestAsk').link || '#') != '#' ? 'all' : 'none' }" v-on:click="(getDisplayedMarketplaceResult('goat', variant, 'lowestAsk').link || '#') != '#' ? window.open(getDisplayedMarketplaceResult('goat', variant, 'lowestAsk').link || '#') : window">{{getDisplayedMarketplaceResult('goat', variant, 'lowestAsk').value || tryTranslate('N/A')}}</span>
 									</div>
 								</div>
-								<div class="StockX_Price_Class">
+								<div v-bind:index="variantIndex" marketplace="stockx" class="StockX_Price_Class variantResultPrice">
 									<svg class="Rectangle_hi">
 										<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Rectangle_hi_Class" rx="10" ry="10" x="0" y="0" width="111" height="37">
 										</rect>
@@ -83,7 +83,7 @@
 
 
 							<div class="Highest_Bid_Area_Class">
-								<div class="Flight_Club_Price_Class">
+								<div v-bind:index="variantIndex" marketplace="flightclub" class="Flight_Club_Price_Class variantResultPrice">
 									<svg class="Rectangle_ha">
 										<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Rectangle_ha_Class" rx="10" ry="10" x="0" y="0" width="111" height="37">
 										</rect>
@@ -92,7 +92,7 @@
 										<span v-bind:style="{ userSelect: (getDisplayedMarketplaceResult('flightclub', variant, 'highestBid').link || '#') != '#' ? 'all' : 'none' }" v-on:click="(getDisplayedMarketplaceResult('flightclub', variant, 'highestBid').link || '#') != '#' ? window.open(getDisplayedMarketplaceResult('flightclub', variant, 'highestBid').link || '#') : window">{{getDisplayedMarketplaceResult('flightclub', variant, 'highestBid').value || tryTranslate('N/A')}}</span>
 									</div>
 								</div>
-								<div class="Stadium_Goods_Price_Class">
+								<div v-bind:index="variantIndex" marketplace="stadiumgoods" class="Stadium_Goods_Price_Class variantResultPrice">
 									<svg class="Rectangle_hc">
 										<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Rectangle_hc_Class" rx="10" ry="10" x="0" y="0" width="111" height="37">
 										</rect>
@@ -101,7 +101,7 @@
 										<span v-bind:style="{ userSelect: (getDisplayedMarketplaceResult('stadiumgoods', variant, 'highestBid').link || '#') != '#' ? 'all' : 'none' }" v-on:click="(getDisplayedMarketplaceResult('stadiumgoods', variant, 'highestBid').link || '#') != '#' ? window.open(getDisplayedMarketplaceResult('stadiumgoods', variant, 'highestBid').link || '#') : window">{{getDisplayedMarketplaceResult('stadiumgoods', variant, 'highestBid').value || tryTranslate('N/A')}}</span>
 									</div>
 								</div>
-								<div class="Goat_Price_Class">
+								<div v-bind:index="variantIndex" marketplace="goat" class="Goat_Price_Class variantResultPrice">
 									<svg class="Rectangle_hf">
 										<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Rectangle_hf_Class" rx="10" ry="10" x="0" y="0" width="111" height="37">
 										</rect>
@@ -110,7 +110,7 @@
 										<span  v-bind:style="{ userSelect: (getDisplayedMarketplaceResult('goat', variant, 'highestBid').link || '#') != '#' ? 'all' : 'none' }" v-on:click="(getDisplayedMarketplaceResult('goat', variant, 'highestBid').link || '#') != '#' ? window.open(getDisplayedMarketplaceResult('goat', variant, 'highestBid').link || '#') : window">{{getDisplayedMarketplaceResult('goat', variant, 'highestBid').value || tryTranslate('N/A')}}</span>
 									</div>
 								</div>
-								<div class="StockX_Price_Class">
+								<div v-bind:index="variantIndex" marketplace="stockx" class="StockX_Price_Class variantResultPrice">
 									<svg class="Rectangle_hi">
 										<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Rectangle_hi_Class" rx="10" ry="10" x="0" y="0" width="111" height="37">
 										</rect>
@@ -188,15 +188,15 @@
 						<path v-bind:fill="getColor(getMarketStatusColor(result.product))" class="Side_Rectangle_Class" d="M 5 0 L 5 196 C 2.238576173782349 196 0.0283203125 186.8766632080078 0.0283203125 184.115234375 L -0.05859375 12.4959716796875 C -0.05859375 9.73454761505127 2.238576173782349 0 5 0 Z">
 						</path>
 					</svg>
-					<div class="Tracking_Class" v-bind:style="{ color: getColor(getMarketStatusColor(result.product)), fontSize: confineTextWidth(105, getMarketStatus(result.product).direction + ' ' + companionSettings.currencySymbol + getMarketStatus(result.product).value + '(' + getMarketStatus(result.product).percent + '%)', 14, 'px', 'normal', 'SF Pro Text') }">
+					<div class="Tracking_Class" v-bind:style="{ color: getColor(getMarketStatusColor(result.product)), fontSize: confineTextWidth(100, getMarketStatus(result.product).direction + ' ' + companionSettings.currencySymbol + getMarketStatus(result.product).value + '(' + getMarketStatus(result.product).percent + '%)', 14, 'px', 'normal', 'SF Pro Text') }">
 						<span>{{getMarketStatus(result.product).direction + ' ' + companionSettings.currencySymbol + getMarketStatus(result.product).value}}</span>
 						<span style="font-size: 10px;">({{getMarketStatus(result.product).percent}}%)</span>
 					</div>
-					<div class="Price_Class" style="line-height: 17px;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(85, companionSettings.currencySymbol + numberWithCommas(result.product.retail || 0), 14, 'px', 'normal', 'SF Pro Text') }">
-						<span>{{companionSettings.currencySymbol}}{{numberWithCommas(result.product.retail || 0)}}</span>
+					<div class="Price_Class" style="line-height: 17px; text-align: left;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(60, companionSettings.currencySymbol + numberWithCommas(convertCurrencySync(result.product.retail || 0, 'USD', companionSettings.currency)), 14, 'px', 'normal', 'SF Pro Text') }">
+						<span>{{companionSettings.currencySymbol}}{{numberWithCommas(convertCurrencySync(result.product.retail || 0, 'USD', companionSettings.currency))}}</span>
 					</div>
-					<div class="Size_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), top: (getTextWidth((result.product.name || tryTranslate('Unknown Product')).length == 0 ? tryTranslate('Unknown Product') : (result.product.name || tryTranslate('Unknown Product')), `${'normal'} ${14 + 'px'} ${'SF Pro Text'}`) <= (180 - 10) ? 148 : 166) + 'px', fontSize: confineTextWidth(180, (result.product.size || tryTranslate('Unknown Size')), 14, 'px', 'normal', 'SF Pro Text') }">
-						<span>{{(result.product.pid || tryTranslate('Unknown Style Code')).length == 0 ? tryTranslate('Unknown Size') : (result.product.pid || tryTranslate('Unknown Style Code'))}}</span>
+					<div class="Size_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), top: (getTextWidth((result.product.name || tryTranslate('Unknown Product')).length == 0 ? tryTranslate('Unknown Product') : (result.product.name || tryTranslate('Unknown Product')), `${'normal'} ${14 + 'px'} ${'SF Pro Text'}`) <= (180 - 10) ? 148 : 166) + 'px', fontSize: confineTextWidth(180, (result.product.pid || tryTranslate('Unknown Style Code')).length == 0 ? tryTranslate('Unknown Style Code') : (result.product.pid || tryTranslate('Unknown Style Code')), 14, 'px', 'normal', 'SF Pro Text') }">
+						<span>{{(result.product.pid || tryTranslate('Unknown Style Code')).length == 0 ? tryTranslate('Unknown Style Code') : (result.product.pid || tryTranslate('Unknown Style Code'))}}</span>
 					</div>
 					<div class="Title_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
 						<span>{{(result.product.name || tryTranslate('Unknown Product')).length == 0 ? tryTranslate('Unknown Product') : tryGenerateEllipses(300, (result.product.name || tryTranslate('Unknown Product')), 14, 'px', 'normal', 'SF Pro Text')}}</span>
@@ -209,7 +209,7 @@
 
 		</div>
 
-		<input id="marketLookupSearch" v-bind:placeholder="tryTranslate('Search')" v-model="searchTerm" class="Search_Bar_Class special-focus" style="left: 489px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+		<input id="marketLookupSearch" v-bind:placeholder="tryTranslate('Search')" v-model="searchTerm" class="Search_Bar_Class special-focus" style="left: 489px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)'), paddingRight: (isSearching ? 35 : 20) + 'px' }">
 		<svg class="Magnifying_Glass_Icon" style="left: 502px; top: 124px;" viewBox="0 -0.045 17.337 17.337">
 			<path v-bind:fill="getThemeColor('rgba(29,29,29,1)')" class="Magnifying_Glass_Icon_Class" d="M 7.516793251037598 -0.0235234834253788 C 3.371819496154785 -0.0235234834253788 0 3.34829568862915 0 7.493270397186279 C 0 11.63824462890625 3.371819496154785 15.01006317138672 7.516793251037598 15.01006317138672 C 8.78391170501709 15.01006317138672 10.02955055236816 14.70939350128174 11.08190250396729 14.12952709197998 C 11.1661958694458 14.2309684753418 11.25965595245361 14.32442760467529 11.36109733581543 14.40872001647949 L 13.50875282287598 16.55637741088867 C 14.04909896850586 17.16438865661621 14.88185119628906 17.42293357849121 15.67153072357178 17.22785949707031 C 16.46121025085449 17.03278541564941 17.07778167724609 16.41621208190918 17.27285957336426 15.62653064727783 C 17.46793174743652 14.83684730529785 17.20938682556152 14.0040979385376 16.60137557983398 13.46375179290771 L 14.45372009277344 11.31609630584717 C 14.3491039276123 11.21144199371338 14.2339506149292 11.11788082122803 14.11009693145752 11.03690242767334 C 14.68996429443359 9.984550476074219 15.0550651550293 8.76038646697998 15.0550651550293 7.471794128417969 C 15.0550651550293 3.326818943023682 11.68324661254883 -0.04500007256865501 7.538270950317383 -0.04500007256865501 Z M 7.516793251037598 2.124131917953491 C 10.50203609466553 2.124131917953491 12.88593292236328 4.508029937744141 12.88593292236328 7.493270397186279 C 12.88593292236328 8.910723686218262 12.37049579620361 10.22079277038574 11.46848201751709 11.18723678588867 C 11.4470043182373 11.20871257781982 11.42552852630615 11.23019027709961 11.40405178070068 11.25166702270508 C 11.30261039733887 11.33596038818359 11.20915126800537 11.42942047119141 11.12485599517822 11.53086090087891 C 10.17988777160645 12.38992404937744 8.891294479370117 12.88388538360596 7.495319366455078 12.88388538360596 C 4.510077476501465 12.88388538360596 2.126179695129395 10.49998760223389 2.126179695129395 7.514747142791748 C 2.126179695129395 4.529504776000977 4.510077476501465 2.145607709884644 7.495319366455078 2.145607709884644 Z">
 			</path>
@@ -245,66 +245,179 @@
 
 	<script>
 		const PRODUCT_CARD_CALLBACK = function(key, options) {
-			// const element = options.$trigger[0];
-			// let sale = window.getSaleByID(element.id);
-			// switch (key) {
-			// 	case 'view':
-			// 		editSale(sale);
-			// 		break;
-			// 	case 'refresh-tracking':
-			// 		window.refreshTracking(window.sales.indexOf(sale), true);
-			// 		break;
-			// 	case 'copy':
-			// 		sale.selected = true;
-			// 		copySales();
-			// 		window.setAllSalesSelected(false);
-			// 		break;
-			// 	case 'duplicate':
-			// 		sale.selected = true;
-			// 		duplicateSales();
-			// 		break;
-			// 	case 'mark_unsold':
-			// 		// TODO: add functionality (remove from sales and add to inventory)
-			// 		break;
-			// 	case 'remove':
-			// 		sale.selected = true;
-			// 		displayRemovePrompt();
-			// 		break;
-			// 	case 'search_on_market_lookup':
-			// 		// TODO: add functionality
-			// 		break;
-			// }
+			const element = options.$trigger[0];
+			let result = window.getResultByID(element.id);
+			switch (key) {
+				case 'open':
+					window.open(`https://stockx.com/${result.product.urlKey}`);
+					break;
+				case 'copy_url':
+				 navigator.clipboard.writeText(`https://stockx.com/${result.product.urlKey}`);
+					break;
+				case 'add_to_inventory':
+					let separatedDate = window.parent.parent.separateDate();
+					let newInventoryItem = {
+						name: result.product.name || "",
+						color: result.product.color | "",
+						styleCode: result.product.pid || "",
+						size: "",
+						imageURL: result.product.image || "",
+						notes: "",
+						marketplaceData: {
+							product: result.product || {},
+							size: {},
+							media360: []
+						},
+						suggestions: {
+							items: [],
+							itemsOpened: false,
+							isSearchingForItems: false,
+							sizes: [],
+							sizesOpened: false,
+							isSearchingForSizes: false
+						},
+						purchase: {
+							price: result.product.retail || null,
+							estimatedResell: null,
+							store: "",
+							date: separatedDate.date,
+							tracking: {
+								number: "",
+								carrier: "unselected",
+								isTracking: false,
+								details: {}
+							}
+						},
+						sale: {
+							price: null,
+							fees: {
+								amount: null,
+								isPercent: true
+							},
+							platform: "",
+							date: separatedDate.date,
+							tracking: {
+								number: "",
+								carrier: "unselected",
+								isTracking: false,
+								details: {}
+							}
+						},
+						quantity: 1,
+						selected: false,
+						isHovering: false,
+						id: window.parent.parent.makeid(10) // assign a new id to new inventory item
+					};
+					newInventoryItem.color = result.product.color;
+					window.parent.analyticsApp.inventoryItems.push(newInventoryItem);
+					window.parent.openSubpage('inventory');
+					window.parent.frames['inventory-subpage'].inventoryApp.applyDateSearch();
+					break;
+				case 'hide':
+					window.results.splice(window.results.indexOf(result), 1);
+					break;
+			}
 		};
 
 		const PRODUCT_CARD_ITEMS = {
-			// "view": { name: "View Sale", icon: "fas fa-eye" },
-			// "refresh-tracking": { name: "Refresh Tracking", icon: "fas fa-redo-alt" },
-			// "copy": { name: "Copy Sale(s)", icon: "far fa-clipboard" },
-			// "duplicate": { name: "Duplicate Sale(s)", icon: "fas fa-clone" },
-			// "mark_unsold": { name: "Mark Sale(s) Unsold", icon: "fas fa-archive" },
-			// "remove": { name: "Remove Sale(s)", icon: "fas fa-trash-alt" },
-			// "search_on_market_lookup": { name: "Search on Market Lookup", icon: "far fa-search" }
+			"open": {name: "Open Result", icon: "fas fa-external-link-alt" },
+			"copy_url": {name: "Copy Result URL", icon: "far fa-clipboard" },
+			"add_to_inventory": { name: "Add to Inventory", icon: "fas fa-archive" },
+			"hide": { name: "Hide Result", icon: "fas fa-eye-slash" }
+		};
+
+		const VARIANT_CARD_CALLBACK = function(key, options) {
+			const element = options.$trigger[0];
+			if (marketLookupApp.activeResultIndex == -1) return;
+			let result = marketLookupApp.results[marketLookupApp.activeResultIndex];
+			let variant = marketLookupApp.results[marketLookupApp.activeResultIndex].variants[parseInt(element.getAttribute('index'))];
+			let marketplace = element.getAttribute('marketplace');
+			switch (key) {
+				case 'open':
+					if (variant.stores[marketplace].url && variant.stores[marketplace].url != "#") window.open(variant.stores[marketplace].url);
+					break;
+				case 'copy_url':
+					if (variant.stores[marketplace].url && variant.stores[marketplace].url != "#") navigator.clipboard.writeText(variant.stores[marketplace].url);
+					break;
+				case 'add_to_inventory':
+					let separatedDate = window.parent.parent.separateDate();
+					let newInventoryItem = {
+					  name: result.product.name || "",
+					  color: result.product.color | "",
+					  styleCode: result.product.pid || "",
+					  size: variant.name || "",
+					  imageURL: result.product.image || "",
+					  notes: "",
+					  marketplaceData: {
+					    product: result.product || {},
+					    size: variant.stores[marketplace] || {},
+					    media360: []
+					  },
+					  suggestions: {
+					    items: [],
+					    itemsOpened: false,
+					    isSearchingForItems: false,
+					    sizes: [],
+					    sizesOpened: false,
+					    isSearchingForSizes: false
+					  },
+					  purchase: {
+					    price: result.product.retail || null,
+					    estimatedResell: variant.stores[marketplace].lowestAsk || null,
+					    store: "",
+					    date: separatedDate.date,
+					    tracking: {
+					      number: "",
+					      carrier: "unselected",
+					      isTracking: false,
+					      details: {}
+					    }
+					  },
+					  sale: {
+					    price: null,
+					    fees: {
+					      amount: null,
+					      isPercent: true
+					    },
+					    platform: "",
+					    date: separatedDate.date,
+					    tracking: {
+					      number: "",
+					      carrier: "unselected",
+					      isTracking: false,
+					      details: {}
+					    }
+					  },
+					  quantity: 1,
+					  selected: false,
+					  isHovering: false,
+					  id: window.parent.parent.makeid(10) // assign a new id to new inventory item
+					};
+					newInventoryItem.color = result.product.color;
+					window.parent.analyticsApp.inventoryItems.push(newInventoryItem);
+					window.parent.openSubpage('inventory');
+					window.parent.frames['inventory-subpage'].inventoryApp.applyDateSearch();
+					break;
+			}
+		};
+
+		const VARIANT_CARD_ITEMS = {
+			"open": {name: "Open Size Result", icon: "fas fa-external-link-alt" },
+			"copy_url": {name: "Copy Size Result URL", icon: "far fa-clipboard" },
+			"add_to_inventory": { name: "Add to Inventory with Size", icon: "fas fa-archive" }
 		};
 
 		const CONTEXT_MENUS = [
-			// {
-			// 	selector: '.Bottom_Section_Class',
-			// 	callback: function(key, options) {
-			// 		switch (key) {
-			// 			case 'paste':
-			// 				pasteSales();
-			// 				break;
-			// 		}
-			// 	},
-			// 	items: {
-			// 		"paste": { name: "Paste Sale(s)", icon: "far fa-clipboard" }
-			// 	}
-			// },
-			// {
-			// 	selector: '.Row_1_Class',
-			// 	callback: PRODUCT_CARD_CALLBACK,
-			// 	items: PRODUCT_CARD_ITEMS
-			// }
+			{
+				selector: '.Product_Card_1_dy_Class',
+				callback: PRODUCT_CARD_CALLBACK,
+				items: PRODUCT_CARD_ITEMS
+			},
+			{
+				selector: '.variantResultPrice',
+				callback: VARIANT_CARD_CALLBACK,
+				items: VARIANT_CARD_ITEMS
+			}
 		];
 	</script>
 	<script src="../../../../../../../utils/scripts/context-menu.js" type="text/javascript"></script>

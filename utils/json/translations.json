@@ -18,6 +18,12 @@
         "es": "Añadir al inventario"
       }
     },
+    "Add to Inventory with Size": {
+      "languages": {
+        "en": "Add to Inventory with Size",
+        "es": "Añadir al inventario con tamaño"
+      }
+    },
     "All Time": {
       "languages": {
         "en": "All Time",
@@ -240,10 +246,22 @@
         "es": "Copiar URL del producto"
       }
     },
+    "Copy Result URL": {
+      "languages": {
+        "en": "Copy Result URL",
+        "es": "Copiar URL del resultado"
+      }
+    },
     "Copy Sale(s)": {
       "languages": {
         "en": "Copy Sale(s)",
         "es": "Copiar venta(s)"
+      }
+    },
+    "Copy Size Result URL": {
+      "languages": {
+        "en": "Copy Size Result URL",
+        "es": "Copiar URL del resultado del tamaño"
       }
     },
     "Copy Ticket(s)": {
@@ -538,6 +556,12 @@
       "languages": {
         "en": "Hide Product",
         "es": "Ocultar producto"
+      }
+    },
+    "Hide Result": {
+      "languages": {
+        "en": "Hide Result",
+        "es": "Ocultar resultado"
       }
     },
     "Highest Bid": {
@@ -848,6 +872,12 @@
         "es": "Sin configuración de productos"
       }
     },
+    "No results found": {
+      "languages": {
+        "en": "No results found",
+        "es": "No se han encontrado resultados"
+      }
+    },
     "No sales made": {
       "languages": {
         "en": "No sales made",
@@ -920,6 +950,18 @@
         "es": "Abrir producto"
       }
     },
+    "Open Result": {
+      "languages": {
+        "en": "Open Result",
+        "es": "Abrir resultado"
+      }
+    },
+    "Open Size Result": {
+      "languages": {
+        "en": "Open Size Result",
+        "es": "Abrir resultado del tamaño"
+      }
+    },
     "Open Store": {
       "languages": {
         "en": "Open Store",
@@ -980,10 +1022,16 @@
         "es": "Mercado"
       }
     },
-    "Please wait while we search for products...": {
+    "Please search for and select an item above to compare market prices": {
       "languages": {
-        "en": "Please wait while we search for products...",
-        "es": "Por favor, espere mientras buscamos productos..."
+        "en": "Please search for and select an item above to compare market prices",
+        "es": "Por favor, busque y seleccione un artículo arriba para comparar los precios de mercado"
+      }
+    },
+    "Please wait while we collect data on this item across several marketplaces...": {
+      "languages": {
+        "en": "Please wait while we collect data on this item across several marketplaces...",
+        "es": "Por favor, espere mientras recopilamos datos sobre este artículo en varios mercados..."
       }
     },
     "Please wait while we search for products...": {

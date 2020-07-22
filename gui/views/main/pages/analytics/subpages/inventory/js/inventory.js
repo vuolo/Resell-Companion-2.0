@@ -222,7 +222,7 @@ const inventoryApp = new Vue({
     },
     endHovering: function(inventoryItem) {
       inventoryItem.isHovering = false;
-      if (inventoryItem.marketplaceData.media360.length > 0) inventoryItem.imageURL = inventoryItem.marketplaceData.media360[0];
+      setTimeout(function() { if (inventoryItem.marketplaceData.media360.length > 0) inventoryItem.imageURL = inventoryItem.marketplaceData.media360[0]; }, 50);
     },
     handleSelectClick: function(e, inventoryItemIndex) {
       if (e.ctrlKey) switchSelectedInventoryItems(inventoryItemIndex);
@@ -513,8 +513,8 @@ window.getSelectedInventoryItems = () => {
 };
 
 window.preloadInventoryItems360Media = (incomingInventoryItem = null) => {
-  if (incomingInventoryItem) window.parent.parent.preloadImages(incomingInventoryItem.marketplaceData.media360);
-  else for (var inventoryItem of window.inventoryItems) window.parent.parent.preloadImages(inventoryItem.marketplaceData.media360);
+  if (incomingInventoryItem) window.parent.parent.preloadImages(incomingInventoryItem.marketplaceData.media360 || []);
+  else for (var inventoryItem of window.inventoryItems) window.parent.parent.preloadImages(inventoryItem.marketplaceData.media360 || []);
 }
 
 function duplicateInventoryItems(incomingInventoryItems = null) {

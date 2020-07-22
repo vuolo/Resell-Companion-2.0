@@ -35,8 +35,22 @@ window.openSubpage = (subpageName) => {
 }
 
 window.subpageLoadedCallback = (subpageName) => {
-  if (subpageName == 'sales') {
-    analyticsApp.sales = window.frames['sales-subpage'].sales;
+  switch (subpageName) {
+    case 'sales':
+      analyticsApp.sales = window.frames['sales-subpage'].sales;
+      break;
+    case 'inventory':
+      analyticsApp.inventoryItems = window.frames['inventory-subpage'].inventoryItems;
+      break;
+    case 'subscriptions':
+      analyticsApp.subscriptions = window.frames['subscriptions-subpage'].subscriptions;
+      break;
+    case 'tickets':
+      analyticsApp.tickets = window.frames['tickets-subpage'].tickets;
+      break;
+    case 'cards':
+      analyticsApp.cards = window.frames['cards-subpage'].cards;
+      break;
   }
 }
 
@@ -46,7 +60,7 @@ window.analyticsApp = new Vue({
     subpages: window.subpages,
     sales: [],
     inventoryItems: [],
-    bots: [],
+    subscriptions: [],
     tickets: [],
     cards: []
   },

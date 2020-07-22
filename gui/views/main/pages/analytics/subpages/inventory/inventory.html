@@ -444,14 +444,76 @@
 					duplicateInventoryItems();
 					break;
 				case 'mark_sold':
-					// TODO: add functionality (remove from inventory items and add to sales)
+					let separatedDate = window.parent.parent.separateDate();
+					let newSale = {
+						name: inventoryItem.name,
+						color: inventoryItem.color,
+						styleCode: inventoryItem.styleCode,
+						size: inventoryItem.size,
+						imageURL: inventoryItem.imageURL,
+						notes: inventoryItem.notes,
+						marketplaceData: {
+							product: inventoryItem.marketplaceData.product,
+							size: inventoryItem.marketplaceData.size,
+							media360: inventoryItem.marketplaceData.media360
+						},
+						suggestions: {
+							items: [],
+							itemsOpened: false,
+							isSearchingForItems: false,
+							sizes: [],
+							sizesOpened: false,
+							isSearchingForSizes: false
+						},
+						purchase: {
+							price: inventoryItem.purchase.price,
+							estimatedResell: inventoryItem.purchase.estimatedResell,
+							store: inventoryItem.purchase.store,
+							date: inventoryItem.purchase.date,
+							tracking: {
+								number: inventoryItem.purchase.tracking.number,
+								carrier: inventoryItem.purchase.tracking.carrier,
+								isTracking: false,
+								details: inventoryItem.purchase.tracking.details
+							}
+						},
+						sale: {
+							price: null,
+							fees: {
+								amount: null,
+								isPercent: true
+							},
+							platform: "",
+							date: separatedDate.date,
+							tracking: {
+								number: "",
+								carrier: "unselected",
+								isTracking: false,
+								details: {}
+							}
+						},
+						quantity: 1,
+						selected: true,
+						isHovering: false,
+						id: inventoryItem.id
+					};
+					// add sale
+					window.parent.analyticsApp.sales.push(newSale);
+					window.parent.openSubpage('sales');
+					window.parent.frames['sales-subpage'].salesApp.applyDateSearch(); // refresh
+					window.parent.frames['sales-subpage'].editSale(newSale);
+					// remove inventory item
+					window.parent.analyticsApp.inventoryItems.splice(window.parent.analyticsApp.inventoryItems.indexOf(inventoryItem), 1);
+					window.parent.frames['inventory-subpage'].inventoryApp.applyDateSearch(); // refresh
 					break;
 				case 'remove':
 					inventoryItem.selected = true;
 					displayRemovePrompt();
 					break;
 				case 'search_on_market_lookup':
-					// TODO: add functionality
+					window.parent.frames['market-lookup-subpage'].marketLookupApp.searchTerm = inventoryItem.name;
+					window.parent.frames['market-lookup-subpage'].refreshMarketResults();
+					window.parent.openSubpage('market-lookup');
 					break;
 			}
 		};

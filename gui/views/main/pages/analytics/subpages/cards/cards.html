@@ -460,7 +460,9 @@
 					displayRemovePrompt();
 					break;
 				case 'search_on_market_lookup':
-					// TODO: add functionality
+					window.parent.frames['market-lookup-subpage'].marketLookupApp.searchTerm = card.name;
+					window.parent.frames['market-lookup-subpage'].refreshMarketResults();
+					window.parent.openSubpage('market-lookup');
 					break;
 			}
 		};

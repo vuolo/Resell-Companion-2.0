@@ -218,7 +218,7 @@ const salesApp = new Vue({
     },
     endHovering: function(sale) {
       sale.isHovering = false;
-      if (sale.marketplaceData.media360.length > 0) sale.imageURL = sale.marketplaceData.media360[0];
+      setTimeout(function() { if (sale.marketplaceData.media360.length > 0) sale.imageURL = sale.marketplaceData.media360[0]; }, 50);
     },
     handleSelectClick: function(e, saleIndex) {
       if (e.ctrlKey) switchSelectedSales(saleIndex);
@@ -501,8 +501,8 @@ window.getSelectedSales = () => {
 };
 
 window.preloadSales360Media = (incomingSale = null) => {
-  if (incomingSale) window.parent.parent.preloadImages(incomingSale.marketplaceData.media360);
-  else for (var sale of window.sales) window.parent.parent.preloadImages(sale.marketplaceData.media360);
+  if (incomingSale) window.parent.parent.preloadImages(incomingSale.marketplaceData.media360 || []);
+  else for (var sale of window.sales) window.parent.parent.preloadImages(sale.marketplaceData.media360 || []);
 }
 
 function duplicateSales(incomingSales = null) {

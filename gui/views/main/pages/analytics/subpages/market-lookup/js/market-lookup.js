@@ -5,17 +5,19 @@
 // window.parent.out_var
 
 // variables
+window.results = []; // result Obj looks like this: { product: product, variants: [], storesCrawled: [], id: '' }
+
 const marketLookupApp = new Vue({
   el: "#Rewrite___Market_Lookup",
   data: {
     companionSettings: window.parent.parent.companionSettings,
     curLogin: window.parent.parent.curLogin,
     window: window,
+    results: window.results,
+    activeResultIndex: -1,
     searchTerm: "",
     isSearching: false,
-    isUpdatingMarket: false,
-    results: [], // result Obj looks like this: { product: product, variants: [], storesCrawled: [], id: '' }
-    activeResultIndex: -1
+    isUpdatingMarket: false
   },
   methods: {
     confineTextWidth: window.parent.parent.confineTextWidth,
@@ -27,6 +29,7 @@ const marketLookupApp = new Vue({
     getColor: window.parent.parent.getColor,
     numberWithCommas: window.parent.parent.numberWithCommas,
     tryGenerateEllipses: window.parent.parent.tryGenerateEllipses,
+    convertCurrencySync: window.parent.parent.parent.exchangeRatesAPI.convertCurrencySync,
     handleSelectClick: function(e, resultIndex) {
       if (e.ctrlKey) setResultActive(resultIndex);
       else if (e.shiftKey) setResultActive(resultIndex);
@@ -55,6 +58,11 @@ const marketLookupApp = new Vue({
     }
   }
 });
+window.marketLookupApp = marketLookupApp;
+
+window.getResultByID = (id) => {
+  for (var result of window.results) if (result.id == id) return result;
+};
 
 async function refreshMarketResults(searchTerm = marketLookupApp.searchTerm) {
   marketLookupApp.isSearching = true;
@@ -62,7 +70,7 @@ async function refreshMarketResults(searchTerm = marketLookupApp.searchTerm) {
   if (searchTerm != marketLookupApp.searchTerm) return;
   resetMarketResults();
   for (var searchResult of searchResults) {
-    marketLookupApp.results.push({
+    window.results.push({
       product: searchResult,
       variants: [],
       storesCrawled: [],
@@ -72,16 +80,17 @@ async function refreshMarketResults(searchTerm = marketLookupApp.searchTerm) {
 }
 
 async function setResultActive(result) {
-  if (typeof result == "number") result = marketLookupApp.results[result]; // result was an index, convert to result
-  marketLookupApp.activeResultIndex = marketLookupApp.results.indexOf(result);
+  if (typeof result == "number") result = window.results[result]; // result was an index, convert to result
+  marketLookupApp.activeResultIndex = window.results.indexOf(result);
   marketLookupApp.isUpdatingMarket = true;
   if (result.variants.length == 0) await window.parent.parent.parent.marketAPI.updateMarket(result);
   marketLookupApp.isUpdatingMarket = false;
 }
+window.refreshMarketResults = refreshMarketResults;
 
 function resetMarketResults() {
   marketLookupApp.activeResultIndex = -1;
-  while (marketLookupApp.results.length > 0) marketLookupApp.results.pop();
+  while (window.results.length > 0) window.results.pop();
   marketLookupApp.isSearching = false;
   try { clearInterval(searchIntv); } catch(err) { console.log(err); }
   searchIntv = null;

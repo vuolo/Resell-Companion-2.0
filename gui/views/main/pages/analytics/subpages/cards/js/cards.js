@@ -218,7 +218,7 @@ const cardsApp = new Vue({
     },
     endHovering: function(card) {
       card.isHovering = false;
-      if (card.marketplaceData.media360.length > 0) card.imageURL = card.marketplaceData.media360[0];
+      setTimeout(function() { if (card.marketplaceData.media360.length > 0) card.imageURL = card.marketplaceData.media360[0]; }, 50);
     },
     handleSelectClick: function(e, cardIndex) {
       if (e.ctrlKey) switchSelectedCards(cardIndex);
@@ -501,8 +501,8 @@ window.getSelectedCards = () => {
 };
 
 window.preloadCards360Media = (incomingCard = null) => {
-  if (incomingCard) window.parent.parent.preloadImages(incomingCard.marketplaceData.media360);
-  else for (var card of window.cards) window.parent.parent.preloadImages(card.marketplaceData.media360);
+  if (incomingCard) window.parent.parent.preloadImages(incomingCard.marketplaceData.media360 || []);
+  else for (var card of window.cards) window.parent.parent.preloadImages(card.marketplaceData.media360 || []);
 }
 
 function duplicateCards(incomingCards = null) {
