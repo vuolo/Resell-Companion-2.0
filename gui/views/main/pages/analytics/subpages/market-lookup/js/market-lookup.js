@@ -10,6 +10,7 @@ const marketLookupApp = new Vue({
   data: {
     companionSettings: window.parent.parent.companionSettings,
     curLogin: window.parent.parent.curLogin,
+    window: window,
     searchTerm: "",
     isSearching: false,
     isUpdatingMarket: false,
@@ -32,25 +33,18 @@ const marketLookupApp = new Vue({
       else setResultActive(resultIndex);
     },
     getMarketStatus: function(product) {
-      return "N/A";
+      let outMarketStatus = { direction: null, value: null, percent: null };
+      outMarketStatus.value = window.parent.parent.parent.exchangeRatesAPI.convertCurrencySync(product.market.changeValue || 0, 'USD', window.parent.parent.companionSettings.currency);
+      outMarketStatus.percent = window.parent.parent.roundNumber(product.market.changePercentage || 0);
+      outMarketStatus.direction = outMarketStatus.value > 0 ? '↑' : (outMarketStatus.value < 0 ? '↓' : '');
+      return outMarketStatus;
     },
     getMarketStatusColor: function(product) {
       if (!product.market) return "N/A";
-      // switch (getStatusDescription(tracking.details.status)) {
-      //   case 'UNKNOWN':
-      //     return 'N/A';
-      //   case 'SHIPPING':
-      //     return 'yellow';
-      //   case 'EN_ROUTE':
-      //     return 'orange';
-      //   case 'OUT_FOR_DELIVERY':
-      //     return 'orange';
-      //   case 'DELIVERED':
-      //     return 'green';
-      //   case 'DELAYED':
-      //     return 'N/A';
-      // }
-      return "N/A";
+      let marketStatus = this.getMarketStatus(product);
+      if (marketStatus.value < 0) return "red";
+      else if (marketStatus.value > 0) return "green";
+      return "yellow";
     },
     calculateGridPosition: function(index) {
       return { left: (index * (227+9)) + (12) + 'px' }

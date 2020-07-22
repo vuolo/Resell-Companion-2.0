@@ -328,9 +328,9 @@
 .Prices_Area_Class {
 	position: absolute;
 	width: 1120px;
-	height: 222px;
+	height: 297px;
 	left: 75px;
-	top: 90px;
+	top: 15px;
 	overflow: auto;
 	overflow-y: hidden;
 }
@@ -339,7 +339,7 @@
 	width: 248.5px;
 	height: 191px;
 	left: 9px;
-	top: 0px;
+	top: 75px;
 	overflow: visible;
 }
 .Lowest_Ask_Area_Class {
@@ -2068,10 +2068,10 @@
 .ID5_Class {
 	opacity: 0.3;
 	position: absolute;
-	left: 180px;
-	top: 0px;
+	left: 0px;
+	top: -80px;
 	overflow: visible;
-	width: 39px;
+	width: 240px;
 	white-space: nowrap;
 	line-height: 71px;
 	margin-top: -6.5px;

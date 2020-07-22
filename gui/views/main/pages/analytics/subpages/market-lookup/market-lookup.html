@@ -26,15 +26,20 @@
 			<div class="Prices_Area_Class" v-bind:class="{ 'dark-scrollbar': companionSettings.theme == 'dark' }">
 
 				<!-- display message if there are no items -->
-				<template v-if="activeResultIndex == -1">
-					<div class="centered-content" style="font-size: 1.1em; padding-top: 8.25%;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-						<span>{{tryTranslate('TODO: FIGURE THIS MESSAGE OUT AND MAKE IT DYNAMICALLY CHANGE ON LOADING STATUS')}}</span>
+				<template v-if="activeResultIndex == -1 || isUpdatingMarket">
+					<div class="centered-content" style="font-size: 1.1em; padding-top: 12%;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+						<span>{{isUpdatingMarket ? tryTranslate('Please wait while we collect data on this item across several marketplaces...') : tryTranslate('Please search for and select an item above to compare market prices')}}</span>
 					</div>
 				</template>
 
 				<template v-if="activeResultIndex != -1">
 					<template v-for="(variant, variantIndex) in results[activeResultIndex].variants">
 						<div class="Prices_Area_er_Class" v-bind:style="{ left: (variantIndex * (248.5 + 15)) + 9 + 'px' }">
+
+
+							<div class="ID5_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+								<span style="user-select: text;">{{variant.name}}</span>
+							</div>
 
 
 							<div class="Lowest_Ask_Area_Class">
@@ -46,12 +51,6 @@
 									<div class="Price_Class" v-bind:class="{ 'clickable': (getDisplayedMarketplaceResult('flightclub', variant, 'lowestAsk').link || '#') != '#', 'hover-opacity': (getDisplayedMarketplaceResult('flightclub', variant, 'lowestAsk').link || '#') != '#' }" v-bind:style="{ userSelect: (getDisplayedMarketplaceResult('flightclub', variant, 'lowestAsk').link || '#') != '#' ? 'all' : 'none', color: getThemeColor('rgba(29,29,29,1)'), opacity: (getDisplayedMarketplaceResult('flightclub', variant, 'lowestAsk').value || tryTranslate('N/A')) == tryTranslate('N/A') ? 0.66 : 1, fontSize: confineTextWidth(111-15, getDisplayedMarketplaceResult('flightclub', variant, 'lowestAsk').value || tryTranslate('N/A'), 20, 'px', 'normal', 'SF Pro Text') }">
 										<span v-bind:style="{ userSelect: (getDisplayedMarketplaceResult('flightclub', variant, 'lowestAsk').link || '#') != '#' ? 'all' : 'none' }" v-on:click="(getDisplayedMarketplaceResult('flightclub', variant, 'lowestAsk').link || '#') != '#' ? window.open(getDisplayedMarketplaceResult('flightclub', variant, 'lowestAsk').link || '#') : window">{{getDisplayedMarketplaceResult('flightclub', variant, 'lowestAsk').value || tryTranslate('N/A')}}</span>
 									</div>
-
-									<div v-show="!results[activeResultIndex].storesCrawled.includes('flightclub')" style="pointer-events: none; width: 20px; height: 33px; left: 96px; top:-26px; z-index: 2; position: absolute; transform: translate(100%, 65%);">
-										<svg class="spinner" viewBox="0 0 50 50">
-											<circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="1.5" stroke="#FFA74E"></circle>
-										</svg>
-									</div>
 								</div>
 								<div class="Stadium_Goods_Price_Class">
 									<svg class="Rectangle_hc">
@@ -60,12 +59,6 @@
 									</svg>
 									<div class="Price_hd_Class" v-bind:class="{ 'clickable': (getDisplayedMarketplaceResult('stadiumgoods', variant, 'lowestAsk').link || '#') != '#', 'hover-opacity': (getDisplayedMarketplaceResult('stadiumgoods', variant, 'lowestAsk').link || '#') != '#' }" v-bind:style="{ userSelect: (getDisplayedMarketplaceResult('stadiumgoods', variant, 'lowestAsk').link || '#') != '#' ? 'all' : 'none', color: getThemeColor('rgba(29,29,29,1)'), opacity: (getDisplayedMarketplaceResult('stadiumgoods', variant, 'lowestAsk').value || tryTranslate('N/A')) == tryTranslate('N/A') ? 0.66 : 1, fontSize: confineTextWidth(111-15, getDisplayedMarketplaceResult('stadiumgoods', variant, 'lowestAsk').value || tryTranslate('N/A'), 20, 'px', 'normal', 'SF Pro Text') }">
 										<span v-bind:style="{ userSelect: (getDisplayedMarketplaceResult('stadiumgoods', variant, 'lowestAsk').link || '#') != '#' ? 'all' : 'none' }" v-on:click="(getDisplayedMarketplaceResult('stadiumgoods', variant, 'lowestAsk').link || '#') != '#' ? window.open(getDisplayedMarketplaceResult('stadiumgoods', variant, 'lowestAsk').link || '#') : window">{{getDisplayedMarketplaceResult('stadiumgoods', variant, 'lowestAsk').value || tryTranslate('N/A')}}</span>
-									</div>
-
-									<div v-show="!results[activeResultIndex].storesCrawled.includes('stadiumgoods')" style="pointer-events: none; width: 20px; height: 33px; left: 96px; top:-26px; z-index: 2; position: absolute; transform: translate(100%, 65%);">
-										<svg class="spinner" viewBox="0 0 50 50">
-											<circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="1.5" stroke="#FFA74E"></circle>
-										</svg>
 									</div>
 								</div>
 								<div class="Goat_Price_Class">
@@ -76,12 +69,6 @@
 									<div class="Price_hg_Class" v-bind:class="{ 'clickable': (getDisplayedMarketplaceResult('goat', variant, 'lowestAsk').link || '#') != '#', 'hover-opacity': (getDisplayedMarketplaceResult('goat', variant, 'lowestAsk').link || '#') != '#' }" v-bind:style="{ userSelect: (getDisplayedMarketplaceResult('goat', variant, 'lowestAsk').link || '#') != '#' ? 'all' : 'none', color: getThemeColor('rgba(29,29,29,1)'), opacity: (getDisplayedMarketplaceResult('goat', variant, 'lowestAsk').value || tryTranslate('N/A')) == tryTranslate('N/A') ? 0.66 : 1, fontSize: confineTextWidth(111-15, getDisplayedMarketplaceResult('goat', variant, 'lowestAsk').value || tryTranslate('N/A'), 20, 'px', 'normal', 'SF Pro Text') }">
 										<span  v-bind:style="{ userSelect: (getDisplayedMarketplaceResult('goat', variant, 'lowestAsk').link || '#') != '#' ? 'all' : 'none' }" v-on:click="(getDisplayedMarketplaceResult('goat', variant, 'lowestAsk').link || '#') != '#' ? window.open(getDisplayedMarketplaceResult('goat', variant, 'lowestAsk').link || '#') : window">{{getDisplayedMarketplaceResult('goat', variant, 'lowestAsk').value || tryTranslate('N/A')}}</span>
 									</div>
-
-									<div v-show="!results[activeResultIndex].storesCrawled.includes('goat')" style="pointer-events: none; width: 20px; height: 33px; left: 96px; top:-26px; z-index: 2; position: absolute; transform: translate(100%, 65%);">
-										<svg class="spinner" viewBox="0 0 50 50">
-											<circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="1.5" stroke="#FFA74E"></circle>
-										</svg>
-									</div>
 								</div>
 								<div class="StockX_Price_Class">
 									<svg class="Rectangle_hi">
@@ -90,12 +77,6 @@
 									</svg>
 									<div class="Price_hj_Class" v-bind:class="{ 'clickable': (getDisplayedMarketplaceResult('stockx', variant, 'lowestAsk').link || '#') != '#', 'hover-opacity': (getDisplayedMarketplaceResult('stockx', variant, 'lowestAsk').link || '#') != '#' }" v-bind:style="{ userSelect: (getDisplayedMarketplaceResult('stockx', variant, 'lowestAsk').link || '#') != '#' ? 'all' : 'none', color: getThemeColor('rgba(29,29,29,1)'), opacity: (getDisplayedMarketplaceResult('stockx', variant, 'lowestAsk').value || tryTranslate('N/A')) == tryTranslate('N/A') ? 0.66 : 1, fontSize: confineTextWidth(111-15, getDisplayedMarketplaceResult('stockx', variant, 'lowestAsk').value || tryTranslate('N/A'), 20, 'px', 'normal', 'SF Pro Text') }">
 										<span v-bind:style="{ userSelect: (getDisplayedMarketplaceResult('stockx', variant, 'lowestAsk').link || '#') != '#' ? 'all' : 'none' }" v-on:click="(getDisplayedMarketplaceResult('stockx', variant, 'lowestAsk').link || '#') != '#' ? window.open(getDisplayedMarketplaceResult('stockx', variant, 'lowestAsk').link || '#') : window">{{getDisplayedMarketplaceResult('stockx', variant, 'lowestAsk').value || tryTranslate('N/A')}}</span>
-									</div>
-
-									<div v-show="!results[activeResultIndex].storesCrawled.includes('stockx')" style="pointer-events: none; width: 20px; height: 33px; left: 96px; top:-26px; z-index: 2; position: absolute; transform: translate(100%, 65%);">
-										<svg class="spinner" viewBox="0 0 50 50">
-											<circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="1.5" stroke="#FFA74E"></circle>
-										</svg>
 									</div>
 								</div>
 							</div>
@@ -110,12 +91,6 @@
 									<div class="Price_Class" v-bind:class="{ 'clickable': (getDisplayedMarketplaceResult('flightclub', variant, 'highestBid').link || '#') != '#', 'hover-opacity': (getDisplayedMarketplaceResult('flightclub', variant, 'highestBid').link || '#') != '#' }" v-bind:style="{ userSelect: (getDisplayedMarketplaceResult('flightclub', variant, 'highestBid').link || '#') != '#' ? 'all' : 'none', color: getThemeColor('rgba(29,29,29,1)'), opacity: (getDisplayedMarketplaceResult('flightclub', variant, 'highestBid').value || tryTranslate('N/A')) == tryTranslate('N/A') ? 0.66 : 1, fontSize: confineTextWidth(111-15, getDisplayedMarketplaceResult('flightclub', variant, 'highestBid').value || tryTranslate('N/A'), 20, 'px', 'normal', 'SF Pro Text') }">
 										<span v-bind:style="{ userSelect: (getDisplayedMarketplaceResult('flightclub', variant, 'highestBid').link || '#') != '#' ? 'all' : 'none' }" v-on:click="(getDisplayedMarketplaceResult('flightclub', variant, 'highestBid').link || '#') != '#' ? window.open(getDisplayedMarketplaceResult('flightclub', variant, 'highestBid').link || '#') : window">{{getDisplayedMarketplaceResult('flightclub', variant, 'highestBid').value || tryTranslate('N/A')}}</span>
 									</div>
-
-									<div v-show="!results[activeResultIndex].storesCrawled.includes('flightclub')" style="pointer-events: none; width: 20px; height: 33px; left: 96px; top:-26px; z-index: 2; position: absolute; transform: translate(100%, 65%);">
-										<svg class="spinner" viewBox="0 0 50 50">
-											<circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="1.5" stroke="#FFA74E"></circle>
-										</svg>
-									</div>
 								</div>
 								<div class="Stadium_Goods_Price_Class">
 									<svg class="Rectangle_hc">
@@ -124,12 +99,6 @@
 									</svg>
 									<div class="Price_hd_Class" v-bind:class="{ 'clickable': (getDisplayedMarketplaceResult('stadiumgoods', variant, 'highestBid').link || '#') != '#', 'hover-opacity': (getDisplayedMarketplaceResult('stadiumgoods', variant, 'highestBid').link || '#') != '#' }" v-bind:style="{ userSelect: (getDisplayedMarketplaceResult('stadiumgoods', variant, 'highestBid').link || '#') != '#' ? 'all' : 'none', color: getThemeColor('rgba(29,29,29,1)'), opacity: (getDisplayedMarketplaceResult('stadiumgoods', variant, 'highestBid').value || tryTranslate('N/A')) == tryTranslate('N/A') ? 0.66 : 1, fontSize: confineTextWidth(111-15, getDisplayedMarketplaceResult('stadiumgoods', variant, 'highestBid').value || tryTranslate('N/A'), 20, 'px', 'normal', 'SF Pro Text') }">
 										<span v-bind:style="{ userSelect: (getDisplayedMarketplaceResult('stadiumgoods', variant, 'highestBid').link || '#') != '#' ? 'all' : 'none' }" v-on:click="(getDisplayedMarketplaceResult('stadiumgoods', variant, 'highestBid').link || '#') != '#' ? window.open(getDisplayedMarketplaceResult('stadiumgoods', variant, 'highestBid').link || '#') : window">{{getDisplayedMarketplaceResult('stadiumgoods', variant, 'highestBid').value || tryTranslate('N/A')}}</span>
-									</div>
-
-									<div v-show="!results[activeResultIndex].storesCrawled.includes('stadiumgoods')" style="pointer-events: none; width: 20px; height: 33px; left: 96px; top:-26px; z-index: 2; position: absolute; transform: translate(100%, 65%);">
-										<svg class="spinner" viewBox="0 0 50 50">
-											<circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="1.5" stroke="#FFA74E"></circle>
-										</svg>
 									</div>
 								</div>
 								<div class="Goat_Price_Class">
@@ -140,12 +109,6 @@
 									<div class="Price_hg_Class" v-bind:class="{ 'clickable': (getDisplayedMarketplaceResult('goat', variant, 'highestBid').link || '#') != '#', 'hover-opacity': (getDisplayedMarketplaceResult('goat', variant, 'highestBid').link || '#') != '#' }" v-bind:style="{ userSelect: (getDisplayedMarketplaceResult('goat', variant, 'highestBid').link || '#') != '#' ? 'all' : 'none', color: getThemeColor('rgba(29,29,29,1)'), opacity: (getDisplayedMarketplaceResult('goat', variant, 'highestBid').value || tryTranslate('N/A')) == tryTranslate('N/A') ? 0.66 : 1, fontSize: confineTextWidth(111-15, getDisplayedMarketplaceResult('goat', variant, 'highestBid').value || tryTranslate('N/A'), 20, 'px', 'normal', 'SF Pro Text') }">
 										<span  v-bind:style="{ userSelect: (getDisplayedMarketplaceResult('goat', variant, 'highestBid').link || '#') != '#' ? 'all' : 'none' }" v-on:click="(getDisplayedMarketplaceResult('goat', variant, 'highestBid').link || '#') != '#' ? window.open(getDisplayedMarketplaceResult('goat', variant, 'highestBid').link || '#') : window">{{getDisplayedMarketplaceResult('goat', variant, 'highestBid').value || tryTranslate('N/A')}}</span>
 									</div>
-
-									<div v-show="!results[activeResultIndex].storesCrawled.includes('goat')" style="pointer-events: none; width: 20px; height: 33px; left: 96px; top:-26px; z-index: 2; position: absolute; transform: translate(100%, 65%);">
-										<svg class="spinner" viewBox="0 0 50 50">
-											<circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="1.5" stroke="#FFA74E"></circle>
-										</svg>
-									</div>
 								</div>
 								<div class="StockX_Price_Class">
 									<svg class="Rectangle_hi">
@@ -154,12 +117,6 @@
 									</svg>
 									<div class="Price_hj_Class" v-bind:class="{ 'clickable': (getDisplayedMarketplaceResult('stockx', variant, 'highestBid').link || '#') != '#', 'hover-opacity': (getDisplayedMarketplaceResult('stockx', variant, 'highestBid').link || '#') != '#' }" v-bind:style="{ userSelect: (getDisplayedMarketplaceResult('stockx', variant, 'highestBid').link || '#') != '#' ? 'all' : 'none', color: getThemeColor('rgba(29,29,29,1)'), opacity: (getDisplayedMarketplaceResult('stockx', variant, 'highestBid').value || tryTranslate('N/A')) == tryTranslate('N/A') ? 0.66 : 1, fontSize: confineTextWidth(111-15, getDisplayedMarketplaceResult('stockx', variant, 'highestBid').value || tryTranslate('N/A'), 20, 'px', 'normal', 'SF Pro Text') }">
 										<span v-bind:style="{ userSelect: (getDisplayedMarketplaceResult('stockx', variant, 'highestBid').link || '#') != '#' ? 'all' : 'none' }" v-on:click="(getDisplayedMarketplaceResult('stockx', variant, 'highestBid').link || '#') != '#' ? window.open(getDisplayedMarketplaceResult('stockx', variant, 'highestBid').link || '#') : window">{{getDisplayedMarketplaceResult('stockx', variant, 'highestBid').value || tryTranslate('N/A')}}</span>
-									</div>
-
-									<div v-show="!results[activeResultIndex].storesCrawled.includes('stockx')" style="pointer-events: none; width: 20px; height: 33px; left: 96px; top:-26px; z-index: 2; position: absolute; transform: translate(100%, 65%);">
-										<svg class="spinner" viewBox="0 0 50 50">
-											<circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="1.5" stroke="#FFA74E"></circle>
-										</svg>
 									</div>
 								</div>
 							</div>
@@ -184,27 +141,42 @@
 			</div>
 			<div class="Store_Icons_Class">
 				<img class="Flight_Club_Class" v-bind:class="{ transparentify: companionSettings.theme == 'light' }" v-bind:src="companionSettings.theme == 'dark' ? '../../../../../../images/stores/' + 'Flight Club' + '-white.png' : '../../../../../../images/stores/' + 'Flight Club' + '.png'" onerror="this.src='../../../../../../images/unknownImage.png'">
+				<div v-show="activeResultIndex != -1 && !results[activeResultIndex].storesCrawled.includes('flightclub')" style="pointer-events: none; width: 20px; height: 33px; left: -55px; top: 101px; z-index: 2; position: absolute; transform: translate(100%, 65%);">
+					<svg class="spinner" viewBox="0 0 50 50">
+						<circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="1.5" stroke="#FFA74E"></circle>
+					</svg>
+				</div>
 				<img class="Stadium_Goods_Class" v-bind:class="{ transparentify: companionSettings.theme == 'light' }" v-bind:src="companionSettings.theme == 'dark' ? '../../../../../../images/stores/' + 'Stadium Goods' + '-white.png' : '../../../../../../images/stores/' + 'Stadium Goods' + '.png'" onerror="this.src='../../../../../../images/unknownImage.png'">
+				<div v-show="activeResultIndex != -1 && !results[activeResultIndex].storesCrawled.includes('stadiumgoods')" style="pointer-events: none; width: 20px; height: 33px; left: -55px; top: 59px; z-index: 2; position: absolute; transform: translate(100%, 65%);">
+					<svg class="spinner" viewBox="0 0 50 50">
+						<circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="1.5" stroke="#FFA74E"></circle>
+					</svg>
+				</div>
 				<img class="Goat_Icon_Class" v-bind:class="{ transparentify: companionSettings.theme == 'light' }" v-bind:src="companionSettings.theme == 'dark' ? '../../../../../../images/stores/' + 'Goat' + '-white.png' : '../../../../../../images/stores/' + 'Goat' + '.png'" onerror="this.src='../../../../../../images/unknownImage.png'">
+				<div v-show="activeResultIndex != -1 && !results[activeResultIndex].storesCrawled.includes('goat')" style="pointer-events: none; width: 20px; height: 33px; left: -55px; top: 17px; z-index: 2; position: absolute; transform: translate(100%, 65%);">
+					<svg class="spinner" viewBox="0 0 50 50">
+						<circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="1.5" stroke="#FFA74E"></circle>
+					</svg>
+				</div>
 				<img class="StockX_Class" v-bind:class="{ transparentify: companionSettings.theme == 'light' }" v-bind:src="companionSettings.theme == 'dark' ? '../../../../../../images/stores/' + 'StockX' + '-white.png' : '../../../../../../images/stores/' + 'StockX' + '.png'" onerror="this.src='../../../../../../images/unknownImage.png'">
-			</div>
-
-			<div class="ID6_5_Class">
-				<span>6.5</span>
-			</div>
-			<div class="ID6_Class">
-				<span>6</span>
-			</div>
-			<div class="ID5_5_Class">
-				<span>5.5</span>
-			</div>
-			<div class="ID5_Class">
-				<span>5</span>
+				<div v-show="activeResultIndex != -1 && !results[activeResultIndex].storesCrawled.includes('stockx')" style="pointer-events: none; width: 20px; height: 33px; left: -55px; top: -25px; z-index: 2; position: absolute; transform: translate(100%, 65%);">
+					<svg class="spinner" viewBox="0 0 50 50">
+						<circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="1.5" stroke="#FFA74E"></circle>
+					</svg>
+				</div>
 			</div>
 
 		</div>
 
 		<div class="Product_Card_1_Class" style="width: 1212px;" v-bind:class="{ 'dark-scrollbar': companionSettings.theme == 'dark' }">
+
+			<!-- display message if there are no items -->
+			<template v-if="results.length == 0">
+				<div class="centered-content" style="font-size: 1.1em; padding-top: 8.25%;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+					<span>{{tryTranslate('No results found')}}</span>
+				</div>
+			</template>
+
 			<template v-for="(result, resultIndex) in results">
 				<!-- grid display -->
 				<div v-bind:id="result.id" class="Product_Card_1_dy_Class clickable hover-opacity" v-bind:style="calculateGridPosition(resultIndex)" v-on:click="handleSelectClick($event, resultIndex)">
@@ -216,8 +188,9 @@
 						<path v-bind:fill="getColor(getMarketStatusColor(result.product))" class="Side_Rectangle_Class" d="M 5 0 L 5 196 C 2.238576173782349 196 0.0283203125 186.8766632080078 0.0283203125 184.115234375 L -0.05859375 12.4959716796875 C -0.05859375 9.73454761505127 2.238576173782349 0 5 0 Z">
 						</path>
 					</svg>
-					<div class="Tracking_Class" v-bind:style="{ color: getColor(getMarketStatusColor(result.product)), fontSize: confineTextWidth(85, tryTranslate(getMarketStatus(result.product)), 14, 'px', 'normal', 'SF Pro Text') }">
-						<span>{{tryTranslate(getMarketStatus(result.product))}}</span>
+					<div class="Tracking_Class" v-bind:style="{ color: getColor(getMarketStatusColor(result.product)), fontSize: confineTextWidth(105, getMarketStatus(result.product).direction + ' ' + companionSettings.currencySymbol + getMarketStatus(result.product).value + '(' + getMarketStatus(result.product).percent + '%)', 14, 'px', 'normal', 'SF Pro Text') }">
+						<span>{{getMarketStatus(result.product).direction + ' ' + companionSettings.currencySymbol + getMarketStatus(result.product).value}}</span>
+						<span style="font-size: 10px;">({{getMarketStatus(result.product).percent}}%)</span>
 					</div>
 					<div class="Price_Class" style="line-height: 17px;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(85, companionSettings.currencySymbol + numberWithCommas(result.product.retail || 0), 14, 'px', 'normal', 'SF Pro Text') }">
 						<span>{{companionSettings.currencySymbol}}{{numberWithCommas(result.product.retail || 0)}}</span>
@@ -236,12 +209,12 @@
 
 		</div>
 
-		<input id="marketLookupSearch" v-bind:placeholder="tryTranslate('Search')" v-model="searchTerm" class="Search_Bar_Class special-focus" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
-		<svg class="Magnifying_Glass_Icon" style="left: 482px; top: 124px;" viewBox="0 -0.045 17.337 17.337">
+		<input id="marketLookupSearch" v-bind:placeholder="tryTranslate('Search')" v-model="searchTerm" class="Search_Bar_Class special-focus" style="left: 489px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+		<svg class="Magnifying_Glass_Icon" style="left: 502px; top: 124px;" viewBox="0 -0.045 17.337 17.337">
 			<path v-bind:fill="getThemeColor('rgba(29,29,29,1)')" class="Magnifying_Glass_Icon_Class" d="M 7.516793251037598 -0.0235234834253788 C 3.371819496154785 -0.0235234834253788 0 3.34829568862915 0 7.493270397186279 C 0 11.63824462890625 3.371819496154785 15.01006317138672 7.516793251037598 15.01006317138672 C 8.78391170501709 15.01006317138672 10.02955055236816 14.70939350128174 11.08190250396729 14.12952709197998 C 11.1661958694458 14.2309684753418 11.25965595245361 14.32442760467529 11.36109733581543 14.40872001647949 L 13.50875282287598 16.55637741088867 C 14.04909896850586 17.16438865661621 14.88185119628906 17.42293357849121 15.67153072357178 17.22785949707031 C 16.46121025085449 17.03278541564941 17.07778167724609 16.41621208190918 17.27285957336426 15.62653064727783 C 17.46793174743652 14.83684730529785 17.20938682556152 14.0040979385376 16.60137557983398 13.46375179290771 L 14.45372009277344 11.31609630584717 C 14.3491039276123 11.21144199371338 14.2339506149292 11.11788082122803 14.11009693145752 11.03690242767334 C 14.68996429443359 9.984550476074219 15.0550651550293 8.76038646697998 15.0550651550293 7.471794128417969 C 15.0550651550293 3.326818943023682 11.68324661254883 -0.04500007256865501 7.538270950317383 -0.04500007256865501 Z M 7.516793251037598 2.124131917953491 C 10.50203609466553 2.124131917953491 12.88593292236328 4.508029937744141 12.88593292236328 7.493270397186279 C 12.88593292236328 8.910723686218262 12.37049579620361 10.22079277038574 11.46848201751709 11.18723678588867 C 11.4470043182373 11.20871257781982 11.42552852630615 11.23019027709961 11.40405178070068 11.25166702270508 C 11.30261039733887 11.33596038818359 11.20915126800537 11.42942047119141 11.12485599517822 11.53086090087891 C 10.17988777160645 12.38992404937744 8.891294479370117 12.88388538360596 7.495319366455078 12.88388538360596 C 4.510077476501465 12.88388538360596 2.126179695129395 10.49998760223389 2.126179695129395 7.514747142791748 C 2.126179695129395 4.529504776000977 4.510077476501465 2.145607709884644 7.495319366455078 2.145607709884644 Z">
 			</path>
 		</svg>
-		<div v-show="isSearching" style="pointer-events: none; width: 20px; height: 33px; left: 770px; top: 87px; z-index: 2; position: absolute; transform: translate(100%, 65%);">
+		<div v-show="isSearching" style="pointer-events: none; width: 20px; height: 33px; left: 790px; top: 87px; z-index: 2; position: absolute; transform: translate(100%, 65%);">
 			<svg class="spinner" viewBox="0 0 50 50">
 				<circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="1.5" stroke="#FFA74E"></circle>
 			</svg>
@@ -260,7 +233,8 @@
 			</svg>
 
 			<div class="Sales_Title_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-				<span>{{tryTranslate('Market Lookup')}} </span><span style="font-style: normal; font-weight: bold; font-size: 20px; opacity: 0.66;">{{999}} {{tryTranslate('Total')}}</span>
+				<span>{{tryTranslate('Market Lookup')}} </span>
+				<!-- <span style="font-style: normal; font-weight: bold; font-size: 20px; opacity: 0.66;">{{999}} {{tryTranslate('Total')}}</span> -->
 			</div>
 		</div>
 

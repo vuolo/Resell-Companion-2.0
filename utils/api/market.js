@@ -62,7 +62,6 @@ async function tryMatchAndApplyMarkets(marketplace, stockXResult) {
 
 // requires an initialized StockX result (modifying) and a matched marketplace result
 async function applyMatchedVariants(marketplace, stockXResult, matchedResult) {
-  console.log(marketplace);
   let matchedVariants = await fetchVariants(marketplace, matchedResult);
   if (marketplace == "flightclub") {
     try {
@@ -553,8 +552,8 @@ async function fetchFlightClubVariants(product, options = {}) {
 
 // validate sku function
 function validateSKU(incomingSKU, expectedSKU) {
-  let formattedIncomingSKU = incomingSKU || "".toUpperCase().replace(new RegExp(" ", "g"), "-").trim();
-  let formattedExpectedSKU = expectedSKU || "".toUpperCase().replace(new RegExp(" ", "g"), "-").trim();
+  let formattedIncomingSKU = (incomingSKU || "").toUpperCase().replace(new RegExp(" ", "g"), "-").trim();
+  let formattedExpectedSKU = (expectedSKU || "").toUpperCase().replace(new RegExp(" ", "g"), "-").trim();
   return formattedIncomingSKU == formattedExpectedSKU;
 }
 
