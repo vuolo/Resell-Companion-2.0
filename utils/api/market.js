@@ -3,7 +3,7 @@ const cheerio = require('cheerio');
 
 // this function requires a StockX search result
 async function updateMarket(result, markets = { 'goat': true, 'stadiumgoods': true, 'flightclub': true }) {
-  // result Obj looks like this: { product: product, variants: [], storesCrawled: [], id: '', selected: false  }
+  // result Obj looks like this: { product: product, variants: [], storesCrawled: [], id: '' }
   // clear result variants
   while (result.variants.length > 0) result.variants.pop();
 
@@ -62,6 +62,7 @@ async function tryMatchAndApplyMarkets(marketplace, stockXResult) {
 
 // requires an initialized StockX result (modifying) and a matched marketplace result
 async function applyMatchedVariants(marketplace, stockXResult, matchedResult) {
+  console.log(marketplace);
   let matchedVariants = await fetchVariants(marketplace, matchedResult);
   if (marketplace == "flightclub") {
     try {
@@ -168,7 +169,6 @@ async function searchStockX(query, options = {}) {
     if (!target) return [];
     const productArray = target.map(product => {
       const image = new URL(product.media.imageUrl, 'https://stockx.com').href;
-      console.log(product);
       return {
         name: product.title,
         retail: product.retailPrice,

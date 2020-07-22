@@ -327,11 +327,12 @@
 }
 .Prices_Area_Class {
 	position: absolute;
-	width: 1103.5px;
-	height: 203px;
+	width: 1120px;
+	height: 222px;
 	left: 75px;
 	top: 90px;
-	overflow: hidden;
+	overflow: auto;
+	overflow-y: hidden;
 }
 .Prices_Area_er_Class {
 	position: absolute;
@@ -361,15 +362,15 @@
 	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
 	overflow: visible;
-	width: 129px;
-	height: 55px;
+	width: 111px;
+	height: 37px;
 	left: 0px;
 	top: 0px;
 }
 .Price_Class {
 	position: absolute;
 	left: 8px;
-	top: 7px;
+	top: 9px;
 	overflow: visible;
 	width: 97px;
 	white-space: nowrap;
@@ -394,15 +395,15 @@
 	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
 	overflow: visible;
-	width: 129px;
-	height: 55px;
+	width: 111px;
+	height: 37px;
 	left: 0px;
 	top: 0px;
 }
 .Price_ey_Class {
 	position: absolute;
 	left: 8px;
-	top: 7px;
+	top: 9px;
 	overflow: visible;
 	width: 97px;
 	white-space: nowrap;
@@ -427,15 +428,15 @@
 	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
 	overflow: visible;
-	width: 129px;
-	height: 55px;
+	width: 111px;
+	height: 37px;
 	left: 0px;
 	top: 0px;
 }
 .Price_e_Class {
 	position: absolute;
 	left: 8px;
-	top: 7px;
+	top: 9px;
 	overflow: visible;
 	width: 97px;
 	white-space: nowrap;
@@ -460,15 +461,15 @@
 	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
 	overflow: visible;
-	width: 129px;
-	height: 55px;
+	width: 111px;
+	height: 37px;
 	left: 0px;
 	top: 0px;
 }
 .Price_fa_Class {
 	position: absolute;
 	left: 8px;
-	top: 7px;
+	top: 9px;
 	overflow: visible;
 	width: 97px;
 	white-space: nowrap;
@@ -501,15 +502,15 @@
 	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
 	overflow: visible;
-	width: 129px;
-	height: 55px;
+	width: 111px;
+	height: 37px;
 	left: 0px;
 	top: 0px;
 }
 .Price_fb_Class {
 	position: absolute;
 	left: 8px;
-	top: 7px;
+	top: 9px;
 	overflow: visible;
 	width: 97px;
 	white-space: nowrap;
@@ -534,15 +535,15 @@
 	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
 	overflow: visible;
-	width: 129px;
-	height: 55px;
+	width: 111px;
+	height: 37px;
 	left: 0px;
 	top: 0px;
 }
 .Price_fc_Class {
 	position: absolute;
 	left: 8px;
-	top: 7px;
+	top: 9px;
 	overflow: visible;
 	width: 97px;
 	white-space: nowrap;
@@ -567,15 +568,15 @@
 	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
 	overflow: visible;
-	width: 129px;
-	height: 55px;
+	width: 111px;
+	height: 37px;
 	left: 0px;
 	top: 0px;
 }
 .Price_fe_Class {
 	position: absolute;
 	left: 8px;
-	top: 7px;
+	top: 9px;
 	overflow: visible;
 	width: 97px;
 	white-space: nowrap;
@@ -600,15 +601,15 @@
 	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
 	overflow: visible;
-	width: 129px;
-	height: 55px;
+	width: 111px;
+	height: 37px;
 	left: 0px;
 	top: 0px;
 }
 .Price_fh_Class {
 	position: absolute;
 	left: 8px;
-	top: 7px;
+	top: 9px;
 	overflow: visible;
 	width: 97px;
 	white-space: nowrap;
@@ -689,15 +690,15 @@
 	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
 	overflow: visible;
-	width: 129px;
-	height: 55px;
+	width: 111px;
+	height: 37px;
 	left: 0px;
 	top: 0px;
 }
 .Price_fp_Class {
 	position: absolute;
 	left: 8px;
-	top: 7px;
+	top: 9px;
 	overflow: visible;
 	width: 97px;
 	white-space: nowrap;
@@ -722,15 +723,15 @@
 	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
 	overflow: visible;
-	width: 129px;
-	height: 55px;
+	width: 111px;
+	height: 37px;
 	left: 0px;
 	top: 0px;
 }
 .Price_fs_Class {
 	position: absolute;
 	left: 8px;
-	top: 7px;
+	top: 9px;
 	overflow: visible;
 	width: 97px;
 	white-space: nowrap;
@@ -755,15 +756,15 @@
 	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
 	overflow: visible;
-	width: 129px;
-	height: 55px;
+	width: 111px;
+	height: 37px;
 	left: 0px;
 	top: 0px;
 }
 .Price_fv_Class {
 	position: absolute;
 	left: 8px;
-	top: 7px;
+	top: 9px;
 	overflow: visible;
 	width: 97px;
 	white-space: nowrap;
@@ -788,15 +789,15 @@
 	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
 	overflow: visible;
-	width: 129px;
-	height: 55px;
+	width: 111px;
+	height: 37px;
 	left: 0px;
 	top: 0px;
 }
 .Price_fy_Class {
 	position: absolute;
 	left: 8px;
-	top: 7px;
+	top: 9px;
 	overflow: visible;
 	width: 97px;
 	white-space: nowrap;
@@ -829,15 +830,15 @@
 	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
 	overflow: visible;
-	width: 129px;
-	height: 55px;
+	width: 111px;
+	height: 37px;
 	left: 0px;
 	top: 0px;
 }
 .Price_f_Class {
 	position: absolute;
 	left: 8px;
-	top: 7px;
+	top: 9px;
 	overflow: visible;
 	width: 97px;
 	white-space: nowrap;
@@ -862,15 +863,15 @@
 	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
 	overflow: visible;
-	width: 129px;
-	height: 55px;
+	width: 111px;
+	height: 37px;
 	left: 0px;
 	top: 0px;
 }
 .Price_ga_Class {
 	position: absolute;
 	left: 8px;
-	top: 7px;
+	top: 9px;
 	overflow: visible;
 	width: 97px;
 	white-space: nowrap;
@@ -895,15 +896,15 @@
 	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
 	overflow: visible;
-	width: 129px;
-	height: 55px;
+	width: 111px;
+	height: 37px;
 	left: 0px;
 	top: 0px;
 }
 .Price_gb_Class {
 	position: absolute;
 	left: 8px;
-	top: 7px;
+	top: 9px;
 	overflow: visible;
 	width: 97px;
 	white-space: nowrap;
@@ -928,15 +929,15 @@
 	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
 	overflow: visible;
-	width: 129px;
-	height: 55px;
+	width: 111px;
+	height: 37px;
 	left: 0px;
 	top: 0px;
 }
 .Price_gc_Class {
 	position: absolute;
 	left: 8px;
-	top: 7px;
+	top: 9px;
 	overflow: visible;
 	width: 97px;
 	white-space: nowrap;
@@ -1017,15 +1018,15 @@
 	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
 	overflow: visible;
-	width: 129px;
-	height: 55px;
+	width: 111px;
+	height: 37px;
 	left: 0px;
 	top: 0px;
 }
 .Price_gj_Class {
 	position: absolute;
 	left: 8px;
-	top: 7px;
+	top: 9px;
 	overflow: visible;
 	width: 97px;
 	white-space: nowrap;
@@ -1050,15 +1051,15 @@
 	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
 	overflow: visible;
-	width: 129px;
-	height: 55px;
+	width: 111px;
+	height: 37px;
 	left: 0px;
 	top: 0px;
 }
 .Price_gm_Class {
 	position: absolute;
 	left: 8px;
-	top: 7px;
+	top: 9px;
 	overflow: visible;
 	width: 97px;
 	white-space: nowrap;
@@ -1083,15 +1084,15 @@
 	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
 	overflow: visible;
-	width: 129px;
-	height: 55px;
+	width: 111px;
+	height: 37px;
 	left: 0px;
 	top: 0px;
 }
 .Price_gp_Class {
 	position: absolute;
 	left: 8px;
-	top: 7px;
+	top: 9px;
 	overflow: visible;
 	width: 97px;
 	white-space: nowrap;
@@ -1116,15 +1117,15 @@
 	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
 	overflow: visible;
-	width: 129px;
-	height: 55px;
+	width: 111px;
+	height: 37px;
 	left: 0px;
 	top: 0px;
 }
 .Price_gs_Class {
 	position: absolute;
 	left: 8px;
-	top: 7px;
+	top: 9px;
 	overflow: visible;
 	width: 97px;
 	white-space: nowrap;
@@ -1157,15 +1158,15 @@
 	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
 	overflow: visible;
-	width: 129px;
-	height: 55px;
+	width: 111px;
+	height: 37px;
 	left: 0px;
 	top: 0px;
 }
 .Price_gw_Class {
 	position: absolute;
 	left: 8px;
-	top: 7px;
+	top: 9px;
 	overflow: visible;
 	width: 97px;
 	white-space: nowrap;
@@ -1190,15 +1191,15 @@
 	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
 	overflow: visible;
-	width: 129px;
-	height: 55px;
+	width: 111px;
+	height: 37px;
 	left: 0px;
 	top: 0px;
 }
 .Price_gz_Class {
 	position: absolute;
 	left: 8px;
-	top: 7px;
+	top: 9px;
 	overflow: visible;
 	width: 97px;
 	white-space: nowrap;
@@ -1223,15 +1224,15 @@
 	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
 	overflow: visible;
-	width: 129px;
-	height: 55px;
+	width: 111px;
+	height: 37px;
 	left: 0px;
 	top: 0px;
 }
 .Price_g_Class {
 	position: absolute;
 	left: 8px;
-	top: 7px;
+	top: 9px;
 	overflow: visible;
 	width: 97px;
 	white-space: nowrap;
@@ -1256,15 +1257,15 @@
 	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
 	overflow: visible;
-	width: 129px;
-	height: 55px;
+	width: 111px;
+	height: 37px;
 	left: 0px;
 	top: 0px;
 }
 .Price_ha_Class {
 	position: absolute;
 	left: 8px;
-	top: 7px;
+	top: 9px;
 	overflow: visible;
 	width: 97px;
 	white-space: nowrap;
@@ -1345,15 +1346,15 @@
 	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
 	overflow: visible;
-	width: 129px;
-	height: 55px;
+	width: 111px;
+	height: 37px;
 	left: 0px;
 	top: 0px;
 }
 .Price_hd_Class {
 	position: absolute;
 	left: 8px;
-	top: 7px;
+	top: 9px;
 	overflow: visible;
 	width: 97px;
 	white-space: nowrap;
@@ -1378,15 +1379,15 @@
 	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
 	overflow: visible;
-	width: 129px;
-	height: 55px;
+	width: 111px;
+	height: 37px;
 	left: 0px;
 	top: 0px;
 }
 .Price_hg_Class {
 	position: absolute;
 	left: 8px;
-	top: 7px;
+	top: 9px;
 	overflow: visible;
 	width: 97px;
 	white-space: nowrap;
@@ -1411,15 +1412,15 @@
 	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
 	overflow: visible;
-	width: 129px;
-	height: 55px;
+	width: 111px;
+	height: 37px;
 	left: 0px;
 	top: 0px;
 }
 .Price_hj_Class {
 	position: absolute;
 	left: 8px;
-	top: 7px;
+	top: 9px;
 	overflow: visible;
 	width: 97px;
 	white-space: nowrap;
@@ -1444,15 +1445,15 @@
 	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
 	overflow: visible;
-	width: 129px;
-	height: 55px;
+	width: 111px;
+	height: 37px;
 	left: 0px;
 	top: 0px;
 }
 .Price_hm_Class {
 	position: absolute;
 	left: 8px;
-	top: 7px;
+	top: 9px;
 	overflow: visible;
 	width: 97px;
 	white-space: nowrap;
@@ -1485,15 +1486,15 @@
 	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
 	overflow: visible;
-	width: 129px;
-	height: 55px;
+	width: 111px;
+	height: 37px;
 	left: 0px;
 	top: 0px;
 }
 .Price_hq_Class {
 	position: absolute;
 	left: 8px;
-	top: 7px;
+	top: 9px;
 	overflow: visible;
 	width: 97px;
 	white-space: nowrap;
@@ -1518,15 +1519,15 @@
 	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
 	overflow: visible;
-	width: 129px;
-	height: 55px;
+	width: 111px;
+	height: 37px;
 	left: 0px;
 	top: 0px;
 }
 .Price_ht_Class {
 	position: absolute;
 	left: 8px;
-	top: 7px;
+	top: 9px;
 	overflow: visible;
 	width: 97px;
 	white-space: nowrap;
@@ -1551,15 +1552,15 @@
 	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
 	overflow: visible;
-	width: 129px;
-	height: 55px;
+	width: 111px;
+	height: 37px;
 	left: 0px;
 	top: 0px;
 }
 .Price_hw_Class {
 	position: absolute;
 	left: 8px;
-	top: 7px;
+	top: 9px;
 	overflow: visible;
 	width: 97px;
 	white-space: nowrap;
@@ -1584,15 +1585,15 @@
 	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
 	overflow: visible;
-	width: 129px;
-	height: 55px;
+	width: 111px;
+	height: 37px;
 	left: 0px;
 	top: 0px;
 }
 .Price_hz_Class {
 	position: absolute;
 	left: 8px;
-	top: 7px;
+	top: 9px;
 	overflow: visible;
 	width: 97px;
 	white-space: nowrap;
@@ -1673,15 +1674,15 @@
 	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
 	overflow: visible;
-	width: 129px;
-	height: 55px;
+	width: 111px;
+	height: 37px;
 	left: 0px;
 	top: 0px;
 }
 .Price_h_Class {
 	position: absolute;
 	left: 8px;
-	top: 7px;
+	top: 9px;
 	overflow: visible;
 	width: 97px;
 	white-space: nowrap;
@@ -1706,15 +1707,15 @@
 	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
 	overflow: visible;
-	width: 129px;
-	height: 55px;
+	width: 111px;
+	height: 37px;
 	left: 0px;
 	top: 0px;
 }
 .Price_ia_Class {
 	position: absolute;
 	left: 8px;
-	top: 7px;
+	top: 9px;
 	overflow: visible;
 	width: 97px;
 	white-space: nowrap;
@@ -1739,15 +1740,15 @@
 	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
 	overflow: visible;
-	width: 129px;
-	height: 55px;
+	width: 111px;
+	height: 37px;
 	left: 0px;
 	top: 0px;
 }
 .Price_id_Class {
 	position: absolute;
 	left: 8px;
-	top: 7px;
+	top: 9px;
 	overflow: visible;
 	width: 97px;
 	white-space: nowrap;
@@ -1772,15 +1773,15 @@
 	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
 	overflow: visible;
-	width: 129px;
-	height: 55px;
+	width: 111px;
+	height: 37px;
 	left: 0px;
 	top: 0px;
 }
 .Price_ig_Class {
 	position: absolute;
 	left: 8px;
-	top: 7px;
+	top: 9px;
 	overflow: visible;
 	width: 97px;
 	white-space: nowrap;
@@ -1813,15 +1814,15 @@
 	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
 	overflow: visible;
-	width: 129px;
-	height: 55px;
+	width: 111px;
+	height: 37px;
 	left: 0px;
 	top: 0px;
 }
 .Price_ik_Class {
 	position: absolute;
 	left: 8px;
-	top: 7px;
+	top: 9px;
 	overflow: visible;
 	width: 97px;
 	white-space: nowrap;
@@ -1846,15 +1847,15 @@
 	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
 	overflow: visible;
-	width: 129px;
-	height: 55px;
+	width: 111px;
+	height: 37px;
 	left: 0px;
 	top: 0px;
 }
 .Price_in_Class {
 	position: absolute;
 	left: 8px;
-	top: 7px;
+	top: 9px;
 	overflow: visible;
 	width: 97px;
 	white-space: nowrap;
@@ -1879,15 +1880,15 @@
 	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
 	overflow: visible;
-	width: 129px;
-	height: 55px;
+	width: 111px;
+	height: 37px;
 	left: 0px;
 	top: 0px;
 }
 .Price_iq_Class {
 	position: absolute;
 	left: 8px;
-	top: 7px;
+	top: 9px;
 	overflow: visible;
 	width: 97px;
 	white-space: nowrap;
@@ -1912,15 +1913,15 @@
 	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
 	overflow: visible;
-	width: 129px;
-	height: 55px;
+	width: 111px;
+	height: 37px;
 	left: 0px;
 	top: 0px;
 }
 .Price_it_Class {
 	position: absolute;
 	left: 8px;
-	top: 7px;
+	top: 9px;
 	overflow: visible;
 	width: 97px;
 	white-space: nowrap;
@@ -2092,11 +2093,12 @@
 }
 .Product_Card_1_Class {
 	position: absolute;
-	width: 228.941px;
-	height: 228px;
+	width: 1212px;
+	height: 241px;
 	left: 63px;
 	top: 171px;
-	overflow: hidden;
+	overflow: auto;
+	overflow-y: hidden;
 }
 .Product_Card_1_i_Class {
 	position: absolute;
@@ -2288,4 +2290,112 @@
 	font-weight: 900;
 	font-size: 40px;
 	color: rgba(29,29,29,1);
+}
+
+
+
+
+.Product_Card_1_dy_Class {
+	position: absolute;
+	width: 210px;
+	height: 210px;
+	left: 8.941px;
+	top: 6px;
+	overflow: visible;
+}
+.Product_Card_1_dy_Class .Rectangle {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 209.941px;
+	height: 210px;
+	left: 0.059px;
+	top: 0px;
+}
+.Product_Card_1_dy_Class .Side_Rectangle {
+	overflow: visible;
+	position: absolute;
+	width: 5.059px;
+	height: 196px;
+	left: 0px;
+	top: 7px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Product_Card_1_dy_Class .Tracking_Class {
+	position: absolute;
+	left: 23px;
+	top: 187px;
+	overflow: visible;
+	width: 170px;
+	white-space: nowrap;
+	line-height: 14px;
+	margin-top: -3px;
+	text-align: right;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	color: rgba(255,167,78,1);
+}
+.Product_Card_1_dy_Class .Price_Class {
+	position: absolute;
+	left: 17.363px;
+	top: 187px;
+	overflow: visible;
+	width: 38px;
+	white-space: nowrap;
+	line-height: 14px;
+	margin-top: -3px;
+	text-align: right;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	color: rgba(29,29,29,1);
+}
+.Product_Card_1_dy_Class .Size_Class {
+	position: absolute;
+	left: 17.5px;
+	top: 166px;
+	overflow: visible;
+	width: 23px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -1.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	color: rgba(29,29,29,1);
+}
+.Product_Card_1_dy_Class .Title_Class {
+	position: absolute;
+	left: 17.5px;
+	top: 132px;
+	overflow: visible;
+	width: 180px;
+	white-space: pre-wrap;
+	line-height: 17px;
+	margin-top: -1.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	color: rgba(29,29,29,1);
+}
+.Product_Card_1_dy_Class .Product_Image_Class {
+	border-radius: 10px;
+	display: table;
+	position: absolute;
+	width: 118px;
+	height: 118px;
+	left: 45.559px;
+	top: 9.146px;
+	overflow: visible;
+
+	display: flex;
+  align-items: center;
+  justify-content: center;
 }

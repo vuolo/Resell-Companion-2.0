@@ -1658,6 +1658,12 @@
         "es": "Tamaño desconocido"
       }
     },
+    "Unknown Style Code": {
+      "languages": {
+        "en": "Unknown Style Code",
+        "es": "Desconocido código de estilo"
+      }
+    },
     "Unknown Ticket": {
       "languages": {
         "en": "Unknown Ticket",
