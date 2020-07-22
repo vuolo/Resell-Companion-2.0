@@ -182,6 +182,7 @@
 				<img class="Goat_Icon_Class" v-bind:class="{ transparentify: companionSettings.theme == 'light' }" v-bind:src="companionSettings.theme == 'dark' ? '../../../../../../images/stores/' + 'Goat' + '-white.png' : '../../../../../../images/stores/' + 'Goat' + '.png'" onerror="this.src='../../../../../../images/unknownImage.png'">
 				<img class="StockX_Class" v-bind:class="{ transparentify: companionSettings.theme == 'light' }" v-bind:src="companionSettings.theme == 'dark' ? '../../../../../../images/stores/' + 'StockX' + '-white.png' : '../../../../../../images/stores/' + 'StockX' + '.png'" onerror="this.src='../../../../../../images/unknownImage.png'">
 			</div>
+
 			<div class="ID6_5_Class">
 				<span>6.5</span>
 			</div>
@@ -194,41 +195,46 @@
 			<div class="ID5_Class">
 				<span>5</span>
 			</div>
-			<!-- <svg class="Scroll_Bar_2">
-				<rect fill="rgba(243,224,185,1)" class="Scroll_Bar_2_Class" rx="4" ry="4" x="0" y="0" width="212" height="8">
-				</rect>
-			</svg> -->
+
 		</div>
 		<div class="Product_Card_1_Class">
-			<div class="Product_Card_1_i_Class">
-				<svg class="Rectangle_i">
-					<rect fill="rgba(255,255,255,1)" class="Rectangle_i_Class" rx="20" ry="20" x="0" y="0" width="209.941" height="210">
-					</rect>
-				</svg>
-				<svg class="Side_Rectangle" viewBox="-0.059 0 5.059 196">
-					<path fill="rgba(253,53,53,1)" class="Side_Rectangle_Class" d="M 5 0 L 5 196 C 2.238576173782349 196 0.0283203125 186.8766632080078 0.0283203125 184.115234375 L -0.05859375 12.4959716796875 C -0.05859375 9.73454761505127 2.238576173782349 0 5 0 Z">
-					</path>
-				</svg>
-				<div class="Price_Change_Class">
-					<span>↓</span><span style="font-style:normal;font-weight:bold;font-size:14px;"> -$85 </span><span style="font-style:normal;font-weight:bold;font-size:10px;">(-16%)</span>
+			<template v-for="(result, resultIndex) in results">
+				<!-- grid display -->
+				<div v-bind:id="result.id" class="Product_Card_1_i_Class clickable hover-opacity" v-bind:style="calculateGridPosition(resultIndex)" v-on:click="handleSelectClick($event, resultIndex)">
+					<svg class="Rectangle">
+						<rect v-bind:fill="result.selected ? getThemeColor('rgba(225,225,225,1)') : getThemeColor('rgba(255,255,255,1)')" class="Rectangle_Class" rx="20" ry="20" x="0" y="0" width="209.941" height="210">
+						</rect>
+					</svg>
+					<svg class="Side_Rectangle" viewBox="-0.059 0 5.059 196">
+						<path v-bind:fill="getColor(getMarketStatusColor(result.product))" class="Side_Rectangle_Class" d="M 5 0 L 5 196 C 2.238576173782349 196 0.0283203125 186.8766632080078 0.0283203125 184.115234375 L -0.05859375 12.4959716796875 C -0.05859375 9.73454761505127 2.238576173782349 0 5 0 Z">
+						</path>
+					</svg>
+					<div class="Tracking_Class" v-bind:style="{ color: getColor(getMarketStatusColor(result.product)), fontSize: confineTextWidth(85, tryTranslate(getMarketStatus(result.product)), 14, 'px', 'normal', 'SF Pro Text') }">
+						<span>{{tryTranslate(getMarketStatus(result.product))}}</span>
+					</div>
+					<div class="Price_Class" style="line-height: 17px;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(85, companionSettings.currencySymbol + numberWithCommas(result.product.retail || 0), 14, 'px', 'normal', 'SF Pro Text') }">
+						<span>{{companionSettings.currencySymbol}}{{numberWithCommas(result.product.retail || 0)}}</span>
+					</div>
+					<div class="Size_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), top: (getTextWidth(result.product.name.length == 0 ? tryTranslate('Unknown Product') : result.product.name, `${'normal'} ${14 + 'px'} ${'SF Pro Text'}`) <= (180 - 10) ? 148 : 166) + 'px', fontSize: confineTextWidth(180, result.product.size, 14, 'px', 'normal', 'SF Pro Text') }">
+						<span>{{result.product.size.length == 0 ? tryTranslate('Unknown Size') : result.product.size}}</span>
+					</div>
+					<div class="Title_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+						<span>{{result.product.name.length == 0 ? tryTranslate('Unknown Product') : tryGenerateEllipses(300, result.product.name, 14, 'px', 'normal', 'SF Pro Text')}}</span>
+					</div>
+					<div class="Product_Image_Class">
+						<img style="display: table-cell; vertical-align: middle; max-width: 118px; max-height: 118px; border-radius: 10px; margin-left: auto; margin-right: auto;" v-bind:class="{ transparentify: companionSettings.theme == 'light' }" v-bind:src="result.product.image" onerror="this.src='../../../../../../images/unknownImage.png'">
+					</div>
 				</div>
-				<div class="Price_jc_Class">
-					<span>$225</span>
-				</div>
-				<div class="Style_Code_Class">
-					<span>NIG-2013</span>
-				</div>
-				<div class="Title_je_Class">
-					<span>Ronnie Fieg x<br/>New Balance 1700K1</span>
-				</div>
-				<img class="Product_Image_Class" src="Product_Image.png" srcset="Product_Image.png 1x, Product_Image@2x.png 2x">
-			</div>
+			</template>
+
 		</div>
+
 		<input id="marketLookupSearch" v-bind:placeholder="tryTranslate('Search')" v-model="searchTerm" class="Search_Bar_Class special-focus" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
 		<svg class="Magnifying_Glass_Icon" style="left: 482px; top: 124px;" viewBox="0 -0.045 17.337 17.337">
 			<path v-bind:fill="getThemeColor('rgba(29,29,29,1)')" class="Magnifying_Glass_Icon_Class" d="M 7.516793251037598 -0.0235234834253788 C 3.371819496154785 -0.0235234834253788 0 3.34829568862915 0 7.493270397186279 C 0 11.63824462890625 3.371819496154785 15.01006317138672 7.516793251037598 15.01006317138672 C 8.78391170501709 15.01006317138672 10.02955055236816 14.70939350128174 11.08190250396729 14.12952709197998 C 11.1661958694458 14.2309684753418 11.25965595245361 14.32442760467529 11.36109733581543 14.40872001647949 L 13.50875282287598 16.55637741088867 C 14.04909896850586 17.16438865661621 14.88185119628906 17.42293357849121 15.67153072357178 17.22785949707031 C 16.46121025085449 17.03278541564941 17.07778167724609 16.41621208190918 17.27285957336426 15.62653064727783 C 17.46793174743652 14.83684730529785 17.20938682556152 14.0040979385376 16.60137557983398 13.46375179290771 L 14.45372009277344 11.31609630584717 C 14.3491039276123 11.21144199371338 14.2339506149292 11.11788082122803 14.11009693145752 11.03690242767334 C 14.68996429443359 9.984550476074219 15.0550651550293 8.76038646697998 15.0550651550293 7.471794128417969 C 15.0550651550293 3.326818943023682 11.68324661254883 -0.04500007256865501 7.538270950317383 -0.04500007256865501 Z M 7.516793251037598 2.124131917953491 C 10.50203609466553 2.124131917953491 12.88593292236328 4.508029937744141 12.88593292236328 7.493270397186279 C 12.88593292236328 8.910723686218262 12.37049579620361 10.22079277038574 11.46848201751709 11.18723678588867 C 11.4470043182373 11.20871257781982 11.42552852630615 11.23019027709961 11.40405178070068 11.25166702270508 C 11.30261039733887 11.33596038818359 11.20915126800537 11.42942047119141 11.12485599517822 11.53086090087891 C 10.17988777160645 12.38992404937744 8.891294479370117 12.88388538360596 7.495319366455078 12.88388538360596 C 4.510077476501465 12.88388538360596 2.126179695129395 10.49998760223389 2.126179695129395 7.514747142791748 C 2.126179695129395 4.529504776000977 4.510077476501465 2.145607709884644 7.495319366455078 2.145607709884644 Z">
 			</path>
 		</svg>
+
 		<div class="Header_Class">
 
 			<!-- <svg class="Settings_Icon_Class clickable hover-opacity" v-on:click="openModal('configure')" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36">

@@ -3,7 +3,7 @@ const cheerio = require('cheerio');
 
 // this function requires a StockX search result
 async function updateMarket(result, markets = { 'goat': true, 'stadiumgoods': true, 'flightclub': true }) {
-  // result Obj looks like this: { product: product, variants: [], storesCrawled: [] }
+  // result Obj looks like this: { product: product, variants: [], storesCrawled: [], id: '', selected: false  }
   // clear result variants
   while (result.variants.length > 0) result.variants.pop();
 

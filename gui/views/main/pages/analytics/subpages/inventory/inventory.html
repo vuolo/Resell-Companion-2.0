@@ -214,8 +214,8 @@
 							<div v-if="!inventoryItem.purchase.tracking.isTracking && getDisplayedTrackingStatus(inventoryItem.purchase.tracking) != 'N/A'" class="Tracking_Class" v-bind:style="{ color: getColor(getTrackingColor(inventoryItem.purchase.tracking)), fontSize: confineTextWidth(85, tryTranslate(getDisplayedTrackingStatus(inventoryItem.purchase.tracking)), 14, 'px', 'normal', 'SF Pro Text') }">
 								<span>{{tryTranslate(getDisplayedTrackingStatus(inventoryItem.purchase.tracking))}}</span>
 							</div>
-							<div class="Price_Class" style="line-height: 17px;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(85, companionSettings.currencySymbol + numberWithCommas(inventoryItem.purchase.price), 14, 'px', 'normal', 'SF Pro Text') }">
-								<span>{{companionSettings.currencySymbol}}{{numberWithCommas(inventoryItem.purchase.price)}}</span>
+							<div class="Price_Class" style="line-height: 17px;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(85, companionSettings.currencySymbol + numberWithCommas((inventoryItem.purchase.price || 0)), 14, 'px', 'normal', 'SF Pro Text') }">
+								<span>{{companionSettings.currencySymbol}}{{numberWithCommas((inventoryItem.purchase.price || 0))}}</span>
 							</div>
 							<div class="Size_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), top: (getTextWidth(inventoryItem.name.length == 0 ? tryTranslate('Unknown Product') : inventoryItem.name, `${'normal'} ${14 + 'px'} ${'SF Pro Text'}`) <= (180 - 10) ? 148 : 166) + 'px', fontSize: confineTextWidth(180, inventoryItem.size, 14, 'px', 'normal', 'SF Pro Text') }">
 								<span>{{inventoryItem.size.length == 0 ? tryTranslate('Unknown Size') : inventoryItem.size}}</span>
