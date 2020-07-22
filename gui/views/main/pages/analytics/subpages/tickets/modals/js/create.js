@@ -209,6 +209,7 @@ $("#trackingNumber").on('change keydown paste input', function() {
 });
 
 async function refreshSuggestedItems(inputtedName = modalOptions.name) {
+  return; // RETURN TO CANCEL SuggestedItems REFRESH
   resetSuggestedItems();
   modalOptions.suggestions.isSearchingForItems = true;
   let searchResults = await window.parent.parent.parent.marketAPI.searchMarketplace('stockx', inputtedName);

@@ -242,6 +242,7 @@ input[type="date"]::-webkit-inner-spin-button {
 	color: rgba(29,29,29,1);
 }
 .Magnifying_Glass_Icon {
+  pointer-events: none;
 	opacity: 0.66;
 	overflow: visible;
 	position: absolute;

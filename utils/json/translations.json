@@ -234,16 +234,22 @@
         "es": "Copiar artículo(s)"
       }
     },
+    "Copy Product URL": {
+      "languages": {
+        "en": "Copy Product URL",
+        "es": "Copiar URL del producto"
+      }
+    },
     "Copy Sale(s)": {
       "languages": {
         "en": "Copy Sale(s)",
         "es": "Copiar venta(s)"
       }
     },
-    "Copy Product URL": {
+    "Copy Ticket(s)": {
       "languages": {
-        "en": "Copy Product URL",
-        "es": "Copiar URL del producto"
+        "en": "Copy Ticket(s)",
+        "es": "Copiar entrada(s)"
       }
     },
     "Copy Store URL": {
@@ -382,6 +388,12 @@
       "languages": {
         "en": "Duplicate Sale(s)",
         "es": "Duplicar venta(s)"
+      }
+    },
+    "Duplicate Ticket(s)": {
+      "languages": {
+        "en": "Duplicate Ticket(s)",
+        "es": "Duplicar entrada(s)"
       }
     },
     "Edit Task": {
@@ -950,6 +962,12 @@
         "es": "Pegar venta(s)"
       }
     },
+    "Paste Ticket(s)": {
+      "languages": {
+        "en": "Paste Ticket(s)",
+        "es": "Pegar entrada(s)"
+      }
+    },
     "Pay": {
       "languages": {
         "en": "Pay",
@@ -1127,13 +1145,19 @@
     "Remove Sale(s)": {
       "languages": {
         "en": "Remove Sale(s)",
-        "es": "Eliminar Venta(es)"
+        "es": "Eliminar Venta(s)"
       }
     },
     "Remove Task(s)": {
       "languages": {
         "en": "Remove Task(s)",
         "es": "Eliminar tarea(s)"
+      }
+    },
+    "Remove Ticket(s)": {
+      "languages": {
+        "en": "Remove Ticket(s)",
+        "es": "Eliminar entrada(s)"
       }
     },
     "Resell Prediction": {
@@ -1496,6 +1520,12 @@
         "es": "URL de la imagen de entrada"
       }
     },
+    "Ticket Name": {
+      "languages": {
+        "en": "Ticket Name",
+        "es": "Nombre de la entrada"
+      }
+    },
     "Tickets": {
       "languages": {
         "en": "Tickets",
@@ -1686,6 +1716,12 @@
       "languages": {
         "en": "View Sale",
         "es": "Ver venta"
+      }
+    },
+    "View Ticket": {
+      "languages": {
+        "en": "View Ticket",
+        "es": "Ver entrada"
       }
     },
     "Version": {
