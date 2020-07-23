@@ -14,7 +14,18 @@ window.setLanguage = (language) => {
   })();
   // analytics page
   if (window.frames["analytics-frame"]) window.frames["analytics-frame"].refreshTracking();
-  if (window.frames["analytics-frame"]) for (var i = 0; i < window.frames['analytics-frame'].frames.length; i++) try { window.frames['analytics-frame'].frames[i].setContextMenuTheme(); } catch (err) { }
+  if (window.frames["analytics-frame"]) {
+    for (var i = 0; i < window.frames['analytics-frame'].frames.length; i++) {
+      try { window.frames['analytics-frame'].frames[i].setContextMenuTheme(); } catch (err) { }
+      // force language to update on all date searches
+      try { window.frames['analytics-frame'].frames[i].overviewApp.updateDateSearch(); continue; } catch (err) { }
+      try { window.frames['analytics-frame'].frames[i].salesApp.updateDateSearch(); continue; } catch (err) { }
+      try { window.frames['analytics-frame'].frames[i].inventoryApp.updateDateSearch(); continue; } catch (err) { }
+      try { window.frames['analytics-frame'].frames[i].subscriptionsApp.updateDateSearch(); continue; } catch (err) { }
+      try { window.frames['analytics-frame'].frames[i].ticketsApp.updateDateSearch(); continue; } catch (err) { }
+      try { window.frames['analytics-frame'].frames[i].cardsApp.updateDateSearch(); continue; } catch (err) { }
+    }
+  }
 };
 
 window.tryTranslate = (incomingText, language = window.companionSettings.language) => {

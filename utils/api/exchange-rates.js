@@ -52,6 +52,7 @@ function roundNumber(num, scale = 2) {
 }
 
 updateExchangeRates(); // initialize exchange rates
+setInterval(updateExchangeRates, 1 * 60 * 60 * 1000) // update exchange rates every 1 hour
 
 module.exports = {
   convertCurrency: convertCurrency,

@@ -19,3 +19,4 @@ const overviewApp = new Vue({
     getThemeColor: window.parent.parent.getThemeColor
   }
 });
+window.overviewApp = overviewApp;

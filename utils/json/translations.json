@@ -842,6 +842,12 @@
         "es": "No hay navegadores creados"
       }
     },
+    "No cards added": {
+      "languages": {
+        "en": "No cards added",
+        "es": "No se han añadido tarjetas"
+      }
+    },
     "No cards created": {
       "languages": {
         "en": "No cards created",

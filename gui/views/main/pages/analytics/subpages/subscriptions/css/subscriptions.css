@@ -1,10 +1,10 @@
 .mediaViewInfo {
-	--web-view-name: Rewrite – Overview;
-	--web-view-id: Rewrite___Overview;
+	--web-view-name: Rewrite – Sales;
+	--web-view-id: Rewrite___Sales;
 	--web-enable-deep-linking: true;
 }
 :root {
-	--web-view-ids: Rewrite___Overview;
+	--web-view-ids: Rewrite___Sales;
 }
 * {
 	margin: 0;
@@ -12,258 +12,302 @@
 	box-sizing: border-box;
 	border: none;
 }
-.Rewrite___Overview_Class {
+.Rewrite___Sales_Class {
 	position: absolute;
 	width: 1287px;
 	height: 795px;
 	background-color: rgba(251,247,241,1);
 	overflow: hidden;
-	--web-view-name: Rewrite – Overview;
-	--web-view-id: Rewrite___Overview;
+	--web-view-name: Rewrite – Sales;
+	--web-view-id: Rewrite___Sales;
 	--web-enable-deep-linking: true;
 }
-
 .Content_Class {
 	position: absolute;
-	width: 963.728px;
-	height: 516.609px;
-	left: 161.581px;
-	top: 114.391px;
+	width: 1206.043px;
+	height: 206.634px;
+	left: 40.74px;
+	top: 114px;
 	overflow: visible;
 }
-.Left_Graph_Class {
+.Bottom_Section_Class {
 	position: absolute;
-	width: 639px;
-	height: 296px;
-	left: 0.419px;
-	top: 220.609px;
+	width: 1236px;
+	height: 473px;
+	left: -15px;
+	top: 144.124px;
+	overflow: auto;
+	overflow-x: hidden;
+}
+.Row_1_Class {
+	position: absolute;
+	width: 1206.043px;
+	height: 52.497px;
+	left: 10px;
+	top: 33.013px;
 	overflow: visible;
 }
-.Graph_Rectangle {
-	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+.Rectangle {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.149));
 	position: absolute;
 	overflow: visible;
-	width: 657px;
-	height: 314px;
+	width: 1206.043px;
+	height: 52.497px;
 	left: 0px;
 	top: 0px;
 }
-.Sample_Graph_Class {
+.Tracking_Class {
 	position: absolute;
-	width: 631px;
-	height: 276px;
-	left: 4px;
-	top: 11px;
+	left: 1074.01px;
+	top: 19.987px;
 	overflow: visible;
-}
-.Right_Graph_Class {
-	position: absolute;
-	width: 309px;
-	height: 296px;
-	left: 654.419px;
-	top: 220.609px;
-	overflow: visible;
-}
-.Graph_Rectangle_eu {
-	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
-	position: absolute;
-	overflow: visible;
-	width: 327px;
-	height: 314px;
-	left: 0px;
-	top: 0px;
-}
-.Sample_Graph_ev_Class {
-	position: absolute;
-	width: 209px;
-	height: 214px;
-	left: 11px;
-	top: 54px;
-	overflow: visible;
-}
-.Cards_Area_ew_Class {
-	position: absolute;
-	width: 52.365px;
-	height: 14px;
-	left: 226.57px;
-	top: 189px;
-	overflow: visible;
-}
-.Cards_Class {
-	position: absolute;
-	left: 18.365px;
-	top: 0px;
-	overflow: visible;
-	width: 35px;
+	width: 81px;
 	white-space: nowrap;
-	line-height: 36px;
-	margin-top: -12px;
+	line-height: 42px;
+	margin-top: -13.5px;
 	text-align: left;
 	font-family: SF Pro Text;
 	font-style: normal;
 	font-weight: normal;
-	font-size: 12px;
+	font-size: 15px;
+	color: rgba(255,167,78,1);
+}
+.Profit_Class {
+	position: absolute;
+	left: 961.01px;
+	top: 19.987px;
+	overflow: visible;
+	width: 55px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -13.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 15px;
+	color: rgba(53,178,57,1);
+}
+.Fees_Class {
+	position: absolute;
+	left: 856.73px;
+	top: 19.987px;
+	overflow: visible;
+	width: 54px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -13.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 15px;
 	color: rgba(29,29,29,1);
 }
-.Cards_Icon {
+.Sale_Price_Class {
+	position: absolute;
+	left: 755.773px;
+	top: 19.987px;
 	overflow: visible;
-	position: absolute;
-	width: 11.223px;
-	height: 13.639px;
-	left: 0px;
-	top: 0.311px;
-	transform: matrix(1,0,0,1,0,0);
+	width: 64px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -13.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 15px;
+	color: rgba(29,29,29,1);
 }
-.Tickets_Area_ez_Class {
+.Purchase_Price_Class {
 	position: absolute;
-	width: 62.719px;
-	height: 14px;
-	left: 224.216px;
-	top: 166.354px;
+	left: 605.156px;
+	top: 19.987px;
+	overflow: visible;
+	width: 63px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -13.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 15px;
+	color: rgba(29,29,29,1);
+}
+.StockX_Icon_Class {
+	display: table;
+	position: absolute;
+	width: 115px;
+	height: 41px;
+	left: 462.906px;
+	top: 5.863px;
+	overflow: visible;
+
+	display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.Size_Class {
+	position: absolute;
+	left: 361.13px;
+	top: 19.987px;
+	overflow: visible;
+	width: 42px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -13.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 15px;
+	color: rgba(29,29,29,1);
+}
+.Product_Class {
+	position: absolute;
+	left: 71.652px;
+	top: 19.987px;
+	overflow: visible;
+	width: 237px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -13.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 15px;
+	color: rgba(29,29,29,1);
+}
+.Product_Image_Class {
+	border-radius: 5px;
+	display: table;
+	position: absolute;
+	width: 42px;
+	height: 42px;
+	left: 15.369px;
+	top: 5.049px;
+	overflow: visible;
+
+	display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.Top_Bar_Chart_Class {
+	position: absolute;
+	width: 1090.361px;
+	height: 24px;
+	left: 63.652px;
+	top: 126px;
 	overflow: visible;
 }
-.Tickets_Class {
+.Tracking_ea_Class {
 	position: absolute;
-	left: 20.719px;
+	left: 1003.361px;
+	top: 0px;
+	overflow: visible;
+	width: 88px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -11px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Profit_eb_Class {
+	position: absolute;
+	left: 890.361px;
+	top: 0px;
+	overflow: visible;
+	width: 57px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -11px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Fees_ec_Class {
+	position: absolute;
+	left: 786.073px;
+	top: 0px;
+	overflow: visible;
+	width: 48px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -11px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Sold_Class {
+	position: absolute;
+	left: 685.258px;
+	top: 0px;
+	overflow: visible;
+	width: 46px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -11px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Purchase_Class {
+	position: absolute;
+	left: 533.778px;
+	top: 0px;
+	overflow: visible;
+	width: 95px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -11px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Platform_Class {
+	position: absolute;
+	left: 389.608px;
+	top: 0px;
+	overflow: visible;
+	width: 88px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -11px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Size_eg_Class {
+	position: absolute;
+	left: 290.274px;
 	top: 0px;
 	overflow: visible;
 	width: 43px;
 	white-space: nowrap;
-	line-height: 36px;
-	margin-top: -12px;
-	text-align: left;
-	font-family: SF Pro Text;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 12px;
-	color: rgba(29,29,29,1);
-}
-.Tickets_Icon {
-	overflow: visible;
-	position: absolute;
-	width: 15.977px;
-	height: 10.651px;
-	left: 0px;
-	top: 1.577px;
-	transform: matrix(1,0,0,1,0,0);
-}
-.Bots_Area_e_Class {
-	position: absolute;
-	width: 46.719px;
-	height: 15.618px;
-	left: 224.216px;
-	top: 142px;
-	overflow: visible;
-}
-.Bots_Class {
-	position: absolute;
-	left: 20.719px;
-	top: 1.618px;
-	overflow: visible;
-	width: 27px;
-	white-space: nowrap;
-	line-height: 36px;
-	margin-top: -12px;
-	text-align: left;
-	font-family: SF Pro Text;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 12px;
-	color: rgba(29,29,29,1);
-}
-.Bots_Icon {
-	overflow: visible;
-	position: absolute;
-	width: 15.977px;
-	height: 12.781px;
-	left: 0px;
-	top: 0px;
-	transform: matrix(1,0,0,1,0,0);
-}
-.Inventory_Area_e_Class {
-	position: absolute;
-	width: 72.935px;
-	height: 14px;
-	left: 226px;
-	top: 118.986px;
-	overflow: visible;
-}
-.Inventory_Class {
-	position: absolute;
-	left: 18.935px;
-	top: 0px;
-	overflow: visible;
-	width: 55px;
-	white-space: nowrap;
-	line-height: 36px;
-	margin-top: -12px;
-	text-align: left;
-	font-family: SF Pro Text;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 12px;
-	color: rgba(29,29,29,1);
-}
-.Inventory_Icon_Class {
-	position: absolute;
-	width: 12.346px;
-	height: 12.856px;
-	left: 0px;
-	top: 0.158px;
-	overflow: visible;
-}
-.Path_444 {
-	overflow: visible;
-	position: absolute;
-	width: 12.645px;
-	height: 13.154px;
-	left: 0px;
-	top: 0px;
-	transform: matrix(1,0,0,1,0,0);
-}
-.Path_445 {
-	overflow: visible;
-	position: absolute;
-	width: 3.2px;
-	height: 1.641px;
-	left: 8.266px;
-	top: 9.286px;
-	transform: matrix(1,0,0,1,0,0);
-}
-.Path_446 {
-	overflow: visible;
-	position: absolute;
-	width: 2.683px;
-	height: 1.455px;
-	left: 8.782px;
-	top: 7.164px;
-	transform: matrix(1,0,0,1,0,0);
-}
-.Path_447 {
-	overflow: visible;
-	position: absolute;
-	width: 2.681px;
-	height: 1.449px;
-	left: 8.784px;
-	top: 8.209px;
-	transform: matrix(1,0,0,1,0,0);
-}
-.Path_448 {
-	overflow: visible;
-	position: absolute;
-	width: 0.817px;
-	height: 0.763px;
-	left: 7.485px;
-	top: 10.65px;
-	transform: matrix(1,0,0,1,0,0);
-}
-.Portfolio_Value_Class {
-	position: absolute;
-	left: 11.452px;
-	top: 6.52px;
-	overflow: visible;
-	width: 149px;
-	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -11px;
 	text-align: left;
 	font-family: SF Pro Text;
 	font-style: normal;
@@ -271,376 +315,92 @@
 	font-size: 20px;
 	color: rgba(29,29,29,1);
 }
-.Profit_Area_Class {
+.Product_eh_Class {
 	position: absolute;
-	width: 309.728px;
-	height: 87.729px;
-	left: 654px;
-	top: 116.386px;
-	overflow: visible;
-}
-.Rectangle_ff {
-	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
-	position: absolute;
-	overflow: visible;
-	width: 327.728px;
-	height: 105.729px;
 	left: 0px;
 	top: 0px;
-}
-.Text_Class {
-	position: absolute;
-	left: 49.419px;
-	top: 36.224px;
 	overflow: visible;
-	width: 141px;
-	white-space: nowrap;
-	line-height: 52px;
-	margin-top: -13.5px;
-	text-align: center;
-	font-family: SF Pro Text;
-	font-style: normal;
-	font-weight: bold;
-	font-size: 25px;
-	color: rgba(29,29,29,1);
-}
-.Title_fh_Class {
-	position: absolute;
-	left: 49.871px;
-	top: 4.743px;
-	overflow: visible;
-	width: 46px;
-	white-space: nowrap;
-	line-height: 36px;
-	margin-top: -9.5px;
-	text-align: left;
-	font-family: SF Pro Text;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 17px;
-	color: rgba(29,29,29,1);
-}
-.Side_Rectangle {
-	position: absolute;
-	overflow: visible;
-	width: 5px;
-	height: 87.729px;
-	left: 0px;
-	top: 0px;
-}
-.Arrow_Icon_Class {
-	opacity: 0.66;
-}
-.Arrow_Icon {
-	overflow: visible;
-	position: absolute;
-	width: 21.998px;
-	height: 21.998px;
-	transform: translate(-0.04px, 0px) matrix(1,0,0,1,242.8951,42.2353) rotate(90deg);
-	transform-origin: center;
-	left: 0px;
-	top: 0px;
-}
-.ID30_Class {
-	opacity: 0.66;
-	position: absolute;
-	left: 268.419px;
-	top: 48.224px;
-	overflow: visible;
-	width: 31px;
-	white-space: nowrap;
-	line-height: 23px;
-	margin-top: -6px;
-	text-align: center;
-	font-family: SF Pro Text;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 11px;
-	color: rgba(53,178,57,1);
-}
-.Arrow_Class {
-	position: absolute;
-	left: 282.419px;
-	top: 5.224px;
-	overflow: visible;
-	width: 17px;
-	white-space: nowrap;
-	text-align: right;
-	font-family: SF Pro Text;
-	font-style: normal;
-	font-weight: bold;
-	font-size: 18px;
-	color: rgba(29,29,29,1);
-}
-.Graph_Icon {
-	overflow: visible;
-	position: absolute;
-	width: 19.108px;
-	height: 19.108px;
-	left: 17.51px;
-	top: 6.115px;
-	transform: matrix(1,0,0,1,0,0);
-}
-.Revenue_Area_Class {
-	position: absolute;
-	width: 309.728px;
-	height: 87.729px;
-	left: 327px;
-	top: 116.386px;
-	overflow: visible;
-}
-.Rectangle_fo {
-	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
-	position: absolute;
-	overflow: visible;
-	width: 327.728px;
-	height: 105.729px;
-	left: 0px;
-	top: 0px;
-}
-.Text_fp_Class {
-	position: absolute;
-	left: 49.419px;
-	top: 36.224px;
-	overflow: visible;
-	width: 141px;
-	white-space: nowrap;
-	line-height: 52px;
-	margin-top: -13.5px;
-	text-align: center;
-	font-family: SF Pro Text;
-	font-style: normal;
-	font-weight: bold;
-	font-size: 25px;
-	color: rgba(29,29,29,1);
-}
-.Title_fq_Class {
-	position: absolute;
-	left: 49.871px;
-	top: 4.743px;
-	overflow: visible;
-	width: 71px;
-	white-space: nowrap;
-	line-height: 36px;
-	margin-top: -9.5px;
-	text-align: left;
-	font-family: SF Pro Text;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 17px;
-	color: rgba(29,29,29,0.659);
-}
-.Side_Rectangle_fr {
-	position: absolute;
-	overflow: visible;
-	width: 5px;
-	height: 87.729px;
-	left: 0px;
-	top: 0px;
-}
-.Arrow_Icon_fs_Class {
-	opacity: 0.66;
-}
-.Arrow_Icon_fs {
-	overflow: visible;
-	position: absolute;
-	width: 21.998px;
-	height: 21.998px;
-	transform: translate(-0.04px, 0px) matrix(1,0,0,1,242.8951,42.2353) rotate(90deg);
-	transform-origin: center;
-	left: 0px;
-	top: 0px;
-}
-.ID30_ft_Class {
-	opacity: 0.66;
-	position: absolute;
-	left: 268.419px;
-	top: 48.224px;
-	overflow: visible;
-	width: 31px;
-	white-space: nowrap;
-	line-height: 23px;
-	margin-top: -6px;
-	text-align: center;
-	font-family: SF Pro Text;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 11px;
-	color: rgba(53,178,57,1);
-}
-.Arrow_fu_Class {
-	position: absolute;
-	left: 282.419px;
-	top: 5.224px;
-	overflow: visible;
-	width: 17px;
-	white-space: nowrap;
-	text-align: right;
-	font-family: SF Pro Text;
-	font-style: normal;
-	font-weight: bold;
-	font-size: 18px;
-	color: rgba(29,29,29,1);
-}
-.Suit_Case_Icon {
-	overflow: visible;
-	position: absolute;
-	width: 22.087px;
-	height: 19.326px;
-	left: 15.97px;
-	top: 5.417px;
-	transform: matrix(1,0,0,1,0,0);
-}
-.Spent_Area_Class {
-	position: absolute;
-	width: 309.728px;
-	height: 87.729px;
-	left: 0px;
-	top: 116.386px;
-	overflow: visible;
-}
-.Rectangle_fx {
-	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
-	position: absolute;
-	overflow: visible;
-	width: 327.728px;
-	height: 105.729px;
-	left: 0px;
-	top: 0px;
-}
-.Text_fy_Class {
-	position: absolute;
-	left: 49.419px;
-	top: 36.224px;
-	overflow: visible;
-	width: 141px;
-	white-space: nowrap;
-	line-height: 52px;
-	margin-top: -13.5px;
-	text-align: center;
-	font-family: SF Pro Text;
-	font-style: normal;
-	font-weight: bold;
-	font-size: 25px;
-	color: rgba(29,29,29,1);
-}
-.Title_fz_Class {
-	position: absolute;
-	left: 49.871px;
-	top: 4.743px;
-	overflow: visible;
-	width: 49px;
-	white-space: nowrap;
-	line-height: 36px;
-	margin-top: -9.5px;
-	text-align: left;
-	font-family: SF Pro Text;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 17px;
-	color: rgba(29,29,29,1);
-}
-.Side_Rectangle_f {
-	position: absolute;
-	overflow: visible;
-	width: 5px;
-	height: 87.729px;
-	left: 0px;
-	top: 0px;
-}
-.Arrow_Icon_f_Class {
-	opacity: 0.66;
-}
-.Arrow_Icon_f {
-	overflow: visible;
-	position: absolute;
-	width: 21.998px;
-	height: 21.998px;
-	transform: translate(-0.04px, 0px) matrix(1,0,0,1,242.8951,42.2353) rotate(90deg);
-	transform-origin: center;
-	left: 0px;
-	top: 0px;
-}
-.ID30_f_Class {
-	opacity: 0.66;
-	position: absolute;
-	left: 268.419px;
-	top: 48.224px;
-	overflow: visible;
-	width: 31px;
-	white-space: nowrap;
-	line-height: 23px;
-	margin-top: -6px;
-	text-align: center;
-	font-family: SF Pro Text;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 11px;
-	color: rgba(53,178,57,1);
-}
-.Arrow_f_Class {
-	position: absolute;
-	left: 282.419px;
-	top: 5.224px;
-	overflow: visible;
-	width: 17px;
-	white-space: nowrap;
-	text-align: right;
-	font-family: SF Pro Text;
-	font-style: normal;
-	font-weight: bold;
-	font-size: 18px;
-	color: rgba(29,29,29,1);
-}
-.Dollars_Icon {
-	overflow: visible;
-	position: absolute;
-	width: 24.622px;
-	height: 15.576px;
-	left: 14.543px;
-	top: 7.193px;
-	transform: matrix(1,0,0,1,0,0);
-}
-.Top_Section_Class {
-	position: absolute;
-	width: 664.459px;
-	height: 88.609px;
-	left: 149.96px;
-	top: 0px;
-	overflow: visible;
-}
-.Spent_Title_Class {
-	position: absolute;
-	left: 241px;
-	top: 59px;
-	overflow: visible;
-	width: 83px;
+	width: 81px;
 	white-space: nowrap;
 	line-height: 42px;
 	margin-top: -11px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Top_Section_Class {
+	position: absolute;
+	width: 949px;
+	height: 98px;
+	left: 128.26px;
+	top: 0px;
+	overflow: visible;
+}
+.Search_Area_Class {
+	position: absolute;
+	width: 825px;
+	height: 36px;
+	left: 62px;
+	top: 62px;
+	overflow: visible;
+}
+.Add_Button_Class {
+	position: absolute;
+	width: 107px;
+	height: 36px;
+	left: 718px;
+	top: 0px;
+	overflow: visible;
+}
+.Add_Rectangle {
+	position: absolute;
+	overflow: visible;
+	width: 107px;
+	height: 36px;
+	left: 0px;
+	top: 0px;
+}
+.Add_Class {
+	position: absolute;
+	left: 0;
+	top: 9.5px;
+	overflow: visible;
+	width: 107px;
+	white-space: nowrap;
 	text-align: center;
 	font-family: SF Pro Text;
 	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	color: rgba(29,29,29,1);
+	font-weight: bold;
+	font-size: 15px;
+	color: rgba(91,182,187,1);
+}
+.Search_Bar_Class {
+	position: absolute;
+	width: 350px;
+	height: 36px;
+	left: 349px;
+	top: 0px;
+	overflow: visible;
 }
 .Search_Bar_Rectangle {
 	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
 	overflow: visible;
-	width: 183px;
+	width: 368px;
 	height: 54px;
-	left: 64.459px;
-	top: 52.609px;
+	left: 0px;
+	top: 0px;
 }
 .Search_Text_Class {
 	opacity: 0.66;
 	position: absolute;
-	left: 105.459px;
-	top: 61.609px;
+	left: 44px;
+	top: 8px;
 	overflow: visible;
-	width: 85px;
+	width: 56px;
 	white-space: nowrap;
 	text-align: left;
 	font-family: SF Pro Text;
@@ -649,40 +409,36 @@
 	font-size: 16px;
 	color: rgba(29,29,29,1);
 }
-.Spent_Title_f_Class {
-	position: absolute;
-	left: -181px;
-	top: 59px;
-	overflow: visible;
-	width: 233px;
-	white-space: nowrap;
-	line-height: 42px;
-	margin-top: -11px;
-	text-align: right;
-	font-family: SF Pro Text;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	color: rgba(29,29,29,1);
+.Magnifying_Glass_Icon_Class {
+	opacity: 0.66;
 }
-.Group_251_Class {
+.Magnifying_Glass_Icon {
+	overflow: visible;
+	position: absolute;
+	width: 17.337px;
+	height: 17.337px;
+	left: 17.715px;
+	top: 9.124px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Filter_Area_Class {
 	position: absolute;
 	width: 330px;
 	height: 36px;
-	left: 334.459px;
-	top: 52.609px;
+	left: 0px;
+	top: 0px;
 	overflow: visible;
 }
-.Search_Bar_Rectangle_gb {
+.Rectangle_es {
 	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	position: absolute;
 	overflow: visible;
-	width: 348px;
-	height: 54px;
+	width: 330px;
+	height: 36px;
 	left: 0px;
 	top: 0px;
 }
-.Search_Area_Class {
+.Date_Area_Class {
 	position: absolute;
 	width: 165px;
 	height: 36px;
@@ -690,7 +446,7 @@
 	top: 0px;
 	overflow: visible;
 }
-.Search_Bar_Class {
+.Date_Bar_Class {
 	position: absolute;
 	width: 165px;
 	height: 36px;
@@ -698,7 +454,7 @@
 	top: 0px;
 	overflow: visible;
 }
-.Search_Bar_Rectangle_ge {
+.Rectangle_ev {
 	position: absolute;
 	overflow: visible;
 	width: 165px;
@@ -706,7 +462,7 @@
 	left: 0px;
 	top: 0px;
 }
-.Search_Text_gf_Class {
+.Text_Class {
 	position: absolute;
 	left: 34px;
 	top: 9px;
@@ -720,10 +476,10 @@
 	font-size: 16px;
 	color: rgba(29,29,29,1);
 }
-.Icon_awesome_calendar_alt_Class {
+.Calendar_Icon_Class {
 	opacity: 0.66;
 }
-.Icon_awesome_calendar_alt {
+.Calendar_Icon {
 	overflow: visible;
 	position: absolute;
 	width: 14.165px;
@@ -732,7 +488,7 @@
 	top: 9.905px;
 	transform: matrix(1,0,0,1,0,0);
 }
-.Search_Area_gh_Class {
+.Last_Months_Area_Class {
 	position: absolute;
 	width: 165px;
 	height: 36px;
@@ -740,7 +496,7 @@
 	top: 0px;
 	overflow: visible;
 }
-.Search_Bar_gi_Class {
+.Last_Months_Bar_Class {
 	position: absolute;
 	width: 165px;
 	height: 36px;
@@ -748,7 +504,7 @@
 	top: 0px;
 	overflow: visible;
 }
-.Search_Bar_Rectangle_gj {
+.Rectangle_e {
 	position: absolute;
 	overflow: visible;
 	width: 165px;
@@ -756,7 +512,7 @@
 	left: 0px;
 	top: 0px;
 }
-.Search_Text_gk_Class {
+.Text_e_Class {
 	position: absolute;
 	left: 12px;
 	top: 9px;
@@ -778,51 +534,913 @@
 	transform: translate(106px, 53px) matrix(1,0,0,1,50,-35) rotate(90deg);
 	transform-origin: center;
 }
-.Welcome_back_Class {
+.Revenue_Area_Class {
 	position: absolute;
-	left: 0px;
+	width: 301px;
+	height: 39px;
+	left: 324px;
 	top: 0px;
 	overflow: visible;
-	width: 100%;
+}
+.Rectangle_fa {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 318px;
+	height: 57px;
+	left: 1px;
+	top: 0px;
+}
+.Text_fa_Class {
+	position: absolute;
+	left: 146.368px;
+	top: 20px;
+	overflow: visible;
+	width: 146px;
+	white-space: nowrap;
+	line-height: 20px;
+	margin-top: -11px;
+	text-align: right;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Title_Class {
+	position: absolute;
+	left: 52.342px;
+	top: 9.124px;
+	overflow: visible;
+	width: 87px;
 	white-space: nowrap;
 	line-height: 42px;
-	margin-top: -8.5px;
-	text-align: center;
+	margin-top: -11px;
+	text-align: left;
 	font-family: SF Pro Text;
 	font-style: normal;
 	font-weight: bold;
-	font-size: 30px;
+	font-size: 20px;
 	color: rgba(29,29,29,1);
+}
+.Suit_Case_Icon {
+	overflow: visible;
+	position: absolute;
+	width: 24.036px;
+	height: 21.031px;
+	left: 17px;
+	top: 8.341px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Side_Rectangle {
+	position: absolute;
+	overflow: visible;
+	width: 6px;
+	height: 39px;
+	left: 0px;
+	top: 0px;
+}
+.Profit_Area_Class {
+	position: absolute;
+	width: 301px;
+	height: 39px;
+	left: 648px;
+	top: 0px;
+	overflow: visible;
+}
+.Rectangle_fb {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 318px;
+	height: 57px;
+	left: 1px;
+	top: 0px;
+}
+.Text_fb_Class {
+	position: absolute;
+	left: 146.208px;
+	top: 20px;
+	overflow: visible;
+	width: 146px;
+	white-space: nowrap;
+	line-height: 20px;
+	margin-top: -11px;
+	text-align: right;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Title_fc_Class {
+	position: absolute;
+	left: 46.843px;
+	top: 9.124px;
+	overflow: visible;
+	width: 57px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -11px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Graph_Icon {
+	overflow: visible;
+	position: absolute;
+	width: 19.108px;
+	height: 19.108px;
+	left: 18.091px;
+	top: 9.892px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Side_Rectangle_fe {
+	position: absolute;
+	overflow: visible;
+	width: 6px;
+	height: 39px;
+	left: 0px;
+	top: 0px;
+}
+.Spent_Area_Class {
+	position: absolute;
+	width: 301px;
+	height: 39px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+.Rectangle_fg {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 318px;
+	height: 57px;
+	left: 1px;
+	top: 0px;
+}
+.Text_fh_Class {
+	position: absolute;
+	left: 146.368px;
+	top: 20px;
+	overflow: visible;
+	width: 146px;
+	white-space: nowrap;
+	line-height: 20px;
+	margin-top: -11px;
+	text-align: right;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Title_fi_Class {
+	position: absolute;
+	left: 52.342px;
+	top: 9.124px;
+	overflow: visible;
+	width: 60px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -11px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Dollars_Icon {
+	overflow: visible;
+	position: absolute;
+	width: 24.622px;
+	height: 15.576px;
+	left: 17.124px;
+	top: 10.97px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Side_Rectangle_fk {
+	position: absolute;
+	overflow: visible;
+	width: 6px;
+	height: 39px;
+	left: 0px;
+	top: 0px;
+}
+.Navigation_Bar_Class {
+	position: absolute;
+	width: 1245.729px;
+	height: 42.824px;
+	left: 21px;
+	top: 752.18px;
+	overflow: visible;
+}
+.Cards_Area_Class {
+	position: absolute;
+	width: 147.729px;
+	height: 42.824px;
+	left: 1098px;
+	top: 0px;
+	overflow: visible;
+}
+.Rectangle_fn {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 165.728px;
+	height: 60.73px;
+	left: 0.001px;
+	top: 0px;
+}
+.Title_fo_Class {
+	position: absolute;
+	left: 47.872px;
+	top: 12.743px;
+	overflow: visible;
+	width: 49px;
+	white-space: nowrap;
+	line-height: 18px;
+	margin-top: -0.5px;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 17px;
+	color: rgba(29,29,29,1);
+}
+.Bottom_Rectangle {
+	position: absolute;
+	overflow: visible;
+	width: 147.728px;
+	height: 3px;
+	left: 0px;
+	top: 39.823px;
+}
+.Tickets_Area_Class {
+	position: absolute;
+	width: 147.729px;
+	height: 42.824px;
+	left: 915px;
+	top: 0px;
+	overflow: visible;
+}
+.Rectangle_fr {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 165.728px;
+	height: 60.73px;
+	left: 0.001px;
+	top: 0px;
+}
+.Title_fs_Class {
+	position: absolute;
+	left: 42.872px;
+	top: 12.743px;
+	overflow: visible;
+	width: 59px;
+	white-space: nowrap;
+	line-height: 18px;
+	margin-top: -0.5px;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 17px;
+	color: rgba(29,29,29,1);
+}
+.Bottom_Rectangle_ft {
+	position: absolute;
+	overflow: visible;
+	width: 147.728px;
+	height: 3px;
+	left: 0px;
+	top: 39.823px;
+}
+.Bots_Area_Class {
+	position: absolute;
+	width: 147.729px;
+	height: 42.824px;
+	left: 732px;
+	top: 0px;
+	overflow: visible;
+}
+.Rectangle_fv {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 165.728px;
+	height: 60.73px;
+	left: 0.001px;
+	top: 0px;
+}
+.Title_fw_Class {
+	position: absolute;
+	left: 53.872px;
+	top: 12.743px;
+	overflow: visible;
+	width: 37px;
+	white-space: nowrap;
+	line-height: 18px;
+	margin-top: -0.5px;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 17px;
+	color: rgba(29,29,29,1);
+}
+.Bottom_Rectangle_fx {
+	position: absolute;
+	overflow: visible;
+	width: 147.728px;
+	height: 3px;
+	left: 0px;
+	top: 39.823px;
+}
+.Market_Lookup_Area_Class {
+	position: absolute;
+	width: 147.729px;
+	height: 42.824px;
+	left: 549px;
+	top: 0px;
+	overflow: visible;
+}
+.Rectangle_fz {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 165.728px;
+	height: 60.73px;
+	left: 0.001px;
+	top: 0px;
+}
+.Title_f_Class {
+	position: absolute;
+	left: 11.872px;
+	top: 12.743px;
+	overflow: visible;
+	width: 121px;
+	white-space: nowrap;
+	line-height: 18px;
+	margin-top: -0.5px;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 17px;
+	color: rgba(29,29,29,1);
+}
+.Bottom_Rectangle_f {
+	position: absolute;
+	overflow: visible;
+	width: 147.728px;
+	height: 3px;
+	left: 0px;
+	top: 39.823px;
+}
+.Inventory_Area_Class {
+	position: absolute;
+	width: 147.729px;
+	height: 42.824px;
+	left: 366px;
+	top: 0px;
+	overflow: visible;
+}
+.Rectangle_f {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 165.728px;
+	height: 60.73px;
+	left: 0.001px;
+	top: 0px;
+}
+.Title_ga_Class {
+	position: absolute;
+	left: 33.872px;
+	top: 12.743px;
+	overflow: visible;
+	width: 77px;
+	white-space: nowrap;
+	line-height: 18px;
+	margin-top: -0.5px;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 17px;
+	color: rgba(29,29,29,1);
+}
+.Bottom_Rectangle_ga {
+	position: absolute;
+	overflow: visible;
+	width: 147.728px;
+	height: 3px;
+	left: 0px;
+	top: 39.823px;
+}
+.Sales_Area_Class {
+	position: absolute;
+	width: 147.729px;
+	height: 42.824px;
+	left: 183px;
+	top: 0px;
+	overflow: visible;
+}
+.Rectangle_ga {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 165.728px;
+	height: 60.73px;
+	left: 0.001px;
+	top: 0px;
+}
+.Title_gb_Class {
+	position: absolute;
+	left: 49.872px;
+	top: 12.743px;
+	overflow: visible;
+	width: 45px;
+	white-space: nowrap;
+	line-height: 18px;
+	margin-top: -0.5px;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 17px;
+	color: rgba(29,29,29,1);
+}
+.Bottom_Rectangle_gb {
+	position: absolute;
+	overflow: visible;
+	width: 147.728px;
+	height: 3px;
+	left: 0px;
+	top: 39.823px;
+}
+.Overview_Area_Class {
+	position: absolute;
+	width: 147.729px;
+	height: 42.824px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+.Rectangle_gb {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 165.728px;
+	height: 60.73px;
+	left: 0.001px;
+	top: 0px;
+}
+.Title_gc_Class {
+	position: absolute;
+	left: 33.872px;
+	top: 12.743px;
+	overflow: visible;
+	width: 77px;
+	white-space: nowrap;
+	line-height: 18px;
+	margin-top: -0.5px;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 17px;
+	color: rgba(29,29,29,1);
+}
+.Bottom_Rectangle_gd {
+	position: absolute;
+	overflow: visible;
+	width: 147.728px;
+	height: 3px;
+	left: 0px;
+	top: 39.823px;
 }
 .Header_Class {
 	position: absolute;
-	width: 194px;
+	width: 1229.589px;
 	height: 48px;
 	left: 25.411px;
 	top: 18.124px;
 	overflow: visible;
 }
-.Purple_Bar {
+.Settings_Icon_Class {
+	position: absolute;
+	width: 36px;
+	height: 36px;
+	left: 1193.589px;
+	top: 11.876px;
+	overflow: visible;
+}
+.Sandwich_Icon_Class {
+	position: absolute;
+	width: 24px;
+	height: 24px;
+	left: 1154.589px;
+	top: 17.876px;
+	overflow: visible;
+}
+.Rectangle_545 {
+	position: absolute;
+	overflow: visible;
+	width: 24px;
+	height: 5px;
+	left: 0px;
+	top: 0px;
+}
+.Rectangle_546 {
+	position: absolute;
+	overflow: visible;
+	width: 24px;
+	height: 5px;
+	left: 0px;
+	top: 9.5px;
+}
+.Rectangle_547 {
+	position: absolute;
+	overflow: visible;
+	width: 24px;
+	height: 5px;
+	left: 0px;
+	top: 19px;
+}
+.Grid_Icon_Class {
+	/* opacity: 0.33; */
+	position: absolute;
+	width: 23px;
+	height: 24px;
+	left: 1120.589px;
+	top: 17.876px;
+	overflow: visible;
+}
+.Rectangle_536 {
+	position: absolute;
+	overflow: visible;
+	width: 5px;
+	height: 5px;
+	left: 0px;
+	top: 0px;
+}
+.Rectangle_537 {
+	position: absolute;
+	overflow: visible;
+	width: 5px;
+	height: 5px;
+	left: 9px;
+	top: 0px;
+}
+.Rectangle_538 {
+	position: absolute;
+	overflow: visible;
+	width: 5px;
+	height: 5px;
+	left: 18px;
+	top: 0px;
+}
+.Rectangle_539 {
+	position: absolute;
+	overflow: visible;
+	width: 5px;
+	height: 5px;
+	left: 0px;
+	top: 9.5px;
+}
+.Rectangle_540 {
+	position: absolute;
+	overflow: visible;
+	width: 5px;
+	height: 5px;
+	left: 9px;
+	top: 9.5px;
+}
+.Rectangle_541 {
+	position: absolute;
+	overflow: visible;
+	width: 5px;
+	height: 5px;
+	left: 18px;
+	top: 9.5px;
+}
+.Rectangle_542 {
+	position: absolute;
+	overflow: visible;
+	width: 5px;
+	height: 5px;
+	left: 0px;
+	top: 19px;
+}
+.Rectangle_543 {
+	position: absolute;
+	overflow: visible;
+	width: 5px;
+	height: 5px;
+	left: 9px;
+	top: 19px;
+}
+.Rectangle_544 {
+	position: absolute;
+	overflow: visible;
+	width: 5px;
+	height: 5px;
+	left: 18px;
+	top: 19px;
+}
+.Green_Bar {
 	position: absolute;
 	overflow: visible;
 	width: 66px;
 	height: 3px;
 	left: 17.589px;
-	top: 40.876px;
+	top: 39.876px;
 }
 .Sales_Title_Class {
 	position: absolute;
 	left: 0px;
 	top: 0px;
 	overflow: visible;
-	width: 195px;
+	width: 192px;
 	white-space: nowrap;
 	line-height: 42px;
 	margin-top: -1px;
-	text-align: center;
+	text-align: left;
 	font-family: SF Pro Text;
 	font-style: normal;
 	font-weight: 900;
 	font-size: 40px;
 	color: rgba(29,29,29,1);
+}
+
+
+.Product_Card_1_dy_Class {
+	position: absolute;
+	width: 210px;
+	height: 210px;
+	left: 8.941px;
+	top: 6px;
+	overflow: visible;
+}
+.Product_Card_1_dy_Class .Rectangle {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 209.941px;
+	height: 210px;
+	left: 0.059px;
+	top: 0px;
+}
+.Product_Card_1_dy_Class .Side_Rectangle {
+	overflow: visible;
+	position: absolute;
+	width: 5.059px;
+	height: 196px;
+	left: 0px;
+	top: 7px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Product_Card_1_dy_Class .Tracking_Class {
+	position: absolute;
+	left: 23px;
+	top: 187px;
+	overflow: visible;
+	width: 170px;
+	white-space: nowrap;
+	line-height: 14px;
+	margin-top: -3px;
+	text-align: right;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	color: rgba(255,167,78,1);
+}
+.Product_Card_1_dy_Class .Price_Class {
+	position: absolute;
+	left: 17.363px;
+	top: 187px;
+	overflow: visible;
+	width: 38px;
+	white-space: nowrap;
+	line-height: 14px;
+	margin-top: -3px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	color: rgba(29,29,29,1);
+}
+.Product_Card_1_dy_Class .Size_Class {
+	position: absolute;
+	left: 17.5px;
+	top: 166px;
+	overflow: visible;
+	width: 23px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -1.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	color: rgba(29,29,29,1);
+}
+.Product_Card_1_dy_Class .Title_Class {
+	position: absolute;
+	left: 17.5px;
+	top: 132px;
+	overflow: visible;
+	width: 180px;
+	white-space: pre-wrap;
+	line-height: 17px;
+	margin-top: -1.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	color: rgba(29,29,29,1);
+}
+.Product_Card_1_dy_Class .Product_Image_Class {
+	border-radius: 10px;
+	display: table;
+	position: absolute;
+	width: 118px;
+	height: 118px;
+	left: 45.559px;
+	top: 9.146px;
+	overflow: visible;
+
+	display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+
+
+
+
+
+
+.Date_Selection_Area_Class {
+	position: absolute;
+	width: 330px;
+	height: 36px;
+	left: 62px;
+	/* top: 105px; */
+	top: 108px;
+	overflow: visible;
+}
+.Rectangle_g {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 330px;
+	height: 36px;
+	left: 0px;
+	top: 0px;
+}
+.Calendar_Icon_2_Class {
+	opacity: 0.66;
+}
+.Calendar_Icon_2 {
+	overflow: visible;
+	position: absolute;
+	width: 14.165px;
+	height: 16.189px;
+	left: 315.667px;
+	top: 8.905px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Text_g_Class {
+	position: absolute;
+	left: 191px;
+	top: 8px;
+	overflow: visible;
+	width: 111px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Arrow_Class {
+	position: absolute;
+	left: 156px;
+	top: 7px;
+	overflow: visible;
+	width: 17px;
+	white-space: nowrap;
+	text-align: right;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 18px;
+	color: rgba(29,29,29,1);
+}
+.Calendar_Icon_1_Class {
+	opacity: 0.66;
+}
+.Calendar_Icon_1 {
+	overflow: visible;
+	position: absolute;
+	width: 14.165px;
+	height: 16.189px;
+	left: 139.667px;
+	top: 8.905px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Text_ha_Class {
+	position: absolute;
+	left: 15px;
+	top: 8px;
+	overflow: visible;
+	width: 111px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+
+
+
+.Add_Button_g_Class {
+	position: absolute;
+	width: 107px;
+	height: 36px;
+	left: 1026.589px;
+	top: 11.876px;
+	overflow: visible;
+}
+.Add_Rectangle_g {
+	position: absolute;
+	overflow: visible;
+	width: 107px;
+	height: 36px;
+	left: 0px;
+	top: 0px;
+}
+.___Import_Class {
+	position: absolute;
+	left: 0px;
+	top: 9.5px;
+	overflow: visible;
+	width: 107px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 15px;
+	line-height: 18px;
+	color: rgba(255,167,78,1);
+}
+.Add_Button_ha_Class {
+	position: absolute;
+	width: 107px;
+	height: 36px;
+	left: 900.589px;
+	top: 11.876px;
+	overflow: visible;
+}
+.Add_Rectangle_ha {
+	position: absolute;
+	overflow: visible;
+	width: 107px;
+	height: 36px;
+	left: 0px;
+	top: 0px;
+}
+.___Export_Class {
+	position: absolute;
+	left: 0px;
+	top: 9.5px;
+	overflow: visible;
+	width: 107px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 15px;
+	line-height: 18px;
+	color: rgba(53,178,57,1);
 }
