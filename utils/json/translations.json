@@ -114,6 +114,12 @@
         "es": "Navegadores"
       }
     },
+    "Biyearly": {
+      "languages": {
+        "en": "Biyearly",
+        "es": "Dos veces al año"
+      }
+    },
     "Billing Profile": {
       "languages": {
         "en": "Billing Profile",
@@ -276,6 +282,12 @@
         "es": "Copiar URL del tienda"
       }
     },
+    "Copy Subscription(s)": {
+      "languages": {
+        "en": "Copy Subscription(s)",
+        "es": "Copiar suscripción(es)"
+      }
+    },
     "Could not find any products": {
       "languages": {
         "en": "Could not find any products",
@@ -408,6 +420,12 @@
         "es": "Duplicar venta(s)"
       }
     },
+    "Duplicate Subscription(s)": {
+      "languages": {
+        "en": "Duplicate Subscription(s)",
+        "es": "Duplicar suscripción(es)"
+      }
+    },
     "Duplicate Ticket(s)": {
       "languages": {
         "en": "Duplicate Ticket(s)",
@@ -454,6 +472,36 @@
       "languages": {
         "en": "Estimated Resell",
         "es": "Reventa estimada"
+      }
+    },
+    "Every 2 Months": {
+      "languages": {
+        "en": "Every 2 Months",
+        "es": "Cada 2 meses"
+      }
+    },
+    "Every 2 Years": {
+      "languages": {
+        "en": "Every 2 Years",
+        "es": "Cada 2 años"
+      }
+    },
+    "Every 3 Months": {
+      "languages": {
+        "en": "Every 3 Months",
+        "es": "Cada 3 meses"
+      }
+    },
+    "Every 3 Years": {
+      "languages": {
+        "en": "Every 3 Years",
+        "es": "Cada 3 años"
+      }
+    },
+    "Every 5 Months": {
+      "languages": {
+        "en": "Every 5 Months",
+        "es": "Cada 5 meses"
       }
     },
     "Everything": {
@@ -516,16 +564,16 @@
         "es": "Filtros"
       }
     },
-    "Friday": {
-      "languages": {
-        "en": "Friday",
-        "es": "Viernes"
-      }
-    },
     "Fri": {
       "languages": {
         "en": "Fri",
         "es": "Vie"
+      }
+    },
+    "Friday": {
+      "languages": {
+        "en": "Friday",
+        "es": "Viernes"
       }
     },
     "Grade": {
@@ -738,6 +786,12 @@
         "es": "Clic izquierdo"
       }
     },
+    "Lifetime": {
+      "languages": {
+        "en": "Lifetime",
+        "es": "Por vida"
+      }
+    },
     "Listing Platform": {
       "languages": {
         "en": "Listing Platform",
@@ -756,16 +810,16 @@
         "es": "Marzo"
       }
     },
+    "Mark Item(s) Sold": {
+      "languages": {
+        "en": "Mark Item(s) Sold",
+        "es": "Marcar artículo(s) vendido(s)"
+      }
+    },
     "Mark Sale(s) Unsold": {
       "languages": {
         "en": "Mark Sale(s) Unsold",
         "es": "Marcar venta(s) no vendida(s)"
-      }
-    },
-    "Mark Sale(s) Sold": {
-      "languages": {
-        "en": "Mark Sale(s) Sold",
-        "es": "Marcar artículo(s) vendido(s)"
       }
     },
     "Market Lookup": {
@@ -780,22 +834,28 @@
         "es": "Mayo"
       }
     },
+    "Membership": {
+      "languages": {
+        "en": "Membership",
+        "es": "Membresía"
+      }
+    },
     "Misc": {
       "languages": {
         "en": "Misc",
         "es": "Misc"
       }
     },
-    "Monday": {
-      "languages": {
-        "en": "Monday",
-        "es": "Lunes"
-      }
-    },
     "Mon": {
       "languages": {
         "en": "Mon",
         "es": "Lun"
+      }
+    },
+    "Monday": {
+      "languages": {
+        "en": "Monday",
+        "es": "Lunes"
       }
     },
     "Monitoring...": {
@@ -808,6 +868,12 @@
       "languages": {
         "en": "Monitors",
         "es": "Monitores"
+      }
+    },
+    "Monthly": {
+      "languages": {
+        "en": "Monthly",
+        "es": "Mensual"
       }
     },
     "N/A": {
@@ -888,6 +954,12 @@
       "languages": {
         "en": "No sales made",
         "es": "Sin ventas realizadas"
+      }
+    },
+    "No subscriptions added": {
+      "languages": {
+        "en": "No subscriptions added",
+        "es": "No se han añadido suscripciones"
       }
     },
     "No tasks are created for this product": {
@@ -1199,7 +1271,13 @@
     "Remove Sale(s)": {
       "languages": {
         "en": "Remove Sale(s)",
-        "es": "Eliminar Venta(s)"
+        "es": "Eliminar venta(s)"
+      }
+    },
+    "Remove Subscription(s)": {
+      "languages": {
+        "en": "Remove Subscription(s)",
+        "es": "Eliminar suscripción(es)"
       }
     },
     "Remove Task(s)": {
@@ -1268,16 +1346,16 @@
         "es": "Ventas"
       }
     },
-    "Saturday": {
-      "languages": {
-        "en": "Saturday",
-        "es": "Sábado"
-      }
-    },
     "Sat": {
       "languages": {
         "en": "Sat",
         "es": "Sáb"
+      }
+    },
+    "Saturday": {
+      "languages": {
+        "en": "Saturday",
+        "es": "Sábado"
       }
     },
     "Save": {
@@ -1314,6 +1392,12 @@
       "languages": {
         "en": "Select Carrier",
         "es": "Seleccionar cartero"
+      }
+    },
+    "Select Membership": {
+      "languages": {
+        "en": "Select Membership",
+        "es": "Seleccionar membresía"
       }
     },
     "Select Proxy Profile": {
@@ -1484,6 +1568,12 @@
         "es": "Enviando detalles de facturación..."
       }
     },
+    "Subscription": {
+      "languages": {
+        "en": "Subscription",
+        "es": "Suscripción"
+      }
+    },
     "Subscriptions": {
       "languages": {
         "en": "Subscriptions",
@@ -1508,16 +1598,16 @@
         "es": "Artículos sugeridos"
       }
     },
-    "Sunday": {
-      "languages": {
-        "en": "Sunday",
-        "es": "Domingo"
-      }
-    },
     "Sun": {
       "languages": {
         "en": "Sun",
         "es": "Dom"
+      }
+    },
+    "Sunday": {
+      "languages": {
+        "en": "Sunday",
+        "es": "Domingo"
       }
     },
     "Tasks": {
@@ -1550,16 +1640,16 @@
         "es": "Esta tienda no es compatible actualmente"
       }
     },
-    "Thursday": {
-      "languages": {
-        "en": "Thursday",
-        "es": "Jueves"
-      }
-    },
     "Thu": {
       "languages": {
         "en": "Thu",
         "es": "Jue"
+      }
+    },
+    "Thursday": {
+      "languages": {
+        "en": "Thursday",
+        "es": "Jueves"
       }
     },
     "Ticket": {
@@ -1610,6 +1700,12 @@
         "es": "Carta coleccionable"
       }
     },
+    "To automatically checkout using your default browser, download our Chrome extension": {
+      "languages": {
+        "en": "To automatically checkout using your default browser, download our Chrome extension",
+        "es": "Para pagar automáticamente con su navegador predeterminado, descargue nuestra extensión de Chrome"
+      }
+    },
     "to connect your bots": {
       "languages": {
         "en": "to connect your bots",
@@ -1622,16 +1718,16 @@
         "es": "para gestionar sus perfiles de facturación"
       }
     },
-    "Toggle Task(s)": {
-      "languages": {
-        "en": "Toggle Task(s)",
-        "es": "Alternar tarea(s)"
-      }
-    },
     "Today": {
       "languages": {
         "en": "Today",
         "es": "Hoy"
+      }
+    },
+    "Toggle Task(s)": {
+      "languages": {
+        "en": "Toggle Task(s)",
+        "es": "Alternar tarea(s)"
       }
     },
     "Total": {
@@ -1640,10 +1736,10 @@
         "es": "En total"
       }
     },
-    "To automatically checkout using your default browser, download our Chrome extension": {
+    "Total Spent": {
       "languages": {
-        "en": "To automatically checkout using your default browser, download our Chrome extension",
-        "es": "Para pagar automáticamente con su navegador predeterminado, descargue nuestra extensión de Chrome"
+        "en": "Total Spent",
+        "es": "Gastado en total"
       }
     },
     "Try using other keywords": {
@@ -1652,16 +1748,16 @@
         "es": "Intenta usar otras palabras clave"
       }
     },
-    "Tuesday": {
-      "languages": {
-        "en": "Tuesday",
-        "es": "Martes"
-      }
-    },
     "Tue": {
       "languages": {
         "en": "Tue",
         "es": "Mar"
+      }
+    },
+    "Tuesday": {
+      "languages": {
+        "en": "Tuesday",
+        "es": "Martes"
       }
     },
     "Type to add a note...": {
@@ -1694,6 +1790,12 @@
         "es": "Grado desconocido"
       }
     },
+    "Unknown Membership": {
+      "languages": {
+        "en": "Unknown Membership",
+        "es": "Membresía desconocido"
+      }
+    },
     "Unknown Product": {
       "languages": {
         "en": "Unknown Product",
@@ -1716,6 +1818,12 @@
       "languages": {
         "en": "Unknown Style Code",
         "es": "Desconocido código de estilo"
+      }
+    },
+    "Unknown Subscription": {
+      "languages": {
+        "en": "Unknown Subscription",
+        "es": "Suscripción desconocida"
       }
     },
     "Unknown Ticket": {
@@ -1778,6 +1886,12 @@
         "es": "Ver venta"
       }
     },
+    "View Subscription": {
+      "languages": {
+        "en": "View Subscription",
+        "es": "Ver suscripción"
+      }
+    },
     "View Ticket": {
       "languages": {
         "en": "View Ticket",
@@ -1820,22 +1934,34 @@
         "es": "Viendo monitores de Social+..."
       }
     },
-    "Wednesday": {
-      "languages": {
-        "en": "Wednesday",
-        "es": "Miércoles"
-      }
-    },
     "Wed": {
       "languages": {
         "en": "Wed",
         "es": "Mié"
       }
     },
+    "Wednesday": {
+      "languages": {
+        "en": "Wednesday",
+        "es": "Miércoles"
+      }
+    },
+    "Weekly": {
+      "languages": {
+        "en": "Weekly",
+        "es": "Semanal"
+      }
+    },
     "Welcome back": {
       "languages": {
         "en": "Welcome back",
         "es": "¡Bienvenido de vuelta"
+      }
+    },
+    "Yearly": {
+      "languages": {
+        "en": "Yearly",
+        "es": "Anual"
       }
     },
     "Yes": {

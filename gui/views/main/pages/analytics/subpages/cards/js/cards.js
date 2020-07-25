@@ -104,6 +104,7 @@ window.editCard = async (card) => {
   while (!window.frames['create-modal'] || !window.frames['create-modal'].createApp) await window.parent.parent.sleep(50); // check & sleep in case user clicks on item before the modal is initialized
   window.frames['create-modal'].createApp.activeCardIndex = window.cards.indexOf(card);
   cardsApp.endHovering(card);
+  if (!card.sale.price && card.sale.price != 0) card.sale.date = window.parent.parent.separateDate().date;
   window.parent.parent.memory.syncObject(window.frames['create-modal'].modalOptions, window.parent.parent.memory.copyObj(card));
   if (window.frames['create-modal'].modalOptions.sale.tracking.isTracking) setTimeout(window.refreshTracking(-2, true, window.frames['create-modal'].modalOptions.sale.tracking), 50);
   openModal('create');
@@ -409,6 +410,7 @@ function refreshCardsSearch() {
   for (var card of window.cards) if (isCardDisplayable(card)) displayedCards.push(card);
   // reorganize cards based on table filter
   sortDisplayedCards();
+  if (window.parent.frames['overview-subpage'].overviewApp) window.parent.frames['overview-subpage'].overviewApp.applyDateSearch(); // refresh totals on overview page
 }
 window.refreshCardsSearch = refreshCardsSearch;
 
@@ -471,7 +473,7 @@ function getAllTimeDates() {
     return { start: separatedDate.date, end: separatedDate.date }
   }
   let dates = [];
-  for (var card of window.cards) dates.push(card.sale.date);
+  for (var card of window.cards) dates.push(card.purchase.date);
   dates.quick_sort(function(a,b) { return a < b });
   return { start: dates[0], end: dates[dates.length-1] };
 }

@@ -58,11 +58,11 @@ window.analyticsApp = new Vue({
   el: "#subpageContent",
   data: {
     subpages: window.subpages,
-    sales: [],
-    inventoryItems: [],
-    subscriptions: [],
-    tickets: [],
-    cards: []
+    sales: null,
+    inventoryItems: null,
+    subscriptions: null,
+    tickets: null,
+    cards: null
   },
   methods: {
     confineTextWidth: window.parent.parent.confineTextWidth,

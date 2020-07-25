@@ -104,6 +104,7 @@ window.editSale = async (sale) => {
   while (!window.frames['create-modal'] || !window.frames['create-modal'].createApp) await window.parent.parent.sleep(50); // check & sleep in case user clicks on item before the modal is initialized
   window.frames['create-modal'].createApp.activeSaleIndex = window.sales.indexOf(sale);
   salesApp.endHovering(sale);
+  if (!sale.sale.price && sale.sale.price != 0) sale.sale.date = window.parent.parent.separateDate().date;
   window.parent.parent.memory.syncObject(window.frames['create-modal'].modalOptions, window.parent.parent.memory.copyObj(sale));
   if (window.frames['create-modal'].modalOptions.sale.tracking.isTracking) setTimeout(window.refreshTracking(-2, true, window.frames['create-modal'].modalOptions.sale.tracking), 50);
   openModal('create');
@@ -225,7 +226,7 @@ const salesApp = new Vue({
       else if (e.shiftKey) setMultipleSelectedSales(saleIndex);
       else editSale(displayedSales[saleIndex]);
     },
-    applyDateSearch: function(category = this.dateSearch.category, changeSorting = false) {
+    applyDateSearch: function(category = this.dateSearch.category, changeSorting = false, refreshOverview = true) {
       this.dateSearch.category = category;
       switch (category) {
         case 'today':
@@ -258,12 +259,12 @@ const salesApp = new Vue({
           // do nothing
           break;
       }
-      this.updateDateSearch(changeSorting);
+      this.updateDateSearch(changeSorting, refreshOverview);
     },
-    updateDateSearch: function(changeSorting = false) {
+    updateDateSearch: function(changeSorting = false, refreshOverview = true) {
       this.dateSearch.display = `${window.parent.parent.frames['home-frame'].homeApp.formatScheduleDate(new Date(new Date(this.dateSearch.start).getTime() + (24 * 60 * 60 * 1000)).toString())} – ${window.parent.parent.frames['home-frame'].homeApp.formatScheduleDate(new Date(new Date(this.dateSearch.end).getTime() + (24 * 60 * 60 * 1000)).toString())}`;
       if (changeSorting) toggleSortSalesByColumn('sale.date', true);
-      else refreshSalesSearch();
+      else refreshSalesSearch(refreshOverview);
     },
     getDisplayedSortDirection: function(key) {
       return window.tableSort.key == key ? (window.tableSort.direction == "ascending" ? "↑" : (window.tableSort.direction == "descending" ? "↓" : "") ) : "";
@@ -275,20 +276,59 @@ const salesApp = new Vue({
       for (var modal in modals) if (modals[modal].visible) return true;
       return false;
     },
-    getTotalSpent: function() {
-      let outSpent = 0;
-      for (var sale of this.sales) outSpent += (sale.purchase.price || 0);
-      return window.parent.parent.roundNumber(outSpent);
+    getTotalSpent: function(altDateSearch) {
+      if (altDateSearch) {
+        let tempDateSearch = window.parent.parent.memory.copyObj(this.dateSearch)
+        window.parent.parent.memory.syncObject(this.dateSearch, window.parent.parent.memory.copyObj(altDateSearch));
+        this.applyDateSearch(this.dateSearch.category, false, false);
+
+        let outSpent = 0;
+        for (var sale of this.sales) outSpent += (sale.purchase.price || 0);
+
+        window.parent.parent.memory.syncObject(this.dateSearch, tempDateSearch);
+        this.applyDateSearch(this.dateSearch.category, false, false);
+        return window.parent.parent.roundNumber(outSpent);
+      } else {
+        let outSpent = 0;
+        for (var sale of this.sales) outSpent += (sale.purchase.price || 0);
+        return window.parent.parent.roundNumber(outSpent);
+      }
     },
-    getTotalRevenue: function() {
-      let outRevenue = 0;
-      for (var sale of this.sales) outRevenue += this.calculateProfit(sale) + (sale.purchase.price || 0);
-      return window.parent.parent.roundNumber(outRevenue);
+    getTotalRevenue: function(altDateSearch) {
+      if (altDateSearch) {
+        let tempDateSearch = window.parent.parent.memory.copyObj(this.dateSearch)
+        window.parent.parent.memory.syncObject(this.dateSearch, window.parent.parent.memory.copyObj(altDateSearch));
+        this.applyDateSearch(this.dateSearch.category, false, false);
+
+        let outRevenue = 0;
+        for (var sale of this.sales) outRevenue += this.calculateProfit(sale) + (sale.purchase.price || 0);
+
+        window.parent.parent.memory.syncObject(this.dateSearch, tempDateSearch);
+        this.applyDateSearch(this.dateSearch.category, false, false);
+        return window.parent.parent.roundNumber(outRevenue);
+      } else {
+        let outRevenue = 0;
+        for (var sale of this.sales) outRevenue += this.calculateProfit(sale) + (sale.purchase.price || 0);
+        return window.parent.parent.roundNumber(outRevenue);
+      }
     },
-    getTotalProfit: function() {
-      let outProfit = 0;
-      for (var sale of this.sales) outProfit += this.calculateProfit(sale);
-      return window.parent.parent.roundNumber(outProfit);
+    getTotalProfit: function(altDateSearch) {
+      if (altDateSearch) {
+        let tempDateSearch = window.parent.parent.memory.copyObj(this.dateSearch)
+        window.parent.parent.memory.syncObject(this.dateSearch, window.parent.parent.memory.copyObj(altDateSearch));
+        this.applyDateSearch(this.dateSearch.category, false, false);
+
+        let outProfit = 0;
+        for (var sale of this.sales) outProfit += this.calculateProfit(sale);
+
+        window.parent.parent.memory.syncObject(this.dateSearch, tempDateSearch);
+        this.applyDateSearch(this.dateSearch.category, false, false);
+        return window.parent.parent.roundNumber(outProfit);
+      } else {
+        let outProfit = 0;
+        for (var sale of this.sales) outProfit += this.calculateProfit(sale);
+        return window.parent.parent.roundNumber(outProfit);
+      }
     },
     getPlatformImage: function(platform) {
       let formattedPlatform = platform.replace(new RegExp(" ", 'g'), "").toLowerCase().trim();
@@ -404,11 +444,12 @@ function getStatusDescription(statusNumber) {
 
 $("#salesSearch").on('change keydown paste input', refreshSalesSearch);
 
-function refreshSalesSearch() {
+function refreshSalesSearch(refreshOverview = true) {
   while (displayedSales.length > 0) displayedSales.pop();
   for (var sale of window.sales) if (isSaleDisplayable(sale)) displayedSales.push(sale);
   // reorganize sales based on table filter
   sortDisplayedSales();
+  if (refreshOverview) if (window.parent.frames['overview-subpage'].overviewApp) window.parent.frames['overview-subpage'].overviewApp.applyDateSearch(); // refresh totals on overview page
 }
 window.refreshSalesSearch = refreshSalesSearch;
 

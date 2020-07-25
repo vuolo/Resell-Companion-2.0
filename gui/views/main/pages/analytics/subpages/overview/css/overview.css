@@ -407,7 +407,7 @@
 	white-space: nowrap;
 	line-height: 52px;
 	margin-top: -13.5px;
-	text-align: center;
+	text-align: left;
 	font-family: SF Pro Text;
 	font-style: normal;
 	font-weight: bold;
@@ -517,7 +517,7 @@
 	white-space: nowrap;
 	line-height: 52px;
 	margin-top: -13.5px;
-	text-align: center;
+	text-align: left;
 	font-family: SF Pro Text;
 	font-style: normal;
 	font-weight: bold;
@@ -824,5 +824,227 @@
 	font-style: normal;
 	font-weight: 900;
 	font-size: 40px;
+	color: rgba(29,29,29,1);
+}
+
+
+
+
+
+
+
+
+
+
+.Filter_Area_Class {
+	position: absolute;
+	width: 330px;
+	height: 36px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+.Rectangle_es {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 330px;
+	height: 36px;
+	left: 0px;
+	top: 0px;
+}
+.Date_Area_Class {
+	position: absolute;
+	width: 165px;
+	height: 36px;
+	left: 165px;
+	top: 0px;
+	overflow: visible;
+}
+.Date_Bar_Class {
+	position: absolute;
+	width: 165px;
+	height: 36px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+.Rectangle_ev {
+	position: absolute;
+	overflow: visible;
+	width: 165px;
+	height: 36px;
+	left: 0px;
+	top: 0px;
+}
+.Text_Class {
+	position: absolute;
+	left: 34px;
+	top: 9px;
+	overflow: visible;
+	width: 122px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Calendar_Icon_Class {
+	opacity: 0.66;
+}
+.Calendar_Icon {
+	overflow: visible;
+	position: absolute;
+	width: 14.165px;
+	height: 16.189px;
+	left: 12.667px;
+	top: 9.905px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Last_Months_Area_Class {
+	position: absolute;
+	width: 165px;
+	height: 36px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+.Last_Months_Bar_Class {
+	position: absolute;
+	width: 165px;
+	height: 36px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+.Rectangle_e {
+	position: absolute;
+	overflow: visible;
+	width: 165px;
+	height: 36px;
+	left: 0px;
+	top: 0px;
+}
+.Text_e_Class {
+	position: absolute;
+	left: 12px;
+	top: 9px;
+	overflow: visible;
+	width: 120px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Separator {
+	width: 18px;
+	height: 3px;
+	position: absolute;
+	overflow: visible;
+	transform: translate(106px, 53px) matrix(1,0,0,1,50,-35) rotate(90deg);
+	transform-origin: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.Date_Selection_Area_Class {
+	position: absolute;
+	width: 330px;
+	height: 36px;
+	left: 62px;
+	/* top: 105px; */
+	top: 108px;
+	overflow: visible;
+}
+.Rectangle_g {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 330px;
+	height: 36px;
+	left: 0px;
+	top: 0px;
+}
+.Calendar_Icon_2_Class {
+	opacity: 0.66;
+}
+.Calendar_Icon_2 {
+	overflow: visible;
+	position: absolute;
+	width: 14.165px;
+	height: 16.189px;
+	left: 315.667px;
+	top: 8.905px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Text_g_Class {
+	position: absolute;
+	left: 191px;
+	top: 8px;
+	overflow: visible;
+	width: 111px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Arrow_Class {
+	position: absolute;
+	left: 156px;
+	top: 7px;
+	overflow: visible;
+	width: 17px;
+	white-space: nowrap;
+	text-align: right;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 18px;
+	color: rgba(29,29,29,1);
+}
+.Calendar_Icon_1_Class {
+	opacity: 0.66;
+}
+.Calendar_Icon_1 {
+	overflow: visible;
+	position: absolute;
+	width: 14.165px;
+	height: 16.189px;
+	left: 139.667px;
+	top: 8.905px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Text_ha_Class {
+	position: absolute;
+	left: 15px;
+	top: 8px;
+	overflow: visible;
+	width: 111px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
 	color: rgba(29,29,29,1);
 }

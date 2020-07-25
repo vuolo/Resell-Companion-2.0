@@ -150,13 +150,8 @@
 								<rect v-bind:fill="subscription.selected ? getThemeColor('rgba(225,225,225,1)') : getThemeColor('rgba(255,255,255,1)')" class="Rectangle_Class" rx="10" ry="10" x="0" y="0" width="1206.043" height="52.497">
 								</rect>
 							</svg>
-							<div v-show="subscription.sale.tracking.isTracking" style="width: 16px; height: 21px; left: 1058px; position: absolute; transform: translate(100%, 65%);">
-								<svg class="spinner" viewBox="0 0 50 50">
-									<circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="1.5" stroke="#FFA74E"></circle>
-								</svg>
-							</div>
-							<div v-if="!subscription.sale.tracking.isTracking" class="Tracking_Class" v-bind:style="{ color: getColor(getTrackingColor(subscription.sale.tracking)), fontSize: confineTextWidth(100, tryTranslate(getDisplayedTrackingStatus(subscription.sale.tracking)), 15, 'px', 'normal', 'SF Pro Text') }">
-								<span>{{tryTranslate(getDisplayedTrackingStatus(subscription.sale.tracking))}}</span>
+							<div class="Tracking_Class" v-bind:style="{ color: getColor(getTotalMembershipSpentColor(subscription)), fontSize: confineTextWidth(100, tryTranslate(getTotalMembershipSpent(subscription)), 15, 'px', 'normal', 'SF Pro Text') }">
+								<span>{{getTotalMembershipSpent(subscription) == 'N/A' ? tryTranslate('N/A') : companionSettings.currencySymbol + numberWithCommas(getTotalMembershipSpent(subscription))}}</span>
 							</div>
 							<div class="Profit_Class" v-bind:style="{ color: getColor(getProfitColor(calculateProfit(subscription))), fontSize: confineTextWidth(95, companionSettings.currencySymbol + numberWithCommas(calculateProfit(subscription)), 15, 'px', 'normal', 'SF Pro Text') }">
 								<span>{{companionSettings.currencySymbol}}{{numberWithCommas(calculateProfit(subscription))}}</span>
@@ -180,11 +175,11 @@
 									<span>{{subscription.sale.platform.length > 0 ? subscription.sale.platform : tryTranslate('N/A')}}</span>
 								</div>
 							</template>
-							<div class="Size_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(85, subscription.size, 15, 'px', 'normal', 'SF Pro Text') }">
-								<span>{{subscription.size.length > 0 ? subscription.size : tryTranslate('N/A')}}</span>
+							<div class="Size_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(135, tryTranslate(getDisplayedMembership(subscription.size)), 15, 'px', 'normal', 'SF Pro Text') }">
+								<span>{{getDisplayedMembership(subscription.size) == 'N/A' ? tryTranslate('N/A') : tryTranslate(getDisplayedMembership(subscription.size))}}</span>
 							</div>
 							<div class="Product_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-								<span>{{subscription.name.length > 0 ? tryGenerateEllipses(240, subscription.name, 15, 'px', 'normal', 'SF Pro Text') : tryTranslate('N/A')}}</span>
+								<span>{{subscription.name.length > 0 ? tryGenerateEllipses(210, subscription.name, 15, 'px', 'normal', 'SF Pro Text') : tryTranslate('N/A')}}</span>
 							</div>
 							<div class="Product_Image_Class">
 								<img style="display: table-cell; vertical-align: middle; max-width: 42px; max-height: 42px; border-radius: 5px; margin-left: auto; margin-right: auto;" v-bind:class="{ transparentify: companionSettings.theme == 'light' }" v-bind:src="subscription.imageURL" onerror="this.src='../../../../../../images/unknownImage.png'">
@@ -212,19 +207,14 @@
 									<span>{{subscription.sale.platform}}</span>
 								</div>
 							</template>
-							<div v-show="subscription.sale.tracking.isTracking" style="width: 16px; height: 21px; left: 165px; top: 165px; position: absolute; transform: translate(100%, 65%);">
-								<svg class="spinner" viewBox="0 0 50 50">
-									<circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="1.5" stroke="#FFA74E"></circle>
-								</svg>
-							</div>
-							<div v-if="!subscription.sale.tracking.isTracking && getDisplayedTrackingStatus(subscription.sale.tracking) != 'N/A'" class="Tracking_Class" v-bind:style="{ color: getColor(getTrackingColor(subscription.sale.tracking)), fontSize: confineTextWidth(85, tryTranslate(getDisplayedTrackingStatus(subscription.sale.tracking)), 14, 'px', 'normal', 'SF Pro Text') }">
-								<span>{{tryTranslate(getDisplayedTrackingStatus(subscription.sale.tracking))}}</span>
+							<div v-if="getTotalMembershipSpent(subscription) != 'N/A'" class="Tracking_Class" v-bind:style="{ color: getColor(getTotalMembershipSpentColor(subscription)), fontSize: confineTextWidth(85, tryTranslate(getTotalMembershipSpent(subscription)), 14, 'px', 'normal', 'SF Pro Text') }">
+								<span>{{getTotalMembershipSpent(subscription) == 'N/A' ? tryTranslate('N/A') : companionSettings.currencySymbol + numberWithCommas(getTotalMembershipSpent(subscription))}}</span>
 							</div>
 							<div class="Price_Class" style="line-height: 17px;" v-bind:style="{ color: getColor(getProfitColor(calculateProfit(subscription))), fontSize: confineTextWidth(85, companionSettings.currencySymbol + numberWithCommas(calculateProfit(subscription)), 14, 'px', 'normal', 'SF Pro Text') }">
 								<span>{{companionSettings.currencySymbol}}{{numberWithCommas(calculateProfit(subscription))}}</span>
 							</div>
-							<div class="Size_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), top: (getTextWidth(subscription.name.length == 0 ? tryTranslate('Unknown Subscription') : subscription.name, `${'normal'} ${14 + 'px'} ${'SF Pro Text'}`) <= (180 - 10) ? 148 : 166) + 'px', fontSize: confineTextWidth(180, subscription.size, 14, 'px', 'normal', 'SF Pro Text') }">
-								<span>{{subscription.size.length == 0 ? tryTranslate('Unknown Membership') : subscription.size}}</span>
+							<div class="Size_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), top: (getTextWidth(subscription.name.length == 0 ? tryTranslate('Unknown Subscription') : subscription.name, `${'normal'} ${14 + 'px'} ${'SF Pro Text'}`) <= (180 - 10) ? 148 : 166) + 'px', fontSize: confineTextWidth(180, tryTranslate(getDisplayedMembership(subscription.size)), 14, 'px', 'normal', 'SF Pro Text') }">
+								<span>{{getDisplayedMembership(subscription.size) == 'N/A' ? tryTranslate('Unknown Membership') : tryTranslate(getDisplayedMembership(subscription.size))}}</span>
 							</div>
 							<div class="Title_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
 								<span>{{subscription.name.length == 0 ? tryTranslate('Unknown Subscription') : tryGenerateEllipses(300, subscription.name, 14, 'px', 'normal', 'SF Pro Text')}}</span>
@@ -239,8 +229,8 @@
 			</div>
 
 			<div v-if="displayMode == 'table'" class="Top_Bar_Chart_Class">
-				<div class="Tracking_ea_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(115, tryTranslate('Tracking') + ' ' + getDisplayedSortDirection('sale.tracking.details.status'), 20, 'px', 'bold', 'SF Pro Text') }">
-					<span class="clickable hover-underline" onclick="toggleSortSubscriptionsByColumn('sale.tracking.details.status')">{{tryTranslate('Tracking')}}</span><span class="clickable" onclick="toggleSortSubscriptionsByColumn('sale.tracking.details.status')"> {{getDisplayedSortDirection('sale.tracking.details.status')}}</span>
+				<div class="Tracking_ea_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(115, tryTranslate('Total Spent') + ' ' + getDisplayedSortDirection('sale.totalSpent'), 20, 'px', 'bold', 'SF Pro Text') }">
+					<span class="clickable hover-underline" onclick="toggleSortSubscriptionsByColumn('sale.totalSpent')">{{tryTranslate('Total Spent')}}</span><span class="clickable" onclick="toggleSortSubscriptionsByColumn('sale.totalSpent')"> {{getDisplayedSortDirection('sale.totalSpent')}}</span>
 				</div>
 				<div class="Profit_eb_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(95, tryTranslate('Profit') + ' ' + getDisplayedSortDirection('sale.profit'), 20, 'px', 'bold', 'SF Pro Text') }">
 					<span class="clickable hover-underline" onclick="toggleSortSubscriptionsByColumn('sale.profit')">{{tryTranslate('Profit')}}</span><span class="clickable" onclick="toggleSortSubscriptionsByColumn('sale.profit')"> {{getDisplayedSortDirection('sale.profit')}}</span>
@@ -257,7 +247,7 @@
 				<div class="Platform_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(115, tryTranslate('Platform') + ' ' + getDisplayedSortDirection('sale.platform'), 20, 'px', 'bold', 'SF Pro Text') }">
 					<span class="clickable hover-underline" onclick="toggleSortSubscriptionsByColumn('sale.platform')">{{tryTranslate('Platform')}}</span><span class="clickable" onclick="toggleSortSubscriptionsByColumn('sale.platform')"> {{getDisplayedSortDirection('sale.platform')}}</span>
 				</div>
-				<div class="Size_eg_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(85, tryTranslate('Membership') + ' ' + getDisplayedSortDirection('size'), 20, 'px', 'bold', 'SF Pro Text') }">
+				<div class="Size_eg_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(135, tryTranslate('Membership') + ' ' + getDisplayedSortDirection('size'), 20, 'px', 'bold', 'SF Pro Text') }">
 					<span class="clickable hover-underline" onclick="toggleSortSubscriptionsByColumn('size')">{{tryTranslate('Membership')}}</span><span class="clickable" onclick="toggleSortSubscriptionsByColumn('size')"> {{getDisplayedSortDirection('size')}}</span>
 				</div>
 				<div class="Product_eh_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(240, tryTranslate('Subscription') + ' ' + getDisplayedSortDirection('name'), 20, 'px', 'bold', 'SF Pro Text') }">

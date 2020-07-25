@@ -444,66 +444,69 @@
 					duplicateInventoryItems();
 					break;
 				case 'mark_sold':
+					inventoryItem.selected = true;
 					let separatedDate = window.parent.parent.separateDate();
-					let newSale = {
-						name: inventoryItem.name,
-						color: inventoryItem.color,
-						styleCode: inventoryItem.styleCode,
-						size: inventoryItem.size,
-						imageURL: inventoryItem.imageURL,
-						notes: inventoryItem.notes,
-						marketplaceData: {
-							product: inventoryItem.marketplaceData.product,
-							size: inventoryItem.marketplaceData.size,
-							media360: inventoryItem.marketplaceData.media360
-						},
-						suggestions: {
-							items: [],
-							itemsOpened: false,
-							isSearchingForItems: false,
-							sizes: [],
-							sizesOpened: false,
-							isSearchingForSizes: false
-						},
-						purchase: {
-							price: inventoryItem.purchase.price,
-							estimatedResell: inventoryItem.purchase.estimatedResell,
-							store: inventoryItem.purchase.store,
-							date: inventoryItem.purchase.date,
-							tracking: {
-								number: inventoryItem.purchase.tracking.number,
-								carrier: inventoryItem.purchase.tracking.carrier,
-								isTracking: false,
-								details: inventoryItem.purchase.tracking.details
-							}
-						},
-						sale: {
-							price: null,
-							fees: {
-								amount: null,
-								isPercent: true
+					for (var selectedInventoryItem of window.getSelectedInventoryItems()) {
+						let newSale = {
+							name: selectedInventoryItem.name,
+							color: selectedInventoryItem.color,
+							styleCode: selectedInventoryItem.styleCode,
+							size: selectedInventoryItem.size,
+							imageURL: selectedInventoryItem.imageURL,
+							notes: selectedInventoryItem.notes,
+							marketplaceData: {
+								product: selectedInventoryItem.marketplaceData.product,
+								size: selectedInventoryItem.marketplaceData.size,
+								media360: selectedInventoryItem.marketplaceData.media360
 							},
-							platform: "",
-							date: separatedDate.date,
-							tracking: {
-								number: "",
-								carrier: "unselected",
-								isTracking: false,
-								details: {}
-							}
-						},
-						quantity: 1,
-						selected: true,
-						isHovering: false,
-						id: inventoryItem.id
-					};
-					// add sale
-					window.parent.analyticsApp.sales.push(newSale);
-					window.parent.openSubpage('sales');
+							suggestions: {
+								items: [],
+								itemsOpened: false,
+								isSearchingForItems: false,
+								sizes: [],
+								sizesOpened: false,
+								isSearchingForSizes: false
+							},
+							purchase: {
+								price: selectedInventoryItem.purchase.price,
+								estimatedResell: selectedInventoryItem.purchase.estimatedResell,
+								store: selectedInventoryItem.purchase.store,
+								date: selectedInventoryItem.purchase.date,
+								tracking: {
+									number: selectedInventoryItem.purchase.tracking.number,
+									carrier: selectedInventoryItem.purchase.tracking.carrier,
+									isTracking: false,
+									details: selectedInventoryItem.purchase.tracking.details
+								}
+							},
+							sale: {
+								price: null,
+								fees: {
+									amount: null,
+									isPercent: true
+								},
+								platform: "",
+								date: separatedDate.date,
+								tracking: {
+									number: "",
+									carrier: "unselected",
+									isTracking: false,
+									details: {}
+								}
+							},
+							quantity: 1,
+							selected: true,
+							isHovering: false,
+							id: selectedInventoryItem.id
+						};
+						// add sale
+						window.parent.analyticsApp.sales.push(newSale);
+						// window.parent.frames['sales-subpage'].editSale(newSale);
+						// remove inventory item
+						window.parent.analyticsApp.inventoryItems.splice(window.parent.analyticsApp.inventoryItems.indexOf(selectedInventoryItem), 1);
+					}
+					window.parent.openSubpage('sales'); // switch page
 					window.parent.frames['sales-subpage'].salesApp.applyDateSearch(); // refresh
-					window.parent.frames['sales-subpage'].editSale(newSale);
-					// remove inventory item
-					window.parent.analyticsApp.inventoryItems.splice(window.parent.analyticsApp.inventoryItems.indexOf(inventoryItem), 1);
 					window.parent.frames['inventory-subpage'].inventoryApp.applyDateSearch(); // refresh
 					break;
 				case 'remove':

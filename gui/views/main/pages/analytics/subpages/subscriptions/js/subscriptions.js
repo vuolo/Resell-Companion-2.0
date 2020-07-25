@@ -104,6 +104,7 @@ window.editSubscription = async (subscription) => {
   while (!window.frames['create-modal'] || !window.frames['create-modal'].createApp) await window.parent.parent.sleep(50); // check & sleep in case user clicks on item before the modal is initialized
   window.frames['create-modal'].createApp.activeSubscriptionIndex = window.subscriptions.indexOf(subscription);
   subscriptionsApp.endHovering(subscription);
+  if (!subscription.sale.price && subscription.sale.price != 0) subscription.sale.date = window.parent.parent.separateDate().date;
   window.parent.parent.memory.syncObject(window.frames['create-modal'].modalOptions, window.parent.parent.memory.copyObj(subscription));
   if (window.frames['create-modal'].modalOptions.sale.tracking.isTracking) setTimeout(window.refreshTracking(-2, true, window.frames['create-modal'].modalOptions.sale.tracking), 50);
   openModal('create');
@@ -159,6 +160,38 @@ window.setAllSubscriptionsSelected = (selected = true, displayedOnly = true) => 
   for (var subscription of displayedOnly ? displayedSubscriptions : window.subscriptions) subscription.selected = selected;
 };
 
+function weeksBetween(d1, d2) {
+  return Math.round((d2 - d1) / (7 * 24 * 60 * 60 * 1000));
+}
+
+function monthsBetween(date1, date2, roundUpFractionalMonths) {
+  // Months will be calculated between start and end dates.
+  // Make sure start date is less than end date.
+  // But remember if the difference should be negative.
+  var startDate = date1;
+  var endDate = date2;
+  var inverse = false;
+  if (date1 > date2) {
+    startDate = date2;
+    endDate = date1;
+    inverse = true;
+  }
+
+  // Calculate the differences between the start and end dates
+  var yearsDifference = endDate.getFullYear() - startDate.getFullYear();
+  var monthsDifference = endDate.getMonth() - startDate.getMonth();
+  var daysDifference = endDate.getDate() - startDate.getDate();
+
+  var monthCorrection = 0;
+  // If roundUpFractionalMonths is true, check if an extra month needs to be added from rounding up.
+  // The difference is done by ceiling (round up), e.g. 3 months and 1 day will be 4 months.
+  if (roundUpFractionalMonths === true && daysDifference > 0) monthCorrection = 1;
+  // If the day difference between the 2 months is negative, the last month is not a whole month.
+  else if (roundUpFractionalMonths !== true && daysDifference < 0) monthCorrection = -1;
+
+  return (inverse ? -1 : 1) * (yearsDifference * 12 + monthsDifference + monthCorrection);
+};
+
 const subscriptionsApp = new Vue({
   el: "#Rewrite___Sales",
   data: {
@@ -191,6 +224,69 @@ const subscriptionsApp = new Vue({
     tryGenerateEllipses: window.parent.parent.tryGenerateEllipses,
     openModal: window.openModal,
     editSubscription: window.editSubscription,
+    getTotalMembershipSpentColor: function(subscription) {
+      let totalSpent = this.getTotalMembershipSpent(subscription);
+      if (totalSpent == 'N/A') return 'N/A';
+      else if (totalSpent > 0) return 'red';
+      else if (totalSpent < 0) return 'green';
+      else return 'yellow';
+    },
+    getTotalMembershipSpent: function(subscription) {
+      let membership = subscription.size;
+      let secondDate = !subscription.sale.price ? new Date() : new Date(subscription.sale.date);
+      switch (membership) {
+        case 'unselected':
+          return subscription.purchase.price || 'N/A';
+        case 'lifetime':
+          return subscription.purchase.price || 'N/A';
+        case '1week':
+          return !subscription.purchase.price ? 'N/A' : subscription.purchase.price * (weeksBetween(new Date(subscription.purchase.date), secondDate) + 1);
+        case '1month':
+          return !subscription.purchase.price ? 'N/A' : subscription.purchase.price * (monthsBetween(new Date(subscription.purchase.date), secondDate) + 1);
+        case '2month':
+          return !subscription.purchase.price ? 'N/A' : subscription.purchase.price * (Math.floor(monthsBetween(new Date(subscription.purchase.date), secondDate)/2) + 1);
+        case '3month':
+          return !subscription.purchase.price ? 'N/A' : subscription.purchase.price * (Math.floor(monthsBetween(new Date(subscription.purchase.date), secondDate)/3) + 1);
+        case '5month':
+          return !subscription.purchase.price ? 'N/A' : subscription.purchase.price * (Math.floor(monthsBetween(new Date(subscription.purchase.date), secondDate)/5) + 1);
+        case '6month':
+          return !subscription.purchase.price ? 'N/A' : subscription.purchase.price * (Math.floor(monthsBetween(new Date(subscription.purchase.date), secondDate)/(12 / 2)) + 1);
+        case '1year':
+          return !subscription.purchase.price ? 'N/A' : subscription.purchase.price * (Math.floor(monthsBetween(new Date(subscription.purchase.date), secondDate)/(12 * 1)) + 1);
+        case '2year':
+          return !subscription.purchase.price ? 'N/A' : subscription.purchase.price * (Math.floor(monthsBetween(new Date(subscription.purchase.date), secondDate)/(12 * 2)) + 1);
+        case '3year':
+          return !subscription.purchase.price ? 'N/A' : subscription.purchase.price * (Math.floor(monthsBetween(new Date(subscription.purchase.date), secondDate)/(12 * 3)) + 1);
+      }
+      return 'N/A';
+    },
+    getDisplayedMembership: function(membership) {
+      switch (membership) {
+        case 'unselected':
+          return 'N/A';
+        case 'lifetime':
+          return 'Lifetime';
+        case '1week':
+          return 'Weekly';
+        case '1month':
+          return 'Monthly';
+        case '2month':
+          return 'Every 2 Months';
+        case '3month':
+          return 'Every 3 Months';
+        case '5month':
+          return 'Every 5 Months';
+        case '6month':
+          return 'Biyearly';
+        case '1year':
+          return 'Yearly';
+        case '2year':
+          return 'Every 2 Years';
+        case '3year':
+          return 'Every 3 Years';
+      }
+      return 'N/A';
+    },
     beginExport: async function(displayedOnly = true) {
       if (this.isExporting) return; // prevent overlapping exports
       this.isExporting = true;
@@ -409,6 +505,7 @@ function refreshSubscriptionsSearch() {
   for (var subscription of window.subscriptions) if (isSubscriptionDisplayable(subscription)) displayedSubscriptions.push(subscription);
   // reorganize subscriptions based on table filter
   sortDisplayedSubscriptions();
+  if (window.parent.frames['overview-subpage'].overviewApp) window.parent.frames['overview-subpage'].overviewApp.applyDateSearch(); // refresh totals on overview page
 }
 window.refreshSubscriptionsSearch = refreshSubscriptionsSearch;
 
@@ -439,13 +536,13 @@ function sortDisplayedSubscriptions() {
   for (var displayedSubscription of displayedSubscriptions) {
     tempShortenedDisplayedSubscriptions.push({
       'name': displayedSubscription.name.toLowerCase() || window.parent.parent.tryTranslate('N/A'),
-      'size': displayedSubscription.size.toLowerCase() || window.parent.parent.tryTranslate('N/A'),
+      'size': window.parent.parent.tryTranslate(subscriptionsApp.getDisplayedMembership(displayedSubscription.size)).toLowerCase() || window.parent.parent.tryTranslate('N/A'),
       'sale.platform': displayedSubscription.sale.platform.toLowerCase()  || window.parent.parent.tryTranslate('N/A'),
       'purchase.price': displayedSubscription.purchase.price || 0,
       'sale.price': displayedSubscription.sale.price || 0,
       'sale.fees.amount': displayedSubscription.sale.fees.amount || 0,
       'sale.profit': subscriptionsApp.calculateProfit(displayedSubscription) || 0,
-      'sale.tracking.details.status': displayedSubscription.sale.tracking.details.status || 0,
+      'sale.totalSpent': window.parent.parent.tryTranslate(subscriptionsApp.getTotalMembershipSpent(displayedSubscription)),
       'sale.date': displayedSubscription.sale.date,
       id: displayedSubscription.id
     });
@@ -471,7 +568,7 @@ function getAllTimeDates() {
     return { start: separatedDate.date, end: separatedDate.date }
   }
   let dates = [];
-  for (var subscription of window.subscriptions) dates.push(subscription.sale.date);
+  for (var subscription of window.subscriptions) dates.push(subscription.purchase.date);
   dates.quick_sort(function(a,b) { return a < b });
   return { start: dates[0], end: dates[dates.length-1] };
 }

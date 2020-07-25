@@ -104,6 +104,7 @@ window.editTicket = async (ticket) => {
   while (!window.frames['create-modal'] || !window.frames['create-modal'].createApp) await window.parent.parent.sleep(50); // check & sleep in case user clicks on item before the modal is initialized
   window.frames['create-modal'].createApp.activeTicketIndex = window.tickets.indexOf(ticket);
   ticketsApp.endHovering(ticket);
+  if (!ticket.sale.price && ticket.sale.price != 0) ticket.sale.date = window.parent.parent.separateDate().date;
   window.parent.parent.memory.syncObject(window.frames['create-modal'].modalOptions, window.parent.parent.memory.copyObj(ticket));
   if (window.frames['create-modal'].modalOptions.sale.tracking.isTracking) setTimeout(window.refreshTracking(-2, true, window.frames['create-modal'].modalOptions.sale.tracking), 50);
   openModal('create');
@@ -409,6 +410,7 @@ function refreshTicketsSearch() {
   for (var ticket of window.tickets) if (isTicketDisplayable(ticket)) displayedTickets.push(ticket);
   // reorganize tickets based on table filter
   sortDisplayedTickets();
+  if (window.parent.frames['overview-subpage'].overviewApp) window.parent.frames['overview-subpage'].overviewApp.applyDateSearch(); // refresh totals on overview page
 }
 window.refreshTicketsSearch = refreshTicketsSearch;
 
@@ -471,7 +473,7 @@ function getAllTimeDates() {
     return { start: separatedDate.date, end: separatedDate.date }
   }
   let dates = [];
-  for (var ticket of window.tickets) dates.push(ticket.sale.date);
+  for (var ticket of window.tickets) dates.push(ticket.purchase.date);
   dates.quick_sort(function(a,b) { return a < b });
   return { start: dates[0], end: dates[dates.length-1] };
 }

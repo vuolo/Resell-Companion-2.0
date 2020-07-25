@@ -104,6 +104,7 @@ window.editInventoryItem = async (inventoryItem) => {
   while (!window.frames['create-modal'] || !window.frames['create-modal'].createApp) await window.parent.parent.sleep(50); // check & sleep in case user clicks on item before the modal is initialized
   window.frames['create-modal'].createApp.activeInventoryItemIndex = window.inventoryItems.indexOf(inventoryItem);
   inventoryApp.endHovering(inventoryItem);
+  if (!inventoryItem.sale.price && inventoryItem.sale.price != 0) inventoryItem.sale.date = window.parent.parent.separateDate().date;
   window.parent.parent.memory.syncObject(window.frames['create-modal'].modalOptions, window.parent.parent.memory.copyObj(inventoryItem));
   window.frames['create-modal'].resetMarketplaceResult();
   window.frames['create-modal'].marketplaceResult.product = window.frames['create-modal'].modalOptions.marketplaceData.product;
@@ -423,6 +424,7 @@ function refreshInventoryItemsSearch() {
   for (var inventoryItem of window.inventoryItems) if (isInventoryItemDisplayable(inventoryItem)) displayedInventoryItems.push(inventoryItem);
   // reorganize inventory items based on table filter
   sortDisplayedInventoryItems();
+  if (window.parent.frames['overview-subpage'].overviewApp) window.parent.frames['overview-subpage'].overviewApp.applyDateSearch(); // refresh totals on overview page
 }
 window.refreshInventoryItemsSearch = refreshInventoryItemsSearch;
 
