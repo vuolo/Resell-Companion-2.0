@@ -230,7 +230,7 @@ const inventoryApp = new Vue({
       else if (e.shiftKey) setMultipleSelectedInventoryItems(inventoryItemIndex);
       else editInventoryItem(displayedInventoryItems[inventoryItemIndex]);
     },
-    applyDateSearch: function(category = this.dateSearch.category, changeSorting = false) {
+    applyDateSearch: function(category = this.dateSearch.category, changeSorting = false, refreshOverview = true) {
       this.dateSearch.category = category;
       switch (category) {
         case 'today':
@@ -263,12 +263,12 @@ const inventoryApp = new Vue({
           // do nothing
           break;
       }
-      this.updateDateSearch(changeSorting);
+      this.updateDateSearch(changeSorting, refreshOverview);
     },
-    updateDateSearch: function(changeSorting = false) {
+    updateDateSearch: function(changeSorting = false, refreshOverview = true) {
       this.dateSearch.display = `${window.parent.parent.frames['home-frame'].homeApp.formatScheduleDate(new Date(new Date(this.dateSearch.start).getTime() + (24 * 60 * 60 * 1000)).toString())} – ${window.parent.parent.frames['home-frame'].homeApp.formatScheduleDate(new Date(new Date(this.dateSearch.end).getTime() + (24 * 60 * 60 * 1000)).toString())}`;
       if (changeSorting) toggleSortInventoryItemsByColumn('purchase.date', true);
-      else refreshInventoryItemsSearch();
+      else refreshInventoryItemsSearch(refreshOverview);
     },
     getDisplayedSortDirection: function(key) {
       return window.tableSort.key == key ? (window.tableSort.direction == "ascending" ? "↑" : (window.tableSort.direction == "descending" ? "↓" : "") ) : "";
@@ -280,25 +280,77 @@ const inventoryApp = new Vue({
       for (var modal in modals) if (modals[modal].visible) return true;
       return false;
     },
-    getTotalSpent: function() {
-      let outSpent = 0;
-      for (var inventoryItem of this.inventoryItems) outSpent += (inventoryItem.purchase.price || 0);
-      return window.parent.parent.roundNumber(outSpent);
+    getTotalSpent: function(altDateSearch) {
+      if (altDateSearch) {
+        let tempDateSearch = window.parent.parent.memory.copyObj(this.dateSearch)
+        window.parent.parent.memory.syncObject(this.dateSearch, window.parent.parent.memory.copyObj(altDateSearch));
+        this.applyDateSearch(this.dateSearch.category, false, false);
+
+        let outSpent = 0;
+        for (var inventoryItem of this.inventoryItems) outSpent += (inventoryItem.purchase.price || 0);
+
+        window.parent.parent.memory.syncObject(this.dateSearch, tempDateSearch);
+        this.applyDateSearch(this.dateSearch.category, false, false);
+        return window.parent.parent.roundNumber(outSpent);
+      } else {
+        let outSpent = 0;
+        for (var inventoryItem of this.inventoryItems) outSpent += (inventoryItem.purchase.price || 0);
+        return window.parent.parent.roundNumber(outSpent);
+      }
     },
-    getTotalRevenue: function() {
-      let outRevenue = 0;
-      for (var inventoryItem of this.inventoryItems) outRevenue += this.calculateEstimatedProfit(inventoryItem) + (inventoryItem.purchase.price || 0);
-      return window.parent.parent.roundNumber(outRevenue);
+    getTotalRevenue: function(altDateSearch) {
+      if (altDateSearch) {
+        let tempDateSearch = window.parent.parent.memory.copyObj(this.dateSearch)
+        window.parent.parent.memory.syncObject(this.dateSearch, window.parent.parent.memory.copyObj(altDateSearch));
+        this.applyDateSearch(this.dateSearch.category, false, false);
+
+        let outRevenue = 0;
+        for (var inventoryItem of this.inventoryItems) outRevenue += this.calculateEstimatedProfit(inventoryItem) + (inventoryItem.purchase.price || 0);
+
+        window.parent.parent.memory.syncObject(this.dateSearch, tempDateSearch);
+        this.applyDateSearch(this.dateSearch.category, false, false);
+        return window.parent.parent.roundNumber(outRevenue);
+      } else {
+        let outRevenue = 0;
+        for (var inventoryItem of this.inventoryItems) outRevenue += this.calculateEstimatedProfit(inventoryItem) + (inventoryItem.purchase.price || 0);
+        return window.parent.parent.roundNumber(outRevenue);
+      }
     },
-    getTotalEstimatedResell: function () {
-      let outEstimatedResell = 0;
-      for (var inventoryItem of this.inventoryItems) outEstimatedResell += (inventoryItem.purchase.estimatedResell || 0);
-      return window.parent.parent.roundNumber(outEstimatedResell);
+    getTotalEstimatedResell: function (altDateSearch) {
+      if (altDateSearch) {
+        let tempDateSearch = window.parent.parent.memory.copyObj(this.dateSearch)
+        window.parent.parent.memory.syncObject(this.dateSearch, window.parent.parent.memory.copyObj(altDateSearch));
+        this.applyDateSearch(this.dateSearch.category, false, false);
+
+        let outEstimatedResell = 0;
+        for (var inventoryItem of this.inventoryItems) outEstimatedResell += (inventoryItem.purchase.estimatedResell || 0);
+
+        window.parent.parent.memory.syncObject(this.dateSearch, tempDateSearch);
+        this.applyDateSearch(this.dateSearch.category, false, false);
+        return window.parent.parent.roundNumber(outEstimatedResell);
+      } else {
+        let outEstimatedResell = 0;
+        for (var inventoryItem of this.inventoryItems) outEstimatedResell += (inventoryItem.purchase.estimatedResell || 0);
+        return window.parent.parent.roundNumber(outEstimatedResell);
+      }
     },
-    getTotalEstimatedProfit: function() {
-      let outProfit = 0;
-      for (var inventoryItem of this.inventoryItems) outProfit += this.calculateEstimatedProfit(inventoryItem);
-      return window.parent.parent.roundNumber(outProfit);
+    getTotalEstimatedProfit: function(altDateSearch) {
+      if (altDateSearch) {
+        let tempDateSearch = window.parent.parent.memory.copyObj(this.dateSearch)
+        window.parent.parent.memory.syncObject(this.dateSearch, window.parent.parent.memory.copyObj(altDateSearch));
+        this.applyDateSearch(this.dateSearch.category, false, false);
+
+        let outProfit = 0;
+        for (var inventoryItem of this.inventoryItems) outProfit += this.calculateEstimatedProfit(inventoryItem);
+
+        window.parent.parent.memory.syncObject(this.dateSearch, tempDateSearch);
+        this.applyDateSearch(this.dateSearch.category, false, false);
+        return window.parent.parent.roundNumber(outProfit);
+      } else {
+        let outProfit = 0;
+        for (var inventoryItem of this.inventoryItems) outProfit += this.calculateEstimatedProfit(inventoryItem);
+        return window.parent.parent.roundNumber(outProfit);
+      }
     },
     getStoreImage: function(store) {
       let formattedStore = store.replace(new RegExp(" ", 'g'), "").toLowerCase().trim();
@@ -419,12 +471,12 @@ function getStatusDescription(statusNumber) {
 
 $("#inventoryItemsSearch").on('change keydown paste input', refreshInventoryItemsSearch);
 
-function refreshInventoryItemsSearch() {
+function refreshInventoryItemsSearch(refreshOverview = true) {
   while (displayedInventoryItems.length > 0) displayedInventoryItems.pop();
   for (var inventoryItem of window.inventoryItems) if (isInventoryItemDisplayable(inventoryItem)) displayedInventoryItems.push(inventoryItem);
   // reorganize inventory items based on table filter
   sortDisplayedInventoryItems();
-  if (window.parent.frames['overview-subpage'].overviewApp) window.parent.frames['overview-subpage'].overviewApp.applyDateSearch(); // refresh totals on overview page
+  if (refreshOverview) if (window.parent.frames['overview-subpage'].overviewApp) window.parent.frames['overview-subpage'].overviewApp.applyDateSearch(); // refresh totals on overview page
 }
 window.refreshInventoryItemsSearch = refreshInventoryItemsSearch;
 

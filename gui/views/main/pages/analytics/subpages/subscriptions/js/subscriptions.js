@@ -321,7 +321,7 @@ const subscriptionsApp = new Vue({
       else if (e.shiftKey) setMultipleSelectedSubscriptions(subscriptionIndex);
       else editSubscription(displayedSubscriptions[subscriptionIndex]);
     },
-    applyDateSearch: function(category = this.dateSearch.category, changeSorting = false) {
+    applyDateSearch: function(category = this.dateSearch.category, changeSorting = false, refreshOverview = true) {
       this.dateSearch.category = category;
       switch (category) {
         case 'today':
@@ -354,12 +354,12 @@ const subscriptionsApp = new Vue({
           // do nothing
           break;
       }
-      this.updateDateSearch(changeSorting);
+      this.updateDateSearch(changeSorting, refreshOverview);
     },
-    updateDateSearch: function(changeSorting = false) {
+    updateDateSearch: function(changeSorting = false, refreshOverview = true) {
       this.dateSearch.display = `${window.parent.parent.frames['home-frame'].homeApp.formatScheduleDate(new Date(new Date(this.dateSearch.start).getTime() + (24 * 60 * 60 * 1000)).toString())} – ${window.parent.parent.frames['home-frame'].homeApp.formatScheduleDate(new Date(new Date(this.dateSearch.end).getTime() + (24 * 60 * 60 * 1000)).toString())}`;
-      if (changeSorting) toggleSortSubscriptionsByColumn('sale.date', true);
-      else refreshSubscriptionsSearch();
+      if (changeSorting) toggleSortSubscriptionsByColumn('purchase.date', true);
+      else refreshSubscriptionsSearch(refreshOverview);
     },
     getDisplayedSortDirection: function(key) {
       return window.tableSort.key == key ? (window.tableSort.direction == "ascending" ? "↑" : (window.tableSort.direction == "descending" ? "↓" : "") ) : "";
@@ -371,20 +371,59 @@ const subscriptionsApp = new Vue({
       for (var modal in modals) if (modals[modal].visible) return true;
       return false;
     },
-    getTotalSpent: function() {
-      let outSpent = 0;
-      for (var subscription of this.subscriptions) outSpent += (subscription.purchase.price || 0);
-      return window.parent.parent.roundNumber(outSpent);
+    getTotalSpent: function(altDateSearch) {
+      if (altDateSearch) {
+        let tempDateSearch = window.parent.parent.memory.copyObj(this.dateSearch)
+        window.parent.parent.memory.syncObject(this.dateSearch, window.parent.parent.memory.copyObj(altDateSearch));
+        this.applyDateSearch(this.dateSearch.category, false, false);
+
+        let outSpent = 0;
+        for (var subscription of this.subscriptions) outSpent += (subscription.purchase.price || 0);
+
+        window.parent.parent.memory.syncObject(this.dateSearch, tempDateSearch);
+        this.applyDateSearch(this.dateSearch.category, false, false);
+        return window.parent.parent.roundNumber(outSpent);
+      } else {
+        let outSpent = 0;
+        for (var subscription of this.subscriptions) outSpent += (subscription.purchase.price || 0);
+        return window.parent.parent.roundNumber(outSpent);
+      }
     },
-    getTotalRevenue: function() {
-      let outRevenue = 0;
-      for (var subscription of this.subscriptions) outRevenue += this.calculateProfit(subscription) + (subscription.purchase.price || 0);
-      return window.parent.parent.roundNumber(outRevenue);
+    getTotalRevenue: function(altDateSearch) {
+      if (altDateSearch) {
+        let tempDateSearch = window.parent.parent.memory.copyObj(this.dateSearch)
+        window.parent.parent.memory.syncObject(this.dateSearch, window.parent.parent.memory.copyObj(altDateSearch));
+        this.applyDateSearch(this.dateSearch.category, false, false);
+
+        let outRevenue = 0;
+        for (var subscription of this.subscriptions) outRevenue += this.calculateProfit(subscription) + (subscription.purchase.price || 0);
+
+        window.parent.parent.memory.syncObject(this.dateSearch, tempDateSearch);
+        this.applyDateSearch(this.dateSearch.category, false, false);
+        return window.parent.parent.roundNumber(outRevenue);
+      } else {
+        let outRevenue = 0;
+        for (var subscription of this.subscriptions) outRevenue += this.calculateProfit(subscription) + (subscription.purchase.price || 0);
+        return window.parent.parent.roundNumber(outRevenue);
+      }
     },
-    getTotalProfit: function() {
-      let outProfit = 0;
-      for (var subscription of this.subscriptions) outProfit += this.calculateProfit(subscription);
-      return window.parent.parent.roundNumber(outProfit);
+    getTotalProfit: function(altDateSearch) {
+      if (altDateSearch) {
+        let tempDateSearch = window.parent.parent.memory.copyObj(this.dateSearch)
+        window.parent.parent.memory.syncObject(this.dateSearch, window.parent.parent.memory.copyObj(altDateSearch));
+        this.applyDateSearch(this.dateSearch.category, false, false);
+
+        let outProfit = 0;
+        for (var subscription of this.subscriptions) outProfit += this.calculateProfit(subscription);
+
+        window.parent.parent.memory.syncObject(this.dateSearch, tempDateSearch);
+        this.applyDateSearch(this.dateSearch.category, false, false);
+        return window.parent.parent.roundNumber(outProfit);
+      } else {
+        let outProfit = 0;
+        for (var subscription of this.subscriptions) outProfit += this.calculateProfit(subscription);
+        return window.parent.parent.roundNumber(outProfit);
+      }
     },
     getPlatformImage: function(platform) {
       let formattedPlatform = platform.replace(new RegExp(" ", 'g'), "").toLowerCase().trim();
@@ -500,12 +539,12 @@ function getStatusDescription(statusNumber) {
 
 $("#subscriptionsSearch").on('change keydown paste input', refreshSubscriptionsSearch);
 
-function refreshSubscriptionsSearch() {
+function refreshSubscriptionsSearch(refreshOverview = true) {
   while (displayedSubscriptions.length > 0) displayedSubscriptions.pop();
   for (var subscription of window.subscriptions) if (isSubscriptionDisplayable(subscription)) displayedSubscriptions.push(subscription);
   // reorganize subscriptions based on table filter
   sortDisplayedSubscriptions();
-  if (window.parent.frames['overview-subpage'].overviewApp) window.parent.frames['overview-subpage'].overviewApp.applyDateSearch(); // refresh totals on overview page
+  if (refreshOverview) if (window.parent.frames['overview-subpage'].overviewApp) window.parent.frames['overview-subpage'].overviewApp.applyDateSearch(); // refresh totals on overview page
 }
 window.refreshSubscriptionsSearch = refreshSubscriptionsSearch;
 
@@ -517,7 +556,7 @@ function isSubscriptionDisplayable(subscription) {
   let searchPlatform = subscription.sale.platform;
   if (searchPlatform.length == 0) searchPlatform = window.parent.parent.tryTranslate('N/A');
   // validate subscription is within date range
-  let subscriptionTimestamp = new Date(subscription.sale.date).getTime();
+  let subscriptionTimestamp = new Date(subscription.purchase.date).getTime();
   if (!(subscriptionTimestamp >= new Date(subscriptionsApp.dateSearch.start).getTime() && subscriptionTimestamp <= new Date(subscriptionsApp.dateSearch.end).getTime())) return false;
   return subscriptionsApp.searchTerm.length == 0 || searchName.toLowerCase().includes(subscriptionsApp.searchTerm.toLowerCase()) || searchSize.toLowerCase().includes(subscriptionsApp.searchTerm.toLowerCase()) || searchPlatform.toLowerCase().includes(subscriptionsApp.searchTerm.toLowerCase());
 };
@@ -544,6 +583,7 @@ function sortDisplayedSubscriptions() {
       'sale.profit': subscriptionsApp.calculateProfit(displayedSubscription) || 0,
       'sale.totalSpent': window.parent.parent.tryTranslate(subscriptionsApp.getTotalMembershipSpent(displayedSubscription)),
       'sale.date': displayedSubscription.sale.date,
+      'purchase.date': displayedSubscription.purchase.date,
       id: displayedSubscription.id
     });
   }

@@ -226,7 +226,7 @@ const cardsApp = new Vue({
       else if (e.shiftKey) setMultipleSelectedCards(cardIndex);
       else editCard(displayedCards[cardIndex]);
     },
-    applyDateSearch: function(category = this.dateSearch.category, changeSorting = false) {
+    applyDateSearch: function(category = this.dateSearch.category, changeSorting = false, refreshOverview = true) {
       this.dateSearch.category = category;
       switch (category) {
         case 'today':
@@ -259,12 +259,12 @@ const cardsApp = new Vue({
           // do nothing
           break;
       }
-      this.updateDateSearch(changeSorting);
+      this.updateDateSearch(changeSorting, refreshOverview);
     },
-    updateDateSearch: function(changeSorting = false) {
+    updateDateSearch: function(changeSorting = false, refreshOverview = true) {
       this.dateSearch.display = `${window.parent.parent.frames['home-frame'].homeApp.formatScheduleDate(new Date(new Date(this.dateSearch.start).getTime() + (24 * 60 * 60 * 1000)).toString())} – ${window.parent.parent.frames['home-frame'].homeApp.formatScheduleDate(new Date(new Date(this.dateSearch.end).getTime() + (24 * 60 * 60 * 1000)).toString())}`;
-      if (changeSorting) toggleSortCardsByColumn('sale.date', true);
-      else refreshCardsSearch();
+      if (changeSorting) toggleSortCardsByColumn('purchase.date', true);
+      else refreshCardsSearch(refreshOverview);
     },
     getDisplayedSortDirection: function(key) {
       return window.tableSort.key == key ? (window.tableSort.direction == "ascending" ? "↑" : (window.tableSort.direction == "descending" ? "↓" : "") ) : "";
@@ -276,20 +276,59 @@ const cardsApp = new Vue({
       for (var modal in modals) if (modals[modal].visible) return true;
       return false;
     },
-    getTotalSpent: function() {
-      let outSpent = 0;
-      for (var card of this.cards) outSpent += (card.purchase.price || 0);
-      return window.parent.parent.roundNumber(outSpent);
+    getTotalSpent: function(altDateSearch) {
+      if (altDateSearch) {
+        let tempDateSearch = window.parent.parent.memory.copyObj(this.dateSearch)
+        window.parent.parent.memory.syncObject(this.dateSearch, window.parent.parent.memory.copyObj(altDateSearch));
+        this.applyDateSearch(this.dateSearch.category, false, false);
+
+        let outSpent = 0;
+        for (var card of this.cards) outSpent += (card.purchase.price || 0);
+
+        window.parent.parent.memory.syncObject(this.dateSearch, tempDateSearch);
+        this.applyDateSearch(this.dateSearch.category, false, false);
+        return window.parent.parent.roundNumber(outSpent);
+      } else {
+        let outSpent = 0;
+        for (var card of this.cards) outSpent += (card.purchase.price || 0);
+        return window.parent.parent.roundNumber(outSpent);
+      }
     },
-    getTotalRevenue: function() {
-      let outRevenue = 0;
-      for (var card of this.cards) outRevenue += this.calculateProfit(card) + (card.purchase.price || 0);
-      return window.parent.parent.roundNumber(outRevenue);
+    getTotalRevenue: function(altDateSearch) {
+      if (altDateSearch) {
+        let tempDateSearch = window.parent.parent.memory.copyObj(this.dateSearch)
+        window.parent.parent.memory.syncObject(this.dateSearch, window.parent.parent.memory.copyObj(altDateSearch));
+        this.applyDateSearch(this.dateSearch.category, false, false);
+
+        let outRevenue = 0;
+        for (var card of this.cards) outRevenue += this.calculateProfit(card) + (card.purchase.price || 0);
+
+        window.parent.parent.memory.syncObject(this.dateSearch, tempDateSearch);
+        this.applyDateSearch(this.dateSearch.category, false, false);
+        return window.parent.parent.roundNumber(outRevenue);
+      } else {
+        let outRevenue = 0;
+        for (var card of this.cards) outRevenue += this.calculateProfit(card) + (card.purchase.price || 0);
+        return window.parent.parent.roundNumber(outRevenue);
+      }
     },
-    getTotalProfit: function() {
-      let outProfit = 0;
-      for (var card of this.cards) outProfit += this.calculateProfit(card);
-      return window.parent.parent.roundNumber(outProfit);
+    getTotalProfit: function(altDateSearch) {
+      if (altDateSearch) {
+        let tempDateSearch = window.parent.parent.memory.copyObj(this.dateSearch)
+        window.parent.parent.memory.syncObject(this.dateSearch, window.parent.parent.memory.copyObj(altDateSearch));
+        this.applyDateSearch(this.dateSearch.category, false, false);
+
+        let outProfit = 0;
+        for (var card of this.cards) outProfit += this.calculateProfit(card);
+
+        window.parent.parent.memory.syncObject(this.dateSearch, tempDateSearch);
+        this.applyDateSearch(this.dateSearch.category, false, false);
+        return window.parent.parent.roundNumber(outProfit);
+      } else {
+        let outProfit = 0;
+        for (var card of this.cards) outProfit += this.calculateProfit(card);
+        return window.parent.parent.roundNumber(outProfit);
+      }
     },
     getPlatformImage: function(platform) {
       let formattedPlatform = platform.replace(new RegExp(" ", 'g'), "").toLowerCase().trim();
@@ -405,12 +444,12 @@ function getStatusDescription(statusNumber) {
 
 $("#cardsSearch").on('change keydown paste input', refreshCardsSearch);
 
-function refreshCardsSearch() {
+function refreshCardsSearch(refreshOverview = true) {
   while (displayedCards.length > 0) displayedCards.pop();
   for (var card of window.cards) if (isCardDisplayable(card)) displayedCards.push(card);
   // reorganize cards based on table filter
   sortDisplayedCards();
-  if (window.parent.frames['overview-subpage'].overviewApp) window.parent.frames['overview-subpage'].overviewApp.applyDateSearch(); // refresh totals on overview page
+  if (refreshOverview) if (window.parent.frames['overview-subpage'].overviewApp) window.parent.frames['overview-subpage'].overviewApp.applyDateSearch(); // refresh totals on overview page
 }
 window.refreshCardsSearch = refreshCardsSearch;
 
@@ -422,7 +461,7 @@ function isCardDisplayable(card) {
   let searchPlatform = card.sale.platform;
   if (searchPlatform.length == 0) searchPlatform = window.parent.parent.tryTranslate('N/A');
   // validate card is within date range
-  let cardTimestamp = new Date(card.sale.date).getTime();
+  let cardTimestamp = new Date(card.purchase.date).getTime();
   if (!(cardTimestamp >= new Date(cardsApp.dateSearch.start).getTime() && cardTimestamp <= new Date(cardsApp.dateSearch.end).getTime())) return false;
   return cardsApp.searchTerm.length == 0 || searchName.toLowerCase().includes(cardsApp.searchTerm.toLowerCase()) || searchSize.toLowerCase().includes(cardsApp.searchTerm.toLowerCase()) || searchPlatform.toLowerCase().includes(cardsApp.searchTerm.toLowerCase());
 };
@@ -449,6 +488,7 @@ function sortDisplayedCards() {
       'sale.profit': cardsApp.calculateProfit(displayedCard) || 0,
       'sale.tracking.details.status': displayedCard.sale.tracking.details.status || 0,
       'sale.date': displayedCard.sale.date,
+      'purchase.date': displayedCard.purchase.date,
       id: displayedCard.id
     });
   }

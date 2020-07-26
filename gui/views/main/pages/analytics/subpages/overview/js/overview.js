@@ -176,7 +176,7 @@ var config = {
 		responsive: true,
 		title: {
 			display: true,
-			text: 'Min and Max Settings'
+  			text: '2020 Reselling Portfolio'
 		},
 		scales: {
       yAxes: [{
