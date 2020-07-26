@@ -22,6 +22,12 @@ window.setTheme = (theme = window.companionSettings.theme) => {
   // analytics page
   if (window.frames["analytics-frame"]) window.frames["analytics-frame"].analyticsApp.$forceUpdate();
   if (window.frames["analytics-frame"]) for (var i = 0; i < window.frames['analytics-frame'].frames.length; i++) try { window.frames['analytics-frame'].frames[i].setContextMenuTheme(theme); } catch (err) { }
+  // analytics -> overview page
+  (async () => {
+    while(!window.frames["analytics-frame"] || !window.frames["analytics-frame"].frames['overview-subpage'] || !window.frames["analytics-frame"].frames['overview-subpage'].portfolioGraph) await window.sleep(50);
+    window.frames["analytics-frame"].frames['overview-subpage'].Chart.defaults.global.defaultFontColor = window.getThemeColor('rgba(29,29,29,1)');
+    window.frames["analytics-frame"].frames['overview-subpage'].portfolioGraph.update();
+  })();
 };
 
 window.getThemeColor = (incomingLightColor, theme = window.companionSettings.theme) => {

@@ -143,62 +143,169 @@ const overviewApp = new Vue({
     updateDateSearch: function() {
       this.dateSearch.display = `${window.parent.parent.frames['home-frame'].homeApp.formatScheduleDate(new Date(new Date(this.dateSearch.start).getTime() + (24 * 60 * 60 * 1000)).toString())} – ${window.parent.parent.frames['home-frame'].homeApp.formatScheduleDate(new Date(new Date(this.dateSearch.end).getTime() + (24 * 60 * 60 * 1000)).toString())}`;
       this.$forceUpdate();
+      window.updatePortfolioGraphValues();
     }
   }
 });
 window.overviewApp = overviewApp;
 
+Chart.defaults.global.defaultFontFamily = 'SF Pro Text';
+
 var config = {
 	type: 'line',
 	data: {
-		labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-		datasets: [{
-			label: 'Spent',
-			backgroundColor: 'rgba(253,53,53,1)',
-			borderColor: 'rgba(253,53,53,1)',
-			data: [10, 30, 50, 20, 25, 44, -10],
-			fill: false,
-		}, {
-			label: 'Revenue',
-			fill: false,
-			backgroundColor: 'rgba(255,167,78,1)',
-			borderColor: 'rgba(255,167,78,1)',
-			data: [100, 33, 22, 19, 11, 49, 30],
-		}, {
-			label: 'Profits',
-			fill: false,
-			backgroundColor: 'rgba(53,178,57,1)',
-			borderColor: 'rgba(53,178,57,1)',
-			data: [30, 13, 72, 79, 51, 99, 10],
-		}]
+		labels: [
+      window.parent.parent.tryTranslate('January'),
+      window.parent.parent.tryTranslate('Februrary'),
+      window.parent.parent.tryTranslate('March'),
+      window.parent.parent.tryTranslate('April'),
+      window.parent.parent.tryTranslate('May'),
+      window.parent.parent.tryTranslate('June'),
+      window.parent.parent.tryTranslate('July'),
+      window.parent.parent.tryTranslate('August'),
+      window.parent.parent.tryTranslate('September'),
+      window.parent.parent.tryTranslate('October'),
+      window.parent.parent.tryTranslate('November'),
+      window.parent.parent.tryTranslate('December')
+    ],
+		datasets: [
+      {
+  			label: 'Spent',
+  			backgroundColor: 'rgba(253,53,53,1)',
+  			borderColor: 'rgba(253,53,53,1)',
+  			data: getTotalFilteredSpentsByMonth(),
+  			fill: false,
+  		},
+      {
+  			label: 'Revenue',
+  			fill: false,
+  			backgroundColor: 'rgba(255,167,78,1)',
+  			borderColor: 'rgba(255,167,78,1)',
+  			data: getTotalFilteredRevenuesByMonth(),
+  		},
+      {
+  			label: 'Profit',
+  			fill: false,
+  			backgroundColor: 'rgba(53,178,57,1)',
+  			borderColor: 'rgba(53,178,57,1)',
+  			data: getTotalFilteredProfitsByMonth(),
+  		}
+    ]
 	},
 	options: {
 		responsive: true,
 		title: {
 			display: true,
-  			text: '2020 Reselling Portfolio'
+			text: 'Reselling Portfolio'
 		},
 		scales: {
-      yAxes: [{
-  			ticks: {
-  				// the data minimum used for determining the ticks is Math.min(dataMin, suggestedMin)
-  				suggestedMin: 10,
-
-  				// the data maximum used for determining the ticks is Math.max(dataMax, suggestedMax)
-  				suggestedMax: 50
-  			}
-  		}]
+      yAxes: [
+        {
+          scaleLabel: {
+    				display: true,
+            labelString: `${window.parent.parent.tryTranslate(window.parent.parent.companionSettings.currencyName)} (${window.parent.parent.companionSettings.currency})`
+    			},
+    			ticks: {
+    				// the data minimum used for determining the ticks is Math.min(dataMin, suggestedMin)
+    				suggestedMin: 0,
+    				// the data maximum used for determining the ticks is Math.max(dataMax, suggestedMax)
+    				suggestedMax: 25
+    			}
+    		}
+      ]
 		}
 	}
 };
 
 window.onload = function() {
 	var ctx = document.getElementById('canvas').getContext('2d');
-	window.myLine = new Chart(ctx, config);
+	window.portfolioGraph = new Chart(ctx, config);
 };
 
+window.updatePortfolioGraphCurrency = () => {
+  window.portfolioGraph.options.scales.yAxes[0].scaleLabel.labelString = `${window.parent.parent.tryTranslate(window.parent.parent.companionSettings.currencyName)} (${window.parent.parent.companionSettings.currency})`;
+  window.portfolioGraph.update();
+};
+
+window.updatePortfolioGraphValues = () => {
+  if (!window.portfolioGraph) return;
+  window.portfolioGraph.data.datasets[0].data = getTotalFilteredSpentsByMonth();
+  window.portfolioGraph.data.datasets[1].data = getTotalFilteredRevenuesByMonth();
+  window.portfolioGraph.data.datasets[2].data = getTotalFilteredProfitsByMonth();
+  window.portfolioGraph.update();
+};
+
+function calculateProfit(item) {
+  if (item.sale.fees.isPercent) return window.parent.parent.roundNumber((item.sale.price || 0) * (1 - (item.sale.fees.amount || 0) * (1/100)) - (item.purchase.price || 0));
+  return window.parent.parent.roundNumber((item.sale.price || 0) - (item.sale.fees.amount || 0) - (item.purchase.price || 0));
+}
+
+function getMonthIndexByDate(date) {
+  return parseInt(date.split('-')[1]) - 1;
+}
+
+function getTotalFilteredSpentsByMonth() {
+  let outSpentDates = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  if (!areAnalyticsSubpagesInitialized()) return outSpentDates;
+
+  if (overviewApp.subpageView == "everything" || overviewApp.subpageView == "sales") updateSpentDates('sales', window.parent.analyticsApp.sales, outSpentDates);
+  if (overviewApp.subpageView == "everything" || overviewApp.subpageView == "inventory") updateSpentDates('inventory', window.parent.analyticsApp.inventoryItems, outSpentDates);
+  if (overviewApp.subpageView == "everything" || overviewApp.subpageView == "subscriptions") updateSpentDates('subscriptions', window.parent.analyticsApp.subscriptions, outSpentDates);
+  if (overviewApp.subpageView == "everything" || overviewApp.subpageView == "tickets") updateSpentDates('tickets', window.parent.analyticsApp.tickets, outSpentDates);
+  if (overviewApp.subpageView == "everything" || overviewApp.subpageView == "cards") updateSpentDates('cards', window.parent.analyticsApp.cards, outSpentDates);
+
+  return outSpentDates;
+}
+
+function updateSpentDates(type, itemsArr, dates) {
+  if (type == "sales") for (var item of itemsArr) dates[getMonthIndexByDate(item.sale.date)] += window.parent.parent.roundNumber(item.purchase.price || 0);
+  else for (var item of itemsArr) dates[getMonthIndexByDate(item.purchase.date)] += window.parent.parent.roundNumber(item.purchase.price || 0);
+}
+
+function getTotalFilteredRevenuesByMonth() {
+  let outRevenueDates = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  if (!areAnalyticsSubpagesInitialized()) return outRevenueDates;
+
+  if (overviewApp.subpageView == "everything" || overviewApp.subpageView == "sales") updateRevenueDates('sales', window.parent.analyticsApp.sales, outRevenueDates);
+  if (overviewApp.subpageView == "everything" || overviewApp.subpageView == "inventory") updateRevenueDates('inventory', window.parent.analyticsApp.inventoryItems, outRevenueDates);
+  if (overviewApp.subpageView == "everything" || overviewApp.subpageView == "subscriptions") updateRevenueDates('subscriptions', window.parent.analyticsApp.subscriptions, outRevenueDates);
+  if (overviewApp.subpageView == "everything" || overviewApp.subpageView == "tickets") updateRevenueDates('tickets', window.parent.analyticsApp.tickets, outRevenueDates);
+  if (overviewApp.subpageView == "everything" || overviewApp.subpageView == "cards") updateRevenueDates('cards', window.parent.analyticsApp.cards, outRevenueDates);
+
+  return outRevenueDates;
+}
+
+function updateRevenueDates(type, itemsArr, dates) {
+  if (type == "sales") for (var item of itemsArr) dates[getMonthIndexByDate(item.sale.date)] += window.parent.parent.roundNumber(calculateProfit(item) + (item.purchase.price || 0));
+  else for (var item of itemsArr) dates[getMonthIndexByDate(item.purchase.date)] += window.parent.parent.roundNumber(calculateProfit(item) + (item.purchase.price || 0));
+}
+
+function getTotalFilteredProfitsByMonth() {
+  let outProfitDates = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  if (!areAnalyticsSubpagesInitialized()) return outProfitDates;
+
+  if (overviewApp.subpageView == "everything" || overviewApp.subpageView == "sales") updateProfitDates('sales', window.parent.analyticsApp.sales, outProfitDates);
+  if (overviewApp.subpageView == "everything" || overviewApp.subpageView == "inventory") updateProfitDates('inventory', window.parent.analyticsApp.inventoryItems, outProfitDates);
+  if (overviewApp.subpageView == "everything" || overviewApp.subpageView == "subscriptions") updateProfitDates('subscriptions', window.parent.analyticsApp.subscriptions, outProfitDates);
+  if (overviewApp.subpageView == "everything" || overviewApp.subpageView == "tickets") updateProfitDates('tickets', window.parent.analyticsApp.tickets, outProfitDates);
+  if (overviewApp.subpageView == "everything" || overviewApp.subpageView == "cards") updateProfitDates('cards', window.parent.analyticsApp.cards, outProfitDates);
+
+  return outProfitDates;
+}
+
+function updateProfitDates(type, itemsArr, dates) {
+  if (type == "sales") for (var item of itemsArr) dates[getMonthIndexByDate(item.sale.date)] += window.parent.parent.roundNumber(calculateProfit(item));
+  else for (var item of itemsArr) dates[getMonthIndexByDate(item.purchase.date)] += window.parent.parent.roundNumber(calculateProfit(item));
+}
+
 function areAnalyticsSubpagesInitialized() {
-  return (window.parent.analyticsApp.sales && window.parent.analyticsApp.inventoryItems && window.parent.analyticsApp.subscriptions && window.parent.analyticsApp.tickets && window.parent.analyticsApp.cards) ? true : false;
+  return (
+    window.parent.analyticsApp.sales &&
+    window.parent.analyticsApp.inventoryItems &&
+    window.parent.analyticsApp.subscriptions &&
+    window.parent.analyticsApp.tickets &&
+    window.parent.analyticsApp.cards
+  ) ? true : false;
 }
 
 function getAllTimeDates(subpageView = overviewApp.subpageView, getRawList = false) {

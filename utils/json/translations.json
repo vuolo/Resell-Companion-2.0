@@ -1298,6 +1298,12 @@
         "es": "Predicción de reventa"
       }
     },
+    "Reselling Portfolio": {
+      "languages": {
+        "en": "Reselling Portfolio",
+        "es": "Cartera de reventa"
+      }
+    },
     "Reset All Tasks": {
       "languages": {
         "en": "Reset All Tasks",

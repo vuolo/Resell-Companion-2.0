@@ -26,6 +26,34 @@ window.setLanguage = (language) => {
       try { window.frames['analytics-frame'].frames[i].cardsApp.updateDateSearch(); continue; } catch (err) { }
     }
   }
+  // analytics -> overview page
+  (async () => {
+    while(!window.frames["analytics-frame"] || !window.frames["analytics-frame"].frames['overview-subpage'] || !window.frames["analytics-frame"].frames['overview-subpage'].portfolioGraph) await window.sleep(50);
+    window.frames["analytics-frame"].frames['overview-subpage'].portfolioGraph.options.title.text = window.tryTranslate('Reselling Portfolio');
+
+    window.frames["analytics-frame"].frames['overview-subpage'].portfolioGraph.data.labels = [
+      window.tryTranslate('January'),
+      window.tryTranslate('Februrary'),
+      window.tryTranslate('March'),
+      window.tryTranslate('April'),
+      window.tryTranslate('May'),
+      window.tryTranslate('June'),
+      window.tryTranslate('July'),
+      window.tryTranslate('August'),
+      window.tryTranslate('September'),
+      window.tryTranslate('October'),
+      window.tryTranslate('November'),
+      window.tryTranslate('December')
+    ];
+
+    window.frames["analytics-frame"].frames['overview-subpage'].portfolioGraph.data.datasets[0].label = window.tryTranslate('Spent');
+    window.frames["analytics-frame"].frames['overview-subpage'].portfolioGraph.data.datasets[1].label = window.tryTranslate('Revenue');
+    window.frames["analytics-frame"].frames['overview-subpage'].portfolioGraph.data.datasets[2].label = window.tryTranslate('Profit');
+
+    window.frames["analytics-frame"].frames['overview-subpage'].portfolioGraph.options.scales.yAxes[0].scaleLabel.labelString = `${window.tryTranslate(window.companionSettings.currencyName)} (${window.companionSettings.currency})`;
+
+    window.frames["analytics-frame"].frames['overview-subpage'].portfolioGraph.update();
+  })();
 };
 
 window.tryTranslate = (incomingText, language = window.companionSettings.language) => {

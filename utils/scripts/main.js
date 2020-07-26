@@ -20,6 +20,7 @@ window.companionSettings = {
   // theme: "light",
   theme: "dark",
   currency: "CAD",
+  currencyName: "Canadian Dollar",
   currencySymbol: "CA$"
 };
 
@@ -186,11 +187,11 @@ async function preloadImages(array, waitForOtherResources, timeout) {
   if (!preloadImages.list) {
     preloadImages.list = [];
   }
-  if (!waitForOtherResources || document.readyState === 'complete') loadNow();
+  if (!waitForOtherResources || document.readyState === 'complete') try { loadNow(); } catch(err) { return; }
   else {
     window.addEventListener("load", function() {
       clearTimeout(timer);
-      loadNow();
+      try { loadNow(); } catch(err) { return; }
     });
     // in case window.addEventListener doesn't get called (sometimes some resource gets stuck)
     // then preload the images anyway after some timeout time
