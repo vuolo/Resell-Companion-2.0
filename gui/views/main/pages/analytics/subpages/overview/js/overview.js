@@ -205,6 +205,10 @@ var config = {
     				display: true,
             labelString: `${window.parent.parent.tryTranslate(window.parent.parent.companionSettings.currencyName)} (${window.parent.parent.companionSettings.currency})`
     			},
+          gridLines: {
+            display: true,
+            color: window.parent.parent.getThemeColor('rgba(190,190,190,1)');
+          },
     			ticks: {
     				// the data minimum used for determining the ticks is Math.min(dataMin, suggestedMin)
     				suggestedMin: 0,
@@ -212,6 +216,14 @@ var config = {
     				suggestedMax: 25
     			}
     		}
+      ],
+      xAxes: [
+        {
+          gridLines: {
+            display: true,
+            color: window.parent.parent.getThemeColor('rgba(190,190,190,1)');
+          }
+        }
       ]
 		}
 	}
@@ -234,6 +246,11 @@ window.updatePortfolioGraphValues = () => {
   window.portfolioGraph.data.datasets[2].data = getTotalFilteredProfitsByMonth();
   window.portfolioGraph.update();
 };
+
+function dateWithinDateSearch(incomingDate) {
+  let incomingTimestamp = new Date(incomingDate).getTime();
+  return incomingTimestamp >= new Date(overviewApp.dateSearch.start).getTime() && incomingTimestamp <= new Date(overviewApp.dateSearch.end).getTime()
+}
 
 function calculateProfit(item) {
   if (item.sale.fees.isPercent) return window.parent.parent.roundNumber((item.sale.price || 0) * (1 - (item.sale.fees.amount || 0) * (1/100)) - (item.purchase.price || 0));
@@ -258,8 +275,8 @@ function getTotalFilteredSpentsByMonth() {
 }
 
 function updateSpentDates(type, itemsArr, dates) {
-  if (type == "sales") for (var item of itemsArr) dates[getMonthIndexByDate(item.sale.date)] += window.parent.parent.roundNumber(item.purchase.price || 0);
-  else for (var item of itemsArr) dates[getMonthIndexByDate(item.purchase.date)] += window.parent.parent.roundNumber(item.purchase.price || 0);
+  if (type == "sales") for (var item of itemsArr) { if (dateWithinDateSearch(item.sale.date)) dates[getMonthIndexByDate(item.sale.date)] += window.parent.parent.roundNumber(item.purchase.price || 0); }
+  else for (var item of itemsArr) if (dateWithinDateSearch(item.purchase.date)) dates[getMonthIndexByDate(item.purchase.date)] += window.parent.parent.roundNumber(item.purchase.price || 0);
 }
 
 function getTotalFilteredRevenuesByMonth() {
@@ -276,8 +293,9 @@ function getTotalFilteredRevenuesByMonth() {
 }
 
 function updateRevenueDates(type, itemsArr, dates) {
-  if (type == "sales") for (var item of itemsArr) dates[getMonthIndexByDate(item.sale.date)] += window.parent.parent.roundNumber(calculateProfit(item) + (item.purchase.price || 0));
-  else for (var item of itemsArr) dates[getMonthIndexByDate(item.purchase.date)] += window.parent.parent.roundNumber(calculateProfit(item) + (item.purchase.price || 0));
+  if (type == "inventory") return;
+  else if (type == "sales") for (var item of itemsArr) { if (dateWithinDateSearch(item.sale.date)) dates[getMonthIndexByDate(item.sale.date)] += window.parent.parent.roundNumber(calculateProfit(item) + (item.purchase.price || 0)); }
+  else for (var item of itemsArr) if (dateWithinDateSearch(item.purchase.date)) dates[getMonthIndexByDate(item.purchase.date)] += window.parent.parent.roundNumber(calculateProfit(item) + (item.purchase.price || 0));
 }
 
 function getTotalFilteredProfitsByMonth() {
@@ -294,8 +312,9 @@ function getTotalFilteredProfitsByMonth() {
 }
 
 function updateProfitDates(type, itemsArr, dates) {
-  if (type == "sales") for (var item of itemsArr) dates[getMonthIndexByDate(item.sale.date)] += window.parent.parent.roundNumber(calculateProfit(item));
-  else for (var item of itemsArr) dates[getMonthIndexByDate(item.purchase.date)] += window.parent.parent.roundNumber(calculateProfit(item));
+  if (type == "inventory") return;
+  else if (type == "sales") for (var item of itemsArr) { if (dateWithinDateSearch(item.sale.date)) dates[getMonthIndexByDate(item.sale.date)] += window.parent.parent.roundNumber(calculateProfit(item)); }
+  else for (var item of itemsArr) if (dateWithinDateSearch(item.purchase.date)) dates[getMonthIndexByDate(item.purchase.date)] += window.parent.parent.roundNumber(calculateProfit(item));
 }
 
 function areAnalyticsSubpagesInitialized() {
