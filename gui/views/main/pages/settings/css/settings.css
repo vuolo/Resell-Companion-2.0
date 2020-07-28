@@ -1,0 +1,1633 @@
+.mediaViewInfo {
+	--web-view-name: Rewrite – Settings;
+	--web-view-id: Rewrite___Settings;
+	--web-scale-on-resize: true;
+	--web-enable-deep-linking: true;
+}
+:root {
+	--web-view-ids: Rewrite___Settings;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	border: none;
+}
+.Rewrite___Settings_Class {
+	position: absolute;
+	width: 1287px;
+	height: 795px;
+	/* background-color: rgba(251,247,241,1); */
+	overflow: hidden;
+	--web-view-name: Rewrite – Settings;
+	--web-view-id: Rewrite___Settings;
+	--web-scale-on-resize: true;
+	--web-enable-deep-linking: true;
+}
+.Footer_Class {
+	position: absolute;
+	width: 341.542px;
+	height: 47px;
+	left: 106.458px;
+	top: 730px;
+	overflow: visible;
+}
+.All_rights_reserved_2020_Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 1.542px;
+	top: 29px;
+	overflow: visible;
+	width: 341px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -13.5px;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 15px;
+	color: rgba(29,29,29,1);
+}
+.Terms_of_Service_Text_Class {
+	position: absolute;
+	left: 22.542px;
+	top: 0px;
+	overflow: visible;
+	width: 311px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -13.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 15px;
+	color: rgba(29,29,29,1);
+}
+.Twitter_Icon {
+	overflow: visible;
+	position: absolute;
+	width: 17.085px;
+	height: 13.876px;
+	left: -1px;
+	top: 0.5px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Options_Area_Class {
+	position: absolute;
+	width: 691px;
+	height: 683px;
+	left: 554px;
+	top: 112px;
+	overflow: auto;
+	overflow-x: hidden;
+}
+.Version_Option_Class {
+	position: absolute;
+	width: 658px;
+	/* height: 44px; */
+	height: 103px;
+	left: 0px;
+	top: 1115px;
+	overflow: visible;
+}
+.Check_for_Update_Button_Class {
+	position: absolute;
+	width: 170px;
+	height: 36px;
+	/* height: 60px; */
+	left: 488px;
+	top: 5px;
+	overflow: visible;
+}
+.Rectangle {
+	position: absolute;
+	overflow: visible;
+	width: 170px;
+	height: 36px;
+	left: 0px;
+	top: 0px;
+}
+.Check_for_Update_Class {
+	position: absolute;
+	left: 0px;
+	top: 9.5px;
+	overflow: visible;
+	width: 170px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 15px;
+	color: rgba(91,182,187,1);
+}
+.Description_Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 66px;
+	top: 25px;
+	overflow: visible;
+	width: 40px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Title_Class {
+	position: absolute;
+	left: 66px;
+	top: 0px;
+	overflow: visible;
+	width: 77px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Version_Icon_Class {
+	position: absolute;
+	width: 22px;
+	height: 22px;
+	left: 27.525px;
+	top: 2px;
+	overflow: visible;
+}
+.Path_426 {
+	overflow: visible;
+	position: absolute;
+	width: 24.25px;
+	height: 24.25px;
+	left: 0px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Path_427 {
+	overflow: visible;
+	position: absolute;
+	width: 3px;
+	height: 8.832px;
+	left: 12px;
+	top: 11px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Path_428 {
+	overflow: visible;
+	position: absolute;
+	width: 3px;
+	height: 3px;
+	left: 12px;
+	top: 6.434px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Status_Circle {
+	position: absolute;
+	overflow: visible;
+	width: 11px;
+	height: 11px;
+	left: 0px;
+	top: 6px;
+}
+.Statistics_Option_Class {
+	position: absolute;
+	width: 658px;
+	height: 70px;
+	left: 0px;
+	top: 1022px;
+	overflow: visible;
+}
+.Separator {
+	position: absolute;
+	overflow: visible;
+	width: 585px;
+	height: 3px;
+	left: 39px;
+	top: 67px;
+}
+.View_Button_Class {
+	position: absolute;
+	width: 107px;
+	height: 36px;
+	left: 551px;
+	top: 5px;
+	overflow: visible;
+}
+.Rectangle_et {
+	position: absolute;
+	overflow: visible;
+	width: 107px;
+	height: 36px;
+	left: 0px;
+	top: 0px;
+}
+.View_Class {
+	position: absolute;
+	left: 0px;
+	top: 9.5px;
+	overflow: visible;
+	width: 107px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 15px;
+	color: rgba(91,182,187,1);
+}
+.Description_ev_Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 66px;
+	top: 25px;
+	overflow: visible;
+	width: 312px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Title_ew_Class {
+	position: absolute;
+	left: 66px;
+	top: 0px;
+	overflow: visible;
+	width: 97px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Statistics_Icon_Class {
+	position: absolute;
+	width: 20px;
+	height: 18px;
+	left: 29px;
+	top: 4px;
+	overflow: visible;
+}
+.Ellipse_341 {
+	position: absolute;
+	overflow: visible;
+	width: 4px;
+	height: 4px;
+	left: 0px;
+	top: 0px;
+}
+.Rectangle_523 {
+	position: absolute;
+	overflow: visible;
+	width: 14px;
+	height: 4px;
+	left: 6px;
+	top: 0px;
+}
+.Ellipse_342 {
+	position: absolute;
+	overflow: visible;
+	width: 4px;
+	height: 4px;
+	left: 0px;
+	top: 7px;
+}
+.Rectangle_524 {
+	position: absolute;
+	overflow: visible;
+	width: 14px;
+	height: 4px;
+	left: 6px;
+	top: 7px;
+}
+.Ellipse_343 {
+	position: absolute;
+	overflow: visible;
+	width: 4px;
+	height: 4px;
+	left: 0px;
+	top: 14px;
+}
+.Rectangle_525 {
+	position: absolute;
+	overflow: visible;
+	width: 14px;
+	height: 4px;
+	left: 6px;
+	top: 14px;
+}
+.Status_Circle_e {
+	position: absolute;
+	overflow: visible;
+	width: 11px;
+	height: 11px;
+	left: 0px;
+	top: 6px;
+}
+.Theme_Option_Class {
+	position: absolute;
+	width: 658px;
+	height: 70px;
+	left: 0px;
+	top: 929px;
+	overflow: visible;
+}
+.Separator_e {
+	position: absolute;
+	overflow: visible;
+	width: 585px;
+	height: 3px;
+	left: 39px;
+	top: 67px;
+}
+.Configure_Area_Class {
+	position: absolute;
+	width: 153px;
+	height: 36px;
+	left: 505px;
+	top: 5px;
+	overflow: visible;
+}
+.Theme_Select_Class {
+	position: absolute;
+	width: 153px;
+	height: 36px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+.Rectangle_e {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 171px;
+	height: 54px;
+	left: 0px;
+	top: 0px;
+}
+.Light_Class {
+	position: absolute;
+	left: 44px;
+	top: 9px;
+	overflow: visible;
+	width: 40px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Sun_fc {
+	position: absolute;
+	overflow: visible;
+	width: 20px;
+	height: 21px;
+	left: 14px;
+	top: 8px;
+}
+.Moon_Class {
+	position: absolute;
+	width: 20px;
+	height: 21px;
+	left: 14px;
+	top: 8px;
+	overflow: visible;
+}
+.Switch_Circle_1_ff {
+	position: absolute;
+	overflow: visible;
+	width: 20px;
+	height: 21px;
+	left: 0px;
+	top: 0px;
+}
+.Ellipse_344 {
+	position: absolute;
+	overflow: visible;
+	width: 4px;
+	height: 4px;
+	left: 13px;
+	top: 8px;
+}
+.Ellipse_346 {
+	position: absolute;
+	overflow: visible;
+	width: 2px;
+	height: 2px;
+	left: 11px;
+	top: 15px;
+}
+.Ellipse_347 {
+	position: absolute;
+	overflow: visible;
+	width: 7px;
+	height: 7px;
+	left: 3px;
+	top: 4px;
+}
+.Description_fj_Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 66px;
+	top: 25px;
+	overflow: visible;
+	width: 274px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Title_fk_Class {
+	position: absolute;
+	left: 66px;
+	top: 0px;
+	overflow: visible;
+	width: 70px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Browser_Icon {
+	overflow: visible;
+	position: absolute;
+	width: 23.02px;
+	height: 20.462px;
+	left: 27.266px;
+	top: 2.394px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Status_Circle_fm {
+	position: absolute;
+	overflow: visible;
+	width: 11px;
+	height: 11px;
+	left: 0px;
+	top: 6px;
+}
+.Language_Option_Class {
+	position: absolute;
+	width: 658px;
+	height: 70px;
+	left: 0px;
+	top: 836px;
+	overflow: visible;
+}
+.Separator_fo {
+	position: absolute;
+	overflow: visible;
+	width: 585px;
+	height: 3px;
+	left: 39px;
+	top: 67px;
+}
+.Configure_Area_fp_Class {
+	position: absolute;
+	width: 214px;
+	height: 36px;
+	left: 444px;
+	top: 6px;
+	overflow: visible;
+}
+.Language_Select_Class {
+	position: absolute;
+	width: 214px;
+	height: 36px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+.Rectangle_fr {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 232px;
+	height: 54px;
+	left: 0px;
+	top: 0px;
+}
+.English_Class {
+	position: absolute;
+	left: 44px;
+	top: 9px;
+	overflow: visible;
+	width: 57px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Flag_Icon_Class {
+	position: absolute;
+	width: 23px;
+	height: 15px;
+	left: 11px;
+	top: 13px;
+	overflow: visible;
+}
+.Description_fu_Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 66px;
+	top: 25px;
+	overflow: visible;
+	width: 163px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Title_fv_Class {
+	position: absolute;
+	left: 66px;
+	top: 0px;
+	overflow: visible;
+	width: 99px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Globe_Icon_Class {
+	position: absolute;
+	width: 20.606px;
+	height: 20.606px;
+	left: 28.394px;
+	top: 2.394px;
+	overflow: visible;
+}
+.Path_450 {
+	overflow: visible;
+	position: absolute;
+	width: 13.175px;
+	height: 18.816px;
+	left: 2.904px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Path_451 {
+	overflow: visible;
+	position: absolute;
+	width: 3.153px;
+	height: 5.226px;
+	left: 16.795px;
+	top: 2.805px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Path_449 {
+	overflow: visible;
+	position: absolute;
+	width: 21.206px;
+	height: 21.206px;
+	left: 0px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Status_Circle_f {
+	position: absolute;
+	overflow: visible;
+	width: 11px;
+	height: 11px;
+	left: 0px;
+	top: 6px;
+}
+.Currency_Option_Class {
+	position: absolute;
+	width: 658px;
+	height: 72px;
+	left: 0px;
+	top: 741px;
+	overflow: visible;
+}
+.Separator_f {
+	position: absolute;
+	overflow: visible;
+	width: 585px;
+	height: 3px;
+	left: 39px;
+	top: 69px;
+}
+.Configure_Area_f_Class {
+	position: absolute;
+	width: 214px;
+	height: 36px;
+	left: 444px;
+	top: 8px;
+	overflow: visible;
+}
+.Language_Select_f_Class {
+	position: absolute;
+	width: 214px;
+	height: 36px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+.Rectangle_f {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 232px;
+	height: 54px;
+	left: 0px;
+	top: 0px;
+}
+.United_States_Dollar_Class {
+	position: absolute;
+	left: 44px;
+	top: 9px;
+	overflow: visible;
+	width: 156px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Flag_Icon_f_Class {
+	position: absolute;
+	width: 23px;
+	height: 15px;
+	left: 12px;
+	top: 11px;
+	overflow: visible;
+}
+.Description_f_Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 66px;
+	top: 27px;
+	overflow: visible;
+	width: 161px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Title_f_Class {
+	position: absolute;
+	left: 66px;
+	top: 2px;
+	overflow: visible;
+	width: 94px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Currency_Icon_Class {
+	position: absolute;
+	left: 22px;
+	top: 0px;
+	overflow: visible;
+	width: 35px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 24px;
+	line-height: 27px;
+	color: rgba(29,29,29,1);
+}
+.Status_Circle_gb {
+	position: absolute;
+	overflow: visible;
+	width: 11px;
+	height: 11px;
+	left: 0px;
+	top: 8px;
+}
+.Notifications_Option_Class {
+	position: absolute;
+	width: 624px;
+	height: 114px;
+	left: 0px;
+	top: 606px;
+	overflow: visible;
+}
+.Separator_gd {
+	position: absolute;
+	overflow: visible;
+	width: 585px;
+	height: 3px;
+	left: 39px;
+	top: 111px;
+}
+.Configure_Area_ge_Class {
+	position: absolute;
+	width: 504px;
+	height: 25px;
+	left: 80px;
+	top: 62px;
+	overflow: visible;
+}
+.Sounds_Switch_Class {
+	position: absolute;
+	width: 139px;
+	height: 25px;
+	left: 182px;
+	top: 0px;
+	overflow: visible;
+}
+.Switch_Class {
+	position: absolute;
+	width: 45px;
+	height: 25px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+.Switch_Rectangle {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 63px;
+	height: 43px;
+	left: 0px;
+	top: 0px;
+}
+.Switch_Circle {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 38px;
+	height: 39px;
+	left: 22px;
+	top: 2px;
+}
+.Sounds_Class {
+	position: absolute;
+	left: 64px;
+	top: 1px;
+	overflow: visible;
+	width: 76px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Desktop_Switch_Class {
+	position: absolute;
+	width: 148px;
+	height: 25px;
+	left: 356px;
+	top: 0px;
+	overflow: visible;
+}
+.Switch_gl_Class {
+	position: absolute;
+	width: 45px;
+	height: 25px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+.Switch_Rectangle_gm {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 63px;
+	height: 43px;
+	left: 0px;
+	top: 0px;
+}
+.Switch_Circle_gn {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 38px;
+	height: 39px;
+	left: 22px;
+	top: 2px;
+}
+.Desktop_Class {
+	position: absolute;
+	left: 64px;
+	top: 1px;
+	overflow: visible;
+	width: 85px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Banners_Switch_Class {
+	position: absolute;
+	width: 147px;
+	height: 25px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+.Switch_gq_Class {
+	position: absolute;
+	width: 45px;
+	height: 25px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+.Switch_Rectangle_gr {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 63px;
+	height: 43px;
+	left: 0px;
+	top: 0px;
+}
+.Switch_Circle_gs {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 38px;
+	height: 39px;
+	left: 22px;
+	top: 2px;
+}
+.Banners_Class {
+	position: absolute;
+	left: 64px;
+	top: 1px;
+	overflow: visible;
+	width: 84px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Description_gu_Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 66px;
+	top: 25px;
+	overflow: visible;
+	width: 198px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Title_gv_Class {
+	position: absolute;
+	left: 66px;
+	top: 0px;
+	overflow: visible;
+	width: 130px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Bell_Icon {
+	overflow: visible;
+	position: absolute;
+	width: 19.929px;
+	height: 22.775px;
+	left: 28.961px;
+	top: 1.035px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Status_Circle_gx {
+	position: absolute;
+	overflow: visible;
+	width: 11px;
+	height: 11px;
+	left: 0px;
+	top: 6px;
+}
+.Webhook_Option_Class {
+	position: absolute;
+	width: 624px;
+	height: 118px;
+	left: 0px;
+	top: 465px;
+	overflow: visible;
+}
+.Separator_gz {
+	position: absolute;
+	overflow: visible;
+	width: 585px;
+	height: 3px;
+	left: 39px;
+	top: 115px;
+}
+.Configure_Area_g_Class {
+	position: absolute;
+	width: 498px;
+	height: 36px;
+	left: 82px;
+	top: 56px;
+	overflow: visible;
+}
+.Webhook_URL_Input_Class {
+	position: absolute;
+	width: 434px;
+	height: 36px;
+	left: 64px;
+	top: 0px;
+	overflow: visible;
+}
+.Rectangle_g {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 452px;
+	height: 54px;
+	left: 0px;
+	top: 0px;
+}
+.Webhook_URL_Class {
+	position: absolute;
+	left: 44px;
+	top: 9px;
+	overflow: visible;
+	width: 110px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Discord_Logo_Class {
+	opacity: 0.66;
+	position: absolute;
+	width: 23px;
+	height: 18px;
+	left: 12px;
+	top: 10px;
+	overflow: visible;
+}
+.Switch_g_Class {
+	position: absolute;
+	width: 45px;
+	height: 25px;
+	left: 0px;
+	top: 6px;
+	overflow: visible;
+}
+.Switch_Rectangle_g {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 45px;
+	height: 25px;
+	left: 0px;
+	top: 0px;
+}
+.Switch_Circle_g {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 20px;
+	height: 21px;
+	left: 22px;
+	/* top: 2px; */
+	top: 8px;
+}
+.Description_g_Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 66px;
+	top: 25px;
+	overflow: visible;
+	width: 465px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Title_g_Class {
+	position: absolute;
+	left: 66px;
+	top: 0px;
+	overflow: visible;
+	width: 95px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Discord_Logo_ha_Class {
+	position: absolute;
+	width: 27px;
+	/* height: 20px; */
+	left: 25px;
+	top: 2px;
+	overflow: visible;
+}
+.Status_Circle_hb {
+	position: absolute;
+	overflow: visible;
+	width: 11px;
+	height: 11px;
+	left: 0px;
+	top: 6px;
+}
+.Region_Option_Class {
+	position: absolute;
+	width: 656px;
+	height: 70px;
+	left: 0px;
+	top: 372px;
+	overflow: visible;
+}
+.Separator_hd {
+	position: absolute;
+	overflow: visible;
+	width: 585px;
+	height: 3px;
+	left: 39px;
+	top: 67px;
+}
+.Settings_Icon_Class {
+	position: absolute;
+	width: 32px;
+	height: 32px;
+	left: 624px;
+	top: 6px;
+	overflow: visible;
+}
+.Description_hf_Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 66px;
+	top: 25px;
+	overflow: visible;
+	width: 350px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Title_hg_Class {
+	position: absolute;
+	left: 66px;
+	top: 0px;
+	overflow: visible;
+	width: 141px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Store_Icon {
+	overflow: visible;
+	position: absolute;
+	width: 25.69px;
+	height: 21.355px;
+	left: 25.991px;
+	top: 1.645px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Status_Circle_hi {
+	position: absolute;
+	overflow: visible;
+	width: 11px;
+	height: 11px;
+	left: 0px;
+	top: 6px;
+}
+.Connected_Bots_Option_Class {
+	position: absolute;
+	width: 656px;
+	height: 70px;
+	left: 0px;
+	top: 279px;
+	overflow: visible;
+}
+.Separator_hk {
+	position: absolute;
+	overflow: visible;
+	width: 585px;
+	height: 3px;
+	left: 39px;
+	top: 67px;
+}
+.Settings_Icon_hl_Class {
+	position: absolute;
+	width: 32px;
+	height: 32px;
+	left: 624px;
+	top: 6px;
+	overflow: visible;
+}
+.Description_hm_Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 66px;
+	top: 25px;
+	overflow: visible;
+	width: 329px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Title_hn_Class {
+	position: absolute;
+	left: 66px;
+	top: 0px;
+	overflow: visible;
+	width: 161px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Robot_Icon {
+	overflow: visible;
+	position: absolute;
+	width: 25px;
+	height: 20px;
+	left: 26.396px;
+	top: 1.522px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Status_Circle_hp {
+	position: absolute;
+	overflow: visible;
+	width: 11px;
+	height: 11px;
+	left: 0px;
+	top: 6px;
+}
+.Proxy_Profiles_Option_Class {
+	position: absolute;
+	width: 656px;
+	height: 70px;
+	left: 0px;
+	top: 186px;
+	overflow: visible;
+}
+.Separator_hr {
+	position: absolute;
+	overflow: visible;
+	width: 585px;
+	height: 3px;
+	left: 39px;
+	top: 67px;
+}
+.Settings_Icon_hs_Class {
+	position: absolute;
+	width: 32px;
+	height: 32px;
+	left: 624px;
+	top: 6px;
+	overflow: visible;
+}
+.Description_ht_Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 66px;
+	top: 25px;
+	overflow: visible;
+	width: 376px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Title_hu_Class {
+	position: absolute;
+	left: 66px;
+	top: 0px;
+	overflow: visible;
+	width: 141px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Proxy_Profile_Icon {
+	overflow: visible;
+	position: absolute;
+	width: 22.274px;
+	height: 22.269px;
+	left: 28.018px;
+	top: 1.645px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Status_Circle_hw {
+	position: absolute;
+	overflow: visible;
+	width: 11px;
+	height: 11px;
+	left: 0px;
+	top: 6px;
+}
+.Google_Accounts_Option_Class {
+	position: absolute;
+	width: 656px;
+	height: 70px;
+	left: 0px;
+	top: 93px;
+	overflow: visible;
+}
+.Separator_hy {
+	position: absolute;
+	overflow: visible;
+	width: 585px;
+	height: 3px;
+	left: 39px;
+	top: 67px;
+}
+.Settings_Icon_hz_Class {
+	position: absolute;
+	width: 32px;
+	height: 32px;
+	left: 624px;
+	top: 6px;
+	overflow: visible;
+}
+.Description_h_Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 66px;
+	top: 25px;
+	overflow: visible;
+	width: 503px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Title_h_Class {
+	position: absolute;
+	left: 66px;
+	top: 0px;
+	overflow: visible;
+	width: 172px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Google_Icon_Class {
+	position: absolute;
+  width: 26px;
+  /* height: 21px; */
+  left: 26px;
+  top: -7px;
+  overflow: visible;
+}
+.Status_Circle_h {
+	position: absolute;
+	overflow: visible;
+	width: 11px;
+	height: 11px;
+	left: 0px;
+	top: 6px;
+}
+.Billing_Profiles_Option_Class {
+	position: absolute;
+	width: 656px;
+	height: 70px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+.Separator_h {
+	position: absolute;
+	overflow: visible;
+	width: 585px;
+	height: 3px;
+	left: 39px;
+	top: 67px;
+}
+.Settings_Icon_h_Class {
+	position: absolute;
+	width: 32px;
+	height: 32px;
+	left: 624px;
+	top: 6px;
+	overflow: visible;
+}
+.Description_ia_Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 66px;
+	top: 25px;
+	overflow: visible;
+	width: 498px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Title_ia_Class {
+	position: absolute;
+	left: 66px;
+	top: 0px;
+	overflow: visible;
+	width: 146px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Billing_Profiles_Icon {
+	overflow: visible;
+	position: absolute;
+	width: 31.4px;
+	height: 19.982px;
+	left: 23px;
+	top: 2.018px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Status_Circle_ia {
+	position: absolute;
+	overflow: visible;
+	width: 11px;
+	height: 11px;
+	left: 0px;
+	top: 6px;
+}
+.Scroll_Bar {
+	filter: drop-shadow(0px 2px 6px rgba(0, 0, 0, 0.161));
+	width: 150px;
+	height: 8px;
+	position: absolute;
+	overflow: visible;
+	transform: translate(-554px, -112px) matrix(1,0,0,1,1173,183) rotate(90deg);
+	transform-origin: center;
+}
+.User_Bar_Class {
+	position: absolute;
+	width: 318px;
+	height: 318px;
+	left: 118px;
+	top: 239px;
+	overflow: visible;
+}
+.Rectangle_id {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 318px;
+	height: 318px;
+	left: 0px;
+	top: 0px;
+}
+.Email_Class {
+	position: absolute;
+	left: 0px;
+	top: 240px;
+	overflow: visible;
+	width: 318px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Username_Class {
+	position: absolute;
+	left: 0px;
+	top: 204px;
+	overflow: visible;
+	width: 318px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 28px;
+	color: rgba(29,29,29,1);
+}
+.Profile_Picture_Class {
+	border-radius: 50%;
+	position: absolute;
+	width: 124.426px;
+	height: 122.254px;
+	left: 97.735px;
+	top: 57.791px;
+	overflow: visible;
+}
+.Outline_Circle {
+	overflow: visible;
+	position: absolute;
+	width: 140.352px;
+	height: 138.042px;
+	left: 90px;
+	top: 50px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Header_Class {
+	position: absolute;
+	width: 1222.217px;
+	height: 48px;
+	left: 26.783px;
+	top: 18.124px;
+	overflow: visible;
+}
+.Log_Out_Button_Class {
+	position: absolute;
+	width: 124px;
+	height: 36px;
+	left: 1098.217px;
+	top: 11.876px;
+	overflow: visible;
+}
+.Log_Out_Rectangle {
+	position: absolute;
+	overflow: visible;
+	width: 124px;
+	height: 36px;
+	left: 0px;
+	top: 0px;
+}
+.Log_Out_Text_Class {
+	position: absolute;
+	left: 43px;
+	top: 9.5px;
+	overflow: visible;
+	width: 80px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 15px;
+	color: rgba(253,53,53,1);
+}
+.Log_Out_Icon {
+	overflow: visible;
+	position: absolute;
+	width: 16.594px;
+	height: 17.7px;
+	left: 21.163px;
+	top: 9.574px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Dashboard_Button_Class {
+	position: absolute;
+	width: 124px;
+	height: 36px;
+	left: 955.217px;
+	top: 11.876px;
+	overflow: visible;
+}
+.Dashboard_Rectangle {
+	position: absolute;
+	overflow: visible;
+	width: 124px;
+	height: 36px;
+	left: 0px;
+	top: 0px;
+}
+.Dashboard_Text_Class {
+	position: absolute;
+	left: 0px;
+	top: 9.5px;
+	overflow: visible;
+	width: 124px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 15px;
+	color: rgba(91,182,187,1);
+}
+.Settings_Class {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+	width: 177px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -1px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: 900;
+	font-size: 40px;
+	color: rgba(29,29,29,1);
+}
+
+
+
+
+.Automatically_Checkout_Class {
+	position: absolute;
+	left: 60px;
+	top: 1px;
+	overflow: visible;
+	width: 415px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Switch_1_dp_Class {
+	position: absolute;
+	width: 45px;
+	height: 25px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}

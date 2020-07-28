@@ -96,6 +96,12 @@
         "es": "Pago automático en Supreme y Shopify"
       }
     },
+    "Banners": {
+      "languages": {
+        "en": "Banners",
+        "es": "Banderas"
+      }
+    },
     "Begin Monitoring at": {
       "languages": {
         "en": "Begin Monitoring at",
@@ -372,6 +378,12 @@
         "es": "Entregado"
       }
     },
+    "Desktop": {
+      "languages": {
+        "en": "Desktop",
+        "es": "Escritorio"
+      }
+    },
     "Device Connected": {
       "languages": {
         "en": "Device Connected",
@@ -454,6 +466,12 @@
       "languages": {
         "en": "En Route...",
         "es": "En camino..."
+      }
+    },
+    "English": {
+      "languages": {
+        "en": "English",
+        "es": "Inglés"
       }
     },
     "Est. Profit": {
@@ -1518,6 +1536,18 @@
       "languages": {
         "en": "Solvers Opened",
         "es": "Solucionadores abiertos"
+      }
+    },
+    "Sounds": {
+      "languages": {
+        "en": "Sounds",
+        "es": "Sonido"
+      }
+    },
+    "Spanish": {
+      "languages": {
+        "en": "Spanish",
+        "es": "Español"
       }
     },
     "Spent": {

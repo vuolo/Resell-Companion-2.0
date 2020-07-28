@@ -368,7 +368,7 @@
 					let product = window.getProductByMD5(element.getAttribute('md5'));
 					switch (key) {
 						case 'open':
-							window.parent.openURL(product.OverrideURL.length > 0 ? product.OverrideURL : product.URL, configureModal.preferences.useDefaultBrowser, { title: 'Resell Companion — ' + product.Name });
+							window.parent.openURL(product.OverrideURL.length > 0 ? product.OverrideURL : product.URL, window.monitorsApp.configureModal.preferences.useDefaultBrowser, { title: 'Resell Companion — ' + product.Name });
 							break;
 						case 'copy_url':
 							window.parent.copy(product.URL);
