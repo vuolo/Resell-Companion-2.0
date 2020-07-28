@@ -144,6 +144,7 @@ const overviewApp = new Vue({
       this.dateSearch.display = `${window.parent.parent.frames['home-frame'].homeApp.formatScheduleDate(new Date(new Date(this.dateSearch.start).getTime() + (24 * 60 * 60 * 1000)).toString())} – ${window.parent.parent.frames['home-frame'].homeApp.formatScheduleDate(new Date(new Date(this.dateSearch.end).getTime() + (24 * 60 * 60 * 1000)).toString())}`;
       this.$forceUpdate();
       window.updatePortfolioGraphValues();
+      window.updateDoughnutGraphValues();
     }
   }
 });
@@ -151,7 +152,55 @@ window.overviewApp = overviewApp;
 
 Chart.defaults.global.defaultFontFamily = 'SF Pro Text';
 
-var config = {
+var doughnutConfig = {
+	type: 'doughnut',
+	data: {
+		datasets: [{
+			data: [
+				getTotalFilteredItems('sales'), // sales
+        getTotalFilteredItems('inventory'), // inventory items
+        getTotalFilteredItems('subscriptions'), // subscriptions
+        getTotalFilteredItems('tickets'), // tickets
+        getTotalFilteredItems('cards') // cards
+			],
+			backgroundColor: [
+				'rgba(53,178,57,1)',
+				'rgba(91,182,187,1)',
+				'rgba(84,101,255,1)',
+				'rgba(253,213,53,1)',
+				'rgba(255,167,78,1)'
+			]
+		}],
+		labels: [
+      window.parent.parent.tryTranslate('Sales'),
+      window.parent.parent.tryTranslate('Inventory'),
+      window.parent.parent.tryTranslate('Subscriptions'),
+      window.parent.parent.tryTranslate('Tickets'),
+      window.parent.parent.tryTranslate('Cards')
+		]
+	},
+	options: {
+		responsive: true,
+		legend: {
+			position: 'top',
+		},
+		title: {
+			display: true,
+			text: window.parent.parent.tryTranslate('Number of Items')
+		},
+		animation: {
+			animateScale: true,
+			animateRotate: true
+		},
+    elements: {
+      arc: {
+        borderColor: window.parent.parent.getThemeColor('#efefef')
+      }
+    }
+	}
+};
+
+var portfolioGraphConfig = {
 	type: 'line',
 	data: {
 		labels: [
@@ -207,7 +256,7 @@ var config = {
     			},
           gridLines: {
             display: true,
-            color: window.parent.parent.getThemeColor('rgba(190,190,190,1)');
+            color: window.parent.parent.getThemeColor('rgba(190,190,190,1)')
           },
     			ticks: {
     				// the data minimum used for determining the ticks is Math.min(dataMin, suggestedMin)
@@ -221,7 +270,7 @@ var config = {
         {
           gridLines: {
             display: true,
-            color: window.parent.parent.getThemeColor('rgba(190,190,190,1)');
+            color: window.parent.parent.getThemeColor('rgba(190,190,190,1)')
           }
         }
       ]
@@ -230,9 +279,36 @@ var config = {
 };
 
 window.onload = function() {
-	var ctx = document.getElementById('canvas').getContext('2d');
-	window.portfolioGraph = new Chart(ctx, config);
+  // line graph
+	var portfolioCtx = document.getElementById('canvas').getContext('2d');
+	window.portfolioGraph = new Chart(portfolioCtx, portfolioGraphConfig);
+  // doughnut graph
+  var doughnutCtx = document.getElementById('chart-area').getContext('2d');
+  window.doughnutGraph = new Chart(doughnutCtx, doughnutConfig);
 };
+
+function getTotalFilteredItems(type) {
+  if (!areAnalyticsSubpagesInitialized()) return 0;
+  let outNum = 0;
+  switch (type) {
+    case 'sales':
+      for (var item of window.parent.analyticsApp.sales) if (dateWithinDateSearch(item.sale.date)) outNum++;
+      break;
+    case 'inventory':
+      for (var item of window.parent.analyticsApp.inventoryItems) if (dateWithinDateSearch(item.purchase.date)) outNum++;
+      break;
+    case 'subscriptions':
+      for (var item of window.parent.analyticsApp.subscriptions) if (dateWithinDateSearch(item.purchase.date)) outNum++;
+      break;
+    case 'tickets':
+      for (var item of window.parent.analyticsApp.tickets) if (dateWithinDateSearch(item.purchase.date)) outNum++;
+      break;
+    case 'cards':
+      for (var item of window.parent.analyticsApp.cards) if (dateWithinDateSearch(item.purchase.date)) outNum++;
+      break;
+  }
+  return outNum;
+}
 
 window.updatePortfolioGraphCurrency = () => {
   window.portfolioGraph.options.scales.yAxes[0].scaleLabel.labelString = `${window.parent.parent.tryTranslate(window.parent.parent.companionSettings.currencyName)} (${window.parent.parent.companionSettings.currency})`;
@@ -245,6 +321,16 @@ window.updatePortfolioGraphValues = () => {
   window.portfolioGraph.data.datasets[1].data = getTotalFilteredRevenuesByMonth();
   window.portfolioGraph.data.datasets[2].data = getTotalFilteredProfitsByMonth();
   window.portfolioGraph.update();
+};
+
+window.updateDoughnutGraphValues = () => {
+  if (!window.doughnutGraph) return;
+  window.doughnutGraph.data.datasets[0].data[0] = getTotalFilteredItems('sales');
+  window.doughnutGraph.data.datasets[0].data[1] = getTotalFilteredItems('inventory');
+  window.doughnutGraph.data.datasets[0].data[2] = getTotalFilteredItems('subscriptions');
+  window.doughnutGraph.data.datasets[0].data[3] = getTotalFilteredItems('tickets');
+  window.doughnutGraph.data.datasets[0].data[4] = getTotalFilteredItems('cards');
+  window.doughnutGraph.update();
 };
 
 function dateWithinDateSearch(incomingDate) {

@@ -47,8 +47,12 @@
 					<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Graph_Rectangle_eu_Class" rx="10" ry="10" x="0" y="0" width="309" height="296">
 					</rect>
 				</svg>
-				<img class="Sample_Graph_ev_Class" src="Sample_Graph_ev.png" srcset="Sample_Graph_ev.png 1x, Sample_Graph_ev@2x.png 2x">
-				<div class="Cards_Area_ew_Class">
+
+				<div id="canvas-holder" class="Sample_Graph_ev_Class" style="width: 309px; height: 285px; top: 0px; left: 0px;">
+					<canvas id="chart-area" style="width: 309px; height: 285px;"></canvas>
+				</div>
+
+				<!-- <div class="Cards_Area_ew_Class">
 					<div class="Cards_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
 						<span>{{tryTranslate('Cards')}}</span>
 					</div>
@@ -101,10 +105,12 @@
 							</path>
 						</svg>
 					</div>
-				</div>
-				<div class="Portfolio_Value_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+				</div> -->
+
+				<!-- <div class="Portfolio_Value_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
 					<span>{{tryTranslate('Portfolio Value')}}</span>
-				</div>
+				</div> -->
+
 			</div>
 
 

@@ -986,6 +986,12 @@
         "es": "Noviembre"
       }
     },
+    "Number of Items": {
+      "languages": {
+        "en": "Number of Items",
+        "es": "Número de artículos"
+      }
+    },
     "October": {
       "languages": {
         "en": "October",

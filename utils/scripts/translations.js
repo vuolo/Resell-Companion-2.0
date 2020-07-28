@@ -49,17 +49,23 @@ window.setLanguage = (language) => {
     window.frames["analytics-frame"].frames['overview-subpage'].portfolioGraph.data.datasets[0].label = window.tryTranslate('Spent');
     window.frames["analytics-frame"].frames['overview-subpage'].portfolioGraph.data.datasets[1].label = window.tryTranslate('Revenue');
     window.frames["analytics-frame"].frames['overview-subpage'].portfolioGraph.data.datasets[2].label = window.tryTranslate('Profit');
-
     window.frames["analytics-frame"].frames['overview-subpage'].portfolioGraph.options.scales.yAxes[0].scaleLabel.labelString = `${window.tryTranslate(window.companionSettings.currencyName)} (${window.companionSettings.currency})`;
 
     window.frames["analytics-frame"].frames['overview-subpage'].portfolioGraph.update();
+
+    window.frames["analytics-frame"].frames['overview-subpage'].doughnutGraph.data.labels[0] = window.tryTranslate('Sales');
+    window.frames["analytics-frame"].frames['overview-subpage'].doughnutGraph.data.labels[1] = window.tryTranslate('Inventory');
+    window.frames["analytics-frame"].frames['overview-subpage'].doughnutGraph.data.labels[2] = window.tryTranslate('Subscriptions');
+    window.frames["analytics-frame"].frames['overview-subpage'].doughnutGraph.data.labels[3] = window.tryTranslate('Tickets');
+    window.frames["analytics-frame"].frames['overview-subpage'].doughnutGraph.data.labels[4] = window.tryTranslate('Cards');
+    window.frames["analytics-frame"].frames['overview-subpage'].doughnutGraph.options.title.text = window.tryTranslate('Number of Items')
+
+    window.frames["analytics-frame"].frames['overview-subpage'].doughnutGraph.update();
   })();
 };
 
 window.tryTranslate = (incomingText, language = window.companionSettings.language) => {
-  if (translations[incomingText] && translations[incomingText].languages[language]) {
-    return translations[incomingText].languages[language];
-  }
+  if (translations[incomingText] && translations[incomingText].languages[language]) return translations[incomingText].languages[language];
   return incomingText;
 };
 
