@@ -282,9 +282,11 @@ window.onload = function() {
   // line graph
 	var portfolioCtx = document.getElementById('canvas').getContext('2d');
 	window.portfolioGraph = new Chart(portfolioCtx, portfolioGraphConfig);
+  window.updatePortfolioGraphValues(); // force update at beginning
   // doughnut graph
   var doughnutCtx = document.getElementById('chart-area').getContext('2d');
   window.doughnutGraph = new Chart(doughnutCtx, doughnutConfig);
+  window.updateDoughnutGraphValues(); // force update at beginning
 };
 
 function getTotalFilteredItems(type) {

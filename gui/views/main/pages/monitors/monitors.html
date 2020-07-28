@@ -137,7 +137,7 @@
 			</template>
 
 			<template v-for="(product, productIndex) in products">
-				<div class="Product_Card_1_Class" v-bind:key="product.MD5 + productIndex" v-bind:style="{ top: ( (getProductRowNumber(productIndex)-1) * (228 - 5) ) + 8 + 'px', left: ( (getProductColumnNumber(productIndex)-1) * (473 + 15) ) + 10 + 'px', width: getProductCardWidth(product) + 'px' }">
+				<div class="Product_Card_1_Class" v-bind:md5="product.MD5" v-bind:key="product.MD5 + productIndex" v-bind:style="{ top: ( (getProductRowNumber(productIndex)-1) * (228 - 5) ) + 8 + 'px', left: ( (getProductColumnNumber(productIndex)-1) * (473 + 15) ) + 10 + 'px', width: getProductCardWidth(product) + 'px' }">
 					<div class="Product_Card_Rectangles_fc_Class">
 						<svg class="Product_Card_Rectangle_2_fd">
 							<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Product_Card_Rectangle_2_fd_Class" rx="20" ry="20" x="0" y="0" v-bind:width="getProductCardWidth(product)" height="210">
@@ -363,11 +363,86 @@
 		const CONTEXT_MENUS = [
 			{
 				selector: '.Product_Card_1_Class',
-				// TODO: add functionality for each context menu item click
 				callback: function(key, options) {
 					const element = options.$trigger[0];
-					console.log(key);
-					// console.log(element);
+					let product = window.getProductByMD5(element.getAttribute('md5'));
+					switch (key) {
+						case 'open':
+							window.parent.openURL(product.OverrideURL.length > 0 ? product.OverrideURL : product.URL, configureModal.preferences.useDefaultBrowser, { title: 'Resell Companion — ' + product.Name });
+							break;
+						case 'copy_url':
+							window.parent.copy(product.URL);
+							break;
+						case 'add_to_inventory':
+							let separatedDate = window.parent.separateDate();
+							let newInventoryItem = {
+								name: product.Name || "",
+								color: product.Color || "",
+								styleCode: "",
+								size: "",
+								imageURL: product.ImageURL,
+								notes: "",
+								marketplaceData: {
+									product: {},
+									size: {},
+									media360: []
+								},
+								suggestions: {
+									items: [],
+									itemsOpened: false,
+									isSearchingForItems: false,
+									sizes: [],
+									sizesOpened: false,
+									isSearchingForSizes: false
+								},
+								purchase: {
+									price: window.parent.getNumberFromString(product.Price),
+									estimatedResell: null,
+									store: product.StoreName || "",
+									date: separatedDate.date,
+									tracking: {
+										number: "",
+										carrier: "unselected",
+										isTracking: false,
+										details: {}
+									}
+								},
+								sale: {
+									price: null,
+									fees: {
+										amount: null,
+										isPercent: true
+									},
+									platform: "",
+									date: separatedDate.date,
+									tracking: {
+										number: "",
+										carrier: "unselected",
+										isTracking: false,
+										details: {}
+									}
+								},
+								quantity: 1,
+								selected: true,
+								isHovering: false,
+								id: window.parent.makeid(10)
+							};
+							// add inventory item
+							window.parent.frames['analytics-frame'].analyticsApp.inventoryItems.push(newInventoryItem);
+							window.parent.frames['analytics-frame'].frames['inventory-subpage'].inventoryApp.applyDateSearch(); // refresh
+							window.parent.frames['analytics-frame'].openSubpage('inventory'); // switch page
+							window.parent.borderApp.switchToPage(-1, 'Analytics');
+							break;
+						case 'hide':
+							visualizedProducts.splice(visualizedProducts.indexOf(product), 1);
+							break;
+						case 'search_on_market_lookup':
+							window.parent.frames['analytics-frame'].frames['market-lookup-subpage'].marketLookupApp.searchTerm = product.Name || "";
+							window.parent.frames['analytics-frame'].frames['market-lookup-subpage'].refreshMarketResults();
+							window.parent.frames['analytics-frame'].openSubpage('market-lookup');
+							window.parent.borderApp.switchToPage(-1, 'Analytics');
+							break;
+					}
 				},
 				items: {
 					"open": {name: "Open Product", icon: "fas fa-external-link-alt" },

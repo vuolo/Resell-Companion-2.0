@@ -34,31 +34,31 @@ var curCalendarDate = {
 const kuriEmotes = [
   {
     weekday: "Sunday",
-    imageURL: "../../../../images/emoticons/Delivery-Boy.png"
+    imageURL: "../../../../images/emoticons/Nerd.png"
   },
   {
     weekday: "Monday",
-    imageURL: "../../../../images/emoticons/Heart-Eyes.png"
-  },
-  {
-    weekday: "Tuesday",
     imageURL: "../../../../images/emoticons/Banana-Boy.png"
   },
   {
-    weekday: "Wednesday",
-    imageURL: "../../../../images/emoticons/Masked.png"
+    weekday: "Tuesday",
+    imageURL: "../../../../images/emoticons/Luchador.png"
   },
   {
-    weekday: "Thursday",
+    weekday: "Wednesday",
     imageURL: "../../../../images/emoticons/Fancy.png"
   },
   {
+    weekday: "Thursday",
+    imageURL: "../../../../images/emoticons/Masked.png"
+  },
+  {
     weekday: "Friday",
-    imageURL: "../../../../images/emoticons/Excited.png"
+    imageURL: "../../../../images/emoticons/Ninja.png"
   },
   {
     weekday: "Saturday",
-    imageURL: "../../../../images/emoticons/Shocked.png"
+    imageURL: "../../../../images/emoticons/Accountant.png"
   }
 ];
 
@@ -67,6 +67,10 @@ var curDayIndex = new Date().getDay();
 function grabTodayKuri() {
   return kuriEmotes[curDayIndex];
 }
+
+setInterval(function() {
+  curDayIndex = new Date().getDay();
+}, 1 * 1000)
 
 var alertMessages = [
   {
@@ -78,7 +82,7 @@ var alertMessages = [
   //   severityLevel: "HIGH" // LOW, MEDIUM, HIGH
   // },
   // {
-  //   message: "Did you know... Dragon fruit is Kuri's favorite treat!",
+  //   message: "Did you know... Dragon fruit is Kuri's favorite snack!",
   //   severityLevel: "LOW" // LOW, MEDIUM, HIGH
   // }
 ];

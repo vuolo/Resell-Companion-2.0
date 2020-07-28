@@ -731,6 +731,12 @@ function searchForProducts() {
   searchIntv = null;
 }
 
+window.getProductByMD5 = (md5) => {
+  for (var visualizedProduct of visualizedProducts) if (visualizedProduct.MD5 == md5) return visualizedProduct;
+  for (var displayedProduct of displayedProducts) if (displayedProduct.MD5 == md5) return displayedProduct;
+  for (var product of window.products) if (product.MD5 == md5) return product;
+};
+
 const shoppingBagArea = document.querySelector('.Shopping_Bag_Area_Class');
 const shoppingBagIcon = document.querySelector('.Shopping_Bag_g_Class');
 

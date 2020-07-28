@@ -219,6 +219,10 @@ async function preloadImages(array, waitForOtherResources, timeout) {
 }
 window.preloadImages = preloadImages;
 
+window.copy = async (string) => {
+  await navigator.clipboard.writeText(string);
+};
+
 /**
  * Uses canvas.measureText to compute and return the width of the given text of given font in pixels.
  *

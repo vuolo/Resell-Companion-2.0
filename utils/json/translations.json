@@ -144,6 +144,12 @@
         "es": "Navegador"
       }
     },
+    "Canadian Dollar": {
+      "languages": {
+        "en": "Canadian Dollar",
+        "es": "Dólar canadiense"
+      }
+    },
     "Captcha Solver": {
       "languages": {
         "en": "Captcha Solver",
@@ -1782,6 +1788,12 @@
       "languages": {
         "en": "U.S. Men's Size",
         "es": "Tamaño de los hombres de EE. UU."
+      }
+    },
+    "United States Dollar": {
+      "languages": {
+        "en": "United States Dollar",
+        "es": "Dólar estadounidense"
       }
     },
     "Unknown": {
