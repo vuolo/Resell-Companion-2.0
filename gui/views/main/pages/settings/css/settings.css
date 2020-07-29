@@ -35,10 +35,10 @@
 .All_rights_reserved_2020_Class {
 	opacity: 0.66;
 	position: absolute;
-	left: 1.542px;
+	left: -110px;
 	top: 29px;
 	overflow: visible;
-	width: 341px;
+	width: 555px;
 	white-space: nowrap;
 	line-height: 42px;
 	margin-top: -13.5px;
@@ -51,14 +51,14 @@
 }
 .Terms_of_Service_Text_Class {
 	position: absolute;
-	left: 22.542px;
+	left: -110px;
 	top: 0px;
 	overflow: visible;
-	width: 311px;
+	width: 555px;
 	white-space: nowrap;
 	line-height: 42px;
 	margin-top: -13.5px;
-	text-align: left;
+	text-align: center;
 	font-family: SF Pro Text;
 	font-style: normal;
 	font-weight: bold;

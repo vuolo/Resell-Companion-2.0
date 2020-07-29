@@ -2006,6 +2006,12 @@
         "es": "Martes"
       }
     },
+    "Twitter": {
+      "languages": {
+        "en": "Twitter",
+        "es": "Twitter"
+      }
+    },
     "Type to add a note...": {
       "languages": {
         "en": "Type to add a note...",

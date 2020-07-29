@@ -85,12 +85,8 @@ window.settingsApp = new Vue({
     },
     getTitleSwitchLeft: function(maxWidth, title) {
       let titleWidth = this.getTextWidth(title, 'bold 20px \'SF Pro Text\'');
-      if (titleWidth >= maxWidth) {
-        return 0;
-      } else {
-        return (maxWidth/2) - ((titleWidth + 60)/2) + 20;
-      }
-      return 0;
+      if (titleWidth >= maxWidth) return 0;
+      else return (maxWidth/2) - ((titleWidth + 60)/2) + 20;
     },
     getLanguageImage: function(language) {
       switch (language) {
