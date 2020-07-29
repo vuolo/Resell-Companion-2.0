@@ -57,7 +57,8 @@ window.modalLoadedCallback = (modalName) => {
   if (modalName == 'billing-profiles') settingsApp.billingProfilesModal = window.frames['billing-profiles-modal'].modalOptions;
   else if (modalName == 'statistics') {
     settingsApp.statisticsModal = window.frames['statistics-modal'].modalOptions;
-    window.parent.addStatistic = (category, statistic, value = 1) => settingsApp.statisticsModal.categories[category][statistic] += value;
+    window.parent.addStatistic = async (category, statistic, value = 1) => settingsApp.statisticsModal.categories[category][statistic] += value;
+    window.parent.addCheckoutStatistic = async (status, store, value = 1) => settingsApp.statisticsModal.checkouts[status][storeType] += value;
   }
 };
 

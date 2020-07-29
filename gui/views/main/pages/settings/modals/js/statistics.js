@@ -41,11 +41,12 @@ const MODAL_OPTIONS_TEMPLATE = {
     },
     "Sales": {
       "Packages Tracked": 0,
+      "Sales Marked Unsold": 0,
       "Sold Items": 0
     },
     "Inventory": {
       "Items Added": 0,
-      "Items Sold": 0,
+      "Items Marked Sold": 0,
       "Packages Tracked": 0
     },
     "Subscriptions": {
@@ -53,23 +54,21 @@ const MODAL_OPTIONS_TEMPLATE = {
     },
     "Tickets": {
       "Packages Tracked": 0,
-      "Tickets Added": 0,
-      "Tickets Sold": 0
+      "Tickets Added": 0
     },
     "Cards": {
       "Packages Tracked": 0,
-      "Cards Added": 0,
-      "Cards Sold": 0
+      "Cards Added": 0
     },
     "Market Lookup": {
       "Items Compared": 0,
       "Searches": 0
     },
     "Social+": {
+      "Discord Servers Joined": 0,
       "Giveaways Detected": 0,
       "Instagram Handles Watched": 0,
       "Instagram Posts Received": 0,
-      "Joined Discord Servers": 0,
       "Keywords Found": 0,
       "Links Opened": 0,
       "Restocks Detected": 0,

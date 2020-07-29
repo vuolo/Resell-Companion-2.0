@@ -204,6 +204,7 @@ window.createApp = new Vue({
       tracking.details = await window.parent.parent.parent.trackingAPI.getPackageDetails(tracking.number, tracking.carrier);
       tracking.isTracking = false;
       window.parent.tryTranslateTrackingActivities(tracking);
+      window.parent.parent.addStatistic('Inventory', 'Packages Tracked');
     },
     toggleActivityOpened: function(activity) {
        activity.isOpened = !activity.isOpened;

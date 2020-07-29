@@ -508,6 +508,7 @@
 					window.parent.openSubpage('sales'); // switch page
 					window.parent.frames['sales-subpage'].salesApp.applyDateSearch(); // refresh
 					window.parent.frames['inventory-subpage'].inventoryApp.applyDateSearch(); // refresh
+					window.parent.parent.addStatistic('Inventory', 'Items Marked Sold');
 					break;
 				case 'remove':
 					inventoryItem.selected = true;

@@ -96,6 +96,7 @@ window.addCard = () => {
     cardsApp.createModal.id = window.parent.parent.makeid(10); // assign a new id to each card
     window.cards.push(window.parent.parent.memory.copyObj(cardsApp.createModal));
     window.cards[window.cards.length-1].quantity = 1;
+    window.parent.parent.addStatistic('Cards', 'Cards Added');
   }
   cardsApp.applyDateSearch();
 };
@@ -417,6 +418,7 @@ async function tryUpdateTracking(tracking, force = false) {
   if (trackingDetails && trackingDetails.status != null) tracking.details = trackingDetails;
   cardsApp.$forceUpdate();
   window.tryTranslateTrackingActivities(tracking);
+  window.parent.parent.addStatistic('Cards', 'Packages Tracked');
 }
 
 window.refreshTracking = (cardIndex = -1, force = false, tracking = null) => {
@@ -555,6 +557,7 @@ function duplicateCards(incomingCards = null) {
       duplicateCard.id = window.parent.parent.makeid(10); // assign a new id to each duplicated card
       duplicateCard.selected = true; // force select on new cards ONLY
       window.cards.push(duplicateCard);
+      window.parent.parent.addStatistic('Cards', 'Cards Added');
     }
   } else {
     for (var card of window.cards) {
@@ -564,6 +567,7 @@ function duplicateCards(incomingCards = null) {
         window.parent.parent.memory.syncObject(duplicateCard, window.parent.parent.memory.copyObj(card));
         duplicateCard.id = window.parent.parent.makeid(10); // assign a new id to each duplicated card
         window.cards.push(duplicateCard);
+        window.parent.parent.addStatistic('Cards', 'Cards Added');
       }
     }
   }

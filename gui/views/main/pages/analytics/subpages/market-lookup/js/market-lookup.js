@@ -64,7 +64,7 @@ window.getResultByID = (id) => {
   for (var result of window.results) if (result.id == id) return result;
 };
 
-async function refreshMarketResults(searchTerm = marketLookupApp.searchTerm) {
+async function refreshMarketResults(searchTerm = marketLookupApp.searchTerm, addStatistic = true) {
   marketLookupApp.isSearching = true;
   let searchResults = await window.parent.parent.parent.marketAPI.searchMarketplace('stockx', searchTerm);
   if (searchTerm != marketLookupApp.searchTerm) return;
@@ -77,13 +77,17 @@ async function refreshMarketResults(searchTerm = marketLookupApp.searchTerm) {
       id: window.parent.parent.makeid(10) // assign a new id to each result
     });
   }
+  if (addStatistic) window.parent.parent.addStatistic('Market Lookup', 'Searches');
 }
 
 async function setResultActive(result) {
   if (typeof result == "number") result = window.results[result]; // result was an index, convert to result
   marketLookupApp.activeResultIndex = window.results.indexOf(result);
   marketLookupApp.isUpdatingMarket = true;
-  if (result.variants.length == 0) await window.parent.parent.parent.marketAPI.updateMarket(result);
+  if (result.variants.length == 0) {
+    await window.parent.parent.parent.marketAPI.updateMarket(result);
+    window.parent.parent.addStatistic('Market Lookup', 'Items Compared');
+  }
   marketLookupApp.isUpdatingMarket = false;
 }
 window.refreshMarketResults = refreshMarketResults;
@@ -116,4 +120,4 @@ $('#marketLookupSearch').on('change keydown paste input', function() {
   }
 });
 
-refreshMarketResults();
+refreshMarketResults(marketLookupApp.searchTerm, false);

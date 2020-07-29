@@ -68,9 +68,11 @@ window.onload = () => {
         return { top: (Math.floor(browserIndex/5) * (218+9)) + 11 + 'px', left: ((browserIndex%5) * (227+9)) + 10 + 'px' }
       },
       refreshBrowser: function(browserIndex) {
+        // TODO: rework this function (maybe there is an actual function to refresh) OR call location.reload() on the frame
         const webviews = document.querySelectorAll('webview');
         const curWebview = webviews[browserIndex];
         curWebview.loadURL(curWebview.getURL());
+        window.parent.addStatistic('Browsers', 'Browsers Refreshed');
       },
       deleteBrowser: async function(browserIndex) {
         browsers[browserIndex].active = false;
@@ -139,6 +141,7 @@ window.addNewBrowsers = async (incomingOptions) => {
     }
     // TODO: add to statistics
     await addNewBrowser(options, proxy);
+    window.parent.addStatistic('Browsers', 'Browsers Created');
     if (options.creationDelay && i < options.quantity-1) {
       await window.parent.sleep(parseInt(options.creationDelay));
     }

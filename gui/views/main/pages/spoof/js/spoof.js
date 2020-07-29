@@ -435,6 +435,7 @@ function locationPerform(dev, locationMethod) {
       }
       document.querySelector("#Spoof_Modal").style.display = "block";
     } else if (r.result) {
+      window.parent.addStatistic('Spoof', 'Device Locations Spoofed');
       locationMethod(dev, function() {
 
       });

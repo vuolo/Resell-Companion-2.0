@@ -138,6 +138,18 @@
         "es": "Navegadores"
       }
     },
+    "Browsers Created": {
+      "languages": {
+        "en": "Browsers Created",
+        "es": "Navegadores creados"
+      }
+    },
+    "Browsers Refreshed": {
+      "languages": {
+        "en": "Browsers Refreshed",
+        "es": "Navegadores actualizados"
+      }
+    },
     "Biyearly": {
       "languages": {
         "en": "Biyearly",
@@ -208,6 +220,12 @@
       "languages": {
         "en": "Cards",
         "es": "Tarjetas"
+      }
+    },
+    "Cards Added": {
+      "languages": {
+        "en": "Cards Added",
+        "es": "Tarjetas añadidas"
       }
     },
     "Carrier": {
@@ -444,6 +462,12 @@
         "es": "Dispositivo conectado"
       }
     },
+    "Device Locations Spoofed": {
+      "languages": {
+        "en": "Device Locations Spoofed",
+        "es": "Ubicaciones de dispositivos suplantadas"
+      }
+    },
     "Devices Connected": {
       "languages": {
         "en": "Devices Connected",
@@ -466,6 +490,12 @@
       "languages": {
         "en": "Disabling images saves proxy data and improves loading times",
         "es": "Deshabilitar imágenes guarda los datos proxy y mejora los tiempos de carga"
+      }
+    },
+    "Discord Servers Joined": {
+      "languages": {
+        "en": "Discord Servers Joined",
+        "es": "Servidores de discordia unidos"
       }
     },
     "Done": {
@@ -618,6 +648,18 @@
         "es": "Exportando"
       }
     },
+    "Failed Checkouts": {
+      "languages": {
+        "en": "Failed Checkouts",
+        "es": "Pagos fallidos"
+      }
+    },
+    "Failed Tasks": {
+      "languages": {
+        "en": "Failed Tasks",
+        "es": "Tareas fallidas"
+      }
+    },
     "February": {
       "languages": {
         "en": "February",
@@ -664,6 +706,12 @@
       "languages": {
         "en": "German",
         "es": "Alemán"
+      }
+    },
+    "Giveaways Detected": {
+      "languages": {
+        "en": "Giveaways Detected",
+        "es": "Regalos detectados"
       }
     },
     "Grade": {
@@ -762,6 +810,18 @@
         "es": "Entrando detalles de facturación..."
       }
     },
+    "Instagram Handles Watched": {
+      "languages": {
+        "en": "Instagram Handles Watched",
+        "es": "Usuarios de Instagram monitoreados"
+      }
+    },
+    "Instagram Posts Received": {
+      "languages": {
+        "en": "Instagram Posts Received",
+        "es": "Publicaciones de Instagram recibidas"
+      }
+    },
     "Invalid Date": {
       "languages": {
         "en": "Invalid Date",
@@ -792,22 +852,40 @@
         "es": "artículo de sus"
       }
     },
-    "items from your#PLURAL": {
-      "languages": {
-        "en": "items from your",
-        "es": "artículos de sus"
-      }
-    },
     "item from your#SINGULAR": {
       "languages": {
         "en": "item from your",
         "es": "artículo de su"
       }
     },
+    "Items Added": {
+      "languages": {
+        "en": "Items Added",
+        "es": "Artículos añadidos"
+      }
+    },
+    "Items Compared": {
+      "languages": {
+        "en": "Items Compared",
+        "es": "Artículos comparados"
+      }
+    },
+    "items from your#PLURAL": {
+      "languages": {
+        "en": "items from your",
+        "es": "artículos de sus"
+      }
+    },
     "items from your#SINGULAR": {
       "languages": {
         "en": "items from your",
         "es": "artículos de su"
+      }
+    },
+    "Items Marked Sold": {
+      "languages": {
+        "en": "Items Marked Sold",
+        "es": "Artículos marcados vendidos"
       }
     },
     "January": {
@@ -838,6 +916,12 @@
       "languages": {
         "en": "Keywords (ex: +yeezy, -380)",
         "es": "Palabras clave (ej: +yeezy, -380)"
+      }
+    },
+    "Keywords Found": {
+      "languages": {
+        "en": "Keywords Found",
+        "es": "Palabras clave encontradas"
       }
     },
     "Language": {
@@ -910,6 +994,12 @@
       "languages": {
         "en": "Light",
         "es": "Claro"
+      }
+    },
+    "Links Opened": {
+      "languages": {
+        "en": "Links Opened",
+        "es": "Enlaces abiertos"
       }
     },
     "Listing Platform": {
@@ -1214,6 +1304,12 @@
         "es": "Resumen"
       }
     },
+    "Packages Tracked": {
+      "languages": {
+        "en": "Packages Tracked",
+        "es": "Paquetes rastreados"
+      }
+    },
     "Paste Card(s)": {
       "languages": {
         "en": "Paste Card(s)",
@@ -1326,6 +1422,24 @@
       "languages": {
         "en": "Products",
         "es": "Productos"
+      }
+    },
+    "Products Added to Shopping Bag": {
+      "languages": {
+        "en": "Products Added to Shopping Bag",
+        "es": "Productos añadidos a la bolsa de la compra"
+      }
+    },
+    "Products Created": {
+      "languages": {
+        "en": "Products Created",
+        "es": "Productos creados"
+      }
+    },
+    "Products Opened": {
+      "languages": {
+        "en": "Products Opened",
+        "es": "Productos abiertos"
       }
     },
     "Profit": {
@@ -1484,6 +1598,12 @@
         "es": "Restablecer tarea(s)"
       }
     },
+    "Restocks Detected": {
+      "languages": {
+        "en": "Restocks Detected",
+        "es": "Reposiciones detectadas"
+      }
+    },
     "Retrying...": {
       "languages": {
         "en": "Retrying...",
@@ -1520,6 +1640,12 @@
         "es": "Ventas"
       }
     },
+    "Sales Marked Unsold": {
+      "languages": {
+        "en": "Sales Marked Unsold",
+        "es": "Ventas marcadas no vendidas"
+      }
+    },
     "Sat": {
       "languages": {
         "en": "Sat",
@@ -1542,6 +1668,12 @@
       "languages": {
         "en": "Search",
         "es": "Buscar"
+      }
+    },
+    "Searches": {
+      "languages": {
+        "en": "Searches",
+        "es": "Búsquedas"
       }
     },
     "Search on Market Lookup": {
@@ -1652,6 +1784,12 @@
         "es": "Bolsa de la compra"
       }
     },
+    "Shopping Bag Checkouts": {
+      "languages": {
+        "en": "Shopping Bag Checkouts",
+        "es": "Pagos de bolsas de compras"
+      }
+    },
     "Show": {
       "languages": {
         "en": "Show",
@@ -1686,6 +1824,12 @@
       "languages": {
         "en": "Sold Item",
         "es": "Artículo vendido"
+      }
+    },
+    "Sold Items": {
+      "languages": {
+        "en": "Sold Items",
+        "es": "Artículos vendidos"
       }
     },
     "Sold Price": {
@@ -1808,6 +1952,12 @@
         "es": "Suscripciones"
       }
     },
+    "Subscriptions Added": {
+      "languages": {
+        "en": "Subscriptions Added",
+        "es": "Suscripciones añadidas"
+      }
+    },
     "Success!": {
       "languages": {
         "en": "Success!",
@@ -1818,6 +1968,18 @@
       "languages": {
         "en": "Successfully checked out",
         "es": "Desprotegido con éxito"
+      }
+    },
+    "Successful Checkouts": {
+      "languages": {
+        "en": "Successful Checkouts",
+        "es": "Pagos exitosos"
+      }
+    },
+    "Successful Tasks": {
+      "languages": {
+        "en": "Successful Tasks",
+        "es": "Tareas exitosas"
       }
     },
     "Suggested Items": {
@@ -1842,6 +2004,18 @@
       "languages": {
         "en": "Tasks",
         "es": "Tareas"
+      }
+    },
+    "Tasks Created": {
+      "languages": {
+        "en": "Tasks Created",
+        "es": "Tareas creadas"
+      }
+    },
+    "Tasks Launched": {
+      "languages": {
+        "en": "Tasks Launched",
+        "es": "Tareas lanzadas"
       }
     },
     "Terms of Service": {
@@ -1914,6 +2088,12 @@
       "languages": {
         "en": "Tickets",
         "es": "Entradas"
+      }
+    },
+    "Tickets Added": {
+      "languages": {
+        "en": "Tickets Added",
+        "es": "Entradas añadidas"
       }
     },
     "Track your activity for Resell Companion": {
@@ -2010,6 +2190,18 @@
       "languages": {
         "en": "Twitter",
         "es": "Twitter"
+      }
+    },
+    "Twitter Handles Watched": {
+      "languages": {
+        "en": "Twitter Handles Watched",
+        "es": "Usuarios de Twitter monitoreados"
+      }
+    },
+    "Twitter Posts Received": {
+      "languages": {
+        "en": "Twitter Posts Received",
+        "es": "Publicaciones de Twitter recibidas"
       }
     },
     "Type to add a note...": {

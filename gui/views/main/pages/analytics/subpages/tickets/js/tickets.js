@@ -96,6 +96,7 @@ window.addTicket = () => {
     ticketsApp.createModal.id = window.parent.parent.makeid(10); // assign a new id to each ticket
     window.tickets.push(window.parent.parent.memory.copyObj(ticketsApp.createModal));
     window.tickets[window.tickets.length-1].quantity = 1;
+    window.parent.parent.addStatistic('Tickets', 'Tickets Added');
   }
   ticketsApp.applyDateSearch();
 };
@@ -417,6 +418,7 @@ async function tryUpdateTracking(tracking, force = false) {
   if (trackingDetails && trackingDetails.status != null) tracking.details = trackingDetails;
   ticketsApp.$forceUpdate();
   window.tryTranslateTrackingActivities(tracking);
+  window.parent.parent.addStatistic('Tickets', 'Packages Tracked');
 }
 
 window.refreshTracking = (ticketIndex = -1, force = false, tracking = null) => {
@@ -555,6 +557,7 @@ function duplicateTickets(incomingTickets = null) {
       duplicateTicket.id = window.parent.parent.makeid(10); // assign a new id to each duplicated ticket
       duplicateTicket.selected = true; // force select on new tickets ONLY
       window.tickets.push(duplicateTicket);
+      window.parent.parent.addStatistic('Tickets', 'Tickets Added');
     }
   } else {
     for (var ticket of window.tickets) {
@@ -564,6 +567,7 @@ function duplicateTickets(incomingTickets = null) {
         window.parent.parent.memory.syncObject(duplicateTicket, window.parent.parent.memory.copyObj(ticket));
         duplicateTicket.id = window.parent.parent.makeid(10); // assign a new id to each duplicated ticket
         window.tickets.push(duplicateTicket);
+        window.parent.parent.addStatistic('Tickets', 'Tickets Added');
       }
     }
   }

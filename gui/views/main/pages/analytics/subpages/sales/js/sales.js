@@ -96,6 +96,7 @@ window.addSale = () => {
     salesApp.createModal.id = window.parent.parent.makeid(10); // assign a new id to each sale
     window.sales.push(window.parent.parent.memory.copyObj(salesApp.createModal));
     window.sales[window.sales.length-1].quantity = 1;
+    window.parent.parent.addStatistic('Sales', 'Sold Items');
   }
   salesApp.applyDateSearch();
 };
@@ -417,6 +418,7 @@ async function tryUpdateTracking(tracking, force = false) {
   if (trackingDetails && trackingDetails.status != null) tracking.details = trackingDetails;
   salesApp.$forceUpdate();
   window.tryTranslateTrackingActivities(tracking);
+  window.parent.parent.addStatistic('Sales', 'Packages Tracked');
 }
 
 window.refreshTracking = (saleIndex = -1, force = false, tracking = null) => {
@@ -554,6 +556,7 @@ function duplicateSales(incomingSales = null) {
       duplicateSale.id = window.parent.parent.makeid(10); // assign a new id to each duplicated sale
       duplicateSale.selected = true; // force select on new sales ONLY
       window.sales.push(duplicateSale);
+      window.parent.parent.addStatistic('Sales', 'Sold Items');
     }
   } else {
     for (var sale of window.sales) {
@@ -563,6 +566,7 @@ function duplicateSales(incomingSales = null) {
         window.parent.parent.memory.syncObject(duplicateSale, window.parent.parent.memory.copyObj(sale));
         duplicateSale.id = window.parent.parent.makeid(10); // assign a new id to each duplicated sale
         window.sales.push(duplicateSale);
+        window.parent.parent.addStatistic('Sales', 'Sold Items');
       }
     }
   }

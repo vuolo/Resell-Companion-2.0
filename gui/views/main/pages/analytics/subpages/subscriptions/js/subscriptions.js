@@ -96,6 +96,7 @@ window.addSubscription = () => {
     subscriptionsApp.createModal.id = window.parent.parent.makeid(10); // assign a new id to each subscription
     window.subscriptions.push(window.parent.parent.memory.copyObj(subscriptionsApp.createModal));
     window.subscriptions[window.subscriptions.length-1].quantity = 1;
+    window.parent.parent.addStatistic('Subscriptions', 'Subscriptions Added');
   }
   subscriptionsApp.applyDateSearch();
 };
@@ -650,6 +651,7 @@ function duplicateSubscriptions(incomingSubscriptions = null) {
       duplicateSubscription.id = window.parent.parent.makeid(10); // assign a new id to each duplicated subscription
       duplicateSubscription.selected = true; // force select on new subscriptions ONLY
       window.subscriptions.push(duplicateSubscription);
+      window.parent.parent.addStatistic('Subscriptions', 'Subscriptions Added');
     }
   } else {
     for (var subscription of window.subscriptions) {
@@ -659,6 +661,7 @@ function duplicateSubscriptions(incomingSubscriptions = null) {
         window.parent.parent.memory.syncObject(duplicateSubscription, window.parent.parent.memory.copyObj(subscription));
         duplicateSubscription.id = window.parent.parent.makeid(10); // assign a new id to each duplicated subscription
         window.subscriptions.push(duplicateSubscription);
+        window.parent.parent.addStatistic('Subscriptions', 'Subscriptions Added');
       }
     }
   }

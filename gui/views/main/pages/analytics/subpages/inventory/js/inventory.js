@@ -96,6 +96,7 @@ window.addInventoryItem = () => {
     inventoryApp.createModal.id = window.parent.parent.makeid(10); // assign a new id to each inventory item
     window.inventoryItems.push(window.parent.parent.memory.copyObj(inventoryApp.createModal));
     window.inventoryItems[window.inventoryItems.length-1].quantity = 1;
+    window.parent.parent.addStatistic('Inventory', 'Items Added');
   }
   inventoryApp.applyDateSearch();
 };
@@ -444,6 +445,7 @@ async function tryUpdateTracking(tracking, force = false) {
   if (trackingDetails && trackingDetails.status != null) tracking.details = trackingDetails;
   inventoryApp.$forceUpdate();
   window.tryTranslateTrackingActivities(tracking);
+  window.parent.parent.addStatistic('Inventory', 'Packages Tracked');
 }
 
 window.refreshTracking = (inventoryItemIndex = -1, force = false, tracking = null) => {
@@ -579,6 +581,7 @@ function duplicateInventoryItems(incomingInventoryItems = null) {
       duplicateInventoryItem.id = window.parent.parent.makeid(10); // assign a new id to each duplicated inventory item
       duplicateInventoryItem.selected = true; // force select on new inventory items ONLY
       window.inventoryItems.push(duplicateInventoryItem);
+      window.parent.parent.addStatistic('Inventory', 'Items Added');
     }
   } else {
     for (var inventoryItem of window.inventoryItems) {
@@ -588,6 +591,7 @@ function duplicateInventoryItems(incomingInventoryItems = null) {
         window.parent.parent.memory.syncObject(duplicateInventoryItem, window.parent.parent.memory.copyObj(inventoryItem));
         duplicateInventoryItem.id = window.parent.parent.makeid(10); // assign a new id to each duplicated inventory item
         window.inventoryItems.push(duplicateInventoryItem);
+        window.parent.parent.addStatistic('Inventory', 'Items Added');
       }
     }
   }
