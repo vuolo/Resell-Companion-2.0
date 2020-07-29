@@ -1,4 +1,4 @@
-{
+ {
   "translations": {
     "Actions": {
       "languages": {
@@ -22,6 +22,12 @@
       "languages": {
         "en": "Add to Inventory with Size",
         "es": "Añadir al inventario con tamaño"
+      }
+    },
+    "All rights reserved": {
+      "languages": {
+        "en": "All rights reserved",
+        "es": "Todos los derechos reservados"
       }
     },
     "All Time": {
@@ -87,13 +93,25 @@
     "Automatically checkout using your favorited billing profile": {
       "languages": {
         "en": "Automatically checkout using your favorited billing profile",
-        "es": "Pago automático con tu perfil de facturación favorito"
+        "es": "Pago automático con su perfil de facsuración favorito"
       }
     },
     "Automatically checkout on Supreme and Shopify": {
       "languages": {
         "en": "Automatically checkout on Supreme and Shopify",
         "es": "Pago automático en Supreme y Shopify"
+      }
+    },
+    "Automatically launch tasks with other bots": {
+      "languages": {
+        "en": "Automatically launch tasks with other bots",
+        "es": "Lanzamiento automático de tareas con otros bots"
+      }
+    },
+    "Automatically redirect all notifications to a Discord webhook": {
+      "languages": {
+        "en": "Automatically redirect all notifications to a Discord webhook",
+        "es": "Redirija automáticamente todas las notificaciones a un webhook de discordia"
       }
     },
     "Banners": {
@@ -129,7 +147,7 @@
     "Billing Profile": {
       "languages": {
         "en": "Billing Profile",
-        "es": "Perfil de facturación"
+        "es": "Perfil de facsuración"
       }
     },
     "Billing Profiles": {
@@ -204,6 +222,12 @@
         "es": "Cambiar las URLs"
       }
     },
+    "Check for Update": {
+      "languages": {
+        "en": "Check for Update",
+        "es": "Buscar actualizaciones"
+      }
+    },
     "Checkout Canceled": {
       "languages": {
         "en": "Checkout Canceled",
@@ -244,6 +268,12 @@
       "languages": {
         "en": "Configure Monitors",
         "es": "Configurar monitores"
+      }
+    },
+    "Connected Bots": {
+      "languages": {
+        "en": "Connected Bots",
+        "es": "Bots conectados"
       }
     },
     "Copy Card(s)": {
@@ -364,6 +394,30 @@
       "languages": {
         "en": "Customizing Settings...",
         "es": "Personalizando la configuración..."
+      }
+    },
+    "Dark": {
+      "languages": {
+        "en": "Dark",
+        "es": "Oscuro"
+      }
+    },
+    "Dashboard": {
+      "languages": {
+        "en": "Dashboard",
+        "es": "Tablero"
+      }
+    },
+    "Decide how we notify you": {
+      "languages": {
+        "en": "Decide how we notify you",
+        "es": "Decidir cómo le notificamos"
+      }
+    },
+    "Decide which stores you want to checkout on": {
+      "languages": {
+        "en": "Decide which stores you want to checkout on",
+        "es": "Decida en qué tiendas desea pagar"
       }
     },
     "December": {
@@ -588,6 +642,12 @@
         "es": "Filtros"
       }
     },
+    "French": {
+      "languages": {
+        "en": "French",
+        "es": "Francés"
+      }
+    },
     "Fri": {
       "languages": {
         "en": "Fri",
@@ -600,6 +660,12 @@
         "es": "Viernes"
       }
     },
+    "German": {
+      "languages": {
+        "en": "German",
+        "es": "Alemán"
+      }
+    },
     "Grade": {
       "languages": {
         "en": "Grade",
@@ -610,6 +676,12 @@
       "languages": {
         "en": "Go to",
         "es": "Ir a"
+      }
+    },
+    "Google Accounts": {
+      "languages": {
+        "en": "Google Accounts",
+        "es": "Cuentas de Google"
       }
     },
     "Guides": {
@@ -708,6 +780,12 @@
         "es": "Artículo de inventario"
       }
     },
+    "Italian": {
+      "languages": {
+        "en": "Italian",
+        "es": "Italiano"
+      }
+    },
     "item from your#PLURAL": {
       "languages": {
         "en": "item from your",
@@ -762,6 +840,12 @@
         "es": "Palabras clave (ej: +yeezy, -380)"
       }
     },
+    "Language": {
+      "languages": {
+        "en": "Language",
+        "es": "Idioma"
+      }
+    },
     "Last Year": {
       "languages": {
         "en": "Last Year",
@@ -784,6 +868,12 @@
       "languages": {
         "en": "Last 7 Days",
         "es": "Últimos 7 días"
+      }
+    },
+    "Late-night user? Try out dark mode": {
+      "languages": {
+        "en": "Late-night user? Try out dark mode",
+        "es": "¿Usuario nocturno? Prueba el modo oscuro"
       }
     },
     "Launch Date": {
@@ -816,10 +906,22 @@
         "es": "Por vida"
       }
     },
+    "Light": {
+      "languages": {
+        "en": "Light",
+        "es": "Claro"
+      }
+    },
     "Listing Platform": {
       "languages": {
         "en": "Listing Platform",
         "es": "Plataforma de listados"
+      }
+    },
+    "Log Out": {
+      "languages": {
+        "en": "Log Out",
+        "es": "Cerrar Sesión"
       }
     },
     "Lowest Ask": {
@@ -832,6 +934,12 @@
       "languages": {
         "en": "March",
         "es": "Marzo"
+      }
+    },
+    "Manage your Google accounts for captcha solving and raise trust": {
+      "languages": {
+        "en": "Manage your Google accounts for captcha solving and raise trust",
+        "es": "Gestiona sus cuentas de Google para resolver captcha y aumentar la confianza"
       }
     },
     "Mark Item(s) Sold": {
@@ -998,6 +1106,12 @@
         "es": "No se han añadido entradas"
       }
     },
+    "Notifications": {
+      "languages": {
+        "en": "Notifications",
+        "es": "Notificaciones"
+      }
+    },
     "Notes": {
       "languages": {
         "en": "Notes",
@@ -1079,7 +1193,13 @@
     "Open websites using your computer's default browser": {
       "languages": {
         "en": "Open websites using your computer's default browser",
-        "es": "Abrir sitios web con el navegador predeterminado de tu ordenador"
+        "es": "Abrir sitios web con el navegador predeterminado de su ordenador"
+      }
+    },
+    "Organize your billing information used to automatically checkout": {
+      "languages": {
+        "en": "Organize your billing information used to automatically checkout",
+        "es": "Organice su información de facturación utilizada para pagar automáticamente"
       }
     },
     "Out for Delivery": {
@@ -1166,10 +1286,22 @@
         "es": "Preferencias"
       }
     },
+    "Prevent stores from tracking your internet traffic": {
+      "languages": {
+        "en": "Prevent stores from tracking your internet traffic",
+        "es": "Evita que las tiendas rastreen su tráfico de Internet"
+      }
+    },
     "Press": {
       "languages": {
         "en": "Press",
         "es": "Pulsa"
+      }
+    },
+    "Privacy Policy": {
+      "languages": {
+        "en": "Privacy Policy",
+        "es": "Política de privacidad"
       }
     },
     "Product": {
@@ -1206,6 +1338,12 @@
       "languages": {
         "en": "Proxy Profile",
         "es": "Perfil de proxy"
+      }
+    },
+    "Proxy Profiles": {
+      "languages": {
+        "en": "Proxy Profiles",
+        "es": "Perfiles de proxy"
       }
     },
     "Purchase Tracking Carrier": {
@@ -1430,6 +1568,18 @@
         "es": "Seleccionar cartero"
       }
     },
+    "Select Currency": {
+      "languages": {
+        "en": "Select Currency",
+        "es": "Seleccionar moneda"
+      }
+    },
+    "Select Language": {
+      "languages": {
+        "en": "Select Language",
+        "es": "Seleccionar idioma"
+      }
+    },
     "Select Membership": {
       "languages": {
         "en": "Select Membership",
@@ -1446,6 +1596,24 @@
       "languages": {
         "en": "Select Sizes",
         "es": "Seleccionar tamaños"
+      }
+    },
+    "Select Theme": {
+      "languages": {
+        "en": "Select Theme",
+        "es": "Seleccionar tema"
+      }
+    },
+    "Select your currency": {
+      "languages": {
+        "en": "Select your currency",
+        "es": "Seleccionar su moneda"
+      }
+    },
+    "Select your language": {
+      "languages": {
+        "en": "Select your language",
+        "es": "Seleccionar su idioma"
       }
     },
     "September": {
@@ -1574,6 +1742,12 @@
         "es": ""
       }
     },
+    "Statistics": {
+      "languages": {
+        "en": "Statistics",
+        "es": "Estadísticas"
+      }
+    },
     "Status": {
       "languages": {
         "en": "Status",
@@ -1590,6 +1764,12 @@
       "languages": {
         "en": "Stop",
         "es": "Terminar"
+      }
+    },
+    "Store Regions": {
+      "languages": {
+        "en": "Store Regions",
+        "es": "Regiones de tienda"
       }
     },
     "Store": {
@@ -1664,6 +1844,18 @@
         "es": "Tareas"
       }
     },
+    "Terms of Service": {
+      "languages": {
+        "en": "Terms of Service",
+        "es": "Condiciones de servicio"
+      }
+    },
+    "Theme": {
+      "languages": {
+        "en": "Theme",
+        "es": "Tema"
+      }
+    },
     "There was an issue importing... Ensure that the spreadsheet is in the correct language and format (try exporting to get an example first).": {
       "languages": {
         "en": "There was an issue importing... Ensure that the spreadsheet is in the correct language and format (try exporting to get an example first).",
@@ -1722,6 +1914,12 @@
       "languages": {
         "en": "Tickets",
         "es": "Entradas"
+      }
+    },
+    "Track your activity for Resell Companion": {
+      "languages": {
+        "en": "Track your activity for Resell Companion",
+        "es": "Seguir su actividad en Resell Companion"
       }
     },
     "Tracking": {
@@ -1922,6 +2120,12 @@
         "es": "Usar tamaño aleatorio"
       }
     },
+    "View": {
+      "languages": {
+        "en": "View",
+        "es": "Ver"
+      }
+    },
     "View Card": {
       "languages": {
         "en": "View Card",
@@ -1986,6 +2190,18 @@
       "languages": {
         "en": "Watching Social+ monitors...",
         "es": "Viendo monitores de Social+..."
+      }
+    },
+    "Webhook": {
+      "languages": {
+        "en": "Webhook",
+        "es": "Webhook"
+      }
+    },
+    "Webhook URL": {
+      "languages": {
+        "en": "Webhook URL",
+        "es": "URL de webhook"
       }
     },
     "Wed": {
