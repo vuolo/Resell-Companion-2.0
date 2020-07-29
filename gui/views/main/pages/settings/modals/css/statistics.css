@@ -1,0 +1,1386 @@
+.mediaViewInfo {
+	--web-view-name: Rewrite – Statistics Modal;
+	--web-view-id: Rewrite___Statistics_Modal;
+	--web-scale-on-resize: true;
+	--web-enable-deep-linking: true;
+}
+:root {
+	--web-view-ids: Rewrite___Statistics_Modal;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	border: none;
+}
+.Rewrite___Statistics_Modal_Class {
+	position: absolute;
+	width: 1287px;
+	height: 795px;
+	/* background-color: rgba(255,255,255,1); */
+	overflow: hidden;
+	--web-view-name: Rewrite – Statistics Modal;
+	--web-view-id: Rewrite___Statistics_Modal;
+	--web-scale-on-resize: true;
+	--web-enable-deep-linking: true;
+}
+.Modal_Class {
+	position: absolute;
+	width: 1287px;
+	height: 1842px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+.Modal_Shader {
+	position: absolute;
+	overflow: visible;
+	width: 1287px;
+	height: 795px;
+	left: 0px;
+	top: 0px;
+}
+.Modal_Rectangle {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 741px;
+	height: 701px;
+	left: 273px;
+	top: 50px;
+}
+
+
+.Statistics_Area {
+	left: 0px;
+	top: 145px;
+	width: 1018px;
+	height: 590px;
+	overflow: auto;
+	overflow-x: hidden;
+	position: absolute;
+}
+
+
+.Statistics_Table_Class {
+	position: absolute;
+	width: 680px;
+	height: 184px;
+	left: 338.124px;
+	top: 422px;
+	/* overflow: auto;
+	overflow-x: hidden; */
+	overflow: visible;
+}
+.Social_Plus_Class {
+	position: absolute;
+	width: 720.212px;
+	height: 267px;
+	left: 2.664px;
+	top: 1008px;
+	overflow: visible;
+}
+.Twitter_Handles_Watched________Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 30.212px;
+	top: 30px;
+	overflow: visible;
+	width: 691px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(0,0,0,1);
+}
+.Social__Class {
+	position: absolute;
+	left: 30.212px;
+	top: 0px;
+	overflow: visible;
+	width: 76px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(0,0,0,1);
+}
+.Instagram_Handles_Watched______Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 30.212px;
+	top: 84px;
+	overflow: visible;
+	width: 654px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(0,0,0,1);
+}
+.Instagram_Posts_Received_______Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 30.212px;
+	top: 111px;
+	overflow: visible;
+	width: 634px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(0,0,0,1);
+}
+.Twitter_Posts_Received_________Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 30.212px;
+	top: 57px;
+	overflow: visible;
+	width: 608px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(0,0,0,1);
+}
+.Links_Opened___________________Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 30.212px;
+	top: 138px;
+	overflow: visible;
+	width: 528px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(0,0,0,1);
+}
+.Joined_Discord_Servers_________Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 30.212px;
+	top: 165px;
+	overflow: visible;
+	width: 611px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(0,0,0,1);
+}
+.Restocks_Detected______________Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 30.212px;
+	top: 192px;
+	overflow: visible;
+	width: 574px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(0,0,0,1);
+}
+.Giveaways_Detected_____________Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 30.212px;
+	top: 219px;
+	overflow: visible;
+	width: 586px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(0,0,0,1);
+}
+.Keywords_Found_________________Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 30.212px;
+	top: 246px;
+	overflow: visible;
+	width: 554px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(0,0,0,1);
+}
+.Social_Plus_Icon {
+	overflow: visible;
+	position: absolute;
+	width: 23.824px;
+	height: 15.161px;
+	left: 0px;
+	top: 4.428px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Market_Lookup_Class {
+	position: absolute;
+	width: 580.68px;
+	height: 78px;
+	left: 4.196px;
+	top: 918px;
+	overflow: visible;
+}
+.Searches_______________________Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 28.68px;
+	top: 30px;
+	overflow: visible;
+	width: 553px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(0,0,0,1);
+}
+.Market_Lookup_eu_Class {
+	position: absolute;
+	left: 28.68px;
+	top: 0px;
+	overflow: visible;
+	width: 150px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(0,0,0,1);
+}
+.Items_Compared_________________Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 28.68px;
+	top: 57px;
+	overflow: visible;
+	width: 553px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(0,0,0,1);
+}
+.Market_Lookup_Icon {
+	overflow: visible;
+	position: absolute;
+	width: 21.018px;
+	height: 15.764px;
+	left: 0px;
+	top: 4.092px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Cards_Class {
+	position: absolute;
+	width: 576.152px;
+	height: 105px;
+	left: 6.724px;
+	top: 801px;
+	overflow: visible;
+}
+.Cards_Added____________________Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 26.152px;
+	top: 30px;
+	overflow: visible;
+	width: 551px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(0,0,0,1);
+}
+.Cards_ez_Class {
+	position: absolute;
+	left: 26.152px;
+	top: 0px;
+	overflow: visible;
+	width: 60px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(0,0,0,1);
+}
+.Cards_Sold_____________________Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 26.152px;
+	top: 57px;
+	overflow: visible;
+	width: 550px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(0,0,0,1);
+}
+.Packages_Tracked_______________Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 26.152px;
+	top: 84px;
+	overflow: visible;
+	width: 550px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(0,0,0,1);
+}
+.Card {
+	overflow: visible;
+	position: absolute;
+	width: 16.924px;
+	height: 20.568px;
+	left: 0px;
+	top: 1.827px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Tickets_Class {
+	position: absolute;
+	width: 580.365px;
+	height: 78px;
+	left: 2.511px;
+	top: 711px;
+	overflow: visible;
+}
+.Tickets_Added__________________Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 30.365px;
+	top: 30px;
+	overflow: visible;
+	width: 551px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(0,0,0,1);
+}
+.Tickets_e_Class {
+	position: absolute;
+	left: 30.365px;
+	top: 0px;
+	overflow: visible;
+	width: 74px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(0,0,0,1);
+}
+.Tickets_Sold___________________Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 30.365px;
+	top: 57px;
+	overflow: visible;
+	width: 550px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(0,0,0,1);
+}
+.Tickets_Icon {
+	overflow: visible;
+	position: absolute;
+	width: 23.139px;
+	height: 15.426px;
+	left: 0px;
+	top: 4.543px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Bots_Class {
+	position: absolute;
+	width: 579.053px;
+	height: 78px;
+	left: 2.823px;
+	top: 621px;
+	overflow: visible;
+}
+.Bots_Added_____________________Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 30.053px;
+	top: 30px;
+	overflow: visible;
+	width: 550px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(0,0,0,1);
+}
+.Bots_fa_Class {
+	position: absolute;
+	left: 30.053px;
+	top: 0px;
+	overflow: visible;
+	width: 47px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(0,0,0,1);
+}
+.Bots_Sold______________________Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 30.053px;
+	top: 57px;
+	overflow: visible;
+	width: 549px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(0,0,0,1);
+}
+.Bots_Icon {
+	overflow: visible;
+	position: absolute;
+	width: 22.246px;
+	height: 17.797px;
+	left: 0px;
+	top: 2.984px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Inventory_Class {
+	position: absolute;
+	width: 579px;
+	height: 78px;
+	left: 5.876px;
+	top: 531px;
+	overflow: visible;
+}
+.Packages_Tracked_______________fe_Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 27px;
+	top: 57px;
+	overflow: visible;
+	width: 550px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(0,0,0,1);
+}
+.Items_Added____________________Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 27px;
+	top: 30px;
+	overflow: visible;
+	width: 553px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(0,0,0,1);
+}
+.Inventory_fg_Class {
+	position: absolute;
+	left: 27px;
+	top: 0px;
+	overflow: visible;
+	width: 97px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(0,0,0,1);
+}
+.Inventory_Icon_Class {
+	position: absolute;
+	width: 17.301px;
+	height: 18.016px;
+	left: 0px;
+	top: 2.984px;
+	overflow: visible;
+}
+.Path_444 {
+	overflow: visible;
+	position: absolute;
+	width: 17.601px;
+	height: 18.313px;
+	left: 0px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Path_445 {
+	overflow: visible;
+	position: absolute;
+	width: 4.362px;
+	height: 2.178px;
+	left: 11.584px;
+	top: 13.014px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Path_446 {
+	overflow: visible;
+	position: absolute;
+	width: 3.639px;
+	height: 1.916px;
+	left: 12.307px;
+	top: 10.039px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Path_447 {
+	overflow: visible;
+	position: absolute;
+	width: 3.635px;
+	height: 1.909px;
+	left: 12.309px;
+	top: 11.505px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Path_448 {
+	overflow: visible;
+	position: absolute;
+	width: 1.024px;
+	height: 0.948px;
+	left: 10.489px;
+	top: 14.925px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Sales_Class {
+	position: absolute;
+	width: 581.876px;
+	height: 78px;
+	left: 0px;
+	top: 441px;
+	overflow: visible;
+}
+.Packages_Tracked_______________fo_Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 32.876px;
+	top: 57px;
+	overflow: visible;
+	width: 550px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(0,0,0,1);
+}
+.Sold_Items_____________________Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 32.876px;
+	top: 30px;
+	overflow: visible;
+	width: 547px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(0,0,0,1);
+}
+.Sales_fq_Class {
+	position: absolute;
+	left: 32.876px;
+	top: 0px;
+	overflow: visible;
+	width: 55px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(0,0,0,1);
+}
+.Dollars_Icon {
+	overflow: visible;
+	position: absolute;
+	width: 24.622px;
+	height: 15.576px;
+	left: 0px;
+	top: 4.97px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Browsers_Class {
+	position: absolute;
+	width: 577.538px;
+	height: 78px;
+	left: 4.338px;
+	top: 351px;
+	overflow: visible;
+}
+.Browsers_Refreshed_____________Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 28.538px;
+	top: 57px;
+	overflow: visible;
+	width: 550px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(0,0,0,1);
+}
+.Browsers_Created_______________Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 28.538px;
+	top: 30px;
+	overflow: visible;
+	width: 547px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(0,0,0,1);
+}
+.Browsers_fv_Class {
+	position: absolute;
+	left: 28.538px;
+	top: 0px;
+	overflow: visible;
+	width: 95px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(0,0,0,1);
+}
+.Browser_Icon_Class {
+	position: absolute;
+	width: 19.538px;
+	height: 15.274px;
+	left: 0px;
+	top: 4.238px;
+	overflow: visible;
+}
+.Path_443 {
+	overflow: visible;
+	position: absolute;
+	width: 19.738px;
+	height: 15.474px;
+	left: 0px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Ellipse_338 {
+	position: absolute;
+	overflow: visible;
+	width: 1.707px;
+	height: 1.706px;
+	left: 1.515px;
+	top: 1.572px;
+}
+.Ellipse_339 {
+	position: absolute;
+	overflow: visible;
+	width: 1.707px;
+	height: 1.706px;
+	left: 3.549px;
+	top: 1.572px;
+}
+.Ellipse_340 {
+	position: absolute;
+	overflow: visible;
+	width: 1.707px;
+	height: 1.706px;
+	left: 5.583px;
+	top: 1.572px;
+}
+.Spoof_Class {
+	position: absolute;
+	width: 570.249px;
+	height: 51px;
+	left: 6.627px;
+	top: 288px;
+	overflow: visible;
+}
+.Device_Locations_Spoofed_______Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 26.249px;
+	top: 30px;
+	overflow: visible;
+	width: 545px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(0,0,0,1);
+}
+.Spoof_f_Class {
+	position: absolute;
+	left: 26.249px;
+	top: 0px;
+	overflow: visible;
+	width: 60px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(0,0,0,1);
+}
+.Spoof_Icon {
+	overflow: visible;
+	position: absolute;
+	width: 14.677px;
+	height: 19.569px;
+	left: 0px;
+	top: 2.43px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Tasks_Class {
+	position: absolute;
+	width: 570.764px;
+	height: 132px;
+	left: 5.112px;
+	top: 144px;
+	overflow: visible;
+}
+.Successful_Tasks_______________Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 27.764px;
+	top: 111px;
+	overflow: visible;
+	width: 542px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(0,0,0,1);
+}
+.Failed_Tasks___________________Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 27.764px;
+	top: 84px;
+	overflow: visible;
+	width: 544px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(0,0,0,1);
+}
+.Tasks_Launched_________________Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 27.764px;
+	top: 57px;
+	overflow: visible;
+	width: 544px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(0,0,0,1);
+}
+.Tasks_Created__________________Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 27.764px;
+	top: 30px;
+	overflow: visible;
+	width: 544px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(0,0,0,1);
+}
+.Tasks_ga_Class {
+	position: absolute;
+	left: 27.764px;
+	top: 0px;
+	overflow: visible;
+	width: 58px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(0,0,0,1);
+}
+.Tasks_Icon {
+	overflow: visible;
+	position: absolute;
+	width: 19.33px;
+	height: 19.325px;
+	left: 0px;
+	top: 1.885px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Monitors_Class {
+	position: absolute;
+	width: 573.769px;
+	height: 132px;
+	left: 3.107px;
+	top: 0px;
+	overflow: visible;
+}
+.Shopping_Bag_Checkouts_________Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 29.769px;
+	top: 111px;
+	overflow: visible;
+	width: 543px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(0,0,0,1);
+}
+.Products_Added_to_Shopping_Bag_Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 29.769px;
+	top: 84px;
+	overflow: visible;
+	width: 545px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(0,0,0,1);
+}
+.Products_Opened________________Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 29.769px;
+	top: 57px;
+	overflow: visible;
+	width: 544px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(0,0,0,1);
+}
+.Tasks_Launched_________________gg_Class {
+	position: absolute;
+	left: 29.769px;
+	top: 30px;
+	overflow: visible;
+	width: 543px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(0,0,0,0.659);
+}
+.Monitors_gh_Class {
+	position: absolute;
+	left: 29.769px;
+	top: 0px;
+	overflow: visible;
+	width: 90px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(0,0,0,1);
+}
+.Monitors_Icon {
+	overflow: visible;
+	position: absolute;
+	width: 22.543px;
+	height: 18.032px;
+	left: 0px;
+	top: 2.984px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Scroll_Bar {
+	filter: drop-shadow(0px 2px 6px rgba(0, 0, 0, 0.161));
+	width: 150px;
+	height: 8px;
+	position: absolute;
+	overflow: visible;
+	transform: translate(0px, 0px) matrix(1,0,0,1,886,238) rotate(90deg);
+	transform-origin: center;
+}
+.Separator {
+	position: absolute;
+	overflow: visible;
+	width: 493px;
+	height: 3px;
+	left: 397.5px;
+	top: 392px;
+}
+.Failed_Checkouts_Area_Class {
+	position: absolute;
+	width: 205px;
+	height: 337.103px;
+	left: 657px;
+	top: 27.897px;
+	overflow: visible;
+}
+.Shopify_Area_Class {
+	position: absolute;
+	width: 205px;
+	height: 42px;
+	left: 0px;
+	top: 295.103px;
+	overflow: visible;
+}
+.Rectangle {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 223px;
+	height: 60px;
+	left: 0px;
+	top: 0px;
+}
+.Bottom_Rectangle {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 223px;
+	height: 23px;
+	left: 0px;
+	top: 37px;
+}
+.Text_Class {
+	position: absolute;
+	left: 110px;
+	top: 6.124px;
+	overflow: visible;
+	width: 85px;
+	white-space: nowrap;
+	text-align: right;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,0.659);
+}
+.Title_Class {
+	position: absolute;
+	left: 7.843px;
+	top: 6.124px;
+	overflow: visible;
+	width: 78px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,0.659);
+}
+.Shopify_Icon_Class {
+	position: absolute;
+	width: 19px;
+	height: 22px;
+	left: 93px;
+	top: 7px;
+	overflow: visible;
+}
+.Supreme_Area_Class {
+	position: absolute;
+	width: 205px;
+	height: 42px;
+	left: 0px;
+	top: 237.103px;
+	overflow: visible;
+}
+.Rectangle_gt {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 223px;
+	height: 60px;
+	left: 0px;
+	top: 0px;
+}
+.Bottom_Rectangle_gu {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 223px;
+	height: 23px;
+	left: 0px;
+	top: 37px;
+}
+.Text_gv_Class {
+	position: absolute;
+	left: 110px;
+	top: 6.124px;
+	overflow: visible;
+	width: 85px;
+	white-space: nowrap;
+	text-align: right;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,0.659);
+}
+.Title_gw_Class {
+	position: absolute;
+	left: 7.843px;
+	top: 6.124px;
+	overflow: visible;
+	width: 91px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,0.659);
+}
+.Failed_Checkouts_Circle_Class {
+	position: absolute;
+	width: 160px;
+	height: 221.103px;
+	left: 23px;
+	top: 0px;
+	overflow: visible;
+}
+.ID836_Class {
+	position: absolute;
+	left: 7px;
+	top: 33.103px;
+	overflow: visible;
+	width: 150px;
+	white-space: nowrap;
+	line-height: 60px;
+	margin-top: -2.5px;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 55px;
+	color: rgba(29,29,29,1);
+}
+.Outline_Circle {
+	overflow: visible;
+	position: absolute;
+	width: 144.352px;
+	height: 142.042px;
+	left: 9.773px;
+	top: -9px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Failed_Checkouts_Class {
+	position: absolute;
+	left: 0px;
+	top: 155.103px;
+	overflow: visible;
+	width: 100%;
+	white-space: pre-wrap;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 30px;
+	color: rgba(29,29,29,1);
+}
+.Successful_Checkouts_Area_Class {
+	position: absolute;
+	width: 205px;
+	height: 337.103px;
+	left: 425px;
+	top: 27.897px;
+	overflow: visible;
+}
+.Shopify_Area_g_Class {
+	position: absolute;
+	width: 205px;
+	height: 42px;
+	left: 0px;
+	top: 295.103px;
+	overflow: visible;
+}
+.Rectangle_g {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 223px;
+	height: 60px;
+	left: 0px;
+	top: 0px;
+}
+.Bottom_Rectangle_g {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 223px;
+	height: 23px;
+	left: 0px;
+	top: 37px;
+}
+.Text_g_Class {
+	position: absolute;
+	left: 110px;
+	top: 6.124px;
+	overflow: visible;
+	width: 85px;
+	white-space: nowrap;
+	text-align: right;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,0.659);
+}
+.Title_g_Class {
+	position: absolute;
+	left: 7.843px;
+	top: 6.124px;
+	overflow: visible;
+	width: 78px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,0.659);
+}
+.Shopify_Icon_g_Class {
+	position: absolute;
+	width: 19px;
+	height: 22px;
+	left: 93px;
+	top: 7px;
+	overflow: visible;
+}
+.Supreme_Area_g_Class {
+	position: absolute;
+	width: 205px;
+	height: 42px;
+	left: 0px;
+	top: 237.103px;
+	overflow: visible;
+}
+.Rectangle_ha {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 223px;
+	height: 60px;
+	left: 0px;
+	top: 0px;
+}
+.Bottom_Rectangle_ha {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 223px;
+	height: 23px;
+	left: 0px;
+	top: 37px;
+}
+.Text_hb_Class {
+	position: absolute;
+	left: 110px;
+	top: 6.124px;
+	overflow: visible;
+	width: 85px;
+	white-space: nowrap;
+	text-align: right;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	line-height: 25px;
+	color: rgba(29,29,29,0.659);
+}
+.Title_hc_Class {
+	position: absolute;
+	left: 7.843px;
+	top: 6.124px;
+	overflow: visible;
+	width: 91px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,0.659);
+}
+.Successful_Checkouts_Circle_Class {
+	position: absolute;
+	width: 166px;
+	height: 221.103px;
+	left: 20px;
+	top: 0px;
+	overflow: visible;
+}
+.ID836_he_Class {
+	position: absolute;
+	left: 9px;
+	top: 33.103px;
+	overflow: visible;
+	width: 150px;
+	white-space: nowrap;
+	line-height: 60px;
+	margin-top: -2.5px;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 55px;
+	color: rgba(29,29,29,1);
+}
+.Outline_Circle_hf {
+	overflow: visible;
+	position: absolute;
+	width: 144.352px;
+	height: 142.042px;
+	left: 11.773px;
+	top: -9px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Successful_Checkouts_Class {
+	position: absolute;
+	left: 0px;
+	top: 155.103px;
+	overflow: visible;
+	width: 100%;
+	white-space: pre-wrap;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 30px;
+	color: rgba(29,29,29,1);
+}
+.Header_Class {
+	position: absolute;
+	width: 696.921px;
+	height: 58.572px;
+	left: 298.166px;
+	top: 66.552px;
+	overflow: visible;
+}
+.Browser_Close_Button {
+	overflow: visible;
+	position: absolute;
+	width: 21px;
+	height: 20px;
+	left: 675.921px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Blue_Bar {
+	position: absolute;
+	overflow: visible;
+	width: 75px;
+	height: 3px;
+	left: 20.834px;
+	top: 51.448px;
+}
+.Statistics_Class {
+	position: absolute;
+	left: 0px;
+	top: 10.572px;
+	overflow: visible;
+	width: 193px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -1px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: 900;
+	font-size: 40px;
+	color: rgba(29,29,29,1);
+}

@@ -150,7 +150,7 @@
 					</div>
 
 					<div class="Product_Site_ff_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), width: getProductCardWidth(product) + 'px' }">
-						<span class="clickable hover-underline text-selectable" v-on:click="openURL(product.Store, configureModal.preferences.useDefaultBrowser, { title: 'Resell Companion — ' + product.StoreName });">{{product.Store}}</span>
+						<span class="clickable hover-underline text-selectable" v-on:click="openURL(product.Store, configureModal.preferences.useDefaultBrowser, { title: 'Resell Companion — ' + product.StoreName }); addStatistic('Monitors', 'Products Opened');">{{product.Store}}</span>
 					</div>
 
 					<div class="Sizes_Table_Class" v-show="!product.isDisplayingMoreInfo">
@@ -179,7 +179,7 @@
 					</div>
 
 					<div class="Product_Image_Class">
-						<img class="clickable hover-opacity" style="display: table-cell; vertical-align: middle; max-width: 143px; max-height: 143px; border-radius: 20px; margin-left: auto; margin-right: auto;" v-bind:class="{ transparentify: companionSettings.theme == 'light' }" v-show="!product.isDisplayingMoreInfo" v-bind:src="product.ImageURL" v-on:click="openURL(product.OverrideURL.length > 0 ? product.OverrideURL : product.URL, configureModal.preferences.useDefaultBrowser, { title: 'Resell Companion — ' + product.Name });" onerror="this.src='../../../../images/unknownImage.png'">
+						<img class="clickable hover-opacity" style="display: table-cell; vertical-align: middle; max-width: 143px; max-height: 143px; border-radius: 20px; margin-left: auto; margin-right: auto;" v-bind:class="{ transparentify: companionSettings.theme == 'light' }" v-show="!product.isDisplayingMoreInfo" v-bind:src="product.ImageURL" v-on:click="openURL(product.OverrideURL.length > 0 ? product.OverrideURL : product.URL, configureModal.preferences.useDefaultBrowser, { title: 'Resell Companion — ' + product.Name }); addStatistic('Monitors', 'Products Opened');" onerror="this.src='../../../../images/unknownImage.png'">
 					</div>
 
 					<!-- <div class="Info_Icon_gf_Class hover-opacity" @mouseover="product.isDisplayingMoreInfo = true" @mouseleave="product.isDisplayingMoreInfo = false"> -->
@@ -235,7 +235,7 @@
 					</div>
 
 					<div class="Product_Title_gj_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(getProductCardWidth(product) - (473-415), product.Name, 14, 'px', 'bold', 'SF Pro Text') }">
-						<span class="clickable hover-underline text-selectable" v-on:click="openURL(product.OverrideURL.length > 0 ? product.OverrideURL : product.URL, configureModal.preferences.useDefaultBrowser, { title: 'Resell Companion — ' + product.Name });">{{product.Name.length > 0 ? product.Name : tryTranslate('Unknown Product')}}</span>
+						<span class="clickable hover-underline text-selectable" v-on:click="openURL(product.OverrideURL.length > 0 ? product.OverrideURL : product.URL, configureModal.preferences.useDefaultBrowser, { title: 'Resell Companion — ' + product.Name }); addStatistic('Monitors', 'Products Opened');">{{product.Name.length > 0 ? product.Name : tryTranslate('Unknown Product')}}</span>
 					</div>
 				</div>
 			</template>
@@ -260,7 +260,7 @@
 			</svg>
 
 			<template v-if="shoppingBagIndex != -1">
-				<div v-if="shoppingBags[shoppingBagIndex].variants.length > 0" class="Checkout_Button_Class clickable hover-opacity" v-on:click="(async () => { openURL(await tryGenerateShoppingBag(shoppingBags[shoppingBagIndex].store_url, true, true), configureModal.preferences.useDefaultBrowser, { title: 'Resell Companion — ' + shoppingBags[shoppingBagIndex].store_name + ' Checkout' }); })">
+				<div v-if="shoppingBags[shoppingBagIndex].variants.length > 0" class="Checkout_Button_Class clickable hover-opacity" v-on:click="(async () => { openURL(await tryGenerateShoppingBag(shoppingBags[shoppingBagIndex].store_url, true, true), configureModal.preferences.useDefaultBrowser, { title: 'Resell Companion — ' + shoppingBags[shoppingBagIndex].store_name + ' Checkout' }); addStatistic('Monitors', 'Shopping Bag Checkouts'); })">
 					<svg class="Checkout_Rectangle">
 						<rect fill="rgba(53,178,57,1)" class="Checkout_Rectangle_Class" rx="10" ry="10" x="0" y="0" width="276" height="41">
 						</rect>
@@ -292,10 +292,10 @@
 							</path>
 						</svg>
 						<div class="Product_Image_gu_Class" style="width: 80px; height: 80px;">
-							<img class="clickable hover-opacity" style="display: table-cell; vertical-align: middle; max-width: 80px; max-height: 80px; border-radius: 15px; margin-left: auto; margin-right: auto;" v-bind:class="{ transparentify: companionSettings.theme == 'light' }" v-bind:src="shoppingBagVariant.parent.ImageURL" v-on:click="openURL(shoppingBagVariant.parent.URL, configureModal.preferences.useDefaultBrowser, { title: 'Resell Companion — ' + shoppingBagVariant.parent.Name });" onerror="this.src='../../../../../../../images/unknownImage.png'">
+							<img class="clickable hover-opacity" style="display: table-cell; vertical-align: middle; max-width: 80px; max-height: 80px; border-radius: 15px; margin-left: auto; margin-right: auto;" v-bind:class="{ transparentify: companionSettings.theme == 'light' }" v-bind:src="shoppingBagVariant.parent.ImageURL" v-on:click="openURL(shoppingBagVariant.parent.URL, configureModal.preferences.useDefaultBrowser, { title: 'Resell Companion — ' + shoppingBagVariant.parent.Name }); addStatistic('Monitors', 'Products Opened');" onerror="this.src='../../../../../../../images/unknownImage.png'">
 						</div>
 						<div class="Product_Title_gv_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-							<span class="clickable hover-opacity hover-underline" v-on:click="openURL(shoppingBagVariant.parent.URL, configureModal.preferences.useDefaultBrowser, { title: 'Resell Companion — ' + shoppingBagVariant.parent.Name });">{{shoppingBagVariant.parent.Name}}</span><br><span style="font-style:normal;font-weight:normal;">{{tryTranslate(shoppingBagVariant.variant.Name)}}</span>
+							<span class="clickable hover-opacity hover-underline" v-on:click="openURL(shoppingBagVariant.parent.URL, configureModal.preferences.useDefaultBrowser, { title: 'Resell Companion — ' + shoppingBagVariant.parent.Name }); addStatistic('Monitors', 'Products Opened');">{{shoppingBagVariant.parent.Name}}</span><br><span style="font-style:normal;font-weight:normal;">{{tryTranslate(shoppingBagVariant.variant.Name)}}</span>
 						</div>
 						<div class="Product_Price_gw_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
 							<span>{{getBagVariantValue(shoppingBagVariant, true, true)}}</span>
@@ -369,6 +369,7 @@
 					switch (key) {
 						case 'open':
 							window.parent.openURL(product.OverrideURL.length > 0 ? product.OverrideURL : product.URL, window.monitorsApp.configureModal.preferences.useDefaultBrowser, { title: 'Resell Companion — ' + product.Name });
+							window.parent.addStatistic('Monitors', 'Products Opened');
 							break;
 						case 'copy_url':
 							window.parent.copy(product.URL);

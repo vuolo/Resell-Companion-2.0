@@ -135,7 +135,7 @@ function addVariantToShoppingBags(product, variant, quantity = 1) {
   }
   if (foundStoreIndex == -1) { // not found, add variant to shoppingBags
     if (quantity <= 0) {
-      return true;
+      return false;
     }
     shoppingBags.push(
       {
@@ -150,6 +150,7 @@ function addVariantToShoppingBags(product, variant, quantity = 1) {
         ]
       }
     );
+    window.parent.addStatistic('Monitors', 'Products Added to Shopping Bag');
     return true;
   } else { // bag found, add variant to shopping bag
     for (var i = 0; i < shoppingBags[foundStoreIndex].variants.length; i++ ) {
@@ -158,11 +159,12 @@ function addVariantToShoppingBags(product, variant, quantity = 1) {
         if (shoppingBags[foundStoreIndex].variants[i].quantity <= 0) {
           shoppingBags[foundStoreIndex].variants.splice(i, 1);
         }
+        window.parent.addStatistic('Monitors', 'Products Added to Shopping Bag');
         return true;
       }
     }
     if (quantity <= 0) {
-      return true;
+      return false;
     }
     shoppingBags[foundStoreIndex].variants.push(
       {
@@ -171,6 +173,7 @@ function addVariantToShoppingBags(product, variant, quantity = 1) {
         parent: product
       }
     );
+    window.parent.addStatistic('Monitors', 'Products Added to Shopping Bag');
     return true;
   }
   return false;

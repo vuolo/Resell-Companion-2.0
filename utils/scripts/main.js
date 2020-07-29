@@ -285,3 +285,7 @@ window.roundNumber = (num, scale = 2) => {
 window.getNumberFromString = (string) => {
   return Number(string.replace(/[^0-9\.]+/g,""));
 }
+
+window.getObjectKeyIndex = (object, key) => {
+  return Object.keys(object).indexOf(key);
+};

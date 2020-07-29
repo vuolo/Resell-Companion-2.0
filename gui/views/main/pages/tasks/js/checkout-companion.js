@@ -58,10 +58,14 @@ async function beginShopifyCheckout(node, billingProfile, variant) {
   node.currentCheckoutStep = await getCurrentCheckoutStep(node);
   if (node.currentCheckoutStep == 'stock_problems') { // detect if item is OOS
     window.tasksApp.toggleNodeEnabled(node, false, true, { color: "red", description: `${window.parent.tryTranslate('Size Unavailable (Sold Out)')} [${variant.Name}]` });
+    window.parent.addStatistic('Tasks', 'Failed Tasks');
+    // TODO: update checkouts statistic for 'shopify' or 'supreme' identifier
     return;
   } else if (node.currentCheckoutStep == 'thank_you') { // detect if item was successfully checked out
     window.tasksApp.toggleNodeEnabled(node, false, true, { color: "green", description: `${window.parent.tryTranslate('Successfully Checked Out')} [${variant.Name}]` });
     // TODO: send notification
+    window.parent.addStatistic('Tasks', 'Successful Tasks');
+    // TODO: update checkouts statistic for 'shopify' or 'supreme' identifier
     return;
   } else if (node.currentCheckoutStep == 'contact_information') {
     // main autofill information fields

@@ -63,6 +63,7 @@ window.monitorsApp = new Vue({
     getThemeColor: window.parent.getThemeColor,
     openURL: window.parent.openURL,
     getKeyOnCurPlatform: window.parent.getKeyOnCurPlatform,
+    addStatistic: window.parent.addStatistic,
     openModal: window.openModal,
     refreshVisualizedProducts: refreshVisualizedProducts,
     getTotalBagQuantity: getTotalBagQuantity,
@@ -218,11 +219,11 @@ window.monitorsApp = new Vue({
       return outRow;
     },
     launchVariantCheckout: function(product, variant, useConnectedBots = false) {
-      if (!useConnectedBots) {
-        window.parent.frames['tasks-frame'].launchCheckout(product, variant, this.configureModal.preferences.useDefaultBrowser);
-        return;
+      if (!useConnectedBots) window.parent.frames['tasks-frame'].launchCheckout(product, variant, this.configureModal.preferences.useDefaultBrowser);
+      else { // TODO: launch with connected bots
+
       }
-      // TODO: launch with connected bots
+      window.parent.addStatistic('Monitors', 'Tasks Launched');
     }
   }
 });

@@ -204,6 +204,7 @@ window.tasksApp = new Vue({
       }
       tasks.push(taskTemplate);
       if (this.activeTaskIndex == -1 && tasks.length == 1) this.setActiveTask(0);
+      window.parent.addStatistic('Tasks', 'Products Created');
       return tasks.length;
     },
     updateBeginMonitoringAtTimestamp: function() {
@@ -234,6 +235,7 @@ window.addTaskNode = () => {
   for (var i = 0; i < tasksApp.createModal.quantity; i++) {
     newTaskNode.id = window.parent.makeid(10); // assign a new id to each node
     tasks[tasksApp.activeTaskIndex].nodes.push(window.parent.memory.copyObj(newTaskNode));
+    window.parent.addStatistic('Tasks', 'Tasks Created');
   }
   // TODO?: reorganize tasks based on table filter
 };
@@ -393,6 +395,7 @@ window.launchTaskNode = (node, product, variant) => {
   } else { // use connected bots
 
   }
+  window.parent.addStatistic('Tasks', 'Tasks Launched');
 };
 
 window.trylaunchTaskNodes = (task, product) => {

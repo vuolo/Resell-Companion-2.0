@@ -55,6 +55,10 @@ window.openModal = (modalName) => {
 
 window.modalLoadedCallback = (modalName) => {
   if (modalName == 'billing-profiles') settingsApp.billingProfilesModal = window.frames['billing-profiles-modal'].modalOptions;
+  else if (modalName == 'statistics') {
+    settingsApp.statisticsModal = window.frames['statistics-modal'].modalOptions;
+    window.parent.addStatistic = (category, statistic, value = 1) => settingsApp.statisticsModal.categories[category][statistic] += value;
+  }
 };
 
 window.settingsApp = new Vue({
@@ -65,7 +69,8 @@ window.settingsApp = new Vue({
     appVersion: window.parent.appVersion,
     settings: window.settings,
     modals: window.modals,
-    billingProfilesModal: {}
+    billingProfilesModal: {},
+    statisticsModal: {}
   },
   methods: {
     confineTextWidth: window.parent.confineTextWidth,
@@ -111,7 +116,7 @@ window.settingsApp = new Vue({
       this.companionSettings.currencyName = newCurrency.name;
       this.companionSettings.currencySymbol = newCurrency.symbol;
       window.parent.frames['analytics-frame'].frames['overview-subpage'].updatePortfolioGraphCurrency();
-      // TODO: update all sales, inventoryItems, subscriptions, tickets, and cards SALe and PURCHASE prices
+      // TODO: update all sales, inventoryItems, subscriptions, tickets, and cards SALE and PURCHASE prices
     }
   }
 });
