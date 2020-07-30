@@ -29,6 +29,9 @@ function getMainWebContentsID() {
   for (var webContents of window.electron.remote.webContents.getAllWebContents()) if (webContents.getURL().includes("/main/index.html")) return webContents.id;
 }
 
+window.parent.addStatistic = function() {};
+window.parent.addCheckoutStatistic = function() {};
+
 const USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.106 Safari/537.36';
 const ICON_PATH = process.platform == "win32" ? path.resolve(__dirname, '../../../build-assets/icons/win-icon.ico') : undefined; // not needed for mac
 window.DEFAULT_OPEN_INTERNAL_OPTIONS = {

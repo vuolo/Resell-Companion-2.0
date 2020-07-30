@@ -44,7 +44,7 @@
 			</svg>
 		</div>
 		<div class="Version_Number_Class">
-			<span>Version 2.0.0</span>
+			<span id="VersionText">Version</span> <span id="VersionNumber">2.0.0</span>
 		</div>
 		<div class="User_Profile_Area_Class">
 			<div class="User_Profile_Name_Class">
@@ -113,6 +113,8 @@
 			};
 		}
 	});
+
+	document.getElementById('VersionNumber').innerText = require('electron').remote.app.getVersion();
 
 	</script>
 

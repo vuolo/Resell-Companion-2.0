@@ -35,7 +35,7 @@ window.setTheme = (theme = window.companionSettings.theme) => {
   })();
 };
 
-window.getThemeColor = (incomingLightColor, theme = window.companionSettings.theme) => {
+window.getThemeColor = (incomingLightColor, theme = window.companionSettings ? window.companionSettings.theme : 'light') => {
   return themes[incomingLightColor] && themes[incomingLightColor].themes[theme] ? themes[incomingLightColor].themes[theme] : incomingLightColor;
 };
 

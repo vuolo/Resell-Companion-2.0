@@ -111,7 +111,13 @@
     "Automatically redirect all notifications to a Discord webhook": {
       "languages": {
         "en": "Automatically redirect all notifications to a Discord webhook",
-        "es": "Redirija automáticamente todas las notificaciones a un webhook de discordia"
+        "es": "Redirija automáticamente todas las notificaciones a un webhook de Discord"
+      }
+    },
+    "Available": {
+      "languages": {
+        "en": "Available",
+        "es": "Disponible"
       }
     },
     "Banners": {
@@ -244,6 +250,12 @@
       "languages": {
         "en": "Check for Update",
         "es": "Buscar actualizaciones"
+      }
+    },
+    "Checking for Update": {
+      "languages": {
+        "en": "Checking for Update",
+        "es": "Buscando actualización"
       }
     },
     "Checkout Canceled": {
@@ -495,7 +507,7 @@
     "Discord Servers Joined": {
       "languages": {
         "en": "Discord Servers Joined",
-        "es": "Servidores de discordia unidos"
+        "es": "Servidores de Discord unidos"
       }
     },
     "Done": {
@@ -556,6 +568,12 @@
       "languages": {
         "en": "English",
         "es": "Inglés"
+      }
+    },
+    "Error Checking": {
+      "languages": {
+        "en": "Error Checking",
+        "es": "Error de buscar"
       }
     },
     "Est. Profit": {
@@ -960,6 +978,12 @@
         "es": "¿Usuario nocturno? Prueba el modo oscuro"
       }
     },
+    "Latest Version": {
+      "languages": {
+        "en": "Latest Version",
+        "es": "Última versión"
+      }
+    },
     "Launch Date": {
       "languages": {
         "en": "Launch Date",
@@ -1296,6 +1320,12 @@
       "languages": {
         "en": "Out for Delivery",
         "es": "En ruta de entrega"
+      }
+    },
+    "Outdated Version": {
+      "languages": {
+        "en": "Outdated Version",
+        "es": "Versión anterior"
       }
     },
     "Overview": {

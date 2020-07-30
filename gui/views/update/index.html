@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Resell Monster — Updating...</title>
+
+	<link rel="stylesheet" type="text/css" id="applicationStylesheet" href="./css/update.css"/>
+	<link rel="stylesheet" type="text/css" id="applicationStylesheet" href="./css/progressbar.css"/>
+
+	<link rel="stylesheet" type="text/css" id="applicationStylesheet" href="../../css/fonts-alt-path.css"/>
+	<link rel="stylesheet" type="text/css" id="applicationStylesheet" href="../../css/style.css"/>
+
+	<script src="../../../utils/downloaded/jquery.js" type="text/javascript"></script>
+
+	<script src="../../../utils/scripts/translations.js" type="text/javascript"></script>
+	<script src="../../../utils/scripts/themes.js" type="text/javascript"></script>
+</head>
+<body>
+	<div id="Download_Page" class="Download_Page_Class">
+		<div id="background" style="background-color: rgba(251,247,241,1); top: 10px; left: 0px; width: 99.25%; height: 97%; position: absolute; border-radius: 10px;"></div>
+		<div class="Content_Class">
+			<div class="Install_Button_Class unclickable clipButton" style="display: none;" onclick="this.style.display = 'none';">
+				<div class="clipGroup" style="width: 107px;">
+					<svg class="Back_Transitioner" style="bottom: -25px;" viewBox="4631.671 2118.361 137.6 34.565">
+						<path fill="rgba(36,39,37,1)" id="Back_Transitioner" d="M 4631.67138671875 2136.780029296875 C 4631.67138671875 2136.780029296875 4649.8212890625 2127.950439453125 4669.78759765625 2136.780029296875 C 4689.75244140625 2145.610595703125 4680.9365234375 2141.826416015625 4680.9365234375 2141.826416015625 C 4680.9365234375 2141.826416015625 4699.80859375 2134.79638671875 4711.21826171875 2141.229248046875 C 4722.626953125 2147.663330078125 4712.8291015625 2141.229248046875 4712.8291015625 2141.229248046875 C 4712.8291015625 2141.229248046875 4737.462890625 2118.742431640625 4759.2421875 2118.3642578125 C 4781.0234375 2117.985107421875 4760.5390625 2152.92626953125 4760.5390625 2152.92626953125 L 4631.67138671875 2152.92626953125 L 4631.67138671875 2136.780029296875 Z">
+						</path>
+					</svg>
+					<svg class="Front_Transitioner" style="bottom: -30px;" viewBox="4631.671 2118.361 137.6 26.969">
+						<path fill="rgba(53,178,57,1)" id="Front_Transitioner" d="M 4631.67138671875 2132.73193359375 C 4631.67138671875 2132.73193359375 4649.82177734375 2125.843017578125 4669.78759765625 2132.73193359375 C 4689.7529296875 2139.621826171875 4680.93701171875 2136.66943359375 4680.93701171875 2136.66943359375 C 4680.93701171875 2136.66943359375 4699.80908203125 2131.184326171875 4711.21875 2136.203369140625 C 4722.62744140625 2141.2236328125 4712.82958984375 2136.203369140625 4712.82958984375 2136.203369140625 C 4712.82958984375 2136.203369140625 4737.462890625 2118.658447265625 4759.24267578125 2118.363525390625 C 4781.0234375 2118.0673828125 4760.5390625 2145.329833984375 4760.5390625 2145.329833984375 L 4631.67138671875 2145.329833984375 L 4631.67138671875 2132.73193359375 Z">
+						</path>
+					</svg>
+				</div>
+				<svg class="Install_Rectangle">
+					<rect fill="transparent" stroke="rgba(53,178,57,1)" stroke-width="2px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Install_Rectangle_Class" rx="18" ry="18" x="0" y="0" width="107" height="36">
+					</rect>
+				</svg>
+				<div class="Install_Class">
+					<span>Install</span>
+				</div>
+			</div>
+			<div class="Loading_Area_Class">
+				<svg class="Loading_Rectangle">
+					<rect fill="rgba(242,242,242,1)" class="Loading_Rectangle_Class" rx="8" ry="8" x="0" y="0" width="313" height="16">
+					</rect>
+				</svg>
+				<div class="Loading_Area_Class" style="top: -102px">
+					<div class="progress" style="display: none">
+						<b class="progress__bar">
+							<span class="progress__text">
+								Progress: <em>0%</em>
+							</span>
+						</b>
+					</div>
+				</div>
+				<img class="Excited_Class" src="../../images/emoticons/Excited.png">
+			</div>
+		</div>
+		<div class="Header_Class">
+			<div class="Version_Number_Class" style="font-weight: normal;">
+				<span class="text-selectable"></span>
+			</div>
+			<div class="Downloading_Header_Class">
+				<span class="text-selectable">Waiting</span>
+			</div>
+		</div>
+
+		<svg class="Header_Background">
+			<rect fill="rgba(243,224,185,1)" id="Header_Background" rx="10" ry="10" x="0" y="0" width="493" height="35">
+			</rect>
+		</svg>
+
+		<div id="Window_Buttons">
+			<svg id="close-btn" class="Close_Icon" viewBox="3.375 3.375 20 20">
+				<circle cx="6.5" cy="6.5" r="6.5" transform="translate(6 6)" fill="#efefef"></circle>
+				<path fill="rgba(253,53,53,1)" id="Close_Icon" d="M 13.37498569488525 3.375 C 7.850955486297607 3.375 3.375 7.850955486297607 3.375 13.37498569488525 C 3.375 18.89901542663574 7.850955486297607 23.37496948242188 13.37498569488525 23.37496948242188 C 18.89901542663574 23.37496948242188 23.37496948242188 18.89901542663574 23.37496948242188 13.37498569488525 C 23.37496948242188 7.850954532623291 18.89901542663574 3.375 13.37498569488525 3.375 Z M 15.90863418579102 16.99517250061035 L 13.37498569488525 14.46152019500732 L 10.84133434295654 16.99517250061035 C 10.54325771331787 17.29324913024902 10.0528736114502 17.29324913024902 9.75479793548584 16.99517250061035 C 9.605758666992188 16.84613227844238 9.528836250305176 16.64901733398438 9.528836250305176 16.45190238952637 C 9.528836250305176 16.25478935241699 9.605758666992188 16.05767250061035 9.75479793548584 15.90863418579102 L 12.2884464263916 13.37498569488525 L 9.75479793548584 10.84133434295654 C 9.605758666992188 10.69229602813721 9.528835296630859 10.49518203735352 9.528835296630859 10.29806613922119 C 9.528835296630859 10.10095119476318 9.605758666992188 9.903835296630859 9.75479793548584 9.754798889160156 C 10.0528736114502 9.456722259521484 10.54325580596924 9.456722259521484 10.84133434295654 9.754798889160156 L 13.3749828338623 12.28844738006592 L 15.90863418579102 9.754798889160156 C 16.20671081542969 9.456722259521484 16.69709396362305 9.456722259521484 16.99517059326172 9.754798889160156 C 17.29324722290039 10.05287456512451 17.29324722290039 10.54325866699219 16.99517059326172 10.84133529663086 L 14.46152019500732 13.37498569488525 L 16.99517250061035 15.90863418579102 C 17.29324913024902 16.20671081542969 17.29324913024902 16.69709587097168 16.99517250061035 16.99517250061035 C 16.69709396362305 17.29805374145508 16.20671081542969 17.29805374145508 15.90863418579102 16.99517250061035 Z">
+				</path>
+			</svg>
+			<svg id="min-btn" class="Minimize_Icon" viewBox="0.563 0.563 20 20">
+				<circle cx="6.5" cy="6.5" r="6.5" transform="translate(4 4)" fill="#efefef"></circle>
+				<path fill="rgba(255,167,78,1)" id="Minimize_Icon" d="M 10.56248474121094 0.5625000596046448 C 5.038299083709717 0.5625000596046448 0.5625000596046448 5.038299083709717 0.5625000596046448 10.56248474121094 C 0.5625000596046448 16.086669921875 5.038299083709717 20.56246757507324 10.56248474121094 20.56246757507324 C 16.086669921875 20.56246757507324 20.56246757507324 16.086669921875 20.56246757507324 10.56248474121094 C 20.56246757507324 5.038299083709717 16.086669921875 0.5625000596046448 10.56248474121094 0.5625000596046448 Z M 5.239912033081055 12.17538452148438 C 4.973783016204834 12.17538452148438 4.756041526794434 11.95764350891113 4.756041526794434 11.69151401519775 L 4.756041526794434 9.433454513549805 C 4.756041526794434 9.167325973510742 4.973783016204834 8.949583053588867 5.239912033081055 8.949583053588867 L 15.8850564956665 8.949583053588867 C 16.15118598937988 8.949583053588867 16.36892700195313 9.167325973510742 16.36892700195313 9.433454513549805 L 16.36892700195313 11.69151401519775 C 16.36892700195313 11.95764350891113 16.15118598937988 12.17538452148438 15.8850564956665 12.17538452148438 L 5.239912033081055 12.17538452148438 Z">
+				</path>
+			</svg>
+		</div>
+
+	</div>
+
+	<div id="notInstallingModal" style="top: 0px; left: 0px; width: 100%; height: 100%; position: absolute; background-color: rgba(29,29,29,0.251); display: none;">
+		<div id="notInstallingModal_shaderRegion" style="top: 0px; left: 0px; width: 100%; height: 100%; position: absolute;" onclick="document.querySelector('#notInstallingModal').style.display = 'none'">
+		</div>
+		<svg id="NotInstallingBackground" style="top: 90px; left: 35px; width: 420px; height: 150px; position: absolute;">
+			<rect fill="rgba(251,247,241,1)" rx="20" ry="20" x="0" y="0" width="420" height="150"/>
+		</svg>
+		<div id="NotInstallingTitle" style="font-size: 16pt;top: 115px;left: 45px;z-index: 0;position: absolute; opacity:1; width: 400px; text-align: center; overflow: visible;">
+			<span class="text-selectable" style="text-align: center; font-weight: bold;">Uh oh?</span>
+		</div>
+		<div id="NotInstallingMessage" style="font-size: 11pt;top: 165px;left: 45px;z-index: 0;position: absolute; opacity:0.85; width: 400px; text-align: center; overflow: visible; font-weight: normal; wrap: pre-wrap;">
+			<span class="text-selectable" id="notInstallingStart" style="text-align: center; font-weight: normal;">Not installing? Click </span><a class="text-selectable" id="notInstallingHere" class="text-selectable" onclick="openInstallerLocation()" href="#" style="color: #000; opacity: 1">here</a><span id="notInstallingEnd">to view the installer's</span>
+		</div>
+		<svg class="Close_Icon" style="top: 100px; left: 425px;" onclick="document.querySelector('#notInstallingModal').style.display = 'none'" viewBox="3.375 3.375 20 20">
+			<circle cx="6.5" cy="6.5" r="6.5" transform="translate(6 6)" fill="#efefef"></circle>
+			<path fill="rgba(253,53,53,1)" id="Close_Icon" d="M 13.37498569488525 3.375 C 7.850955486297607 3.375 3.375 7.850955486297607 3.375 13.37498569488525 C 3.375 18.89901542663574 7.850955486297607 23.37496948242188 13.37498569488525 23.37496948242188 C 18.89901542663574 23.37496948242188 23.37496948242188 18.89901542663574 23.37496948242188 13.37498569488525 C 23.37496948242188 7.850954532623291 18.89901542663574 3.375 13.37498569488525 3.375 Z M 15.90863418579102 16.99517250061035 L 13.37498569488525 14.46152019500732 L 10.84133434295654 16.99517250061035 C 10.54325771331787 17.29324913024902 10.0528736114502 17.29324913024902 9.75479793548584 16.99517250061035 C 9.605758666992188 16.84613227844238 9.528836250305176 16.64901733398438 9.528836250305176 16.45190238952637 C 9.528836250305176 16.25478935241699 9.605758666992188 16.05767250061035 9.75479793548584 15.90863418579102 L 12.2884464263916 13.37498569488525 L 9.75479793548584 10.84133434295654 C 9.605758666992188 10.69229602813721 9.528835296630859 10.49518203735352 9.528835296630859 10.29806613922119 C 9.528835296630859 10.10095119476318 9.605758666992188 9.903835296630859 9.75479793548584 9.754798889160156 C 10.0528736114502 9.456722259521484 10.54325580596924 9.456722259521484 10.84133434295654 9.754798889160156 L 13.3749828338623 12.28844738006592 L 15.90863418579102 9.754798889160156 C 16.20671081542969 9.456722259521484 16.69709396362305 9.456722259521484 16.99517059326172 9.754798889160156 C 17.29324722290039 10.05287456512451 17.29324722290039 10.54325866699219 16.99517059326172 10.84133529663086 L 14.46152019500732 13.37498569488525 L 16.99517250061035 15.90863418579102 C 17.29324913024902 16.20671081542969 17.29324913024902 16.69709587097168 16.99517250061035 16.99517250061035 C 16.69709396362305 17.29805374145508 16.20671081542969 17.29805374145508 15.90863418579102 16.99517250061035 Z">
+			</path>
+		</svg>
+	</div>
+
+	<script src="../../../utils/scripts/button-transitions.js" type="text/javascript"></script>
+	<script src="./js/update.js" type="text/javascript"></script>
+
+	<script>
+
+		function openInstallerLocation() {
+			if (process.platform == 'darwin') {
+				require('child_process').exec(`open "${path.resolve(homedir, './Resell Companion/')}"`);
+			} else {
+				require('child_process').exec(`start "" "${path.resolve(homedir, './Resell Companion/')}"`);
+			}
+		}
+
+		function launchInstaller() {
+			if (process.platform == 'darwin') {
+				require('child_process').exec(`open "${path.resolve(homedir, './Resell Companion/')}/Resell Companion Setup${process.platform == "darwin" ? ".dmg" : ".exe"}"`);
+			} else {
+				require('child_process').exec(`start "" "${path.resolve(homedir, './Resell Companion/')}/Resell Companion Setup${process.platform == "darwin" ? ".dmg" : ".exe"}"`);
+			}
+		}
+
+		const statusElem = document.querySelector(".Downloading_Header_Class");
+		const statusText = statusElem.querySelector("span");
+		var curStatus = window.tryTranslate("Waiting", window.language);
+		function setStatus(status) {
+			statusText.innerHTML = statusText.innerHTML.replace(curStatus, status);
+			curStatus = status;
+		}
+		setStatus(curStatus);
+
+		var timesFinished = 0;
+		setInterval(function() {
+			if (statusText.innerHTML.replace(curStatus, '') == '') {
+				statusText.innerHTML = curStatus + '.';
+			} else if (statusText.innerHTML.replace(curStatus, '') == '.') {
+				statusText.innerHTML = curStatus + '..';
+			} else if (statusText.innerHTML.replace(curStatus, '') == '..') {
+				statusText.innerHTML = curStatus + '...';
+			} else if (statusText.innerHTML.replace(curStatus, '') == '...') {
+				timesFinished++;
+				if (timesFinished == 2) {
+					timesFinished = 0;
+					statusText.innerHTML = curStatus + '';
+				}
+			}
+		}, 560);
+
+		const homedir = require('os').homedir();
+		const path = require('path');
+		const fs = require('fs');
+
+	</script>
+
+	<script>
+
+		async function download(sourceUrl, targetFile, progressCallback, length) {
+		  const request = new Request(sourceUrl, {
+		    headers: new Headers({'Content-Type': 'application/octet-stream'})
+		  });
+
+		  const response = await fetch(request);
+		  if (!response.ok) {
+		    throw Error(`Unable to download, server returned ${response.status} ${response.statusText}`);
+		  }
+
+		  const body = response.body;
+		  if (body == null) {
+		    throw Error('No response body');
+		  }
+
+		  const finalLength = length || parseInt(response.headers.get('Content-Length' || '0'), 10);
+		  const reader = body.getReader();
+		  const writer = fs.createWriteStream(targetFile);
+
+		  await streamWithProgress(finalLength, reader, writer, progressCallback);
+		  writer.end();
+		}
+
+		async function streamWithProgress(length, reader, writer, progressCallback) {
+		  let bytesDone = 0;
+
+		  while (true) {
+		    const result = await reader.read();
+		    if (result.done) {
+		      if (progressCallback != null) {
+		        progressCallback(length, 100);
+		      }
+		      return;
+		    }
+
+		    const chunk = result.value;
+		    if (chunk == null) {
+		      throw Error('Empty chunk received during download');
+		    } else {
+		      writer.write(Buffer.from(chunk));
+		      if (progressCallback != null) {
+		        bytesDone += chunk.byteLength;
+		        const percent = length === 0 ? null : Math.floor(bytesDone / length * 100);
+		        progressCallback(bytesDone, percent);
+		      }
+		    }
+		  }
+		}
+
+	</script>
+
+	<script>
+
+	const installButton = document.querySelector('.Install_Button_Class');
+
+	var ableToInstall = true;
+	installButton.addEventListener("click", function (e) {
+		if (ableToInstall && document.querySelector('.Install_Button_Class').classList.contains("clickable")) {
+			setStatus(window.tryTranslate("Installing"), window.language);
+			ableToInstall = false;
+			setTimeout(function() {
+				document.querySelector('#notInstallingModal').style.display = 'block';
+				installButton.style.display = 'block';
+				ableToInstall = true;
+			}, 10000)
+			tryInstall();
+		}
+	});
+
+	async function tryInstall() {
+		try {
+			launchInstaller();
+		} catch(err) {
+			setStatus(window.tryTranslate("Waiting"), window.language);
+			ableToInstall = true;
+			console.log(err);
+		}
+	}
+
+	var allowInstall = false;
+	setInterval(function() {
+		if (allowInstall) {
+			if (document.querySelector('.Install_Button_Class').classList.contains("unclickable")) { // fires once
+				setStatus(window.tryTranslate("Waiting"), window.language);
+				document.querySelector('.Install_Button_Class').classList.remove("unclickable");
+				document.querySelector('.Install_Button_Class').classList.add("clickable");
+				document.querySelector('.Install_Button_Class').style.display = "block";
+			}
+		} else {
+			if (document.querySelector('.Install_Button_Class').classList.contains("clickable")) { // fires once
+				document.querySelector('.Install_Button_Class').classList.remove("clickable");
+				document.querySelector('.Install_Button_Class').classList.add("unclickable");
+				document.querySelector('.Install_Button_Class').style.display = "none";
+			}
+		}
+	}, 350);
+
+	var minimize = document.querySelector("#min-btn");
+	var close = document.querySelector("#close-btn");
+
+	minimize.addEventListener("click", function (e) {
+		var window = electron.remote.BrowserWindow.getFocusedWindow();
+		window.minimize();
+	});
+
+	close.addEventListener("click", function (e) {
+		closeApplication();
+	});
+
+	function closeApplication(restart = false) {
+		if (restart) {
+			electron.ipcRenderer.sendSync('logoutFinished', true);
+		} else {
+			var window = electron.remote.BrowserWindow.getFocusedWindow();
+			window.close();
+		}
+	}
+
+	</script>
+
+	<script>
+
+	window.appVersion = "1.0.5";
+
+	// ############### CHECK FOR UPDATES ###############
+	const updateAPI = require('../../../utils/api/update.js');
+
+	async function checkForUpdate(promptUser = true) {
+	  var updateResponse = await updateAPI.checkForUpdate(window.appVersion, window.process.platform);
+	  if (!updateResponse) {
+	    console.log("error fetching recent version (from: " + url + ")");
+	    setStatus(window.tryTranslate('Error Checking'), window.language);
+	  } else {
+			document.querySelector('.Version_Number_Class').querySelector('span').innerHTML = `${window.tryTranslate('Version', window.language)} ${updateResponse.current_version}`;
+	    if (updateResponse.status == 'outdated') {
+	      console.log("current version (" + window.appVersion + ") is outdated. Most recent version is " + updateResponse.current_version + ".");
+				setStatus(window.tryTranslate('Downloading'), window.language);
+				// begin downloading
+				download(updateResponse.download_url, `${path.resolve(homedir, './Resell Companion')}/Resell Companion Setup${process.platform == "darwin" ? ".dmg" : ".exe"}`, (bytes, percent) => {
+
+					if (percent == 100) {
+						setTimeout(function() {
+							allowInstall = true;
+						}, 7500);
+					}
+
+					console.log("download is processing");
+
+					let jQueryprogress = document.querySelector(".progress");
+					let jQuerybar = document.querySelector(".progress__bar");
+					let jQuerytext = document.querySelector(".progress__text");
+
+					jQueryprogress.style.display = "block";
+
+					let update;
+					let resetColors;
+					let speed = 200;
+					let orange = 30;
+					let yellow = 55;
+					let green = 85;
+					let timer;
+
+					resetColors = function() {
+						jQuerybar.classList.remove('progress__bar--green');
+						jQuerybar.classList.remove('progress__bar--yellow');
+						jQuerybar.classList.remove('progress__bar--orange');
+						jQuerybar.classList.remove('progress__bar--blue');
+
+						jQueryprogress.classList.remove("progress--complete");
+
+					};
+
+					update = function() {
+						timer = setTimeout( function() {
+							console.log("running");
+
+							jQuerytext.querySelector("em").innerText = percent + "%";
+							if( percent >= green ) {
+								jQuerybar.classList.add("progress__bar--green");
+							}
+
+							else if( percent >= yellow ) {
+								jQuerybar.classList.add("progress__bar--yellow");
+							}
+
+							else if( percent >= orange ) {
+								jQuerybar.classList.add("progress__bar--orange");
+							}
+
+							speed = Math.floor( Math.random() * 100 );
+
+							jQuerybar.style.width = percent + "%";
+
+						}, speed);
+
+					};
+
+					document.querySelector(".progress").style.display = "block;"
+					jQueryprogress.classList.add("progress--active");
+					update();
+					resetColors();
+				});
+	    } else {
+	      console.log("current version (" + window.appVersion + ") up to date!");
+	      setStatus(window.tryTranslate('Latest Version', window.language) + " (" + window.appVersion + ")");
+	      applyButtonTransitions();
+	    }
+	  }
+	}
+
+	window.onload = checkForUpdate;
+
+</script>
+
+</body>
+</html>

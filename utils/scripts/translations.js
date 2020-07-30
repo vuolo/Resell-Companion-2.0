@@ -64,7 +64,7 @@ window.setLanguage = (language) => {
   })();
 };
 
-window.tryTranslate = (incomingText, language = window.companionSettings.language) => {
+window.tryTranslate = (incomingText, language = window.companionSettings ? window.companionSettings.language : 'en') => {
   if (translations[incomingText] && translations[incomingText].languages[language]) return translations[incomingText].languages[language];
   return incomingText;
 };

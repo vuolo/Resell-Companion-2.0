@@ -1,0 +1,206 @@
+body {
+  font-family: "SF Pro Text", san-serif;
+  user-select: none;
+  overflow: hidden;
+}
+
+.mediaViewInfo {
+	--web-view-name: Download Page;
+	--web-view-id: Download_Page;
+	--web-enable-scale-up: true;
+	--web-scale-on-resize: true;
+	--web-enable-deep-linking: true;
+}
+:root {
+	--web-view-ids: Download_Page;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	border: none;
+}
+.Download_Page_Class {
+	position: absolute;
+	width: 493px;
+	height: 332px;
+	/* background-color: rgba(251,247,241,1); */
+	overflow: hidden;
+	--web-view-name: Download Page;
+	--web-view-id: Download_Page;
+	--web-enable-scale-up: true;
+	--web-scale-on-resize: true;
+	--web-enable-deep-linking: true;
+}
+.Content_Class {
+	position: absolute;
+	width: 313px;
+	height: 144px;
+	left: 90px;
+	top: 131px;
+	overflow: visible;
+}
+.clickable:hover {
+	cursor: pointer;
+}
+.unclickable:hover {
+	cursor: not-allowed;
+}
+.Install_Button_Class {
+	position: absolute;
+	width: 107px;
+	height: 36px;
+	left: 103px;
+	top: 125px;
+	overflow: visible;
+}
+.Install_Rectangle {
+	position: absolute;
+	overflow: visible;
+	width: 107px;
+	height: 36px;
+	left: 0px;
+	top: 0px;
+}
+.Install_Class {
+	position: absolute;
+	left: 29.966px;
+	top: 9.5px;
+	overflow: visible;
+	width: 48px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 15px;
+	color: rgba(53,178,57,1);
+}
+.Loading_Area_Class {
+	position: absolute;
+	width: 313px;
+	height: 60px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+.Loading_Rectangle {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 331px;
+	height: 34px;
+	left: 0px;
+	top: 44px;
+}
+.Excited_Class {
+	position: absolute;
+	width: 48px;
+	height: 48px;
+	left: 226px;
+	top: 0px;
+	overflow: visible;
+}
+.Header_Class {
+	position: absolute;
+	width: 205px;
+	height: 49px;
+	left: 159px;
+	top: 87px;
+	overflow: visible;
+}
+.Version_Number_Class {
+	position: absolute;
+	left: 43px;
+	top: 40px;
+	overflow: visible;
+	width: 91px;
+	white-space: nowrap;
+	line-height: 15px;
+	margin-top: -0.5px;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	color: rgba(29,29,29,1);
+}
+.Downloading_Header_Class {
+	position: absolute;
+	left: -159px;
+	top: 0px;
+	overflow: visible;
+	width: 493px;
+	white-space: nowrap;
+	line-height: 28px;
+	margin-top: -0.5px;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 27px;
+	color: rgba(29,29,29,1);
+}
+
+
+
+
+
+
+
+
+
+.Header_Background {
+  filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.1));
+  -webkit-user-select: none;
+  -webkit-app-region: drag;
+	position: absolute;
+	overflow: visible;
+	width: 717px;
+	height: 30px;
+	left: 0px;
+	top: 0px;
+  z-index: 998;
+}
+
+
+#Window_Buttons {
+	position: absolute;
+	width: 51.111px;
+	height: 20px;
+	right: 10px;
+	top: 7.5px;
+	overflow: visible;
+}
+.Close_Icon:hover {
+  fill: #d72c2e;
+  cursor: pointer;
+  opacity: 0.85;
+}
+.Close_Icon {
+  -webkit-app-region: no-drag;
+	overflow: visible;
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	left: 31.11px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+  z-index: 999;
+}
+.Minimize_Icon:hover {
+  fill: #db8f44;
+  cursor: pointer;
+  opacity: 0.85;
+}
+.Minimize_Icon {
+  -webkit-app-region: no-drag;
+	overflow: visible;
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	left: 0px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+  z-index: 999;
+}

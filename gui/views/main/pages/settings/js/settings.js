@@ -53,10 +53,11 @@ window.openModal = (modalName) => {
   window.modals[modalName].visible = true;
 };
 
-window.modalLoadedCallback = (modalName) => {
+window.modalLoadedCallback = async (modalName) => {
   if (modalName == 'billing-profiles') settingsApp.billingProfilesModal = window.frames['billing-profiles-modal'].modalOptions;
   else if (modalName == 'statistics') {
     settingsApp.statisticsModal = window.frames['statistics-modal'].modalOptions;
+    while(!window.parent.addStatistic) await window.parent.sleep(50);
     window.parent.addStatistic = async (category, statistic, value = 1) => settingsApp.statisticsModal.categories[category][statistic] += value;
     window.parent.addCheckoutStatistic = async (status, store, value = 1) => settingsApp.statisticsModal.checkouts[status][storeType] += value;
   }
@@ -70,6 +71,7 @@ window.settingsApp = new Vue({
     appVersion: window.parent.appVersion,
     settings: window.settings,
     modals: window.modals,
+    checkForUpdateButtonStatus: 'Check for Update',
     billingProfilesModal: {},
     statisticsModal: {}
   },
@@ -121,3 +123,74 @@ window.settingsApp = new Vue({
     }
   }
 });
+
+// ############### CHECK FOR UPDATES ###############
+const checkForUpdateButton = document.querySelector(".Check_for_Update_Button_Class");
+const updateAPI = window.parent.require('../../../utils/api/update.js');
+
+var ableToCheckForUpdate = true;
+checkForUpdateButton.addEventListener("click", function (e) {
+	if (ableToCheckForUpdate) {
+		settingsApp.checkForUpdateButtonStatus = window.parent.tryTranslate('Checking for Update') + "...";
+		checkForUpdate();
+		ableToCheckForUpdate = false;
+	}
+});
+
+async function checkForUpdate(promptUser = true) {
+  var updateResponse = await updateAPI.checkForUpdate(window.parent.appVersion, window.parent.process.platform);
+  if (!updateResponse) {
+    console.log("error fetching recent version (from: " + url + ")");
+    settingsApp.checkForUpdateButtonStatus = window.parent.tryTranslate('Error Checking');
+    checkForUpdateButton.querySelector('span').style.color = "rgb(255, 255, 255)";
+    checkForUpdateButton.querySelector('.clipGroup').style.display = "none";
+    checkForUpdateButton.querySelector('.Rectangle_Class').style.fill = "rgba(253,53,53,1)";
+    checkForUpdateButton.querySelector('.Rectangle_Class').style.stroke = "rgba(253,53,53,1)";
+    applyButtonTransitions();
+    setTimeout(function() { resetCheckForUpdateButton() }, 3600);
+  } else {
+    if (updateResponse.status == 'outdated') {
+      console.log("current version (" + window.parent.appVersion + ") is outdated. Most recent version is " + updateResponse.current_version + ".");
+      settingsApp.checkForUpdateButtonStatus = window.parent.tryTranslate('Outdated Version') + " (" + updateResponse.current_version + " " + window.parent.tryTranslate('Available') + ")";
+      checkForUpdateButton.querySelector('span').style.color = "rgb(255, 255, 255)";
+      checkForUpdateButton.querySelector('.clipGroup').style.display = "none";
+      checkForUpdateButton.querySelector('.Rectangle_Class').style.fill = "rgba(253,53,53,1)";
+      checkForUpdateButton.querySelector('.Rectangle_Class').style.stroke = "rgba(253,53,53,1)";
+      applyButtonTransitions();
+      if (promptUser) {
+        const options = {
+          type: 'none',
+          buttons: [window.parent.tryTranslate('Yes'), window.parent.tryTranslate('No')],
+          defaultId: 0,
+          title: `Resell Companion - ${window.parent.tryTranslate('Outdated Version')}`,
+          message: `${window.parent.tryTranslate("There is a new Resell Companion update available")} (${updateResponse.current_version})`,
+          detail: window.parent.tryTranslate("Would you like to like to install this update now?"),
+          icon: './build-assets/icons/icon.png'
+        };
+        if ((await window.parent.electron.remote.dialog.showMessageBox(null, options)).response == 0) updateAPI.launchUpdateWindow();
+      }
+      setTimeout(function() { resetCheckForUpdateButton() }, 3600);
+    } else {
+      console.log("current version (" + window.parent.appVersion + ") up to date!");
+      settingsApp.checkForUpdateButtonStatus = window.parent.tryTranslate('Latest Version') + " (" + window.parent.appVersion + ")";
+      checkForUpdateButton.querySelector('span').style.color = "rgb(255, 255, 255)";
+      checkForUpdateButton.querySelector('.clipGroup').style.display = "none";
+      checkForUpdateButton.querySelector('.Rectangle_Class').style.fill = "rgba(53,178,57,1)";
+      checkForUpdateButton.querySelector('.Rectangle_Class').style.stroke = "rgba(53,178,57,1)";
+      applyButtonTransitions();
+      setTimeout(function() { resetCheckForUpdateButton() }, 3600);
+    }
+  }
+}
+
+function resetCheckForUpdateButton() {
+	ableToCheckForUpdate = true;
+	settingsApp.checkForUpdateButtonStatus = window.parent.tryTranslate('Check for Update');
+	checkForUpdateButton.querySelector('span').style.color = "rgb(91, 182, 187)";
+	checkForUpdateButton.querySelector('.clipGroup').style.display = "block";
+	checkForUpdateButton.querySelector('.Rectangle_Class').style.fill = "transparent";
+	checkForUpdateButton.querySelector('.Rectangle_Class').style.stroke = "rgba(91,182,187,1)";
+	applyButtonTransitions();
+}
+
+window.onload = checkForUpdate;

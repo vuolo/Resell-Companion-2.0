@@ -47,7 +47,7 @@
 				</svg>
 			</div>
 
-			<div class="Dashboard_Button_Class clipButton clickable">
+			<div class="Dashboard_Button_Class clipButton clickable" onclick="window.open('https://resell.monster/dashboard')">
 				<div class="clipGroup" style="width: 124px;">
 					<svg class="Back_Transitioner" style="bottom: -25px;" viewBox="4631.671 2118.361 137.6 34.565">
 						<path fill="rgba(36,39,37,1)" id="Back_Transitioner" d="M 4631.67138671875 2136.780029296875 C 4631.67138671875 2136.780029296875 4649.8212890625 2127.950439453125 4669.78759765625 2136.780029296875 C 4689.75244140625 2145.610595703125 4680.9365234375 2141.826416015625 4680.9365234375 2141.826416015625 C 4680.9365234375 2141.826416015625 4699.80859375 2134.79638671875 4711.21826171875 2141.229248046875 C 4722.626953125 2147.663330078125 4712.8291015625 2141.229248046875 4712.8291015625 2141.229248046875 C 4712.8291015625 2141.229248046875 4737.462890625 2118.742431640625 4759.2421875 2118.3642578125 C 4781.0234375 2117.985107421875 4760.5390625 2152.92626953125 4760.5390625 2152.92626953125 L 4631.67138671875 2152.92626953125 L 4631.67138671875 2136.780029296875 Z">
@@ -223,7 +223,8 @@
 				</svg>
 			</div>
 
-			<div class="Webhook_Option_Class">
+			<!-- <div class="Webhook_Option_Class"> -->
+			<div class="Notifications_Option_Class">
 				<svg class="Separator_gz">
 					<rect v-bind:fill="getThemeColor('rgba(190,190,190,1)')" class="Separator_gz_Class" rx="1.5" ry="1.5" x="0" y="0" width="585" height="3">
 					</rect>
@@ -334,7 +335,8 @@ c47.5,2.3,86.7-16.3,117.6-51.6C1454.1,1202.9,1468.3,1160.4,1468.5,1114.2z"/>
 				</svg>
 			</div>
 
-			<div class="Notifications_Option_Class">
+			<!-- <div class="Notifications_Option_Class"> -->
+			<div class="Webhook_Option_Class">
 				<svg class="Separator_gd">
 					<rect v-bind:fill="getThemeColor('rgba(190,190,190,1)')" class="Separator_gd_Class" rx="1.5" ry="1.5" x="0" y="0" width="585" height="3">
 					</rect>
@@ -652,8 +654,8 @@ c47.5,2.3,86.7-16.3,117.6-51.6C1454.1,1202.9,1468.3,1160.4,1468.5,1114.2z"/>
 						<rect fill="transparent" stroke="rgba(91,182,187,1)" stroke-width="2px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Rectangle_Class" rx="18" ry="18" x="0" y="0" width="170" height="36">
 						</rect>
 					</svg>
-					<div class="Check_for_Update_Class" v-bind:style="{ fontSize: confineTextWidth(170-15, tryTranslate('Check for Update'), 15, 'px', 'bold', 'SF Pro Text') }">
-						<span>{{tryTranslate('Check for Update')}}</span>
+					<div class="Check_for_Update_Class" v-bind:style="{ fontSize: confineTextWidth(170-15, tryTranslate(checkForUpdateButtonStatus), 15, 'px', 'bold', 'SF Pro Text') }">
+						<span>{{tryTranslate(checkForUpdateButtonStatus)}}</span>
 					</div>
 				</div>
 
