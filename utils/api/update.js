@@ -2,6 +2,19 @@ const request = require('request-promise');
 
 const ICON_PATH = process.platform == "win32" ? path.resolve(__dirname, '../../build-assets/icons/win-icon.ico') : undefined; // not needed for mac
 
+let updateWindow;
+function getPreviousUpdateWindow() {
+  return updateWindow;
+}
+
+function tryUpdateWindowTheme(theme = window.companionSettings.theme) {
+  if (updateWindow) try { updateWindow.webContents.send('updateTheme', theme); } catch(err) {}
+}
+
+function tryUpdateWindowLanguage(language = window.companionSettings.language) {
+  if (updateWindow) try { updateWindow.webContents.send('updateLanguage', language); } catch(err) {}
+}
+
 function launchUpdateWindow() {
   const { BrowserWindow } = require('electron').remote;
   const path = require('path');
@@ -21,6 +34,7 @@ function launchUpdateWindow() {
       nodeIntegration: true
     }
   });
+  updateWindow = win;
 
   win.on('closed', () => {
     win = null;
@@ -28,8 +42,8 @@ function launchUpdateWindow() {
 
   // send theme and language to update window
   win.webContents.once('dom-ready', () => {
-    win.webContents.send('updateTheme', window.companionSettings.theme);
-    win.webContents.send('updateLanguage', window.companionSettings.language);
+    tryUpdateWindowTheme();
+    tryUpdateWindowLanguage();
   });
 
   // Load html in window
@@ -60,5 +74,8 @@ async function checkForUpdate(appVersion = appVersion, platform = process.platfo
 
 module.exports = {
   checkForUpdate: checkForUpdate,
-  launchUpdateWindow: launchUpdateWindow
+  launchUpdateWindow: launchUpdateWindow,
+  getPreviousUpdateWindow: getPreviousUpdateWindow,
+  tryUpdateWindowTheme: tryUpdateWindowTheme,
+  tryUpdateWindowLanguage: tryUpdateWindowLanguage
 };

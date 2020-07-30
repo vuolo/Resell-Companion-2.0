@@ -10,6 +10,8 @@ function updateLanguage(language = window.language) {
   window.language = language;
   document.querySelector('.Install_Class span').innerHTML = window.tryTranslate('Install', window.language);
 
+  document.querySelector('.progress__text span').innerText = window.tryTranslate('Progress', window.language);
+
   document.querySelector('#NotInstallingTitle span').innerText = window.tryTranslate('Oops...', window.language);
   document.querySelector('#notInstallingStart').innerText = window.tryTranslate('Not installing? Click ', window.language) + ' ';
   document.querySelector('#notInstallingHere').innerText = window.tryTranslate('here', window.language);

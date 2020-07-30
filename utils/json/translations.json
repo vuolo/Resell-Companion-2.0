@@ -516,6 +516,12 @@
         "es": "Terminar"
       }
     },
+    "Downloading": {
+      "languages": {
+        "en": "Downloading",
+        "es": "Descargando"
+      }
+    },
     "Duplicate Card(s)": {
       "languages": {
         "en": "Duplicate Card(s)",
@@ -838,6 +844,18 @@
       "languages": {
         "en": "Instagram Posts Received",
         "es": "Publicaciones de Instagram recibidas"
+      }
+    },
+    "Install": {
+      "languages": {
+        "en": "Install",
+        "es": "Instalar"
+      }
+    },
+    "Installing": {
+      "languages": {
+        "en": "Installing",
+        "es": "Instalando"
       }
     },
     "Invalid Date": {
@@ -1220,6 +1238,12 @@
         "es": "No se han añadido entradas"
       }
     },
+    "Not installing? Click": {
+      "languages": {
+        "en": "Not installing? Click",
+        "es": "¿No está instalando? Haga clic"
+      }
+    },
     "Notifications": {
       "languages": {
         "en": "Notifications",
@@ -1476,6 +1500,12 @@
       "languages": {
         "en": "Profit",
         "es": "Ganancias"
+      }
+    },
+    "Progress": {
+      "languages": {
+        "en": "Progress",
+        "es": "Progreso"
       }
     },
     "Proxy Profile": {
@@ -2054,6 +2084,12 @@
         "es": "Condiciones de servicio"
       }
     },
+    "There is a new Resell Companion update available": {
+      "languages": {
+        "en": "There is a new Resell Companion update available",
+        "es": "Hay una nueva actualización de Resell Companion disponible"
+      }
+    },
     "Theme": {
       "languages": {
         "en": "Theme",
@@ -2172,6 +2208,12 @@
       "languages": {
         "en": "to manage your billing profiles",
         "es": "para gestionar sus perfiles de facturación"
+      }
+    },
+    "to view the installer's location, where you can manually run the setup.": {
+      "languages": {
+        "en": "to view the installer's location, where you can manually run the setup.",
+        "es": "para ver la ubicación del instalador, donde puede ejecutar manualmente la instalación."
       }
     },
     "Today": {
@@ -2318,6 +2360,12 @@
         "es": "Ubicación no especificada"
       }
     },
+    "Updating": {
+      "languages": {
+        "en": "Updating",
+        "es": "Actualizando"
+      }
+    },
     "Use Connected Bots": {
       "languages": {
         "en": "Use Connected Bots",
@@ -2390,6 +2438,12 @@
         "es": "Versión"
       }
     },
+    "Waiting": {
+      "languages": {
+        "en": "Waiting",
+        "es": "Esperando"
+      }
+    },
     "Waiting...": {
       "languages": {
         "en": "Waiting...",
@@ -2454,6 +2508,12 @@
       "languages": {
         "en": "Welcome back",
         "es": "¡Bienvenido de vuelta"
+      }
+    },
+    "Would you like to like to install this update now?": {
+      "languages": {
+        "en": "Would you like to like to install this update now?",
+        "es": "¿Desea instalar esta actualización ahora?"
       }
     },
     "Yearly": {

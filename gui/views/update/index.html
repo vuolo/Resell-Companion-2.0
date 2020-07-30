@@ -49,7 +49,7 @@
 					<div class="progress" style="display: none">
 						<b class="progress__bar">
 							<span class="progress__text">
-								Progress: <em>0%</em>
+								<span>Progress</span>: <em>0%</em>
 							</span>
 						</b>
 					</div>
@@ -218,7 +218,7 @@
 	var ableToInstall = true;
 	installButton.addEventListener("click", function (e) {
 		if (ableToInstall && document.querySelector('.Install_Button_Class').classList.contains("clickable")) {
-			setStatus(window.tryTranslate("Installing"), window.language);
+			setStatus(window.tryTranslate("Installing", window.language));
 			ableToInstall = false;
 			setTimeout(function() {
 				document.querySelector('#notInstallingModal').style.display = 'block';
@@ -233,7 +233,7 @@
 		try {
 			launchInstaller();
 		} catch(err) {
-			setStatus(window.tryTranslate("Waiting"), window.language);
+			setStatus(window.tryTranslate("Waiting", window.language));
 			ableToInstall = true;
 			console.log(err);
 		}
@@ -243,7 +243,7 @@
 	setInterval(function() {
 		if (allowInstall) {
 			if (document.querySelector('.Install_Button_Class').classList.contains("unclickable")) { // fires once
-				setStatus(window.tryTranslate("Waiting"), window.language);
+				setStatus(window.tryTranslate("Waiting", window.language));
 				document.querySelector('.Install_Button_Class').classList.remove("unclickable");
 				document.querySelector('.Install_Button_Class').classList.add("clickable");
 				document.querySelector('.Install_Button_Class').style.display = "block";
@@ -291,12 +291,12 @@
 	  var updateResponse = await updateAPI.checkForUpdate(window.appVersion, window.process.platform);
 	  if (!updateResponse) {
 	    console.log("error fetching recent version (from: " + url + ")");
-	    setStatus(window.tryTranslate('Error Checking'), window.language);
+	    setStatus(window.tryTranslate('Error Checking', window.language));
 	  } else {
 			document.querySelector('.Version_Number_Class').querySelector('span').innerHTML = `${window.tryTranslate('Version', window.language)} ${updateResponse.current_version}`;
 	    if (updateResponse.status == 'outdated') {
 	      console.log("current version (" + window.appVersion + ") is outdated. Most recent version is " + updateResponse.current_version + ".");
-				setStatus(window.tryTranslate('Downloading'), window.language);
+				setStatus(window.tryTranslate('Downloading', window.language));
 				// begin downloading
 				download(updateResponse.download_url, `${path.resolve(homedir, './Resell Companion')}/Resell Companion Setup${process.platform == "darwin" ? ".dmg" : ".exe"}`, (bytes, percent) => {
 

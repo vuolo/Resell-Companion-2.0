@@ -33,6 +33,8 @@ window.setTheme = (theme = window.companionSettings.theme) => {
     window.frames["analytics-frame"].frames['overview-subpage'].doughnutGraph.options.elements.arc.borderColor = window.getThemeColor('rgba(255,255,255,1)');
     window.frames["analytics-frame"].frames['overview-subpage'].doughnutGraph.update();
   })();
+  // settings page
+  if (window.frames["settings-frame"] && window.frames["settings-frame"].updateAPI) window.frames["settings-frame"].updateAPI.tryUpdateWindowTheme(theme);
 };
 
 window.getThemeColor = (incomingLightColor, theme = window.companionSettings ? window.companionSettings.theme : 'light') => {

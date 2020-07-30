@@ -62,6 +62,8 @@ window.setLanguage = (language) => {
 
     window.frames["analytics-frame"].frames['overview-subpage'].doughnutGraph.update();
   })();
+  // settings page
+  if (window.frames["settings-frame"] && window.frames["settings-frame"].updateAPI) window.frames["settings-frame"].updateAPI.tryUpdateWindowLanguage(language);
 };
 
 window.tryTranslate = (incomingText, language = window.companionSettings ? window.companionSettings.language : 'en') => {

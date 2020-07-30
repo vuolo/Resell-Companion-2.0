@@ -127,6 +127,7 @@ window.settingsApp = new Vue({
 // ############### CHECK FOR UPDATES ###############
 const checkForUpdateButton = document.querySelector(".Check_for_Update_Button_Class");
 const updateAPI = window.parent.require('../../../utils/api/update.js');
+window.updateAPI = updateAPI;
 
 var ableToCheckForUpdate = true;
 checkForUpdateButton.addEventListener("click", function (e) {

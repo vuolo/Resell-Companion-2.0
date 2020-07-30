@@ -64,12 +64,12 @@ body {
 }
 .Install_Class {
 	position: absolute;
-	left: 29.966px;
+	left: 0px;
 	top: 9.5px;
 	overflow: visible;
-	width: 48px;
+	width: 107px;
 	white-space: nowrap;
-	text-align: left;
+	text-align: center;
 	font-family: SF Pro Text;
 	font-style: normal;
 	font-weight: bold;
