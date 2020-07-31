@@ -1,6 +1,6 @@
 {
   "name": "Resell-Companion",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Resell Companion by Resell Monster (https://resell.monster)",
   "main": "main.js",
   "scripts": {

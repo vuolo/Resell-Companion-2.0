@@ -4,7 +4,7 @@
 // to access a variable from parent
 // window.parent.out_var
 
-// imports
+// variables
 const MODAL_NAME = 'statistics';
 
 const MODAL_OPTIONS_TEMPLATE = {
