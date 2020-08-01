@@ -24,6 +24,12 @@ window.companionSettings = {
   currencySymbol: "CA$"
 };
 
+// globally used variables
+window.billingProfiles = [];
+window.googleAccounts = [];
+window.proxyProfiles = [];
+window.connectedBots = [];
+
 window.mainWebContentsID = getMainWebContentsID();
 function getMainWebContentsID() {
   for (var webContents of window.electron.remote.webContents.getAllWebContents()) if (webContents.getURL().includes("/main/index.html")) return webContents.id;

@@ -1151,3 +1151,40 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 	left: 22px;
 	top: 2px;
 }
+
+
+
+
+
+
+
+.Exclamation_Icon_Class {
+	position: absolute;
+	width: 20px;
+	height: 21px;
+	left: 13px;
+	top: 7px;
+	overflow: visible;
+}
+.Circle {
+	position: absolute;
+	overflow: visible;
+	width: 20px;
+	height: 21px;
+	left: 0px;
+	top: 0px;
+}
+.__ik_Class {
+	position: absolute;
+	left: 6.5px;
+	top: 0px;
+	overflow: visible;
+	width: 7px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 18px;
+	color: rgba(255,255,255,1);
+}

@@ -15,8 +15,8 @@ const MODAL_OPTIONS_TEMPLATE = {
     useCheckoutCompanion: true,
     rotateBillingProfiles: true,
     useFavoritedBillingProfile: true,
-    proxyProfile: null,
-    billingProfile: null
+    proxyProfile: "unselected",
+    billingProfile: "unselected"
   },
   quantity: 1,
   isEditingTaskIndex: -1
@@ -82,9 +82,9 @@ const createApp = new Vue({
     shoeSizes: shoeSizes,
     clothingSizes: clothingSizes,
     isConfiguringBillingProfiles: false,
-    proxyProfiles: [],
-    billingProfiles: [],
-    connectedBots: []
+    billingProfiles: window.parent.parent.billingProfiles,
+    proxyProfiles: window.parent.parent.proxyProfiles,
+    connectedBots: window.parent.parent.connectedBots
   },
   methods: {
     confineTextWidth: window.parent.parent.confineTextWidth,
@@ -126,5 +126,6 @@ const createApp = new Vue({
     }
   }
 });
+window.createApp = createApp;
 
 window.onload = window.parent.modalLoadedCallback(MODAL_NAME);

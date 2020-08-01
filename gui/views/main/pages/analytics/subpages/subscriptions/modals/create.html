@@ -150,7 +150,7 @@
 
 					<div class="Size_Area_Class">
 						<select v-model="modalOptions.size" class="Search_Bar_Class special-focus" v-on:blur="hideSuggestedSizes()" v-on:focus="modalOptions.suggestions.sizesOpened = true;" v-bind:class="{ 'white-arrow': companionSettings.theme == 'dark', 'black-arrow': companionSettings.theme == 'light', 'special-focus-dark': companionSettings.theme == 'dark' }" style="left: 0px; top: 27px; width: 187px; padding-left: 0px; text-indent: 40px; padding-right: 25px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
-							<option disabled selected value="unselected">{{tryTranslate('Select Membership')}}...</option>
+							<option selected value="unselected">{{tryTranslate('Select Membership')}}...</option>
 							<option value="lifetime">{{tryTranslate('Lifetime')}}</option>
 							<option value="1week">{{tryTranslate('Weekly')}}</option>
 							<option value="1month">{{tryTranslate('Monthly')}}</option>

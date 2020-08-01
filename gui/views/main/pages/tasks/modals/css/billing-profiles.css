@@ -64,68 +64,6 @@
 	font-size: 15px;
 	color: rgba(91,182,187,1);
 }
-#Rewrite___Configure_Billing_Profiles_Modal .Billing_Profile_Area_Class {
-	/* opacity: 0.66; */
-	position: absolute;
-	width: 245px;
-	height: 63px;
-	left: 693px;
-	top: 355px;
-	overflow: visible;
-}
-#Rewrite___Configure_Billing_Profiles_Modal .Billing_Profile_Rectangle {
-	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
-	position: absolute;
-	overflow: visible;
-	width: 263px;
-	height: 54px;
-	left: 0px;
-	top: 27px;
-}
-#Rewrite___Configure_Billing_Profiles_Modal .Select_Billing_Profile____Class {
-	position: absolute;
-	left: 39px;
-	top: 36px;
-	overflow: visible;
-	width: 171px;
-	white-space: nowrap;
-	line-height: 17px;
-	margin-top: -0.5px;
-	text-align: left;
-	font-family: SF Pro Text;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 16px;
-	color: rgba(29,29,29,1);
-}
-#Rewrite___Configure_Billing_Profiles_Modal .Billing_Profile_Class {
-	position: absolute;
-	left: 15px;
-	top: 0px;
-	overflow: visible;
-	width: 115px;
-	white-space: nowrap;
-	line-height: 28px;
-	margin-top: -5.5px;
-	text-align: left;
-	font-family: SF Pro Text;
-	font-style: normal;
-	font-weight: bold;
-	font-size: 17px;
-	color: rgba(29,29,29,1);
-}
-#Rewrite___Configure_Billing_Profiles_Modal .Billing_Profile_Icon_Class {
-	opacity: 0.66;
-}
-#Rewrite___Configure_Billing_Profiles_Modal .Billing_Profile_Icon {
-	overflow: visible;
-	position: absolute;
-	width: 21.681px;
-	height: 13.797px;
-	left: 11px;
-	top: 38.018px;
-	transform: matrix(1,0,0,1,0,0);
-}
 #Rewrite___Configure_Billing_Profiles_Modal .Use_Favorited_Billing_Profile__Class {
 	/* opacity: 0.66; */
 	position: absolute;
@@ -297,4 +235,86 @@
 	font-weight: 900;
 	font-size: 40px;
 	color: rgba(29,29,29,1);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.Billing_Profile_Area_Class {
+	/* opacity: 0.66; */
+	position: absolute;
+	width: 245px;
+	height: 63px;
+	left: 693px;
+	top: 355px;
+	overflow: visible;
+}
+.Billing_Profile_Rectangle {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 263px;
+	height: 54px;
+	left: 0px;
+	top: 27px;
+}
+.Select_Billing_Profile____Class {
+	position: absolute;
+	left: 39px;
+	top: 36px;
+	overflow: visible;
+	width: 171px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Billing_Profile_Class {
+	position: absolute;
+	left: 15px;
+	top: 0px;
+	overflow: visible;
+	width: 115px;
+	white-space: nowrap;
+	line-height: 28px;
+	margin-top: -5.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 17px;
+	color: rgba(29,29,29,1);
+}
+.Billing_Profile_Icon_Class {
+	opacity: 0.66;
+}
+.Billing_Profile_Icon {
+	overflow: visible;
+	position: absolute;
+	width: 21.681px;
+	height: 13.797px;
+	left: 11px;
+	top: 38.018px;
+	transform: matrix(1,0,0,1,0,0);
 }

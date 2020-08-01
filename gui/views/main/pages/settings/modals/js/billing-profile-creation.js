@@ -63,19 +63,19 @@ const billingProfileCreationApp = new Vue({
       this.modalOptions.autofillInformation.billing.cardType = getCardType(cardNumber);
       switch (this.modalOptions.autofillInformation.billing.cardType) {
         case 'Visa':
-          return "../../IMAGES/Card Providers/Visa_Icon.png";
+          return "../../../../../images/card-providers/Visa.png";
         case 'AMEX':
-          return "../../IMAGES/Card Providers/AmericanExpress_Icon.png";
+          return "../../../../../images/card-providers/AmericanExpress.png";
         case 'Diners':
-          return "../../IMAGES/Card Providers/Diners_Icon.png";
+          return "../../../../../images/card-providers/Diners.png";
         case 'JCB':
-          return "../../IMAGES/Card Providers/JCB_Icon.png";
+          return "../../../../../images/card-providers/JCB.png";
         case 'Mastercard':
-          return "../../IMAGES/Card Providers/Mastercard_Icon.png";
+          return "../../../../../images/card-providers/Mastercard.png";
         case 'Discover':
-          return "../../IMAGES/Card Providers/Discover_Icon.png";
+          return "../../../../../images/card-providers/Discover.png";
       }
-      return "../../IMAGES/Emotes/faces/Happy.png";
+      return "../../../../../images/emoticons/faces/Happy.png";
     },
     finalizeModal: function() {
       if (billingProfilesApp.billingProfileEditIndex == -1) addBillingProfile();
@@ -94,11 +94,14 @@ const billingProfileCreationApp = new Vue({
 
 window.updateBillingProfile = (billingProfileEditIndex = billingProfilesApp.billingProfileEditIndex) => {
   window.parent.parent.memory.syncObject(billingProfilesApp.modalOptions.billingProfiles[billingProfileEditIndex], window.parent.parent.memory.copyObj(window.modalOptions_2));
+  // REFRESH BILLING PROFILE NAMES ON TASKS PAGE
+  try { window.parent.parent.frames['tasks-frame'].tasksApp.$forceUpdate(); } catch(err) {}
 };
 
 window.addBillingProfile = () => {
   window.modalOptions_2.settings.id = window.parent.parent.makeid(10); // assign a new id to the billing profile
   window.modalOptions_2.settings.favorited = billingProfilesApp.modalOptions.billingProfiles.length == 0;
+  window.modalOptions_2.settings.nickname = window.modalOptions_2.settings.nickname.length > 0 ? window.modalOptions_2.settings.nickname : `${window.parent.parent.tryTranslate('Billing Profile')} #${billingProfilesApp.modalOptions.billingProfiles.length + 1}`;
   if (!window.modalOptions_2.settings.favorited) {
     let foundFavorited = false;
     for (var billingProfile of billingProfilesApp.modalOptions.billingProfiles) if (billingProfile.settings.favorited) { foundFavorited = true; break; }

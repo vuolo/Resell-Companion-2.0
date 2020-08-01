@@ -132,10 +132,10 @@
 }
 #Rewrite___Billing_Profile_Creation_Modal .CVC_Class {
 	position: absolute;
-  left: 33px;
+  left: 30px;
   top: 204px;
   overflow: visible;
-  width: 52px;
+  width: 59px;
   height: 36px;
   white-space: nowrap;
   text-align: center;
@@ -192,11 +192,10 @@
 }
 #Rewrite___Billing_Profile_Creation_Modal .Mastercard_Icon_Class {
 	position: absolute;
-	width: 55px;
-	height: 33px;
-	left: 262px;
-	top: 81px;
-	overflow: visible;
+  max-height: 33px;
+  right: 28px;
+  top: 83px;
+  overflow: visible;
 }
 #Rewrite___Billing_Profile_Creation_Modal .Green_Bar {
 	position: absolute;

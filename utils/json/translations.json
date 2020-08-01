@@ -168,6 +168,12 @@
         "es": "Perfil de facturación"
       }
     },
+    "Billing Profile Creation": {
+      "languages": {
+        "en": "Billing Profile Creation",
+        "es": "Creación de perfiles de facturación"
+      }
+    },
     "Billing Profiles": {
       "languages": {
         "en": "Billing Profiles",
@@ -222,6 +228,12 @@
         "es": "Nombre de la tarjeta"
       }
     },
+    "Card Number": {
+      "languages": {
+        "en": "Card Number",
+        "es": "Número de tarjeta"
+      }
+    },
     "Cards": {
       "languages": {
         "en": "Cards",
@@ -264,16 +276,34 @@
         "es": "Pago cancelado"
       }
     },
+    "Checkout Delay (ms)": {
+      "languages": {
+        "en": "Checkout Delay (ms)",
+        "es": "Retraso de pagar (ms)"
+      }
+    },
     "Checkout Method": {
       "languages": {
         "en": "Checkout Method",
         "es": "Método de compra"
       }
     },
+    "City": {
+      "languages": {
+        "en": "City",
+        "es": "Ciudad"
+      }
+    },
     "Clear All": {
       "languages": {
         "en": "Clear All",
         "es": "Borrar todo"
+      }
+    },
+    "Click to setup a new billing profile": {
+      "languages": {
+        "en": "Click to setup a new billing profile",
+        "es": "Haga clic para configurar un nuevo perfil de facturación"
       }
     },
     "Collection": {
@@ -366,6 +396,12 @@
         "es": "No se encontraron productos"
       }
     },
+    "Country": {
+      "languages": {
+        "en": "Country",
+        "es": "País"
+      }
+    },
     "Create": {
       "languages": {
         "en": "Create",
@@ -424,6 +460,12 @@
       "languages": {
         "en": "Customizing Settings...",
         "es": "Personalizando la configuración..."
+      }
+    },
+    "CVC": {
+      "languages": {
+        "en": "CVC",
+        "es": "CVC"
       }
     },
     "Dark": {
@@ -564,6 +606,12 @@
         "es": "Asigne eficientemente cada tarea con un perfil de facturación habilitado"
       }
     },
+    "Email Address": {
+      "languages": {
+        "en": "Email Address",
+        "es": "Correo electrónico"
+      }
+    },
     "En Route...": {
       "languages": {
         "en": "En Route...",
@@ -694,6 +742,12 @@
       "languages": {
         "en": "Fees",
         "es": "Tarifas"
+      }
+    },
+    "First Name": {
+      "languages": {
+        "en": "First Name",
+        "es": "Nombre de pila"
       }
     },
     "Filtered": {
@@ -966,12 +1020,6 @@
         "es": "Idioma"
       }
     },
-    "Last Year": {
-      "languages": {
-        "en": "Last Year",
-        "es": "Último año"
-      }
-    },
     "Last 3 Months": {
       "languages": {
         "en": "Last 3 Months",
@@ -988,6 +1036,18 @@
       "languages": {
         "en": "Last 7 Days",
         "es": "Últimos 7 días"
+      }
+    },
+    "Last Name": {
+      "languages": {
+        "en": "Last Name",
+        "es": "Apellido"
+      }
+    },
+    "Last Year": {
+      "languages": {
+        "en": "Last Year",
+        "es": "Último año"
       }
     },
     "Late-night user? Try out dark mode": {
@@ -1110,6 +1170,12 @@
         "es": "Misc"
       }
     },
+    "MM/YY": {
+      "languages": {
+        "en": "MM/YY",
+        "es": "MM/AA"
+      }
+    },
     "Mon": {
       "languages": {
         "en": "Mon",
@@ -1154,10 +1220,28 @@
         "es": "do"
       }
     },
+    "Nickname": {
+      "languages": {
+        "en": "Nickname",
+        "es": "Apodo"
+      }
+    },
+    "No Billing Profile Selected": {
+      "languages": {
+        "en": "No Billing Profile Selected",
+        "es": "No se ha seleccionado ningún perfil de facturación"
+      }
+    },
     "No billing profiles are currently setup": {
       "languages": {
         "en": "No billing profiles are currently setup",
         "es": "No hay perfiles de facturación actualmente configurados"
+      }
+    },
+    "No billing profiles are setup": {
+      "languages": {
+        "en": "No billing profiles are setup",
+        "es": "Sin configuración de perfiles de facturación"
       }
     },
     "No bots are currently connected": {
@@ -1200,6 +1284,12 @@
       "languages": {
         "en": "No product selected to setup tasks",
         "es": "No hay ningún producto seleccionado para configurar tareas"
+      }
+    },
+    "No Proxy Profile Selected": {
+      "languages": {
+        "en": "No Proxy Profile Selected",
+        "es": "No se ha seleccionado ningún perfil de proxy"
       }
     },
     "No products setup": {
@@ -1392,6 +1482,18 @@
       "languages": {
         "en": "Pay",
         "es": "Pagar"
+      }
+    },
+    "Payment Method": {
+      "languages": {
+        "en": "Payment Method",
+        "es": "Método de pago"
+      }
+    },
+    "Phone Number": {
+      "languages": {
+        "en": "Phone Number",
+        "es": "Teléfono"
       }
     },
     "Platform": {
@@ -1946,6 +2048,12 @@
         "es": ""
       }
     },
+    "State": {
+      "languages": {
+        "en": "State",
+        "es": "Estado"
+      }
+    },
     "Statistics": {
       "languages": {
         "en": "Statistics",
@@ -1986,6 +2094,12 @@
       "languages": {
         "en": "Stores",
         "es": "Tiendas"
+      }
+    },
+    "Street Address": {
+      "languages": {
+        "en": "Street Address",
+        "es": "Dirección"
       }
     },
     "Style Code": {
@@ -2082,6 +2196,12 @@
       "languages": {
         "en": "Terms of Service",
         "es": "Condiciones de servicio"
+      }
+    },
+    "Test Notification": {
+      "languages": {
+        "en": "Test Notification",
+        "es": "Probar una notificación"
       }
     },
     "There is a new Resell Companion update available": {
@@ -2286,6 +2406,12 @@
       "languages": {
         "en": "U.S. Men's Size",
         "es": "Tamaño de los hombres de EE. UU."
+      }
+    },
+    "Unit": {
+      "languages": {
+        "en": "Unit",
+        "es": "Unidad"
       }
     },
     "United States Dollar": {
@@ -2610,6 +2736,12 @@
       "languages": {
         "en": "Your tasks will begin monitoring at",
         "es": "Sus tareas comenzarán a monitorear el"
+      }
+    },
+    "Zip Code": {
+      "languages": {
+        "en": "Zip Code",
+        "es": "Código postal"
       }
     }
   }

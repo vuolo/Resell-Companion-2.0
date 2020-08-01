@@ -54,6 +54,12 @@ window.tasksApp = new Vue({
     getColor: window.parent.getColor,
     formatTimestampExpanded: window.parent.formatTimestampExpanded,
     openModal: window.openModal,
+    getProxyProfileByID: function(id) {
+      for (var proxyProfile of window.parent.proxyProfiles) if (id == proxyProfile.settings.id) return proxyProfile;
+    },
+    getBillingProfileByID: function(id) {
+      for (var billingProfile of window.parent.billingProfiles) if (id == billingProfile.settings.id) return billingProfile;
+    },
     getTitleSwitchLeft: function(maxWidth, title) {
       let titleWidth = window.parent.getTextWidth(title, 'bold 17px \'SF Pro Text\'');
       if (titleWidth >= maxWidth) {
@@ -64,6 +70,7 @@ window.tasksApp = new Vue({
       return 0;
     },
     toggleNodeEnabled: function(node, enabled = null, canceled = false, statusMessage = null) {
+      if (node.configuration.checkoutMethod.useCheckoutCompanion && node.configuration.checkoutMethod.billingProfile == "unselected" && enabled == null) return;
       if (node.status.color == 'green') return;
       if (enabled != null) node.enabled = enabled;
       else node.enabled = !node.enabled;
@@ -78,25 +85,29 @@ window.tasksApp = new Vue({
         node.DOMReady = false;
         node.paymentFieldsInitialized = {};
         node.retryNum = 0;
-        for (var captchaSolver of window.captchaSolvers) {
-          if (captchaSolver.node && captchaSolver.node.id == node.id) {
-            window.resetCaptchaSolver(captchaSolver);
-            break;
-          }
-        }
+        for (var captchaSolver of window.captchaSolvers) if (captchaSolver.node && captchaSolver.node.id == node.id) { window.resetCaptchaSolver(captchaSolver); break; }
       }
       if (node.checkoutWindow !== null || canceled) {
         try { node.checkoutWindow.close(); } catch(err) { /* err: checkout window already closed (user probably closed it) */ }
         node.checkoutWindow = null;
-        if (!node.status.description.includes(window.parent.tryTranslate("Size Unavailable (Sold Out)")) && !(node.status.description.includes(window.parent.tryTranslate("Card Declined")) && !node.status.description.includes(window.parent.tryTranslate("Retrying..."))) && !node.status.description.includes(window.parent.tryTranslate("Successfully Checked Out"))) window.setNodeStatus(node, "red", "Checkout Canceled");
+        if (!node.status.description.includes(
+          window.parent.tryTranslate("Size Unavailable (Sold Out)")) &&
+          !(
+            node.status.description.includes(window.parent.tryTranslate("Card Declined")) &&
+            !node.status.description.includes(window.parent.tryTranslate("Retrying..."))
+          ) &&
+          !node.status.description.includes(window.parent.tryTranslate("Successfully Checked Out"))
+        ) window.setNodeStatus(node, "red", "Checkout Canceled");
       }
       if (statusMessage) window.setNodeStatus(node, statusMessage.color, statusMessage.description)
     },
-    openNewTaskModal: function() {
+    openNewTaskModal: async function() {
+      while (!window.frames['create-modal']) await window.parent.sleep(50);
       window.frames['create-modal'].resetModalOptions();
       this.openModal('create');
     },
-    openEditTaskModal: function(taskNodeIndex) {
+    openEditTaskModal: async function(taskNodeIndex) {
+      while (!window.frames['create-modal']) await window.parent.sleep(50);
       window.frames['create-modal'].resetModalOptions();
       this.createModal.isEditingTaskIndex = taskNodeIndex;
       this.createModal.sizes = tasks[this.activeTaskIndex].nodes[taskNodeIndex].configuration.sizes;
@@ -224,12 +235,31 @@ window.addTaskNode = () => {
     retryNum: 0,
     checkoutWindow: null
   };
+
+  let billingProfileIndex = 0;
+  let proxyProfileIndex = 0;
   for (var i = 0; i < tasksApp.createModal.quantity; i++) {
+
+    if (newTaskNode.configuration.checkoutMethod.useCheckoutCompanion) {
+      // ASSIGN billingProfile ID
+      if (newTaskNode.configuration.checkoutMethod.rotateBillingProfiles) {
+        if (window.parent.billingProfiles.length == 0) newTaskNode.configuration.checkoutMethod.billingProfile = "unselected";
+        else {
+          if (window.parent.billingProfiles[billingProfileIndex]) newTaskNode.configuration.checkoutMethod.billingProfile = window.parent.billingProfiles[billingProfileIndex].settings.id;
+          billingProfileIndex = (billingProfileIndex + 1 >= window.parent.billingProfiles.length) ? 0 : billingProfileIndex + 1;
+        }
+      } else if (!newTaskNode.configuration.checkoutMethod.rotateBillingProfiles && newTaskNode.configuration.checkoutMethod.useFavoritedBillingProfile) {
+        if (window.parent.billingProfiles.length == 0) newTaskNode.configuration.checkoutMethod.billingProfile = "unselected";
+        else for (var billingProfile of window.parent.billingProfiles) if (billingProfile.settings.favorited) { newTaskNode.configuration.checkoutMethod.billingProfile = window.parent.billingProfiles[billingProfileIndex].settings.id; break; }
+      }
+      // if NO billing profile is ASSIGNED to task node, do NOT ALLOW it to be enabled.
+      if (newTaskNode.configuration.checkoutMethod.billingProfile == "unselected") window.tasksApp.toggleNodeEnabled(newTaskNode, false);
+    }
+
     newTaskNode.id = window.parent.makeid(10); // assign a new id to each node
     tasks[tasksApp.activeTaskIndex].nodes.push(window.parent.memory.copyObj(newTaskNode));
     window.parent.addStatistic('Tasks', 'Tasks Created');
   }
-  // TODO?: reorganize tasks based on table filter
 };
 
 window.updateTaskNode = (taskNodeIndex) => {
@@ -241,9 +271,8 @@ window.updateTaskNode = (taskNodeIndex) => {
     }
   };
   window.parent.memory.syncObject(tasks[tasksApp.activeTaskIndex].nodes[taskNodeIndex], updatedTaskNode);
+  if (updatedTaskNode.configuration.checkoutMethod.useCheckoutCompanion && updatedTaskNode.configuration.checkoutMethod.billingProfile == "unselected") window.tasksApp.toggleNodeEnabled(tasks[tasksApp.activeTaskIndex].nodes[taskNodeIndex], false);
 };
-
-
 
 function getTimestampFromDateAndTime(date, time) {
   return new Date(date).getTime() + (parseInt(time.split(":")[0]) * 60 * 60 * 1000) + (parseInt(time.split(":")[1]) * 60 * 1000) + (new Date().getTimezoneOffset() * 60 * 1000);
@@ -338,52 +367,10 @@ async function injectSupremeCart(product, variant, win) {
 window.launchTaskNode = (node, product, variant) => {
   if (node.configuration.checkoutMethod.useCheckoutCompanion) { // use checkout companion
     if (product.Identifier != "shopify" && !product.Identifier.startsWith("supreme")) return; // validate checkout companion can be used for the product
-
-    // temp
-    let billingProfile = {
-      settings: {
-        autoCheckout: true,
-        autoCheckoutDelay: 450,
-        simulateTyping: true
-      },
-      autofillInformation: {
-        firstName: "Charles",
-        lastName: "Emanuel",
-        email: "ce@gmail.com",
-        phoneNumber: "4079028902",
-        address: "385 Caddie Drive",
-        unit: "",
-        zipCode: "32713",
-        city: "DeBary",
-        state: "Florida",
-        country: "United States",
-        billing: {
-          cardNumber: "4242424242424242",
-          cardType: "Visa",
-          expirationDateFull: "06/27",
-          expirationDate: {
-            month: "06",
-            year: "27"
-          },
-          cvc: "285"
-        }
-      }
-    };
-
-    let proxy; // temp
-    if (node.configuration.checkoutMethod.rotateBillingProfiles) { // TODO: rotate through billing profiles
-      // TODO: use proxy profile if selected (make new function above) - node.configuration.checkoutMethod.proxyProfile
-      // TODO: make proxy profile remember per task and efficiently spread proxies
-      initiateCheckoutCompanion(node, product, variant, billingProfile, proxy);
-    } else if (node.configuration.checkoutMethod.useCheckoutCompanion.useFavoritedBillingProfile) { // TODO: use favorited billing profile ONLY
-      // TODO: use proxy profile if selected (make new function above) - node.configuration.checkoutMethod.proxyProfile
-      initiateCheckoutCompanion(node, product, variant, billingProfile, proxy);
-    } else if (node.configuration.checkoutMethod.useCheckoutCompanion.billingProfile) { // TODO: use selected billing profile
-      // TODO: use proxy profile if selected (make new function above) - node.configuration.checkoutMethod.proxyProfile
-      initiateCheckoutCompanion(node, product, variant, billingProfile, proxy);
-    } else {
-      // throw error... no billing profile selected.
-    }
+    if (node.configuration.checkoutMethod.billingProfile == 'unselected') return;
+    let proxy;
+    // TODO: rotate proxies in window.tasksApp.getProxyProfileByID(node.configuration.checkoutMethod.proxyProfile)
+    initiateCheckoutCompanion(node, product, variant, window.tasksApp.getBillingProfileByID(node.configuration.checkoutMethod.billingProfile), proxy);
   } else { // use connected bots
 
   }

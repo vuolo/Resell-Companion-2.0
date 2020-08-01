@@ -48,6 +48,13 @@ const MODAL_OPTIONS_TEMPLATE = {
 window.modalOptions = {};
 window.resetModalOptions = () => {
   window.parent.parent.memory.syncObject(window.modalOptions, window.parent.parent.memory.copyObj(MODAL_OPTIONS_TEMPLATE));
+  // LINK BILLING PROFILES ARRAY GLOBALLY
+  (async () => {
+    window.parent.parent.billingProfiles = window.modalOptions.billingProfiles;
+    while (!window.parent.parent.frames['tasks-frame'] || !window.parent.parent.frames['tasks-frame'].frames['create-modal'] || !window.parent.parent.frames['tasks-frame'].frames['create-modal'].createApp) await window.parent.parent.sleep(50);
+    window.parent.parent.frames['tasks-frame'].frames['create-modal'].createApp.billingProfiles = window.parent.parent.billingProfiles;
+    window.parent.parent.frames['tasks-frame'].frames['create-modal'].createApp.$forceUpdate();
+  })();
 }
 window.resetModalOptions();
 
@@ -68,6 +75,7 @@ const billingProfilesApp = new Vue({
     numberWithCommas: window.parent.parent.numberWithCommas,
     tryGenerateEllipses: window.parent.parent.tryGenerateEllipses,
     toggleBillingProfileFavorited: function(billingProfileIndex, favorited) {
+      if (billingProfileIndex == 0) return;
       for (var billingProfile of window.modalOptions.billingProfiles) billingProfile.settings.favorited = false;
       window.modalOptions.billingProfiles[billingProfileIndex].settings.favorited = favorited == undefined ? !window.modalOptions.billingProfiles[billingProfileIndex].settings.favorited : favorited;
       organizeBillingProfiles();
@@ -78,9 +86,18 @@ const billingProfilesApp = new Vue({
       this.$forceUpdate();
     },
     removeBillingProfile: function(billingProfileIndex) {
+      let incomingBillingProfileID = window.modalOptions.billingProfiles[billingProfileIndex].settings.id;
+      if (window.modalOptions.billingProfiles[billingProfileIndex].settings.favorited && window.modalOptions.billingProfiles[1]) window.modalOptions.billingProfiles[1].settings.favorited = true;
       window.modalOptions.billingProfiles.splice(billingProfileIndex, 1);
       organizeBillingProfiles();
       this.$forceUpdate();
+      // REMOVE BILLING PROFILE FROM ALL TASKS WITH SAME ID
+      try {
+        for (var task of window.parent.parent.frames['tasks-frame'].tasks) for (var node of task.nodes) if (node.configuration.checkoutMethod.billingProfile == incomingBillingProfileID) {
+          node.configuration.checkoutMethod.billingProfile = "unselected";
+          window.parent.parent.frames['tasks-frame'].tasksApp.setNodeStatus(node, false);
+        }
+      } catch(err) {}
     },
     editBillingProfile: function(billingProfileIndex) {
       if (billingProfileIndex != -1) window.parent.parent.memory.syncObject(window.modalOptions_2, window.parent.parent.memory.copyObj(window.modalOptions.billingProfiles[billingProfileIndex]));
@@ -103,9 +120,8 @@ function toggleSwitchTransitions(enabled) {
 function organizeBillingProfiles() {
   toggleSwitchTransitions(false);
   for (var billingProfile of window.modalOptions.billingProfiles) if (billingProfile.settings.favorited) {
-    let favoritedBillingProfile = billingProfile;
-    window.modalOptions.billingProfiles.splice(window.modalOptions.billingProfiles.indexOf(billingProfile), 1);
-    window.modalOptions.billingProfiles.unshift(favoritedBillingProfile);
+    window.modalOptions.billingProfiles.unshift(billingProfile);
+    window.modalOptions.billingProfiles.splice(window.modalOptions.billingProfiles.lastIndexOf(billingProfile), 1);
     break;
   }
   setTimeout(function() { toggleSwitchTransitions(true); }, 50);
