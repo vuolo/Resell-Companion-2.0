@@ -4,20 +4,22 @@
 		<meta charset="utf-8"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Resell Companion — Billign Profiles</title>
+		<title>Resell Companion — Billing Profiles</title>
 
 		<link rel="stylesheet" type="text/css" href="../../../../../css/style.css"/>
 		<link rel="stylesheet" type="text/css" href="../../../../../css/fonts-alt-path.css"/>
 
 		<link rel="stylesheet" type="text/css" id="applicationStylesheet" href="./css/billing-profiles.css"/>
+		<link rel="stylesheet" type="text/css" id="applicationStylesheet" href="./css/billing-profile-creation.css"/>
 
 		<script src="../../../../../../utils/downloaded/vue.js" type="text/javascript"></script>
+		<script src="../../../../../../utils/downloaded/jquery.js" type="text/javascript"></script>
 
 	</head>
 	<body>
 
 		<div id="Billing_Profiles_Modal" class="Billing_Profiles_Modal_Class">
-			<div class="Modal_Class">
+			<div class="Modal_Class use_slow_transitions" v-bind:style="{ left: (!isEditingBillingProfiles ? 0 : -1287) + 'px' }">
 				<svg class="Modal_Shader" v-on:click="closeModal();">
 					<rect fill="rgba(29,29,29,0.251)" class="Modal_Shader_Class" rx="0" ry="0" x="0" y="0" width="1287" height="795">
 					</rect>
@@ -28,7 +30,7 @@
 				</svg>
 
 				<div class="Header_Class">
-					<svg class="Browser_Close_Button clickable hover-opacity" viewBox="3.375 3.375 21 20">
+					<svg class="Browser_Close_Button clickable hover-opacity" viewBox="3.375 3.375 21 20" v-on:click="closeModal();">
 						<circle cx="6.5" cy="6.5" r="6.5" transform="translate(6 6)" fill="#efefef"/>
 						<path fill="rgba(253,53,53,1)" class="Browser_Close_Button_Class" d="M 13.87500190734863 3.375 C 8.074760437011719 3.375 3.375 7.850962162017822 3.375 13.375 C 3.375 18.89904022216797 8.074760437011719 23.375 13.87500190734863 23.375 C 19.67524147033691 23.375 24.375 18.89904022216797 24.375 13.375 C 24.375 7.850960254669189 19.67524147033691 3.375 13.87500190734863 3.375 Z M 16.53533554077148 16.99519157409668 L 13.87500190734863 14.46153736114502 L 11.2146635055542 16.99519157409668 C 10.90168190002441 17.29327011108398 10.38677787780762 17.29327011108398 10.07379817962646 16.99519157409668 C 9.917306900024414 16.84615325927734 9.836539268493652 16.64903831481934 9.836539268493652 16.45192337036133 C 9.836539268493652 16.25480842590332 9.917306900024414 16.05769157409668 10.07379817962646 15.90865325927734 L 12.73413467407227 13.375 L 10.07379817962646 10.84134578704834 C 9.917306900024414 10.692307472229 9.83653736114502 10.49519157409668 9.83653736114502 10.29807662963867 C 9.83653736114502 10.10096168518066 9.917306900024414 9.90384578704834 10.07379817962646 9.75480842590332 C 10.38677787780762 9.456730842590332 10.9016809463501 9.456730842590332 11.2146635055542 9.75480842590332 L 13.875 12.28846168518066 L 16.53533363342285 9.75480842590332 C 16.84831619262695 9.456730842590332 17.36321830749512 9.456730842590332 17.67619895935059 9.75480842590332 C 17.98918151855469 10.05288505554199 17.98918151855469 10.54327011108398 17.67619895935059 10.84134674072266 L 15.01586532592773 13.375 L 17.67620086669922 15.90865325927734 C 17.98918342590332 16.20673179626465 17.98918342590332 16.69711685180664 17.67620086669922 16.99519157409668 C 17.36321830749512 17.29807662963867 16.84831619262695 17.29807662963867 16.53533554077148 16.99519157409668 Z">
 						</path>
@@ -53,8 +55,8 @@
 						</div>
 					</div> -->
 
-					<svg class="Blue_Bar" v-bind:style="{ left: calculateUnderlineLeftOffset(850, tryTranslate('Statistics'), 40, 'px', '900', 'SF Pro Text', false) + 'px' }">
-						<rect fill="rgba(91,182,187,1)" class="Blue_Bar_Class" rx="1.5" ry="1.5" x="0" y="0" v-bind:width="calculateUnderlineWidth(850, tryTranslate('Configure Monitors'), 40, 'px', '900', 'SF Pro Text')" height="3">
+					<svg class="Blue_Bar" v-bind:style="{ left: calculateUnderlineLeftOffset(850, tryTranslate('Billing Profiles'), 40, 'px', '900', 'SF Pro Text', false) + 'px' }">
+						<rect fill="rgba(91,182,187,1)" class="Blue_Bar_Class" rx="1.5" ry="1.5" x="0" y="0" v-bind:width="calculateUnderlineWidth(850, tryTranslate('Billing Profiles'), 40, 'px', '900', 'SF Pro Text')" height="3">
 						</rect>
 					</svg>
 					<div class="Billing_Profiles_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(520, tryTranslate('Billing Profiles'), 40, 'px', '900', 'SF Pro Text') }">
@@ -75,7 +77,7 @@
 
 					<!-- display message if there are no items -->
 					<template v-if="modalOptions.billingProfiles.length == 0">
-						<div class="centered-content" style="font-size: 1.1em; top: 0px; height: 0px; padding: inherit; padding-top: 15%" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+						<div class="centered-content" style="font-size: 1.1em; top: 0px; height: 0px; padding: inherit; padding-top: 20%" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
 							<span>{{tryTranslate('No billing profiles setup')}}</span>
 						</div>
 					</template>
@@ -87,7 +89,7 @@
 								</rect>
 							</svg>
 							<div class="Action_Row_1_Class">
-								<div class="Switch_1_Class clickable hover-light-opacity" v-on:click="billingProfile.settings.enabled = !billingProfile.settings.enabled">
+								<div class="Switch_1_Class clickable hover-light-opacity" v-on:click="toggleBillingProfileEnabled(billingProfileIndex)">
 									<svg class="Switch_Rectangle_1">
 										<rect v-bind:fill="billingProfile.settings.enabled ? 'rgba(53,178,57,1)' : 'rgba(253,53,53,1)'" class="Switch_Rectangle_1_dq_Class" rx="12.5" ry="12.5" x="0" y="0" width="45" height="25">
 										</rect>
@@ -97,9 +99,9 @@
 										</ellipse>
 									</svg>
 								</div>
-								<div class="Pencil_1_Class clickable hover-light-opacity">
+								<div class="Pencil_1_Class clickable hover-light-opacity" v-on:click="editBillingProfile(billingProfileIndex)">
 									<svg class="Pencil_Circle_1">
-										<ellipse v-bind:fill="getThemeColor('rgba(190,190,190,1)')" class="Pencil_Circle_1_Class" rx="17" ry="17.5" cx="17" cy="17.5">
+										<ellipse v-bind:fill="getThemeColor('rgba(247,247,247,1)')" class="Pencil_Circle_1_Class" rx="17" ry="17.5" cx="17" cy="17.5">
 										</ellipse>
 									</svg>
 									<svg class="Pencil_Icon_1" viewBox="0 0 17.74 17.74">
@@ -107,9 +109,9 @@
 										</path>
 									</svg>
 								</div>
-								<div class="Trash_1_Class clickable hover-light-opacity">
+								<div class="Trash_1_Class clickable hover-light-opacity" v-on:click="removeBillingProfile(billingProfileIndex)">
 									<svg class="Trash_Can_Circle_1">
-										<ellipse v-bind:fill="getThemeColor('rgba(190,190,190,1)')" class="Trash_Can_Circle_1_Class" rx="17" ry="17.5" cx="17" cy="17.5">
+										<ellipse v-bind:fill="getThemeColor('rgba(247,247,247,1)')" class="Trash_Can_Circle_1_Class" rx="17" ry="17.5" cx="17" cy="17.5">
 										</ellipse>
 									</svg>
 									<svg class="Trash_Can_Icon_1" viewBox="0 0 15.523 17.74">
@@ -119,16 +121,16 @@
 								</div>
 							</div>
 							<div class="Profile_Name_Text_dh_Class" style="font-weight: normal;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-								<span>{{billingProfile.settings.nickname.length > 0 ? tryGenerateEllipses(470, billingProfile.settings.nickname, 15, 'px', 'normal', 'SF Pro Text') : tryTranslate('N/A')}}</span>
+								<span>{{billingProfile.settings.nickname.length > 0 ? tryGenerateEllipses(470, billingProfile.settings.nickname, 15, 'px', 'normal', 'SF Pro Text') : `${tryTranslate('Billing Profile')} #${billingProfileIndex + 1}`}}</span>
 							</div>
 							<svg class="Favorite_Star_1" viewBox="2.25 3.375 19.15 17.782">
-								<path v-bind:fill="billingProfile.settings.favorited ? 'rgba(253,213,53,1)' : getThemeColor('rgba(190,190,190,1)')" class="Favorite_Star_1_Class" d="M 20.67334938049316 9.530364990234375 L 14.38547325134277 9.530364990234375 L 12.47474575042725 3.828103303909302 C 12.38070487976074 3.550256967544556 12.11995697021484 3.375 11.82501220703125 3.375 C 11.53006744384766 3.375 11.26931953430176 3.550256967544556 11.17527866363525 3.828103303909302 L 9.264551162719727 9.530364990234375 L 2.933929443359375 9.530364990234375 L 2.933929443359375 9.530364990234375 C 2.55776834487915 9.530364990234375 2.25 9.838133811950684 2.25 10.21429443359375 C 2.25 10.25276565551758 2.254274368286133 10.29551124572754 2.262823581695557 10.32970809936523 C 2.27137279510498 10.4793176651001 2.339765787124634 10.64602470397949 2.549219131469727 10.8127326965332 L 7.717160701751709 14.45465660095215 L 5.733765602111816 20.22103691101074 C 5.635450839996338 20.49888229370117 5.733765602111816 20.81092643737793 5.968866348266602 20.99045753479004 C 6.092828273773193 21.08022308349609 6.208241939544678 21.15716552734375 6.35357666015625 21.15716552734375 C 6.494637012481689 21.15716552734375 6.6613450050354 21.08449935913086 6.781032562255859 21.00328254699707 L 11.82501220703125 17.40837860107422 L 16.86899185180664 21.00328254699707 C 16.98867988586426 21.08877372741699 17.15538787841797 21.15716552734375 17.29644775390625 21.15716552734375 C 17.4417839050293 21.15716552734375 17.55719566345215 21.08449935913086 17.67688369750977 20.99045753479004 C 17.91625785827637 20.81092643737793 18.01029968261719 20.5031566619873 17.91198539733887 20.22103691101074 L 15.9285888671875 14.45465564727783 L 21.05378532409668 10.77853488922119 L 21.17774772644043 10.67167091369629 C 21.28888702392578 10.55198383331299 21.4000244140625 10.38955020904541 21.4000244140625 10.21429347991943 C 21.4000244140625 9.838133811950684 21.04951095581055 9.530364990234375 20.67334938049316 9.530364990234375 Z">
+								<path class="clickable hover-light-opacity" v-on:click="toggleBillingProfileFavorited(billingProfileIndex)" v-bind:fill="billingProfile.settings.favorited ? 'rgba(253,213,53,1)' : getThemeColor('rgba(190,190,190,1)')" class="Favorite_Star_1_Class" d="M 20.67334938049316 9.530364990234375 L 14.38547325134277 9.530364990234375 L 12.47474575042725 3.828103303909302 C 12.38070487976074 3.550256967544556 12.11995697021484 3.375 11.82501220703125 3.375 C 11.53006744384766 3.375 11.26931953430176 3.550256967544556 11.17527866363525 3.828103303909302 L 9.264551162719727 9.530364990234375 L 2.933929443359375 9.530364990234375 L 2.933929443359375 9.530364990234375 C 2.55776834487915 9.530364990234375 2.25 9.838133811950684 2.25 10.21429443359375 C 2.25 10.25276565551758 2.254274368286133 10.29551124572754 2.262823581695557 10.32970809936523 C 2.27137279510498 10.4793176651001 2.339765787124634 10.64602470397949 2.549219131469727 10.8127326965332 L 7.717160701751709 14.45465660095215 L 5.733765602111816 20.22103691101074 C 5.635450839996338 20.49888229370117 5.733765602111816 20.81092643737793 5.968866348266602 20.99045753479004 C 6.092828273773193 21.08022308349609 6.208241939544678 21.15716552734375 6.35357666015625 21.15716552734375 C 6.494637012481689 21.15716552734375 6.6613450050354 21.08449935913086 6.781032562255859 21.00328254699707 L 11.82501220703125 17.40837860107422 L 16.86899185180664 21.00328254699707 C 16.98867988586426 21.08877372741699 17.15538787841797 21.15716552734375 17.29644775390625 21.15716552734375 C 17.4417839050293 21.15716552734375 17.55719566345215 21.08449935913086 17.67688369750977 20.99045753479004 C 17.91625785827637 20.81092643737793 18.01029968261719 20.5031566619873 17.91198539733887 20.22103691101074 L 15.9285888671875 14.45465564727783 L 21.05378532409668 10.77853488922119 L 21.17774772644043 10.67167091369629 C 21.28888702392578 10.55198383331299 21.4000244140625 10.38955020904541 21.4000244140625 10.21429347991943 C 21.4000244140625 9.838133811950684 21.04951095581055 9.530364990234375 20.67334938049316 9.530364990234375 Z">
 								</path>
 							</svg>
 						</div>
 					</template>
 
-					<div class="Row_1_Class clickable hover-opacity" v-bind:style="{ top: (modalOptions.billingProfiles.length * 58) + 10 + 'px' }">
+					<div class="Row_1_Class clickable hover-opacity" v-on:click="editBillingProfile(-1)" v-bind:style="{ top: (modalOptions.billingProfiles.length * 58) + 10 + 'px' }">
 						<svg class="Row_1_Rectangle">
 							<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Row_1_Rectangle_Class" rx="10" ry="10" x="0" y="0" width="680.752" height="52.497">
 							</rect>
@@ -165,7 +167,256 @@
 			</div>
 		</div>
 
+		<div id="Rewrite___Billing_Profile_Creation_Modal" class="Rewrite___Billing_Profile_Creation_Modal_Class">
+			<div class="Modal_Class use_slow_transitions" v-bind:style="{ left: (isEditingBillingProfiles ? 0 : 1287) + 'px' }">
+				<svg class="Modal_Shader" v-on:click="closeModal();">
+					<rect fill="rgba(29,29,29,0.251)" class="Modal_Shader_Class" rx="0" ry="0" x="0" y="0" width="1287" height="795">
+					</rect>
+				</svg>
+				<svg class="Modal_Rectangle">
+					<rect v-bind:fill="getThemeColor('rgba(251,247,241,1)')" class="Modal_Rectangle_Class" rx="20" ry="20" x="0" y="0" width="952" height="608">
+					</rect>
+				</svg>
+
+				<div class="Header_Class">
+					<svg class="Browser_Close_Button clickable hover-opacity" viewBox="3.375 3.375 21 20" v-on:click="closeModal();">
+						<circle cx="6.5" cy="6.5" r="6.5" transform="translate(6 6)" fill="#efefef"/>
+						<path fill="rgba(253,53,53,1)" class="Browser_Close_Button_Class" d="M 13.87500190734863 3.375 C 8.074760437011719 3.375 3.375 7.850962162017822 3.375 13.375 C 3.375 18.89904022216797 8.074760437011719 23.375 13.87500190734863 23.375 C 19.67524147033691 23.375 24.375 18.89904022216797 24.375 13.375 C 24.375 7.850960254669189 19.67524147033691 3.375 13.87500190734863 3.375 Z M 16.53533554077148 16.99519157409668 L 13.87500190734863 14.46153736114502 L 11.2146635055542 16.99519157409668 C 10.90168190002441 17.29327011108398 10.38677787780762 17.29327011108398 10.07379817962646 16.99519157409668 C 9.917306900024414 16.84615325927734 9.836539268493652 16.64903831481934 9.836539268493652 16.45192337036133 C 9.836539268493652 16.25480842590332 9.917306900024414 16.05769157409668 10.07379817962646 15.90865325927734 L 12.73413467407227 13.375 L 10.07379817962646 10.84134578704834 C 9.917306900024414 10.692307472229 9.83653736114502 10.49519157409668 9.83653736114502 10.29807662963867 C 9.83653736114502 10.10096168518066 9.917306900024414 9.90384578704834 10.07379817962646 9.75480842590332 C 10.38677787780762 9.456730842590332 10.9016809463501 9.456730842590332 11.2146635055542 9.75480842590332 L 13.875 12.28846168518066 L 16.53533363342285 9.75480842590332 C 16.84831619262695 9.456730842590332 17.36321830749512 9.456730842590332 17.67619895935059 9.75480842590332 C 17.98918151855469 10.05288505554199 17.98918151855469 10.54327011108398 17.67619895935059 10.84134674072266 L 15.01586532592773 13.375 L 17.67620086669922 15.90865325927734 C 17.98918342590332 16.20673179626465 17.98918342590332 16.69711685180664 17.67620086669922 16.99519157409668 C 17.36321830749512 17.29807662963867 16.84831619262695 17.29807662963867 16.53533554077148 16.99519157409668 Z">
+						</path>
+					</svg>
+					<svg class="Blue_Bar" v-bind:style="{ left: calculateUnderlineLeftOffset(850, tryTranslate('Billing Profile Creation'), 40, 'px', '900', 'SF Pro Text', false) + 'px' }">
+						<rect fill="rgba(206,140,229,1)" class="Blue_Bar_Class" rx="1.5" ry="1.5" x="0" y="0" v-bind:width="calculateUnderlineWidth(850, tryTranslate('Billing Profile Creation'), 40, 'px', '900', 'SF Pro Text')" height="3">
+						</rect>
+					</svg>
+					<div class="Billing_Profile_Creation_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(520, tryTranslate('Billing Profile Creation'), 40, 'px', '900', 'SF Pro Text') }">
+						<span>{{tryTranslate('Billing Profile Creation')}}</span>
+					</div>
+				</div>
+
+				<div class="Fields_Class">
+
+					<div class="First_Name_Field_Class">
+						<input v-bind:disabled="!isEditingBillingProfiles" v-bind:placeholder="tryTranslate('First Name')" v-on:keyup.enter="finalizeModal();" v-model="modalOptions.autofillInformation.firstName" type="text" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 187px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+						<svg class="Magnifying_Glass_Icon_gv Billing_Profile_Icon" style="pointer-events: none;" viewBox="1.5 7.5 21.681 13.797">
+							<path v-bind:fill="getThemeColor('rgba(29,29,29,1)')" class="Billing_Profile_Icon_Class" d="M 16.2823657989502 13.41294574737549 C 17.91828155517578 13.41294574737549 19.22898483276367 12.09238815307617 19.22898483276367 10.4564733505249 C 19.22898483276367 8.820557594299316 17.91828155517578 7.499999046325684 16.2823657989502 7.499999046325684 C 14.64645099639893 7.499999046325684 13.32589340209961 8.820557594299316 13.32589340209961 10.4564733505249 C 13.32589340209961 12.09238815307617 14.64645099639893 13.41294574737549 16.2823657989502 13.41294574737549 Z M 8.3984375 13.41294574737549 C 10.03435230255127 13.41294574737549 11.34505558013916 12.09238815307617 11.34505558013916 10.4564733505249 C 11.34505558013916 8.820557594299316 10.03435230255127 7.499999046325684 8.3984375 7.499999046325684 C 6.76252269744873 7.499999046325684 5.441964149475098 8.820557594299316 5.441964149475098 10.4564733505249 C 5.441964149475098 12.09238815307617 6.76252269744873 13.41294574737549 8.3984375 13.41294574737549 Z M 8.3984375 15.3839282989502 C 6.10224437713623 15.3839282989502 1.49999988079071 16.53695297241211 1.49999988079071 18.83314514160156 L 1.49999988079071 21.296875 L 15.296875 21.296875 L 15.296875 18.83314514160156 C 15.296875 16.53695297241211 10.69463157653809 15.3839282989502 8.3984375 15.3839282989502 Z M 16.2823657989502 15.3839282989502 C 15.99657344818115 15.3839282989502 15.67136096954346 15.40363788604736 15.32643985748291 15.43320274353027 C 16.46960830688477 16.26101493835449 17.26785659790039 17.37462043762207 17.26785659790039 18.83314514160156 L 17.26785659790039 21.296875 L 23.18080520629883 21.296875 L 23.18080520629883 18.83314514160156 C 23.18080520629883 16.53695297241211 18.57855987548828 15.3839282989502 16.2823657989502 15.3839282989502 Z">
+							</path>
+						</svg>
+
+						<div class="Keywords_ep_Class" style="left: 10px; position: absolute; white-space: nowrap;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+							<span>{{tryTranslate('First Name')}}</span>
+						</div>
+					</div>
+
+					<div class="Last_Name_Field_Class">
+						<input v-bind:disabled="!isEditingBillingProfiles" v-bind:placeholder="tryTranslate('Last Name')" v-on:keyup.enter="finalizeModal();" v-model="modalOptions.autofillInformation.lastName" type="text" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 187px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+						<svg class="Magnifying_Glass_Icon_gv Billing_Profile_Icon" style="pointer-events: none;" viewBox="1.5 7.5 21.681 13.797">
+							<path v-bind:fill="getThemeColor('rgba(29,29,29,1)')" class="Billing_Profile_Icon_Class" d="M 16.2823657989502 13.41294574737549 C 17.91828155517578 13.41294574737549 19.22898483276367 12.09238815307617 19.22898483276367 10.4564733505249 C 19.22898483276367 8.820557594299316 17.91828155517578 7.499999046325684 16.2823657989502 7.499999046325684 C 14.64645099639893 7.499999046325684 13.32589340209961 8.820557594299316 13.32589340209961 10.4564733505249 C 13.32589340209961 12.09238815307617 14.64645099639893 13.41294574737549 16.2823657989502 13.41294574737549 Z M 8.3984375 13.41294574737549 C 10.03435230255127 13.41294574737549 11.34505558013916 12.09238815307617 11.34505558013916 10.4564733505249 C 11.34505558013916 8.820557594299316 10.03435230255127 7.499999046325684 8.3984375 7.499999046325684 C 6.76252269744873 7.499999046325684 5.441964149475098 8.820557594299316 5.441964149475098 10.4564733505249 C 5.441964149475098 12.09238815307617 6.76252269744873 13.41294574737549 8.3984375 13.41294574737549 Z M 8.3984375 15.3839282989502 C 6.10224437713623 15.3839282989502 1.49999988079071 16.53695297241211 1.49999988079071 18.83314514160156 L 1.49999988079071 21.296875 L 15.296875 21.296875 L 15.296875 18.83314514160156 C 15.296875 16.53695297241211 10.69463157653809 15.3839282989502 8.3984375 15.3839282989502 Z M 16.2823657989502 15.3839282989502 C 15.99657344818115 15.3839282989502 15.67136096954346 15.40363788604736 15.32643985748291 15.43320274353027 C 16.46960830688477 16.26101493835449 17.26785659790039 17.37462043762207 17.26785659790039 18.83314514160156 L 17.26785659790039 21.296875 L 23.18080520629883 21.296875 L 23.18080520629883 18.83314514160156 C 23.18080520629883 16.53695297241211 18.57855987548828 15.3839282989502 16.2823657989502 15.3839282989502 Z">
+							</path>
+						</svg>
+
+						<div class="Keywords_ep_Class" style="left: 10px; position: absolute; white-space: nowrap;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+							<span>{{tryTranslate('Last Name')}}</span>
+						</div>
+					</div>
+
+					<div class="Email_Address_Field_Class">
+						<input v-bind:disabled="!isEditingBillingProfiles" v-bind:placeholder="tryTranslate('Email Address')" v-on:keyup.enter="finalizeModal();" v-model="modalOptions.autofillInformation.email" type="text" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 397px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+						<svg class="Magnifying_Glass_Icon_gv Billing_Profile_Icon" style="pointer-events: none;" viewBox="0 0 512 512">
+							<g v-bind:fill="getThemeColor('rgba(29,29,29,1)')">
+								<polygon points="0,97.808 0,414.192 180.789,256"/>
+								<polygon points="22.64,76 257,281.063 491.362,76"/>
+								<polygon points="308.431,275.933 257,320.937 205.569,275.933 22.638,436 491.368,436"/>
+								<polygon points="331.213,256 512,414.187 512,97.81"/>
+							</g>
+						</svg>
+
+						<div class="Keywords_ep_Class" style="left: 10px; position: absolute; white-space: nowrap;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+							<span>{{tryTranslate('Email Address')}}</span>
+						</div>
+					</div>
+
+					<div class="Phone_Number_Field_Class">
+						<input v-bind:disabled="!isEditingBillingProfiles" v-bind:placeholder="tryTranslate('Phone Number')" v-on:keyup.enter="finalizeModal();" v-model="modalOptions.autofillInformation.phoneNumber" type="tel" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 187px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+						<svg class="Magnifying_Glass_Icon_gv Billing_Profile_Icon" style="pointer-events: none;" viewBox="7.5 1.5 19.5 33">
+							<path v-bind:fill="getThemeColor('rgba(29,29,29,1)')" d="M 23.25 1.5 L 11.25 1.5 C 9.180000305175781 1.5 7.5 3.180000066757202 7.5 5.25 L 7.5 30.75 C 7.5 32.81999969482422 9.180000305175781 34.5 11.25 34.5 L 23.25 34.5 C 25.31999969482422 34.5 27 32.81999969482422 27 30.75 L 27 5.25 C 27 3.180000066757202 25.31999969482422 1.5 23.25 1.5 Z M 17.25 33 C 16.0049991607666 33 15 31.9950008392334 15 30.75 C 15 29.5049991607666 16.0049991607666 28.5 17.25 28.5 C 18.4950008392334 28.5 19.5 29.5049991607666 19.5 30.75 C 19.5 31.9950008392334 18.4950008392334 33 17.25 33 Z M 24 27 L 10.5 27 L 10.5 6 L 24 6 L 24 27 Z"/>
+						</svg>
+
+						<div class="Keywords_ep_Class" style="left: 10px; position: absolute; white-space: nowrap;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+							<span>{{tryTranslate('Phone Number')}}</span>
+						</div>
+					</div>
+
+					<div class="Zip_Code_Field_Class">
+						<input v-bind:disabled="!isEditingBillingProfiles" v-bind:placeholder="tryTranslate('Zip Code')" v-on:keyup.enter="finalizeModal();" v-model="modalOptions.autofillInformation.zipCode" type="text" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 187px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+						<svg class="Magnifying_Glass_Icon_gv Billing_Profile_Icon" style="pointer-events: none;" viewBox="6.75 2.25 14.785 20.699">
+							<path v-bind:fill="getThemeColor('rgba(29,29,29,1)')" class="Location_Icon_Class" d="M 14.14262199401855 2.25 C 10.07649517059326 2.25 6.75 5.510007858276367 6.75 9.494815826416016 C 6.75 14.92834758758545 14.14262199401855 22.9493408203125 14.14262199401855 22.9493408203125 C 14.14262199401855 22.9493408203125 21.53524398803711 14.92834758758545 21.53524398803711 9.494815826416016 C 21.53524398803711 5.510007858276367 18.20874786376953 2.25 14.14262199401855 2.25 Z M 14.14262199401855 12.08223342895508 C 12.66428184509277 12.08223342895508 11.50234794616699 10.94353866577148 11.50234794616699 9.494815826416016 C 11.50234794616699 8.046000480651855 12.66423606872559 6.907398223876953 14.14262199401855 6.907398223876953 C 15.62100791931152 6.907398223876953 16.78289604187012 8.046000480651855 16.78289604187012 9.494815826416016 C 16.78289604187012 10.94353866577148 15.62096214294434 12.08223342895508 14.14262199401855 12.08223342895508 Z">
+							</path>
+						</svg>
+
+						<div class="Keywords_ep_Class" style="left: 10px; position: absolute; white-space: nowrap;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+							<span>{{tryTranslate('Zip Code')}}</span>
+						</div>
+					</div>
+
+					<div class="Street_Address_Field_Class">
+						<input v-bind:disabled="!isEditingBillingProfiles" v-bind:placeholder="tryTranslate('Street Address')" v-on:keyup.enter="finalizeModal();" v-model="modalOptions.autofillInformation.address" type="text" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 262px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+						<svg class="Magnifying_Glass_Icon_gv Billing_Profile_Icon" style="pointer-events: none;" viewBox="6.75 2.25 14.785 20.699">
+							<path v-bind:fill="getThemeColor('rgba(29,29,29,1)')" class="Location_Icon_Class" d="M 14.14262199401855 2.25 C 10.07649517059326 2.25 6.75 5.510007858276367 6.75 9.494815826416016 C 6.75 14.92834758758545 14.14262199401855 22.9493408203125 14.14262199401855 22.9493408203125 C 14.14262199401855 22.9493408203125 21.53524398803711 14.92834758758545 21.53524398803711 9.494815826416016 C 21.53524398803711 5.510007858276367 18.20874786376953 2.25 14.14262199401855 2.25 Z M 14.14262199401855 12.08223342895508 C 12.66428184509277 12.08223342895508 11.50234794616699 10.94353866577148 11.50234794616699 9.494815826416016 C 11.50234794616699 8.046000480651855 12.66423606872559 6.907398223876953 14.14262199401855 6.907398223876953 C 15.62100791931152 6.907398223876953 16.78289604187012 8.046000480651855 16.78289604187012 9.494815826416016 C 16.78289604187012 10.94353866577148 15.62096214294434 12.08223342895508 14.14262199401855 12.08223342895508 Z">
+							</path>
+						</svg>
+
+						<div class="Keywords_ep_Class" style="left: 10px; position: absolute; white-space: nowrap;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+							<span>{{tryTranslate('Street Address')}}</span>
+						</div>
+					</div>
+
+					<div class="Unit_Number_Field_Class">
+						<input v-bind:disabled="!isEditingBillingProfiles" v-bind:placeholder="tryTranslate('Unit')" v-on:keyup.enter="finalizeModal();" v-model="modalOptions.autofillInformation.unit" type="text" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 112px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+						<svg class="Magnifying_Glass_Icon_gv Billing_Profile_Icon" style="pointer-events: none;" viewBox="6.75 2.25 14.785 20.699">
+							<path v-bind:fill="getThemeColor('rgba(29,29,29,1)')" class="Location_Icon_Class" d="M 14.14262199401855 2.25 C 10.07649517059326 2.25 6.75 5.510007858276367 6.75 9.494815826416016 C 6.75 14.92834758758545 14.14262199401855 22.9493408203125 14.14262199401855 22.9493408203125 C 14.14262199401855 22.9493408203125 21.53524398803711 14.92834758758545 21.53524398803711 9.494815826416016 C 21.53524398803711 5.510007858276367 18.20874786376953 2.25 14.14262199401855 2.25 Z M 14.14262199401855 12.08223342895508 C 12.66428184509277 12.08223342895508 11.50234794616699 10.94353866577148 11.50234794616699 9.494815826416016 C 11.50234794616699 8.046000480651855 12.66423606872559 6.907398223876953 14.14262199401855 6.907398223876953 C 15.62100791931152 6.907398223876953 16.78289604187012 8.046000480651855 16.78289604187012 9.494815826416016 C 16.78289604187012 10.94353866577148 15.62096214294434 12.08223342895508 14.14262199401855 12.08223342895508 Z">
+							</path>
+						</svg>
+
+						<div class="Keywords_ep_Class" style="left: 10px; position: absolute; white-space: nowrap;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+							<span>{{tryTranslate('Unit')}}</span>
+						</div>
+					</div>
+
+					<div class="Country_Field_Class">
+						<input v-bind:disabled="!isEditingBillingProfiles" v-bind:placeholder="tryTranslate('Country')" v-on:keyup.enter="finalizeModal();" v-model="modalOptions.autofillInformation.country" type="text" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 127px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+						<svg class="Magnifying_Glass_Icon_gv Billing_Profile_Icon" style="pointer-events: none;" viewBox="6.75 2.25 14.785 20.699">
+							<path v-bind:fill="getThemeColor('rgba(29,29,29,1)')" class="Location_Icon_Class" d="M 14.14262199401855 2.25 C 10.07649517059326 2.25 6.75 5.510007858276367 6.75 9.494815826416016 C 6.75 14.92834758758545 14.14262199401855 22.9493408203125 14.14262199401855 22.9493408203125 C 14.14262199401855 22.9493408203125 21.53524398803711 14.92834758758545 21.53524398803711 9.494815826416016 C 21.53524398803711 5.510007858276367 18.20874786376953 2.25 14.14262199401855 2.25 Z M 14.14262199401855 12.08223342895508 C 12.66428184509277 12.08223342895508 11.50234794616699 10.94353866577148 11.50234794616699 9.494815826416016 C 11.50234794616699 8.046000480651855 12.66423606872559 6.907398223876953 14.14262199401855 6.907398223876953 C 15.62100791931152 6.907398223876953 16.78289604187012 8.046000480651855 16.78289604187012 9.494815826416016 C 16.78289604187012 10.94353866577148 15.62096214294434 12.08223342895508 14.14262199401855 12.08223342895508 Z">
+							</path>
+						</svg>
+
+						<div class="Keywords_ep_Class" style="left: 10px; position: absolute; white-space: nowrap;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+							<span>{{tryTranslate('Country')}}</span>
+						</div>
+					</div>
+
+					<div class="State_Field_Class">
+						<input v-bind:disabled="!isEditingBillingProfiles" v-bind:placeholder="tryTranslate('State')" v-on:keyup.enter="finalizeModal();" v-model="modalOptions.autofillInformation.state" type="text" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 112px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+						<svg class="Magnifying_Glass_Icon_gv Billing_Profile_Icon" style="pointer-events: none;" viewBox="6.75 2.25 14.785 20.699">
+							<path v-bind:fill="getThemeColor('rgba(29,29,29,1)')" class="Location_Icon_Class" d="M 14.14262199401855 2.25 C 10.07649517059326 2.25 6.75 5.510007858276367 6.75 9.494815826416016 C 6.75 14.92834758758545 14.14262199401855 22.9493408203125 14.14262199401855 22.9493408203125 C 14.14262199401855 22.9493408203125 21.53524398803711 14.92834758758545 21.53524398803711 9.494815826416016 C 21.53524398803711 5.510007858276367 18.20874786376953 2.25 14.14262199401855 2.25 Z M 14.14262199401855 12.08223342895508 C 12.66428184509277 12.08223342895508 11.50234794616699 10.94353866577148 11.50234794616699 9.494815826416016 C 11.50234794616699 8.046000480651855 12.66423606872559 6.907398223876953 14.14262199401855 6.907398223876953 C 15.62100791931152 6.907398223876953 16.78289604187012 8.046000480651855 16.78289604187012 9.494815826416016 C 16.78289604187012 10.94353866577148 15.62096214294434 12.08223342895508 14.14262199401855 12.08223342895508 Z">
+							</path>
+						</svg>
+
+						<div class="Keywords_ep_Class" style="left: 10px; position: absolute; white-space: nowrap;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+							<span>{{tryTranslate('State')}}</span>
+						</div>
+					</div>
+
+					<div class="City_Field_Class">
+						<input v-bind:disabled="!isEditingBillingProfiles" v-bind:placeholder="tryTranslate('City')" v-on:keyup.enter="finalizeModal();" v-model="modalOptions.autofillInformation.city" type="text" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 112px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+						<svg class="Magnifying_Glass_Icon_gv Billing_Profile_Icon" style="pointer-events: none;" viewBox="6.75 2.25 14.785 20.699">
+							<path v-bind:fill="getThemeColor('rgba(29,29,29,1)')" class="Location_Icon_Class" d="M 14.14262199401855 2.25 C 10.07649517059326 2.25 6.75 5.510007858276367 6.75 9.494815826416016 C 6.75 14.92834758758545 14.14262199401855 22.9493408203125 14.14262199401855 22.9493408203125 C 14.14262199401855 22.9493408203125 21.53524398803711 14.92834758758545 21.53524398803711 9.494815826416016 C 21.53524398803711 5.510007858276367 18.20874786376953 2.25 14.14262199401855 2.25 Z M 14.14262199401855 12.08223342895508 C 12.66428184509277 12.08223342895508 11.50234794616699 10.94353866577148 11.50234794616699 9.494815826416016 C 11.50234794616699 8.046000480651855 12.66423606872559 6.907398223876953 14.14262199401855 6.907398223876953 C 15.62100791931152 6.907398223876953 16.78289604187012 8.046000480651855 16.78289604187012 9.494815826416016 C 16.78289604187012 10.94353866577148 15.62096214294434 12.08223342895508 14.14262199401855 12.08223342895508 Z">
+							</path>
+						</svg>
+
+						<div class="Keywords_ep_Class" style="left: 10px; position: absolute; white-space: nowrap;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+							<span>{{tryTranslate('City')}}</span>
+						</div>
+					</div>
+
+
+					<div class="First_Name_Field_Class" style="left: 573px;">
+						<input v-bind:disabled="!isEditingBillingProfiles" v-bind:placeholder="tryTranslate('Nickname')" v-on:keyup.enter="finalizeModal();" v-model="modalOptions.settings.nickname" type="text" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 187px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+						<svg class="Magnifying_Glass_Icon_gv Billing_Profile_Icon" style="pointer-events: none; top: 39px;" viewBox="0 0 477.88 477.88">
+							<g v-bind:fill="getThemeColor('rgba(29,29,29,1)')">
+								<path d="M460.809,0H273.076c-4.526,0.001-8.866,1.8-12.066,5.001l-256,256c-6.669,6.661-6.675,17.467-0.013,24.136
+			c0.004,0.004,0.009,0.009,0.013,0.013l187.733,187.733c6.665,6.662,17.468,6.662,24.132,0l256-256
+			c3.205-3.204,5.004-7.551,5.001-12.083V17.067C477.876,7.641,470.235,0,460.809,0z M358.409,153.6
+			c-18.851,0-34.133-15.282-34.133-34.133s15.282-34.133,34.133-34.133s34.133,15.282,34.133,34.133S377.26,153.6,358.409,153.6z"/>
+							</g>
+						</svg>
+
+						<div class="Keywords_ep_Class" style="left: 10px; position: absolute; white-space: nowrap;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+							<span>{{tryTranslate('Nickname')}}</span>
+						</div>
+					</div>
+
+					<div class="City_Field_Class" style="left: 573px;">
+						<input v-bind:disabled="!isEditingBillingProfiles" v-bind:placeholder="tryTranslate('Checkout Delay (ms)')" v-on:keyup.enter="finalizeModal();" v-model="modalOptions.settings.autoCheckoutDelay" type="number" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 187px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+						<div class="Clock_Icon_Class" style="pointer-events: none; left: 10px;">
+							<svg class="Clock_Icon_2" viewBox="3 3 18 18">
+								<path fill="transparent" v-bind:stroke="getThemeColor('rgba(29,29,29,1)')" stroke-width="2px" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" shape-rendering="auto" class="Clock_Icon_2_Class" d="M 21 11.99999904632568 C 21 16.97056198120117 16.97056198120117 21 11.99999904632568 21 C 7.02943754196167 21 3 16.97056198120117 3 11.99999904632568 C 3 7.02943754196167 7.02943754196167 3 11.99999904632568 3 C 16.97056198120117 3 21 7.02943754196167 21 11.99999904632568 Z">
+								</path>
+							</svg>
+							<svg class="Clock_Icon_1" viewBox="18 9 3.809 7.618">
+								<path fill="transparent" v-bind:stroke="getThemeColor('rgba(29,29,29,1)')" stroke-width="2px" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" shape-rendering="auto" class="Clock_Icon_1_Class" d="M 18 9 L 18 14.71332931518555 L 21.80888557434082 16.61777305603027">
+								</path>
+							</svg>
+						</div>
+
+						<div class="Keywords_ep_Class" style="left: 10px; position: absolute; white-space: nowrap;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+							<span>{{tryTranslate('Checkout Delay (ms)')}}</span>
+						</div>
+					</div>
+
+
+				</div>
+
+				<svg class="Separator">
+					<rect v-bind:fill="getThemeColor('rgba(190,190,190,1)')" class="Separator_Class" rx="1.5" ry="1.5" x="0" y="0" width="413" height="3">
+					</rect>
+				</svg>
+
+				<div class="Payment_Method_Area_Class">
+					<svg class="Payment_Method_Rectangle">
+						<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Payment_Method_Rectangle_Class" rx="40" ry="40" x="0" y="0" width="335" height="195">
+						</rect>
+					</svg>
+
+					<input id="cardNumber" v-bind:disabled="!isEditingBillingProfiles" placeholder="---- ---- ---- ----" v-on:keyup.enter="finalizeModal();" v-model="modalOptions.autofillInformation.billing.cardNumber" type="text" maxlength="19" class="Last_4_Digits_Class special-focus" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+					<div class="Card_Number_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+						<span>{{tryTranslate('Card Number')}}</span>
+					</div>
+
+					<input id="cvc" v-bind:disabled="!isEditingBillingProfiles" placeholder="----" v-on:keyup.enter="finalizeModal();" v-model="modalOptions.autofillInformation.billing.cvc" type="text" maxlength="4" class="CVC_Class special-focus" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+					<div class="CVC_en_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+						<span>{{tryTranslate('CVC')}}</span>
+					</div>
+
+					<input id="expirationDateFull" v-bind:disabled="!isEditingBillingProfiles" placeholder="--/--" v-on:keyup.enter="finalizeModal();" v-model="modalOptions.autofillInformation.billing.expirationDateFull" type="text" maxlength="5" class="Card_Expiration_Class special-focus" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+					<div class="MM_YY_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+						<span>{{tryTranslate('MM/YY')}}</span>
+					</div>
+
+					<img class="Mastercard_Icon_Class" v-bind:src="getCardTypeLocation(modalOptions.autofillInformation.billing.cardNumber)">
+
+					<svg class="Green_Bar" v-bind:style="{ left: calculateUnderlineLeftOffset(335, tryTranslate('Payment Method'), 40, 'px', 'bold', 'SF Pro Text', false) + 20 + 'px' }">
+						<rect fill="rgba(53,178,57,1)" class="Green_Bar_Class" rx="1.5" ry="1.5" x="0" y="0" v-bind:width="calculateUnderlineWidth(335, tryTranslate('Payment Method'), 40, 'px', 'bold', 'SF Pro Text')" height="3">
+						</rect>
+					</svg>
+					<div class="Payment_Method_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(335, tryTranslate('Payment Method'), 40, 'px', 'bold', 'SF Pro Text') }">
+						<span>{{tryTranslate('Payment Method')}}</span>
+					</div>
+				</div>
+
+				<div class="Save_Button_Class clipButton clickable" v-on:click="finalizeModal();">
+					<div class="clipGroup" style="width: 107px;">
+						<svg class="Back_Transitioner" style="bottom: -25px;" viewBox="4631.671 2118.361 137.6 34.565">
+							<path fill="rgba(36,39,37,1)" id="Back_Transitioner" d="M 4631.67138671875 2136.780029296875 C 4631.67138671875 2136.780029296875 4649.8212890625 2127.950439453125 4669.78759765625 2136.780029296875 C 4689.75244140625 2145.610595703125 4680.9365234375 2141.826416015625 4680.9365234375 2141.826416015625 C 4680.9365234375 2141.826416015625 4699.80859375 2134.79638671875 4711.21826171875 2141.229248046875 C 4722.626953125 2147.663330078125 4712.8291015625 2141.229248046875 4712.8291015625 2141.229248046875 C 4712.8291015625 2141.229248046875 4737.462890625 2118.742431640625 4759.2421875 2118.3642578125 C 4781.0234375 2117.985107421875 4760.5390625 2152.92626953125 4760.5390625 2152.92626953125 L 4631.67138671875 2152.92626953125 L 4631.67138671875 2136.780029296875 Z">
+							</path>
+						</svg>
+						<svg class="Front_Transitioner" style="bottom: -30px;" viewBox="4631.671 2118.361 137.6 26.969">
+							<path fill="rgba(91,182,187,1)" id="Front_Transitioner" d="M 4631.67138671875 2132.73193359375 C 4631.67138671875 2132.73193359375 4649.82177734375 2125.843017578125 4669.78759765625 2132.73193359375 C 4689.7529296875 2139.621826171875 4680.93701171875 2136.66943359375 4680.93701171875 2136.66943359375 C 4680.93701171875 2136.66943359375 4699.80908203125 2131.184326171875 4711.21875 2136.203369140625 C 4722.62744140625 2141.2236328125 4712.82958984375 2136.203369140625 4712.82958984375 2136.203369140625 C 4712.82958984375 2136.203369140625 4737.462890625 2118.658447265625 4759.24267578125 2118.363525390625 C 4781.0234375 2118.0673828125 4760.5390625 2145.329833984375 4760.5390625 2145.329833984375 L 4631.67138671875 2145.329833984375 L 4631.67138671875 2132.73193359375 Z">
+							</path>
+						</svg>
+					</div>
+					<svg class="Save_Rectangle">
+						<rect fill="transparent" stroke="rgba(91,182,187,1)" stroke-width="2px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Save_Rectangle_Class" rx="18" ry="18" x="0" y="0" width="107" height="36">
+						</rect>
+					</svg>
+					<div class="Save_Class" style="line-height: 18px;" v-bind:style="{ fontSize: confineTextWidth(107-20, billingProfileEditIndex == -1 ? tryTranslate('Create') : tryTranslate('Save'), 15, 'px', 'bold', 'SF Pro Text') }">
+						<span>{{billingProfileEditIndex == -1 ? tryTranslate('Create') : tryTranslate('Save')}}</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
 		<script src="./js/billing-profiles.js" type="text/javascript"></script>
+		<script src="./js/billing-profile-creation.js" type="text/javascript"></script>
 		<script src="../../../../../../utils/scripts/button-transitions.js" type="text/javascript"></script>
 
 	</body>

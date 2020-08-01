@@ -14,9 +14,6 @@ const cpfmClient = ShopifyBuy.buildClient({
 window.tasks = [];
 
 window.modals = {
-  'configure': {
-    visible: false
-  },
   'create': {
     visible: false
   }
@@ -27,11 +24,7 @@ window.openModal = (modalName) => {
 }
 
 window.modalLoadedCallback = (modalName) => {
-  if (modalName == 'configure') {
-    tasksApp.configureModal = window.frames['configure-modal'].modalOptions;
-  } else if (modalName == 'create') {
-    tasksApp.createModal = window.frames['create-modal'].modalOptions;
-  }
+  if (modalName == 'create') tasksApp.createModal = window.frames['create-modal'].modalOptions;
 }
 
 let allowNewTaskCreation = true;
@@ -49,7 +42,6 @@ window.tasksApp = new Vue({
     captchaSolvers: window.captchaSolvers,
     modals: window.modals,
     activeTaskIndex: -1,
-    configureModal: {},
     createModal: {}
   },
   methods: {
