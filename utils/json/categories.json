@@ -2344,22 +2344,6 @@
           "favorited": true,
           "region": "United-States-of-America",
           "taskLaunchable": true
-        },
-        {
-          "name": "Europe",
-          "identifier": "supreme_eu",
-          "urls": [],
-          "favorited": true,
-          "region": "Europe",
-          "taskLaunchable": true
-        },
-        {
-          "name": "Japan",
-          "identifier": "supreme_jp",
-          "urls": [],
-          "favorited": true,
-          "region": "Japan",
-          "taskLaunchable": true
         }
       ]
     }

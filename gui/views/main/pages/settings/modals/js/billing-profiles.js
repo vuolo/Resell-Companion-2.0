@@ -95,7 +95,7 @@ const billingProfilesApp = new Vue({
       try {
         for (var task of window.parent.parent.frames['tasks-frame'].tasks) for (var node of task.nodes) if (node.configuration.checkoutMethod.billingProfile == incomingBillingProfileID) {
           node.configuration.checkoutMethod.billingProfile = "unselected";
-          window.parent.parent.frames['tasks-frame'].tasksApp.setNodeStatus(node, false);
+          window.parent.parent.frames['tasks-frame'].tasksApp.toggleNodeEnabled(node, false);
         }
       } catch(err) {}
     },

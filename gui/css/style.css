@@ -70,6 +70,7 @@ input[type=number] {
 	background-color: transparent;
 	top: 0px;
 	position: absolute;
+  z-index: 999999;
 }
 #subpageContent {
 	width: 1275px;
