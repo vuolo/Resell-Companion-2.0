@@ -50,7 +50,7 @@
 
 				<div class="Configure_Area_Class">
 
-					<div class="Quantity_Area_Class" v-bind:style="{ opacity: modalOptions.isEditingTaskIndex == -1 ? 1 : 0.66 }">
+					<div v-show="modalOptions.isEditingTaskIndex == -1" class="Quantity_Area_Class" v-bind:style="{ opacity: modalOptions.isEditingTaskIndex == -1 ? 1 : 0.66 }">
 						<input v-bind:disabled="modalOptions.isEditingTaskIndex != -1" v-bind:placeholder="tryTranslate('Quantity')" v-model="modalOptions.quantity" v-on:keyup.enter="() => { if (modalOptions.isEditingTaskIndex == -1) { addTaskNode() } else { updateTaskNode(modalOptions.isEditingTaskIndex) } closeModal(); }" type="number" min="1" max="100" class="Search_Bar_Class special-focus" style="left: 0px; top: 27px; width: 187px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
 						<div class="Arrows_Icon_Class" style="left: 10px; top: 36px; transform: scale(0.85);" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
 							<span>↑↓</span>
@@ -62,8 +62,8 @@
 					</div>
 
 					<template v-if="modalOptions.isEditingTaskIndex != -1">
-						<div class="Billing_Profile_Area_Class" style="top: 67px; left: 245px;" v-bind:style="{ opacity: !modalOptions.checkoutMethod.useCheckoutCompanion ? 0.66 : 1 }">
-							<select v-model="modalOptions.checkoutMethod.billingProfile" v-bind:disabled="!modalOptions.checkoutMethod.useCheckoutCompanion" v-bind:placeholder="tryTranslate('Billing Profile')" class="Search_Bar_Class special-focus" v-bind:class="{ 'white-arrow': companionSettings.theme == 'dark', 'black-arrow': companionSettings.theme == 'light', 'special-focus-dark': companionSettings.theme == 'dark', 'unclickable': !modalOptions.checkoutMethod.useCheckoutCompanion }" style="left: 0px; top: 27px; width: 181px; padding-left: 0px; text-indent: 40px; padding-right: 25px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
+						<div class="Billing_Profile_Area_Class" style="top: 69px; left: 39px;" v-bind:style="{ opacity: !modalOptions.checkoutMethod.useCheckoutCompanion ? 0.66 : 1 }">
+							<select v-model="modalOptions.checkoutMethod.billingProfile" v-bind:disabled="!modalOptions.checkoutMethod.useCheckoutCompanion" v-bind:placeholder="tryTranslate('Billing Profile')" class="Search_Bar_Class special-focus" v-bind:class="{ 'white-arrow': companionSettings.theme == 'dark', 'black-arrow': companionSettings.theme == 'light', 'special-focus-dark': companionSettings.theme == 'dark', 'unclickable': !modalOptions.checkoutMethod.useCheckoutCompanion }" style="left: 0px; top: 27px; width: 387px; padding-left: 0px; text-indent: 40px; padding-right: 25px;" v-bind:class="{ 'special-focus-dark': companionSettings.theme == 'dark' }" v-bind:style="{ backgroundColor: getThemeColor('rgba(255,255,255,1)'), color: getThemeColor('rgba(29,29,29,1)') }">
 								<option selected value="unselected">{{tryTranslate('Select Billing Profile')}}...</option>
 								<option v-for="(billingProfile, billingProfileIndex) in billingProfiles" v-bind:value="billingProfile.settings.id">{{billingProfile.settings.nickname}}</option>
 							</select>
