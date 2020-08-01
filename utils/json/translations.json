@@ -1625,13 +1625,13 @@
     "Purchase Tracking Carrier": {
       "languages": {
         "en": "Purchase Tracking Carrier",
-        "es": "Cartero de retraso de la compra"
+        "es": "Cartero de rastreo de la compra"
       }
     },
     "Purchase Tracking Number": {
       "languages": {
         "en": "Purchase Tracking Number",
-        "es": "Número de retraso de la compra"
+        "es": "Número de rastreo de la compra"
       }
     },
     "Purchase Date": {
@@ -1679,7 +1679,7 @@
     "Refresh Tracking": {
       "languages": {
         "en": "Refresh Tracking",
-        "es": "Actualizar el retraso"
+        "es": "Actualizar el rastreo"
       }
     },
     "Remove All Tasks": {
@@ -1787,13 +1787,13 @@
     "Sale Tracking Carrier": {
       "languages": {
         "en": "Sale Tracking Carrier",
-        "es": "Cartero de retraso de la venta"
+        "es": "Cartero de rastreo de la venta"
       }
     },
     "Sale Tracking Number": {
       "languages": {
         "en": "Sale Tracking Number",
-        "es": "Número de retraso de la venta"
+        "es": "Número de rastreo de la venta"
       }
     },
     "Sales": {

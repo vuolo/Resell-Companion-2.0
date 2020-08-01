@@ -433,9 +433,6 @@
 				case 'view':
 					editSubscription(subscription);
 					break;
-				case 'refresh-tracking':
-					window.refreshTracking(window.subscriptions.indexOf(subscription), true);
-					break;
 				case 'copy':
 					subscription.selected = true;
 					copySubscriptions();
@@ -454,7 +451,6 @@
 
 		const PRODUCT_CARD_ITEMS = {
 			"view": { name: "View Subscription", icon: "fas fa-eye" },
-			"refresh-tracking": { name: "Refresh Tracking", icon: "fas fa-redo-alt" },
 			"copy": { name: "Copy Subscription(s)", icon: "far fa-clipboard" },
 			"duplicate": { name: "Duplicate Subscription(s)", icon: "fas fa-clone" },
 			"remove": { name: "Remove Subscription(s)", icon: "fas fa-trash-alt" }
