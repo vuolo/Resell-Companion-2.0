@@ -80,10 +80,11 @@ window.tasksApp = new Vue({
       if (node.status.color == 'green') return;
       if (enabled != null) node.enabled = enabled;
       else node.enabled = !node.enabled;
-      if (node.enabled) window.setNodeStatus(node, "yellow", "Monitoring...");
-      else {
+      if (node.enabled) {
+        if (node.statuses) while (node.statuses.length > 0) node.statuses.pop();
+        window.setNodeStatus(node, "yellow", "Monitoring...");
+      } else {
         if (!canceled) window.setNodeStatus(node, "red", "Disabled");
-        try { window.parent.parent.frames['monitors-frame'].frames['checkout-modal'].checkoutApp.closeModal(); } catch(err) {}
         node.host = undefined;
         node.captchaSiteKey = undefined;
         node.captchaResponse = undefined;
@@ -92,14 +93,14 @@ window.tasksApp = new Vue({
         node.DOMReady = false;
         node.paymentFieldsInitialized = {};
         node.retryNum = 0;
-        if (node.statuses) while (node.statuses.length > 0) node.statuses.pop();
         for (var captchaSolver of window.captchaSolvers) if (captchaSolver.node && captchaSolver.node.id == node.id) { window.resetCaptchaSolver(captchaSolver); break; }
       }
       if (node.checkoutWindow !== null || canceled) {
         try { node.checkoutWindow.close(); } catch(err) { /* err: checkout window already closed (user probably closed it) */ }
         node.checkoutWindow = null;
-        if (!node.status.description.includes(
-          window.parent.tryTranslate("Size Unavailable (Sold Out)")) &&
+        if (
+          statusMessage == null &&
+          !node.status.description.includes(window.parent.tryTranslate("Size Unavailable (Sold Out)")) &&
           !(
             node.status.description.includes(window.parent.tryTranslate("Card Declined")) &&
             !node.status.description.includes(window.parent.tryTranslate("Retrying..."))
@@ -107,7 +108,9 @@ window.tasksApp = new Vue({
           !node.status.description.includes(window.parent.tryTranslate("Successfully Checked Out"))
         ) window.setNodeStatus(node, "red", "Checkout Canceled");
       }
-      if (statusMessage) window.setNodeStatus(node, statusMessage.color, statusMessage.description)
+      if (statusMessage) window.setNodeStatus(node, statusMessage.color, statusMessage.description);
+      if (node.status.color == 'green') try { if (window.parent.parent.frames['monitors-frame'].frames['checkout-modal'].modalOptions.node) window.parent.parent.frames['monitors-frame'].frames['checkout-modal'].triggerSuccessful(); } catch(err) {}
+      if (!node.enabled && (node.status.color != 'red' && node.status.color != 'green')) try { window.parent.parent.frames['monitors-frame'].frames['checkout-modal'].checkoutApp.closeModal(); } catch(err) {}
     },
     openNewTaskModal: async function() {
       while (!window.frames['create-modal']) await window.parent.sleep(50);
@@ -385,7 +388,7 @@ window.launchTaskNode = (node, product, variant, overrideURL = "") => {
     if (node.configuration.checkoutMethod.billingProfile == 'unselected') return;
     let proxy;
     // TODO: rotate proxies in window.tasksApp.getProxyProfileByID(node.configuration.checkoutMethod.proxyProfile)
-    initiateCheckoutCompanion(node, product, variant, window.tasksApp.getBillingProfileByID(node.configuration.checkoutMethod.billingProfile), proxy, overrideURL = "");
+    initiateCheckoutCompanion(node, product, variant, window.tasksApp.getBillingProfileByID(node.configuration.checkoutMethod.billingProfile), proxy, overrideURL);
   } else { // use connected bots
 
   }

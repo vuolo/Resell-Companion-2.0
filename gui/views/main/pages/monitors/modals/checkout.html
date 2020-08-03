@@ -40,12 +40,12 @@
 						</path>
 					</svg>
 
-					<svg class="Blue_Bar" v-bind:style="{ left: calculateUnderlineLeftOffset(400, tryTranslate('Checking Out') + '...', 40, 'px', '900', 'SF Pro Text', false) + 10 + 'px' }">
-						<rect fill="rgba(253,53,53,1)" class="Green_Bar_Class" rx="1.5" ry="1.5" x="0" y="0" v-bind:width="calculateUnderlineWidth(400, tryTranslate('Checking Out') + '...', 40, 'px', '900', 'SF Pro Text')" height="3">
+					<svg class="Blue_Bar" v-bind:style="{ left: calculateUnderlineLeftOffset(400, modalOptions.isSuccessful ? tryTranslate('Success') : (tryTranslate('Checking Out') + '...'), 40, 'px', '900', 'SF Pro Text', false) + 10 + 'px' }">
+						<rect v-bind:fill="modalOptions.node && modalOptions.node.statuses && modalOptions.node.statuses.length > 0 ? getColor(modalOptions.node.statuses[modalOptions.node.statuses.length-1].color) : 'rgba(91,182,187,1)'" class="Green_Bar_Class" rx="1.5" ry="1.5" x="0" y="0" v-bind:width="calculateUnderlineWidth(400, modalOptions.isSuccessful ? tryTranslate('Success') : (tryTranslate('Checking Out') + '...'), 40, 'px', '900', 'SF Pro Text')" height="3">
 						</rect>
 					</svg>
 					<div class="Sold_Inventory_Item_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-						<span>{{tryTranslate('Checking Out') + '...'}} </span><span style="font-style:normal;font-weight:bold;font-size:20px; opacity: 0.66;">{{modalOptions.shoppingBag.variants.length}} {{modalOptions.shoppingBag.variants.length > 1 ? tryTranslate('Items') : tryTranslate('Item')}} </span><span style="font-style:normal;font-weight:normal;font-size:18px; opacity: 0.66;">{{tryTranslate('on')}} </span><span class="clickable" v-on:click="window.open(modalOptions.shoppingBag.store_url)" style="font-style:normal;font-weight:normal;font-size:18px; opacity: 0.66; text-decoration:underline;">{{modalOptions.shoppingBag.store_name || tryTranslate('Unknown Store') }}</span>
+						<span>{{modalOptions.isSuccessful ? tryTranslate('Success') : (tryTranslate('Checking Out') + '...')}} </span><span style="font-style:normal;font-weight:bold;font-size:20px; opacity: 0.66;">{{modalOptions.shoppingBag.variants.length}} {{modalOptions.shoppingBag.variants.length > 1 ? tryTranslate('Items') : tryTranslate('Item')}} </span><span style="font-style:normal;font-weight:normal;font-size:18px; opacity: 0.66;">{{tryTranslate('on')}} </span><span class="clickable" v-on:click="openURL(modalOptions.shoppingBag.store_url, window.parent.monitorsApp != null ? (window.parent.monitorsApp.configureModal.preferences != null ? (window.parent.monitorsApp.configureModal.preferences.useDefaultBrowser) : false) : false, { title: 'Resell Companion — ' + modalOptions.shoppingBag.store_name });" style="font-style:normal;font-weight:normal;font-size:18px; opacity: 0.66; text-decoration:underline;">{{modalOptions.shoppingBag.store_name || tryTranslate('Unknown Store') }}</span>
 					</div>
 				</div>
 
@@ -54,13 +54,13 @@
 					<div class="Top_Area_Class">
 
 						<div class="Product_Name_hl_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-							<span style="user-select: text;">{{modalOptions.shoppingBag.variants[shoppingBagProductIndex].parent.Name.length == 0 ? tryTranslate('Unknown Product') : tryGenerateEllipses(550, modalOptions.shoppingBag.variants[shoppingBagProductIndex].parent.Name, 20, 'px', 'bold', 'SF Pro Text')}}</span>
+							<span class="clickable" v-on:click="openURL(modalOptions.shoppingBag.variants[shoppingBagProductIndex].parent.OverrideURL.length > 0 ? modalOptions.shoppingBag.variants[shoppingBagProductIndex].parent.OverrideURL : modalOptions.shoppingBag.variants[shoppingBagProductIndex].parent.URL, window.parent.monitorsApp != null ? (window.parent.monitorsApp.configureModal.preferences != null ? (window.parent.monitorsApp.configureModal.preferences.useDefaultBrowser) : false) : false, { title: 'Resell Companion — ' + modalOptions.shoppingBag.variants[shoppingBagProductIndex].parent.Name }); addStatistic('Monitors', 'Products Opened');" style="user-select: text;">{{modalOptions.shoppingBag.variants[shoppingBagProductIndex].parent.Name.length == 0 ? tryTranslate('Unknown Product') : tryGenerateEllipses(550, modalOptions.shoppingBag.variants[shoppingBagProductIndex].parent.Name, 20, 'px', 'bold', 'SF Pro Text')}}</span>
 						</div>
 						<div class="Product_Color_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
 							<span style="user-select: text;">{{tryGenerateEllipses(550, modalOptions.shoppingBag.variants[shoppingBagProductIndex].parent.Color, 18, 'px', 'normal', 'SF Pro Text')}}</span>
 						</div>
 						<div class="Size_hj_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), top: (modalOptions.shoppingBag.variants[shoppingBagProductIndex].parent.Color.length == 0 ? 25 : 47) + 'px' }">
-							<span style="font-style:normal;font-weight:normal;font-size:20px; user-select: text;">{{modalOptions.shoppingBag.variants[shoppingBagProductIndex].variant.Name.length == 0 ? tryTranslate('Unknown Size') : modalOptions.shoppingBag.variants[shoppingBagProductIndex].variant.Name}}</span>
+							<span style="font-style:normal;font-weight:normal;font-size:20px; user-select: text;">{{modalOptions.shoppingBag.variants[shoppingBagProductIndex].variant.Name.length == 0 ? tryTranslate('Unknown Size') : tryTranslate(modalOptions.shoppingBag.variants[shoppingBagProductIndex].variant.Name)}}</span>
 						</div>
 
 						<div class="Size_hj_Class" style="top: 115px;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
@@ -68,7 +68,7 @@
 						</div>
 
 						<div class="Product_Image_Class" style="width: 131px; height: 131px;">
-							<img style="display: table-cell; vertical-align: middle; max-width: 131px; max-height: 131px; border-radius: 10px; margin-left: auto; margin-right: auto;" v-bind:class="{ transparentify: companionSettings.theme == 'light' }" v-bind:src="modalOptions.shoppingBag.variants[shoppingBagProductIndex].parent.ImageURL" onerror="this.src='../../../../../images/unknownImage.png'">
+							<img class="clickable" v-on:click="openURL(modalOptions.shoppingBag.variants[shoppingBagProductIndex].parent.OverrideURL.length > 0 ? modalOptions.shoppingBag.variants[shoppingBagProductIndex].parent.OverrideURL : modalOptions.shoppingBag.variants[shoppingBagProductIndex].parent.URL, window.parent.monitorsApp != null ? (window.parent.monitorsApp.configureModal.preferences != null ? (window.parent.monitorsApp.configureModal.preferences.useDefaultBrowser) : false) : false, { title: 'Resell Companion — ' + modalOptions.shoppingBag.variants[shoppingBagProductIndex].parent.Name }); addStatistic('Monitors', 'Products Opened');" style="display: table-cell; vertical-align: middle; max-width: 131px; max-height: 131px; border-radius: 10px; margin-left: auto; margin-right: auto;" v-bind:class="{ transparentify: companionSettings.theme == 'light' }" v-bind:src="modalOptions.shoppingBag.variants[shoppingBagProductIndex].parent.ImageURL" onerror="this.src='../../../../../images/unknownImage.png'">
 						</div>
 					</div>
 				</template>
@@ -86,7 +86,37 @@
 				</template>
 
 
-				<div class="Done_Button_Class clipButton clickable" style="z-index: 2;" v-on:click="closeModal();">
+				<div v-show="modalOptions.isSuccessful" style="position: absolute; top: -190px;">
+					<div class="Description_Class" style="left: 243px; width: 802px; white-space: nowrap; text-align: center;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+						<span>{{tryTranslate('Your item(s) have automatically been added to your')}} </span><span class="clickable" onclick="window.parent.parent.borderApp.switchToPage(-1, 'Analytics'); window.parent.parent.frames['analytics-frame'].openSubpage('inventory');" style="text-decoration: underline;">{{tryTranslate('Inventory')}}</span>
+					</div>
+
+					<div class="Checked_Out_Area_Class resizable-switch-area" style="left: 243px; width: 802px;">
+						<div class="Checked_Out__Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), left: getTitleSwitchLeft(802-64, tryTranslate('Checked Out!')) + 15 + 'px', fontSize: confineTextWidth(802-64, tryTranslate('Checked Out!'), 40, 'px', 'bold', 'SF Pro Text') }">
+							<span>{{tryTranslate('Checked Out!')}}</span>
+						</div>
+
+						<svg v-if="modalOptions.isSuccessful" class="Check_Mark checkmark" v-bind:style="{ left: getTitleSwitchLeft(802-64, tryTranslate('Checked Out!')) - 64 + 'px' }" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+							<circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+							<path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+						</svg>
+					</div>
+
+					<!-- <div class="Checked_Out_Area_Class">
+						<div class="Checked_Out__Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+							<span>{{tryTranslate('Checked Out!')}}</span>
+						</div>
+
+						<svg v-if="modalOptions.isSuccessful" class="Check_Mark checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+							<circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+							<path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+						</svg>
+
+					</div> -->
+				</div>
+
+
+				<div v-show="!modalOptions.isSuccessful" class="Done_Button_Class clipButton clickable" style="z-index: 2;" v-on:click="closeModal();">
 					<div class="clipGroup" style="width: 107px; height: 37px;">
 						<svg class="Back_Transitioner" style="bottom: -25px;" viewBox="4631.671 2118.361 137.6 34.565">
 							<path fill="rgba(36,39,37,1)" id="Back_Transitioner" d="M 4631.67138671875 2136.780029296875 C 4631.67138671875 2136.780029296875 4649.8212890625 2127.950439453125 4669.78759765625 2136.780029296875 C 4689.75244140625 2145.610595703125 4680.9365234375 2141.826416015625 4680.9365234375 2141.826416015625 C 4680.9365234375 2141.826416015625 4699.80859375 2134.79638671875 4711.21826171875 2141.229248046875 C 4722.626953125 2147.663330078125 4712.8291015625 2141.229248046875 4712.8291015625 2141.229248046875 C 4712.8291015625 2141.229248046875 4737.462890625 2118.742431640625 4759.2421875 2118.3642578125 C 4781.0234375 2117.985107421875 4760.5390625 2152.92626953125 4760.5390625 2152.92626953125 L 4631.67138671875 2152.92626953125 L 4631.67138671875 2136.780029296875 Z">
@@ -102,11 +132,31 @@
 						</rect>
 					</svg>
 					<div class="Done_Class" style="color: rgba(253,53,53,1);" v-bind:style="{ fontSize: confineTextWidth(107-20, tryTranslate('Cancel'), 15, 'px', 'bold', 'SF Pro Text') }">
-						<span>{{tryTranslate('Cancel')}}</span>
+						<span style="color: rgba(253,53,53,1);">{{tryTranslate('Cancel')}}</span>
 					</div>
 				</div>
 
-				<div v-if="modalOptions.node && modalOptions.node.statuses && modalOptions.node.statuses.length > 0" class="Tracking_Area__after__Class" style="top: 310px;">
+				<div v-show="modalOptions.isSuccessful" class="Done_Button_Class clipButton clickable" style="z-index: 2; left: 915px; top: 410px;" v-on:click="closeModal();">
+					<div class="clipGroup" style="width: 107px; height: 37px;">
+						<svg class="Back_Transitioner" style="bottom: -25px;" viewBox="4631.671 2118.361 137.6 34.565">
+							<path fill="rgba(36,39,37,1)" id="Back_Transitioner" d="M 4631.67138671875 2136.780029296875 C 4631.67138671875 2136.780029296875 4649.8212890625 2127.950439453125 4669.78759765625 2136.780029296875 C 4689.75244140625 2145.610595703125 4680.9365234375 2141.826416015625 4680.9365234375 2141.826416015625 C 4680.9365234375 2141.826416015625 4699.80859375 2134.79638671875 4711.21826171875 2141.229248046875 C 4722.626953125 2147.663330078125 4712.8291015625 2141.229248046875 4712.8291015625 2141.229248046875 C 4712.8291015625 2141.229248046875 4737.462890625 2118.742431640625 4759.2421875 2118.3642578125 C 4781.0234375 2117.985107421875 4760.5390625 2152.92626953125 4760.5390625 2152.92626953125 L 4631.67138671875 2152.92626953125 L 4631.67138671875 2136.780029296875 Z">
+							</path>
+						</svg>
+						<svg class="Front_Transitioner" style="bottom: -30px;" viewBox="4631.671 2118.361 137.6 26.969">
+							<path fill="rgba(91,182,187,1)" id="Front_Transitioner" d="M 4631.67138671875 2132.73193359375 C 4631.67138671875 2132.73193359375 4649.82177734375 2125.843017578125 4669.78759765625 2132.73193359375 C 4689.7529296875 2139.621826171875 4680.93701171875 2136.66943359375 4680.93701171875 2136.66943359375 C 4680.93701171875 2136.66943359375 4699.80908203125 2131.184326171875 4711.21875 2136.203369140625 C 4722.62744140625 2141.2236328125 4712.82958984375 2136.203369140625 4712.82958984375 2136.203369140625 C 4712.82958984375 2136.203369140625 4737.462890625 2118.658447265625 4759.24267578125 2118.363525390625 C 4781.0234375 2118.0673828125 4760.5390625 2145.329833984375 4760.5390625 2145.329833984375 L 4631.67138671875 2145.329833984375 L 4631.67138671875 2132.73193359375 Z">
+							</path>
+						</svg>
+					</div>
+					<svg class="Done_Rectangle">
+						<rect fill="transparent" stroke="rgba(91,182,187,1)" stroke-width="2px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Done_Rectangle_Class" rx="18.5" ry="18.5" x="0" y="0" width="107" height="37">
+						</rect>
+					</svg>
+					<div class="Done_Class" v-bind:style="{ fontSize: confineTextWidth(107-20, tryTranslate('Done'), 15, 'px', 'bold', 'SF Pro Text') }">
+						<span>{{tryTranslate('Done')}}</span>
+					</div>
+				</div>
+
+				<div v-show="!modalOptions.isSuccessful" v-if="modalOptions.node && modalOptions.node.statuses && modalOptions.node.statuses.length > 0" class="Tracking_Area__after__Class" style="top: 310px;">
 					<div class="Status_Area_Class">
 
 						<div class="Tracking_History_Content_Area_Class use_slow_transitions" style="height: 66px;" v-bind:style="{ left: 240 - ((modalOptions.node.statuses.length-1) * 340) + 'px' }" v-bind:class="{ 'dark-scrollbar': companionSettings.theme == 'dark' }">
@@ -127,7 +177,7 @@
 									</svg>
 
 									<!-- spinner -->
-									<div v-if="statusIndex == modalOptions.node.statuses.length - 1 && modalOptions.node.status.color != 'green'" style="width: 30px; height: 20px; left: 245px; top: 0px; position: absolute; transform: translate(100%, 65%); z-index: 3;">
+									<div v-if="modalOptions.node && modalOptions.node.enabled && statusIndex == modalOptions.node.statuses.length - 1 && modalOptions.node.status.color != 'green'" style="width: 30px; height: 20px; left: 245px; top: 0px; position: absolute; transform: translate(100%, 65%); z-index: 3;">
 										<svg class="spinner" viewBox="0 0 50 50">
 											<circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="1.5" stroke="#FFA74E"></circle>
 										</svg>
@@ -137,8 +187,8 @@
 										<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Rectangle_ep_Class" rx="10" ry="10" x="0" y="0" width="306" height="36">
 										</rect>
 									</svg>
-									<div class="Delivered__In_At_Mailbox_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(235, status.description.length > 0 ? status.description : tryTranslate('N/A'), 16, 'px', 'normal', 'SF Pro Text') }">
-										<span style="user-select: text;">{{status.description.length > 0 ? status.description : tryTranslate('N/A')}}</span>
+									<div class="Delivered__In_At_Mailbox_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(235, status.description.length > 0 ? tryTranslate(status.description) : tryTranslate('N/A'), 16, 'px', 'normal', 'SF Pro Text') }">
+										<span style="user-select: text;">{{status.description.length > 0 ? tryTranslate(status.description) : tryTranslate('N/A')}}</span>
 									</div>
 									<div class="ID1_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
 										<span>{{statusIndex+1}}</span>

@@ -3461,3 +3461,118 @@
 	top: 199px;
 	transform: matrix(1,0,0,1,0,0);
 }
+
+
+
+
+
+
+
+
+.Description_Class {
+	position: absolute;
+	left: 442px;
+	top: 576.126px;
+	overflow: visible;
+	width: 405px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	color: rgba(29,29,29,1);
+}
+.Checked_Out_Area_Class {
+	position: absolute;
+	width: 364.027px;
+	height: 64.185px;
+	left: 461.756px;
+	top: 496.948px;
+	overflow: visible;
+}
+.Checked_Out__Class {
+	position: absolute;
+	left: 83.027px;
+	top: 9.302px;
+	overflow: visible;
+	width: 282px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -1px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 40px;
+	color: rgba(29,29,29,1);
+}
+.Check_Mark {
+	overflow: visible;
+	position: absolute;
+	width: 64.186px;
+	height: 64.186px;
+	left: 0px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+
+
+
+
+
+
+
+
+.checkmark__circle {
+  stroke-dasharray: 216; /* ORIGINALLY 166px */
+  stroke-dashoffset: 216; /* ORIGINALLY 166px */
+  stroke-width: 2;
+  stroke-miterlimit: 10;
+  stroke: #35B239;
+  fill: none;
+  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.checkmark {
+  /* width: 106px; */ /* ORIGINALLY 56px */
+  /* height: 106px; */ /* ORIGINALLY 56px */
+  border-radius: 50%;
+  display: block;
+  stroke-width: 2;
+  stroke: #fff;
+  stroke-miterlimit: 10;
+  /* margin: 10% auto; */
+  box-shadow: inset 0px 0px 0px #35B239;
+  animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+}
+
+.checkmark__check {
+  stroke-width: 5px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  transform-origin: 50% 50%;
+  stroke-dasharray: 98; /* ORIGINALLY 48px */
+  stroke-dashoffset: 98; /* ORIGINALLY 48px*/
+  animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+}
+
+@keyframes stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes scale {
+  0%, 100% {
+    transform: none;
+  }
+  50% {
+    transform: scale3d(1.1, 1.1, 1);
+  }
+}
+@keyframes fill {
+  100% {
+    box-shadow: inset 0px 0px 0px 80px #35B239;
+  }
+}

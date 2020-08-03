@@ -16,7 +16,7 @@ async function initiateCheckoutCompanion(node, product, variant, billingProfile 
   node.retryNum = 0;
   node.maxRetries = 3;
   window.setNodeStatus(node, "orange", `${window.parent.tryTranslate('Initializing Checkout Session...')} (1/3)`);
-  node.checkoutWindow = await window.launchCheckout(product, variant, false, proxy, false, overrideURL = "");
+  node.checkoutWindow = await window.launchCheckout(product, variant, false, proxy, false, overrideURL);
   node.checkoutWindow.once('ready-to-show', () => {
     // node.checkoutWindow.show(); // DEV ONLY: show to visualize checkout (keep false in production)
     window.setNodeStatus(node, "orange", `${window.parent.tryTranslate('Inputting Billing Details...')} (2/3)`);
@@ -52,13 +52,13 @@ async function beginSupremeCheckout(node, billingProfile, variant) {
   node.currentCheckoutStep = await getCurrentCheckoutStep('supreme', node);
   switch (node.currentCheckoutStep) {
     case 'stock_problems': // detect if item is OOS // TODO: ADD DETECTION FOR THIS. (THIS IS WHEN IT IS AT THE CART BEFORE TYPING IN INFO.)
-      window.tasksApp.toggleNodeEnabled(node, false, true, { color: "red", description: `${window.parent.tryTranslate('Size Unavailable (Sold Out)')} [${variant.Name}]` });
+      window.tasksApp.toggleNodeEnabled(node, false, true, { color: "red", description: `${window.parent.tryTranslate('Size Unavailable (Sold Out)')} [${window.parent.tryTranslate(variant.Name)}] ` });
       // TODO: send notification
       window.parent.addStatistic('Tasks', 'Failed Tasks');
       window.parent.addCheckoutStatistic('failed', 'supreme');
       return;
     case 'thank_you': // detect if item was successfully checked out
-      window.tasksApp.toggleNodeEnabled(node, false, true, { color: "green", description: `${window.parent.tryTranslate('Successfully Checked Out')} [${variant.Name}]` });
+      window.tasksApp.toggleNodeEnabled(node, false, true, { color: "green", description: `${window.parent.tryTranslate('Successfully Checked Out')} [${window.parent.tryTranslate(variant.Name)}] ` });
       // TODO: send notification
       // TODO: add to inventory. (requires to add product to arguments)
       window.parent.addStatistic('Tasks', 'Successful Tasks');
@@ -70,7 +70,7 @@ async function beginSupremeCheckout(node, billingProfile, variant) {
         node.retryNum++;
         if (node.retryNum <= node.maxRetries) window.setNodeStatus(node, "red", `${window.parent.tryTranslate('Card Declined')}. ${window.parent.tryTranslate('Retrying...')} (${node.retryNum}/${node.maxRetries})`);
         else {
-          window.tasksApp.toggleNodeEnabled(node, false, true, { color: "red", description: `${window.parent.tryTranslate('Card Declined')} [${variant.Name}]` });
+          window.tasksApp.toggleNodeEnabled(node, false, true, { color: "red", description: `${window.parent.tryTranslate('Card Declined')} [${window.parent.tryTranslate(variant.Name)}] ` });
           // TODO: send notification
           window.parent.addStatistic('Tasks', 'Failed Tasks');
           window.parent.addCheckoutStatistic('failed', 'supreme');
@@ -135,7 +135,7 @@ async function beginShopifyCheckout(node, billingProfile, variant) {
       window.setNodeStatus(node, "orange", `${window.parent.tryTranslate('Authentication Required')}`);
       //   - ONLY prompt for ONE task (ex: if 3 tasks all require authentication... if one is already launched then await for it to be closed (setInterval check and whenever launches, clearInterval).)
     } else { // else: the cart has been lost.
-      window.tasksApp.toggleNodeEnabled(node, false, true, { color: "red", description: `${window.parent.tryTranslate('Cart Unavailable')} [${variant.Name}]` });
+      window.tasksApp.toggleNodeEnabled(node, false, true, { color: "red", description: `${window.parent.tryTranslate('Cart Unavailable')} [${window.parent.tryTranslate(variant.Name)}] ` });
       window.parent.addStatistic('Tasks', 'Failed Tasks');
       window.parent.addCheckoutStatistic('failed', 'shopify');
     }
@@ -145,13 +145,13 @@ async function beginShopifyCheckout(node, billingProfile, variant) {
   node.currentCheckoutStep = await getCurrentCheckoutStep('shopify', node);
   switch (node.currentCheckoutStep) {
     case 'stock_problems': // detect if item is OOS
-      window.tasksApp.toggleNodeEnabled(node, false, true, { color: "red", description: `${window.parent.tryTranslate('Size Unavailable (Sold Out)')} [${variant.Name}]` });
+      window.tasksApp.toggleNodeEnabled(node, false, true, { color: "red", description: `${window.parent.tryTranslate('Size Unavailable (Sold Out)')} [${window.parent.tryTranslate(variant.Name)}] ` });
       // TODO: send notification
       window.parent.addStatistic('Tasks', 'Failed Tasks');
       window.parent.addCheckoutStatistic('failed', 'shopify');
       return;
     case 'thank_you': // detect if item was successfully checked out
-      window.tasksApp.toggleNodeEnabled(node, false, true, { color: "green", description: `${window.parent.tryTranslate('Successfully Checked Out')} [${variant.Name}]` });
+      window.tasksApp.toggleNodeEnabled(node, false, true, { color: "green", description: `${window.parent.tryTranslate('Successfully Checked Out')} [${window.parent.tryTranslate(variant.Name)}] ` });
       // TODO: send notification
       // TODO: add to inventory. (requires to add product to arguments)
       window.parent.addStatistic('Tasks', 'Successful Tasks');
@@ -184,7 +184,7 @@ async function beginShopifyCheckout(node, billingProfile, variant) {
         node.retryNum++;
         if (node.retryNum <= node.maxRetries) window.setNodeStatus(node, "red", `${window.parent.tryTranslate('Card Declined')}. ${window.parent.tryTranslate('Retrying...')} (${node.retryNum}/${node.maxRetries})`);
         else {
-          window.tasksApp.toggleNodeEnabled(node, false, true, { color: "red", description: `${window.parent.tryTranslate('Card Declined')} [${variant.Name}]` });
+          window.tasksApp.toggleNodeEnabled(node, false, true, { color: "red", description: `${window.parent.tryTranslate('Card Declined')} [${window.parent.tryTranslate(variant.Name)}] ` });
           // TODO: send notification
           window.parent.addStatistic('Tasks', 'Failed Tasks');
           window.parent.addCheckoutStatistic('failed', 'shopify');

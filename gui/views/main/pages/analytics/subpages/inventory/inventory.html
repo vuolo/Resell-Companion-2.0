@@ -446,7 +446,8 @@
 				case 'mark_sold':
 					inventoryItem.selected = true;
 					let separatedDate = window.parent.parent.separateDate();
-					for (var selectedInventoryItem of window.getSelectedInventoryItems()) {
+					let selectedInventoryItems = window.getSelectedInventoryItems();
+					for (var selectedInventoryItem of selectedInventoryItems) {
 						let newSale = {
 							name: selectedInventoryItem.name,
 							color: selectedInventoryItem.color,
@@ -501,7 +502,7 @@
 						};
 						// add sale
 						window.parent.analyticsApp.sales.push(newSale);
-						// window.parent.frames['sales-subpage'].editSale(newSale);
+						if (selectedInventoryItems.length == 1) window.parent.frames['sales-subpage'].editSale(newSale);
 						// remove inventory item
 						window.parent.analyticsApp.inventoryItems.splice(window.parent.analyticsApp.inventoryItems.indexOf(selectedInventoryItem), 1);
 					}

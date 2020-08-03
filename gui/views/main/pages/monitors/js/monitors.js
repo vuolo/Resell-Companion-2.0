@@ -32,6 +32,7 @@ window.modals = {
 
 window.openModal = (modalName) => {
   window.modals[modalName].visible = true;
+  if (modalName == 'checkout') setTimeout(window.frames['checkout-modal'].applyButtonTransitions, 50);
 };
 
 window.modalLoadedCallback = (modalName) => {

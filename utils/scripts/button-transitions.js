@@ -126,3 +126,4 @@ async function applyButtonTransitions(force = false) {
     }
   }
 }
+window.applyButtonTransitions = applyButtonTransitions;
