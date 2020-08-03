@@ -517,7 +517,7 @@ async function initalCalendarSetup() {
   if (fetchedSchedules) {
     window.parent.memory.syncObjects(informationSchedules, fetchedSchedules.schedules);
     if (fetchedSchedules.alertMessages) window.parent.memory.syncObjects(alertMessages, fetchedSchedules.alertMessages);
-    await tryTranslateAlertMessages();
+    await window.tryTranslateAlertMessages();
     setNearestScheduleIndex();
     homeApp.$forceUpdate();
     initializeAlertMessageScroll();
@@ -525,6 +525,7 @@ async function initalCalendarSetup() {
 }
 
 window.tryTranslateAlertMessages = async (language = window.parent.companionSettings.language || "en") => {
+  if (language == "en") return;
   for (var alertMessage of alertMessages) {
     if (!alertMessage.originalMessage && language == "en") return;
     if (!alertMessage.originalMessage) alertMessage.originalMessage = alertMessage.message;

@@ -35,7 +35,7 @@ async function initiateCheckoutCompanion(node, product, variant, billingProfile 
     node.checkoutWindow.webContents.insertCSS('select { visibility: hidden; }');
     node.checkoutWindow.webContents.insertCSS('select { visibility: hidden; }');
 
-    if (product.Identifier == "shopify") beginShopifyCheckout(node, billingProfile, variant);
+    if (product.Identifier == "shopify" || product.Identifier == "cpfm") beginShopifyCheckout(node, billingProfile, variant);
     else if (product.Identifier.startsWith("supreme")) beginSupremeCheckout(node, billingProfile, variant);
   });
   node.checkoutWindow.webContents.on('console-message', (event, level, message, line, sourceID) => {
@@ -48,101 +48,187 @@ async function initiateCheckoutCompanion(node, product, variant, billingProfile 
 }
 
 async function beginSupremeCheckout(node, billingProfile, variant) {
-  // TODO: try shorten the billing profile state/province, and if it couldnt find shortened version then just type out full version
-  // function isSuccessfulCheckout() { return document.querySelector(".tab-confirmation").classList.contains("selected") }
-  // function isCardDeclined() { return document.querySelector(".errors").innerText.trim().length > 0 ? true : false }
+  // check current checkout step to provide correct actions/fields to fill
+  node.currentCheckoutStep = await getCurrentCheckoutStep('supreme', node);
+  switch (node.currentCheckoutStep) {
+    case 'stock_problems': // detect if item is OOS // TODO: ADD DETECTION FOR THIS. (THIS IS WHEN IT IS AT THE CART BEFORE TYPING IN INFO.)
+      window.tasksApp.toggleNodeEnabled(node, false, true, { color: "red", description: `${window.parent.tryTranslate('Size Unavailable (Sold Out)')} [${variant.Name}]` });
+      // TODO: send notification
+      window.parent.addStatistic('Tasks', 'Failed Tasks');
+      window.parent.addCheckoutStatistic('failed', 'supreme');
+      return;
+    case 'thank_you': // detect if item was successfully checked out
+      window.tasksApp.toggleNodeEnabled(node, false, true, { color: "green", description: `${window.parent.tryTranslate('Successfully Checked Out')} [${variant.Name}]` });
+      // TODO: send notification
+      // TODO: add to inventory. (requires to add product to arguments)
+      window.parent.addStatistic('Tasks', 'Successful Tasks');
+      window.parent.addCheckoutStatistic('successful', 'supreme');
+      break;
+    case 'payment_method': // TODO: add detection for this.
+      const hasPaymentNotice = await getPaymentNotice('supreme', node);
+      if (hasPaymentNotice) {
+        node.retryNum++;
+        if (node.retryNum <= node.maxRetries) window.setNodeStatus(node, "red", `${window.parent.tryTranslate('Card Declined')}. ${window.parent.tryTranslate('Retrying...')} (${node.retryNum}/${node.maxRetries})`);
+        else {
+          window.tasksApp.toggleNodeEnabled(node, false, true, { color: "red", description: `${window.parent.tryTranslate('Card Declined')} [${variant.Name}]` });
+          // TODO: send notification
+          window.parent.addStatistic('Tasks', 'Failed Tasks');
+          window.parent.addCheckoutStatistic('failed', 'supreme');
+          return;
+        }
+      }
 
-  // TOOD: correctly implement these add statistic functions
-  window.parent.addStatistic('Tasks', 'Failed Tasks');
-  window.parent.addCheckoutStatistic('failed', 'supreme');
+      // main autofill information fields
+      await fillField(node, '#order_billing_name', billingProfile.autofillInformation.firstName + ' ' + billingProfile.autofillInformation.lastName);
+      await fillField(node, '#order_email', billingProfile.autofillInformation.email);
+      await fillField(node, '#order_tel', billingProfile.autofillInformation.phoneNumber);
+      await fillField(node, '#bo', billingProfile.autofillInformation.address);
+      await fillField(node, '#oba3', billingProfile.autofillInformation.unit);
+      await fillField(node, '#order_billing_zip ', billingProfile.autofillInformation.zipCode);
+      await fillField(node, '#order_billing_city', billingProfile.autofillInformation.city);
+      await fillField(node, '#order_billing_country', billingProfile.autofillInformation.country); // TODO: try shorten the billing profile country, and if it couldnt find shortened version then just type out full version
+      await fillField(node, '#order_billing_state', billingProfile.autofillInformation.state); // TODO: try shorten the billing profile state/province, and if it couldnt find shortened version then just type out full version
 
-  window.parent.addStatistic('Tasks', 'Successful Tasks');
-  window.parent.addCheckoutStatistic('successful', 'supreme');
+      // payment information fields
+      await fillField(node, '#credit_card_type', activeProfile.autofillInformation.billing.cardType); // EU only?
+      await fillField(node, '#rnsnckrn', activeProfile.autofillInformation.billing.cardNumber.replace(new RegExp(" ", 'g'), ""));
+      await fillField(node, '#credit_card_month', activeProfile.autofillInformation.billing.expirationDate.month);
+      await fillField(node, '#credit_card_year', "20" + activeProfile.autofillInformation.billing.expirationDate.year);
+      await fillField(node, '#orcer', activeProfile.autofillInformation.billing.cvc);
+      await fillField(node, '#vval', activeProfile.autofillInformation.billing.cvc); // EU only?
+
+      // accept terms
+      await clickField(node, '.terms .icheckbox_minimal');
+
+      // detect captcha and send it to client w/ sitekey
+      if (await hasCaptcha(node)) {
+        addCaptchaListener(node);
+        window.setNodeStatus(node, "orange", `${window.parent.tryTranslate('Waiting for Captcha Response...')} (2/3)`);
+        // export captcha sitekey from checkout page
+        node.captchaSiteKey = await getCaptchaSiteKey(node);
+        // open new solver/use already made solver on resell companion for captcha
+        window.initiateCaptchaSolver(node, node.host, node.captchaSiteKey);
+        while (!node.captchaResponse || node.captchaResponse.length == 0) await window.parent.sleep(50);
+        // inject solved captcha response (from resell companion) into checkout page (injects to hidden #g-recaptcha-response textarea)
+        await injectCaptchaResponse(node, node.captchaResponse);
+        node.captchaResponse = undefined;
+        window.setNodeStatus(node, "orange", `${window.parent.tryTranslate('Submitting Billing Details...')} (3/3)`);
+      }
+
+      // wait for ACO delay (if setup)
+      await window.parent.sleep(billingProfile.settings.autoCheckoutDelay || 0);
+
+      // continue to next page
+      await clickField(node, '.button, .checkout');
+      if (node.retryNum == 0) window.setNodeStatus(node, "orange", `${window.parent.tryTranslate('Submitting Billing Details...')} (3/3)`);
+      break;
+  }
 };
 
 async function beginShopifyCheckout(node, billingProfile, variant) {
-  // check current checkout step to provide correct actions/fields to fill
-  node.currentCheckoutStep = await getCurrentCheckoutStep(node);
-  if (node.currentCheckoutStep == 'stock_problems') { // detect if item is OOS
-    window.tasksApp.toggleNodeEnabled(node, false, true, { color: "red", description: `${window.parent.tryTranslate('Size Unavailable (Sold Out)')} [${variant.Name}]` });
-    // TODO: send notification
-    window.parent.addStatistic('Tasks', 'Failed Tasks');
-    window.parent.addCheckoutStatistic('failed', 'shopify');
-    return;
-  } else if (node.currentCheckoutStep == 'thank_you') { // detect if item was successfully checked out
-    window.tasksApp.toggleNodeEnabled(node, false, true, { color: "green", description: `${window.parent.tryTranslate('Successfully Checked Out')} [${variant.Name}]` });
-    // TODO: send notification
-    window.parent.addStatistic('Tasks', 'Successful Tasks');
-    window.parent.addCheckoutStatistic('successful', 'shopify');
-    return;
-  } else if (node.currentCheckoutStep == 'contact_information') {
-    // main autofill information fields
-    await fillField(node, '#checkout_shipping_address_first_name', billingProfile.autofillInformation.firstName);
-    await fillField(node, '#checkout_shipping_address_last_name', billingProfile.autofillInformation.lastName);
-    await fillField(node, '#checkout_shipping_address_address1', billingProfile.autofillInformation.address);
-    await fillField(node, '#checkout_shipping_address_address2', billingProfile.autofillInformation.unit);
-    await fillField(node, '#checkout_shipping_address_city', billingProfile.autofillInformation.city);
-    await fillField(node, '#checkout_shipping_address_country', billingProfile.autofillInformation.country);
-    await fillField(node, '#checkout_shipping_address_province', billingProfile.autofillInformation.state);
-    await fillField(node, '#checkout_shipping_address_zip ', billingProfile.autofillInformation.zipCode);
-    await fillField(node, '#checkout_shipping_address_phone', billingProfile.autofillInformation.phoneNumber);
 
-    // several possible email field queries
-    await fillField(node, '#checkout_email', billingProfile.autofillInformation.email);
-    await fillField(node, '#checkout_email_or_phone', billingProfile.autofillInformation.email);
-    await fillField(node, '[name="checkout[email_or_phone]"]', billingProfile.autofillInformation.email);
-    await fillField(node, '[name="checkout[email]"]', billingProfile.autofillInformation.email);
+  let webURL = node.checkoutWindow.webContents.getURL();
 
-    // disable email marketing notifications from store
-    await clickField(node, '#checkout_buyer_accepts_marketing');
-  } else if (node.currentCheckoutStep == 'payment_method') {
-    const paymentNotice = await getPaymentNotice(node);
-    if (paymentNotice && paymentNotice.length > 0) {
-      node.retryNum++;
-      if (node.retryNum <= node.maxRetries) window.setNodeStatus(node, "red", `${window.parent.tryTranslate('Card Declined')}. ${window.parent.tryTranslate('Retrying...')} (${node.retryNum}/${node.maxRetries})`);
-      else {
-        window.tasksApp.toggleNodeEnabled(node, false, true, { color: "red", description: `${window.parent.tryTranslate('Card Declined')} [${variant.Name}]` });
-        // TODO: send notification
-        return;
-      }
+  // URL checker to ensure checkout is on-track
+  if (!webURL.includes('/checkouts/')) { // all checkout pages have '/checkouts/' on it
+    if (webURL.includes('account/login')) { // if: 'account/login' IS in URL, then launch login helper (notify awaiting authentication)
+      window.setNodeStatus(node, "orange", `${window.parent.tryTranslate('Authentication Required')}`);
+      //   - ONLY prompt for ONE task (ex: if 3 tasks all require authentication... if one is already launched then await for it to be closed (setInterval check and whenever launches, clearInterval).)
+    } else { // else: the cart has been lost.
+      window.tasksApp.toggleNodeEnabled(node, false, true, { color: "red", description: `${window.parent.tryTranslate('Cart Unavailable')} [${variant.Name}]` });
+      window.parent.addStatistic('Tasks', 'Failed Tasks');
+      window.parent.addCheckoutStatistic('failed', 'shopify');
     }
-    // wait for payment information fields to be ready
-    addPaymentFieldListeners(node);
-    for (var paymentField of PAYMENT_FIELDS) {
-      while (!node.paymentFieldsInitialized[paymentField]) await window.parent.sleep(50);
-      let paymentInfo = "";
-      switch (paymentField) {
-        case '[data-card-fields="number"]':
+  }
+
+  // check current checkout step to provide correct actions/fields to fill
+  node.currentCheckoutStep = await getCurrentCheckoutStep('shopify', node);
+  switch (node.currentCheckoutStep) {
+    case 'stock_problems': // detect if item is OOS
+      window.tasksApp.toggleNodeEnabled(node, false, true, { color: "red", description: `${window.parent.tryTranslate('Size Unavailable (Sold Out)')} [${variant.Name}]` });
+      // TODO: send notification
+      window.parent.addStatistic('Tasks', 'Failed Tasks');
+      window.parent.addCheckoutStatistic('failed', 'shopify');
+      return;
+    case 'thank_you': // detect if item was successfully checked out
+      window.tasksApp.toggleNodeEnabled(node, false, true, { color: "green", description: `${window.parent.tryTranslate('Successfully Checked Out')} [${variant.Name}]` });
+      // TODO: send notification
+      // TODO: add to inventory. (requires to add product to arguments)
+      window.parent.addStatistic('Tasks', 'Successful Tasks');
+      window.parent.addCheckoutStatistic('successful', 'shopify');
+      break;
+    case 'contact_information':
+      // main autofill information fields
+      await fillField(node, '#checkout_shipping_address_first_name', billingProfile.autofillInformation.firstName);
+      await fillField(node, '#checkout_shipping_address_last_name', billingProfile.autofillInformation.lastName);
+      await fillField(node, '#checkout_shipping_address_address1', billingProfile.autofillInformation.address);
+      await fillField(node, '#checkout_shipping_address_address2', billingProfile.autofillInformation.unit);
+      await fillField(node, '#checkout_shipping_address_city', billingProfile.autofillInformation.city);
+      await fillField(node, '#checkout_shipping_address_country', billingProfile.autofillInformation.country);
+      await fillField(node, '#checkout_shipping_address_province', billingProfile.autofillInformation.state);
+      await fillField(node, '#checkout_shipping_address_zip ', billingProfile.autofillInformation.zipCode);
+      await fillField(node, '#checkout_shipping_address_phone', billingProfile.autofillInformation.phoneNumber);
+
+      // several possible email field queries
+      await fillField(node, '#checkout_email', billingProfile.autofillInformation.email);
+      await fillField(node, '#checkout_email_or_phone', billingProfile.autofillInformation.email);
+      await fillField(node, '[name="checkout[email_or_phone]"]', billingProfile.autofillInformation.email);
+      await fillField(node, '[name="checkout[email]"]', billingProfile.autofillInformation.email);
+
+      // disable email marketing notifications from store
+      await clickField(node, '#checkout_buyer_accepts_marketing');
+      break;
+    case 'payment_method':
+      const paymentNotice = await getPaymentNotice('shopify', node);
+      if (paymentNotice && paymentNotice.length > 0) {
+        node.retryNum++;
+        if (node.retryNum <= node.maxRetries) window.setNodeStatus(node, "red", `${window.parent.tryTranslate('Card Declined')}. ${window.parent.tryTranslate('Retrying...')} (${node.retryNum}/${node.maxRetries})`);
+        else {
+          window.tasksApp.toggleNodeEnabled(node, false, true, { color: "red", description: `${window.parent.tryTranslate('Card Declined')} [${variant.Name}]` });
+          // TODO: send notification
+          window.parent.addStatistic('Tasks', 'Failed Tasks');
+          window.parent.addCheckoutStatistic('failed', 'shopify');
+          return;
+        }
+      }
+      // wait for payment information fields to be ready
+      addPaymentFieldListeners(node);
+      for (var paymentField of PAYMENT_FIELDS) {
+        while (!node.paymentFieldsInitialized[paymentField]) await window.parent.sleep(50);
+        let paymentInfo = "";
+        switch (paymentField) {
+          case '[data-card-fields="number"]':
           paymentInfo = billingProfile.autofillInformation.billing.cardNumber.replace(new RegExp(" ", 'g'), "");
           break;
-        case '[data-card-fields="name"]':
+          case '[data-card-fields="name"]':
           paymentInfo = billingProfile.autofillInformation.firstName + " " + billingProfile.autofillInformation.lastName;
           break;
-        case '[data-card-fields="expiry"]':
+          case '[data-card-fields="expiry"]':
           paymentInfo = billingProfile.autofillInformation.billing.expirationDate.month + "/" + "20" + billingProfile.autofillInformation.billing.expirationDate.year; // this only works if card expires in 20xx
           break;
-        case '[data-card-fields="verification_value"]':
+          case '[data-card-fields="verification_value"]':
           paymentInfo = billingProfile.autofillInformation.billing.cvc;
           break;
+        }
+        // type payment information
+        await fillField(node, paymentField, paymentInfo);
       }
-      // type payment information
-      await fillField(node, paymentField, paymentInfo);
-    }
-    node.paymentFieldsInitialized = {}; // clear to allow for retries
+      node.paymentFieldsInitialized = {}; // clear to allow for retries
 
-    // enable use same address as shipping (disables need to type fields below)
-    await clickField(node, '#checkout_different_billing_address_false');
+      // enable use same address as shipping (disables need to type fields below)
+      await clickField(node, '#checkout_different_billing_address_false');
 
-    // POSSIBLE billing autofill information fields (not all stores have this extra set of fields)
-    // await fillField(node, '#checkout_billing_address_first_name', billingProfile.autofillInformation.firstName);
-    // await fillField(node, '#checkout_billing_address_last_name', billingProfile.autofillInformation.lastName);
-    // await fillField(node, '#checkout_billing_address_address1', billingProfile.autofillInformation.address);
-    // await fillField(node, '#checkout_billing_address_address2', billingProfile.autofillInformation.unit);
-    // await fillField(node, '#checkout_billing_address_city', billingProfile.autofillInformation.city);
-    // await fillField(node, '#checkout_billing_address_country', billingProfile.autofillInformation.country);
-    // await fillField(node, '#checkout_billing_address_province', billingProfile.autofillInformation.state);
-    // await fillField(node, '#checkout_billing_address_zip ', billingProfile.autofillInformation.zipCode);
-    // await fillField(node, '#checkout_billing_address_phone', billingProfile.autofillInformation.phoneNumber);
+      // POSSIBLE billing autofill information fields (not all stores have this extra set of fields)
+      // await fillField(node, '#checkout_billing_address_first_name', billingProfile.autofillInformation.firstName);
+      // await fillField(node, '#checkout_billing_address_last_name', billingProfile.autofillInformation.lastName);
+      // await fillField(node, '#checkout_billing_address_address1', billingProfile.autofillInformation.address);
+      // await fillField(node, '#checkout_billing_address_address2', billingProfile.autofillInformation.unit);
+      // await fillField(node, '#checkout_billing_address_city', billingProfile.autofillInformation.city);
+      // await fillField(node, '#checkout_billing_address_country', billingProfile.autofillInformation.country);
+      // await fillField(node, '#checkout_billing_address_province', billingProfile.autofillInformation.state);
+      // await fillField(node, '#checkout_billing_address_zip ', billingProfile.autofillInformation.zipCode);
+      // await fillField(node, '#checkout_billing_address_phone', billingProfile.autofillInformation.phoneNumber);
+      break;
   }
 
   // detect captcha and send it to client w/ sitekey
@@ -159,6 +245,9 @@ async function beginShopifyCheckout(node, billingProfile, variant) {
     node.captchaResponse = undefined;
     window.setNodeStatus(node, "orange", `${window.parent.tryTranslate('Submitting Billing Details...')} (3/3)`);
   }
+
+  // wait for ACO delay (if setup)
+  if (node.currentCheckoutStep == 'payment_method') await window.parent.sleep(billingProfile.settings.autoCheckoutDelay || 0);
 
   // wait for continue button to be ready
   addContinueListener(node);
@@ -235,18 +324,34 @@ function addContinueListener(node) {
     })();`, true);
 };
 
-async function getPaymentNotice(node) {
-  return await node.checkoutWindow.webContents.executeJavaScript(`
-    (() => {
-      const notices = document.querySelectorAll(".notice");
-      for (var notice of notices) if (!notice.classList.contains("hidden")) return notice.innerText;
-    })();`, true);
+async function getPaymentNotice(type, node) {
+  switch (type) {
+    case 'shopify':
+      return await node.checkoutWindow.webContents.executeJavaScript(`
+        (() => {
+          const notices = document.querySelectorAll(".notice");
+          for (var notice of notices) if (!notice.classList.contains("hidden")) return notice.innerText;
+        })();`, true);
+    case 'supreme':
+      return await node.checkoutWindow.webContents.executeJavaScript(`
+        document.querySelector(".errors").innerText.trim().length > 0 ? true : false;
+        `, true);
+  }
 };
 
-async function getCurrentCheckoutStep(node) {
-  return await node.checkoutWindow.webContents.executeJavaScript(`
-    Shopify.Checkout.step;
-    `, true);
+async function getCurrentCheckoutStep(type, node) {
+  switch (type) {
+    case 'shopify':
+      return await node.checkoutWindow.webContents.executeJavaScript(`
+        Shopify.Checkout.step;
+        `, true);
+    case 'supreme':
+      return await node.checkoutWindow.webContents.executeJavaScript(`
+        (() => {
+          if (document.querySelector(".tab-confirmation").classList.contains("selected")) return 'thank_you';
+          else return 'payment_method'; // TODO: detect if on first page (cart) or on checkout page.
+        })();`, true);
+  }
 };
 
 async function fillField(node, elementQuery, value, resetField = false) {

@@ -1,0 +1,460 @@
+.mediaViewInfo {
+	--web-view-name: Google Accounts Modal;
+	--web-view-id: Google_Accounts_Modal;
+	--web-enable-scale-up: true;
+	--web-scale-on-resize: true;
+	--web-enable-deep-linking: true;
+}
+:root {
+	--web-view-ids: Google_Accounts_Modal;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	border: none;
+}
+.Google_Accounts_Modal_Class {
+	position: absolute;
+	width: 1287px;
+	height: 795px;
+	/* background-color: rgba(255,255,255,1); */
+	overflow: hidden;
+	--web-view-name: Google Accounts Modal;
+	--web-view-id: Google_Accounts_Modal;
+	--web-enable-scale-up: true;
+	--web-scale-on-resize: true;
+	--web-enable-deep-linking: true;
+}
+.Modal_Class {
+	position: absolute;
+	width: 1287px;
+	height: 795px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+.Modal_Shader {
+	position: absolute;
+	overflow: visible;
+	width: 1287px;
+	height: 795px;
+	left: 0px;
+	top: 0px;
+}
+.Modal_Rectangle {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 747px;
+	height: 481px;
+	left: 270px;
+	top: 157px;
+}
+.Done_Button_Class {
+	position: absolute;
+	width: 107px;
+	height: 36px;
+	left: 883px;
+	top: 576px;
+	overflow: visible;
+}
+.Done_Rectangle {
+	position: absolute;
+	overflow: visible;
+	width: 107px;
+	height: 36px;
+	left: 0px;
+	top: 0px;
+}
+.Done_Class {
+	position: absolute;
+	left: 0px;
+	top: 9.5px;
+	overflow: visible;
+	width: 107px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 15px;
+	color: rgba(91,182,187,1);
+}
+.Row_2_Class {
+	position: absolute;
+	width: 680.752px;
+	height: 52.497px;
+	left: 297.921px;
+	top: 332.137px;
+	overflow: visible;
+}
+.Row_2_Rectangle {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.149));
+	position: absolute;
+	overflow: visible;
+	width: 698.752px;
+	height: 70.497px;
+	left: 0px;
+	top: 0px;
+}
+.Action_Row_2_Class {
+	position: absolute;
+	width: 135px;
+	height: 36px;
+	left: 522.079px;
+	top: 6.863px;
+	overflow: visible;
+}
+.Trash_2_Class {
+	position: absolute;
+	width: 34px;
+	height: 35px;
+	left: 101px;
+	top: 1px;
+	overflow: visible;
+}
+.Trash_Can_Circle_2 {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 34px;
+	height: 35px;
+	left: 0px;
+	top: 0px;
+}
+.Trash_Can_Icon_2 {
+	overflow: visible;
+	position: absolute;
+	width: 15.522px;
+	height: 17.74px;
+	left: 9.687px;
+	top: 8.26px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Pencil_2_Class {
+	position: absolute;
+	width: 34px;
+	height: 35px;
+	left: 56px;
+	top: 0px;
+	overflow: visible;
+}
+.Pencil_Circle_2 {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 34px;
+	height: 35px;
+	left: 0px;
+	top: 0px;
+}
+.Pencil_Icon_2 {
+	overflow: visible;
+	position: absolute;
+	width: 17.74px;
+	height: 17.74px;
+	left: 8px;
+	top: 8.26px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Switch_2_Class {
+	position: absolute;
+	width: 45px;
+	height: 25px;
+	left: 0px;
+	top: 6px;
+	overflow: visible;
+}
+.Switch_Rectangle_2 {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 45px;
+	height: 25px;
+	left: 0px;
+	top: 0px;
+}
+.Switch_Circle_2 {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 20px;
+	height: 21px;
+	left: 22px;
+	top: 2px;
+}
+.Profile_Name_Text_Class {
+	position: absolute;
+	left: 42.079px;
+	top: 16.863px;
+	overflow: visible;
+	width: 125px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -13.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 15px;
+	color: rgba(29,29,29,1);
+}
+.Favorite_Star_2 {
+	overflow: visible;
+	position: absolute;
+	width: 19.15px;
+	height: 17.782px;
+	left: 12.176px;
+	top: 17.206px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Row_1_Class {
+	position: absolute;
+	width: 680.752px;
+	height: 52.497px;
+	left: 10px;
+	top: 10px
+	overflow: visible;
+}
+.Row_1_Rectangle {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.149));
+	position: absolute;
+	overflow: visible;
+	width: 680.752px;
+	height: 52.497px;
+	left: 0px;
+	top: 0px;
+}
+.Action_Row_1_Class {
+	position: absolute;
+	width: 135px;
+	height: 35px;
+	left: 522.079px;
+	top: 7.863px;
+	overflow: visible;
+}
+.Trash_1_Class {
+	position: absolute;
+	width: 34px;
+	height: 35px;
+	left: 101px;
+	top: 0px;
+	overflow: visible;
+}
+.Trash_Can_Circle_1 {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 34px;
+	height: 35px;
+	left: 0px;
+	top: 0px;
+}
+.Trash_Can_Icon_1 {
+	overflow: visible;
+	position: absolute;
+	width: 15.522px;
+	height: 17.74px;
+	left: 9.687px;
+	top: 8.26px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Pencil_1_Class {
+	position: absolute;
+	width: 34px;
+	height: 35px;
+	left: 56px;
+	top: 0px;
+	overflow: visible;
+}
+.Pencil_Circle_1 {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 34px;
+	height: 35px;
+	left: 0px;
+	top: 0px;
+}
+.Pencil_Icon_1 {
+	overflow: visible;
+	position: absolute;
+	width: 17.74px;
+	height: 17.74px;
+	left: 8px;
+	top: 8.26px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Switch_1_Class {
+	position: absolute;
+	width: 45px;
+	height: 25px;
+	left: 0px;
+	top: 5px;
+	overflow: visible;
+}
+.Switch_Rectangle_1 {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 45px;
+	height: 25px;
+	left: 0px;
+	top: 0px;
+}
+.Switch_Circle_1 {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 20px;
+	height: 21px;
+	left: 22px;
+	top: 2px;
+}
+.Profile_Name_Text_dh_Class {
+	position: absolute;
+	left: 43.079px;
+	top: 19.863px;
+	overflow: visible;
+	width: 125px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -13.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 15px;
+	color: rgba(29,29,29,1);
+}
+.Favorite_Star_1 {
+	overflow: visible;
+	position: absolute;
+	width: 19.15px;
+	height: 17.782px;
+	left: 12.176px;
+	top: 16.806px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Scroll_Bar_Left {
+	filter: drop-shadow(0px 2px 6px rgba(0, 0, 0, 0.161));
+	width: 75px;
+	height: 8px;
+	position: absolute;
+	overflow: visible;
+	transform: translate(0px, 0px) matrix(1,0,0,1,952.5,302.5) rotate(90deg);
+	transform-origin: center;
+}
+.Profile_Header_Class {
+	position: absolute;
+	width: 591.08px;
+	height: 24px;
+	left: 340.42px;
+	top: 240px;
+	overflow: visible;
+}
+.Actions_Class {
+	position: absolute;
+	left: 480.08px;
+	top: 0px;
+	overflow: visible;
+	width: 135px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -11px;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Profile_Name_Class {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+	width: 130px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -11px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Header_Class {
+	position: absolute;
+	width: 701.527px;
+	height: 57.572px;
+	left: 297.921px;
+	top: 172.552px;
+	overflow: visible;
+}
+.Browser_Close_Button {
+	overflow: visible;
+	position: absolute;
+	width: 21px;
+	height: 20px;
+	left: 680.527px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Add_Button_Class {
+	position: absolute;
+	width: 107px;
+	height: 36px;
+	left: 542.079px;
+	top: 16.448px;
+	overflow: visible;
+}
+.Add_Rectangle {
+	position: absolute;
+	overflow: visible;
+	width: 107px;
+	height: 36px;
+	left: 0px;
+	top: 0px;
+}
+.Add_Class {
+	position: absolute;
+	left: 0px;
+	top: 9.5px;
+	overflow: visible;
+	width: 107px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 15px;
+	color: rgba(91,182,187,1);
+}
+.Google_Accounts_Class {
+	position: absolute;
+	left: 0px;
+	top: 9.572px;
+	overflow: visible;
+	width: 520px;
+	white-space: nowrap;
+	line-height: 42px;
+	margin-top: -1px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: 900;
+	font-size: 40px;
+	color: rgba(29,29,29,1);
+}
+
+.Blue_Bar {
+	position: absolute;
+	overflow: visible;
+	width: 75px;
+	height: 3px;
+	left: 20.834px;
+	top: 49.448px;
+}

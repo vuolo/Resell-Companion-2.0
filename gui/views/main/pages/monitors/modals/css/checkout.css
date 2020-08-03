@@ -1,0 +1,3463 @@
+.mediaViewInfo {
+	--web-view-name: Rewrite – Sold Inventory Item Modal;
+	--web-view-id: Rewrite___Sold_Inventory_Item_Modal;
+	--web-enable-deep-linking: true;
+}
+:root {
+	--web-view-ids: Rewrite___Sold_Inventory_Item_Modal;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	border: none;
+}
+.Rewrite___Sold_Inventory_Item_Modal_Class {
+	position: absolute;
+	width: 1287px;
+	height: 795px;
+	/* background-color: rgba(255,255,255,1); */
+	overflow: hidden;
+	--web-view-name: Rewrite – Sold Inventory Item Modal;
+	--web-view-id: Rewrite___Sold_Inventory_Item_Modal;
+	--web-enable-deep-linking: true;
+}
+.Modal_Class {
+	position: absolute;
+	width: 1287px;
+	height: 795px;
+	left: 0px;
+	top: 140px;
+	overflow: visible;
+}
+.Modal_Shader {
+	position: absolute;
+	overflow: visible;
+	width: 1287px;
+	height: 795px;
+	left: 0px;
+	top: -140px;
+}
+.Modal_Rectangle {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 802px;
+	height: 418px;
+	left: 243px;
+	top: 48px;
+}
+.Done_Button_Class {
+	position: absolute;
+	width: 107px;
+	height: 37px;
+	left: 590.5px;
+	top: 400px;
+	overflow: visible;
+}
+.Done_Rectangle {
+	position: absolute;
+	overflow: visible;
+	width: 107px;
+	height: 37px;
+	left: 0px;
+	top: 0px;
+}
+.Done_Class {
+	position: absolute;
+	left: 0px;
+	top: 9.153px;
+	overflow: visible;
+	width: 107px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 15px;
+	color: rgba(91,182,187,1);
+}
+.Tracking_Area__before__Class {
+	position: absolute;
+	width: 586px;
+	height: 63px;
+	left: 351px;
+	/* top: 589px; */
+	top: 570px;
+	/* display: none; */
+	overflow: visible;
+}
+.Tracking_Number_Area_Class {
+	position: absolute;
+	width: 306px;
+	height: 63px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+.Rectangle {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 324px;
+	height: 54px;
+	left: 0px;
+	top: 27px;
+}
+.ID12930812398123_890213_Class {
+	position: absolute;
+	left: 39px;
+	top: 36px;
+	overflow: visible;
+	width: 204px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Tracking_Number_Class {
+	position: absolute;
+	left: 15px;
+	top: 0px;
+	overflow: visible;
+	width: 148px;
+	white-space: nowrap;
+	line-height: 28px;
+	margin-top: -5.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 17px;
+	color: rgba(29,29,29,1);
+}
+.Magnifying_Glass_Icon_Class {
+	opacity: 0.66;
+}
+.Magnifying_Glass_Icon {
+	overflow: visible;
+	position: absolute;
+	width: 17.337px;
+	height: 17.337px;
+	left: 13.535px;
+	top: 37.124px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Track_Button_Class {
+	position: absolute;
+	width: 107px;
+	height: 36px;
+	left: 479px;
+	top: 26px;
+	overflow: visible;
+}
+.Rectangle_ec {
+	position: absolute;
+	overflow: visible;
+	width: 107px;
+	height: 36px;
+	left: 0px;
+	top: 0px;
+}
+.Track___Class {
+	position: absolute;
+	left: 0;
+	top: 9.5px;
+	overflow: visible;
+	width: 107px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 15px;
+	color: rgba(255,167,78,1);
+}
+.Carrier_Area_Class {
+	position: absolute;
+	width: 137px;
+	height: 63px;
+	left: 324px;
+	top: 0px;
+	overflow: visible;
+}
+.Rectangle_ef {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 155px;
+	height: 54px;
+	left: 0px;
+	top: 27px;
+}
+.FedEx_Class {
+	position: absolute;
+	left: 39px;
+	top: 36px;
+	overflow: visible;
+	width: 48px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Carrier_Class {
+	position: absolute;
+	left: 15px;
+	top: 0px;
+	overflow: visible;
+	width: 61px;
+	white-space: nowrap;
+	line-height: 28px;
+	margin-top: -5.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 17px;
+	color: rgba(29,29,29,1);
+}
+.Magnifying_Glass_Icon_ei_Class {
+	opacity: 0.66;
+}
+.Magnifying_Glass_Icon_ei {
+	overflow: visible;
+	position: absolute;
+	width: 17.337px;
+	height: 17.337px;
+	left: 13.535px;
+	top: 37.124px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Tracking_Area__after__Class {
+	position: absolute;
+	width: 802px;
+	height: 87px;
+	left: 243px;
+	top: 565px;
+	overflow: hidden;
+}
+.Status_Area_Class {
+	position: absolute;
+	width: 727px;
+	height: 115px;
+	left: 0px;
+	top: 27px;
+	overflow: visible;
+}
+.Green_Separator {
+	top: -6px;
+	left: -59px;
+	width: 20px;
+	height: 5px;
+	position: absolute;
+	overflow: visible;
+	transform: translate(24px, -21px) matrix(1,0,0,1,31.5,42.5) rotate(180deg);
+	transform-origin: center;
+}
+.Tracking_History_Content_Area_Class {
+	position: absolute;
+	width: 802px;
+	height: 148px;
+	left: 0px;
+	top: 0px;
+
+	overflow: visible;
+	/* overflow: auto;
+	overflow-y: hidden; */
+}
+.Tracking_History_Content_Area_en_Class {
+	position: absolute;
+	width: 306px;
+	height: 36px;
+	left: 9px;
+	top: 6px;
+	overflow: visible;
+}
+.Lower_Rectangle {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 306px;
+	height: 97px;
+	left: 0px;
+	top: 0px;
+}
+.Rectangle_ep {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 306px;
+	height: 36px;
+	left: 0px;
+	top: 0px;
+}
+.Delivered__In_At_Mailbox_Class {
+	position: absolute;
+	left: 39px;
+	top: 9px;
+	overflow: visible;
+	width: 235px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.ID1_Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 8px;
+	top: 9px;
+	overflow: visible;
+	width: 30px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Side_Rectangle_tracking {
+	position: absolute;
+	overflow: visible;
+	width: 8px;
+	height: 36px;
+	left: -2px;
+	top: 0px;
+}
+.__Class {
+	position: absolute;
+	left: 282px;
+	top: 9px;
+	overflow: visible;
+	width: 15px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+	letter-spacing: -2.75px;
+}
+.Time_Class {
+	position: absolute;
+	left: 39px;
+	top: 70px;
+	overflow: visible;
+	width: 260px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Clock_Icon_Class {
+	position: absolute;
+	width: 18px;
+	height: 18px;
+	left: 14px;
+	top: 69px;
+	overflow: visible;
+	transform: scale(0.8);
+}
+.Clock_Icon_2 {
+	overflow: visible;
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	left: 0px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Clock_Icon_1 {
+	overflow: visible;
+	position: absolute;
+	width: 6.151px;
+	height: 9.959px;
+	left: 8.869px;
+	top: 3.461px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Location_Class {
+	position: absolute;
+	left: 39px;
+	top: 45px;
+	overflow: visible;
+	width: 260px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Location_Icon {
+	overflow: visible;
+	position: absolute;
+	width: 14.785px;
+	height: 20.699px;
+	left: 16px;
+	top: 44.232px;
+	transform: matrix(1,0,0,1,0,0) scale(0.9);
+}
+.Tracking_History_Content_Area_e_Class {
+	position: absolute;
+	width: 306px;
+	height: 97px;
+	left: 349px;
+	top: 6px;
+	overflow: visible;
+}
+.Lower_Rectangle_e {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 324px;
+	height: 115px;
+	left: 0px;
+	top: 0px;
+}
+.Rectangle_e {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 324px;
+	height: 54px;
+	left: 0px;
+	top: 0px;
+}
+.Delivered__In_At_Mailbox_e_Class {
+	position: absolute;
+	left: 39px;
+	top: 9px;
+	overflow: visible;
+	width: 183px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.ID1_e_Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 18px;
+	top: 9px;
+	overflow: visible;
+	width: 9px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Side_Rectangle_e {
+	position: absolute;
+	overflow: visible;
+	width: 7px;
+	height: 36px;
+	left: 0px;
+	top: 0px;
+}
+.__e_Class {
+	position: absolute;
+	left: 282px;
+	top: 9px;
+	overflow: visible;
+	width: 15px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+	letter-spacing: -2.75px;
+}
+.Time_e_Class {
+	position: absolute;
+	left: 67px;
+	top: 70px;
+	overflow: visible;
+	width: 198px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Clock_Icon_e_Class {
+	position: absolute;
+	width: 18px;
+	height: 18px;
+	left: 42px;
+	top: 71px;
+	overflow: visible;
+}
+.Clock_Icon_2_e {
+	overflow: visible;
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	left: 0px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Clock_Icon_1_fa {
+	overflow: visible;
+	position: absolute;
+	width: 6.151px;
+	height: 9.959px;
+	left: 8.869px;
+	top: 3.461px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Location_fb_Class {
+	position: absolute;
+	left: 97px;
+	top: 45px;
+	overflow: visible;
+	width: 135px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Location_Icon_fc {
+	overflow: visible;
+	position: absolute;
+	width: 14.785px;
+	height: 20.699px;
+	left: 75.503px;
+	top: 44.232px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Tracking_History_Content_Area_fd_Class {
+	position: absolute;
+	width: 306px;
+	height: 97px;
+	left: 689px;
+	top: 6px;
+	overflow: visible;
+}
+.Lower_Rectangle_fe {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 324px;
+	height: 115px;
+	left: 0px;
+	top: 0px;
+}
+.Rectangle_ff {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 324px;
+	height: 54px;
+	left: 0px;
+	top: 0px;
+}
+.Delivered__In_At_Mailbox_fg_Class {
+	position: absolute;
+	left: 39px;
+	top: 9px;
+	overflow: visible;
+	width: 183px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.ID1_fh_Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 18px;
+	top: 9px;
+	overflow: visible;
+	width: 9px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Side_Rectangle_fi {
+	position: absolute;
+	overflow: visible;
+	width: 7px;
+	height: 36px;
+	left: 0px;
+	top: 0px;
+}
+.__fj_Class {
+	position: absolute;
+	left: 282px;
+	top: 9px;
+	overflow: visible;
+	width: 15px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+	letter-spacing: -2.75px;
+}
+.Time_fk_Class {
+	position: absolute;
+	left: 67px;
+	top: 70px;
+	overflow: visible;
+	width: 198px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Clock_Icon_fl_Class {
+	position: absolute;
+	width: 18px;
+	height: 18px;
+	left: 42px;
+	top: 71px;
+	overflow: visible;
+}
+.Clock_Icon_2_fm {
+	overflow: visible;
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	left: 0px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Clock_Icon_1_fn {
+	overflow: visible;
+	position: absolute;
+	width: 6.151px;
+	height: 9.959px;
+	left: 8.869px;
+	top: 3.461px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Location_fo_Class {
+	position: absolute;
+	left: 97px;
+	top: 45px;
+	overflow: visible;
+	width: 135px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Location_Icon_fp {
+	overflow: visible;
+	position: absolute;
+	width: 14.785px;
+	height: 20.699px;
+	left: 75.503px;
+	top: 44.232px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Pencil_Icon_1 {
+	overflow: visible;
+	position: absolute;
+	width: 17.74px;
+	height: 17.74px;
+	left: 0px;
+	top: 15.26px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Tracking_History_Class {
+	position: absolute;
+
+	/* left: 43px; */
+	left: 0px;
+
+	top: 0px;
+	overflow: visible;
+
+	/* width: 143px; */
+	width: 802px;
+
+	white-space: nowrap;
+	line-height: 29px;
+	margin-top: -5.5px;
+
+	/* text-align: left; */
+	text-align: center;
+
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: inherit;
+	font-size: inherit;
+	color: rgba(29,29,29,1);
+}
+.Ellipse_349 {
+	display: none;
+	position: absolute;
+	overflow: visible;
+	width: 15px;
+	height: 15px;
+	left: 666px;
+	top: 626.5px;
+}
+.Ellipse_350 {
+	display: none;
+	position: absolute;
+	overflow: visible;
+	width: 15px;
+	height: 15px;
+	left: 1007px;
+	top: 626.5px;
+}
+.Separator_2 {
+	width: 609px;
+	height: 3px;
+	position: absolute;
+	overflow: visible;
+	transform: translate(0px, 0px) matrix(1,0,0,1,339.5,537.5) rotate(180deg);
+	transform-origin: center;
+}
+.Separator_1 {
+	width: 230px;
+	height: 3px;
+	position: absolute;
+	overflow: visible;
+	transform: translate(0px, 0px) matrix(1,0,0,1,396,423) rotate(90deg);
+	transform-origin: center;
+}
+.Right_Fields_Class {
+	position: absolute;
+	width: 485px;
+	height: 225px;
+	left: 537px;
+	top: 288px;
+	overflow: visible;
+}
+.Est_Resell_Area_Class {
+	position: absolute;
+	width: 149px;
+	height: 63px;
+	left: 336px;
+	top: 162px;
+	overflow: visible;
+}
+.Rectangle_fy {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 167px;
+	height: 54px;
+	left: 0px;
+	top: 27px;
+}
+.Est__Resell_Class {
+	position: absolute;
+	left: 43.066px;
+	top: 36px;
+	overflow: visible;
+	width: 81px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Est__Resell_f_Class {
+	position: absolute;
+	left: 15px;
+	top: 0px;
+	overflow: visible;
+	width: 90px;
+	white-space: nowrap;
+	line-height: 28px;
+	margin-top: -5.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 17px;
+	color: rgba(29,29,29,1);
+}
+.Globe_Icon_Class {
+	opacity: 0.66;
+}
+.Globe_Icon {
+	overflow: visible;
+	position: absolute;
+	width: 18px;
+	height: 17.996px;
+	left: 12.866px;
+	top: 37px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Purchase_Price_Area_Class {
+	position: absolute;
+	width: 149px;
+	height: 63px;
+	left: 168px;
+	top: 162px;
+	overflow: visible;
+}
+.Rectangle_f {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 167px;
+	height: 54px;
+	left: 0px;
+	top: 27px;
+}
+.Purchase_Class {
+	position: absolute;
+	left: 43.066px;
+	top: 36px;
+	overflow: visible;
+	width: 73px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Purchase_Price_Class {
+	position: absolute;
+	left: 15px;
+	top: 0px;
+	overflow: visible;
+	width: 129px;
+	white-space: nowrap;
+	line-height: 28px;
+	margin-top: -5.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 17px;
+	color: rgba(29,29,29,1);
+}
+.Globe_Icon_f_Class {
+	opacity: 0.66;
+}
+.Globe_Icon_f {
+	overflow: visible;
+	position: absolute;
+	width: 18px;
+	height: 17.996px;
+	left: 12.866px;
+	top: 37px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Store_Area_Class {
+	position: absolute;
+	width: 149px;
+	height: 63px;
+	left: 0px;
+	top: 162px;
+	overflow: visible;
+}
+.Rectangle_ga {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 167px;
+	height: 54px;
+	left: 0px;
+	top: 27px;
+}
+.Store_Class {
+	position: absolute;
+	left: 43.066px;
+	top: 36px;
+	overflow: visible;
+	width: 43px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Store_ga_Class {
+	position: absolute;
+	left: 15px;
+	top: 0px;
+	overflow: visible;
+	width: 47px;
+	white-space: nowrap;
+	line-height: 28px;
+	margin-top: -5.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 17px;
+	color: rgba(29,29,29,1);
+}
+.Globe_Icon_gb_Class {
+	opacity: 0.66;
+}
+.Globe_Icon_gb {
+	overflow: visible;
+	position: absolute;
+	width: 18px;
+	height: 17.996px;
+	left: 12.866px;
+	top: 37px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Purchase_Date_Area_Class {
+	position: absolute;
+	width: 187px;
+	height: 63px;
+	left: 298px;
+	top: 81px;
+	overflow: visible;
+}
+.Rectangle_gd {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 205px;
+	height: 54px;
+	left: 0px;
+	top: 27px;
+}
+.Purchase_Date_Class {
+	position: absolute;
+	left: 39px;
+	top: 36px;
+	overflow: visible;
+	width: 113px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Purchase_Date_gf_Class {
+	position: absolute;
+	left: 15px;
+	top: 0px;
+	overflow: visible;
+	width: 125px;
+	white-space: nowrap;
+	line-height: 28px;
+	margin-top: -5.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 17px;
+	color: rgba(29,29,29,1);
+}
+.___Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 9px;
+	top: 37px;
+	overflow: visible;
+	width: 25px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+	letter-spacing: -2.75px;
+}
+.Product_Image_URL_Area_Class {
+	position: absolute;
+	width: 279px;
+	height: 63px;
+	left: 0px;
+	top: 81px;
+	overflow: visible;
+}
+.Rectangle_gi {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 297px;
+	height: 54px;
+	left: 0px;
+	top: 27px;
+}
+.Product_Image_URL_Class {
+	position: absolute;
+	left: 39px;
+	top: 36px;
+	overflow: visible;
+	width: 150px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Product_Image_URL_gk_Class {
+	position: absolute;
+	left: 15px;
+	top: 0px;
+	overflow: visible;
+	width: 165px;
+	white-space: nowrap;
+	line-height: 28px;
+	margin-top: -5.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 17px;
+	color: rgba(29,29,29,1);
+}
+.Magnifying_Glass_Icon_gl_Class {
+	opacity: 0.66;
+}
+.Magnifying_Glass_Icon_gl {
+	overflow: visible;
+	position: absolute;
+	width: 17.337px;
+	height: 17.337px;
+	left: 13.401px;
+	top: 37.124px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Size_Area_Class {
+	position: absolute;
+	width: 187px;
+	height: 63px;
+	left: 298px;
+	top: 0px;
+	overflow: visible;
+}
+.Rectangle_gn {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 205px;
+	height: 54px;
+	left: 0px;
+	top: 27px;
+}
+.Size_Class {
+	position: absolute;
+	left: 39px;
+	top: 36px;
+	overflow: visible;
+	width: 33px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Size_gp_Class {
+	position: absolute;
+	left: 15px;
+	top: 0px;
+	overflow: visible;
+	width: 37px;
+	white-space: nowrap;
+	line-height: 28px;
+	margin-top: -5.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 17px;
+	color: rgba(29,29,29,1);
+}
+.___gq_Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 9px;
+	top: 37px;
+	overflow: visible;
+	width: 25px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+	letter-spacing: -2.75px;
+}
+.Product_Name_Area_Class {
+	position: absolute;
+	width: 279px;
+	height: 63px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+.Rectangle_gs {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 297px;
+	height: 54px;
+	left: 0px;
+	top: 27px;
+}
+.Product_Name_Class {
+	position: absolute;
+	left: 39px;
+	top: 36px;
+	overflow: visible;
+	width: 111px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Product_Name_gu_Class {
+	position: absolute;
+	left: 15px;
+	top: 0px;
+	overflow: visible;
+	width: 122px;
+	white-space: nowrap;
+	line-height: 28px;
+	margin-top: -5.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 17px;
+	color: rgba(29,29,29,1);
+}
+.Magnifying_Glass_Icon_gv {
+	opacity: 0.66;
+	overflow: visible;
+	position: absolute;
+	width: 17.337px;
+	/* height: 17.337px; */
+	left: 13.401px;
+	top: 37.124px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Left_Fields_Class {
+	position: absolute;
+	width: 236px;
+	height: 225px;
+	left: 269px;
+	top: 288px;
+	overflow: visible;
+}
+.Sold_Date_Area_Class {
+	position: absolute;
+	width: 211px;
+	height: 63px;
+	left: 2px;
+	top: 162px;
+	overflow: visible;
+}
+.Rectangle_gy {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 229px;
+	height: 54px;
+	left: 0px;
+	top: 27px;
+}
+.Sold_Date_Class {
+	position: absolute;
+	left: 43.066px;
+	top: 36px;
+	overflow: visible;
+	width: 76px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Sold_Date_g_Class {
+	position: absolute;
+	left: 15px;
+	top: 0px;
+	overflow: visible;
+	width: 83px;
+	white-space: nowrap;
+	line-height: 28px;
+	margin-top: -5.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 17px;
+	color: rgba(29,29,29,1);
+}
+.Globe_Icon_g_Class {
+	opacity: 0.66;
+}
+.Globe_Icon_g {
+	overflow: visible;
+	position: absolute;
+	width: 18px;
+	height: 17.996px;
+	left: 12.866px;
+	top: 37px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Listing_Platform_Image_Class {
+	position: absolute;
+	width: 211px;
+	height: 63px;
+	left: 2px;
+	top: 81px;
+	overflow: visible;
+}
+.Rectangle_g {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 229px;
+	height: 54px;
+	left: 0px;
+	top: 27px;
+}
+.Listing_Platform_Class {
+	position: absolute;
+	left: 39px;
+	top: 36px;
+	overflow: visible;
+	width: 123px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Listing_Platform_g_Class {
+	position: absolute;
+	left: 15px;
+	top: 0px;
+	overflow: visible;
+	width: 137px;
+	white-space: nowrap;
+	line-height: 28px;
+	margin-top: -5.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 17px;
+	color: rgba(29,29,29,1);
+}
+.Magnifying_Glass_Icon_g_Class {
+	opacity: 0.66;
+}
+.Magnifying_Glass_Icon_g {
+	overflow: visible;
+	position: absolute;
+	width: 17.337px;
+	height: 17.337px;
+	left: 13.401px;
+	top: 37.124px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Fees_Area_Class {
+	position: absolute;
+	width: 90px;
+	height: 63px;
+	left: 123px;
+	top: 0px;
+	overflow: visible;
+}
+.Rectangle_ha {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 100px;
+	height: 54px;
+	left: 0px;
+	top: 27px;
+}
+.Fees_Class {
+	position: absolute;
+	left: 18px;
+	top: 36px;
+	overflow: visible;
+	width: 38px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.__ha_Class {
+	position: absolute;
+	left: 59px;
+	top: 36px;
+	overflow: visible;
+	width: 14px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Fees_hb_Class {
+	position: absolute;
+	left: 14px;
+	top: 0px;
+	overflow: visible;
+	width: 41px;
+	white-space: nowrap;
+	line-height: 28px;
+	margin-top: -5.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 17px;
+	color: rgba(29,29,29,1);
+}
+.Sold_Price_Area_Class {
+	position: absolute;
+	width: 112px;
+	height: 64px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+.Rectangle_hd {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 130px;
+	height: 54px;
+	left: 0px;
+	top: 28px;
+}
+.ID320_82_Class {
+	position: absolute;
+	left: 41px;
+	top: 36px;
+	overflow: visible;
+	width: 56px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Sold_Price_Class {
+	position: absolute;
+	left: 15px;
+	top: 0px;
+	overflow: visible;
+	width: 87px;
+	white-space: nowrap;
+	line-height: 28px;
+	margin-top: -5.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 17px;
+	color: rgba(29,29,29,1);
+}
+.Magnifying_Glass_Icon_hg_Class {
+	opacity: 0.66;
+}
+.Magnifying_Glass_Icon_hg {
+	overflow: visible;
+	position: absolute;
+	width: 17.337px;
+	height: 17.337px;
+	left: 15.401px;
+	top: 37.124px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.___hh_Class {
+	transform: translate(1.866px, 81px) matrix(1,0,0,1,211.1341,-46) rotate(-90deg);
+	transform-origin: center;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+	width: 27px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 17px;
+	color: rgba(29,29,29,1);
+	letter-spacing: -2px;
+}
+.Top_Area_Class {
+	position: absolute;
+	width: 563.283px;
+	height: 131px;
+	left: 273.5px;
+	top: 137.186px;
+	overflow: visible;
+}
+.Size_hj_Class {
+	position: absolute;
+	left: 161.283px;
+	top: 46.938px;
+	overflow: visible;
+	width: 550px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Product_Color_Class {
+	position: absolute;
+	left: 161.283px;
+	top: 24.938px;
+	overflow: visible;
+	width: 550px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(29,29,29,1);
+}
+.Product_Name_hl_Class {
+	position: absolute;
+	left: 161.283px;
+	top: 0.938px;
+	overflow: visible;
+	width: 550px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(29,29,29,1);
+}
+.Product_Image_Class {
+  border-radius: 10px;
+	display: table;
+	position: absolute;
+  width: 131px;
+	height: 131px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+
+	display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.Header_Class {
+	position: absolute;
+	width: 757.083px;
+	height: 48.124px;
+	left: 273.783px;
+	top: 64px;
+	overflow: visible;
+}
+.Browser_Close_Button {
+	overflow: visible;
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	left: 737.083px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Blue_Bar {
+	position: absolute;
+	overflow: visible;
+	width: 117px;
+	height: 3px;
+	left: 25.217px;
+	top: 44px;
+}
+.Sold_Inventory_Item_Class {
+	position: absolute;
+	left: 0px;
+	top: 0.124px;
+	overflow: visible;
+	width: 408px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: 900;
+	font-size: 40px;
+	color: rgba(29,29,29,1);
+}
+
+
+
+.Note_Area_Class {
+	position: absolute;
+	width: 587px;
+	height: 54px;
+	left: 161.5px;
+	top: 76.814px;
+	overflow: visible;
+}
+.Rectangle_mf {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 605px;
+	height: 72px;
+	left: 0px;
+	top: 0px;
+}
+.Text_Class {
+	opacity: 0.66;
+	position: absolute;
+	left: 8.51px;
+	top: 5.124px;
+	overflow: visible;
+	width: 110px;
+	white-space: nowrap;
+	line-height: 15px;
+	margin-top: -1.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	color: rgba(29,29,29,1);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.Suggested_Items_Area_Class {
+	z-index: 5;
+	position: absolute;
+	width: 485px;
+	height: 351.5px;
+	left: 537px;
+	top: 370.5px;
+	overflow: visible;
+}
+.Rectangle_hv {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 485px;
+	height: 351px;
+	left: 0px;
+	top: 0px;
+}
+.Side_Rectangle {
+	position: absolute;
+	overflow: visible;
+	width: 3px;
+	height: 351px;
+	left: 0px;
+	top: 0px;
+}
+.Suggested_Item_Class {
+	position: absolute;
+	width: 475.5px;
+	height: 304.29px;
+	left: 13.302px;
+	top: 47.21px;
+	overflow: auto;
+	overflow-x: hidden;
+}
+.Suggested_Item_hy_Class {
+	position: absolute;
+	width: 434.197px;
+	height: 112.29px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+.Separator_hz {
+	width: 406px;
+	height: 3px;
+	position: absolute;
+	overflow: visible;
+	transform: translate(-740.302px, -175.21px) matrix(1,0,0,1,768.5,284.5) rotate(180deg);
+	transform-origin: center;
+}
+.Product_Image_Class {
+	position: absolute;
+	width: 92.951px;
+	height: 92.951px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+.White_Zest_Academy_Blue__Class {
+	position: absolute;
+	left: 103.439px;
+	top: 17.695px;
+	overflow: visible;
+	width: 146px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	color: rgba(29,29,29,1);
+}
+.Nike_Air_Assault_Low_Zest_Acad_Class {
+	position: absolute;
+	left: 103.439px;
+	top: 0.666px;
+	overflow: visible;
+	width: 283px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	color: rgba(29,29,29,1);
+}
+.BQ8462_601__Class {
+	position: absolute;
+	left: 103.439px;
+	top: 32.695px;
+	overflow: visible;
+	width: 75px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	color: rgba(29,29,29,1);
+}
+.Suggested_Item_h_Class {
+	position: absolute;
+	width: 434.197px;
+	height: 112.29px;
+	left: 0px;
+	top: 129px;
+	overflow: visible;
+}
+.Separator_h {
+	width: 406px;
+	height: 3px;
+	position: absolute;
+	overflow: visible;
+	transform: translate(-740.302px, -175.21px) matrix(1,0,0,1,768.5,284.5) rotate(180deg);
+	transform-origin: center;
+}
+.Product_Image_h_Class {
+	position: absolute;
+	width: 92.951px;
+	height: 92.951px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+.White_Zest_Academy_Blue__h_Class {
+	position: absolute;
+	left: 103.439px;
+	top: 17.695px;
+	overflow: visible;
+	width: 146px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	color: rgba(29,29,29,1);
+}
+.Nike_Air_Assault_Low_Zest_Acad_h_Class {
+	position: absolute;
+	left: 103.439px;
+	top: 0.666px;
+	overflow: visible;
+	width: 283px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	color: rgba(29,29,29,1);
+}
+.BQ8462_601__h_Class {
+	position: absolute;
+	left: 103.439px;
+	top: 32.695px;
+	overflow: visible;
+	width: 75px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	color: rgba(29,29,29,1);
+}
+.Suggested_Item_ia_Class {
+	position: absolute;
+	width: 434.197px;
+	height: 112.29px;
+	left: 0px;
+	top: 258px;
+	overflow: visible;
+}
+.Separator_ib {
+	width: 406px;
+	height: 3px;
+	position: absolute;
+	overflow: visible;
+	transform: translate(-740.302px, -175.21px) matrix(1,0,0,1,768.5,284.5) rotate(180deg);
+	transform-origin: center;
+}
+.Product_Image_ic_Class {
+	position: absolute;
+	width: 92.951px;
+	height: 92.951px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+.White_Zest_Academy_Blue__id_Class {
+	position: absolute;
+	left: 103.439px;
+	top: 17.695px;
+	overflow: visible;
+	width: 146px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	color: rgba(29,29,29,1);
+}
+.Nike_Air_Assault_Low_Zest_Acad_ie_Class {
+	position: absolute;
+	left: 103.439px;
+	top: 0.666px;
+	overflow: visible;
+	width: 283px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	color: rgba(29,29,29,1);
+}
+.BQ8462_601__if_Class {
+	position: absolute;
+	left: 103.439px;
+	top: 32.695px;
+	overflow: visible;
+	width: 75px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	color: rgba(29,29,29,1);
+}
+.Orange_Bar {
+	position: absolute;
+	overflow: visible;
+	width: 63px;
+	height: 2px;
+	left: 55px;
+	top: 28px;
+}
+.Suggested_Items_3_Total_Class {
+	position: absolute;
+	left: 41.116px;
+	top: 6.124px;
+	overflow: visible;
+	width: 245px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: 900;
+	font-size: 21px;
+	color: rgba(29,29,29,1);
+}
+.Exclamation_Icon_Class {
+	position: absolute;
+	width: 20px;
+	height: 21px;
+	left: 13px;
+	top: 8px;
+	overflow: visible;
+}
+.Circle {
+	position: absolute;
+	overflow: visible;
+	width: 20px;
+	height: 21px;
+	left: 0px;
+	top: 0px;
+}
+.__ik_Class {
+	position: absolute;
+	left: 6.5px;
+	top: 0px;
+	overflow: visible;
+	width: 7px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 18px;
+	color: rgba(255,255,255,1);
+}
+.Size_Area_il_Class {
+	z-index: 4;
+	position: absolute;
+	width: 185px;
+	height: 364px;
+	left: 837px;
+	top: 370.5px;
+	overflow: visible;
+}
+.Rectangle_im {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 185px;
+	height: 364px;
+	left: 0px;
+	top: 0px;
+}
+.Side_Rectangle_in {
+	position: absolute;
+	overflow: visible;
+	width: 3px;
+	height: 364px;
+	left: 0px;
+	top: 0px;
+}
+.Keyword_Input_Area_Class {
+	position: absolute;
+	width: 182px;
+	height: 362px;
+	left: 6px;
+	top: 2px;
+	overflow: auto;
+	overflow-x: auto;
+}
+.Keyword_Input_Area_ip_Class {
+	position: absolute;
+	width: 41px;
+	height: 26px;
+	left: 18px;
+	top: 11px;
+	overflow: visible;
+}
+.Keyword_Input_Rectangle {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 41px;
+	height: 26px;
+	left: 0px;
+	top: 0px;
+}
+.ID14_5_Class {
+	position: absolute;
+  left: 0px;
+  top: 6px;
+  overflow: visible;
+  width: 41px;
+  white-space: nowrap;
+  line-height: 17px;
+  margin-top: -0.5px;
+  text-align: center;
+  font-family: SF Pro Text;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Keyword_Input_Area_is_Class {
+	position: absolute;
+	width: 41px;
+	height: 26px;
+	left: 68px;
+	top: 11px;
+	overflow: visible;
+}
+.Keyword_Input_Rectangle_it {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 41px;
+	height: 26px;
+	left: 0px;
+	top: 0px;
+}
+.ID14_5_iu_Class {
+	position: absolute;
+	left: 4px;
+	top: 4px;
+	overflow: visible;
+	width: 34px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Keyword_Input_Area_iv_Class {
+	position: absolute;
+	width: 41px;
+	height: 26px;
+	left: 118px;
+	top: 11px;
+	overflow: visible;
+}
+.Keyword_Input_Rectangle_iw {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 59px;
+	height: 44px;
+	left: 0px;
+	top: 0px;
+}
+.ID14_5_ix_Class {
+	position: absolute;
+	left: 4px;
+	top: 4px;
+	overflow: visible;
+	width: 34px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Keyword_Input_Area_iy_Class {
+	position: absolute;
+	width: 41px;
+	height: 26px;
+	left: 168px;
+	top: 11px;
+	overflow: visible;
+}
+.Keyword_Input_Rectangle_iz {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 59px;
+	height: 44px;
+	left: 0px;
+	top: 0px;
+}
+.ID14_5_i_Class {
+	position: absolute;
+	left: 4px;
+	top: 4px;
+	overflow: visible;
+	width: 34px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Keyword_Input_Area_i_Class {
+	position: absolute;
+	width: 41px;
+	height: 26px;
+	left: 18px;
+	top: 46px;
+	overflow: visible;
+}
+.Keyword_Input_Rectangle_i {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 59px;
+	height: 44px;
+	left: 0px;
+	top: 0px;
+}
+.ID14_5_ja_Class {
+	position: absolute;
+	left: 4px;
+	top: 4px;
+	overflow: visible;
+	width: 34px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Keyword_Input_Area_ja_Class {
+	position: absolute;
+	width: 41px;
+	height: 26px;
+	left: 68px;
+	top: 46px;
+	overflow: visible;
+}
+.Keyword_Input_Rectangle_ja {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 59px;
+	height: 44px;
+	left: 0px;
+	top: 0px;
+}
+.ID14_5_jb_Class {
+	position: absolute;
+	left: 4px;
+	top: 4px;
+	overflow: visible;
+	width: 34px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Keyword_Input_Area_jb_Class {
+	position: absolute;
+	width: 41px;
+	height: 26px;
+	left: 118px;
+	top: 46px;
+	overflow: visible;
+}
+.Keyword_Input_Rectangle_jb {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 59px;
+	height: 44px;
+	left: 0px;
+	top: 0px;
+}
+.ID14_5_jc_Class {
+	position: absolute;
+	left: 4px;
+	top: 4px;
+	overflow: visible;
+	width: 34px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Keyword_Input_Area_jc_Class {
+	position: absolute;
+	width: 41px;
+	height: 26px;
+	left: 168px;
+	top: 46px;
+	overflow: visible;
+}
+.Keyword_Input_Rectangle_jc {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 59px;
+	height: 44px;
+	left: 0px;
+	top: 0px;
+}
+.ID14_5_jd_Class {
+	position: absolute;
+	left: 4px;
+	top: 4px;
+	overflow: visible;
+	width: 34px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Keyword_Input_Area_jd_Class {
+	position: absolute;
+	width: 41px;
+	height: 26px;
+	left: 18px;
+	top: 81px;
+	overflow: visible;
+}
+.Keyword_Input_Rectangle_je {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 59px;
+	height: 44px;
+	left: 0px;
+	top: 0px;
+}
+.ID14_5_jf_Class {
+	position: absolute;
+	left: 4px;
+	top: 4px;
+	overflow: visible;
+	width: 34px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Keyword_Input_Area_jg_Class {
+	position: absolute;
+	width: 41px;
+	height: 26px;
+	left: 68px;
+	top: 81px;
+	overflow: visible;
+}
+.Keyword_Input_Rectangle_jh {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 59px;
+	height: 44px;
+	left: 0px;
+	top: 0px;
+}
+.ID14_5_ji_Class {
+	position: absolute;
+	left: 4px;
+	top: 4px;
+	overflow: visible;
+	width: 34px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Keyword_Input_Area_jj_Class {
+	position: absolute;
+	width: 41px;
+	height: 26px;
+	left: 118px;
+	top: 81px;
+	overflow: visible;
+}
+.Keyword_Input_Rectangle_jk {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 59px;
+	height: 44px;
+	left: 0px;
+	top: 0px;
+}
+.ID14_5_jl_Class {
+	position: absolute;
+	left: 4px;
+	top: 4px;
+	overflow: visible;
+	width: 34px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Keyword_Input_Area_jm_Class {
+	position: absolute;
+	width: 41px;
+	height: 26px;
+	left: 168px;
+	top: 81px;
+	overflow: visible;
+}
+.Keyword_Input_Rectangle_jn {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 59px;
+	height: 44px;
+	left: 0px;
+	top: 0px;
+}
+.ID14_5_jo_Class {
+	position: absolute;
+	left: 4px;
+	top: 4px;
+	overflow: visible;
+	width: 34px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Keyword_Input_Area_jp_Class {
+	position: absolute;
+	width: 41px;
+	height: 26px;
+	left: 18px;
+	top: 116px;
+	overflow: visible;
+}
+.Keyword_Input_Rectangle_jq {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 59px;
+	height: 44px;
+	left: 0px;
+	top: 0px;
+}
+.ID14_5_jr_Class {
+	position: absolute;
+	left: 4px;
+	top: 4px;
+	overflow: visible;
+	width: 34px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Keyword_Input_Area_js_Class {
+	position: absolute;
+	width: 41px;
+	height: 26px;
+	left: 68px;
+	top: 116px;
+	overflow: visible;
+}
+.Keyword_Input_Rectangle_jt {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 59px;
+	height: 44px;
+	left: 0px;
+	top: 0px;
+}
+.ID14_5_ju_Class {
+	position: absolute;
+	left: 4px;
+	top: 4px;
+	overflow: visible;
+	width: 34px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Keyword_Input_Area_jv_Class {
+	position: absolute;
+	width: 41px;
+	height: 26px;
+	left: 118px;
+	top: 116px;
+	overflow: visible;
+}
+.Keyword_Input_Rectangle_jw {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 59px;
+	height: 44px;
+	left: 0px;
+	top: 0px;
+}
+.ID14_5_jx_Class {
+	position: absolute;
+	left: 4px;
+	top: 4px;
+	overflow: visible;
+	width: 34px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Keyword_Input_Area_jy_Class {
+	position: absolute;
+	width: 41px;
+	height: 26px;
+	left: 168px;
+	top: 116px;
+	overflow: visible;
+}
+.Keyword_Input_Rectangle_jz {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 59px;
+	height: 44px;
+	left: 0px;
+	top: 0px;
+}
+.ID14_5_j_Class {
+	position: absolute;
+	left: 4px;
+	top: 4px;
+	overflow: visible;
+	width: 34px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Keyword_Input_Area_j_Class {
+	position: absolute;
+	width: 41px;
+	height: 26px;
+	left: 18px;
+	top: 151px;
+	overflow: visible;
+}
+.Keyword_Input_Rectangle_j {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 59px;
+	height: 44px;
+	left: 0px;
+	top: 0px;
+}
+.ID14_5_ka_Class {
+	position: absolute;
+	left: 4px;
+	top: 4px;
+	overflow: visible;
+	width: 34px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Keyword_Input_Area_ka_Class {
+	position: absolute;
+	width: 41px;
+	height: 26px;
+	left: 68px;
+	top: 151px;
+	overflow: visible;
+}
+.Keyword_Input_Rectangle_ka {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 59px;
+	height: 44px;
+	left: 0px;
+	top: 0px;
+}
+.ID14_5_kb_Class {
+	position: absolute;
+	left: 4px;
+	top: 4px;
+	overflow: visible;
+	width: 34px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Keyword_Input_Area_kb_Class {
+	position: absolute;
+	width: 41px;
+	height: 26px;
+	left: 118px;
+	top: 151px;
+	overflow: visible;
+}
+.Keyword_Input_Rectangle_kb {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 59px;
+	height: 44px;
+	left: 0px;
+	top: 0px;
+}
+.ID14_5_kc_Class {
+	position: absolute;
+	left: 4px;
+	top: 4px;
+	overflow: visible;
+	width: 34px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Keyword_Input_Area_kc_Class {
+	position: absolute;
+	width: 41px;
+	height: 26px;
+	left: 168px;
+	top: 151px;
+	overflow: visible;
+}
+.Keyword_Input_Rectangle_kc {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 59px;
+	height: 44px;
+	left: 0px;
+	top: 0px;
+}
+.ID14_5_kd_Class {
+	position: absolute;
+	left: 4px;
+	top: 4px;
+	overflow: visible;
+	width: 34px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Keyword_Input_Area_kd_Class {
+	position: absolute;
+	width: 41px;
+	height: 26px;
+	left: 18px;
+	top: 186px;
+	overflow: visible;
+}
+.Keyword_Input_Rectangle_ke {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 59px;
+	height: 44px;
+	left: 0px;
+	top: 0px;
+}
+.ID14_5_kf_Class {
+	position: absolute;
+	left: 4px;
+	top: 4px;
+	overflow: visible;
+	width: 34px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Keyword_Input_Area_kg_Class {
+	position: absolute;
+	width: 41px;
+	height: 26px;
+	left: 68px;
+	top: 186px;
+	overflow: visible;
+}
+.Keyword_Input_Rectangle_kh {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 59px;
+	height: 44px;
+	left: 0px;
+	top: 0px;
+}
+.ID14_5_ki_Class {
+	position: absolute;
+	left: 4px;
+	top: 4px;
+	overflow: visible;
+	width: 34px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Keyword_Input_Area_kj_Class {
+	position: absolute;
+	width: 41px;
+	height: 26px;
+	left: 118px;
+	top: 186px;
+	overflow: visible;
+}
+.Keyword_Input_Rectangle_kk {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 59px;
+	height: 44px;
+	left: 0px;
+	top: 0px;
+}
+.ID14_5_kl_Class {
+	position: absolute;
+	left: 4px;
+	top: 4px;
+	overflow: visible;
+	width: 34px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Keyword_Input_Area_km_Class {
+	position: absolute;
+	width: 41px;
+	height: 26px;
+	left: 168px;
+	top: 186px;
+	overflow: visible;
+}
+.Keyword_Input_Rectangle_kn {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 59px;
+	height: 44px;
+	left: 0px;
+	top: 0px;
+}
+.ID14_5_ko_Class {
+	position: absolute;
+	left: 4px;
+	top: 4px;
+	overflow: visible;
+	width: 34px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Keyword_Input_Area_kp_Class {
+	position: absolute;
+	width: 41px;
+	height: 26px;
+	left: 18px;
+	top: 221px;
+	overflow: visible;
+}
+.Keyword_Input_Rectangle_kq {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 59px;
+	height: 44px;
+	left: 0px;
+	top: 0px;
+}
+.ID14_5_kr_Class {
+	position: absolute;
+	left: 4px;
+	top: 4px;
+	overflow: visible;
+	width: 34px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Keyword_Input_Area_ks_Class {
+	position: absolute;
+	width: 41px;
+	height: 26px;
+	left: 68px;
+	top: 221px;
+	overflow: visible;
+}
+.Keyword_Input_Rectangle_kt {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 59px;
+	height: 44px;
+	left: 0px;
+	top: 0px;
+}
+.ID14_5_ku_Class {
+	position: absolute;
+	left: 4px;
+	top: 4px;
+	overflow: visible;
+	width: 34px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Keyword_Input_Area_kv_Class {
+	position: absolute;
+	width: 41px;
+	height: 26px;
+	left: 118px;
+	top: 221px;
+	overflow: visible;
+}
+.Keyword_Input_Rectangle_kw {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 59px;
+	height: 44px;
+	left: 0px;
+	top: 0px;
+}
+.ID14_5_kx_Class {
+	position: absolute;
+	left: 4px;
+	top: 4px;
+	overflow: visible;
+	width: 34px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Keyword_Input_Area_ky_Class {
+	position: absolute;
+	width: 41px;
+	height: 26px;
+	left: 168px;
+	top: 221px;
+	overflow: visible;
+}
+.Keyword_Input_Rectangle_kz {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 59px;
+	height: 44px;
+	left: 0px;
+	top: 0px;
+}
+.ID14_5_k_Class {
+	position: absolute;
+	left: 4px;
+	top: 4px;
+	overflow: visible;
+	width: 34px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Keyword_Input_Area_k_Class {
+	position: absolute;
+	width: 41px;
+	height: 26px;
+	left: 18px;
+	top: 256px;
+	overflow: visible;
+}
+.Keyword_Input_Rectangle_k {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 59px;
+	height: 44px;
+	left: 0px;
+	top: 0px;
+}
+.ID14_5_la_Class {
+	position: absolute;
+	left: 4px;
+	top: 4px;
+	overflow: visible;
+	width: 34px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Keyword_Input_Area_la_Class {
+	position: absolute;
+	width: 41px;
+	height: 26px;
+	left: 68px;
+	top: 256px;
+	overflow: visible;
+}
+.Keyword_Input_Rectangle_la {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 59px;
+	height: 44px;
+	left: 0px;
+	top: 0px;
+}
+.ID14_5_lb_Class {
+	position: absolute;
+	left: 4px;
+	top: 4px;
+	overflow: visible;
+	width: 34px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Keyword_Input_Area_lb_Class {
+	position: absolute;
+	width: 41px;
+	height: 26px;
+	left: 118px;
+	top: 256px;
+	overflow: visible;
+}
+.Keyword_Input_Rectangle_lb {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 59px;
+	height: 44px;
+	left: 0px;
+	top: 0px;
+}
+.ID14_5_lc_Class {
+	position: absolute;
+	left: 4px;
+	top: 4px;
+	overflow: visible;
+	width: 34px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Keyword_Input_Area_lc_Class {
+	position: absolute;
+	width: 41px;
+	height: 26px;
+	left: 168px;
+	top: 256px;
+	overflow: visible;
+}
+.Keyword_Input_Rectangle_lc {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 59px;
+	height: 44px;
+	left: 0px;
+	top: 0px;
+}
+.ID14_5_ld_Class {
+	position: absolute;
+	left: 4px;
+	top: 4px;
+	overflow: visible;
+	width: 34px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Keyword_Input_Area_ld_Class {
+	position: absolute;
+	width: 41px;
+	height: 26px;
+	left: 18px;
+	top: 291px;
+	overflow: visible;
+}
+.Keyword_Input_Rectangle_le {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 59px;
+	height: 44px;
+	left: 0px;
+	top: 0px;
+}
+.ID14_5_lf_Class {
+	position: absolute;
+	left: 4px;
+	top: 4px;
+	overflow: visible;
+	width: 34px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Keyword_Input_Area_lg_Class {
+	position: absolute;
+	width: 41px;
+	height: 26px;
+	left: 68px;
+	top: 291px;
+	overflow: visible;
+}
+.Keyword_Input_Rectangle_lh {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 59px;
+	height: 44px;
+	left: 0px;
+	top: 0px;
+}
+.ID14_5_li_Class {
+	position: absolute;
+	left: 4px;
+	top: 4px;
+	overflow: visible;
+	width: 34px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Keyword_Input_Area_lj_Class {
+	position: absolute;
+	width: 41px;
+	height: 26px;
+	left: 118px;
+	top: 291px;
+	overflow: visible;
+}
+.Keyword_Input_Rectangle_lk {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 59px;
+	height: 44px;
+	left: 0px;
+	top: 0px;
+}
+.ID14_5_ll_Class {
+	position: absolute;
+	left: 4px;
+	top: 4px;
+	overflow: visible;
+	width: 34px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Keyword_Input_Area_lm_Class {
+	position: absolute;
+	width: 41px;
+	height: 26px;
+	left: 168px;
+	top: 291px;
+	overflow: visible;
+}
+.Keyword_Input_Rectangle_ln {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 59px;
+	height: 44px;
+	left: 0px;
+	top: 0px;
+}
+.ID14_5_lo_Class {
+	position: absolute;
+	left: 4px;
+	top: 4px;
+	overflow: visible;
+	width: 34px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Keyword_Input_Area_lp_Class {
+	position: absolute;
+	width: 41px;
+	height: 26px;
+	left: 18px;
+	top: 326px;
+	overflow: visible;
+}
+.Keyword_Input_Rectangle_lq {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 59px;
+	height: 44px;
+	left: 0px;
+	top: 0px;
+}
+.ID14_5_lr_Class {
+	position: absolute;
+	left: 4px;
+	top: 4px;
+	overflow: visible;
+	width: 34px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Keyword_Input_Area_ls_Class {
+	position: absolute;
+	width: 41px;
+	height: 26px;
+	left: 68px;
+	top: 326px;
+	overflow: visible;
+}
+.Keyword_Input_Rectangle_lt {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 59px;
+	height: 44px;
+	left: 0px;
+	top: 0px;
+}
+.ID14_5_lu_Class {
+	position: absolute;
+	left: 4px;
+	top: 4px;
+	overflow: visible;
+	width: 34px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Keyword_Input_Area_lv_Class {
+	position: absolute;
+	width: 41px;
+	height: 26px;
+	left: 118px;
+	top: 326px;
+	overflow: visible;
+}
+.Keyword_Input_Rectangle_lw {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 59px;
+	height: 44px;
+	left: 0px;
+	top: 0px;
+}
+.ID14_5_lx_Class {
+	position: absolute;
+	left: 4px;
+	top: 4px;
+	overflow: visible;
+	width: 34px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Keyword_Input_Area_ly_Class {
+	position: absolute;
+	width: 41px;
+	height: 26px;
+	left: 168px;
+	top: 326px;
+	overflow: visible;
+}
+.Keyword_Input_Rectangle_lz {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 59px;
+	height: 44px;
+	left: 0px;
+	top: 0px;
+}
+.ID14_5_l_Class {
+	position: absolute;
+	left: 4px;
+	top: 4px;
+	overflow: visible;
+	width: 34px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Keyword_Input_Area_l_Class {
+	position: absolute;
+	width: 41px;
+	height: 26px;
+	left: 18px;
+	top: 361px;
+	overflow: visible;
+}
+.Keyword_Input_Rectangle_l {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 59px;
+	height: 44px;
+	left: 0px;
+	top: 0px;
+}
+.ID14_5_ma_Class {
+	position: absolute;
+	left: 4px;
+	top: 4px;
+	overflow: visible;
+	width: 34px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Keyword_Input_Area_ma_Class {
+	position: absolute;
+	width: 41px;
+	height: 26px;
+	left: 68px;
+	top: 361px;
+	overflow: visible;
+}
+.Keyword_Input_Rectangle_ma {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 59px;
+	height: 44px;
+	left: 0px;
+	top: 0px;
+}
+.ID14_5_mb_Class {
+	position: absolute;
+	left: 4px;
+	top: 4px;
+	overflow: visible;
+	width: 34px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Keyword_Input_Area_mb_Class {
+	position: absolute;
+	width: 41px;
+	height: 26px;
+	left: 118px;
+	top: 361px;
+	overflow: visible;
+}
+.Keyword_Input_Rectangle_mb {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 59px;
+	height: 44px;
+	left: 0px;
+	top: 0px;
+}
+.ID14_5_mc_Class {
+	position: absolute;
+	left: 4px;
+	top: 4px;
+	overflow: visible;
+	width: 34px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+.Keyword_Input_Area_mc_Class {
+	position: absolute;
+	width: 41px;
+	height: 26px;
+	left: 168px;
+	top: 361px;
+	overflow: visible;
+}
+.Keyword_Input_Rectangle_mc {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 59px;
+	height: 44px;
+	left: 0px;
+	top: 0px;
+}
+.ID14_5_md_Class {
+	position: absolute;
+	left: 4px;
+	top: 4px;
+	overflow: visible;
+	width: 34px;
+	white-space: nowrap;
+	line-height: 17px;
+	margin-top: -0.5px;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(29,29,29,1);
+}
+
+
+
+
+
+
+
+.Left_Arrow_Icon_Class {
+	opacity: 0.66;
+}
+.Left_Arrow_Icon {
+	overflow: visible;
+	position: absolute;
+	width: 18px;
+	height: 18px;
+	left: 245px;
+	top: 199px;
+	transform: matrix(1,0,0,1,0,0);
+}
+.Right_Arrow_Icon_Class {
+	opacity: 0.66;
+}
+.Right_Arrow_Icon {
+	overflow: visible;
+	position: absolute;
+	width: 18px;
+	height: 18px;
+	left: 681.453px;
+	top: 199px;
+	transform: matrix(1,0,0,1,0,0);
+}

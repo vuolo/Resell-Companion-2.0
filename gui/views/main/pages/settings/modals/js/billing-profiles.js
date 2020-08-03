@@ -9,39 +9,39 @@ const MODAL_NAME = 'billing-profiles';
 
 const MODAL_OPTIONS_TEMPLATE = {
   billingProfiles: [
-    // {
-    //   settings: {
-    //     nickname: "test!",
-    //     autoCheckout: true,
-    //     autoCheckoutDelay: 0,
-    //     simulateTyping: true,
-    //     favorited: true,
-    //     enabled: true,
-    //     id: "TEST-BILLING-PROFILE"
-    //   },
-    //   autofillInformation: {
-    //     firstName: "Charles",
-    //     lastName: "Emanuel",
-    //     email: "ce@gmail.com",
-    //     phoneNumber: "4079028902",
-    //     address: "385 Caddie Drive",
-    //     unit: "",
-    //     zipCode: "32713",
-    //     city: "DeBary",
-    //     state: "Florida",
-    //     country: "United States",
-    //     billing: {
-    //       cardNumber: "4242424242424242",
-    //       cardType: "Visa",
-    //       expirationDateFull: "06/27",
-    //       expirationDate: {
-    //         month: "06",
-    //         year: "27"
-    //       },
-    //       cvc: "285"
-    //     }
-    //   }
-    // }
+    {
+      settings: {
+        nickname: "test!",
+        autoCheckout: true,
+        autoCheckoutDelay: 0,
+        simulateTyping: true,
+        favorited: true,
+        enabled: true,
+        id: "TEST-BILLING-PROFILE"
+      },
+      autofillInformation: {
+        firstName: "Charles",
+        lastName: "Emanuel",
+        email: "ce@gmail.com",
+        phoneNumber: "4079028902",
+        address: "385 Caddie Drive",
+        unit: "",
+        zipCode: "32713",
+        city: "DeBary",
+        state: "Florida",
+        country: "United States",
+        billing: {
+          cardNumber: "4242424242424242",
+          cardType: "Visa",
+          expirationDateFull: "06/27",
+          expirationDate: {
+            month: "06",
+            year: "27"
+          },
+          cvc: "285"
+        }
+      }
+    }
   ]
 };
 

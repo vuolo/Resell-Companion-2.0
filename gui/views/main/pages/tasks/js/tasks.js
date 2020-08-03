@@ -292,7 +292,9 @@ window.getCheckoutURL = async (product, variant, quantity = 1) => {
 };
 
 window.launchCheckout = async (product, variant, useDefaultBrowser = false, proxy = null, show = true) => {
-  return await window.parent.openURL(await window.getCheckoutURL(product, variant), useDefaultBrowser, { title: 'Resell Companion — ' + product.Name + ' Checkout', show: show }, `persist:${product.Store /* + window.parent.makeid(10)*/}`, proxy, false, product, variant);
+  let win = await window.parent.openURL(await window.getCheckoutURL(product, variant), useDefaultBrowser, { title: 'Resell Companion — ' + product.Name + ' Checkout', show: show }, `persist:${product.Store /* + window.parent.makeid(10)*/}`, proxy, false, product, variant);
+  if (product.Identifier.startsWith("supreme")) try { await injectSupremeCart(product, variant, win) } catch(err) {};
+  return win;
 };
 
 // ============================ CPFM ATC START ============================ \\
@@ -366,7 +368,11 @@ async function injectSupremeCart(product, variant, win) {
 
 window.launchTaskNode = (node, product, variant) => {
   if (node.configuration.checkoutMethod.useCheckoutCompanion) { // use checkout companion
-    if (product.Identifier != "shopify" && !product.Identifier.startsWith("supreme")) return; // validate checkout companion can be used for the product
+    if (
+      product.Identifier != "shopify" &&
+      product.Identifier != "cpfm" &&
+      !product.Identifier.startsWith("supreme")
+    ) return; // validate checkout companion can be used for the product
     if (node.configuration.checkoutMethod.billingProfile == 'unselected') return;
     let proxy;
     // TODO: rotate proxies in window.tasksApp.getProxyProfileByID(node.configuration.checkoutMethod.proxyProfile)

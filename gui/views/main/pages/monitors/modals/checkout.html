@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Resell Companion — Checkout</title>
+
+		<link rel="stylesheet" type="text/css" href="../../../../../css/style.css"/>
+	  <link rel="stylesheet" type="text/css" href="../../../../../css/fonts-alt-path.css"/>
+
+		<link rel="stylesheet" type="text/css" id="applicationStylesheet" href="./css/checkout.css"/>
+
+		<script src="../../../../../../utils/downloaded/vue.js" type="text/javascript"></script>
+		<script src="../../../../../../utils/downloaded/jquery.js" type="text/javascript"></script>
+
+	</head>
+	<body>
+
+		<div id="Rewrite___Sold_Inventory_Item_Modal" class="Rewrite___Sold_Inventory_Item_Modal_Class">
+			<div class="Modal_Class">
+				<svg class="Modal_Shader" v-on:click="closeModal()">
+					<rect fill="rgba(29,29,29,0.251)" class="Modal_Shader_Class" rx="0" ry="0" x="0" y="0" width="1287" height="795">
+					</rect>
+				</svg>
+				<svg class="Modal_Rectangle">
+					<rect v-bind:fill="getThemeColor('rgba(251,247,241,1)')" class="Modal_Rectangle_Class" rx="20" ry="20" x="0" y="0" width="802" height="418"> <!-- stroke="rgba(253,53,53,1)" stroke-width="3" -->
+					</rect>
+				</svg>
+
+				<svg class="Separator_2" style="top: -250px;">
+					<rect v-bind:fill="getThemeColor('rgba(190,190,190,1)')" class="Separator_2_Class" rx="1.5" ry="1.5" x="0" y="0" width="609" height="3">
+					</rect>
+				</svg>
+
+				<div class="Header_Class">
+					<svg class="Browser_Close_Button clickable hover-opacity" v-on:click="closeModal()" viewBox="3.375 3.375 20 20">
+						<circle cx="6.5" cy="6.5" r="6.5" transform="translate(6 6)" fill="#efefef"></circle>
+						<path fill="rgba(253,53,53,1)" class="Browser_Close_Button_Class" d="M 13.37500190734863 3.375 C 7.850962162017822 3.375 3.375 7.850962162017822 3.375 13.375 C 3.375 18.89904022216797 7.850962162017822 23.375 13.37500190734863 23.375 C 18.89904022216797 23.375 23.375 18.89904022216797 23.375 13.375 C 23.375 7.850960254669189 18.89904022216797 3.375 13.37500190734863 3.375 Z M 15.90865325927734 16.99519157409668 L 13.37500190734863 14.46153736114502 L 10.84134578704834 16.99519157409668 C 10.54326820373535 17.29327011108398 10.05288314819336 17.29327011108398 9.754807472229004 16.99519157409668 C 9.605768203735352 16.84615325927734 9.528846740722656 16.64903831481934 9.528846740722656 16.45192337036133 C 9.528846740722656 16.25480842590332 9.605768203735352 16.05769157409668 9.754807472229004 15.90865325927734 L 12.28846168518066 13.375 L 9.754807472229004 10.84134578704834 C 9.605768203735352 10.692307472229 9.528844833374023 10.49519157409668 9.528844833374023 10.29807662963867 C 9.528844833374023 10.10096168518066 9.605768203735352 9.90384578704834 9.754807472229004 9.75480842590332 C 10.05288314819336 9.456730842590332 10.54326725006104 9.456730842590332 10.84134578704834 9.75480842590332 L 13.375 12.28846168518066 L 15.90865135192871 9.75480842590332 C 16.20672988891602 9.456730842590332 16.69711303710938 9.456730842590332 16.99518966674805 9.75480842590332 C 17.29326820373535 10.05288505554199 17.29326820373535 10.54327011108398 16.99518966674805 10.84134674072266 L 14.46153831481934 13.375 L 16.99519157409668 15.90865325927734 C 17.29327011108398 16.20673179626465 17.29327011108398 16.69711685180664 16.99519157409668 16.99519157409668 C 16.69711303710938 17.29807662963867 16.20672988891602 17.29807662963867 15.90865325927734 16.99519157409668 Z">
+						</path>
+					</svg>
+
+					<svg class="Blue_Bar" v-bind:style="{ left: calculateUnderlineLeftOffset(400, tryTranslate('Checking Out') + '...', 40, 'px', '900', 'SF Pro Text', false) + 10 + 'px' }">
+						<rect fill="rgba(253,53,53,1)" class="Green_Bar_Class" rx="1.5" ry="1.5" x="0" y="0" v-bind:width="calculateUnderlineWidth(400, tryTranslate('Checking Out') + '...', 40, 'px', '900', 'SF Pro Text')" height="3">
+						</rect>
+					</svg>
+					<div class="Sold_Inventory_Item_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+						<span>{{tryTranslate('Checking Out') + '...'}} </span><span style="font-style:normal;font-weight:bold;font-size:20px; opacity: 0.66;">{{modalOptions.shoppingBag.variants.length}} {{modalOptions.shoppingBag.variants.length > 1 ? tryTranslate('Items') : tryTranslate('Item')}} </span><span style="font-style:normal;font-weight:normal;font-size:18px; opacity: 0.66;">{{tryTranslate('on')}} </span><span class="clickable" v-on:click="window.open(modalOptions.shoppingBag.store_url)" style="font-style:normal;font-weight:normal;font-size:18px; opacity: 0.66; text-decoration:underline;">{{modalOptions.shoppingBag.store_name || tryTranslate('Unknown Store') }}</span>
+					</div>
+				</div>
+
+
+				<template v-if="modalOptions.shoppingBag.variants.length == 1">
+					<div class="Top_Area_Class">
+						<div class="Size_hj_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), top: (modalOptions.shoppingBag.variants[0].parent.Color.length == 0 ? 25 : 47) + 'px' }">
+							<span style="font-style:normal;font-weight:normal;font-size:20px; user-select: text;">{{modalOptions.shoppingBag.variants[0].variant.Name.length == 0 ? tryTranslate('Unknown Size') : modalOptions.shoppingBag.variants[0].variant.Name}}</span>
+						</div>
+						<div class="Product_Color_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+							<span style="user-select: text;">{{tryGenerateEllipses(550, modalOptions.shoppingBag.variants[0].parent.Color, 18, 'px', 'normal', 'SF Pro Text')}}</span>
+						</div>
+						<div class="Product_Name_hl_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+							<span style="user-select: text;">{{modalOptions.shoppingBag.variants[0].parent.Name.length == 0 ? tryTranslate('Unknown Product') : tryGenerateEllipses(550, modalOptions.shoppingBag.variants[0].parent.Name, 20, 'px', 'bold', 'SF Pro Text')}}</span>
+						</div>
+						<div class="Product_Image_Class" style="width: 131px; height: 131px;">
+							<img style="display: table-cell; vertical-align: middle; max-width: 131px; max-height: 131px; border-radius: 10px; margin-left: auto; margin-right: auto;" v-bind:class="{ transparentify: companionSettings.theme == 'light' }" v-bind:src="modalOptions.shoppingBag.variants[0].parent.ImageURL" onerror="this.src='../../../../../images/unknownImage.png'">
+						</div>
+					</div>
+				</template>
+
+
+				<svg class="Left_Arrow_Icon clickable hover-opacity" v-on:click="rotateMonth(-1)" style="left: -24px; top: 195px" viewBox="0.563 0.563 18 18">
+					<path v-bind:fill="getThemeColor('rgba(29,29,29,1)')" class="Left_Arrow_Icon_Class" d="M 9.5625 18.56249809265137 C 4.590725421905518 18.56249809265137 0.5625 14.53427410125732 0.5625 9.5625 C 0.5625 4.590725421905518 4.590725421905518 0.5625 9.5625 0.5625 C 14.53427410125732 0.5625 18.56249809265137 4.590725421905518 18.56249809265137 9.5625 C 18.56249809265137 14.53427410125732 14.53427410125732 18.56249809265137 9.5625 18.56249809265137 Z M 13.77217769622803 7.965725421905518 L 9.5625 7.965725421905518 L 9.5625 5.392741680145264 C 9.5625 5.004435062408447 9.090725898742676 4.808467388153076 8.818548202514648 5.084273815155029 L 4.6705641746521 9.254032135009766 C 4.499999523162842 9.424596786499023 4.499999523162842 9.696774482727051 4.6705641746521 9.867339134216309 L 8.818548202514648 14.03709697723389 C 9.094354629516602 14.31290340423584 9.5625 14.11693668365479 9.5625 13.72863006591797 L 9.5625 11.15927410125732 L 13.77217769622803 11.15927410125732 C 14.01169300079346 11.15927410125732 14.20766162872314 10.96330642700195 14.20766162872314 10.72379016876221 L 14.20766162872314 8.401209831237793 C 14.20766162872314 8.161693572998047 14.01169300079346 7.965725421905518 13.77217769622803 7.965725421905518 Z">
+					</path>
+				</svg>
+				<svg class="Right_Arrow_Icon clickable hover-opacity" v-on:click="rotateMonth(1)" style="left: 414px; top: 195px" viewBox="0.563 0.563 18 18">
+					<path v-bind:fill="getThemeColor('rgba(29,29,29,1)')" class="Right_Arrow_Icon_Class" d="M 9.5625 0.5625 C 14.53427410125732 0.5625 18.56249809265137 4.590725421905518 18.56249809265137 9.5625 C 18.56249809265137 14.53427410125732 14.53427410125732 18.56249809265137 9.5625 18.56249809265137 C 4.590725421905518 18.56249809265137 0.5625 14.53427410125732 0.5625 9.5625 C 0.5625 4.590725421905518 4.590725421905518 0.5625 9.5625 0.5625 Z M 5.352822303771973 11.15927410125732 L 9.5625 11.15927410125732 L 9.5625 13.73225879669189 C 9.5625 14.12056541442871 10.03427410125732 14.31653213500977 10.30645179748535 14.04072570800781 L 14.45443534851074 9.870967864990234 C 14.625 9.700403213500977 14.625 9.428225517272949 14.45443534851074 9.257660865783691 L 10.30645179748535 5.084273338317871 C 10.0306453704834 4.808466911315918 9.5625 5.004434585571289 9.5625 5.392741203308105 L 9.5625 7.965725421905518 L 5.352822303771973 7.965725421905518 C 5.113306045532227 7.965725421905518 4.917338371276855 8.161693572998047 4.917338371276855 8.401209831237793 L 4.917338371276855 10.72379016876221 C 4.917338371276855 10.96330642700195 5.113306045532227 11.15927410125732 5.352822303771973 11.15927410125732 Z">
+					</path>
+				</svg>
+
+
+				<div class="Done_Button_Class clipButton clickable" style="z-index: 2;" v-on:click="closeModal();">
+					<div class="clipGroup" style="width: 107px; height: 37px;">
+						<svg class="Back_Transitioner" style="bottom: -25px;" viewBox="4631.671 2118.361 137.6 34.565">
+							<path fill="rgba(36,39,37,1)" id="Back_Transitioner" d="M 4631.67138671875 2136.780029296875 C 4631.67138671875 2136.780029296875 4649.8212890625 2127.950439453125 4669.78759765625 2136.780029296875 C 4689.75244140625 2145.610595703125 4680.9365234375 2141.826416015625 4680.9365234375 2141.826416015625 C 4680.9365234375 2141.826416015625 4699.80859375 2134.79638671875 4711.21826171875 2141.229248046875 C 4722.626953125 2147.663330078125 4712.8291015625 2141.229248046875 4712.8291015625 2141.229248046875 C 4712.8291015625 2141.229248046875 4737.462890625 2118.742431640625 4759.2421875 2118.3642578125 C 4781.0234375 2117.985107421875 4760.5390625 2152.92626953125 4760.5390625 2152.92626953125 L 4631.67138671875 2152.92626953125 L 4631.67138671875 2136.780029296875 Z">
+							</path>
+						</svg>
+						<svg class="Front_Transitioner" style="bottom: -30px;" viewBox="4631.671 2118.361 137.6 26.969">
+							<path fill="rgba(253,53,53,1)" id="Front_Transitioner" d="M 4631.67138671875 2132.73193359375 C 4631.67138671875 2132.73193359375 4649.82177734375 2125.843017578125 4669.78759765625 2132.73193359375 C 4689.7529296875 2139.621826171875 4680.93701171875 2136.66943359375 4680.93701171875 2136.66943359375 C 4680.93701171875 2136.66943359375 4699.80908203125 2131.184326171875 4711.21875 2136.203369140625 C 4722.62744140625 2141.2236328125 4712.82958984375 2136.203369140625 4712.82958984375 2136.203369140625 C 4712.82958984375 2136.203369140625 4737.462890625 2118.658447265625 4759.24267578125 2118.363525390625 C 4781.0234375 2118.0673828125 4760.5390625 2145.329833984375 4760.5390625 2145.329833984375 L 4631.67138671875 2145.329833984375 L 4631.67138671875 2132.73193359375 Z">
+							</path>
+						</svg>
+					</div>
+					<svg class="Done_Rectangle">
+						<rect fill="transparent" stroke="rgba(253,53,53,1)" stroke-width="2px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" class="Done_Rectangle_Class" rx="18.5" ry="18.5" x="0" y="0" width="107" height="37">
+						</rect>
+					</svg>
+					<div class="Done_Class" v-bind:style="{ fontSize: confineTextWidth(107-20, tryTranslate('Cancel'), 15, 'px', 'bold', 'SF Pro Text') }">
+						<span>{{tryTranslate('Cancel')}}</span>
+					</div>
+				</div>
+
+				<div v-if="modalOptions.node && modalOptions.node.statuses && modalOptions.node.statuses.length > 0" class="Tracking_Area__after__Class" style="top: 310px;">
+					<div class="Status_Area_Class">
+
+						<div class="Tracking_History_Content_Area_Class use_slow_transitions" style="height: 66px;" v-bind:style="{ left: 240 - ((modalOptions.node.statuses.length-1) * 340) + 'px' }" v-bind:class="{ 'dark-scrollbar': companionSettings.theme == 'dark' }">
+
+							<!-- display message if there are no items -->
+							<template v-if="modalOptions.node.statuses.length == 0">
+								<div class="centered-content" style="font-size: 0.9em; padding-top: 2.1%; padding-left: 19px; text-align: left;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+									<span>{{tryTranslate('This checkout has not started')}}</span>
+								</div>
+							</template>
+
+							<template v-for="(status, statusIndex) in modalOptions.node.statuses">
+								<div class="Tracking_History_Content_Area_en_Class" style="z-index: 3;" v-bind:style="{ left: (statusIndex * 340) + 9 + 'px' }">
+
+									<svg v-if="statusIndex != 0" class="Green_Separator" style="filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161))">
+										<rect v-bind:fill="getColor(status.color)" class="Green_Separator_Class" x="0" y="0" width="50px" height="5">
+										</rect>
+									</svg>
+
+									<svg class="Rectangle_ep">
+										<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Rectangle_ep_Class" rx="10" ry="10" x="0" y="0" width="306" height="36">
+										</rect>
+									</svg>
+									<div class="Delivered__In_At_Mailbox_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+										<span style="user-select: text;">{{status.description.length > 0 ? tryGenerateEllipses(235, status.description, 16, 'px', 'normal', 'SF Pro Text') : tryTranslate('N/A')}}</span>
+									</div>
+									<div class="ID1_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+										<span>{{statusIndex+1}}</span>
+									</div>
+									<svg class="Side_Rectangle_tracking" width="8" height="39" viewBox="0 0 6 39">
+										<path v-bind:fill="getColor(status.color)" d="M6,0H6A0,0,0,0,1,6,0V39a0,0,0,0,1,0,0H6a6,6,0,0,1-6-6V6A6,6,0,0,1,6,0Z"/>
+									</svg>
+
+								</div>
+							</template>
+						</div>
+
+					</div>
+
+					<div class="Tracking_History_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+						<span>{{tryTranslate('Current Status')}}</span>
+					</div>
+				</div>
+
+				<svg class="Ellipse_349">
+					<ellipse fill="rgba(53,178,57,1)" class="Ellipse_349_Class" rx="7.5" ry="7.5" cx="7.5" cy="7.5">
+					</ellipse>
+				</svg>
+				<svg class="Ellipse_350">
+					<ellipse fill="rgba(53,178,57,1)" class="Ellipse_350_Class" rx="7.5" ry="7.5" cx="7.5" cy="7.5">
+					</ellipse>
+				</svg>
+
+			</div>
+		</div>
+
+		<script src="./js/checkout.js" type="text/javascript"></script>
+		<script src="../../../../../../utils/scripts/button-transitions.js" type="text/javascript"></script>
+		<script src="../../../../../../utils/scripts/spinner-colors.js" type="text/javascript"></script>
+
+	</body>
+</html>

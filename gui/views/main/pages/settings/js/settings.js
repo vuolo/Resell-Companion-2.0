@@ -59,7 +59,7 @@ window.modalLoadedCallback = async (modalName) => {
     settingsApp.statisticsModal = window.frames['statistics-modal'].modalOptions;
     while(!window.parent.addStatistic) await window.parent.sleep(50);
     window.parent.addStatistic = async (category, statistic, value = 1) => settingsApp.statisticsModal.categories[category][statistic] += value;
-    window.parent.addCheckoutStatistic = async (status, store, value = 1) => settingsApp.statisticsModal.checkouts[status][storeType] += value;
+    window.parent.addCheckoutStatistic = async (status, store, value = 1) => settingsApp.statisticsModal.checkouts[status][store] += value;
   }
 };
 

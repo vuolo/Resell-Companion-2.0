@@ -24,6 +24,9 @@ const categoryImages = {
 window.modals = {
   'configure': {
     visible: false
+  },
+  'checkout': {
+    visible: true
   }
 };
 
@@ -35,6 +38,9 @@ window.modalLoadedCallback = (modalName) => {
   if (modalName == 'configure') {
     monitorsApp.configureModal = window.frames['configure-modal'].modalOptions;
     // window.parent.memory.syncObject(monitorsApp.configureModal, window.frames['configure-modal'].modalOptions);
+  } else if (modalName == 'checkout') {
+    monitorsApp.checkoutModal = window.frames['checkout-modal'].modalOptions;
+    // window.parent.memory.syncObject(monitorsApp.configureModal, window.frames['configure-modal'].modalOptions);
   }
 };
 
@@ -44,6 +50,7 @@ window.monitorsApp = new Vue({
     companionSettings: window.parent.companionSettings,
     modals: window.modals,
     configureModal: {},
+    checkoutModal: {},
     useFilteredKeywords: false,
     productsInitiallySetup: false,
     products: visualizedProducts,
