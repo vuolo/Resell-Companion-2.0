@@ -75,7 +75,7 @@
 
 
 				<template v-if="modalOptions.shoppingBag.variants.length > 1">
-					<svg class="Left_Arrow_Icon clickable hover-opacity" v-on:click="rotateShoppingBagProduct('left')" style="left: 250px; top: 195px" viewBox="0.563 0.563 18 18">
+					<svg class="Left_Arrow_Icon clickable hover-opacity" v-on:click="rotateShoppingBagProduct('left')" style="left: 249px; top: 195px" viewBox="0.563 0.563 18 18">
 						<path v-bind:fill="getThemeColor('rgba(29,29,29,1)')" class="Left_Arrow_Icon_Class" d="M 9.5625 18.56249809265137 C 4.590725421905518 18.56249809265137 0.5625 14.53427410125732 0.5625 9.5625 C 0.5625 4.590725421905518 4.590725421905518 0.5625 9.5625 0.5625 C 14.53427410125732 0.5625 18.56249809265137 4.590725421905518 18.56249809265137 9.5625 C 18.56249809265137 14.53427410125732 14.53427410125732 18.56249809265137 9.5625 18.56249809265137 Z M 13.77217769622803 7.965725421905518 L 9.5625 7.965725421905518 L 9.5625 5.392741680145264 C 9.5625 5.004435062408447 9.090725898742676 4.808467388153076 8.818548202514648 5.084273815155029 L 4.6705641746521 9.254032135009766 C 4.499999523162842 9.424596786499023 4.499999523162842 9.696774482727051 4.6705641746521 9.867339134216309 L 8.818548202514648 14.03709697723389 C 9.094354629516602 14.31290340423584 9.5625 14.11693668365479 9.5625 13.72863006591797 L 9.5625 11.15927410125732 L 13.77217769622803 11.15927410125732 C 14.01169300079346 11.15927410125732 14.20766162872314 10.96330642700195 14.20766162872314 10.72379016876221 L 14.20766162872314 8.401209831237793 C 14.20766162872314 8.161693572998047 14.01169300079346 7.965725421905518 13.77217769622803 7.965725421905518 Z">
 						</path>
 					</svg>
@@ -187,8 +187,8 @@
 										<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Rectangle_ep_Class" rx="10" ry="10" x="0" y="0" width="306" height="36">
 										</rect>
 									</svg>
-									<div class="Delivered__In_At_Mailbox_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(235, status.description.length > 0 ? tryTranslate(status.description) : tryTranslate('N/A'), 16, 'px', 'normal', 'SF Pro Text') }">
-										<span style="user-select: text;">{{status.description.length > 0 ? tryTranslate(status.description) : tryTranslate('N/A')}}</span>
+									<div class="Delivered__In_At_Mailbox_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(235, status.description.length > 0 ? tryTranslate(status.description).split('[')[0].trim() : tryTranslate('N/A'), 16, 'px', 'normal', 'SF Pro Text') }">
+										<span style="user-select: text;">{{status.description.length > 0 ? tryTranslate(status.description).split('[')[0].trim() : tryTranslate('N/A')}}</span>
 									</div>
 									<div class="ID1_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
 										<span>{{statusIndex+1}}</span>

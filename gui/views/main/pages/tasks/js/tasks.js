@@ -100,6 +100,7 @@ window.tasksApp = new Vue({
         node.checkoutWindow = null;
         if (
           statusMessage == null &&
+          !node.status.description.includes(window.parent.tryTranslate("Cart Unavailable")) &&
           !node.status.description.includes(window.parent.tryTranslate("Size Unavailable (Sold Out)")) &&
           !(
             node.status.description.includes(window.parent.tryTranslate("Card Declined")) &&

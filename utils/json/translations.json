@@ -84,6 +84,12 @@
         "es": "Agosto"
       }
     },
+    "Authentication Required": {
+      "languages": {
+        "en": "Authentication Required",
+        "es": "Autenticación requerida"
+      }
+    },
     "Automatically Checkout": {
       "languages": {
         "en": "Automatically Checkout",
@@ -216,6 +222,12 @@
         "es": "URL de la imagen de la tarjeta"
       }
     },
+    "Cancel": {
+      "languages": {
+        "en": "Cancel",
+        "es": "Cancelar"
+      }
+    },
     "Card": {
       "languages": {
         "en": "Card",
@@ -252,6 +264,12 @@
         "es": "Cartero"
       }
     },
+    "Cart Unavailable": {
+      "languages": {
+        "en": "Cart Unavailable",
+        "es": "Carro no disponible"
+      }
+    },
     "Change URLs": {
       "languages": {
         "en": "Change URLs",
@@ -268,6 +286,12 @@
       "languages": {
         "en": "Checking for Update",
         "es": "Buscando actualización"
+      }
+    },
+    "Checking Out": {
+      "languages": {
+        "en": "Checking Out",
+        "es": "Pagando"
       }
     },
     "Checkout Canceled": {
@@ -304,6 +328,12 @@
       "languages": {
         "en": "Click to setup a new billing profile",
         "es": "Haga clic para configurar un nuevo perfil de facturación"
+      }
+    },
+    "Click to setup a new google account": {
+      "languages": {
+        "en": "Click to setup a new google account",
+        "es": "Haga clic para configurar una nueva cuenta de Google"
       }
     },
     "Collection": {
@@ -448,6 +478,12 @@
       "languages": {
         "en": "Currency",
         "es": "Moneda"
+      }
+    },
+    "Current Status": {
+      "languages": {
+        "en": "Current Status",
+        "es": "Estado actual"
       }
     },
     "Custom": {
@@ -936,6 +972,12 @@
         "es": "Italiano"
       }
     },
+    "Item": {
+      "languages": {
+        "en": "Item",
+        "es": "Artículo"
+      }
+    },
     "item from your#PLURAL": {
       "languages": {
         "en": "item from your",
@@ -946,6 +988,12 @@
       "languages": {
         "en": "item from your",
         "es": "artículo de su"
+      }
+    },
+    "Items": {
+      "languages": {
+        "en": "Items",
+        "es": "Artículos"
       }
     },
     "Items Added": {
@@ -1268,6 +1316,12 @@
         "es": "No hay tarjetas creados"
       }
     },
+    "No google accounts setup": {
+      "languages": {
+        "en": "No google accounts setup",
+        "es": "No hay configuración de cuentas de Google"
+      }
+    },
     "No items added": {
       "languages": {
         "en": "No items added",
@@ -1368,6 +1422,12 @@
       "languages": {
         "en": "Okay",
         "es": "Vale"
+      }
+    },
+    "on": {
+      "languages": {
+        "en": "on",
+        "es": "en"
       }
     },
     "on a product's size to add it to your shopping bag": {
@@ -2228,6 +2288,12 @@
         "es": "Hoy no hay lanzamientos importantes"
       }
     },
+    "This checkout has not started": {
+      "languages": {
+        "en": "This checkout has not started",
+        "es": "Este pago no ha comenzado"
+      }
+    },
     "This package does not have any tracking history yet": {
       "languages": {
         "en": "This package does not have any tracking history yet",
@@ -2462,6 +2528,12 @@
         "es": "Tamaño desconocido"
       }
     },
+    "Unknown Store": {
+      "languages": {
+        "en": "Unknown Store",
+        "es": "Tienda desconocida"
+      }
+    },
     "Unknown Style Code": {
       "languages": {
         "en": "Unknown Style Code",
@@ -2670,6 +2742,12 @@
       "languages": {
         "en": "Your inventory has been exported!",
         "es": "¡Su inventario ha sido exportado!"
+      }
+    },
+    "Your item(s) have automatically been added to your": {
+      "languages": {
+        "en": "Your item(s) have automatically been added to your",
+        "es": "Su(s) artículo(s) se han añadido automáticamente a su"
       }
     },
     "Your sales have been exported!": {
