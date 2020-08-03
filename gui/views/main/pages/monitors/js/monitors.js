@@ -26,7 +26,7 @@ window.modals = {
     visible: false
   },
   'checkout': {
-    visible: true
+    visible: false
   }
 };
 
@@ -225,9 +225,64 @@ window.monitorsApp = new Vue({
       outRow -= Math.floor(variantIndex/9) * 9;
       return outRow;
     },
-    launchVariantCheckout: function(product, variant, useConnectedBots = false) {
-      if (!useConnectedBots) window.parent.frames['tasks-frame'].launchCheckout(product, variant, this.configureModal.preferences.useDefaultBrowser);
-      else { // TODO: launch with connected bots
+    launchShoppingBagCheckout: async function(shoppingBag) {
+      let product = shoppingBag.variants[0].parent;
+      let variant = shoppingBag.variants[0].variant;
+      let duplicatedShoppingBag = window.parent.memory.copyObj(shoppingBag);
+      let overrideURL = await tryGenerateShoppingBag(shoppingBag.store_url, true, true);
+
+      this.launchVariantCheckout(product, variant, false, overrideURL, duplicatedShoppingBag);
+      window.parent.addStatistic('Monitors', 'Shopping Bag Checkouts');
+    },
+    launchVariantCheckout: function(product, variant, useConnectedBots = false, overrideURL = "", shoppingBag = null) {
+      if (!useConnectedBots) {
+        let newTaskNode = {
+          configuration: {
+            sizes: [],
+            useRandomSize: true,
+            checkoutMethod: {
+              useCheckoutCompanion: true,
+              rotateBillingProfiles: true,
+              useFavoritedBillingProfile: true,
+              proxyProfile: "unselected",
+              billingProfile: "unselected"
+            },
+          },
+          status: {
+            description: 'Monitoring...',
+            color: 'yellow'
+          },
+          enabled: true,
+          stepsInitialized: {},
+          DOMReady: false,
+          paymentFieldsInitialized: {},
+          retryNum: 0,
+          checkoutWindow: null,
+          statuses: []
+        };
+        if (window.parent.billingProfiles.length == 0) return; // TODO: alert that a billing profile must be setup first
+        newTaskNode.configuration.checkoutMethod.billingProfile = window.parent.billingProfiles[0].settings.id;
+        window.frames['checkout-modal'].modalOptions.node = newTaskNode;
+
+        let newShoppingBag = shoppingBag;
+        if (newShoppingBag == null) {
+          newShoppingBag = {
+            store_name: product.StoreName || "",
+            store_url: 'http://' + product.Store,
+            variants: [
+              {
+                variant: variant,
+                quantity: 1,
+                parent: product
+              }
+            ]
+          };
+        }
+        window.frames['checkout-modal'].modalOptions.shoppingBag = newShoppingBag;
+
+        window.openModal('checkout');
+        window.parent.frames['tasks-frame'].window.launchTaskNode(newTaskNode, product, variant, overrideURL);
+      } else { // TODO: launch with connected bots
 
       }
       window.parent.addStatistic('Monitors', 'Tasks Launched');
@@ -691,6 +746,7 @@ function formatProducts(products) {
   .replace(new RegExp('"id"', 'g'), '"ID"')
   .replace(new RegExp('"quantity"', 'g'), '"Quantity"')
   .replace(new RegExp('"identifier"', 'g'), '"Identifier"')
+  .replace(new RegExp('"color"', 'g'), '"Color"')
   .replace(new RegExp('"launchdate"', 'g'), '"LaunchDate"')
   .replace(new RegExp('"collection"', 'g'), '"Collection"')
   .replace(new RegExp('"keywords"', 'g'), '"Keywords"')

@@ -8,7 +8,7 @@ const PAYMENT_FIELDS = [
   '[data-card-fields="verification_value"]'
 ];
 
-async function initiateCheckoutCompanion(node, product, variant, billingProfile = null, proxy = null) {
+async function initiateCheckoutCompanion(node, product, variant, billingProfile = null, proxy = null, overrideURL = "") {
   // proxy = "207.229.93.66:1074";
   node.host = product.Store;
   node.stepsInitialized = {};
@@ -16,7 +16,7 @@ async function initiateCheckoutCompanion(node, product, variant, billingProfile 
   node.retryNum = 0;
   node.maxRetries = 3;
   window.setNodeStatus(node, "orange", `${window.parent.tryTranslate('Initializing Checkout Session...')} (1/3)`);
-  node.checkoutWindow = await window.launchCheckout(product, variant, false, proxy, false);
+  node.checkoutWindow = await window.launchCheckout(product, variant, false, proxy, false, overrideURL = "");
   node.checkoutWindow.once('ready-to-show', () => {
     // node.checkoutWindow.show(); // DEV ONLY: show to visualize checkout (keep false in production)
     window.setNodeStatus(node, "orange", `${window.parent.tryTranslate('Inputting Billing Details...')} (2/3)`);

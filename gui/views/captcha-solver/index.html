@@ -24,7 +24,7 @@
 		<div class="Captcha_Solver_Window_Class">
 			<div id="captchaContents" v-bind:style="{ backgroundColor: getThemeColor('rgba(251,247,241,1)', captchaSettings.theme) }">
 				<!-- TODO: use google account session -->
-				<webview v-if="captchaSettings.solverOpened" id="captchaFrame" webpreferences="" v-bind:src="'https://' + captchaSettings.host + '/resell-companion-captcha-solver'" autosize="on" minwidth="390px" maxwidth="390px" minheight="674px" maxheight="674px" partition="persist:TEMP_PARTITON" enableremotemodule="false" plugins preload="../../../utils/preload.js" useragent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.106 Safari/537.36"></webview>
+				<webview v-if="captchaSettings.solverOpened" id="captchaFrame" v-bind:src="'https://' + captchaSettings.host + '/resell-companion-captcha-solver'" autosize="on" minwidth="390px" maxwidth="390px" minheight="674px" maxheight="674px" partition="persist:TEMP_PARTITON" enableremotemodule="false" plugins preload="../../../utils/preload.js" useragent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.106 Safari/537.36"></webview>
 				<svg class="Blue_Bar">
 					<rect fill="#FFA74E" class="Blue_Bar_Class" rx="1.5" ry="1.5" x="0" y="0" width="100" height="3">
 					</rect>

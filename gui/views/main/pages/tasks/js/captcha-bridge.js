@@ -27,7 +27,6 @@ window.openCaptchaSolver = async (node, host = "resell.monster", sitekey) => {
     }, `persist:${window.parent.makeid(10)}`)
   };
   window.captchaSolvers.push(newCaptchaSolver);
-  console.log(newCaptchaSolver);
 
   newCaptchaSolver.window.webContents.once('dom-ready', () => {
     if (node) window.sendOptionsToCaptchaSolver({ mainWebContentsID: window.parent.mainWebContentsID, nodeID: node.id, host: host, sitekey: sitekey }, window.captchaSolvers.indexOf(newCaptchaSolver));

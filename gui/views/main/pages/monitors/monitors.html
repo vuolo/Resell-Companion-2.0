@@ -260,7 +260,7 @@
 			</svg>
 
 			<template v-if="shoppingBagIndex != -1">
-				<div v-if="shoppingBags[shoppingBagIndex].variants.length > 0" class="Checkout_Button_Class clickable hover-opacity" v-on:click="(async () => { openURL(await tryGenerateShoppingBag(shoppingBags[shoppingBagIndex].store_url, true, true), configureModal.preferences.useDefaultBrowser, { title: 'Resell Companion — ' + shoppingBags[shoppingBagIndex].store_name + ' Checkout' }); addStatistic('Monitors', 'Shopping Bag Checkouts'); })">
+				<div v-if="shoppingBags[shoppingBagIndex].variants.length > 0" class="Checkout_Button_Class clickable hover-opacity" v-on:click="launchShoppingBagCheckout(shoppingBags[shoppingBagIndex])">
 					<svg class="Checkout_Rectangle">
 						<rect fill="rgba(53,178,57,1)" class="Checkout_Rectangle_Class" rx="10" ry="10" x="0" y="0" width="276" height="41">
 						</rect>

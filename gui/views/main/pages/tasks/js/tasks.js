@@ -32,6 +32,12 @@ let allowNewTaskCreation = true;
 window.setNodeStatus = (node, color, status) => {
   node.status.description = status;
   node.status.color = color;
+
+  let foundDescription = false; // validate no duplicate statuses
+  for (var status of node.statuses) if (node.status.description == status.description) { foundDescription = true; break; }
+  if (!foundDescription) node.statuses.push({ description: node.status.description, color: node.status.color });
+
+  try { window.parent.parent.frames['monitors-frame'].frames['checkout-modal'].checkoutApp.$forceUpdate(); } catch(err) {}
 };
 
 window.tasksApp = new Vue({
@@ -77,6 +83,7 @@ window.tasksApp = new Vue({
       if (node.enabled) window.setNodeStatus(node, "yellow", "Monitoring...");
       else {
         if (!canceled) window.setNodeStatus(node, "red", "Disabled");
+        try { window.parent.parent.frames['monitors-frame'].frames['checkout-modal'].checkoutApp.closeModal(); } catch(err) {}
         node.host = undefined;
         node.captchaSiteKey = undefined;
         node.captchaResponse = undefined;
@@ -85,6 +92,7 @@ window.tasksApp = new Vue({
         node.DOMReady = false;
         node.paymentFieldsInitialized = {};
         node.retryNum = 0;
+        if (node.statuses) while (node.statuses.length > 0) node.statuses.pop();
         for (var captchaSolver of window.captchaSolvers) if (captchaSolver.node && captchaSolver.node.id == node.id) { window.resetCaptchaSolver(captchaSolver); break; }
       }
       if (node.checkoutWindow !== null || canceled) {
@@ -233,7 +241,8 @@ window.addTaskNode = () => {
     DOMReady: false,
     paymentFieldsInitialized: {},
     retryNum: 0,
-    checkoutWindow: null
+    checkoutWindow: null,
+    statuses: []
   };
 
   let billingProfileIndex = 0;
@@ -291,8 +300,8 @@ window.getCheckoutURL = async (product, variant, quantity = 1) => {
   return "https://" + product.Store;
 };
 
-window.launchCheckout = async (product, variant, useDefaultBrowser = false, proxy = null, show = true) => {
-  let win = await window.parent.openURL(await window.getCheckoutURL(product, variant), useDefaultBrowser, { title: 'Resell Companion — ' + product.Name + ' Checkout', show: show }, `persist:${product.Store /* + window.parent.makeid(10)*/}`, proxy, false, product, variant);
+window.launchCheckout = async (product, variant, useDefaultBrowser = false, proxy = null, show = true, overrideURL = "") => {
+  let win = await window.parent.openURL(overrideURL || (await window.getCheckoutURL(product, variant)), useDefaultBrowser, { title: 'Resell Companion — ' + product.Name + ' Checkout', show: show }, `persist:${product.Store /* + window.parent.makeid(10)*/}`, proxy, false, product, variant);
   if (product.Identifier.startsWith("supreme")) try { await injectSupremeCart(product, variant, win) } catch(err) {};
   return win;
 };
@@ -366,7 +375,7 @@ async function injectSupremeCart(product, variant, win) {
 }
 // ============================ SUPREME ATC END ============================ //
 
-window.launchTaskNode = (node, product, variant) => {
+window.launchTaskNode = (node, product, variant, overrideURL = "") => {
   if (node.configuration.checkoutMethod.useCheckoutCompanion) { // use checkout companion
     if (
       product.Identifier != "shopify" &&
@@ -376,7 +385,7 @@ window.launchTaskNode = (node, product, variant) => {
     if (node.configuration.checkoutMethod.billingProfile == 'unselected') return;
     let proxy;
     // TODO: rotate proxies in window.tasksApp.getProxyProfileByID(node.configuration.checkoutMethod.proxyProfile)
-    initiateCheckoutCompanion(node, product, variant, window.tasksApp.getBillingProfileByID(node.configuration.checkoutMethod.billingProfile), proxy);
+    initiateCheckoutCompanion(node, product, variant, window.tasksApp.getBillingProfileByID(node.configuration.checkoutMethod.billingProfile), proxy, overrideURL = "");
   } else { // use connected bots
 
   }
