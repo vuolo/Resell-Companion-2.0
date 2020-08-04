@@ -22,6 +22,28 @@ window.addEventListener("DOMContentLoaded", (e) => {
       getThemeColor: window.getThemeColor,
       getColor: window.getColor,
       tryHideBanner: tryHideBanner,
+      getBannerImage: function(imageLabel) {
+        switch (imageLabel) {
+          case 'supreme':
+            return `../../images/stores/Supreme-bw${this.companionSettings.theme == 'dark' ? '-white' : ''}.png`;
+          case 'shopify':
+            return `../../images/stores/Shopify-full-bw${this.companionSettings.theme == 'dark' ? '-white' : ''}.png`;
+          case 'adidas':
+            return `../../images/stores/adidas-full${this.companionSettings.theme == 'dark' ? '-white' : ''}.png`;
+          case 'snkrs':
+            return `../../images/stores/SNKRS-bw${this.companionSettings.theme == 'dark' ? '-white' : ''}.png`;
+
+          case 'twitter':
+            return `../../images/Twitter-bw${this.companionSettings.theme == 'dark' ? '-white' : ''}.png`;
+          case 'instagram':
+            return `../../images/Instagram-bw${this.companionSettings.theme == 'dark' ? '-white' : ''}.png`;
+
+          case 'stockx':
+            return `../../images/stores/StockX-bw${this.companionSettings.theme == 'dark' ? '-white' : ''}.png`;
+          case 'goat':
+            return `../../images/stores/Goat${this.companionSettings.theme == 'dark' ? '-white' : ''}.png`;
+        }
+      },
       evalClickFunc: function(notification) {
         eval(notification.clickFunc);
       }
@@ -75,7 +97,7 @@ window.sendNotification = (options) => {
     description: options.description || "Yeezy Boost 350 Yechae (8.5)",
     statusColor: options.statusColor || "green",
     clickFunc: options.clickFunc || "",
-    imageURL: options.imageURL || "",
+    imageLabel: options.imageLabel || "",
     read: false,
     timestamp: new Date().getTime(),
     isBanner: false,

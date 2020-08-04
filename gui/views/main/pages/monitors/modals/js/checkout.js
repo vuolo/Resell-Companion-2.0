@@ -14,7 +14,8 @@ const MODAL_OPTIONS_TEMPLATE = {
     store_url: "",
     variants: []
   },
-  isSuccessful: false
+  isSuccessful: false,
+  isFailed: false
 };
 
 window.modalOptions = {};
@@ -72,8 +73,6 @@ window.checkoutApp = new Vue({
 
 window.triggerSuccessful = () => {
   window.modalOptions.isSuccessful = true;
-
-  window.parent.parent.sendNotification();
 
   // add items to inventory
   let separatedDate = window.parent.parent.separateDate();
@@ -133,7 +132,8 @@ window.triggerSuccessful = () => {
     // add inventory item
     window.parent.parent.frames['analytics-frame'].analyticsApp.inventoryItems.push(newInventoryItem);
   }
-  window.parent.parent.frames['analytics-frame'].openSubpage('inventory'); // switch page
+  window.parent.parent.frames['analytics-frame'].openSubpage('inventory'); // switch subpage
+  window.parent.parent.borderApp.switchToPage(-1, 'analytics'); // switch page
   window.parent.parent.frames['analytics-frame'].frames['inventory-subpage'].inventoryApp.applyDateSearch(); // refresh
 };
 

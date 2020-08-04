@@ -38,19 +38,19 @@
 
 				<div class="Center_Area_Class">
 
-					<div v-if="banner.imageURL.length > 0" class="Notification_Image_Class">
-						<img style="display: table-cell; vertical-align: middle; max-width: 300px; max-height: 80px; margin-left: auto; margin-right: auto;" v-bind:class="{ transparentify: companionSettings.theme == 'light' }" v-bind:src="banner.imageURL" onerror="this.src='../../images/unknownImage.png'">
+					<div v-if="banner.imageLabel.length > 0" class="Notification_Image_Class">
+						<img style="display: table-cell; vertical-align: middle; max-width: 300px; max-height: 80px; margin-left: auto; margin-right: auto;" v-bind:class="{ transparentify: companionSettings.theme == 'light' }" v-bind:src="getBannerImage(banner.imageLabel)" onerror="this.src='../../images/unknownImage.png'">
 					</div>
 
-					<svg class="Green_Bar" v-bind:style="{ left: calculateUnderlineLeftOffset(356, tryTranslate('Checked Out!'), 40, 'px', '900', 'SF Pro Text', false) + 10 + 'px' }">
-						<rect v-bind:fill="getColor(banner.statusColor)" class="Green_Bar_Class" rx="1.5" ry="1.5" x="0" y="0" v-bind:width="calculateUnderlineWidth(356, tryTranslate('Checked Out!'), 40, 'px', '900', 'SF Pro Text')" height="3">
+					<svg class="Green_Bar" v-bind:style="{ left: calculateUnderlineLeftOffset(356, tryTranslate(banner.title), 40, 'px', '900', 'SF Pro Text', false) + 10 + 'px' }">
+						<rect v-bind:fill="getColor(banner.statusColor)" class="Green_Bar_Class" rx="1.5" ry="1.5" x="0" y="0" v-bind:width="calculateUnderlineWidth(356, tryTranslate(banner.title), 40, 'px', '900', 'SF Pro Text')" height="3">
 						</rect>
 					</svg>
-					<div class="Checked_Out__Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(356, tryTranslate('Checked Out!'), 40, 'px', '900', 'SF Pro Text') }">
+					<div class="Checked_Out__Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(356, tryTranslate(banner.title), 40, 'px', '900', 'SF Pro Text') }">
 						<span class="text-selectable">{{tryTranslate(banner.title)}}</span>
 					</div>
 
-					<div class="Yeezy_Boost_350_Yechae__8_5__Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(340, 'Yeezy Boost 350 Yechae (8.5)', 14, 'px', 'normal', 'SF Pro Text') }">
+					<div class="Yeezy_Boost_350_Yechae__8_5__Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(340, banner.description, 14, 'px', 'normal', 'SF Pro Text') }">
 						<span class="text-selectable">{{tryTranslate(banner.description)}}</span>
 					</div>
 

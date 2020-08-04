@@ -35,8 +35,8 @@ async function initiateCheckoutCompanion(node, product, variant, billingProfile 
     node.checkoutWindow.webContents.insertCSS('select { visibility: hidden; }');
     node.checkoutWindow.webContents.insertCSS('select { visibility: hidden; }');
 
-    if (product.Identifier == "shopify" || product.Identifier == "cpfm") beginShopifyCheckout(node, billingProfile, variant);
-    else if (product.Identifier.startsWith("supreme")) beginSupremeCheckout(node, billingProfile, variant);
+    if (product.Identifier == "shopify" || product.Identifier == "cpfm") beginShopifyCheckout(node, billingProfile, product, variant);
+    else if (product.Identifier.startsWith("supreme")) beginSupremeCheckout(node, billingProfile, product, variant);
   });
   node.checkoutWindow.webContents.on('console-message', (event, level, message, line, sourceID) => {
     // MESSAGE TEMPLATE: ${CC} <message>
@@ -47,20 +47,103 @@ async function initiateCheckoutCompanion(node, product, variant, billingProfile 
   });
 }
 
-async function beginSupremeCheckout(node, billingProfile, variant) {
+async function beginSupremeCheckout(node, billingProfile, product, variant) {
   // check current checkout step to provide correct actions/fields to fill
   node.currentCheckoutStep = await getCurrentCheckoutStep('supreme', node);
   switch (node.currentCheckoutStep) {
     case 'stock_problems': // detect if item is OOS // TODO: ADD DETECTION FOR THIS. (THIS IS WHEN IT IS AT THE CART BEFORE TYPING IN INFO.)
       window.tasksApp.toggleNodeEnabled(node, false, true, { color: "red", description: `${window.parent.tryTranslate('Size Unavailable (Sold Out)')} [${window.parent.tryTranslate(variant.Name)}] ` });
-      // TODO: send notification
+
+      // send notification
+      window.parent.sendNotification({
+        title: "Size Unavailable (Sold Out)",
+        description: product.Name,
+        statusColor: "red",
+        clickFunc: node == window.parent.frames['monitors-frame'].frames['checkout-modal'].modalOptions.node ? "borderApp.switchToPage(-1, 'Monitors');" : "window.frames['analytics-frame'].openSubpage('inventory'); borderApp.switchToPage(-1, 'Analytics');", // evaluated at main level
+        imageLabel: "supreme",
+        timestamp: new Date().getTime()
+      });
+
+      // add statistics
       window.parent.addStatistic('Tasks', 'Failed Tasks');
       window.parent.addCheckoutStatistic('failed', 'supreme');
       return;
     case 'thank_you': // detect if item was successfully checked out
       window.tasksApp.toggleNodeEnabled(node, false, true, { color: "green", description: `${window.parent.tryTranslate('Successfully Checked Out')} [${window.parent.tryTranslate(variant.Name)}] ` });
-      // TODO: send notification
-      // TODO: add to inventory. (requires to add product to arguments)
+
+      // send notification
+      window.parent.sendNotification({
+        title: "Checked Out!",
+        description: product.Name,
+        statusColor: "green",
+        clickFunc: node == window.parent.frames['monitors-frame'].frames['checkout-modal'].modalOptions.node ? "borderApp.switchToPage(-1, 'Monitors');" : "window.frames['analytics-frame'].openSubpage('inventory'); borderApp.switchToPage(-1, 'Analytics');", // evaluated at main level
+        imageLabel: "supreme",
+        timestamp: new Date().getTime()
+      });
+
+      // add to inventory
+      if (node != window.parent.frames['monitors-frame'].frames['checkout-modal'].modalOptions.node) { // validate the task node is not on the monitors page
+        let separatedDate = window.parent.separateDate();
+        let newInventoryItem = {
+          name: product.Name || "",
+          color: product.Color || "",
+          styleCode: "",
+          size: variant.Name || "",
+          imageURL: product.ImageURL || "",
+          notes: "",
+          marketplaceData: {
+            product: {},
+            size: {},
+            media360: []
+          },
+          suggestions: {
+            items: [],
+            itemsOpened: false,
+            isSearchingForItems: false,
+            sizes: [],
+            sizesOpened: false,
+            isSearchingForSizes: false
+          },
+          purchase: {
+            price: window.parent.getNumberFromString(product.Price),
+            estimatedResell: null,
+            store: product.StoreName || "",
+            date: separatedDate.date,
+            tracking: {
+              number: "",
+              carrier: "unselected",
+              isTracking: false,
+              details: {}
+            }
+          },
+          sale: {
+            price: null,
+            fees: {
+              amount: null,
+              isPercent: true
+            },
+            platform: "",
+            date: separatedDate.date,
+            tracking: {
+              number: "",
+              carrier: "unselected",
+              isTracking: false,
+              details: {}
+            }
+          },
+          quantity: 1,
+          selected: true,
+          isHovering: false,
+          id: window.parent.makeid(10) // assign a new id to the inventory item
+        };
+        // add inventory item
+        window.parent.frames['analytics-frame'].analyticsApp.inventoryItems.push(newInventoryItem);
+        window.parent.frames['analytics-frame'].openSubpage('inventory'); // switch subpage
+        window.parent.borderApp.switchToPage(-1, 'analytics'); // switch page
+        window.parent.frames['analytics-frame'].frames['inventory-subpage'].inventoryApp.applyDateSearch(); // refresh
+      }
+
+      // add statistics
       window.parent.addStatistic('Tasks', 'Successful Tasks');
       window.parent.addCheckoutStatistic('successful', 'supreme');
       break;
@@ -71,7 +154,18 @@ async function beginSupremeCheckout(node, billingProfile, variant) {
         if (node.retryNum <= node.maxRetries) window.setNodeStatus(node, "red", `${window.parent.tryTranslate('Card Declined')}. ${window.parent.tryTranslate('Retrying...')} (${node.retryNum}/${node.maxRetries})`);
         else {
           window.tasksApp.toggleNodeEnabled(node, false, true, { color: "red", description: `${window.parent.tryTranslate('Card Declined')} [${window.parent.tryTranslate(variant.Name)}] ` });
-          // TODO: send notification
+
+          // send notification
+          window.parent.sendNotification({
+            title: "Card Declined",
+            description: product.Name,
+            statusColor: "red",
+            clickFunc: node == window.parent.frames['monitors-frame'].frames['checkout-modal'].modalOptions.node ? "borderApp.switchToPage(-1, 'Monitors');" : "window.frames['analytics-frame'].openSubpage('inventory'); borderApp.switchToPage(-1, 'Analytics');", // evaluated at main level
+            imageLabel: "supreme",
+            timestamp: new Date().getTime()
+          });
+
+          // add statistics
           window.parent.addStatistic('Tasks', 'Failed Tasks');
           window.parent.addCheckoutStatistic('failed', 'supreme');
           return;
@@ -125,7 +219,7 @@ async function beginSupremeCheckout(node, billingProfile, variant) {
   }
 };
 
-async function beginShopifyCheckout(node, billingProfile, variant) {
+async function beginShopifyCheckout(node, billingProfile, product, variant) {
 
   let webURL = node.checkoutWindow.webContents.getURL();
 
@@ -148,14 +242,97 @@ async function beginShopifyCheckout(node, billingProfile, variant) {
   switch (node.currentCheckoutStep) {
     case 'stock_problems': // detect if item is OOS
       window.tasksApp.toggleNodeEnabled(node, false, true, { color: "red", description: `${window.parent.tryTranslate('Size Unavailable (Sold Out)')} [${window.parent.tryTranslate(variant.Name)}] ` });
-      // TODO: send notification
+
+      // send notification
+      window.parent.sendNotification({
+        title: "Size Unavailable (Sold Out)",
+        description: product.Name,
+        statusColor: "red",
+        clickFunc: node == window.parent.frames['monitors-frame'].frames['checkout-modal'].modalOptions.node ? "borderApp.switchToPage(-1, 'Monitors');" : "window.frames['analytics-frame'].openSubpage('inventory'); borderApp.switchToPage(-1, 'Analytics');", // evaluated at main level
+        imageLabel: "shopify",
+        timestamp: new Date().getTime()
+      });
+
+      // add statistics
       window.parent.addStatistic('Tasks', 'Failed Tasks');
       window.parent.addCheckoutStatistic('failed', 'shopify');
       return;
     case 'thank_you': // detect if item was successfully checked out
       window.tasksApp.toggleNodeEnabled(node, false, true, { color: "green", description: `${window.parent.tryTranslate('Successfully Checked Out')} [${window.parent.tryTranslate(variant.Name)}] ` });
-      // TODO: send notification
-      // TODO: add to inventory. (requires to add product to arguments)
+
+      // send notification
+      window.parent.sendNotification({
+        title: "Checked Out!",
+        description: product.Name,
+        statusColor: "green",
+        clickFunc: node == window.parent.frames['monitors-frame'].frames['checkout-modal'].modalOptions.node ? "borderApp.switchToPage(-1, 'Monitors');" : "window.frames['analytics-frame'].openSubpage('inventory'); borderApp.switchToPage(-1, 'Analytics');", // evaluated at main level
+        imageLabel: "shopify",
+        timestamp: new Date().getTime()
+      });
+
+      // add to inventory
+      if (node != window.parent.frames['monitors-frame'].frames['checkout-modal'].modalOptions.node) { // validate the task node is not on the monitors page
+        let separatedDate = window.parent.separateDate();
+        let newInventoryItem = {
+          name: product.Name || "",
+          color: product.Color || "",
+          styleCode: "",
+          size: variant.Name || "",
+          imageURL: product.ImageURL || "",
+          notes: "",
+          marketplaceData: {
+            product: {},
+            size: {},
+            media360: []
+          },
+          suggestions: {
+            items: [],
+            itemsOpened: false,
+            isSearchingForItems: false,
+            sizes: [],
+            sizesOpened: false,
+            isSearchingForSizes: false
+          },
+          purchase: {
+            price: window.parent.getNumberFromString(product.Price),
+            estimatedResell: null,
+            store: product.StoreName || "",
+            date: separatedDate.date,
+            tracking: {
+              number: "",
+              carrier: "unselected",
+              isTracking: false,
+              details: {}
+            }
+          },
+          sale: {
+            price: null,
+            fees: {
+              amount: null,
+              isPercent: true
+            },
+            platform: "",
+            date: separatedDate.date,
+            tracking: {
+              number: "",
+              carrier: "unselected",
+              isTracking: false,
+              details: {}
+            }
+          },
+          quantity: 1,
+          selected: true,
+          isHovering: false,
+          id: window.parent.makeid(10) // assign a new id to the inventory item
+        };
+        // add inventory item
+        window.parent.frames['analytics-frame'].analyticsApp.inventoryItems.push(newInventoryItem);
+        window.parent.frames['analytics-frame'].openSubpage('inventory'); // switch subpage
+        window.parent.borderApp.switchToPage(-1, 'analytics'); // switch page
+        window.parent.frames['analytics-frame'].frames['inventory-subpage'].inventoryApp.applyDateSearch(); // refresh
+      }
+
+      // add statistics
       window.parent.addStatistic('Tasks', 'Successful Tasks');
       window.parent.addCheckoutStatistic('successful', 'shopify');
       return;
@@ -187,7 +364,18 @@ async function beginShopifyCheckout(node, billingProfile, variant) {
         if (node.retryNum <= node.maxRetries) window.setNodeStatus(node, "red", `${window.parent.tryTranslate('Card Declined')}. ${window.parent.tryTranslate('Retrying...')} (${node.retryNum}/${node.maxRetries})`);
         else {
           window.tasksApp.toggleNodeEnabled(node, false, true, { color: "red", description: `${window.parent.tryTranslate('Card Declined')} [${window.parent.tryTranslate(variant.Name)}] ` });
-          // TODO: send notification
+
+          // send notification
+          window.parent.sendNotification({
+            title: "Card Declined",
+            description: product.Name,
+            statusColor: "red",
+            clickFunc: node == window.parent.frames['monitors-frame'].frames['checkout-modal'].modalOptions.node ? "borderApp.switchToPage(-1, 'Monitors');" : "window.frames['analytics-frame'].openSubpage('inventory'); borderApp.switchToPage(-1, 'Analytics');", // evaluated at main level
+            imageLabel: "shopify",
+            timestamp: new Date().getTime()
+          });
+
+          // add statistics
           window.parent.addStatistic('Tasks', 'Failed Tasks');
           window.parent.addCheckoutStatistic('failed', 'shopify');
           return;

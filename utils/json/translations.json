@@ -762,6 +762,12 @@
         "es": "Exportando"
       }
     },
+    "Failed": {
+      "languages": {
+        "en": "Failed",
+        "es": "Fallido"
+      }
+    },
     "Failed Checkouts": {
       "languages": {
         "en": "Failed Checkouts",
