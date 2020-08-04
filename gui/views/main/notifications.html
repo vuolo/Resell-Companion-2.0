@@ -25,7 +25,7 @@
 					<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Rectangle_Class" rx="20" ry="20" x="0" y="0" width="399.657" height="99.497">
 					</rect>
 				</svg>
-				<div class="Close_Button_Class clickable hover-opacity" v-on:click="tryHideBanner(banner, true)">
+				<div class="Close_Button_Class clickable hover-opacity" v-on:click="tryHideBanner(banner, true); banner.read = true;">
 					<svg class="Ellipse_348">
 						<ellipse fill="rgba(255,255,255,1)" class="Ellipse_348_Class" rx="6" ry="6" cx="6" cy="6">
 						</ellipse>

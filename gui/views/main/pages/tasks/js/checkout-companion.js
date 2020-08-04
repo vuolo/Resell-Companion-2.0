@@ -231,6 +231,18 @@ async function beginShopifyCheckout(node, billingProfile, product, variant) {
       return; // TODO: remove this and await for authentication (login) to be correctly inputted and logged in before sending a signal to all other tasks awaiting authentication (or about to, if about to and this has executed, then restart task)
     } else { // else: the cart has been lost.
       window.tasksApp.toggleNodeEnabled(node, false, true, { color: "red", description: `${window.parent.tryTranslate('Cart Unavailable')} [${window.parent.tryTranslate(variant.Name)}] ` });
+
+      // send notification
+      window.parent.sendNotification({
+        title: "Cart Unavailable",
+        description: product.Name,
+        statusColor: "red",
+        clickFunc: node == window.parent.frames['monitors-frame'].frames['checkout-modal'].modalOptions.node ? "borderApp.switchToPage(-1, 'Monitors');" : "window.frames['analytics-frame'].openSubpage('inventory'); borderApp.switchToPage(-1, 'Analytics');", // evaluated at main level
+        imageLabel: "shopify",
+        timestamp: new Date().getTime()
+      });
+
+      // add statistics
       window.parent.addStatistic('Tasks', 'Failed Tasks');
       window.parent.addCheckoutStatistic('failed', 'shopify');
       return;

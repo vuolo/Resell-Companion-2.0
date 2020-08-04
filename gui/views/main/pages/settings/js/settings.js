@@ -5,18 +5,6 @@
 // window.parent.out_var
 
 // variables
-window.settings = {
-  webhook: {
-    enabled: true,
-    URL: ''
-  },
-  notifications: {
-    banners: true,
-    sounds: true,
-    desktop: true
-  }
-};
-
 window.currencies = {
   "USD": {
     name: "United States Dollar",
@@ -55,6 +43,7 @@ window.openModal = (modalName) => {
 
 window.modalLoadedCallback = async (modalName) => {
   if (modalName == 'billing-profiles') settingsApp.billingProfilesModal = window.frames['billing-profiles-modal'].modalOptions;
+  else if (modalName == 'google-accounts') settingsApp.googleAccountsModal = window.frames['google-accounts-modal'].modalOptions;
   else if (modalName == 'statistics') {
     settingsApp.statisticsModal = window.frames['statistics-modal'].modalOptions;
     while(!window.parent.addStatistic) await window.parent.sleep(50);
@@ -69,10 +58,10 @@ window.settingsApp = new Vue({
     companionSettings: window.parent.companionSettings,
     curLogin: window.parent.curLogin,
     appVersion: window.parent.appVersion,
-    settings: window.settings,
     modals: window.modals,
     checkForUpdateButtonStatus: 'Check for Update',
     billingProfilesModal: {},
+    googleAccountsModal: {},
     statisticsModal: {}
   },
   methods: {
@@ -95,6 +84,24 @@ window.settingsApp = new Vue({
       let titleWidth = this.getTextWidth(title, 'bold 20px \'SF Pro Text\'');
       if (titleWidth >= maxWidth) return 0;
       else return (maxWidth/2) - ((titleWidth + 60)/2) + 20;
+    },
+    toggleNotificationBanners: function(enabled = !this.companionSettings.notifications.banners) {
+      this.companionSettings.notifications.banners = enabled;
+      if (!enabled) {
+        while (window.parent.bannerQueue.length > 0) window.parent.bannerQueue.pop();
+        window.parent.tryHideBanner(undefined, true); // force hide current banner
+      }
+    },
+    testNotification: function() {
+      // send notification
+      window.parent.sendNotification({
+        title: "Notification",
+        description: "This is what a notification looks like",
+        statusColor: "orange",
+        clickFunc: "borderApp.switchToPage(-1, 'Settings');", // evaluated at main level
+        imageLabel: "silhouette",
+        timestamp: new Date().getTime()
+      });
     },
     getLanguageImage: function(language) {
       switch (language) {

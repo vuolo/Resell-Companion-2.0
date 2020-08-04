@@ -3,7 +3,30 @@ const BANNER_DISPLAY_TIME = 3 * 1000;
 const BANNER_COOLDOWN = 300;
 
 window.notifications = [];
-var bannerQueue = [];
+window.bannerQueue = [];
+
+var sounds = {
+  'negative': { // bad notification (red)
+    audio: new Audio('../../audio/negative.mp3'),
+    playable: true
+  },
+  'neutral': { // normal notifications (blue, yellow, orange, purple, etc.)
+    audio: new Audio('../../audio/neutral.mp3'),
+    playable: true
+  },
+  'positive': { // good notification (green)
+    audio: new Audio('../../audio/positive.mp3'),
+    playable: true
+  },
+  'outgoing': { // TBD
+    audio: new Audio('../../audio/outgoing.mp3'),
+    playable: true
+  },
+  'whoosh': { // TBD
+    audio: new Audio('../../audio/whoosh.mp3'),
+    playable: true
+  }
+};
 
 window.addEventListener("DOMContentLoaded", (e) => {
   window.notificationsApp = new Vue({
@@ -38,6 +61,9 @@ window.addEventListener("DOMContentLoaded", (e) => {
           case 'instagram':
             return `../../images/Instagram-bw${this.companionSettings.theme == 'dark' ? '-white' : ''}.png`;
 
+          case 'silhouette':
+            return `../../images/silhouette${this.companionSettings.theme == 'dark' ? '-white' : ''}.png`;
+
           case 'stockx':
             return `../../images/stores/StockX-bw${this.companionSettings.theme == 'dark' ? '-white' : ''}.png`;
           case 'goat':
@@ -69,16 +95,17 @@ async function tryHideBanner(notification = window.notificationsApp.banner, forc
     setTimeout(() => { // nullify displayed banner
       window.notificationsApp.banner = null;
       // attempt to show next banner in queue
-      if (bannerQueue.length > 0) displayBanner(bannerQueue[0]);
+      if (window.bannerQueue.length > 0) displayBanner(window.bannerQueue[0]);
     }, 100 + BANNER_COOLDOWN); // + transition time
   }
 }
+window.tryHideBanner = tryHideBanner;
 
 function displayBanner(notification) {
-  if (window.notificationsApp.banner) { if (!notificationInBannerQueue(notification)) bannerQueue.push(notification); }
+  if (window.notificationsApp.banner) { if (!notificationInBannerQueue(notification)) window.bannerQueue.push(notification); }
   else {
-    let bannerQueueIndex = bannerQueue.indexOf(notification);
-    if (bannerQueueIndex != -1) bannerQueue.splice(bannerQueueIndex, 1);
+    let bannerQueueIndex = window.bannerQueue.indexOf(notification);
+    if (bannerQueueIndex != -1) window.bannerQueue.splice(bannerQueueIndex, 1);
     window.notificationsApp.banner = notification;
     setTimeout(() => { // show banner
       notification.isBanner = true;
@@ -90,6 +117,31 @@ function displayBanner(notification) {
   }
 }
 
+function tryPlayAudio(audio) {
+  if (!sounds[audio].playable) return;
+  sounds[audio].audio.cloneNode().play(); // play audio (clone to have multiple instances of same audio)
+  sounds[audio].playable = false;
+  setTimeout(function() { sounds[audio].playable = true; }, 100); // wait 100 ms to prevent a major audio stack
+}
+
+function sendDesktopNotification(notification) {
+  let desktopNotification = new Notification(notification.title, {
+    icon: '../../images/emoticons/Delivery-Boy.png',
+    lang: window.companionSettings.language.toUpperCase(),
+    body: notification.description,
+    silent: true,
+    tag: notification.id
+  });
+
+  // initialize onclick for desktop notification
+  desktopNotification.onclick = () => {
+    notification.read = true;
+    if (notification.clickFunc.length > 0) window.notificationsApp.evalClickFunc(notification);
+  }
+
+  return desktopNotification;
+}
+
 // MAIN sendNotification function... create all new notifications through here
 window.sendNotification = (options) => {
   let newNotification = {
@@ -98,16 +150,36 @@ window.sendNotification = (options) => {
     statusColor: options.statusColor || "",
     clickFunc: options.clickFunc || "",
     imageLabel: options.imageLabel || "",
+    desktopNotification: null,
     read: false,
     timestamp: new Date().getTime(),
     isBanner: false,
     id: window.makeid(10) // assign a new id to each notification
   }
   notifications.push(newNotification);
-  displayBanner(newNotification);
+
+  // display banner
+  if (window.companionSettings.notifications.banners) displayBanner(newNotification);
 
   // shoot confetti on checkouts
   if (newNotification.title == "Checked Out!" && newNotification.statusColor == "green") window.shootConfetti();
+
+  // play audio (depending on color)
+  if (window.companionSettings.notifications.sounds) { // check if notification sounds are enabled
+    switch (newNotification.statusColor) {
+      case 'green':
+        tryPlayAudio('positive');
+        break;
+      case 'red':
+        tryPlayAudio('negative');
+        break;
+      default:
+        tryPlayAudio('neutral');
+    }
+  }
+
+  // send desktop
+  if (window.companionSettings.notifications.desktop) newNotification.desktop = sendDesktopNotification(newNotification);
 };
 
 window.shootConfetti = () => {
