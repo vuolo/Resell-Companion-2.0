@@ -132,8 +132,6 @@ window.triggerSuccessful = () => {
     // add inventory item
     window.parent.parent.frames['analytics-frame'].analyticsApp.inventoryItems.push(newInventoryItem);
   }
-  window.parent.parent.frames['analytics-frame'].openSubpage('inventory'); // switch subpage
-  window.parent.parent.borderApp.switchToPage(-1, 'analytics'); // switch page
   window.parent.parent.frames['analytics-frame'].frames['inventory-subpage'].inventoryApp.applyDateSearch(); // refresh
 };
 

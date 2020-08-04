@@ -93,9 +93,9 @@ function displayBanner(notification) {
 // MAIN sendNotification function... create all new notifications through here
 window.sendNotification = (options) => {
   let newNotification = {
-    title: options.title || "Checked Out!",
-    description: options.description || "Yeezy Boost 350 Yechae (8.5)",
-    statusColor: options.statusColor || "green",
+    title: options.title || "",
+    description: options.description || "",
+    statusColor: options.statusColor || "",
     clickFunc: options.clickFunc || "",
     imageLabel: options.imageLabel || "",
     read: false,
@@ -105,6 +105,9 @@ window.sendNotification = (options) => {
   }
   notifications.push(newNotification);
   displayBanner(newNotification);
+
+  // shoot confetti on checkouts
+  if (newNotification.title == "Checked Out!" && newNotification.statusColor == "green") window.shootConfetti();
 };
 
 window.shootConfetti = () => {

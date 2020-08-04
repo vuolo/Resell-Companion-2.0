@@ -110,7 +110,8 @@ window.tasksApp = new Vue({
         ) window.setNodeStatus(node, "red", "Checkout Canceled");
       }
       if (statusMessage) window.setNodeStatus(node, statusMessage.color, statusMessage.description);
-      if (node.status.color == 'green') try { if (window.parent.parent.frames['monitors-frame'].frames['checkout-modal'].modalOptions.node) window.parent.parent.frames['monitors-frame'].frames['checkout-modal'].triggerSuccessful(); } catch(err) {}
+      if (node.status.color == 'green') try { if (node == window.parent.parent.frames['monitors-frame'].frames['checkout-modal'].modalOptions.node) window.parent.parent.frames['monitors-frame'].frames['checkout-modal'].triggerSuccessful(); } catch(err) {}
+      if (node.status.color == 'red') try { if (node == window.parent.parent.frames['monitors-frame'].frames['checkout-modal'].modalOptions.node) window.parent.parent.frames['monitors-frame'].frames['checkout-modal'].modalOptions.isFailed = true } catch(err) {}
       if (!node.enabled && (node.status.color != 'red' && node.status.color != 'green')) try { window.parent.parent.frames['monitors-frame'].frames['checkout-modal'].checkoutApp.closeModal(); } catch(err) {}
     },
     openNewTaskModal: async function() {
