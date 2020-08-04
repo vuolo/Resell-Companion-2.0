@@ -1,0 +1,152 @@
+#notificationsOverlay {
+  /* width: 1275px;
+  height: 795px; */
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+#notificationBannerArea {
+  margin-left: 437.5px;
+  overflow: visible;
+}
+
+.mediaViewInfo {
+	--web-view-name: Checked Out Notification;
+	--web-view-id: Checked_Out_Notification;
+	--web-scale-on-resize: true;
+	--web-enable-deep-linking: true;
+}
+:root {
+	--web-view-ids: Checked_Out_Notification;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	border: none;
+}
+#notificationBannerArea .Checked_Out_Notification_Class {
+	position: absolute;
+	width: 400px;
+	height: 100px;
+	overflow: visible;
+	--web-view-name: Checked Out Notification;
+	--web-view-id: Checked_Out_Notification;
+	--web-scale-on-resize: true;
+	--web-enable-deep-linking: true;
+}
+#notificationBannerArea .Rectangle {
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.149));
+	position: absolute;
+	overflow: visible;
+	width: 399.656px;
+	height: 99.497px;
+	left: 0.131px;
+	top: 0.137px;
+}
+#notificationBannerArea .Center_Area_Class {
+	position: absolute;
+	width: 288px;
+	height: 69px;
+	left: 22px;
+	top: 19px;
+	overflow: visible;
+}
+#notificationBannerArea .Supreme_Logo_Class {
+	opacity: 0.1;
+	display: none;
+	position: absolute;
+	width: 220px;
+	height: 65px;
+	left: 68px;
+	top: -1px;
+	overflow: visible;
+}
+#notificationBannerArea .Shopify_Logo_Class {
+	opacity: 0.1;
+	position: absolute;
+	width: 220px;
+	height: 62px;
+	left: 68px;
+	top: 0px;
+	overflow: visible;
+}
+#notificationBannerArea .Yeezy_Boost_350_Yechae__8_5__Class {
+	position: absolute;
+	left: 0px;
+	top: 54px;
+	overflow: visible;
+	width: 190px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 13px;
+	color: rgba(29,29,29,1);
+}
+#notificationBannerArea .Green_Bar {
+	position: absolute;
+	overflow: visible;
+	width: 100px;
+	height: 3px;
+	left: 22px;
+	top: 42px;
+}
+#notificationBannerArea .Checked_Out__Class {
+	position: absolute;
+	left: 0px;
+	top: 4px;
+	overflow: visible;
+	width: 275px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: 900;
+	font-size: 40px;
+  line-height: 40px;
+	color: rgba(29,29,29,1);
+}
+#notificationBannerArea .Close_Button_Class {
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	left: 367px;
+	top: 11px;
+	overflow: visible;
+}
+#notificationBannerArea .Ellipse_348 {
+	position: absolute;
+	overflow: visible;
+	width: 12px;
+	height: 12px;
+	left: 4px;
+	top: 4px;
+}
+#notificationBannerArea .Browser_Close_Button {
+	overflow: visible;
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	left: 0px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+
+#notificationBannerArea .Notification_Image_Class {
+  opacity: 0.1;
+
+	display: table;
+	position: absolute;
+	width: 300px;
+	height: 80px;
+  left: 25px;
+	top: -9px;
+	overflow: visible;
+
+	display: flex;
+  align-items: center;
+  justify-content: center;
+}

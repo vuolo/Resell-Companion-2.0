@@ -282,6 +282,12 @@
         "es": "Buscar actualizaciones"
       }
     },
+    "Checked Out!": {
+      "languages": {
+        "en": "Checked Out!",
+        "es": "¡Pagado!"
+      }
+    },
     "Checking for Update": {
       "languages": {
         "en": "Checking for Update",
@@ -2190,6 +2196,12 @@
       "languages": {
         "en": "Subscriptions Added",
         "es": "Suscripciones añadidas"
+      }
+    },
+    "Success": {
+      "languages": {
+        "en": "Success",
+        "es": "Éxito"
       }
     },
     "Success!": {

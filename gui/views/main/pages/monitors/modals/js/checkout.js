@@ -73,6 +73,8 @@ window.checkoutApp = new Vue({
 window.triggerSuccessful = () => {
   window.modalOptions.isSuccessful = true;
 
+  window.parent.parent.sendNotification();
+
   // add items to inventory
   let separatedDate = window.parent.parent.separateDate();
   for (var variant of window.modalOptions.shoppingBag.variants) {
@@ -133,9 +135,6 @@ window.triggerSuccessful = () => {
   }
   window.parent.parent.frames['analytics-frame'].openSubpage('inventory'); // switch page
   window.parent.parent.frames['analytics-frame'].frames['inventory-subpage'].inventoryApp.applyDateSearch(); // refresh
-
-  // TODO: remove this and implement into notifications API later...
-  window.parent.parent.frames['notifications-overlay'].initiateConfetti();
 };
 
 window.onload = window.parent.modalLoadedCallback(MODAL_NAME);

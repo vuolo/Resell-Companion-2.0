@@ -167,6 +167,9 @@ input[type="date"]::-webkit-inner-spin-button {
 .use_light_transitions {
   transition: 0.1s all ease-out;
 }
+.use_med_transitions {
+  transition: 0.15s all ease-out;
+}
 .use_slow_transitions {
   transition: 0.33s all ease-out;
 }

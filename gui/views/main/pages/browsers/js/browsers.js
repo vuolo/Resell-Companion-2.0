@@ -30,7 +30,7 @@ window.browserModalLoadedCallback = async (modalName) => {
   }
 }
 
-window.onload = () => {
+window.addEventListener("DOMContentLoaded", (e) => {
   setTimeout(function() { applyButtonTransitions(true) }, 1500);
   browsersApp = new Vue({
     el: "#Rewrite___Browser",
@@ -90,7 +90,7 @@ window.onload = () => {
       clearAllBrowsers: clearAllBrowsers
     }
   });
-}
+});
 
 function getVisualizedBrowserIndex(actualBrowserIndex) {
   let indexOffset = 0;

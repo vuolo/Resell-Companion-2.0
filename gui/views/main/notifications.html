@@ -6,20 +6,65 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Resell Companion — Notifications</title>
 
-	<link rel="stylesheet" type="text/css" href="../../css/style.css"/>
-	<link rel="stylesheet" type="text/css" href="../../css/fonts-alt-path.css"/>
+	<!-- <link rel="stylesheet" type="text/css" href="../../css/style.css"/>
+	<link rel="stylesheet" type="text/css" href="../../css/fonts-alt-path.css"/> -->
 
 	<link rel="stylesheet" type="text/css" href="./css/notifications.css"/>
 
-	<script src="../../../utils/downloaded/vue.js" type="text/javascript"></script>
-	<script src="../../../utils/downloaded/jquery.js" type="text/javascript"></script>
+	<!-- <script src="../../../utils/downloaded/vue.js" type="text/javascript"></script>
+	<script src="../../../utils/downloaded/jquery.js" type="text/javascript"></script> -->
 
 </head>
 
-<body style="pointer-events: none;">
+<body>
 
-	<script src="./js/notifications.js" type="text/javascript"></script>
-  <script src="../../../utils/downloaded/confetti.js" type="text/javascript"></script>
+	<div id="notificationsOverlay">
+		<div id="notificationBannerArea" v-bind:class="{ 'dark-scrollbar': companionSettings.theme == 'dark' }">
+			<div v-if="banner" class="Checked_Out_Notification_Class use_light_transitions" @mouseover="allowBannerLeave = false;" @mouseleave="allowBannerLeave = true;" v-bind:style="{ top: (banner.isBanner ? 15 : -100 ) + 'px' }">
+				<svg class="Rectangle">
+					<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Rectangle_Class" rx="20" ry="20" x="0" y="0" width="399.657" height="99.497">
+					</rect>
+				</svg>
+				<div class="Close_Button_Class clickable hover-opacity" v-on:click="tryHideBanner(banner, true)">
+					<svg class="Ellipse_348">
+						<ellipse fill="rgba(255,255,255,1)" class="Ellipse_348_Class" rx="6" ry="6" cx="6" cy="6">
+						</ellipse>
+					</svg>
+					<svg class="Browser_Close_Button" viewBox="3.375 3.375 20 20">
+						<path fill="rgba(253,53,53,1)" class="Browser_Close_Button_Class" d="M 13.37500286102295 3.375 C 7.850963115692139 3.375 3.375000238418579 7.850962162017822 3.375000238418579 13.375 C 3.375000238418579 18.89904022216797 7.850963115692139 23.375 13.37500286102295 23.375 C 18.89904022216797 23.375 23.375 18.89904022216797 23.375 13.375 C 23.375 7.850960254669189 18.89904022216797 3.375 13.37500286102295 3.375 Z M 15.90865325927734 16.99519157409668 L 13.37500286102295 14.46153736114502 L 10.84134674072266 16.99519157409668 C 10.54327011108398 17.29327011108398 10.05288410186768 17.29327011108398 9.75480842590332 16.99519157409668 C 9.605769157409668 16.84615325927734 9.528847694396973 16.64903831481934 9.528847694396973 16.45192337036133 C 9.528847694396973 16.25480842590332 9.605769157409668 16.05769157409668 9.75480842590332 15.90865325927734 L 12.28846263885498 13.375 L 9.75480842590332 10.84134578704834 C 9.605769157409668 10.692307472229 9.52884578704834 10.49519157409668 9.52884578704834 10.29807662963867 C 9.52884578704834 10.10096168518066 9.605769157409668 9.90384578704834 9.75480842590332 9.75480842590332 C 10.05288410186768 9.456730842590332 10.54326820373535 9.456730842590332 10.84134674072266 9.75480842590332 L 13.37500095367432 12.28846168518066 L 15.90865135192871 9.75480842590332 C 16.20672988891602 9.456730842590332 16.69711303710938 9.456730842590332 16.99518966674805 9.75480842590332 C 17.29326820373535 10.05288505554199 17.29326820373535 10.54327011108398 16.99518966674805 10.84134674072266 L 14.46153926849365 13.375 L 16.99519157409668 15.90865325927734 C 17.29327011108398 16.20673179626465 17.29327011108398 16.69711685180664 16.99519157409668 16.99519157409668 C 16.69711303710938 17.29807662963867 16.20672988891602 17.29807662963867 15.90865325927734 16.99519157409668 Z">
+						</path>
+					</svg>
+				</div>
+
+				<div class="Center_Area_Class">
+
+					<div v-if="banner.imageURL.length > 0" class="Notification_Image_Class">
+						<img style="display: table-cell; vertical-align: middle; max-width: 300px; max-height: 80px; margin-left: auto; margin-right: auto;" v-bind:class="{ transparentify: companionSettings.theme == 'light' }" v-bind:src="banner.imageURL" onerror="this.src='../../images/unknownImage.png'">
+					</div>
+
+					<svg class="Green_Bar" v-bind:style="{ left: calculateUnderlineLeftOffset(356, tryTranslate('Checked Out!'), 40, 'px', '900', 'SF Pro Text', false) + 10 + 'px' }">
+						<rect v-bind:fill="getColor(banner.statusColor)" class="Green_Bar_Class" rx="1.5" ry="1.5" x="0" y="0" v-bind:width="calculateUnderlineWidth(356, tryTranslate('Checked Out!'), 40, 'px', '900', 'SF Pro Text')" height="3">
+						</rect>
+					</svg>
+					<div class="Checked_Out__Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(356, tryTranslate('Checked Out!'), 40, 'px', '900', 'SF Pro Text') }">
+						<span class="text-selectable">{{tryTranslate(banner.title)}}</span>
+					</div>
+
+					<div class="Yeezy_Boost_350_Yechae__8_5__Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(340, 'Yeezy Boost 350 Yechae (8.5)', 14, 'px', 'normal', 'SF Pro Text') }">
+						<span class="text-selectable">{{tryTranslate(banner.description)}}</span>
+					</div>
+
+					<div v-if="banner.clickFunc.length > 0" class="Yeezy_Boost_350_Yechae__8_5__Class clickable hover-opacity" style="left: 350px;" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+						<span v-on:click="evalClickFunc(banner)">→</span>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- <script src="./js/notifications.js" type="text/javascript"></script> -->
 
 </body>
 </html>

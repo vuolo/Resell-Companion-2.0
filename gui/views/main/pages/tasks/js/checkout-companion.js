@@ -134,10 +134,12 @@ async function beginShopifyCheckout(node, billingProfile, variant) {
     if (webURL.includes('account/login')) { // if: 'account/login' IS in URL, then launch login helper (notify awaiting authentication)
       window.setNodeStatus(node, "orange", `${window.parent.tryTranslate('Authentication Required')}`);
       //   - ONLY prompt for ONE task (ex: if 3 tasks all require authentication... if one is already launched then await for it to be closed (setInterval check and whenever launches, clearInterval).)
+      return; // TODO: remove this and await for authentication (login) to be correctly inputted and logged in before sending a signal to all other tasks awaiting authentication (or about to, if about to and this has executed, then restart task)
     } else { // else: the cart has been lost.
       window.tasksApp.toggleNodeEnabled(node, false, true, { color: "red", description: `${window.parent.tryTranslate('Cart Unavailable')} [${window.parent.tryTranslate(variant.Name)}] ` });
       window.parent.addStatistic('Tasks', 'Failed Tasks');
       window.parent.addCheckoutStatistic('failed', 'shopify');
+      return;
     }
   }
 
@@ -156,7 +158,7 @@ async function beginShopifyCheckout(node, billingProfile, variant) {
       // TODO: add to inventory. (requires to add product to arguments)
       window.parent.addStatistic('Tasks', 'Successful Tasks');
       window.parent.addCheckoutStatistic('successful', 'shopify');
-      break;
+      return;
     case 'contact_information':
       // main autofill information fields
       await fillField(node, '#checkout_shipping_address_first_name', billingProfile.autofillInformation.firstName);

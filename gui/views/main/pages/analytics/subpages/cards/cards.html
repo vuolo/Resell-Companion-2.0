@@ -230,7 +230,7 @@
 								<span>{{card.name.length == 0 ? tryTranslate('Unknown Card') : tryGenerateEllipses(300, card.name, 14, 'px', 'normal', 'SF Pro Text')}}</span>
 							</div>
 							<div class="Product_Image_Class">
-								<img style="display: table-cell; vertical-align: middle; max-width: 118px; max-height: 118px; border-radius: 10px; margin-left: auto; margin-right: auto;" v-bind:class="{ transparentify: companionSettings.theme == 'light' }" v-bind:src="card.imageURL" onerror="this.src='../../../../../../images/unknownImage.png'">
+								<img style="display: table-cell; vertical-align: middle; max-width: 118px; max-height: 100px; border-radius: 10px; margin-left: auto; margin-right: auto;" v-bind:class="{ transparentify: companionSettings.theme == 'light' }" v-bind:src="card.imageURL" onerror="this.src='../../../../../../images/unknownImage.png'">
 							</div>
 						</div>
 					</template>

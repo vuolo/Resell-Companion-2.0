@@ -1,4 +1,4 @@
-window.initiateConfetti = () => {
+window.shootConfetti = () => {
   'use strict';
 
   // If set to true, the user must press
