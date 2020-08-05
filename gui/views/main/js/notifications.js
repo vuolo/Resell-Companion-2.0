@@ -142,21 +142,102 @@ function sendDesktopNotification(notification) {
   return desktopNotification;
 }
 
+function getWebhookColor(color) {
+  switch (color) {
+    case 'green': return 0x35b239;
+    case 'red': return 0xfd3535;
+    case 'yellow': return 0xfdd535;
+    case 'orange': return 0xffa74e;
+    case 'blue': return 0x5bb6bb;
+    case 'purple': return 0xce8ce5;
+    default: return 0xd8b97b; // gold is default color
+  }
+}
+
+function trySendWebhook(notification) {
+  // setup webhook options
+  var webhookOptions = {
+    username: "Resell Companion",
+    avatar_url: "https://resell.monster/images/buddy-transparent-compressed.png",
+    embeds: [{
+      title: window.tryTranslate(notification.title),
+      description: window.tryTranslate(notification.description),
+      footer: {
+        icon_url: "https://resell.monster/images/buddy-transparent-compressed.png",
+        text: "Resell Companion" + " • " + window.frames['home-frame'].homeApp.formatTimestamp()
+      },
+      color: getWebhookColor(notification.statusColor)
+    }]
+  };
+
+  // format webhook options according to data
+  if ( // Task notification
+    notification.data.node != undefined &&
+    notification.data.billingProfile != undefined &&
+    notification.data.product != undefined &&
+    notification.data.variant != undefined
+  ) {
+    // overwrite initialized options
+    webhookOptions.embeds[0].description = null;
+
+    // new options
+    webhookOptions.embeds[0].thumbnail = { url: notification.data.product.ImageURL };
+    webhookOptions.embeds[0].author = {
+      name: notification.data.product.StoreName,
+      url: `https://${notification.data.product.Store}` // #resellmonster
+    }
+
+    // create & assign fields
+    webhookOptions.embeds[0].fields = [
+      {
+        name: `${window.tryTranslate('Product')}`,
+        value: notification.data.product.Name || window.tryTranslate('Unknown Product')
+      },
+      {
+        name: `${window.tryTranslate('Size')}`,
+        value: notification.data.variant.Name || window.tryTranslate('Unknown Size')
+      },
+      {
+        name: `${window.tryTranslate('Billing Profile')}`,
+        value: '||' + (notification.data.billingProfile.settings.nickname || window.tryTranslate('N/A')) + '||'
+      },
+      {
+        name: `${window.tryTranslate('Checkout Time (ms)')}`,
+        value: new Date().getTime() - notification.data.node.startTimestamp
+      },
+      {
+        name: `${window.tryTranslate('Checkout Delay (ms)')}`,
+        value: notification.data.billingProfile.settings.autoCheckoutDelay || 0
+      }
+    ];
+
+  } else if ( // TODO: Social+ notification (both discord joined and link opened)
+    false
+  ) {}
+
+  // post webhook to URL
+  fetch(window.companionSettings.webhook.URL, { method: 'POST', headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }, body: JSON.stringify(webhookOptions) });
+}
+
 // MAIN sendNotification function... create all new notifications through here
 window.sendNotification = (options) => {
   let newNotification = {
     title: options.title || "",
     description: options.description || "",
-    statusColor: options.statusColor || "",
+    statusColor: options.statusColor || "blue", // blue is default color
     clickFunc: options.clickFunc || "",
     imageLabel: options.imageLabel || "",
+    data: options.data || null, // reserve this space to pass a product/variant/etc. so you can fully customize webhook sending
     desktopNotification: null,
     read: false,
-    timestamp: new Date().getTime(),
     isBanner: false,
+    timestamp: new Date().getTime(),
     id: window.makeid(10) // assign a new id to each notification
   }
   notifications.push(newNotification);
+
+  // send Discord webhook
+  if (window.companionSettings.webhook.enabled) trySendWebhook(newNotification);
 
   // display banner
   if (window.companionSettings.notifications.banners) displayBanner(newNotification);

@@ -306,6 +306,12 @@
         "es": "Pago cancelado"
       }
     },
+    "Checkout Time (ms)": {
+      "languages": {
+        "en": "Checkout Time (ms)",
+        "es": "Duración de pagar (ms)"
+      }
+    },
     "Checkout Delay (ms)": {
       "languages": {
         "en": "Checkout Delay (ms)",

@@ -15,6 +15,7 @@ async function initiateCheckoutCompanion(node, product, variant, billingProfile 
   node.paymentFieldsInitialized = {};
   node.retryNum = 0;
   node.maxRetries = 3;
+  node.startTimestamp = new Date().getTime();
   window.setNodeStatus(node, "orange", `${window.parent.tryTranslate('Initializing Checkout Session...')} (1/3)`);
   node.checkoutWindow = await window.launchCheckout(product, variant, false, proxy, false, overrideURL);
   node.checkoutWindow.once('ready-to-show', () => {
@@ -48,6 +49,27 @@ async function initiateCheckoutCompanion(node, product, variant, billingProfile 
 }
 
 async function beginSupremeCheckout(node, billingProfile, product, variant) {
+  // URL checker to ensure checkout is on-track
+  let webURL = node.checkoutWindow.webContents.getURL();
+  if (webURL == 'https://www.supremenewyork.com/') { // cart unavailable
+    window.tasksApp.toggleNodeEnabled(node, false, true, { color: "red", description: `${window.parent.tryTranslate('Cart Unavailable')} [${window.parent.tryTranslate(variant.Name)}] ` });
+
+    // send notification
+    window.parent.sendNotification({
+      title: "Cart Unavailable",
+      description: `${product.Name} (${window.parent.tryTranslate(variant.Name)})`,
+      statusColor: "red",
+      clickFunc: node == window.parent.frames['monitors-frame'].frames['checkout-modal'].modalOptions.node ? "borderApp.switchToPage(-1, 'Monitors');" : "window.frames['analytics-frame'].openSubpage('inventory'); borderApp.switchToPage(-1, 'Analytics');", // evaluated at main level
+      imageLabel: "supreme",
+      data: { node: node, billingProfile: billingProfile, product: product, variant: variant }
+    });
+
+    // add statistics
+    window.parent.addStatistic('Tasks', 'Failed Tasks');
+    window.parent.addCheckoutStatistic('failed', 'supreme');
+    return;
+  }
+
   // check current checkout step to provide correct actions/fields to fill
   node.currentCheckoutStep = await getCurrentCheckoutStep('supreme', node);
   switch (node.currentCheckoutStep) {
@@ -57,11 +79,11 @@ async function beginSupremeCheckout(node, billingProfile, product, variant) {
       // send notification
       window.parent.sendNotification({
         title: "Size Unavailable (Sold Out)",
-        description: product.Name,
+        description: `${product.Name} (${window.parent.tryTranslate(variant.Name)})`,
         statusColor: "red",
         clickFunc: node == window.parent.frames['monitors-frame'].frames['checkout-modal'].modalOptions.node ? "borderApp.switchToPage(-1, 'Monitors');" : "window.frames['analytics-frame'].openSubpage('inventory'); borderApp.switchToPage(-1, 'Analytics');", // evaluated at main level
         imageLabel: "supreme",
-        timestamp: new Date().getTime()
+        data: { node: node, billingProfile: billingProfile, product: product, variant: variant }
       });
 
       // add statistics
@@ -74,11 +96,11 @@ async function beginSupremeCheckout(node, billingProfile, product, variant) {
       // send notification
       window.parent.sendNotification({
         title: "Checked Out!",
-        description: product.Name,
+        description: `${product.Name} (${window.parent.tryTranslate(variant.Name)})`,
         statusColor: "green",
         clickFunc: node == window.parent.frames['monitors-frame'].frames['checkout-modal'].modalOptions.node ? "borderApp.switchToPage(-1, 'Monitors');" : "window.frames['analytics-frame'].openSubpage('inventory'); borderApp.switchToPage(-1, 'Analytics');", // evaluated at main level
         imageLabel: "supreme",
-        timestamp: new Date().getTime()
+        data: { node: node, billingProfile: billingProfile, product: product, variant: variant }
       });
 
       // add to inventory
@@ -158,11 +180,11 @@ async function beginSupremeCheckout(node, billingProfile, product, variant) {
           // send notification
           window.parent.sendNotification({
             title: "Card Declined",
-            description: product.Name,
+            description: `${product.Name} (${window.parent.tryTranslate(variant.Name)})`,
             statusColor: "red",
             clickFunc: node == window.parent.frames['monitors-frame'].frames['checkout-modal'].modalOptions.node ? "borderApp.switchToPage(-1, 'Monitors');" : "window.frames['analytics-frame'].openSubpage('inventory'); borderApp.switchToPage(-1, 'Analytics');", // evaluated at main level
             imageLabel: "supreme",
-            timestamp: new Date().getTime()
+            data: { node: node, billingProfile: billingProfile, product: product, variant: variant }
           });
 
           // add statistics
@@ -220,10 +242,8 @@ async function beginSupremeCheckout(node, billingProfile, product, variant) {
 };
 
 async function beginShopifyCheckout(node, billingProfile, product, variant) {
-
-  let webURL = node.checkoutWindow.webContents.getURL();
-
   // URL checker to ensure checkout is on-track
+  let webURL = node.checkoutWindow.webContents.getURL();
   if (!webURL.includes('/checkouts/')) { // all checkout pages have '/checkouts/' on it
     if (webURL.includes('account/login')) { // if: 'account/login' IS in URL, then launch login helper (notify awaiting authentication)
       window.setNodeStatus(node, "orange", `${window.parent.tryTranslate('Authentication Required')}`);
@@ -235,11 +255,11 @@ async function beginShopifyCheckout(node, billingProfile, product, variant) {
       // send notification
       window.parent.sendNotification({
         title: "Cart Unavailable",
-        description: product.Name,
+        description: `${product.Name} (${window.parent.tryTranslate(variant.Name)})`,
         statusColor: "red",
         clickFunc: node == window.parent.frames['monitors-frame'].frames['checkout-modal'].modalOptions.node ? "borderApp.switchToPage(-1, 'Monitors');" : "window.frames['analytics-frame'].openSubpage('inventory'); borderApp.switchToPage(-1, 'Analytics');", // evaluated at main level
         imageLabel: "shopify",
-        timestamp: new Date().getTime()
+        data: { node: node, billingProfile: billingProfile, product: product, variant: variant }
       });
 
       // add statistics
@@ -258,11 +278,11 @@ async function beginShopifyCheckout(node, billingProfile, product, variant) {
       // send notification
       window.parent.sendNotification({
         title: "Size Unavailable (Sold Out)",
-        description: product.Name,
+        description: `${product.Name} (${window.parent.tryTranslate(variant.Name)})`,
         statusColor: "red",
         clickFunc: node == window.parent.frames['monitors-frame'].frames['checkout-modal'].modalOptions.node ? "borderApp.switchToPage(-1, 'Monitors');" : "window.frames['analytics-frame'].openSubpage('inventory'); borderApp.switchToPage(-1, 'Analytics');", // evaluated at main level
         imageLabel: "shopify",
-        timestamp: new Date().getTime()
+        data: { node: node, billingProfile: billingProfile, product: product, variant: variant }
       });
 
       // add statistics
@@ -275,11 +295,11 @@ async function beginShopifyCheckout(node, billingProfile, product, variant) {
       // send notification
       window.parent.sendNotification({
         title: "Checked Out!",
-        description: product.Name,
+        description: `${product.Name} (${window.parent.tryTranslate(variant.Name)})`,
         statusColor: "green",
         clickFunc: node == window.parent.frames['monitors-frame'].frames['checkout-modal'].modalOptions.node ? "borderApp.switchToPage(-1, 'Monitors');" : "window.frames['analytics-frame'].openSubpage('inventory'); borderApp.switchToPage(-1, 'Analytics');", // evaluated at main level
         imageLabel: "shopify",
-        timestamp: new Date().getTime()
+        data: { node: node, billingProfile: billingProfile, product: product, variant: variant }
       });
 
       // add to inventory
@@ -380,11 +400,11 @@ async function beginShopifyCheckout(node, billingProfile, product, variant) {
           // send notification
           window.parent.sendNotification({
             title: "Card Declined",
-            description: product.Name,
+            description: `${product.Name} (${window.parent.tryTranslate(variant.Name)})`,
             statusColor: "red",
             clickFunc: node == window.parent.frames['monitors-frame'].frames['checkout-modal'].modalOptions.node ? "borderApp.switchToPage(-1, 'Monitors');" : "window.frames['analytics-frame'].openSubpage('inventory'); borderApp.switchToPage(-1, 'Analytics');", // evaluated at main level
             imageLabel: "shopify",
-            timestamp: new Date().getTime()
+            data: { node: node, billingProfile: billingProfile, product: product, variant: variant }
           });
 
           // add statistics

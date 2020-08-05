@@ -99,8 +99,7 @@ window.settingsApp = new Vue({
         description: "This is what a notification looks like",
         statusColor: "orange",
         clickFunc: "borderApp.switchToPage(-1, 'Settings');", // evaluated at main level
-        imageLabel: "silhouette",
-        timestamp: new Date().getTime()
+        imageLabel: "silhouette"
       });
     },
     getLanguageImage: function(language) {

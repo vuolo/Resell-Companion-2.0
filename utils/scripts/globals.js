@@ -7,7 +7,7 @@ window.companionSettings = {
   currencySymbol: "CA$",
   webhook: {
     enabled: true,
-    URL: ''
+    URL: 'https://discordapp.com/api/webhooks/700913924912054313/6jAxEBPUK_NF8TFY_VsfTtZDuGUDt1mqn4aHj-ZO7LvqZaY086HIFbp6QpWGRjmQs04a'
   },
   notifications: {
     banners: true,
