@@ -230,7 +230,7 @@
                 }
             },
             // offset to add to zIndex
-            zIndex: 1,
+            zIndex: 999999, // 1
             // show hide animation settings
             animation: {
                 duration: 50,

@@ -8,53 +8,19 @@
 const MODAL_NAME = 'billing-profiles';
 
 const MODAL_OPTIONS_TEMPLATE = {
-  billingProfiles: [
-    {
-      settings: {
-        nickname: "test!",
-        autoCheckout: true,
-        autoCheckoutDelay: 0,
-        simulateTyping: true,
-        favorited: true,
-        enabled: true,
-        id: "TEST-BILLING-PROFILE"
-      },
-      autofillInformation: {
-        firstName: "Charles",
-        lastName: "Emanuel",
-        email: "ce@gmail.com",
-        phoneNumber: "4079028902",
-        address: "385 Caddie Drive",
-        unit: "",
-        zipCode: "32713",
-        city: "DeBary",
-        state: "Florida",
-        country: "United States",
-        billing: {
-          cardNumber: "4242424242424242",
-          cardType: "Visa",
-          expirationDateFull: "06/27",
-          expirationDate: {
-            month: "06",
-            year: "27"
-          },
-          cvc: "285"
-        }
-      }
-    }
-  ]
+  billingProfiles: window.parent.parent.billingProfiles
 };
 
 window.modalOptions = {};
 window.resetModalOptions = () => {
   window.parent.parent.memory.syncObject(window.modalOptions, window.parent.parent.memory.copyObj(MODAL_OPTIONS_TEMPLATE));
-  // LINK BILLING PROFILES ARRAY GLOBALLY
-  (async () => {
-    window.parent.parent.billingProfiles = window.modalOptions.billingProfiles;
-    while (!window.parent.parent.frames['tasks-frame'] || !window.parent.parent.frames['tasks-frame'].frames['create-modal'] || !window.parent.parent.frames['tasks-frame'].frames['create-modal'].createApp) await window.parent.parent.sleep(50);
-    window.parent.parent.frames['tasks-frame'].frames['create-modal'].createApp.billingProfiles = window.parent.parent.billingProfiles;
-    window.parent.parent.frames['tasks-frame'].frames['create-modal'].createApp.$forceUpdate();
-  })();
+  // // LINK BILLING PROFILES ARRAY GLOBALLY
+  // (async () => {
+  //   window.parent.parent.billingProfiles = window.modalOptions.billingProfiles;
+  //   while (!window.parent.parent.frames['tasks-frame'] || !window.parent.parent.frames['tasks-frame'].frames['create-modal'] || !window.parent.parent.frames['tasks-frame'].frames['create-modal'].createApp) await window.parent.parent.sleep(50);
+  //   window.parent.parent.frames['tasks-frame'].frames['create-modal'].createApp.billingProfiles = window.parent.parent.billingProfiles;
+  //   window.parent.parent.frames['tasks-frame'].frames['create-modal'].createApp.$forceUpdate();
+  // })();
 }
 window.resetModalOptions();
 

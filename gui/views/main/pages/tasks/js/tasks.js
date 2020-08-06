@@ -11,7 +11,7 @@ const cpfmClient = ShopifyBuy.buildClient({
   storefrontAccessToken: "574d05e81d915e3c13a16c514c678649"
 });
 
-window.tasks = [];
+window.tasks = window.parent.tasks;
 
 window.modals = {
   'create': {
@@ -75,13 +75,13 @@ window.tasksApp = new Vue({
       }
       return 0;
     },
-    toggleNodeEnabled: function(node, enabled = null, canceled = false, statusMessage = null) {
-      if (node.configuration.checkoutMethod.useCheckoutCompanion && node.configuration.checkoutMethod.billingProfile == "unselected" && enabled == null) return;
-      if (node.status.color == 'green') return;
+    toggleNodeEnabled: function(node, enabled = null, canceled = false, statusMessage = null, force = false) {
+      if ((node.configuration.checkoutMethod.useCheckoutCompanion && node.configuration.checkoutMethod.billingProfile == "unselected" && enabled == null) || force) return;
+      if (node.status.color == 'green' && !force) return;
       if (enabled != null) node.enabled = enabled;
       else node.enabled = !node.enabled;
       if (node.enabled) {
-        if (node.statuses) while (node.statuses.length > 0) node.statuses.pop();
+        if (node.statuses) while (node.statuses.length > 0) node.statuses.pop(); // clear status cache
         window.setNodeStatus(node, "yellow", "Monitoring...");
       } else {
         if (!canceled) window.setNodeStatus(node, "red", "Disabled");
@@ -111,7 +111,7 @@ window.tasksApp = new Vue({
       }
       if (statusMessage) window.setNodeStatus(node, statusMessage.color, statusMessage.description);
       if (node.status.color == 'green') try { if (node == window.parent.parent.frames['monitors-frame'].frames['checkout-modal'].modalOptions.node) window.parent.parent.frames['monitors-frame'].frames['checkout-modal'].triggerSuccessful(); } catch(err) {}
-      if (node.status.color == 'red') try { if (node == window.parent.parent.frames['monitors-frame'].frames['checkout-modal'].modalOptions.node) window.parent.parent.frames['monitors-frame'].frames['checkout-modal'].modalOptions.isFailed = true } catch(err) {}
+      if (node.status.color == 'red') try { if (node == window.parent.parent.frames['monitors-frame'].frames['checkout-modal'].modalOptions.node) window.parent.parent.frames['monitors-frame'].frames['checkout-modal'].triggerFailed(); } catch(err) {}
       if (!node.enabled && (node.status.color != 'red' && node.status.color != 'green')) try { window.parent.parent.frames['monitors-frame'].frames['checkout-modal'].checkoutApp.closeModal(); } catch(err) {}
     },
     openNewTaskModal: async function() {
@@ -211,7 +211,8 @@ window.tasksApp = new Vue({
             date: separatedDate.date,
             time: separatedDate.time,
             timestamp: getTimestampFromDateAndTime(separatedDate.date, separatedDate.time)
-          }
+          },
+          id: window.parent.makeid(10) // assign a new id to each task product
         },
         nodes: []
       };
@@ -425,7 +426,20 @@ window.tryLaunchTask = (task, product = null) => {
 };
 
 window.tryLaunchTasks = (product = null) => {
-  for (var task of window.tasks) {
-    window.tryLaunchTask(task, product);
-  }
+  for (var task of window.tasks) window.tryLaunchTask(task, product);
 };
+
+window.resetTaskNode = (node) => {
+  // FORCE disable task node
+  window.tasksApp.toggleNodeEnabled(node, false, false, null, true);
+  // enable task node
+  window.tasksApp.toggleNodeEnabled(node, true);
+};
+
+window.getTaskByID = (id) => {
+  for (var task of window.tasks) if (task.configuration.id == id) return task;
+}
+
+window.getTaskNodeByID = (id) => {
+  for (var node of window.tasks[tasksApp.activeTaskIndex].nodes) if (node.id == id) return node;
+}

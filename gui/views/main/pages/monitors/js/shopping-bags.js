@@ -12,7 +12,7 @@ function getTotalBagQuantity(shoppingBagIndex) {
 }
 
 // loop through all chars in price (string) and stop when you get to a number
-function getCurrencyFromPrice(price) {
+function getCurrencySymbolFromPrice(price) {
   let outCurrency = "";
   for (var char of price.toString()) {
     let foundNumber = false;
@@ -29,6 +29,7 @@ function getCurrencyFromPrice(price) {
   }
   return outCurrency;
 }
+window.getCurrencySymbolFromPrice = getCurrencySymbolFromPrice;
 
 function getTotalBagValue(shoppingBagIndex, includeCurrency = false, useCommas = false) {
   let totalValue = 0;
@@ -37,7 +38,7 @@ function getTotalBagValue(shoppingBagIndex, includeCurrency = false, useCommas =
   }
   if (includeCurrency) {
     if (shoppingBags[shoppingBagIndex].variants.length > 0) {
-      const currency = getCurrencyFromPrice(shoppingBags[shoppingBagIndex].variants[0].parent.Price);
+      const currency = getCurrencySymbolFromPrice(shoppingBags[shoppingBagIndex].variants[0].parent.Price);
       let condensedTotalValue = parseFloat(totalValue).toFixed(2);
       if (useCommas) return currency + window.parent.numberWithCommas(condensedTotalValue);
       return currency + condensedTotalValue;
@@ -51,7 +52,7 @@ function getTotalBagValue(shoppingBagIndex, includeCurrency = false, useCommas =
 function getBagVariantValue(variant, includeCurrency = false, useCommas = false) {
   let totalValue = Number(variant.parent.Price.replace(/[^0-9\.]+/g,"")) * variant.quantity;
   if (includeCurrency) {
-    const currency = getCurrencyFromPrice(variant.parent.Price);
+    const currency = getCurrencySymbolFromPrice(variant.parent.Price);
     let condensedTotalValue = parseFloat(totalValue).toFixed(2);
     if (useCommas) return currency + window.parent.numberWithCommas(condensedTotalValue);
     return currency + condensedTotalValue;

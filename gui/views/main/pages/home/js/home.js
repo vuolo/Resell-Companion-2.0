@@ -525,7 +525,6 @@ async function initalCalendarSetup() {
 }
 
 window.tryTranslateAlertMessages = async (language = window.parent.companionSettings.language || "en") => {
-  if (language == "en") return;
   for (var alertMessage of alertMessages) {
     if (!alertMessage.originalMessage && language == "en") return;
     if (!alertMessage.originalMessage) alertMessage.originalMessage = alertMessage.message;

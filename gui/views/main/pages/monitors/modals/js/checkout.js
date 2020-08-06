@@ -64,6 +64,7 @@ window.checkoutApp = new Vue({
       }
     },
     closeModal: function() {
+      // stop task
       if (window.modalOptions.node) window.parent.parent.frames['tasks-frame'].tasksApp.toggleNodeEnabled(window.modalOptions.node, false, true);
       window.parent.modals[MODAL_NAME].visible = false;
       window.resetModalOptions();
@@ -71,7 +72,16 @@ window.checkoutApp = new Vue({
   }
 });
 
+window.triggerFailed = () => {
+  if (window.modalOptions.isFailed) return;
+  window.modalOptions.isFailed = true;
+
+  // shake modal
+  $(".Modal_Class").effect("shake");
+};
+
 window.triggerSuccessful = () => {
+  if (window.modalOptions.isSuccessful) return;
   window.modalOptions.isSuccessful = true;
 
   // add items to inventory

@@ -9,6 +9,7 @@ const PAYMENT_FIELDS = [
 ];
 
 async function initiateCheckoutCompanion(node, product, variant, billingProfile = null, proxy = null, overrideURL = "") {
+  if (!node.enabled) return; // dont allow to be ran if disabled
   // proxy = "207.229.93.66:1074";
   node.host = product.Store;
   node.stepsInitialized = {};
@@ -49,30 +50,26 @@ async function initiateCheckoutCompanion(node, product, variant, billingProfile 
 }
 
 async function beginSupremeCheckout(node, billingProfile, product, variant) {
-  // URL checker to ensure checkout is on-track
-  let webURL = node.checkoutWindow.webContents.getURL();
-  if (webURL == 'https://www.supremenewyork.com/') { // cart unavailable
-    window.tasksApp.toggleNodeEnabled(node, false, true, { color: "red", description: `${window.parent.tryTranslate('Cart Unavailable')} [${window.parent.tryTranslate(variant.Name)}] ` });
-
-    // send notification
-    window.parent.sendNotification({
-      title: "Cart Unavailable",
-      description: `${product.Name} (${window.parent.tryTranslate(variant.Name)})`,
-      statusColor: "red",
-      clickFunc: node == window.parent.frames['monitors-frame'].frames['checkout-modal'].modalOptions.node ? "borderApp.switchToPage(-1, 'Monitors');" : "window.frames['analytics-frame'].openSubpage('inventory'); borderApp.switchToPage(-1, 'Analytics');", // evaluated at main level
-      imageLabel: "supreme",
-      data: { node: node, billingProfile: billingProfile, product: product, variant: variant }
-    });
-
-    // add statistics
-    window.parent.addStatistic('Tasks', 'Failed Tasks');
-    window.parent.addCheckoutStatistic('failed', 'supreme');
-    return;
-  }
-
   // check current checkout step to provide correct actions/fields to fill
   node.currentCheckoutStep = await getCurrentCheckoutStep('supreme', node);
   switch (node.currentCheckoutStep) {
+    case 'cart_unavailable': // the cart has been lost.
+      window.tasksApp.toggleNodeEnabled(node, false, true, { color: "red", description: `${window.parent.tryTranslate('Cart Unavailable')} [${window.parent.tryTranslate(variant.Name)}] ` });
+
+      // send notification
+      window.parent.sendNotification({
+        title: "Cart Unavailable",
+        description: `${product.Name} (${window.parent.tryTranslate(variant.Name)})`,
+        statusColor: "red",
+        clickFunc: node == window.parent.frames['monitors-frame'].frames['checkout-modal'].modalOptions.node ? "borderApp.switchToPage(-1, 'Monitors');" : "window.frames['analytics-frame'].openSubpage('inventory'); borderApp.switchToPage(-1, 'Analytics');", // evaluated at main level
+        imageLabel: "supreme",
+        data: { node: node, billingProfile: billingProfile, product: product, variant: variant }
+      });
+
+      // add statistics
+      window.parent.addStatistic('Tasks', 'Failed Tasks');
+      window.parent.addCheckoutStatistic('failed', 'supreme');
+      return;
     case 'stock_problems': // detect if item is OOS // TODO: ADD DETECTION FOR THIS. (THIS IS WHEN IT IS AT THE CART BEFORE TYPING IN INFO.)
       window.tasksApp.toggleNodeEnabled(node, false, true, { color: "red", description: `${window.parent.tryTranslate('Size Unavailable (Sold Out)')} [${window.parent.tryTranslate(variant.Name)}] ` });
 
@@ -242,14 +239,17 @@ async function beginSupremeCheckout(node, billingProfile, product, variant) {
 };
 
 async function beginShopifyCheckout(node, billingProfile, product, variant) {
-  // URL checker to ensure checkout is on-track
-  let webURL = node.checkoutWindow.webContents.getURL();
-  if (!webURL.includes('/checkouts/')) { // all checkout pages have '/checkouts/' on it
-    if (webURL.includes('account/login')) { // if: 'account/login' IS in URL, then launch login helper (notify awaiting authentication)
+  // update checkout URL if unset/unknown
+  if (!node.checkoutURL || node.checkoutURL.includes('unknown-checkout')) node.checkoutURL = await getActiveCheckoutURL(node);
+
+  // check current checkout step to provide correct actions/fields to fill
+  node.currentCheckoutStep = await getCurrentCheckoutStep('shopify', node);
+  switch (node.currentCheckoutStep) {
+    case 'authentication_required':
       window.setNodeStatus(node, "orange", `${window.parent.tryTranslate('Authentication Required')}`);
       //   - ONLY prompt for ONE task (ex: if 3 tasks all require authentication... if one is already launched then await for it to be closed (setInterval check and whenever launches, clearInterval).)
       return; // TODO: remove this and await for authentication (login) to be correctly inputted and logged in before sending a signal to all other tasks awaiting authentication (or about to, if about to and this has executed, then restart task)
-    } else { // else: the cart has been lost.
+    case 'cart_unavailable': // the cart has been lost.
       window.tasksApp.toggleNodeEnabled(node, false, true, { color: "red", description: `${window.parent.tryTranslate('Cart Unavailable')} [${window.parent.tryTranslate(variant.Name)}] ` });
 
       // send notification
@@ -266,12 +266,6 @@ async function beginShopifyCheckout(node, billingProfile, product, variant) {
       window.parent.addStatistic('Tasks', 'Failed Tasks');
       window.parent.addCheckoutStatistic('failed', 'shopify');
       return;
-    }
-  }
-
-  // check current checkout step to provide correct actions/fields to fill
-  node.currentCheckoutStep = await getCurrentCheckoutStep('shopify', node);
-  switch (node.currentCheckoutStep) {
     case 'stock_problems': // detect if item is OOS
       window.tasksApp.toggleNodeEnabled(node, false, true, { color: "red", description: `${window.parent.tryTranslate('Size Unavailable (Sold Out)')} [${window.parent.tryTranslate(variant.Name)}] ` });
 
@@ -562,12 +556,27 @@ async function getPaymentNotice(type, node) {
 };
 
 async function getCurrentCheckoutStep(type, node) {
+
+  // get current url of checkout
+  let webURL = node.checkoutWindow.webContents.getURL();
+
   switch (type) {
     case 'shopify':
+      // URL checker to ensure checkout is on-track
+      if (!webURL.includes('/checkouts/')) { // all checkout pages have '/checkouts/' on it
+        if (webURL.includes('account/login')) return 'authentication_required'; // if: 'account/login' IS in URL, then launch login helper (notify awaiting authentication)
+        else return 'cart_unavailable' // else: the cart has been lost.
+      }
+
+      // inject a script to get the current checkout step
       return await node.checkoutWindow.webContents.executeJavaScript(`
-        Shopify.Checkout.step;
+        document.querySelector('.product__status--sold-out') ? 'stock_problems' : Shopify.Checkout.step;
         `, true);
     case 'supreme':
+      // URL checker to ensure checkout is on-track
+      if (webURL == 'https://www.supremenewyork.com/') return 'cart_unavailable'; // cart unavailable
+
+      // inject a script to get the current checkout step
       return await node.checkoutWindow.webContents.executeJavaScript(`
         (() => {
           if (document.querySelector(".tab-confirmation").classList.contains("selected")) return 'thank_you';
@@ -575,6 +584,12 @@ async function getCurrentCheckoutStep(type, node) {
         })();`, true);
   }
 };
+
+async function getActiveCheckoutURL(node) {
+  return await node.checkoutWindow.webContents.executeJavaScript(`
+    \`https://\${Shopify.Checkout ? Shopify.Checkout.apiHost : 'resell.monster'}/1337/checkouts/\${Shopify.Checkout ? Shopify.Checkout.token : 'unknown-checkout'}\`
+    `, true);
+}
 
 async function fillField(node, elementQuery, value, resetField = false) {
   if (!node.DOMReady) return;

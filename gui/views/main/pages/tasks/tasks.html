@@ -15,6 +15,7 @@
 	<script src="../../../../../utils/downloaded/jquery.js" type="text/javascript"></script>
 	<script src="../../../../../utils/downloaded/jquery.contextMenu.js" type="text/javascript"></script>
 	<script src="../../../../../utils/downloaded/jquery.ui.position.min.js" type="text/javascript"></script>
+	<script src="../../../../../utils/downloaded/jquery-ui.min.js" type="text/javascript"></script>
 
 	<link rel="stylesheet" type="text/css" href="../../../../../utils/downloaded/jquery.contextMenu.css"/>
 	<link rel="stylesheet" type="text/css" href="../../../../../utils/downloaded/fontawesome/css/all.css"/>
@@ -45,7 +46,7 @@
 					</template>
 
 					<template v-for="(node, nodeIndex) in tasks[activeTaskIndex].nodes">
-						<div class="Group_215_Class" v-bind:style="{ top: (nodeIndex * (52 + 8)) + 6 + 'px' }">
+						<div v-bind:id="node.id" class="Group_215_Class" v-bind:style="{ top: (nodeIndex * (52 + 8)) + 6 + 'px' }">
 
 							<div class="Row_1_Class">
 								<svg class="Row_1_Rectangle">
@@ -372,7 +373,7 @@
 				<!-- Resell Monster team (michael) -->
 
 				<template v-for="(task, taskIndex) in tasks">
-					<div class="Product_Class clickable hover-opacity" v-bind:style="{ top: (taskIndex * (26 + 5)) + 'px' }" v-on:click="setActiveTask(taskIndex);">
+					<div v-bind:id="task.configuration.id" class="Product_Class clickable hover-opacity" v-bind:style="{ top: (taskIndex * (26 + 5)) + 'px' }" v-on:click="setActiveTask(taskIndex);">
 						<svg class="Product_Rectangle" v-bind:style="{ opacity: activeTaskIndex == taskIndex ? 0.5 : 1 }">
 							<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Product_Rectangle_Class" rx="10" ry="10" x="0" y="0" width="222" height="26">
 							</rect>
@@ -427,11 +428,18 @@
 		const CONTEXT_MENUS = [
 			{
 				selector: '.Product_Class',
-				// TODO: add functionality for each context menu item click
 				callback: function(key, options) {
 					const element = options.$trigger[0];
-					console.log(key);
-					// console.log(element);
+					let task = window.getTaskByID(element.id);
+					switch (key) {
+						case 'reset_tasks':
+							for (var node of task.nodes) window.resetTaskNode(node);
+							return;
+						case 'remove_tasks':
+							while (task.nodes.length > 0) task.nodes.pop();
+							return;
+						case 'remove': return window.tasksApp.removeTask(window.tasks.indexOf(task));
+					}
 				},
 				items: {
 					"reset_tasks": {name: "Reset All Tasks", icon: "fas fa-redo-alt" },
@@ -441,11 +449,14 @@
 			},
 			{
 				selector: '.Group_215_Class',
-				// TODO: add functionality for each context menu item click
 				callback: function(key, options) {
 					const element = options.$trigger[0];
-					console.log(key);
-					// console.log(element);
+					let taskNode = window.getTaskNodeByID(element.id);
+					switch (key) {
+						case 'reset':  return window.resetTaskNode(taskNode);
+						case 'remove': return window.tasks[tasksApp.activeTaskIndex].nodes.splice(window.tasks[tasksApp.activeTaskIndex].nodes.indexOf(taskNode), 1);
+						case 'toggle': return window.tasksApp.toggleNodeEnabled(taskNode);
+					}
 				},
 				items: {
 					"reset": {name: "Reset Task(s)", icon: "fas fa-redo-alt" },

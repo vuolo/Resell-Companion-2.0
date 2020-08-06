@@ -802,6 +802,10 @@ window.getProductByMD5 = (md5) => {
   for (var product of window.products) if (product.MD5 == md5) return product;
 };
 
+window.getStoreByURL = (storeUrl) => {
+  for (var category of window.categories) for (var store of category.stores) if (store.urls.includes(storeUrl)) return store;
+};
+
 const shoppingBagArea = document.querySelector('.Shopping_Bag_Area_Class');
 const shoppingBagIcon = document.querySelector('.Shopping_Bag_g_Class');
 

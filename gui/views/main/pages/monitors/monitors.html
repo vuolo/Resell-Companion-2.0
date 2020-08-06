@@ -104,7 +104,7 @@
 					<div class="Store_Dropdown_Class" v-if="category.opened">
 
 						<template v-for="(store, storeIndex) in category.stores">
-							<div v-if="store.favorited" class="Store_Class clickable hover-opacity" v-on:click="setStoreActive(category, storeIndex)" onclick="document.getElementById('productTable').scrollTop = 0;" v-bind:style="{ top: (getCategoryTop(categoryIndex) - 66 - 6) + (storeIndex * (20 + 3)) + 5 + 'px' }">
+							<div v-if="store.favorited" v-bind:store_url="store.urls.length > 0 ? store.urls[0] : ''" class="Store_Class clickable hover-opacity" v-on:click="setStoreActive(category, storeIndex)" onclick="document.getElementById('productTable').scrollTop = 0;" v-bind:style="{ top: (getCategoryTop(categoryIndex) - 66 - 6) + (storeIndex * (20 + 3)) + 5 + 'px' }">
 								<svg class="Shopify_Rectangle">
 									<rect v-bind:fill="category.activeIndex == storeIndex ? getThemeColor('rgba(243,224,185,1)') : (storeIndex % 2 == 0 ? getThemeColor('rgba(247,247,247,1)') : getThemeColor('rgba(255,255,255,1)'))" class="Shopify_Rectangle_Class" rx="5" ry="5" x="0" y="0" width="176" height="20">
 									</rect>
@@ -149,8 +149,12 @@
 						</svg>
 					</div>
 
-					<div class="Product_Site_ff_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), width: getProductCardWidth(product) + 'px' }">
-						<span class="clickable hover-underline text-selectable" v-on:click="openURL(product.Store, configureModal.preferences.useDefaultBrowser, { title: 'Resell Companion — ' + product.StoreName }); addStatistic('Monitors', 'Products Opened');">{{product.Store}}</span>
+					<div class="Product_Title_gj_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(getProductCardWidth(product) - (473-415), product.Name, 14, 'px', 'bold', 'SF Pro Text') }">
+						<span class="clickable hover-underline text-selectable" v-on:click="openURL(product.OverrideURL.length > 0 ? product.OverrideURL : product.URL, configureModal.preferences.useDefaultBrowser, { title: 'Resell Companion — ' + product.Name }); addStatistic('Monitors', 'Products Opened');">{{product.Name.length > 0 ? product.Name : tryTranslate('Unknown Product')}}</span>
+					</div>
+
+					<div class="Product_Image_Class">
+						<img class="clickable hover-opacity" style="display: table-cell; vertical-align: middle; max-width: 143px; max-height: 143px; border-radius: 20px; margin-left: auto; margin-right: auto;" v-bind:class="{ transparentify: companionSettings.theme == 'light' }" v-show="!product.isDisplayingMoreInfo" v-bind:src="product.ImageURL" v-on:click="openURL(product.OverrideURL.length > 0 ? product.OverrideURL : product.URL, configureModal.preferences.useDefaultBrowser, { title: 'Resell Companion — ' + product.Name }); addStatistic('Monitors', 'Products Opened');" onerror="this.src='../../../../images/unknownImage.png'">
 					</div>
 
 					<div class="Sizes_Table_Class" v-show="!product.isDisplayingMoreInfo">
@@ -168,7 +172,7 @@
 
 						<template v-for="(variant, variantIndex) in product.Variants">
 							<div class="ID4_Class" v-bind:style="{ top: ( (getVariantRowNumber(product.Variants, variantIndex)-1) * (42 - 25) ) + 6 + 'px', left: ( (getVariantColumnNumber(product.Variants, variantIndex)-1) * getVariantGridWidth(product.Variants) ) + 'px', width: getVariantGridWidth(product.Variants) + 'px', opacity: variant.Available ? 1 : 0.66, color: getThemeColor('rgba(30,65,166,1)') }">
-								<span class="clickable hover-opacity hover-underline" v-on:click="handleVariantClick($event, product, variant)">{{tryTranslate(variant.Name)}}</span>
+								<span class="clickable hover-opacity hover-underline text-selectable" v-on:click="handleVariantClick($event, product, variant)">{{tryTranslate(variant.Name)}}</span>
 							</div>
 						</template>
 
@@ -178,8 +182,8 @@
 						<span class="text-selectable">{{product.Price}}</span>
 					</div>
 
-					<div class="Product_Image_Class">
-						<img class="clickable hover-opacity" style="display: table-cell; vertical-align: middle; max-width: 143px; max-height: 143px; border-radius: 20px; margin-left: auto; margin-right: auto;" v-bind:class="{ transparentify: companionSettings.theme == 'light' }" v-show="!product.isDisplayingMoreInfo" v-bind:src="product.ImageURL" v-on:click="openURL(product.OverrideURL.length > 0 ? product.OverrideURL : product.URL, configureModal.preferences.useDefaultBrowser, { title: 'Resell Companion — ' + product.Name }); addStatistic('Monitors', 'Products Opened');" onerror="this.src='../../../../images/unknownImage.png'">
+					<div class="Product_Site_ff_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), width: getProductCardWidth(product) + 'px' }">
+						<span class="clickable hover-underline text-selectable" v-on:click="openURL(product.Store, configureModal.preferences.useDefaultBrowser, { title: 'Resell Companion — ' + product.StoreName }); addStatistic('Monitors', 'Products Opened');">{{product.Store}}</span>
 					</div>
 
 					<!-- <div class="Info_Icon_gf_Class hover-opacity" @mouseover="product.isDisplayingMoreInfo = true" @mouseleave="product.isDisplayingMoreInfo = false"> -->
@@ -197,16 +201,16 @@
 							</path>
 						</svg>
 					</div>
-					<div class="Initial_Pickup_Area_Class" v-show="product.isDisplayingMoreInfo">
-						<svg class="Initial_Pickup_Rectangle">
-							<rect v-bind:fill="getThemeColor('rgba(242,242,242,1)')" class="Initial_Pickup_Rectangle_Class" rx="10" ry="10" x="0" y="0" width="435" height="21">
+					<div class="Collection_Area_Class" v-show="product.isDisplayingMoreInfo">
+						<svg class="Collection_Rectangle">
+							<rect v-bind:fill="getThemeColor('rgba(242,242,242,1)')" class="Collection_Rectangle_Class" rx="10" ry="10" x="0" y="0" width="435" height="21">
 							</rect>
 						</svg>
-						<div class="ID5_26_2020___10_00_02_PM_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-							<span class="text-selectable">{{formatTimestamp(product.Timestamp)}}</span>
+						<div class="Ronnies_Kid_Collection_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+							<span class="text-selectable">{{product.Collection.length > 0 ? product.Collection : tryTranslate('N/A')}}</span>
 						</div>
-						<div class="Initial_Pickup_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-							<span>{{tryTranslate('Initial Pickup')}}</span>
+						<div class="Collection_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+							<span>{{tryTranslate('Collection')}}</span>
 						</div>
 					</div>
 					<div class="Launch_Date_Area_Class" v-show="product.isDisplayingMoreInfo">
@@ -221,21 +225,17 @@
 							<span>{{tryTranslate('Launch Date')}}</span>
 						</div>
 					</div>
-					<div class="Collection_Area_Class" v-show="product.isDisplayingMoreInfo">
-						<svg class="Collection_Rectangle">
-							<rect v-bind:fill="getThemeColor('rgba(242,242,242,1)')" class="Collection_Rectangle_Class" rx="10" ry="10" x="0" y="0" width="435" height="21">
+					<div class="Initial_Pickup_Area_Class" v-show="product.isDisplayingMoreInfo">
+						<svg class="Initial_Pickup_Rectangle">
+							<rect v-bind:fill="getThemeColor('rgba(242,242,242,1)')" class="Initial_Pickup_Rectangle_Class" rx="10" ry="10" x="0" y="0" width="435" height="21">
 							</rect>
 						</svg>
-						<div class="Ronnies_Kid_Collection_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-							<span class="text-selectable">{{product.Collection.length > 0 ? product.Collection : tryTranslate('N/A')}}</span>
+						<div class="ID5_26_2020___10_00_02_PM_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+							<span class="text-selectable">{{formatTimestamp(product.Timestamp)}}</span>
 						</div>
-						<div class="Collection_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
-							<span>{{tryTranslate('Collection')}}</span>
+						<div class="Initial_Pickup_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)') }">
+							<span>{{tryTranslate('Initial Pickup')}}</span>
 						</div>
-					</div>
-
-					<div class="Product_Title_gj_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), fontSize: confineTextWidth(getProductCardWidth(product) - (473-415), product.Name, 14, 'px', 'bold', 'SF Pro Text') }">
-						<span class="clickable hover-underline text-selectable" v-on:click="openURL(product.OverrideURL.length > 0 ? product.OverrideURL : product.URL, configureModal.preferences.useDefaultBrowser, { title: 'Resell Companion — ' + product.Name }); addStatistic('Monitors', 'Products Opened');">{{product.Name.length > 0 ? product.Name : tryTranslate('Unknown Product')}}</span>
 					</div>
 				</div>
 			</template>
@@ -457,11 +457,21 @@
 			},
 			{
 				selector: '.Store_Class',
-				// TODO: add functionality for each context menu item click
 				callback: function(key, options) {
 					const element = options.$trigger[0];
-					console.log(key);
-					// console.log(element);
+					let store = window.getStoreByURL(element.getAttribute('store_url'));
+					switch (key) {
+						case 'open':
+							window.parent.openURL(element.getAttribute('store_url'), window.monitorsApp.configureModal.preferences.useDefaultBrowser, { title: 'Resell Companion — ' + store.name });
+							break;
+						case 'copy_url':
+							window.parent.copy(element.getAttribute('store_url'));
+							break;
+						case 'hide':
+							store.favorited = false;
+							window.sortStores();
+							break;
+					}
 				},
 				items: {
 					"open": {name: "Open Store", icon: "fas fa-external-link-alt" },

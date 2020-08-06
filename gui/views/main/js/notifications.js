@@ -172,6 +172,7 @@ function trySendWebhook(notification) {
 
   // format webhook options according to data
   if ( // Task notification
+    notification.data &&
     notification.data.node != undefined &&
     notification.data.billingProfile != undefined &&
     notification.data.product != undefined &&
@@ -198,20 +199,30 @@ function trySendWebhook(notification) {
         value: notification.data.variant.Name || window.tryTranslate('Unknown Size')
       },
       {
+        name: `${window.tryTranslate('Price')}`,
+        value: window.frames['monitors-frame'].getCurrencySymbolFromPrice(notification.data.product.Price) + window.numberWithCommas(parseFloat(Number(notification.data.product.Price.replace(/[^0-9\.]+/g,""))).toFixed(2))
+      },
+      {
         name: `${window.tryTranslate('Billing Profile')}`,
         value: '||' + (notification.data.billingProfile.settings.nickname || window.tryTranslate('N/A')) + '||'
       },
       {
         name: `${window.tryTranslate('Checkout Time (ms)')}`,
-        value: new Date().getTime() - notification.data.node.startTimestamp
+        value: window.numberWithCommas(new Date().getTime() - notification.data.node.startTimestamp)
       },
       {
         name: `${window.tryTranslate('Checkout Delay (ms)')}`,
-        value: notification.data.billingProfile.settings.autoCheckoutDelay || 0
+        value: window.numberWithCommas(notification.data.billingProfile.settings.autoCheckoutDelay || 0)
       }
     ];
 
+    if (notification.data.product.Identifier == 'shopify' && notification.data.node.checkoutURL && !notification.data.node.checkoutURL.includes('unknown-checkout')) webhookOptions.embeds[0].fields.push({
+      name: `${window.tryTranslate('Checkout URL')}`,
+      value: `[${window.tryTranslate('Click here')}](${notification.data.node.checkoutURL})`
+    });
+
   } else if ( // TODO: Social+ notification (both discord joined and link opened)
+    notification.data &&
     false
   ) {}
 

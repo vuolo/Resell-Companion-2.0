@@ -8,29 +8,17 @@
 const MODAL_NAME = 'google-accounts';
 
 const MODAL_OPTIONS_TEMPLATE = {
-  googleAccounts: [
-    {
-      settings: {
-        nickname: "test!",
-        autoCheckout: true,
-        autoCheckoutDelay: 0,
-        simulateTyping: true,
-        favorited: true,
-        enabled: true,
-        id: "TEST-GOOGLE-ACCOUNT"
-      }
-    }
-  ]
+  googleAccounts: window.parent.parent.googleAccounts
 };
 
 window.modalOptions = {};
 window.resetModalOptions = () => {
   window.parent.parent.memory.syncObject(window.modalOptions, window.parent.parent.memory.copyObj(MODAL_OPTIONS_TEMPLATE));
-  // LINK GOOGLE ACCOUNTS ARRAY GLOBALLY
-  (async () => {
-    window.parent.parent.googleAccounts = window.modalOptions.googleAccounts;
-    // TODO: refresh any places that use this google accounts array
-  })();
+  // // LINK GOOGLE ACCOUNTS ARRAY GLOBALLY
+  // (async () => {
+  //   window.parent.parent.googleAccounts = window.modalOptions.googleAccounts;
+  //   // TODO: refresh any places that use this google accounts array
+  // })();
 }
 window.resetModalOptions();
 
