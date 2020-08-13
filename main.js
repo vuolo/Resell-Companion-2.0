@@ -352,6 +352,7 @@ electron.ipcMain.on('loadingDone', (event, arg) => {
 // Some APIs can only be used after this event occurs.
 app.on('ready', async function() {
   app.commandLine.appendSwitch('disable-site-isolation-trials');
+  app.commandLine.appendSwitch('disable-renderer-backgrounding');
   tryStartCompanion();
 
   // for proxy authentication to work without problems
@@ -372,21 +373,22 @@ app.on('ready', async function() {
 app.on('login', (event, webContents, request, authInfo, callback) => {
   event.preventDefault();
 });
+
 // for browsing without problems
 app.commandLine.appendSwitch('ignore-certificate-errors');
+
 // for notifications
 app.setAppUserModelId(process.execPath);
 
 // close if app is already opened
-if (!app.requestSingleInstanceLock()) {
-  closeApplication();
-}
+if (!app.requestSingleInstanceLock()) closeApplication();
+
 // put main window on top if trying to open whilst already open
 app.on('second-instance', (event, commandLine, workingDirectory) => {
   // Someone tried to run a second instance, we should focus our window.
   if (mainWindow) {
-    if (mainWindow.isMinimized()) mainWindow.restore()
-    mainWindow.focus()
+    if (mainWindow.isMinimized()) mainWindow.restore();
+    mainWindow.focus();
   }
 })
 
@@ -407,7 +409,5 @@ function closeApplication() {
 app.on('activate', function () {
   // On OS X it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
-  if (mainWindow === null) {
-    tryStartCompanion();
-  }
+  if (mainWindow === null) tryStartCompanion();
 });

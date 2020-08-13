@@ -65,7 +65,7 @@
   "rgba(225,225,225,1)": {
     "description": "Button Highlight",
     "themes": {
-      "light": "rgba(225,225,225,1)",
+      "light": "rgba(232,232,232,1)",
       "dark": "rgba(42,42,51,1)"
     }
   }

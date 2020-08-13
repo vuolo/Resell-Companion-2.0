@@ -61,7 +61,13 @@ window.settingsApp = new Vue({
     modals: window.modals,
     checkForUpdateButtonStatus: 'Check for Update',
     billingProfilesModal: {},
+    billingProfiles: window.parent.billingProfiles,
     googleAccountsModal: {},
+    googleAccounts: window.parent.googleAccounts,
+    proxyProfilesModal: {},
+    proxyProfiles: window.parent.proxyProfiles,
+    connectedBotsModal: {},
+    connectedBots: window.parent.connectedBots,
     statisticsModal: {}
   },
   methods: {

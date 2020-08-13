@@ -306,12 +306,6 @@
         "es": "Pago cancelado"
       }
     },
-    "Checkout Time (ms)": {
-      "languages": {
-        "en": "Checkout Time (ms)",
-        "es": "Duración de pagar (ms)"
-      }
-    },
     "Checkout Delay (ms)": {
       "languages": {
         "en": "Checkout Delay (ms)",
@@ -324,6 +318,18 @@
         "es": "Método de compra"
       }
     },
+    "Checkout Time (ms)": {
+      "languages": {
+        "en": "Checkout Time (ms)",
+        "es": "Duración de pagar (ms)"
+      }
+    },
+    "Checkout URL": {
+      "languages": {
+        "en": "Checkout URL",
+        "es": "URL de pago"
+      }
+    },
     "City": {
       "languages": {
         "en": "City",
@@ -334,6 +340,12 @@
       "languages": {
         "en": "Clear All",
         "es": "Borrar todo"
+      }
+    },
+    "Click here": {
+      "languages": {
+        "en": "Click here",
+        "es": "Hacer clic aquí"
       }
     },
     "Click to setup a new billing profile": {
@@ -412,6 +424,12 @@
       "languages": {
         "en": "Copy Size Result URL",
         "es": "Copiar URL del resultado del tamaño"
+      }
+    },
+    "Copy Task(s)": {
+      "languages": {
+        "en": "Copy Task(s)",
+        "es": "Copiar tarea(s)"
       }
     },
     "Copy Ticket(s)": {
@@ -634,6 +652,12 @@
       "languages": {
         "en": "Duplicate Subscription(s)",
         "es": "Duplicar suscripción(es)"
+      }
+    },
+    "Duplicate Task(s)": {
+      "languages": {
+        "en": "Duplicate Task(s)",
+        "es": "Duplicar tarea(s)"
       }
     },
     "Duplicate Ticket(s)": {
@@ -1406,6 +1430,12 @@
         "es": "¿No está instalando? Haga clic"
       }
     },
+    "Notification": {
+      "languages": {
+        "en": "Notification",
+        "es": "Notificación"
+      }
+    },
     "Notifications": {
       "languages": {
         "en": "Notifications",
@@ -1548,6 +1578,12 @@
       "languages": {
         "en": "Paste Sale(s)",
         "es": "Pegar venta(s)"
+      }
+    },
+    "Paste Tasks(s)": {
+      "languages": {
+        "en": "Paste Tasks(s)",
+        "es": "Pegar tareas(s)"
       }
     },
     "Paste Ticket(s)": {
@@ -2204,6 +2240,18 @@
         "es": "Suscripción"
       }
     },
+    "Subscription Image URL": {
+      "languages": {
+        "en": "Subscription Image URL",
+        "es": "URL de imagen de suscripción"
+      }
+    },
+    "Subscription Name": {
+      "languages": {
+        "en": "Subscription Name",
+        "es": "Nombre de la suscripción"
+      }
+    },
     "Subscriptions": {
       "languages": {
         "en": "Subscriptions",
@@ -2322,6 +2370,12 @@
       "languages": {
         "en": "This checkout has not started",
         "es": "Este pago no ha comenzado"
+      }
+    },
+    "This is what a notification looks like": {
+      "languages": {
+        "en": "This is what a notification looks like",
+        "es": "Así es como se ve una notificación"
       }
     },
     "This package does not have any tracking history yet": {

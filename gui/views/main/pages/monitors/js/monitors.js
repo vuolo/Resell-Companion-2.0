@@ -730,6 +730,21 @@ window.sortStores = (categoryIndex = -1) => {
   }
 };
 
+function updateCheckpoint(storeURL, checkpointEnabled) {
+  for (var store of window.categories[0].stores) if (store.urls.includes(storeURL)) { store.checkpoint_enabled = checkpointEnabled; return; }
+}
+
+function updatePasswordPage(storeURL, passwordEnabled) {
+  for (var store of window.categories[0].stores) if (store.urls.includes(storeURL)) { store.password_enabled = passwordEnabled; return; }
+}
+
+async function initialStoresSetup() {
+  let fetchedCheckpointStores = await monitorsAPI.fetchCheckpointStores();
+  for (var store of fetchedCheckpointStores.stores) updateCheckpoint(store, true);
+  let fetchedPasswordPages = await monitorsAPI.fetchPasswordPages();
+  for (var store of fetchedPasswordPages.stores) updatePasswordPage(store, true);
+}
+
 // you can either stringify products here or loop through each product, making an additional formatted key, then set unformatted key to undefined (whichever is faster - i have yet to report back here so the stringify method seems to do just fine)
 function formatProducts(products) {
   let rawProducts = JSON.stringify(products);
@@ -819,6 +834,7 @@ document.body.addEventListener('click', function (event) {
 window.sortStores();
 window.onload = refreshVisualizedProducts;
 initialProductsSetup();
+initialStoresSetup();
 
 // for (var i = 0; i < 100; i++) {
 //   window.addTestProduct();

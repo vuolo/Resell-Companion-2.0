@@ -565,12 +565,12 @@ async function getCurrentCheckoutStep(type, node) {
       // URL checker to ensure checkout is on-track
       if (!webURL.includes('/checkouts/')) { // all checkout pages have '/checkouts/' on it
         if (webURL.includes('account/login')) return 'authentication_required'; // if: 'account/login' IS in URL, then launch login helper (notify awaiting authentication)
-        else return 'cart_unavailable' // else: the cart has been lost.
+        else return 'cart_unavailable'; // else: the cart has been lost.
       }
 
       // inject a script to get the current checkout step
       return await node.checkoutWindow.webContents.executeJavaScript(`
-        document.querySelector('.product__status--sold-out') ? 'stock_problems' : Shopify.Checkout.step;
+        document.querySelector('.product__status--sold-out') ? 'stock_problems' : (document.getElementById('shopify-bag-outline') ? 'cart_unavailable' : Shopify.Checkout.step);
         `, true);
     case 'supreme':
       // URL checker to ensure checkout is on-track

@@ -46,11 +46,11 @@
 					</template>
 
 					<template v-for="(node, nodeIndex) in tasks[activeTaskIndex].nodes">
-						<div v-bind:id="node.id" class="Group_215_Class" v-bind:style="{ top: (nodeIndex * (52 + 8)) + 6 + 'px' }">
+						<div v-bind:id="node.id" class="Group_215_Class" v-bind:style="{ top: (nodeIndex * (52 + 8)) + 6 + 'px' }" v-on:click="handleSelectClick($event, nodeIndex)">
 
 							<div class="Row_1_Class">
 								<svg class="Row_1_Rectangle">
-									<rect v-bind:fill="getThemeColor('rgba(255,255,255,1)')" class="Row_1_Rectangle_Class" rx="10" ry="10" x="0" y="0" width="937.761" height="52.497">
+									<rect v-bind:fill="node.selected ? getThemeColor('rgba(225,225,225,1)') : getThemeColor('rgba(255,255,255,1)')" class="Row_1_Rectangle_Class" rx="10" ry="10" x="0" y="0" width="937.761" height="52.497">
 									</rect>
 								</svg>
 								<div class="Action_Row_1_Class">
@@ -294,7 +294,7 @@
 						<div class="Begin_Monitoring_Class" v-bind:style="{ color: getThemeColor('rgba(29,29,29,1)'), left: getTitleSwitchLeft(315-60, tryTranslate('Begin Monitoring at')) + 60 + 'px', fontSize: confineTextWidth(315-60, tryTranslate('Begin Monitoring at'), 17, 'px', 'bold', 'SF Pro Text') }">
 							<span>{{tryTranslate('Begin Monitoring at')}}</span>
 						</div>
-						<div class="Switch_1_dp_Class clickable hover-light-opacity" style="top: -3px;" v-bind:style="{ left: getTitleSwitchLeft(315-60, tryTranslate('Begin Monitoring at')) + 'px' }" v-on:click="tasks[activeTaskIndex].configuration.beginMonitoringAt.enabled = !tasks[activeTaskIndex].configuration.beginMonitoringAt.enabled;">
+						<div class="Switch_1_dp_Class clickable hover-light-opacity" style="top: -3px;" v-bind:style="{ left: getTitleSwitchLeft(315-60, tryTranslate('Begin Monitoring at')) + 'px' }" v-on:click="tasks[activeTaskIndex].configuration.beginMonitoringAt.enabled = !tasks[activeTaskIndex].configuration.beginMonitoringAt.enabled; tasks[activeTaskIndex].configuration.beginMonitoringAt.launched = false;">
 							<svg class="Switch_Rectangle_1_dq">
 								<rect v-bind:fill="tasks[activeTaskIndex].configuration.beginMonitoringAt.enabled ? 'rgba(53,178,57,1)' : 'rgba(253,53,53,1)'" class="Switch_Rectangle_1_dq_Class" rx="12.5" ry="12.5" x="0" y="0" width="45" height="25">
 								</rect>
@@ -427,6 +427,19 @@
 	<script>
 		const CONTEXT_MENUS = [
 			{
+				selector: '.Repeat_Grid_6_Class',
+				callback: function(key, options) {
+					switch (key) {
+						case 'paste':
+							pasteTaskNodes();
+							break;
+					}
+				},
+				items: {
+					"paste": { name: "Paste Tasks(s)", icon: "far fa-clipboard" }
+				}
+			},
+			{
 				selector: '.Product_Class',
 				callback: function(key, options) {
 					const element = options.$trigger[0];
@@ -453,15 +466,36 @@
 					const element = options.$trigger[0];
 					let taskNode = window.getTaskNodeByID(element.id);
 					switch (key) {
-						case 'reset':  return window.resetTaskNode(taskNode);
-						case 'remove': return window.tasks[tasksApp.activeTaskIndex].nodes.splice(window.tasks[tasksApp.activeTaskIndex].nodes.indexOf(taskNode), 1);
-						case 'toggle': return window.tasksApp.toggleNodeEnabled(taskNode);
+						case 'reset':
+							taskNode.selected = true;
+							for (var node of window.getSelectedTaskNodes()) window.resetTaskNode(node);
+							break;
+						case 'remove':
+							taskNode.selected = true;
+							let afterRemoveCount = window.tasks[tasksApp.activeTaskIndex].nodes.length - window.getSelectedTaskNodes().length;
+							while (window.tasks[tasksApp.activeTaskIndex].nodes.length > afterRemoveCount) for (var node of window.getSelectedTaskNodes()) { window.tasks[tasksApp.activeTaskIndex].nodes.splice(window.tasks[tasksApp.activeTaskIndex].nodes.indexOf(node), 1); break; }
+							break;
+						case 'toggle':
+							taskNode.selected = true;
+							for (var node of window.getSelectedTaskNodes()) window.tasksApp.toggleNodeEnabled(node);
+							break;
+						case 'copy':
+							taskNode.selected = true;
+							copyTaskNodes();
+							for (var node of window.getSelectedTaskNodes()) node.selected = false;
+							break;
+						case 'duplicate':
+							taskNode.selected = true;
+							duplicateTaskNodes();
+							break;
 					}
 				},
 				items: {
 					"reset": {name: "Reset Task(s)", icon: "fas fa-redo-alt" },
 					"remove": { name: "Remove Task(s)", icon: "fas fa-trash-alt" },
-					"toggle": { name: "Toggle Task(s)", icon: "fas fa-play-circle" }
+					"toggle": { name: "Toggle Task(s)", icon: "fas fa-play-circle" },
+					"copy": { name: "Copy Task(s)", icon: "far fa-clipboard" },
+					"duplicate": { name: "Duplicate Task(s)", icon: "fas fa-clone" }
 				}
 			}
 		];

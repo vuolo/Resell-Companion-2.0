@@ -24,8 +24,8 @@
 }
 .Modal_Class {
 	position: absolute;
-	width: 1287px;
-	height: 795px;
+	width: 0px;
+	height: 0px;
 	left: 0px;
 	top: 140px;
 	overflow: visible;

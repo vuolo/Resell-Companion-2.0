@@ -12,6 +12,7 @@ const cpfmClient = ShopifyBuy.buildClient({
 });
 
 window.tasks = window.parent.tasks;
+var copiedTaskNodeIDs = [];
 
 window.modals = {
   'create': {
@@ -37,8 +38,49 @@ window.setNodeStatus = (node, color, status) => {
   for (var status of node.statuses) if (node.status.description == status.description) { foundDescription = true; break; }
   if (!foundDescription) node.statuses.push({ description: node.status.description, color: node.status.color });
 
-  try { window.parent.parent.frames['monitors-frame'].frames['checkout-modal'].checkoutApp.$forceUpdate(); } catch(err) {}
+  try { window.parent.frames['monitors-frame'].frames['checkout-modal'].checkoutApp.$forceUpdate(); } catch(err) {}
 };
+
+function setMultipleSelectedTaskNodes(taskNodeIndex) {
+  let startTaskNodeIndex = -1;
+  for (var i = 0; i < window.tasks[tasksApp.activeTaskIndex].nodes.length; i++) {
+    if (window.tasks[tasksApp.activeTaskIndex].nodes[i].selected) {
+      startTaskNodeIndex = i;
+      break;
+    }
+  }
+  if (startTaskNodeIndex == -1) {
+    switchSelectedTaskNodes(taskNodeIndex);
+  } else {
+    // check if taskNodeIndex is > than startTaskNodeIndex (go in order) else, taskNodeIndex is  < than startTaskNodeIndex, loop reverse
+    let allowSetSelected = false;
+    if (taskNodeIndex > startTaskNodeIndex) {
+      for (var i = 0; i < window.tasks[tasksApp.activeTaskIndex].nodes.length; i++) {
+        if (i == startTaskNodeIndex) {
+          allowSetSelected = true;
+        } else if (i > taskNodeIndex) {
+          break;
+        } else if (allowSetSelected) {
+          window.tasks[tasksApp.activeTaskIndex].nodes[i].selected = true;
+        }
+      }
+    } else {
+      for (var i = window.tasks[tasksApp.activeTaskIndex].nodes.length-1; i >= 0; i--) {
+        if (i == startTaskNodeIndex) {
+          allowSetSelected = true;
+        } else if (i < taskNodeIndex) {
+          break;
+        } else if (allowSetSelected) {
+          window.tasks[tasksApp.activeTaskIndex].nodes[i].selected = true;
+        }
+      }
+    }
+  }
+}
+
+function switchSelectedTaskNodes(taskNodeIndex) {
+  window.tasks[tasksApp.activeTaskIndex].nodes[taskNodeIndex].selected = !window.tasks[tasksApp.activeTaskIndex].nodes[taskNodeIndex].selected;
+}
 
 window.tasksApp = new Vue({
   el: "#Rewrite___Tasks",
@@ -60,6 +102,16 @@ window.tasksApp = new Vue({
     getColor: window.parent.getColor,
     formatTimestampExpanded: window.parent.formatTimestampExpanded,
     openModal: window.openModal,
+    handleSelectClick: function(e, taskNodeIndex) {
+      for (var elem of $('.Action_Row_1_Class')) if ($(elem).is(":hover")) return; // ignore if clicking on action buttons
+      if (e.ctrlKey) switchSelectedTaskNodes(taskNodeIndex);
+      else if (e.shiftKey) setMultipleSelectedTaskNodes(taskNodeIndex);
+      else {
+        let isSelected = window.tasks[this.activeTaskIndex].nodes[taskNodeIndex].selected;
+        for (var node of window.getSelectedTaskNodes()) node.selected = false;
+        window.tasks[this.activeTaskIndex].nodes[taskNodeIndex].selected = !isSelected;
+      }
+    },
     getProxyProfileByID: function(id) {
       for (var proxyProfile of window.parent.proxyProfiles) if (id == proxyProfile.settings.id) return proxyProfile;
     },
@@ -110,9 +162,9 @@ window.tasksApp = new Vue({
         ) window.setNodeStatus(node, "red", "Checkout Canceled");
       }
       if (statusMessage) window.setNodeStatus(node, statusMessage.color, statusMessage.description);
-      if (node.status.color == 'green') try { if (node == window.parent.parent.frames['monitors-frame'].frames['checkout-modal'].modalOptions.node) window.parent.parent.frames['monitors-frame'].frames['checkout-modal'].triggerSuccessful(); } catch(err) {}
-      if (node.status.color == 'red') try { if (node == window.parent.parent.frames['monitors-frame'].frames['checkout-modal'].modalOptions.node) window.parent.parent.frames['monitors-frame'].frames['checkout-modal'].triggerFailed(); } catch(err) {}
-      if (!node.enabled && (node.status.color != 'red' && node.status.color != 'green')) try { window.parent.parent.frames['monitors-frame'].frames['checkout-modal'].checkoutApp.closeModal(); } catch(err) {}
+      if (node.status.color == 'green') try { if (node == window.parent.frames['monitors-frame'].frames['checkout-modal'].modalOptions.node) window.parent.frames['monitors-frame'].frames['checkout-modal'].triggerSuccessful(); } catch(err) {}
+      if (node.status.color == 'red') try { if (node == window.parent.frames['monitors-frame'].frames['checkout-modal'].modalOptions.node) window.parent.frames['monitors-frame'].frames['checkout-modal'].triggerFailed(); } catch(err) {}
+      if (!node.enabled && (node.status.color != 'red' && node.status.color != 'green')) try { window.parent.frames['monitors-frame'].frames['checkout-modal'].checkoutApp.closeModal(); } catch(err) {}
     },
     openNewTaskModal: async function() {
       while (!window.frames['create-modal']) await window.parent.sleep(50);
@@ -248,7 +300,8 @@ window.addTaskNode = () => {
     paymentFieldsInitialized: {},
     retryNum: 0,
     checkoutWindow: null,
-    statuses: []
+    statuses: [],
+    selected: false
   };
 
   let billingProfileIndex = 0;
@@ -441,5 +494,89 @@ window.getTaskByID = (id) => {
 }
 
 window.getTaskNodeByID = (id) => {
-  for (var node of window.tasks[tasksApp.activeTaskIndex].nodes) if (node.id == id) return node;
+  for (var task of window.tasks) for (var node of task.nodes) if (node.id == id) return node;
 }
+
+window.getSelectedTaskNodes = (productIndex = tasksApp.activeTaskIndex) => {
+  let outTaskNodes = [];
+  for (var node of window.tasks[productIndex].nodes) if (node.selected) outTaskNodes.push(node);
+  return outTaskNodes;
+}
+
+function copyTaskNodes() {
+  while (copiedTaskNodeIDs.length > 0) copiedTaskNodeIDs.pop();
+  for (var node of window.getSelectedTaskNodes()) copiedTaskNodeIDs.push(node.id);
+}
+
+function pasteTaskNodes() {
+  let outTaskNodes = [];
+  for (var copiedTaskNodeID of copiedTaskNodeIDs) {
+    let node = window.getTaskNodeByID(copiedTaskNodeID);
+    if (node) outTaskNodes.push(node);
+  }
+  for (var node of window.getSelectedTaskNodes()) node.selected = false;
+  duplicateTaskNodes(outTaskNodes);
+}
+
+function duplicateTaskNodes(incomingTaskNodes = null) {
+  if (incomingTaskNodes) {
+    for (var incomingTaskNode of incomingTaskNodes) {
+      let duplicateTaskNode = {};
+      window.parent.memory.syncObject(duplicateTaskNode, window.parent.memory.copyObj(incomingTaskNode));
+      duplicateTaskNode.id = window.parent.makeid(10); // assign a new id to each duplicated node
+      duplicateTaskNode.selected = true; // force select on new nodes ONLY
+      window.resetTaskNode(duplicateTaskNode); // reset duplicated task node status
+      window.tasks[tasksApp.activeTaskIndex].nodes.push(duplicateTaskNode);
+      window.parent.addStatistic('Tasks', 'Tasks Created');
+    }
+  } else {
+    for (var node of window.tasks[tasksApp.activeTaskIndex].nodes) {
+      if (node.selected) {
+        node.selected = false; // force deselect on BOTH new AND duplciated nodes
+        let duplicateTaskNode = {};
+        window.parent.memory.syncObject(duplicateTaskNode, window.parent.memory.copyObj(node));
+        duplicateTaskNode.id = window.parent.makeid(10); // assign a new id to each duplicated node
+        window.resetTaskNode(duplicateTaskNode); // reset duplicated task node status
+        window.tasks[tasksApp.activeTaskIndex].nodes.push(duplicateTaskNode);
+        window.parent.addStatistic('Tasks', 'Tasks Created');
+      }
+    }
+  }
+}
+
+document.addEventListener("click", function() {
+  let isHoveringOverItem = false;
+  if (!isHoveringOverItem) for (var elem of $('.Group_215_Class')) if ($(elem).is(":hover")) { isHoveringOverItem = true; break; }
+  if (!isHoveringOverItem) for (var elem of $('body > ul.context-menu-root')) if ($(elem).is(":hover")) { isHoveringOverItem = true; break; }
+  if (!isHoveringOverItem) for (var task of window.tasks) for (var node of task.nodes) node.selected = false;
+});
+
+// DISABLE SELECT ALL TEXT FROM Ctrl + A
+$(function(){
+  $(document).keydown(function(objEvent) {
+    if (objEvent.ctrlKey && objEvent.keyCode == 65 && objEvent.target.tagName != "INPUT" && objEvent.target.tagName != "TEXTAREA") objEvent.preventDefault();
+  });
+});
+
+// KEYBINDS
+document.onkeyup = function(e) {
+  if (e.which == 46) { // Delete: display delete prompt
+    let afterRemoveCount = window.tasks[tasksApp.activeTaskIndex].nodes.length - window.getSelectedTaskNodes().length;
+    while (window.tasks[tasksApp.activeTaskIndex].nodes.length > afterRemoveCount) for (var node of window.getSelectedTaskNodes()) { window.tasks[tasksApp.activeTaskIndex].nodes.splice(window.tasks[tasksApp.activeTaskIndex].nodes.indexOf(node), 1); break; }
+  } else if (e.ctrlKey && e.which == 65) { // Ctrl + A: select all displayed taskNodes
+    for (var node of window.tasks[tasksApp.activeTaskIndex].nodes) node.selected = true;
+  } else if (e.ctrlKey && e.which == 68) { // Ctrl + D: deselect all displayed taskNodes
+    for (var node of window.getSelectedTaskNodes()) node.selected = false;
+  } else if (e.ctrlKey && e.which == 67) { // Ctrl + C: copy taskNodes
+    copyTaskNodes();
+  } else if (e.ctrlKey && e.which == 86) { // Ctrl + V: paste taskNodes
+    pasteTaskNodes();
+  }
+};
+
+setInterval(function() {
+  for (var task of window.tasks) if (task.configuration.beginMonitoringAt.enabled && !task.configuration.beginMonitoringAt.launched && task.configuration.beginMonitoringAt.timestamp < new Date().getTime()) {
+    task.configuration.beginMonitoringAt.launched = true;
+    for (var node of task.nodes) tasksApp.toggleNodeEnabled(node, true);
+  }
+}, 1 * 1000);

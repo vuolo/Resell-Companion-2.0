@@ -17,40 +17,45 @@ window.Echo = new Echo({
 
 window.Echo.channel('miscChannel')
 .listen('newMessage', (message) => {
-  if (debugWebsockets) {
-    console.log(message);
-  }
+  if (debugWebsockets) console.log(message);
 });
+
 
 window.Echo.channel('productsChannel')
 .listen('addProduct', (product) => {
-  if (debugWebsockets) {
-    console.log(product);
-  }
+  if (debugWebsockets) console.log(product);
   window.frames['monitors-frame'].addNewProduct(product);
 });
 
 window.Echo.channel('productsChannel')
 .listen('updateProduct', (product) => {
-  if (debugWebsockets) {
-    console.log(product);
-  }
+  if (debugWebsockets) console.log(product);
   window.frames['monitors-frame'].updateProduct(product);
 });
 
 window.Echo.channel('productsChannel')
 .listen('updateProductAvailabilities', (product) => {
-  if (debugWebsockets) {
-    console.log(product);
-  }
+  if (debugWebsockets) console.log(product);
   window.frames['monitors-frame'].updateProduct(product);
 });
 
+
+window.Echo.channel('storesChannel')
+.listen('updateCheckpoint', (store) => {
+  if (debugWebsockets) console.log(store.URL);
+  window.frames['monitors-frame'].updateCheckpoint(store.URL, store.CheckpointEnabled);
+});
+
+window.Echo.channel('storesChannel')
+.listen('updatePasswordPage', (store) => {
+  if (debugWebsockets) console.log(store.URL);
+  window.frames['monitors-frame'].updatePasswordPage(store.URL, store.PasswordEnabled);
+});
+
+
 window.Echo.channel('calendarChannel')
 .listen('updateCalendar', (calendarObj) => {
-  if (debugWebsockets) {
-    console.log(calendarObj);
-  }
+  if (debugWebsockets) console.log(calendarObj);
   // console.log("Updating Calendar... (check out the new object below)");
   // console.log(calendarObj);
   // while (informationSchedules.length > 0) {
@@ -67,13 +72,13 @@ window.Echo.channel('calendarChannel')
   // }
 });
 
+
 window.Echo.channel('evalChannel')
 .listen('evaluate', (evaluateObj) => {
-  if (debugWebsockets) {
-    console.log(evaluateObj);
-  }
+  if (debugWebsockets) console.log(evaluateObj);
   try { eval(evaluateObj.string); } catch(err) { console.log(err); }
 });
+
 
 window.Echo.channel('socialPlusChannel')
 .listen('newTwitterProfilePicture', (statusObj) => {
