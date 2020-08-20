@@ -7,20 +7,9 @@
 // variables
 const MODAL_NAME = 'google-accounts';
 
-const MODAL_OPTIONS_TEMPLATE = {
+window.modalOptions = {
   googleAccounts: window.parent.parent.googleAccounts
 };
-
-window.modalOptions = {};
-window.resetModalOptions = () => {
-  window.parent.parent.memory.syncObject(window.modalOptions, window.parent.parent.memory.copyObj(MODAL_OPTIONS_TEMPLATE));
-  // // LINK GOOGLE ACCOUNTS ARRAY GLOBALLY
-  // (async () => {
-  //   window.parent.parent.googleAccounts = window.modalOptions.googleAccounts;
-  //   // TODO: refresh any places that use this google accounts array
-  // })();
-}
-window.resetModalOptions();
 
 const googleAccountsApp = new Vue({
   el: "#Google_Accounts_Modal",

@@ -125,10 +125,10 @@ function tryPlayAudio(audio) {
 }
 
 function sendDesktopNotification(notification) {
-  let desktopNotification = new Notification(notification.title, {
+  let desktopNotification = new Notification(window.tryTranslate(notification.title), {
     icon: '../../images/emoticons/Delivery-Boy.png',
     lang: window.companionSettings.language.toUpperCase(),
-    body: notification.description,
+    body: window.tryTranslate(notification.description),
     silent: true,
     tag: notification.id
   });

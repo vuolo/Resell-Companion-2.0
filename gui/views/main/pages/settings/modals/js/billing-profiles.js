@@ -7,22 +7,9 @@
 // variables
 const MODAL_NAME = 'billing-profiles';
 
-const MODAL_OPTIONS_TEMPLATE = {
+window.modalOptions = {
   billingProfiles: window.parent.parent.billingProfiles
 };
-
-window.modalOptions = {};
-window.resetModalOptions = () => {
-  window.parent.parent.memory.syncObject(window.modalOptions, window.parent.parent.memory.copyObj(MODAL_OPTIONS_TEMPLATE));
-  // // LINK BILLING PROFILES ARRAY GLOBALLY
-  // (async () => {
-  //   window.parent.parent.billingProfiles = window.modalOptions.billingProfiles;
-  //   while (!window.parent.parent.frames['tasks-frame'] || !window.parent.parent.frames['tasks-frame'].frames['create-modal'] || !window.parent.parent.frames['tasks-frame'].frames['create-modal'].createApp) await window.parent.parent.sleep(50);
-  //   window.parent.parent.frames['tasks-frame'].frames['create-modal'].createApp.billingProfiles = window.parent.parent.billingProfiles;
-  //   window.parent.parent.frames['tasks-frame'].frames['create-modal'].createApp.$forceUpdate();
-  // })();
-}
-window.resetModalOptions();
 
 const billingProfilesApp = new Vue({
   el: "#Billing_Profiles_Modal",
